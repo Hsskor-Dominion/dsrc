@@ -5,11 +5,11 @@ FORM "STLC"
 		//-- do we still need this?
 		chunk "LOCD"
 		{
-			cstring "tatooine"
-			cstring "tatooine"
-			float 3497.0
+			cstring "coronet"
+			cstring "corellia"
+			float -656.0
 			float  0.0
-			float -4414.0
+			float -3576.0
 			cstring "0"
 		}
 
@@ -34,12 +34,12 @@ FORM "STLC"
 
 		chunk "LOCD"
 		{
-			cstring "beta3"        //canonical planet name (was mos eisley)
-			cstring "tatooine"     //canonical location name
-			float 3497.0           // x
+			cstring "coronet"
+			cstring "corellia"
+			float -656.0
 			float  0.0
-			float -4414.0          // z
-			cstring "0"            // cell id
+			float -3576.0
+			cstring "0"
 		}
 		chunk "LOCD"
 		{

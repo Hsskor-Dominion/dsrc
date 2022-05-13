@@ -20,6 +20,5 @@ form "PFDT"
 		PROF(combat_marksman)
 		PROF(science_medic)
 		PROF(outdoors_scout)
-		PROF(jedi)
 	}
 }

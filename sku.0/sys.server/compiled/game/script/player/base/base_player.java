@@ -312,16 +312,6 @@ public class base_player extends script.base_script
         }
         return SCRIPT_CONTINUE;
     }
-    public int OnEnteredCombat(obj_id self) throws InterruptedException
-    {
-        int shapechange = buff.getBuffOnTargetFromGroup(self, "shapechange");
-        if (shapechange != 0)
-        {
-            buff.removeBuff(self, shapechange);
-            sendSystemMessage(self, SHAPECHANGE);
-        }
-        return SCRIPT_CONTINUE;
-    }
     public int OnAttach(obj_id self) throws InterruptedException
     {
         final String[] NEWBIE_PROFICIENCIES = 

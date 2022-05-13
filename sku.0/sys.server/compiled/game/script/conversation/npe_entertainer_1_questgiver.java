@@ -68,7 +68,6 @@ public class npe_entertainer_1_questgiver extends script.base_script
     public void npe_entertainer_1_questgiver_action_signalReward(obj_id player, obj_id npc) throws InterruptedException
     {
         groundquests.sendSignal(player, "npe_ent1_reward");
-        groundquests.grantQuest(player, "npe_han_comm_entertainer", false);
     }
     public void npe_entertainer_1_questgiver_action_giveQuest(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -233,7 +232,7 @@ public class npe_entertainer_1_questgiver extends script.base_script
         }
         setCondition(self, CONDITION_CONVERSABLE);
         setInvulnerable(self, true);
-        setName(self, "Anvar Keyis");
+        setName(self, "Anvar Keyis (Entertainer Gigs)");
         ai_lib.setDefaultCalmBehavior(self, ai_lib.BEHAVIOR_SENTINEL);
         return SCRIPT_CONTINUE;
     }
@@ -241,7 +240,7 @@ public class npe_entertainer_1_questgiver extends script.base_script
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setInvulnerable(self, true);
-        setName(self, "Anvar Keyis");
+        setName(self, "Anvar Keyis (Entertainer Gigs)");
         ai_lib.setDefaultCalmBehavior(self, ai_lib.BEHAVIOR_SENTINEL);
         return SCRIPT_CONTINUE;
     }
@@ -274,14 +273,7 @@ public class npe_entertainer_1_questgiver extends script.base_script
         }
         if (npe_entertainer_1_questgiver_condition_playerCompletedQuest(player, npc))
         {
-            npe_entertainer_1_questgiver_action_facePlayer(player, npc);
-            string_id message = new string_id(c_stringFile, "s_39");
-            prose_package pp = new prose_package();
-            pp.stringId = message;
-            pp.actor.set(player);
-            pp.target.set(npc);
-            chat.chat(npc, player, null, null, pp);
-            return SCRIPT_CONTINUE;
+            groundquests.clearQuest(player, "npe_entertainer_1");
         }
         if (npe_entertainer_1_questgiver_condition_playerStartedQuest(player, npc))
         {

@@ -33,8 +33,8 @@ public class npe extends script.base_script
     public static final float PLAYER_PLACEMENT_RANGE = 3.0f;
     public static final float SPACE_PLAYER_PLACEMENT_RANGE = 100.0f;
     public static final String FINISH_PLANET = "tatooine";
-    public static final float FINISH_X = 3528.0f;
-    public static final float FINISH_Z = -4804.0f;
+    public static final float FINISH_X = -2899.0f;
+    public static final float FINISH_Z = 2125.0f;
     public static final int QUEST_ENUMERATION = 1;
     public static final String QUEST_REWORK_VAR = "npe.questRegrant";
     public static final String QUEST_REWORK_TABLE = "datatables/npe/reworked_quests.iff";

@@ -577,9 +577,9 @@ public class reverse_engineering_tool extends script.base_script
                 finalPower = maxStat;
             }
         }
-        if (finalPower > 35)
+        if (finalPower > 25)
         {
-            finalPower = 35;
+            finalPower = 25;
         }
         if (finalPower < 1)
         {

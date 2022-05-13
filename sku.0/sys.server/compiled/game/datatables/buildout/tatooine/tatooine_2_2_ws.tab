@@ -59,7 +59,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 1106666	0	object/static/structure/tatooine/wall_cleft_tatooine_large_style_01.iff	0	839.24	39.9175	1664.73	0.777168	0.0180292	0.628	0.0360639		$|
 1106667	0	object/static/structure/tatooine/wall_ruined_tatooine_large_style_01.iff	0	854.406	39.5766	1728.69	0.867793	0	-0.496926	0		$|
 1106668	0	object/static/structure/tatooine/wall_ruined_tatooine_large_style_01.iff	0	865.244	39.5766	1716.75	0.246632	0	0.969109	0		$|
-1106669	0	object/static/structure/tatooine/wall_ruined_tatooine_large_style_02.iff	0	842.99	39.5769	1734.4	0.98202	6.21105e-006	0.188776	-3.23102e-005		$|
+1106669	0	object/static/structure/tatooine/wall_ruined_tatooine_large_style_02.iff	0	842.99	39.5769	1734.4	0.98202	6.21E-06	0.188776	-3.23E-05		$|
 1106670	0	object/static/structure/tatooine/wall_ruined_tatooine_large_style_02.iff	0	826.922	39.578	1738.2	-0.0312484	-0.0114344	0.999427	-0.00621254		$|
 1106671	0	object/static/structure/tatooine/wall_cleft_tatooine_large_style_01.iff	0	835.292	39.6468	1737.27	0.791931	-0.00818902	-0.610554	-0.00103559		$|
 1106672	0	object/static/structure/tatooine/wall_cleft_tatooine_large_style_01.iff	0	784.544	39.5697	1715.22	-0.163894	-0.00111603	0.986477	0.00105564		$|
@@ -81,7 +81,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 1106692	0	object/static/structure/tatooine/pillar_pristine_large_style_01.iff	0	831.726	39.9015	1738.25	0.993482	-0.0105555	0.1135	-0.000558339		$|
 1106693	0	object/static/structure/tatooine/pillar_damaged_large_style_01.iff	0	784.821	39.8358	1703.07	0.992809	0	-0.119712	0		$|
 1106694	0	object/static/structure/tatooine/pillar_damaged_large_style_01.iff	0	784.028	39.8358	1710.47	0.758362	0	0.651834	0		$|
-1106695	0	object/static/structure/tatooine/pillar_damaged_large_style_01.iff	0	785.699	39.8205	1719.54	0.807767	0.00153594	-0.589499	2.78356e-005		$|
+1106695	0	object/static/structure/tatooine/pillar_damaged_large_style_01.iff	0	785.699	39.8205	1719.54	0.807767	0.00153594	-0.589499	2.78E-05		$|
 1106696	0	object/static/structure/tatooine/pillar_ruined_large_style_01.iff	0	788.18	39.7075	1727.54	0.782005	0.00638483	-0.623218	-0.00519873		$|
 1106697	0	object/static/structure/tatooine/pillar_ruined_large_style_01.iff	0	795.44	39.6033	1731.03	0.229561	0.000728423	0.973071	0.0208279		$|
 1106698	0	object/static/structure/tatooine/pillar_damaged_large_style_01.iff	0	802.875	39.5408	1735.09	-0.561439	-0.0195506	0.827217	0.0107405		$|

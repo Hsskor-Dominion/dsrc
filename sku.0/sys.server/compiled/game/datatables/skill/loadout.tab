@@ -14,23 +14,27 @@ combat_smuggler_master	recon3	object/weapon/ranged/pistol/pistol_renegade.iff	ob
 combat_unarmed_master		object/weapon/melee/special/blacksun_razor.iff																			
 crafting_architect_master		object/tangible/crafting/station/structure_tool.iff	object/tangible/crafting/station/structure_station.iff																		
 crafting_armorsmith_master		object/tangible/crafting/station/clothing_station.iff	object/tangible/crafting/station/clothing_tool.iff	object/tangible/crafting/station/armor_repair.iff																	
-crafting_artisan_master				
-crafting_chef_master		object/tangible/crafting/station/food_station.iff	object/tangible/crafting/station/food_tool.iff	
-crafting_droidengineer_master		object/tangible/crafting/station/weapon_station.iff	object/tangible/crafting/station/weapon_tool.iff	object/tangible/crafting/station/droid_repair.iff
-crafting_merchant_master				
-crafting_shipwright_master		object/tangible/crafting/station/space_station.iff	object/tangible/crafting/station/space_tool.iff	
-crafting_tailor_master		object/tangible/crafting/station/clothing_station.iff	object/tangible/crafting/station/clothing_tool.iff	object/tangible/crafting/station/clothing_repair.iff
-crafting_weaponsmith_master		object/tangible/crafting/station/weapon_station.iff	object/tangible/crafting/station/weapon_tool.iff	object/tangible/crafting/station/weapon_repair.iff
-outdoors_bio_engineer_master	recon3	object/tangible/crafting/station/food_station.iff	object/tangible/crafting/station/food_tool.iff	
-outdoors_creaturehandler_master	battle3	object/tangible/medicine/pet/pet_stimpack_d.iff	object/tangible/medicine/pet/pet_vitapack_c.iff	
-outdoors_ranger_master	battle3	object/tangible/scout/camp/camp_elite.iff		
-outdoors_scout_master				
-outdoors_squadleader_master	assault3	object/weapon/ranged/carbine/carbine_e5.iff	object/weapon/ranged/pistol/pistol_intimidator.iff	
-science_combatmedic_master	battle3	object/weapon/ranged/pistol/pistol_alliance_disruptor.iff		
-science_doctor_master	battle3	object/weapon/ranged/pistol/pistol_dl44_metal.iff	object/weapon/ranged/pistol/pistol_de_10.iff	
-science_medic_master				
-social_dancer_master				
-social_entertainer_master		object/tangible/instrument/mandoviol.iff
-social_imagedesigner_master		
-social_musician_master		object/tangible/instrument/nalargon.iff
-social_politician_master		
+crafting_artisan_master																					
+crafting_chef_master		object/tangible/crafting/station/food_station.iff	object/tangible/crafting/station/food_tool.iff																		
+crafting_droidengineer_master		object/tangible/crafting/station/weapon_station.iff	object/tangible/crafting/station/weapon_tool.iff	object/tangible/crafting/station/droid_repair.iff																	
+crafting_merchant_master																					
+crafting_shipwright_master		object/tangible/crafting/station/space_station.iff	object/tangible/crafting/station/space_tool.iff																		
+crafting_tailor_master		object/tangible/crafting/station/clothing_station.iff	object/tangible/crafting/station/clothing_tool.iff	object/tangible/crafting/station/clothing_repair.iff																	
+crafting_weaponsmith_master		object/tangible/crafting/station/weapon_station.iff	object/tangible/crafting/station/weapon_tool.iff	object/tangible/crafting/station/weapon_repair.iff																	
+outdoors_bio_engineer_master	recon3	object/tangible/crafting/station/food_station.iff	object/tangible/crafting/station/food_tool.iff																		
+outdoors_creaturehandler_master	battle3	object/tangible/medicine/pet/pet_stimpack_d.iff	object/tangible/medicine/pet/pet_vitapack_c.iff																		
+outdoors_ranger_master	battle3	object/tangible/scout/camp/camp_elite.iff																			
+outdoors_scout_master																					
+outdoors_squadleader_master	assault3	object/weapon/ranged/carbine/carbine_e5.iff	object/weapon/ranged/pistol/pistol_intimidator.iff																		
+science_combatmedic_master	battle3	object/weapon/ranged/pistol/pistol_alliance_disruptor.iff																			
+science_doctor_master	battle3	object/weapon/ranged/pistol/pistol_dl44_metal.iff	object/weapon/ranged/pistol/pistol_de_10.iff																		
+science_medic_master																					
+social_dancer_master																					
+social_entertainer_master		object/tangible/instrument/mandoviol.iff																			
+social_imagedesigner_master																					
+social_musician_master		object/tangible/instrument/nalargon.iff																			
+social_politician_master																					
+pilot_neutral_novice		object/tangible/ship/crafted/chassis/yt2400_reward_deed.iff																			
+pilot_rebel_navy_novice		object/tangible/ship/crafted/chassis/yt2400_reward_deed.iff																			
+pilot_imperial_navy_novice		object/tangible/ship/crafted/chassis/yt2400_reward_deed.iff																			
+class_chronicles_novice		object/tangible/ship/crafted/chassis/yt2400_reward_deed.iff																			

@@ -12,5 +12,8 @@ armor_rebel_snow_helmet							9	0
 armor_rebel_snow_leggings							9	0		
 armor_rebel_snow_backpack							57	0		
 item_tauntaun_dna							2	0		
-item_echo_base_permafrost_crystal_06_01							50	7		
+item_echo_base_permafrost_crystal_06_01							500	7		
 item_itv_deed_snowspeeder							50	0		
+publish_gift_chapter_11_snow_machine_02_01							5	0		
+item_tcg_loot_reward_series8_shield_generator_blueprint							5	0		
+item_tcg_loot_reward_series8_snow_speeder_familiar							5	0		

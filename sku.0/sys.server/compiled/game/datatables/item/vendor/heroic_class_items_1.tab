@@ -1,137 +1,68 @@
-item	cash	token0	token1	token2	token3	token4	class	script	note
+item	cash	token0	token1	token2	token3	token16	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
-item_necklace_set_hero_01_01		2	2	2			0		"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
-item_bracelet_r_set_hero_01_01		2	2	2			0		"So in the case of this table only traders will see the ""all"" items."
-item_bracelet_l_set_hero_01_01		2	2	2			0		token0 is Axvia Minn
-item_ring_set_hero_01_01			2	2	2		0		token1 is Tusken
-item_band_set_hero_01_01		2			2	2	0		token2 is IG88
-item_heroic_axkva_min_painting_01_01		1					0		token3 is ISD
-item_heroic_tusken_painting_01_01			1				0		token4 is Exar Kun
-item_heroic_ig88_painting_01_01				1			0		
-item_heroic_exar_kun_painting_01_01						1	0		
-item_necklace_set_commando_dps_01_01		4	1	1			1		commando
-item_bracelet_r_set_commando_dps_01_01		1	4	1			1		commando
-item_bracelet_l_set_commando_dps_01_01		1	1	4			1		commando
-item_ring_set_commando_dps_01_01			1	1	4		1		commando
-item_band_set_commando_dps_01_01		1			1	4	1		commando
-item_necklace_set_commando_utility_a_01_01		4	1	1			1		commando
-item_bracelet_r_set_commando_utility_a_01_01		1	4	1			1		commando
-item_bracelet_l_set_commando_utility_a_01_01		1	1	4			1		commando
-item_ring_set_commando_utility_a_01_01		1		1	4		1		commando
-item_band_set_commando_utility_a_01_01		1			1	4	1		commando
-item_necklace_set_commando_utility_b_01_01		4	1	1			1		commando
-item_bracelet_r_set_commando_utility_b_01_01		1	4	1			1		commando
-item_bracelet_l_set_commando_utility_b_01_01		1	1	4			1		commando
-item_ring_set_commando_utility_b_01_01		1	1		4		1		commando
-item_band_set_commando_utility_b_01_01			1		1	4	1		commando
-item_necklace_set_smuggler_dps_01_01		4	1	1			2		smuggler
-item_bracelet_r_set_smuggler_dps_01_01		1	4	1			2		smuggler
-item_bracelet_l_set_smuggler_dps_01_01		1	1	4			2		smuggler
-item_ring_set_smuggler_dps_01_01			1	1	4		2		smuggler
-item_band_set_smuggler_dps_01_01		1			1	4	2		smuggler
-item_necklace_set_smuggler_utility_a_01_01		4	1	1			2		smuggler
-item_bracelet_r_set_smuggler_utility_a_01_01		1	4	1			2		smuggler
-item_bracelet_l_set_smuggler_utility_a_01_01		1	1	4			2		smuggler
-item_ring_set_smuggler_utility_a_01_01		1		1	4		2		smuggler
-item_band_set_smuggler_utility_a_01_01		1			1	4	2		smuggler
-item_necklace_set_smuggler_utility_b_01_01		4	1	1			2		smuggler
-item_bracelet_r_set_smuggler_utility_b_01_01		1	4	1			2		smuggler
-item_bracelet_l_set_smuggler_utility_b_01_01		1	1	4			2		smuggler
-item_ring_set_smuggler_utility_b_01_01		1	1		4		2		smuggler
-item_band_set_smuggler_utility_b_01_01			1		1	4	2		smuggler
-item_necklace_set_medic_dps_01_01		4	1	1			3		medic
-item_bracelet_r_set_medic_dps_01_01		1	4	1			3		medic
-item_bracelet_l_set_medic_dps_01_01		1	1	4			3		medic
-item_ring_set_medic_dps_01_01			1	1	4		3		medic
-item_band_set_medic_dps_01_01		1			1	4	3		medic
-item_necklace_set_medic_utility_a_01_01		4	1	1			3		medic
-item_bracelet_r_set_medic_utility_a_01_01		1	4	1			3		medic
-item_bracelet_l_set_medic_utility_a_01_01		1	1	4			3		medic
-item_ring_set_medic_utility_a_01_01		1		1	4		3		medic
-item_band_set_medic_utility_a_01_01		1			1	4	3		medic
-item_necklace_set_medic_utility_b_01_01		4	1	1			3		medic
-item_bracelet_r_set_medic_utility_b_01_01		1	4	1			3		medic
-item_bracelet_l_set_medic_utility_b_01_01		1	1	4			3		medic
-item_ring_set_medic_utility_b_01_01		1	1		4		3		medic
-item_band_set_medic_utility_b_01_01			1		1	4	3		medic
-item_necklace_set_officer_dps_01_01		4	1	1			4		officer
-item_bracelet_r_set_officer_dps_01_01		1	4	1			4		officer
-item_bracelet_l_set_officer_dps_01_01		1	1	4			4		officer
-item_ring_set_officer_dps_01_01			1	1	4		4		officer
-item_band_set_officer_dps_01_01		1			1	4	4		officer
-item_necklace_set_officer_utility_a_01_01		4	1	1			4		officer
-item_bracelet_r_set_officer_utility_a_01_01		1	4	1			4		officer
-item_bracelet_l_set_officer_utility_a_01_01		1	1	4			4		officer
-item_ring_set_officer_utility_a_01_01		1		1	4		4		officer
-item_band_set_officer_utility_a_01_01		1			1	4	4		officer
-item_necklace_set_officer_utility_b_01_01		4	1	1			4		officer
-item_bracelet_r_set_officer_utility_b_01_01		1	4	1			4		officer
-item_bracelet_l_set_officer_utility_b_01_01		1	1	4			4		officer
-item_ring_set_officer_utility_b_01_01		1	1		4		4		officer
-item_band_set_officer_utility_b_01_01			1		1	4	4		officer
-item_necklace_set_spy_dps_01_01		4	1	1			5		spy
-item_bracelet_r_set_spy_dps_01_01		1	4	1			5		spy
-item_bracelet_l_set_spy_dps_01_01		1	1	4			5		spy
-item_ring_set_spy_dps_01_01			1	1	4		5		spy
-item_band_set_spy_dps_01_01		1			1	4	5		spy
-item_necklace_set_spy_utility_a_01_01		4	1	1			5		spy
-item_bracelet_r_set_spy_utility_a_01_01		1	4	1			5		spy
-item_bracelet_l_set_spy_utility_a_01_01		1	1	4			5		spy
-item_ring_set_spy_utility_a_01_01		1		1	4		5		spy
-item_band_set_spy_utility_a_01_01		1			1	4	5		spy
-item_necklace_set_spy_utility_b_01_01		4	1	1			5		spy
-item_bracelet_r_set_spy_utility_b_01_01		1	4	1			5		spy
-item_bracelet_l_set_spy_utility_b_01_01		1	1	4			5		spy
-item_ring_set_spy_utility_b_01_01		1	1		4		5		spy
-item_band_set_spy_utility_b_01_01			1		1	4	5		spy
-item_necklace_set_bh_dps_01_01		4	1	1			6		bounty_hunter
-item_bracelet_r_set_bh_dps_01_01		1	4	1			6		bounty_hunter
-item_bracelet_l_set_bh_dps_01_01		1	1	4			6		bounty_hunter
-item_ring_set_bh_dps_01_01			1	1	4		6		bounty_hunter
-item_band_set_bh_dps_01_01		1			1	4	6		bounty_hunter
-item_necklace_set_bh_utility_a_01_01		4	1	1			6		bounty_hunter
-item_bracelet_r_set_bh_utility_a_01_01		1	4	1			6		bounty_hunter
-item_bracelet_l_set_bh_utility_a_01_01		1	1	4			6		bounty_hunter
-item_ring_set_bh_utility_a_01_01		1		1	4		6		bounty_hunter
-item_band_set_bh_utility_a_01_01		1			1	4	6		bounty_hunter
-item_necklace_set_bh_utility_b_01_01		4	1	1			6		bounty_hunter
-item_bracelet_r_set_bh_utility_b_01_01		1	4	1			6		bounty_hunter
-item_bracelet_l_set_bh_utility_b_01_01		1	1	4			6		bounty_hunter
-item_ring_set_bh_utility_b_01_01		1	1		4		6		bounty_hunter
-item_band_set_bh_utility_b_01_01			1		1	4	6		bounty_hunter
-item_necklace_set_jedi_dps_01_01		4	1	1			7		force_sensitive
-item_bracelet_r_set_jedi_dps_01_01		1	4	1			7		force_sensitive
-item_bracelet_l_set_jedi_dps_01_01		1	1	4			7		force_sensitive
-item_ring_set_jedi_dps_01_01			1	1	4		7		force_sensitive
-item_band_set_jedi_dps_01_01		1			1	4	7		force_sensitive
-item_necklace_set_jedi_utility_a_01_01		4	1	1			7		force_sensitive
-item_bracelet_r_set_jedi_utility_a_01_01		1	4	1			7		force_sensitive
-item_bracelet_l_set_jedi_utility_a_01_01		1	1	4			7		force_sensitive
-item_ring_set_jedi_utility_a_01_01		1		1	4		7		force_sensitive
-item_band_set_jedi_utility_a_01_01		1			1	4	7		force_sensitive
-item_necklace_set_jedi_utility_b_01_01		4	1	1			7		force_sensitive
-item_bracelet_r_set_jedi_utility_b_01_01		1	4	1			7		force_sensitive
-item_bracelet_l_set_jedi_utility_b_01_01		1	1	4			7		force_sensitive
-item_ring_set_jedi_utility_b_01_01		1	1		4		7		force_sensitive
-item_band_set_jedi_utility_b_01_01			1		1	4	7		force_sensitive
-item_player_house_deed_jabbas_sail_barge		5	5	5	5	5	0		
-armor_infiltrator_bicep_l		1	1				0		
-armor_infiltrator_bicep_r		1		1			0		
-armor_infiltrator_bracer_l				1	1		0		
-armor_infiltrator_bracer_r					1	1	0		
-armor_infiltrator_helmet				1	2		0		
-armor_infiltrator_chest_plate			1			2	0		
-armor_infiltrator_leggings		1		2			0		
-armor_infiltrator_gloves				1	1		0		
-armor_infiltrator_boots					1	1	0		
-armor_infiltrator_belt			1	1			0		
-item_bracelet_l_set_trader_01_01		2	2	2			8		trader
-item_bracelet_r_set_trader_01_01		2	2	2			8		trader
-item_necklace_set_trader_01_01		2	2			2	8		trader
-item_band_set_trader_01_01		2		2	2		8		trader
-item_ring_set_trader_01_01			2	2	2		8		trader
-item_bracelet_l_set_ent_01_01			2	2	2		9		entertainer
-item_bracelet_r_set_ent_01_01		2		2	2		9		entertainer
-item_necklace_set_ent_01_01		2	2			2	9		entertainer
-item_band_set_ent_01_01		2	2	2			9		entertainer
-item_ring_set_ent_01_01		2	2	2			9		entertainer
+item_tcg_loot_reward_series9_lepese_dictionary	20000						0		"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
+item_tcg_loot_reward_series1_sith_speeder						1	0		"So in the case of this table only traders will see the ""all"" items."
+item_tcg_loot_reward_series3_sith_meditation_room_deed						20	0		token0 is Axvia Minn
+item_tcg_loot_reward_series3_jedi_meditation_room_deed						20	0		token1 is Tusken
+item_schematic_pvp_gcw_saber_1h_gen4						1	0		token2 is IG88
+item_schematic_pvp_gcw_saber_2h_gen4						1	0		
+item_schematic_pvp_bf_saber_03_01						1	0		
+item_schematic_pvp_bf_saber_03_02						1	0		
+item_schematic_pvp_bf_saber_03_03						1	0		
+object/tangible/jedi/no_drop_jedi_holocron_light.iff						1	0		
+object/tangible/jedi/no_drop_jedi_holocron_dark.iff						1	0		
+item_tow_holocron_ab_immune_02_01						1	0		
+item_holocron_06_01						1	0		
+item_holocron_06_02						1	0		
+item_holocron_06_03						1	0		
+item_holocron_06_04						1	0		
+item_holocron_06_05						1	0		
+item_holocron_06_06						1	0		
+item_holocron_06_07						1	0		
+item_holocron_06_08						1	0		
+item_collection_jedi_holocron_01_01						1	0		
+item_collection_jedi_holocron_01_02						1	0		
+item_collection_jedi_holocron_01_03						1	0		
+item_collection_jedi_holocron_01_04						1	0		
+item_collection_jedi_holocron_01_05						1	0		
+item_collection_jedi_holocron_02_01						1	0		
+item_collection_jedi_holocron_02_02						1	0		
+item_collection_jedi_holocron_02_03						1	0		
+item_collection_jedi_holocron_02_04						1	0		
+item_collection_jedi_holocron_02_05						1	0		
+item_collection_sith_holocron_01_01						1	0		
+item_collection_sith_holocron_01_02						1	0		
+item_collection_sith_holocron_01_03						1	0		
+item_collection_sith_holocron_01_04						1	0		
+item_collection_sith_holocron_01_05						1	0		
+item_collection_sith_holocron_02_01						1	0		
+item_collection_sith_holocron_02_02						1	0		
+item_collection_sith_holocron_02_03						1	0		
+item_collection_sith_holocron_02_04						1	0		
+item_collection_sith_holocron_02_05						1	0		
+item_beast_holocron_04_01						1	0		
+item_beast_holocron_04_02						1	0		
+item_beast_holocron_04_03						1	0		
+item_beast_holocron_04_04						1	0		
+item_beast_holocron_04_05						1	0		
+item_beast_holocron_04_06						1	0		
+item_beast_holocron_04_07						1	0		
+item_beast_holocron_04_09						1	0		
+item_beast_holocron_04_10						1	0		
+item_treasure_map_bonus_buff_04_01						10	0		
+item_treasure_map_bonus_buff_04_02						10	0		
+item_treasure_map_bonus_buff_04_03						10	0		
+item_treasure_map_bonus_buff_04_04						10	0		
+item_treasure_map_bonus_buff_04_05						10	0		
+item_treasure_map_bonus_buff_04_06						10	0		
+item_hologram_aotc_cybernetic_arm						1	0		
+item_tcg_loot_reward_series6_jedi_council_diorama						1	0		
+item_tcg_loot_reward_series3_darth_vader_obi_wan_diorama						1	0		
+item_tcg_loot_reward_series8_vader_pod						1	0		
+item_tcg_loot_reward_series5_vader_statuette						1	0		
+item_vet_reward_72month_mace_windu						1	0		
+item_vet_reward_72month_darth_maul						1	0		
+item_vet_66_month_jedi_temple						1	0		
+item_vet_66_month_jedi_temple_burning						1	0		
+object/tangible/veteran_reward/frn_vet_emp_chair.iff						1	0		
+item_tcg_loot_reward_series5_painting_jedi_techniques						1	0		

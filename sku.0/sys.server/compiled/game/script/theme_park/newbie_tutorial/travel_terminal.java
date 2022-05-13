@@ -98,9 +98,9 @@ public class travel_terminal extends script.theme_park.newbie_tutorial.tutorial_
     public void sendToMosEisley(obj_id player) throws InterruptedException
     {
         String planet = "tatooine";
-        float locX = 3528.0f + rand(-2.5f, 2.5f);
+        float locX = -2899.0f + rand(-2.5f, 2.5f);
         float locY = 5.0f;
-        float locZ = -4804.0f + rand(-2.5f, 2.5f);
+        float locZ = 2125.0f + rand(-2.5f, 2.5f);
         setYaw(player, 180.0f);
         groundquests.completeQuest(player, "quest/c_newbie_hall_01");
         groundquests.completeQuest(player, "quest/c_newbie_hall_02");

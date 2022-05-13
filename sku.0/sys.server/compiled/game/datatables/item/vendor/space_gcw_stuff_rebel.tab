@@ -1,7 +1,11 @@
 item	cash	token21	class	script	note
 s[none]	i[0]	i[0]	i[0]	s	c
-item_schematic_gcw2_mandal_armor_plating		100	0		"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
-item_schematic_gcw2_mandal_fusion_reactor		100	0		"So in the case of this table only traders will see the ""all"" items."
+item_pgc_planet_hologram_rori	100000				"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
+item_pgc_planet_hologram_rori_02	100000				"So in the case of this table only traders will see the ""all"" items."
+item_pgc_starship_storage_device_01	100000				
+item_tcg_loot_reward_series5_player_house_hangar	100000				
+item_schematic_gcw2_mandal_armor_plating		100	0		
+item_schematic_gcw2_mandal_fusion_reactor		100	0		
 item_schematic_gcw2_eng_reward_experimental		100	0		
 item_schematic_gcw2_borstel_cannon		100	0		
 item_schematic_gcw2_twing		300	0		
@@ -14,4 +18,17 @@ item_helmet_ace_reb		50	0
 item_jacket_ace_neut		50	0		
 item_jacket_ace_reb		50	0		
 item_kimogila_s01_texture_kit		50	0		
-item_schematic_gcw2_survey_tool_all		100	0		
+item_schematic_gcw2_survey_tool_all		50	0		
+object/tangible/veteran_reward/frn_vet_holo_corvette.iff		50	0		
+object/tangible/veteran_reward/frn_vet_rug_rebel.iff		50	0		
+object/tangible/furniture/decorative/vet_reward_rebel_painting.iff		50	0		
+object/tangible/veteran_reward/frn_vet_holo_luke_skywalker.iff		50	0		
+item_vet_reward_sd_console_01		50	0		
+item_vet_reward_sd_console_02		50	0		
+item_tcg_loot_reward_series7_build02_xwing_wing		50	0		
+item_tcg_loot_reward_series7_xwing_fighter_familiar		50	0		
+item_tcg_loot_reward_series4_leia_and_r2_diorama_02_01		50	0		
+object/tangible/veteran_reward/frn_vet_holo_deathstar.iff		50	0		
+item_tcg_loot_reward_series5_deathstar_hologram		50	0		
+item_tcg_loot_reward_series5_skywalker_statuette_02_01		50	0		
+item_tcg_loot_reward_series5_trench_run_diorama		50	0		

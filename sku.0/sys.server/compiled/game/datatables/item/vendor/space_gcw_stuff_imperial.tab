@@ -1,7 +1,11 @@
 item	cash	token20	class	script	note
 s[none]	i[0]	i[0]	i[0]	s	c
-item_schematic_gcw2_mandal_armor_plating		100	0		"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
-item_schematic_gcw2_mandal_fusion_reactor		100	0		"So in the case of this table only traders will see the ""all"" items."
+item_pgc_planet_hologram_talus	100000				"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
+item_pgc_planet_hologram_talus_02	100000				"So in the case of this table only traders will see the ""all"" items."
+item_pgc_starship_storage_device_01	100000				
+item_tcg_loot_reward_series5_player_house_hangar	100000				
+item_schematic_gcw2_mandal_armor_plating		100	0		
+item_schematic_gcw2_mandal_fusion_reactor		100	0		
 item_schematic_gcw2_eng_reward_experimental		100	0		
 item_schematic_gcw2_borstel_cannon		100	0		
 item_schematic_gcw2_tie_defender		300	0		
@@ -14,4 +18,22 @@ item_helmet_ace_neut		50	0
 item_jacket_ace_imp		50	0		
 item_jacket_ace_neut		50	0		
 item_kimogila_s01_texture_kit		50	0		
-item_schematic_gcw2_survey_tool_all		100	0		
+item_schematic_gcw2_survey_tool_all		50	0		
+object/tangible/veteran_reward/frn_vet_holo_lambda.iff		50	0		
+object/tangible/veteran_reward/frn_vet_rug_imperial.iff		50	0		
+object/tangible/furniture/decorative/vet_reward_emperor_painting.iff		50	0		
+object/tangible/veteran_reward/frn_vet_holo_darth_vader.iff		50	0		
+item_vet_reward_sd_console_01		50	0		
+item_vet_reward_sd_console_02		50	0		
+item_tcg_loot_reward_series7_build01_tie_canopy		50	0		
+item_tcg_loot_reward_series7_tie_fighter_familiar		50	0		
+item_tcg_series9_uniform_admiral		50	0		
+item_tcg_series9_uniform_grand_admiral		50	0		
+item_tcg_series9_uniform_grand_general		50	0		
+item_tcg_series9_uniform_director		50	0		
+item_tcg_loot_reward_series5_tiefighter_chair		50	0		
+object/tangible/veteran_reward/frn_vet_holo_deathstar.iff		50	0		
+item_tcg_loot_reward_series5_deathstar_hologram		50	0		
+item_tcg_loot_reward_series8_torture_table		50	0		
+costume_darktrooper_3	100				
+item_costume_kit	1				

@@ -40,7 +40,7 @@ player_xwing	0.2	0.4	0.5	1.5	25	30	200	300	150	0.95	mediumFighter	3
 player_tieaggressor	0.2	0.4	0.4	1.3	20	30	150	200	100	0.95	mediumfighter	4
 player_sorosuub_space_yacht	0.2	0.3	0.3	1.1	10	10	50	50	37.5	0.8	pob	0
 player_decimator	0.2	0.3	0.3	1.2	10	10	50	50	37.5	0.8	pob	5
-player_ykl37r	0.2	0.3	0.3	1.2	10	10	50	50	37.5	0.8	pob	5
+player_ykl37r	0.2	0.3	0.3	1.2	10	10	50	50	37.5	0.8	pob	0
 player_yt1300	0.2	0.3	0.3	1.2	10	10	50	50	37.5	0.8	pob	5
 player_prototype_hutt_light	0.2	0.5	0.9	1.9	50	50	600	600	300	0.95	lightfighter	0
 player_prototype_tiefighter	0.2	0.5	0.9	1.9	50	50	600	600	300	0.97	lightfighter	0
@@ -55,7 +55,7 @@ player_advanced_z95	0.2	0.5	0.9	1.7	50	50	600	600	300	0.95	lightfighter	4
 player_advanced_xwing	0.2	0.4	0.5	1.5	25	30	200	300	150	0.95	mediumFighter	4
 player_y8_mining_ship	0.2	0.3	0.3	1.2	15	10	50	50	37.5	0.8	pob	5
 player_blacksun_vaksai	0.2	0.5	0.75	1.6	35	35	400	400	200	1	mediumFighter	4
-player_yt2400	0.2	0.3	0.3	1.2	10	10	50	50	37.5	0.8	pob	5
+player_yt2400	0.2	0.3	0.3	1.2	10	10	50	50	37.5	0.8	pob	1
 player_gunship_imperial	0.1	0.2	0.2	1.2	10	10	10	10	10	0.6	pob	5
 player_gunship_neutral	0.1	0.2	0.2	1.2	10	10	10	10	10	0.6	pob	5
 player_gunship_rebel	0.1	0.2	0.2	1.2	10	10	10	10	10	0.6	pob	5

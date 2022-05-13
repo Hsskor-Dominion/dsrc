@@ -115,8 +115,27 @@ public class perform extends script.quest.task.ground.base_task
                     boolean rightLocation = true;
                     String cellname = groundquests.getTaskStringDataEntry(questCrc, taskId, dataTableColumnPerformCellname);
                     if (cellname != null && cellname.length() != 0) {
-                        location playerLocation = getLocation(self);
-                        rightLocation = (getCellName(playerLocation.cell)).equals(cellname);
+                        if(cellname.contains(","))
+                        {
+                            //this is the multi-cell check
+                            location playerLocation = getLocation(self);
+                            String playerLocationCellName = getCellName(playerLocation.cell);
+                            String[] cellnames = split( cellname, ',' ); //we need to split cellname up
+                            rightLocation = false; //we need to set the rightLocation to false so that we can compare it to the "correct" location below. we know we have a cell name provided, so this is OK logic here.
+                            for(String cell : cellnames)
+                            {
+                                if(playerLocationCellName.equals(cell))
+                                {
+                                    rightLocation = true; //set rightLocation to true - we know this is a valid cell based on the data from the quest table
+                                    break; //break out of our for loop after we know we've got a correct location - if no provided cellnames match we already set rightLocation to false.
+                                }
+                            }
+                        }
+                        else
+                        {
+                            location playerLocation = getLocation(self);
+                            rightLocation = (getCellName(playerLocation.cell)).equals(cellname);
+                        }
                     } else {
                         String building = groundquests.getTaskStringDataEntry(questCrc, taskId, dataTableColumnPerformBuilding);
                         if (utils.stringToInt(building) != 0) {

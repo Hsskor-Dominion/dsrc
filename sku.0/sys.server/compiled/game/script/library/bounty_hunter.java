@@ -472,7 +472,7 @@ public class bounty_hunter extends script.base_script
         }
         int numHunters = hunters.length;
         String Smax = getConfigSetting("GameServer", "maxJediBounties");
-        int maxHunters = 3;
+        int maxHunters = 30;
         if (Smax != null && !Smax.equals(""))
         {
             Integer Imax = Integer.getInteger(Smax);

@@ -16,8 +16,6 @@ mini_xwing	veteran_new:mini_xwing	object/tangible/veteran_reward/frn_vet_x_wing_
 mini_tiefighter	veteran_new:mini_tiefighter	object/tangible/veteran_reward/frn_vet_tie_fighter_toy.iff	0	0		0		
 falconcouch	veteran_new:falconcouch	object/tangible/veteran_reward/frn_couch_falcon_corner_s01.iff	0	0		0		
 falconchair	veteran_new:falconchair	object/tangible/veteran_reward/frn_couch_falcon_section_s01.iff	0	0		0		
-poweredharvester	veteran_new:poweredharvester	object/tangible/veteran_reward/harvester.iff	0	1		0		
-resourcecrate	veteran_new:resourcecrate	object/tangible/veteran_reward/resource.iff	0	1		0		
 sorosuub	veteran_new:sorosuub	object/tangible/space/veteran_reward/sorosuub_space_yacht_deed.iff	0	0		1		
 varactyl	veteran_new:varactyl	object/tangible/deed/ep3_pet_deed/varactyl_deed.iff	0	1		0		
 barc_speeder	veteran_new:barc_speeder	object/tangible/deed/vehicle_deed/barc_speeder_deed.iff	0	1		0		
@@ -96,4 +94,3 @@ maul_statue	veteran_new:maul_statue	item_vet_reward_72month_darth_maul	0	0		0
 84month_isd_console	veteran_new:vet_84month_isd_console	item_vet_reward_sd_console_01	0	0		0		
 84month_isd_console_row	veteran_new:vet_84month_isd_console_row	item_vet_reward_sd_console_02	0	0		0		
 87month_respec_reset	veteran_new:vet_87month_respec_reset	vet_reward_respec_reset	0	0		0		
-90month_resource_crate	veteran_new:vet_90month_resource_crate	vet_reward_resource_crate	0	0		0		

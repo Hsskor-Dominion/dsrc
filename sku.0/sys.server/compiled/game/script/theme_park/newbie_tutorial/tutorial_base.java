@@ -891,9 +891,9 @@ public class tutorial_base extends script.base_script
         if (limitStartingLocations != null && limitStartingLocations.equals("true"))
         {
             String planet = "tatooine";
-            float locX = 3528.0f + rand(-2.5f, 2.5f);
+            float locX = -2899.0f + rand(-2.5f, 2.5f);
             float locY = 5.0f;
-            float locZ = -4804.0f + rand(-2.5f, 2.5f);
+            float locZ = 2125.0f + rand(-2.5f, 2.5f);
             setYaw(player, 180.0f);
             newbieTutorialRequest(player, "clientReady");
             warpPlayer(player, planet, locX, locY, locZ, null, 0.0f, 0.0f, 0.0f);
