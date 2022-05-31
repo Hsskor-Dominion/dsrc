@@ -23,5 +23,5 @@
 objectName = "wearables_name" "necklace_s12"
 detailedDescription = "wearables_detail" "necklace_s12"
 lookAtText = "wearables_lookat" "necklace_s12"
-appearanceFilename = "appearance/necklace_s12_f.sat"
+appearanceFilename = "appearance/necklace_primitive_s01_f.sat"
 portalLayoutFilename = ""

@@ -2277,7 +2277,7 @@ public class terminal_city extends script.base_script
         }
         else 
         {
-            if ((amt < 5000) || (amt > 150000))
+            if ((amt < 5000) || (amt > 500000))
             {
                 sendSystemMessage(player, SID_WITHDRAW_LIMITS);
                 return SCRIPT_CONTINUE;
@@ -2528,7 +2528,7 @@ public class terminal_city extends script.base_script
             return;
         }
         int city_rank = city.getCityRank(city_id);
-        if (city_rank < 3)
+        if (city_rank < 1)
         {
             sendSystemMessage(player, SID_NO_RANK_SPEC);
             return;

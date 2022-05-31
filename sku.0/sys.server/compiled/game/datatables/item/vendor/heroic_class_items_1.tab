@@ -9,9 +9,6 @@ item_schematic_pvp_gcw_saber_2h_gen4						1	0
 item_schematic_pvp_bf_saber_03_01						1	0		
 item_schematic_pvp_bf_saber_03_02						1	0		
 item_schematic_pvp_bf_saber_03_03						1	0		
-object/tangible/jedi/no_drop_jedi_holocron_light.iff						1	0		
-object/tangible/jedi/no_drop_jedi_holocron_dark.iff						1	0		
-item_tow_holocron_ab_immune_02_01						1	0		
 item_holocron_06_01						1	0		
 item_holocron_06_02						1	0		
 item_holocron_06_03						1	0		
@@ -49,6 +46,9 @@ item_beast_holocron_04_06						1	0
 item_beast_holocron_04_07						1	0		
 item_beast_holocron_04_09						1	0		
 item_beast_holocron_04_10						1	0		
+object/tangible/jedi/no_drop_jedi_holocron_light.iff						1	0		
+object/tangible/jedi/no_drop_jedi_holocron_dark.iff						1	0		
+item_tow_holocron_ab_immune_02_01						1	0		
 item_treasure_map_bonus_buff_04_01						10	0		
 item_treasure_map_bonus_buff_04_02						10	0		
 item_treasure_map_bonus_buff_04_03						10	0		

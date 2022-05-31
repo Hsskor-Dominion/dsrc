@@ -873,7 +873,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -516	-513	object/tangible/ground_spawning/patrol_waypoint.iff	20	30.12	-118.479	-352.068	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|legacy_kraytcult_12_10020233_2|registerWithController|0|1|$|
 -515	-513	object/tangible/ground_spawning/patrol_waypoint.iff	20	25.8129	-119.165	-352.771	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|legacy_kraytcult_12_10020233_1|registerWithController|0|1|$|
 -514	-513	object/tangible/ground_spawning/patrol_spawner.iff	20	8.8407	-118.836	-357.886	1	0	0	0	systems.spawning.spawner_patrol	fltMaxSpawnTime|2|120.000000|fltMinSpawnTime|2|60.000000|fltRadius|2|0.000000|intDefaultBehavior|0|3|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|patrolPathType|4|oscillate|registerWithController|0|1|strName|4|legacy_kraytcult_12|strPatrolPointNames|5|legacy_kraytcult_12_10020233_1:legacy_kraytcult_12_10020233_2:legacy_kraytcult_12_10020233_3:legacy_kraytcult_12_10020233_4:legacy_kraytcult_12_10020233_5:legacy_kraytcult_12_10020233_6:legacy_kraytcult_12_10020233_7:legacy_kraytcult_12_10020233_8:legacy_kraytcult_12_10020233_9:legacy_kraytcult_12_10020233_10:legacy_kraytcult_12_10020233_11:legacy_kraytcult_12_10020233_12:legacy_kraytcult_12_10020233_13:legacy_kraytcult_12_10020233_14:legacy_kraytcult_12_10020233_15:legacy_kraytcult_12_10020233_16:legacy_kraytcult_12_10020233_17:legacy_kraytcult_12_10020233_18:legacy_kraytcult_12_10020233_19:legacy_kraytcult_12_10020233_20:legacy_kraytcult_12_10020233_21:legacy_kraytcult_12_10020233_22:legacy_kraytcult_12_10020233_23:legacy_kraytcult_12_10020233_24:legacy_kraytcult_12_10020233_25:|strSpawnerType|4|patrol|strSpawns|4|tatooine/tat_kraytcult_12|$|
--304	0	object/static/structure/tatooine/palette_supply_05.iff	0	1682.1	16.1575	1933.52	0.999875	0.0149993	7.50E-05	0.00499942		$|
+-304	0	object/static/structure/tatooine/palette_supply_05.iff	0	1682.1	16.1575	1933.52	0.999875	0.0149993	7.5E-05	0.00499942		$|
 -303	0	object/static/structure/tatooine/palette_supply_03.iff	0	1678.1	15.9625	1933.94	0.999888	0.0149994	0	0		$|
 -302	0	object/static/structure/tatooine/palette_supply_02.iff	0	1682.45	16.4741	1929.54	0.999388	0.0349929	0	0		$|
 -301	0	object/static/structure/tatooine/palette_supply_01.iff	0	1679.02	16.2015	1930.09	0.99955	0.0299955	0	0		$|
@@ -1022,7 +1022,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -212	-208	object/tangible/ground_spawning/patrol_waypoint.iff	20	-41.1288	-12	113.797	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|legacy_wh_tech_13_10070313_1|registerWithController|0|1|$|
 -211	-208	object/tangible/ground_spawning/patrol_spawner.iff	20	-32.9349	-12	115.042	1	0	0	0	systems.spawning.spawner_patrol	fltMaxSpawnTime|2|180.000000|fltMinSpawnTime|2|90.000000|fltRadius|2|0.000000|intDefaultBehavior|0|3|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|patrolArray|9|-32.934898 -12.000000 115.042000 tatooine -25257783:-41.128799 -12.000000 113.796997 tatooine -25257783:-38.910301 -12.000000 110.108002 tatooine -25257783:-38.533600 -12.000000 104.202003 tatooine -25257783:-38.440899 -12.000000 98.242104 tatooine -25257783:-41.383801 -12.000000 98.085899 tatooine -25257783:-41.033401 -12.000000 86.960297 tatooine -25257783:-33.507301 -12.000000 87.075996 tatooine -25257783:-33.002602 -12.000000 110.468002 tatooine -25257783:|patrolPathType|4|cycle|registerWithController|0|1|strName|4|legacy_wh_tech_13|strPatrolPointNames|5|legacy_wh_tech_13_10070313_1:legacy_wh_tech_13_10070313_2:legacy_wh_tech_13_10070313_3:legacy_wh_tech_13_10070313_4:legacy_wh_tech_13_10070313_5:legacy_wh_tech_13_10070313_6:legacy_wh_tech_13_10070313_7:legacy_wh_tech_13_10070313_8:|strSpawnerType|4|patrol|strSpawns|4|tatooine/whitehorse_tech_13|$|
 -210	-208	object/tangible/ground_spawning/area_spawner.iff	20	-36.5534	-12	119.444	0.0285594	0	0.999592	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|180.000000|fltMinSpawnTime|2|90.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|legacy_wh_guard_12|strSpawnerType|4|area|strSpawns|4|tatooine\whitehorse_guard_12|$|
--209	-208	object/tangible/quest/medical_desk.iff	20	-32.9969	-12	116.347	3.20E-08	0	1	0	conversation.eisley_thranta_medical_terminal:quest.task.ground.retrieve_item_on_item	$|
+-209	-208	object/tangible/quest/medical_desk.iff	20	-32.9969	-12	116.347	3.2E-08	0	1	0	conversation.eisley_thranta_medical_terminal:quest.task.ground.retrieve_item_on_item	$|
 -221	-119	object/cell/cell.iff	21	0	0	0	1	0	0	0		$|
 -1799130625	-221	object/tangible/ground_spawning/patrol_waypoint.iff	21	-36.645	-12	122.624	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|legacy_wt_guard_11_p_10530599_16|registerWithController|0|1|$|
 -1736498828	-221	object/tangible/ground_spawning/patrol_waypoint.iff	21	-36.7694	-12	126.158	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|legacy_wt_guard_11_p_10530599_17|registerWithController|0|1|$|
@@ -1084,7 +1084,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -234854664	-242	object/tangible/ground_spawning/patrol_waypoint.iff	29	-140.051	-44	72.4848	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|legacy_wh_guard_14_10267932_10|registerWithController|0|1|$|
 -153740908	-242	object/tangible/ground_spawning/patrol_waypoint.iff	29	-138.834	-44	75.4096	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|legacy_wh_guard_14_10267932_11|registerWithController|0|1|$|
 -28968074	-242	object/tangible/ground_spawning/patrol_waypoint.iff	29	-159.059	-44	73.566	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|legacy_wt_dren_10532491_4|registerWithController|0|1|$|
--244	-242	object/tangible/quest/frn_all_security_terminal_wall_04.iff	29	-152.505	-44.253	100.713	3.20E-08	0	1	0	conversation.eisley_thranta_brok_terminal	$|
+-244	-242	object/tangible/quest/frn_all_security_terminal_wall_04.iff	29	-152.505	-44.253	100.713	3.2E-08	0	1	0	conversation.eisley_thranta_brok_terminal	$|
 -243	-242	object/tangible/quest/frn_all_security_terminal_wall_03.iff	29	-167.008	-44.0949	98.488	0.459737	0	0.888055	0	conversation.eisley_thranta_durr_terminal	$|
 -268	-119	object/cell/cell.iff	30	0	0	0	1	0	0	0		$|
 -1380837091	-268	object/tangible/ground_spawning/patrol_waypoint.iff	30	-93.5391	-28	60.9707	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|legacy_wt_dren_10532491_17|registerWithController|0|1|$|
@@ -1163,7 +1163,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -79	0	object/static/structure/tatooine/debris_tatt_pipe_widemouth.iff	0	903.899	6.63112	746.462	1	0	0	0		$|
 -78	0	object/static/structure/tatooine/debris_tatt_pipe_narrow_2.iff	0	902.904	7.17338	748.797	1	0	0	0		$|
 -77	0	object/static/structure/tatooine/debris_tatt_pipe_narrow_1.iff	0	902.611	7.05065	747.823	1	0	0	0		$|
--76	0	object/static/structure/general/prp_junk_s8.iff	0	911.25	6.91598	736.373	0.99924	-0.0389712	-4.70E-06	0.000120548		$|
+-76	0	object/static/structure/general/prp_junk_s8.iff	0	911.25	6.91598	736.373	0.99924	-0.0389712	-4.7E-06	0.000120548		$|
 -75	0	object/static/structure/tatooine/debris_tatt_crate_1.iff	0	914.244	7.14306	736.895	0.999098	-0.00809244	0.000337642	-0.0416856		$|
 -74	0	object/static/structure/tatooine/debris_tatt_drum_dented_1.iff	0	911.911	6.97588	735.054	0.998405	-0.00806435	0.000451346	-0.0558789		$|
 -73	0	object/static/structure/tatooine/stone_hovel_tatooine_style_01.iff	0	921.713	6.29594	734.044	0.92388	0	0.382683	0		$|
@@ -1194,7 +1194,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -48	0	object/static/structure/tatooine/debris_tatt_pipe_widemouth.iff	0	903.899	6.63112	746.462	1	0	0	0		$|
 -47	0	object/static/structure/tatooine/debris_tatt_pipe_narrow_2.iff	0	902.904	7.17338	748.797	1	0	0	0		$|
 -46	0	object/static/structure/tatooine/debris_tatt_pipe_narrow_1.iff	0	902.611	7.05065	747.823	1	0	0	0		$|
--45	0	object/static/structure/general/prp_junk_s8.iff	0	911.25	6.91598	736.373	0.99924	-0.0389712	-4.70E-06	0.000120548		$|
+-45	0	object/static/structure/general/prp_junk_s8.iff	0	911.25	6.91598	736.373	0.99924	-0.0389712	-4.7E-06	0.000120548		$|
 -44	0	object/static/structure/tatooine/debris_tatt_crate_1.iff	0	914.244	7.14306	736.895	0.999098	-0.00809244	0.000337642	-0.0416856		$|
 -43	0	object/static/structure/tatooine/debris_tatt_drum_dented_1.iff	0	911.911	6.97588	735.054	0.998405	-0.00806435	0.000451346	-0.0558789		$|
 -42	0	object/static/structure/tatooine/stone_hovel_tatooine_style_01.iff	0	921.713	6.29594	734.044	0.92388	0	0.382683	0		$|
@@ -1207,7 +1207,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -35	0	object/static/structure/tatooine/luke_farm_dome.iff	0	917.174	4.55213	738.539	0.92388	0	0.382683	0		$|
 -34	0	object/static/structure/general/camp_campfire_logs_smoldering_s01.iff	0	1041.78	55.7437	1957.65	0.981021	-0.190578	0.00681723	-0.0350924		$|
 -33	0	object/static/structure/general/camp_spit_s01.iff	0	1042.01	55.9077	1957.49	1	0	0	0		$|
--32	0	object/static/structure/tatooine/pillar_ruined_large_style_01.iff	0	1047.2	53.3921	1955.94	3.20E-08	0	1	0		$|
+-32	0	object/static/structure/tatooine/pillar_ruined_large_style_01.iff	0	1047.2	53.3921	1955.94	3.2E-08	0	1	0		$|
 -31	0	object/static/structure/tatooine/wall_ruined_tatooine_small_style_01.iff	0	1041.05	57.7465	1962.96	0.702244	-0.0827839	0.689223	-0.158023		$|
 -30	0	object/static/structure/tatooine/wall_ruined_tatooine_large_style_02.iff	0	1029.79	56.0898	1957.16	0.707165	0	-0.70705	0		$|
 -29	0	object/static/structure/tatooine/wall_ruined_tatooine_small_style_01.iff	0	1037.47	57.7942	1963.42	0.707165	0	-0.70705	0		$|
@@ -1244,7 +1244,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 1076943	1076941	object/cell/cell.iff	2	0	0	0	1	0	0	0		$|
 -560	1076943	object/tangible/ground_spawning/area_spawner.iff	2	-13.7911	7.01	-3.96167	0.886463	0	0.4628	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|10.000000|fltMinSpawnTime|2|5.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|tatooine_knives_kavas|strSpawnerType|4|area|strSpawns|4|tatooine/kavas_urdano|$|
 1106017	1076943	object/tangible/gambling/wheel/roulette.iff	2	-21.3677	7.01	8.81663	1	0	0	0	gambling.wheel.roulette	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|10000|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|10|gambling.table.playerLimit.min|0|1|gambling.table.type|4|roulette|$|
-1106042	1076943	object/tangible/gambling/slot/standard.iff	2	-16.9821	7.01	10.9049	3.20E-08	0	1	0	gambling.slot.standard	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|3|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|1|gambling.table.playerLimit.min|0|1|gambling.table.type|4|slot_standard|$|
+1106042	1076943	object/tangible/gambling/slot/standard.iff	2	-16.9821	7.01	10.9049	3.2E-08	0	1	0	gambling.slot.standard	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|3|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|1|gambling.table.playerLimit.min|0|1|gambling.table.type|4|slot_standard|$|
 4235356	1076943	object/tangible/npc/valarian_thug_spawner.iff	2	-13.1456	7.01	4.90831	0.865324	0	0.501213	0	npc.celebrity.celebrity_spawner	spawns|4|mission_thug|$|
 6016738	1076943	object/tangible/spawning/static_npc/junk_dealer/junk_sneg.iff	2	-1.63376	7.01	7.35289	-0.693111	0	0.720831	0	npc.celebrity.celebrity_spawner	npc_name|4|Sneg the Hand|quest_script|4|npc.junk_dealer.junk_sneg_valarian|spawns|4|junk_sneg|$|
 8555772	1076943	object/tangible/npc/assassin_mission_recruiter_imperial_spawner.iff	2	-17.1865	7.01	-7.7974	1	0	0	0	npc.assassin_device_quest.assassin_mission_npc_spawner	spawns|4|assassin_mission_recruiter_imperial|$|
@@ -1259,7 +1259,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 1106075	1076947	object/tangible/gambling/wheel/roulette.iff	6	21.859	7.01	-3.62462	1	0	0	0	gambling.wheel.roulette	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|10000|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|10|gambling.table.playerLimit.min|0|1|gambling.table.type|4|roulette|$|
 1106076	1076947	object/tangible/gambling/wheel/roulette.iff	6	21.5698	7.01	3.91899	1	0	0	0	gambling.wheel.roulette	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|10000|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|10|gambling.table.playerLimit.min|0|1|gambling.table.type|4|roulette|$|
 1106077	1076947	object/tangible/gambling/wheel/roulette.iff	6	13.6958	7.01	-0.13626	1	0	0	0	gambling.wheel.roulette	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|10000|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|10|gambling.table.playerLimit.min|0|1|gambling.table.type|4|roulette|$|
-1106080	1076947	object/tangible/gambling/slot/standard.iff	6	17.8992	7.01	10.9833	3.20E-08	0	1	0	gambling.slot.standard	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|3|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|1|gambling.table.playerLimit.min|0|1|gambling.table.type|4|slot_standard|$|
+1106080	1076947	object/tangible/gambling/slot/standard.iff	6	17.8992	7.01	10.9833	3.2E-08	0	1	0	gambling.slot.standard	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|3|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|1|gambling.table.playerLimit.min|0|1|gambling.table.type|4|slot_standard|$|
 1106081	1076947	object/tangible/gambling/slot/standard.iff	6	26.8482	7.01001	6.08494	0.70717	0	-0.707043	0	gambling.slot.standard	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|3|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|1|gambling.table.playerLimit.min|0|1|gambling.table.type|4|slot_standard|$|
 1106082	1076947	object/tangible/gambling/slot/standard.iff	6	26.9699	7.01	-6.11115	0.70717	0	-0.707043	0	gambling.slot.standard	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|3|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|1|gambling.table.playerLimit.min|0|1|gambling.table.type|4|slot_standard|$|
 1106083	1076947	object/tangible/gambling/slot/standard.iff	6	18.004	7.01	-11.016	1	0	0	0	gambling.slot.standard	gambling.table.bet.ante|0|0|gambling.table.bet.max|0|3|gambling.table.bet.min|0|1|gambling.table.playerLimit.max|0|1|gambling.table.playerLimit.min|0|1|gambling.table.type|4|slot_standard|$|
@@ -1270,12 +1270,12 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 1076949	1076941	object/cell/cell.iff	8	0	0	0	1	0	0	0		$|
 4235788	1076949	object/tangible/poi/npc_mission/static_criminal_smuggle.iff	8	5.61884	7.01	14.3502	1	0	0	0	npc.random_quest.quest_setup	type|4|criminal|$|
 1076950	1076941	object/cell/cell.iff	9	0	0	0	1	0	0	0	theme_park.dungeon.clone_relic.ep3_mos_eisley_lucky_despot_locked	$|
-1106084	1076950	object/tangible/gambling/table/table_base.iff	9	30.2445	7.01	-4.55173	3.20E-08	0	1	0	gambling.base.table	$|
+1106084	1076950	object/tangible/gambling/table/table_base.iff	9	30.2445	7.01	-4.55173	3.2E-08	0	1	0	gambling.base.table	$|
 1106085	1076950	object/tangible/gambling/table/table_base.iff	9	30.3168	7.01001	4.54795	1	0	0	0	gambling.base.table	$|
 1076951	1076941	object/cell/cell.iff	10	0	0	0	1	0	0	0		$|
 1076952	1076941	object/cell/cell.iff	11	0	0	0	1	0	0	0		$|
 3795724	1076952	object/tangible/space/content_infrastructure/ground_npc_spawner.iff	11	-3.61827	0.00999999	-8.8941	0.11057	0	0.993868	0	space.content_tools.npc_spawner	$|
-3795725	1076952	object/static/structure/general/data_terminal_wall_s3.iff	11	-2.40393	0.00999999	-8.85343	3.20E-08	0	1	0		$|
+3795725	1076952	object/static/structure/general/data_terminal_wall_s3.iff	11	-2.40393	0.00999999	-8.85343	3.2E-08	0	1	0		$|
 1076953	1076941	object/cell/cell.iff	12	0	0	0	1	0	0	0		$|
 1076954	1076941	object/cell/cell.iff	13	0	0	0	1	0	0	0		$|
 1076955	1076941	object/cell/cell.iff	14	0	0	0	1	0	0	0		$|
@@ -1330,6 +1330,6 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -2999991	0	object/static/item/item_tool_sensor_beacon.iff	0	1480	4	1343	0.4	0	0.9	0		$|
 -2999990	0	object/building/military/military_outpost_guard_house_imperial.iff	0	1448	5	1365	0.95	0	0.31	0		$|
 -2999989	0	object/building/military/military_outpost_guard_house_imperial.iff	0	1441	5	1355	-0.31	0	0.95	0		$|
--2999987	0	object/tangible/ground_spawning/area_spawner.iff	0	1513	5	1203	0.054	0	0.99	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|vendor_tcg_2|strSpawnerType|4|area|strSpawns|4|vendor_tcg_2|$|
 -2999986	0	object/tangible/ground_spawning/area_spawner.iff	0	1310.39	14.27	1556	0.99	0	0.138	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|vendor_tcg_6|strSpawnerType|4|area|strSpawns|4|vendor_tcg_6|$|
 -2999985	0	object/tangible/ground_spawning/area_spawner.iff	0	1601	5	1310	0.713838	0	-0.700312	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|vendor_tcg_3|strSpawnerType|4|area|strSpawns|4|vendor_tcg_3|$|
+-2999984	0	object/tangible/tcg/series5/hangar_ships/naboo_n1.iff	0	1532	5	1332	1	0	0	0		$|

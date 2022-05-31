@@ -14,9 +14,9 @@ awing	75000	A-Wing	pilot_rebel_navy_starships_04
 bwing	100000	B-Wing	pilot_rebel_navy_master
 ywing	15000	Y-Wing	pilot_rebel_navy_starships_01
 firespray	100000	KSE Firespray	
-yt1300	100000	YT-1300	pilot_neutral_master
-decimator	100000	VT-49 Decimator	pilot_imperial_navy_master
-ykl37r	100000	YKL-37R	pilot_rebel_navy_master
+yt1300	100000	YT-1300	pilot_neutral_novice
+decimator	100000	VT-49 Decimator	pilot_imperial_navy_novice
+ykl37r	100000	YKL-37R	pilot_rebel_navy_novice
 hutt_heavy_s01	25000	Kimogila Heavy Fighter	pilot_neutral_starships_02
 hutt_heavy_s02	25000	Kimogila Heavy Fighter	pilot_neutral_starships_02
 hutt_medium_s01	15000	Dunelizard Medium Fighter	pilot_neutral_starships_01

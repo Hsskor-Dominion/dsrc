@@ -2,6 +2,7 @@ package script.player.base;
 
 import script.*;
 import script.library.*;
+import script.library.xp;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -3390,18 +3391,24 @@ public class base_player extends script.base_script
         if (!utils.hasScriptVar(self, "no_cloning_sickness") && !instance.isInInstanceArea(self))
         {
             buff.applyBuff(self, "cloning_sickness");
+
+	    xp.grant(self, "jedi", -1000000);
         }
         else if (utils.hasScriptVar(self, "no_cloning_sickness"))
         {
             utils.removeScriptVar(self, "no_cloning_sickness");
         }
-        if (0 == pvpGetAlignedFaction(self))
+	if (0 == pvpGetAlignedFaction(self))
         {
             int currentMercenaryFaction = pvpNeutralGetMercenaryFaction(self);
             if ((0 != currentMercenaryFaction) && pvpNeutralIsMercenaryDeclared(self))
             {
                 pvpNeutralSetMercenaryFaction(self, currentMercenaryFaction, false);
             }
+        }
+	if (hasSkill(self, "class_forcesensitive_phase1_master"))
+        {
+            buff.applyBuff(self, "costume_seven_obi_wan_ghost");
         }
         CustomerServiceLog("Death", "(" + self + ") " + getName(self) + " has clone respawned at " + (getLocation(self)).toString());
         return SCRIPT_CONTINUE;

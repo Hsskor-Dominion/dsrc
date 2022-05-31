@@ -34,17 +34,17 @@ i	e(none=0,cold=64,heat=32,acid=128,electric=256)[none]	f	c
 32	heat	0.02	Cunning of Tyranus
 33	heat	0.02	Maul's Vengeance
 34	acid	0.02	Qui-gon's Devotion
-35	cold	0.01	unused
-36	cold	0.01	unused
-37	cold	0.01	unused
-38	cold	0.01	unused
-39	cold	0.01	unused
-40	cold	0.01	unused
-41	cold	0.01	unused
-42	cold	0.01	unused
-43	cold	0.01	unused
-44	cold	0.01	unused
-45	cold	0.01	unused
-46	cold	0.01	unused
-47	cold	0.01	unused
-48	cold	0.01	unused
+35	cold	0.02	unused
+36	cold	0.02	unused
+37	cold	0.02	unused
+38	cold	0.02	unused
+39	cold	0.02	unused
+40	cold	0.02	unused
+41	cold	0.02	unused
+42	cold	0.02	unused
+43	cold	0.02	unused
+44	cold	0.02	unused
+45	cold	0.02	unused
+46	cold	0.02	unused
+47	cold	0.02	unused
+48	cold	0.02	unused

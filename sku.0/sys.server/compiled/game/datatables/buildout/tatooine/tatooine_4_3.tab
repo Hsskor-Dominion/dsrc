@@ -55,7 +55,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -332365384	0	object/tangible/ground_spawning/patrol_waypoint.iff	0	250.623	7.90918	182.352	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|roaming_dune_bantha_12621479_6|registerWithController|0|1|$|
 -316593425	0	object/tangible/ground_spawning/patrol_waypoint.iff	0	247.191	11.5709	253.25	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|roaming_dune_bantha_12621479_7|registerWithController|0|1|$|
 -269667315	0	object/tangible/ground_spawning/patrol_spawner.iff	0	242.439	11.5861	250.864	1	0	0	0	systems.spawning.spawner_patrol	fltMaxSpawnTime|2|300.000000|fltMinSpawnTime|2|240.000000|fltRadius|2|5.000000|intDefaultBehavior|0|3|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|patrolPathType|4|cycle|registerWithController|0|1|strName|4|roaming_dune_bantha|strPatrolPointNames|5|roaming_dune_bantha_12621479_1:roaming_dune_bantha_12621479_2:roaming_dune_bantha_12621479_3:roaming_dune_bantha_12621479_4:roaming_dune_bantha_12621479_5:roaming_dune_bantha_12621479_6:roaming_dune_bantha_12621479_7:roaming_dune_bantha_12621479_8:roaming_dune_bantha_12621479_9:|strSpawnerType|4|patrol|strSpawns|4|dominant_bantha|$|
--210989769	0	object/tangible/ground_spawning/area_spawner.iff	0	919.331	98	195.514	0.80621	1.85E-08	-0.59163	-6.90E-10	systems.spawning.spawner_area	fltMaxSpawnTime|2|20.000000|fltMinSpawnTime|2|10.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|bestinejobs_jasha|strSpawnerType|4|area|strSpawns|4|tatooine/bestinejobs_jasha|$|
+-210989769	0	object/tangible/ground_spawning/area_spawner.iff	0	919.331	98	195.514	0.80621	1.85E-08	-0.59163	-6.9E-10	systems.spawning.spawner_area	fltMaxSpawnTime|2|20.000000|fltMinSpawnTime|2|10.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|bestinejobs_jasha|strSpawnerType|4|area|strSpawns|4|tatooine/bestinejobs_jasha|$|
 -182208727	0	object/tangible/ground_spawning/patrol_waypoint.iff	0	671.32	12	456.355	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|Smuggler_Enemy_Patrol_10028545_2|registerWithController|0|1|$|
 -180762470	0	object/tangible/quest/ac_rotting_dune_bramble.iff	0	201.446	9.00667	222.212	0.999343	-0.0353187	-0.000288859	0.00817327	quest.task.ground.retrieve_item_on_item	$|
 -161984126	0	object/tangible/ground_spawning/area_spawner.iff	0	845.708	12	483.491	0.99158	0	0.129493	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|2.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|1.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|fs_reward|strSpawnerType|4|area|strSpawns|4|tatooine/fs_11_reward|$|
@@ -362,7 +362,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -200	0	object/static/structure/tatooine/debris_tatt_drum_storage_1.iff	0	427.412	8.4855	760.72	0.707129	0	-0.707084	0		$|
 -199	0	object/static/item/item_container_armor.iff	0	428.758	8.49724	760.423	-0.707107	0	0.707107	0		$|
 -198	0	object/static/structure/tatooine/palette_tatooine_style_01.iff	0	428.168	8.45413	760.006	-0.707107	0	0.707107	0		$|
--197	0	object/static/item/item_container_inorganic_minerals.iff	0	427.688	8.29501	757.879	-2.00E-06	0	1	0		$|
+-197	0	object/static/item/item_container_inorganic_minerals.iff	0	427.688	8.29501	757.879	-2E-06	0	1	0		$|
 -196	0	object/static/item/item_container_inorganic_minerals.iff	0	433.578	8.66058	762.585	-1.84E-06	0	1	0		$|
 -195	0	object/static/structure/tatooine/palette_tatooine_style_01.iff	0	429.242	8.68421	762.95	1	0	0	0		$|
 -194	0	object/static/item/item_container_plain_s04.iff	0	429.869	8.65482	762.309	1	0	0	0		$|
@@ -485,12 +485,12 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -76	0	object/static/structure/tatooine/palette_supply_05.iff	0	374.587	9.90373	798.391	1	0	0	0		$|
 -75	0	object/static/structure/tatooine/palette_supply_05.iff	0	373.499	9.90376	793.969	0.70712	0.000363481	-0.707093	-0.000363467		$|
 -74	0	object/static/structure/tatooine/palette_supply_02.iff	0	372.014	9.90373	798.935	1	0	0	0		$|
--73	0	object/static/structure/tatooine/debris_tatt_drum_storage_2.iff	0	371.835	9.91216	793.319	0.999727	0.000513329	-1.20E-05	-0.0233652		$|
+-73	0	object/static/structure/tatooine/debris_tatt_drum_storage_2.iff	0	371.835	9.91216	793.319	0.999727	0.000513329	-1.2E-05	-0.0233652		$|
 -72	0	object/static/item/item_container_energy_liquid.iff	0	371.673	9.91904	794.337	0.999727	0	0	-0.0233652		$|
 -71	0	object/static/item/item_comp_stabilization_unit.iff	0	369.974	10.0054	793.674	0.998504	0.00808409	-0.000437835	-0.054079		$|
 -70	0	object/static/item/item_comp_ion_cannon.iff	0	370.876	9.95631	794.163	0.999727	0	0	-0.0233652		$|
 -69	0	object/static/item/item_container_plain_s03.iff	0	439.924	8.75286	765.59	1	0	0	0		$|
--68	0	object/static/structure/tatooine/palette_supply_05.iff	0	371.026	9.95	793.317	0.999727	0.000513329	-1.20E-05	-0.0233652		$|
+-68	0	object/static/structure/tatooine/palette_supply_05.iff	0	371.026	9.95	793.317	0.999727	0.000513329	-1.2E-05	-0.0233652		$|
 -67	0	object/static/structure/tatooine/palette_supply_05.iff	0	373.544	9.90373	795.561	0.707122	0	-0.707092	0		$|
 -66	0	object/static/structure/tatooine/palette_supply_02.iff	0	372.059	9.90373	800.527	1	0	0	0		$|
 -65	0	object/static/structure/tatooine/debris_tatt_drum_storage_2.iff	0	371.88	9.90935	794.911	0.999727	0	0	-0.0233652		$|
@@ -514,7 +514,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -47	0	object/static/item/item_container_energy_gas.iff	0	348.48	11.4764	751.72	0.994635	-0.00902225	0.000934748	-0.103049		$|
 -46	0	object/static/item/item_comp_ion_cannon.iff	0	350.797	11.1368	745.661	1	0	0	0		$|
 -45	0	object/static/item/item_comp_blaster_cannon.iff	0	348.02	12.1144	759.763	0.998488	0	-0.0549723	0		$|
--43	0	object/static/space/debris/cargo_pristine_large_a.iff	0	435.318	9.27244	776.827	0.707199	-0.0114262	-0.706922	5.30E-05		$|
+-43	0	object/static/space/debris/cargo_pristine_large_a.iff	0	435.318	9.27244	776.827	0.707199	-0.0114262	-0.706922	5.3E-05		$|
 -42	0	object/static/space/debris/cargo_pristine_large_a.iff	0	425.566	9.75207	796.001	0.92388	0	0.382683	0		$|
 -41	0	object/static/space/debris/cargo_pristine_large_a.iff	0	395.806	8.80996	788.028	0.92388	0	0.382683	0		$|
 -40	0	object/static/item/eqp_camping_pavilion_s1.iff	0	361.825	9.13072	752.496	1	0	0	0		$|

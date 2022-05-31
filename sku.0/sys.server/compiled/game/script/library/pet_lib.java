@@ -5714,27 +5714,6 @@ public class pet_lib extends script.base_script
         }
         return petControlDevice;
     }
-    public static void destroyOfficerPets(obj_id player) throws InterruptedException
-    {
-        obj_id datapad = utils.getPlayerDatapad(player);
-        if (!isIdValid(datapad) || !exists(datapad))
-        {
-            return;
-        }
-        obj_id[] dataItems = getContents(datapad);
-        if (dataItems == null || dataItems.length < 1)
-        {
-            return;
-        }
-        for (obj_id dataItem : dataItems) {
-            if (hasObjVar(dataItem, "pet.creatureName")) {
-                if ((getStringObjVar(dataItem, "pet.creatureName")).startsWith("officer_reinforcement_")) {
-                    destroyObject(dataItem);
-                }
-            }
-        }
-        return;
-    }
     public static void addToHarvestDroidArray(obj_id target, obj_id[] players) throws InterruptedException
     {
         if (!isIdValid(target) || players == null || players.length == 0)

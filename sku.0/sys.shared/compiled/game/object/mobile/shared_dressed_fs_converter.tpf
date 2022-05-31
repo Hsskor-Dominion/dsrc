@@ -4,7 +4,7 @@
 @class creature_object_template 10
 
 gender = GE_male
-species = SP_rodian
+species = SP_human
 
 @class tangible_object_template 3
 
@@ -12,10 +12,10 @@ species = SP_rodian
 
 @class object_template 3
 
-objectName = "npc_name" "rodian_base_male"
+objectName = "npc_name" "human_base_male"
 detailedDescription = "" ""
-lookAtText = "npc_lookat" "rodian_base_male"
-appearanceFilename = "appearance/rod_m.sat"
+lookAtText = "npc_lookat" "human_base_male"
+appearanceFilename = "appearance/yoda.sat"
 clientDataFile = "clientdata/npc/client_shared_npc_dressed_fs_converter.cdf"
 scale = 1.12..1.24
 

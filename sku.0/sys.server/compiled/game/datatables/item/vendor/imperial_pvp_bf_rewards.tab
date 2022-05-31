@@ -1,33 +1,33 @@
-item	cash	token0	token1	token2	token3	token4	token5	token6	token7	token8	token9	token10	token11	token12	token16	class	script	note
+item	cash	token0	token1	token2	token3	token4	token5	token6	token7	token8	token9	token10	token11	token12	token18	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
-item_pgc_planet_hologram_yavin4															1			"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
-item_pgc_planet_hologram_yavin4_02															1			"So in the case of this table only traders will see the ""all"" items."
+item_pgc_planet_hologram_yavin4															100			"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
+item_pgc_planet_hologram_yavin4_02															100			"So in the case of this table only traders will see the ""all"" items."
 item_tcg_loot_reward_series1_radtrooper_badge	10000																	
 item_tcg_loot_reward_series3_hh_15_torpedo_warhead	15000																	
-armor_galactic_marine_belt															1			
-armor_galactic_marine_bicep_l															1			
-armor_galactic_marine_bicep_r															1			
-armor_galactic_marine_boots															1			
-armor_galactic_marine_bracer_l															1			
-armor_galactic_marine_bracer_r															1			
-armor_galactic_marine_chest_plate															1			
-armor_galactic_marine_gloves															1			
-armor_galactic_marine_helmet															1			
-armor_galactic_marine_leggings															1			
-weapon_carbine_ngant_zarvel_04_01															1			
-weapon_heavy_cr1_04_01															1			
-weapon_magna_guard_polearm_04_01															1			
-weapon_westar_pistol_04_01															1			
-weapon_westar_rifle_04_01															1			
-weapon_knuckler_buzz_knuck															1			
-weapon_sword_1h_pvp_04_01															1			
-weapon_sword_2h_pvp_04_01															1			
-item_tcg_loot_reward_series7_deed_vehicle_garage															1			
-item_tcg_loot_reward_series7_deed_commando_bunker															1			
-item_tcg_loot_reward_series7_deed_vip_bunker															1			
-item_tcg_loot_reward_series7_armored_backpack															1			
-item_tcg_loot_reward_series5_atat_head_itv															1			
-item_tcg_loot_reward_series5_atat_blueprint															1			
-item_tcg_loot_reward_series5_atat_statuette															1			
-item_tcg_loot_reward_series7_atst_chair															1			
-item_tcg_loot_reward_series6_deed_emperor_spire															1			
+armor_galactic_marine_belt															100			
+armor_galactic_marine_bicep_l															100			
+armor_galactic_marine_bicep_r															100			
+armor_galactic_marine_boots															100			
+armor_galactic_marine_bracer_l															100			
+armor_galactic_marine_bracer_r															100			
+armor_galactic_marine_chest_plate															100			
+armor_galactic_marine_gloves															100			
+armor_galactic_marine_helmet															100			
+armor_galactic_marine_leggings															100			
+weapon_carbine_ngant_zarvel_04_01															100			
+weapon_heavy_cr1_04_01															100			
+weapon_magna_guard_polearm_04_01															100			
+weapon_westar_pistol_04_01															100			
+weapon_westar_rifle_04_01															100			
+weapon_knuckler_buzz_knuck															100			
+weapon_sword_1h_pvp_04_01															100			
+weapon_sword_2h_pvp_04_01															100			
+item_tcg_loot_reward_series7_deed_vehicle_garage															100			
+item_tcg_loot_reward_series7_deed_commando_bunker															100			
+item_tcg_loot_reward_series7_deed_vip_bunker															100			
+item_tcg_loot_reward_series7_armored_backpack															100			
+item_tcg_loot_reward_series5_atat_head_itv															100			
+item_tcg_loot_reward_series5_atat_blueprint															100			
+item_tcg_loot_reward_series5_atat_statuette															100			
+item_tcg_loot_reward_series7_atst_chair															100			
+item_tcg_loot_reward_series6_deed_emperor_spire															100			

@@ -4,3 +4,4 @@ nexus_travel_01	Trandosha Travel Consultant	arrivals1	55.8	-0.5	44.5	-157			npc_
 object/tangible/collection/col_jalopy_crate_01.iff		foyer4	-11.9	0.6	50.8	55										
 object/tangible/collection/rare_melee_trando_hunters_lance.iff		arrivals1	56.5	0.48	43	-100										
 vendor_bm_0	Cradossk (Bounty Hunter’s Guild Leader)	arrivals1	57	-0.5	42	-100										
+npe_vendor	Professor Sn’Oak (Beast Researcher)	arrivals1	57	-0.5	35	-80										

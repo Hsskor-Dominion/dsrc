@@ -67,7 +67,7 @@ public class city_hall extends script.base_script
                 }
                 removeObjVar(self, "candidate_list");
             }
-            if (city.CITY_VERSION == 4)
+            if (city.CITY_VERSION == 1)
             {
                 if (hasObjVar(self, "spec_stamp"))
                 {
@@ -529,7 +529,7 @@ public class city_hall extends script.base_script
     public int st_citySpecBonusCheck(obj_id self, dictionary params) throws InterruptedException
     {
         int city_id = getCityAtLocation(getLocation(self), 0);
-        if (city_id > 0 && city.cityHasSpec(city_id, city.SF_SPEC_STORYTELLER))
+        if (city_id > 0)
         {
             obj_id st_object = params.getObjId("queryObject");
             messageTo(st_object, "st_receivedCityResponse", null, 0.0f, false);

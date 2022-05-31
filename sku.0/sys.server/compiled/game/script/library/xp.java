@@ -1477,7 +1477,6 @@ public class xp extends script.base_script
             case COMBAT_MELEESPECIALIZE_POLEARM:
             case COMBAT_THROWN:
             case COMBAT_GRENADE:
-            case JEDI_GENERAL:
             case COMBAT_JEDI_ONEHANDLIGHTSABER:
             case COMBAT_JEDI_TWOHANDLIGHTSABER:
             case COMBAT_JEDI_POLEARMLIGHTSABER:
