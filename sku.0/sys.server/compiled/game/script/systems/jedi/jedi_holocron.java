@@ -57,7 +57,7 @@ public class jedi_holocron extends script.base_script
 		grantSkill(player, "class_forcesensitive_phase2_master");
 		xp.grant(player, "jedi", 5000);
             	destroyObject(self);
-            int mission_bounty = 50000;
+            int mission_bounty = 25000;
             int current_bounty = 0;
             mission_bounty += rand(1, 2000);
             if (hasObjVar(player, "bounty.amount"))
@@ -92,7 +92,7 @@ public class jedi_holocron extends script.base_script
 		grantSkill(player, "class_forcesensitive_phase2_master");
 		xp.grant(player, "jedi", 5000);
 		destroyObject(self);
-            int mission_bounty = 50000;
+            int mission_bounty = 25000;
             int current_bounty = 0;
             mission_bounty += rand(1, 2000);
             if (hasObjVar(player, "bounty.amount"))
@@ -125,7 +125,7 @@ public class jedi_holocron extends script.base_script
 		xp.grant(player, "jedi", 5000);
 		setJediBountyValue(player, 20000);
 		destroyObject(self);
-            int mission_bounty = 50000;
+            int mission_bounty = 25000;
             int current_bounty = 0;
             mission_bounty += rand(1, 2000);
             if (hasObjVar(player, "bounty.amount"))

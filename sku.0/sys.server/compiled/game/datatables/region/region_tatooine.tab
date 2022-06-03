@@ -349,4 +349,4 @@ gcw_region_tatooine_6	circle	-132	28	2200		normal	fictional	0	0	spawnFalse	none	
 gcw_region_tatooine_7	circle	4140	-940	2100		normal	fictional	0	0	spawnFalse	none	1	0	0	0	
 gcw_region_tatooine_8	circle	-5192	-5952	1700		normal	fictional	0	0	spawnFalse	none	1	0	0	0	
 gcw_region_tatooine_9	circle	-1232	-3652	1100		normal	fictional	0	0	spawnFalse	none	1	0	0	0	
-gcw_scanner_1	circle	3527	-4800	5		pvp_advanced	city	0	0	spawnFalse	other	0	1	1	1	
+gcw_scanner_1	circle	3521	-4802	5		pvp_advanced	city	0	0	spawnFalse	other	0	1	1	1	

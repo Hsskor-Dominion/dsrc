@@ -1689,11 +1689,11 @@ expertise_fs_general_premonition_4	expertise_fs_general_premonition_3											
 expertise_fs_general_grace_in_motion_1	expertise																					expertise_action_lightsaber=5				
 expertise_fs_general_grace_in_motion_2	expertise_fs_general_grace_in_motion_1																					expertise_action_lightsaber=5				
 expertise_fs_general_grace_in_motion_3	expertise_fs_general_grace_in_motion_2																					expertise_action_lightsaber=5				
-expertise_fs_path_cautious_nature_1	class_forcesensitive_phase1									class_forcesensitive_phase1												expertise_stance_constitution=10,expertise_stance_parry=1,expertise_stance_evasion=1			0	
+expertise_fs_path_cautious_nature_1	expertise																					expertise_stance_constitution=10,expertise_stance_parry=1,expertise_stance_evasion=1			0	
 expertise_fs_path_cautious_nature_2	expertise_fs_path_cautious_nature_1																					expertise_stance_constitution=10,expertise_stance_parry=1,expertise_stance_evasion=1			0	
 expertise_fs_path_cautious_nature_3	expertise_fs_path_cautious_nature_2																					expertise_stance_constitution=10,expertise_stance_parry=1,expertise_stance_evasion=1			0	
 expertise_fs_path_cautious_nature_4	expertise_fs_path_cautious_nature_3																					expertise_stance_constitution=10,expertise_stance_parry=1,expertise_stance_evasion=1			0	
-expertise_fs_path_remorseless_nature_1	class_forcesensitive_phase1									class_forcesensitive_phase1												expertise_focus_stamina=10			0	
+expertise_fs_path_remorseless_nature_1	expertise																					expertise_focus_stamina=10			0	
 expertise_fs_path_remorseless_nature_2	expertise_fs_path_remorseless_nature_1																					expertise_focus_stamina=10			0	
 expertise_fs_path_remorseless_nature_3	expertise_fs_path_remorseless_nature_2																					expertise_focus_stamina=10			0	
 expertise_fs_path_remorseless_nature_4	expertise_fs_path_remorseless_nature_3																					expertise_focus_stamina=10			0	
@@ -1717,8 +1717,8 @@ expertise_fs_path_reactive_response_1	expertise_fs_path_cautious_nature_4							
 expertise_fs_path_reactive_response_2	expertise_fs_path_reactive_response_1																					expertise_stance_damage_add_to_action=2			0	
 expertise_fs_path_riposte_1	expertise_fs_path_saber_shackle_4									expertise_fs_path_saber_shackle_4												expertise_stance_riposte=25				
 expertise_fs_path_riposte_2	expertise_fs_path_riposte_1																					expertise_stance_riposte=25				
-expertise_fs_path_forsake_fear_1	class_forcesensitive_phase1									class_forcesensitive_phase1											fs_forsake_fear	jedi_force_power_max=200,jedi_force_power_regen=1			0	
-expertise_fs_path_cloud_minds_1	expertise																				fs_mind_trick_2	expertise_area_size_single_fs_mind_trick_2=4			0	
+expertise_fs_path_forsake_fear_1	expertise																				fs_forsake_fear	jedi_force_power_max=200,jedi_force_power_regen=1			0	
+expertise_fs_path_cloud_minds_1	expertise_fs_path_lethargy_4									expertise_fs_path_lethargy_4											fs_mind_trick_2	expertise_area_size_single_fs_mind_trick_2=4			0	
 expertise_fs_path_dark_lightning_1	expertise_fs_path_brutality_4									expertise_fs_path_brutality_4											fs_ae_dm_cc_1				0	
 expertise_fs_path_tempt_hatred_1	expertise_fs_path_remorseless_nature_4									expertise_fs_path_remorseless_nature_4												expertise_focus_damage_add_to_action=2			0	
 expertise_fs_path_tempt_hatred_2	expertise_fs_path_tempt_hatred_1																					expertise_focus_damage_add_to_action=2			0	
@@ -1745,7 +1745,7 @@ expertise_fs_path_soothing_aura_1	expertise_fs_path_hermetic_touch_1									exp
 expertise_fs_path_soothing_aura_2	expertise_fs_path_soothing_aura_1																					expertise_stance_healing_line_fs_heal=25			0	
 expertise_fs_path_soothing_aura_3	expertise_fs_path_soothing_aura_2																					expertise_stance_healing_line_fs_heal=25			0	
 expertise_fs_path_soothing_aura_4	expertise_fs_path_soothing_aura_3																					expertise_stance_healing_line_fs_heal=25			0	
-expertise_fs_path_lethargy_1	expertise_fs_path_cloud_minds_1									expertise_fs_path_cloud_minds_1												expertise_buff_duration_line_fs_mind_trick=2,expertise_action_damage_line_fs_mind_trick=250			0	
+expertise_fs_path_lethargy_1	expertise																					expertise_buff_duration_line_fs_mind_trick=2,expertise_action_damage_line_fs_mind_trick=250			0	
 expertise_fs_path_lethargy_2	expertise_fs_path_lethargy_1																					expertise_buff_duration_line_fs_mind_trick=2,expertise_action_damage_line_fs_mind_trick=250			0	
 expertise_fs_path_lethargy_3	expertise_fs_path_lethargy_2																					expertise_buff_duration_line_fs_mind_trick=2,expertise_action_damage_line_fs_mind_trick=250			0	
 expertise_fs_path_lethargy_4	expertise_fs_path_lethargy_3																					expertise_buff_duration_line_fs_mind_trick=2,expertise_action_damage_line_fs_mind_trick=250			0	
