@@ -829,18 +829,18 @@ fs_ae_dm_cc_3	snare			46	command.fs_ae_dm_cc	7	movement	0		0		0		0		0	STATE_NONE
 fs_ae_dm_cc_4	snare			60	command.fs_ae_dm_cc	10	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 fs_ae_dm_cc_5	snare			74	command.fs_ae_dm_cc	10	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 fs_ae_dm_cc_6	snare			90	command.fs_ae_dm_cc	10	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-fs_buff_ca_1	fsStance	fsOffStance		10	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10		0		0		0	STATE_NONE	none			1	0	appearance/pt_sokan_focus.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_ca_2	fsStance	fsOffStance		2	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10		0		0		0	STATE_NONE	none			1	0	appearance/pt_makashi_focus.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_ca_3	fsStance	fsOffStance		3	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10		0		0		0	STATE_NONE	none			1	0	appearance/pt_centerofbeing.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_ca_4	fsStance	fsOffStance		4	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10		0		0		0	STATE_NONE	none			1	0	appearance/pt_ataru_focus.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_ca_5	fsStance	fsOffStance		5	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10		0		0		0	STATE_NONE	none			1	0	appearance/pt_juyo_focus.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_ca_6	fsStance	fsOffStance		6	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10		0		0		0	STATE_NONE	none			1	0	appearance/pt_vaapad_focus.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_def_1_1	fsStance	fsDefStance		10	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20		0		0		0	STATE_NONE	none			1	0	appearance/pt_force_avoid_incapacitation.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_def_1_2	fsStance	fsDefStance		2	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20		0		0		0	STATE_NONE	none			1	0	appearance/pt_shii_cho_stance.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_def_1_3	fsStance	fsDefStance		3	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20		0		0		0	STATE_NONE	none			1	0	appearance/pt_niman_stance.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_def_1_4	fsStance	fsDefStance		4	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20		0		0		0	STATE_NONE	none			1	0	appearance/pt_force_resist_disease.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_def_1_5	fsStance	fsDefStance		5	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20		0		0		0	STATE_NONE	none			1	0	appearance/pt_force_resist_states.prt	0	1	1	0	1	1	0	1	1	1
-fs_buff_def_1_6	fsStance	fsDefStance		6	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20		0		0		0	STATE_NONE	none			1	0	appearance/pt_force_resist_poison.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_ca_1	fsStance	fsOffStance		10	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10						0	STATE_NONE	none			1	0	appearance/pt_sokan_focus.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_ca_2	fsStance	fsOffStance		2	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10						0	STATE_NONE	none			1	0	appearance/pt_makashi_focus.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_ca_3	fsStance	fsOffStance		3	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10						0	STATE_NONE	none			1	0	appearance/pt_centerofbeing.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_ca_4	fsStance	fsOffStance		4	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10						0	STATE_NONE	none			1	0	appearance/pt_ataru_focus.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_ca_5	fsStance	fsOffStance		5	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10						0	STATE_NONE	none			1	0	appearance/pt_juyo_focus.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_ca_6	fsStance	fsOffStance		6	command.fs_buff_ca	-1	expertise_focus	0	private_taunt_bonus	-10						0	STATE_NONE	none			1	0	appearance/pt_vaapad_focus.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_def_1_1	fsStance	fsDefStance		10	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20						0	STATE_NONE	none			1	0	appearance/pt_force_avoid_incapacitation.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_def_1_2	fsStance	fsDefStance		2	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20						0	STATE_NONE	none			1	0	appearance/pt_shii_cho_stance.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_def_1_3	fsStance	fsDefStance		3	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20						0	STATE_NONE	none			1	0	appearance/pt_niman_stance.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_def_1_4	fsStance	fsDefStance		4	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20						0	STATE_NONE	none			1	0	appearance/pt_force_resist_disease.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_def_1_5	fsStance	fsDefStance		5	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20						0	STATE_NONE	none			1	0	appearance/pt_force_resist_states.prt	0	1	1	0	1	1	0	1	1	1
+fs_buff_def_1_6	fsStance	fsDefStance		6	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20						0	STATE_NONE	none			1	0	appearance/pt_force_resist_poison.prt	0	1	1	0	1	1	0	1	1	1
 fs_force_run	fs_force_run			1	command.forceRun	15	slope_move	5	movement	0	movement_resist_snare	100	movement_resist_root	100		0	STATE_NONE	none	clienteffect/pl_force_run.cef,appearance/pt_force_speed.prt		1	0		1	1	1	0	1	1	0	1	1	1
 fs_meditate_1	fs_meditate			1	jedi.channelForce	1800	expertise_evasion_chance	3	expertise_evasion_value	30	expertise_resource_quality_increase	2		0		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1
 fs_meditate_2	fs_meditate			1	jedi.saberDervish	1800	expertise_strikethrough_chance	3	combat_strikethrough_value	50	expertise_resource_quality_increase	2		0		0	STATE_NONE	none	appearance/pt_force_meditate.prt		1	0		1	1	1	0	1	1	0	1	1	1
@@ -1913,7 +1913,7 @@ costume_esb_darth_vader	shapechange	costume		1	buffs.costume	3600	storyteller_co
 costume_esb_yoda	shapechange	costume		1	buffs.costume	3600	storyteller_costume	34		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 costume_esb_boba_fett	shapechange	costume		1	buffs.costume	3600	storyteller_costume	35		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 bh_assault_action_buff	bh_assult			1	command.bh_innate_assault	15	expertise_action_line_dm	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	5	1	0	1	1	1
-costume_seven_obi_wan_ghost	shapechange	costume		1	buffs.costume	3600	storyteller_costume	36	damage_dealt_mod	0.1	health	-8000	action	-8000	expertise_innate_protection_all	-3000	STATE_NONE	none			1	0		0	1	0	1	1	1	0	1	1	1
+costume_seven_obi_wan_ghost	shapechange	costume		1	command.fs_path_forsake_fear	3600	storyteller_costume	36	damage_dealt_mod	0.1	healthPercent	-66	actionPercent	-66	expertise_innate_protection_all	-3000	STATE_NONE	none			1	0		0	1	0	1	1	1	0	1	1	1
 duel_recording_tracker	duel_recording			1	buffs.duel_recorder	1800		0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 costume_axkva_min	shapechange	costume		1	buffs.costume	3600	storyteller_costume	37		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 costume_meatlump_king	shapechange	costume		1	buffs.costume	3600	storyteller_costume	38		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1

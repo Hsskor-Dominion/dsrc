@@ -658,7 +658,7 @@ pilot_neutral_droid_03	pilot_neutral_droid_02		0	0	0	0	3000	0		pilot_neutral_sta
 pilot_neutral_droid_04	pilot_neutral_droid_03		0	1	0	0	4000	0		pilot_neutral_starships_03,pilot_neutral_weapons_03,pilot_neutral_procedures_03,pilot_neutral_droid_03		space_combat_general	1000000	7500000							private_neutral_droid_4,droidcommand_reactoroverloadfour,cert_droid_astromech_5,droidcommand_weapcappowerupfour,droidcommand_weapcaptoshieldfour				1	0
 pilot_spacetest	pilot		1	1	0	0	0	0					0	0							droid+droidcommand_testweaponoverload1,droidcommand_testweaponoverload2,droidcommand_testweaponoverload3,droidcommand_testweaponoverload4,droidcommand_testweaponnormalize,droidcommand_testfronttobackfifty,droidcommand_testbacktofrontfifty				0	0
 social_politician	social		0	0	1	0	0	0						0											1	0
-social_politician_novice	social_politician		0	1	0	0	100	0													place_cityhall,manage_taxes,grantZoningRights,chroniclerVentriloquism	private_place_cityhall=100			1	0
+social_politician_novice	social_politician		0	1	0	0	100	0													place_cityhall,manage_taxes,grantZoningRights	private_place_cityhall=100			1	0
 social_politician_master	social_politician		0	1	0	0	5000	0		social_politician_fiscal_04,social_politician_martial_04,social_politician_civic_04,social_politician_urban_04		political	15000	60000											1	0
 social_politician_fiscal_01	social_politician		0	0	0	0	1000	0		social_politician_novice		political	1000	20000							city_map				1	0
 social_politician_fiscal_02	social_politician_fiscal_01		0	0	0	0	2000	0		social_politician_fiscal_01		political	2500	40000							place_bank,place_shuttleport	private_place_bank=100,private_place_shuttleport=100			1	0
@@ -2757,7 +2757,7 @@ expertise_bm_dna_harvesting_4	expertise_bm_dna_harvesting_3			1																	
 expertise_bm_dna_harvesting_3	expertise_bm_dna_harvesting_2			1																		creature_harvesting=10,creature_hit_bonus=5				
 expertise_bm_dna_harvesting_2	expertise_bm_dna_harvesting_1																					creature_harvesting=10,creature_hit_bonus=5				
 expertise_bm_dna_harvesting_1	expertise																					creature_harvesting=10,creature_hit_bonus=5				
-expertise_bm_attack_1	expertise_bm_creature_knowledge_command_4									expertise_bm_creature_knowledge_command_4											bm_pet_attack_1,tame,train_mount,bm_collect_dna	expertise_bm_base_mod=100,expertise_bm_train_mount=100,stored_pets=4,keep_creature=1,tame_non_aggro=80,tame_level=80,expertise_bm_add_pet_bar=1				
+expertise_bm_attack_1	expertise_bm_creature_knowledge_command_4									expertise_bm_creature_knowledge_command_4											bm_pet_attack_1,tame,train_mount	expertise_bm_base_mod=100,expertise_bm_train_mount=100,stored_pets=4,keep_creature=1,tame_non_aggro=80,tame_level=80,expertise_bm_add_pet_bar=1				
 expertise_bm_incubation_base_1	expertise_bm_dna_harvesting_4			1						expertise_bm_dna_harvesting_4											bm_collect_dna	expertise_bm_base_mod=100,expertise_bm_dna_harvesting_1=120				
 expertise_bm_mending_1	expertise_bm_attack_1									expertise_bm_attack_1											bm_mend_pet_1					
 expertise_bm_soothing_comfort_1	expertise_bm_mending_1									expertise_bm_mending_1											bm_soothing_comfort_1					
@@ -2811,9 +2811,9 @@ costume_tusken_king	costume		0	0	0	0	0	0						0							costume_tusken_king				0	0
 costume_ugnaught	costume		0	0	0	0	0	0						0							costume_ugnaught				0	0
 costume_wampa	costume		0	0	0	0	0	0						0							costume_wampa				0	0
 costume_zozpheratu	costume		0	0	0	0	0	0						0							costume_zozpheratu				0	0
-class_chronicles	class																									
-class_chronicles_novice	class_chronicles		0	1	1	0	0	0				chronicles	0	50000								chronicles_max_tasks=6,chronicles_relic_quality=4,chronicles_max_quest_shared=20,chronicles_relic_mastery=4,chronicles_max_tasks=6 			1	0
-class_chronicles_1	class_chronicles_novice		0	0	0	0	0	0		class_chronicles_novice		chronicles	30000	120000							chroniclerVentriloquism	jedi_saber_assembly=5,jedi_saber_experimentation=5			1	0
+class_chronicles	class																				place_cityhall,manage_taxes,grantZoningRights	private_place_cityhall=100				
+class_chronicles_novice	class_chronicles		0	1	1	0	0	0				chronicles	0	50000							chroniclerVentriloquism	chronicles_max_tasks=6,chronicles_relic_quality=4,chronicles_max_quest_shared=20,chronicles_relic_mastery=4,chronicles_max_tasks=6 			1	0
+class_chronicles_1	class_chronicles_novice		0	0	0	0	0	0		class_chronicles_novice		chronicles	30000	120000								jedi_saber_assembly=5,jedi_saber_experimentation=5			1	0
 class_chronicles_2	class_chronicles_1		0	0	0	0	0	0		class_chronicles_1		chronicles	70000	266000							meditate	jedi_saber_assembly=5,jedi_saber_experimentation=5			1	0
 class_chronicles_3	class_chronicles_2		0	0	0	0	0	0		class_chronicles_2		chronicles	110000	396000							fs_dm_1	jedi_saber_assembly=5,jedi_saber_experimentation=5			1	0
 class_chronicles_4	class_chronicles_3		0	0	0	0	0	0		class_chronicles_3		chronicles	170000	544000							fs_sweep_1	jedi_saber_assembly=5,jedi_saber_experimentation=5			1	0

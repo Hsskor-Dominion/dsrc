@@ -1001,14 +1001,6 @@ public class player_structure extends script.base_script
         {
             return false;
         }
-        if ((strPlanet.equals("yavin4")) || (strPlanet.equals("dathomir")) || (strPlanet.equals("endor")))
-        {
-            if (!template.contains("installation"))
-            {
-                sendSystemMessage(player, new string_id(STF_FILE, "cannot_use_deed_here"));
-                return false;
-            }
-        }
         if (isIdValid(deed))
         {
             if (hasObjVar(deed, VAR_DEED_SCENE))
@@ -3842,7 +3834,7 @@ public class player_structure extends script.base_script
                             deed_scene = "naboo,rori,dantooine";
                             break;
                         case "corellia":
-                            deed_scene = "corellia,talus";
+                            deed_scene = "corellia,talus,endor";
                             break;
                     }
                 }

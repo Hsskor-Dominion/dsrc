@@ -29,6 +29,7 @@ endor	rectangle	-8000	-8000	8000	8000	normal	default	0	0	spawnFalse	none	1	0	0	0
 @endor_region_names:dulok_village_1	circle	6068	-2475	100		normal	city	70	90	spawnFalse	none	0	0	0	0	
 @endor_region_names:dulok_village_2	circle	-1211	2952	128		normal	city	70	90	spawnFalse	none	0	0	0	0	
 @endor_region_names:endor_smuggler_outpost	circle	-898	1587	400		normal	city	70	90	spawnFalse	none	0	0	1	0	
+@endor_region_names:imperial_outpost	circle	-3018	5336	400		normal	city	70	90	spawnFalse	endor_neutral_outpost	1	0	1	0	
 @endor_region_names:endor_neutral_outpost	circle	3222	-3467	400		normal	city	70	90	spawnFalse	other	0	1	1	0	
 endor_neutral_outpost_nobuild_1	circle	3222	-3467	200		normal	default	70	90	spawnFalse	none	0	0	0	0	
 endor_neutral_outpost_1	circle	3221.864502	-3473.869873	15		normal	city	70	90	spawnFalse	endor_neutral_outpost	0	0	0	0	
@@ -91,10 +92,10 @@ endor_force_shrine_02	circle	5116.92	1923.95	199		normal	city	0	0	spawnFalse	non
 endor_force_shrine_03	circle	670.39	5548.37	199		normal	city	0	0	spawnFalse	none	0	0	0	0	
 endor_force_shrine_04	circle	-5627.48	4813.63	199		normal	city	0	0	spawnFalse	none	0	0	0	0	
 endor_force_shrine_05	circle	-5055.83	-1703.4	199		normal	city	0	0	spawnFalse	none	0	0	0	0	
-northedge_endor_nobuild	rectangle	-8000	7640	8000	8000	normal	default	0	0	spawnFalse	none	0	0	0	0	
-westedge_endor_nobuild	rectangle	-7999.5	-7640	-7640	7640	normal	default	0	0	spawnFalse	none	0	0	0	0	
-southedge_endor_nobuild	rectangle	-7999.5	-8000	8000	-7640	normal	default	0	0	spawnFalse	none	0	0	0	0	
-eastedge_endor_nobuild	rectangle	7640	-7640	8000	7640	normal	default	0	0	spawnFalse	none	0	0	0	0	
+northedge_endor_nobuild	rectangle	-8000	7640	8000	8000	normal	default	0	0	spawnFalse	none	1	0	0	0	
+westedge_endor_nobuild	rectangle	-7999.5	-7640	-7640	7640	normal	default	0	0	spawnFalse	none	1	0	0	0	
+southedge_endor_nobuild	rectangle	-7999.5	-8000	8000	-7640	normal	default	0	0	spawnFalse	none	1	0	0	0	
+eastedge_endor_nobuild	rectangle	7640	-7640	8000	7640	normal	default	0	0	spawnFalse	none	1	0	0	0	
 old_battlefield_nobuild_end1	circle	-469	3651	256		normal	default	0	0	spawnFalse	none	0	0	0	0	
 old_battlefield_nobuild_end2	circle	-2790	-4457	256		normal	default	0	0	spawnFalse	none	0	0	0	0	
 @endor_region_names:western_hard	rectangle	-8000	-6520	-3950	1800	normal	fictional	75	90	spawnTrue	none	1	0	0	0	
