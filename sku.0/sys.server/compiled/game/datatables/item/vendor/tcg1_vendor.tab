@@ -1,8 +1,6 @@
 item	cash	token0	token1	token2	token3	token16	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
 item_pgc_token_03	500000								
-item_pgc_planet_hologram_tatooine						1			
-item_pgc_planet_hologram_tatooine_02						1			
 item_tcg_loot_reward_series2_versafunction88_datapad	15000								
 item_pgc_sandcrawler_house_deed						1			
 object/tangible/veteran_reward/frn_vet_holo_sandcrawler.iff						1			
@@ -28,5 +26,4 @@ item_tcg_loot_reward_series6_build02_hk47_mustafar_diorama						1
 item_tcg_loot_reward_series6_build04_hkdroid_series_poster						1			
 item_tcg_loot_reward_series8_glowly_sculpture						1			
 item_tcg_loot_reward_series8_c3po_backpack						1			
-item_tcg_loot_reward_series5_rain_storm						1			
 item_costume_jawa	100								
