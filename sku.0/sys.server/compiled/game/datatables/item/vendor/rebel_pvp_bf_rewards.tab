@@ -1,30 +1,31 @@
 item	cash	token0	token1	token2	token3	token4	token5	token6	token7	token8	token9	token10	token11	token12	token17	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
-item_pgc_planet_hologram_dantooine															100			"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
-item_pgc_planet_hologram_dantooine_02															100			"So in the case of this table only traders will see the ""all"" items."
+item_pgc_planet_hologram_dantooine	100000																	"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
+item_pgc_planet_hologram_dantooine_02	100000																	"So in the case of this table only traders will see the ""all"" items."
 item_tcg_loot_reward_series7_rocket_launcher	15000																	
-armor_rebel_spec_force_belt															100			
-armor_rebel_spec_force_bicep_l															100			
-armor_rebel_spec_force_bicep_r															100			
-armor_rebel_spec_force_boots															100			
-armor_rebel_spec_force_bracer_l															100			
-armor_rebel_spec_force_bracer_r															100			
-armor_rebel_spec_force_chest_plate															100			
-armor_rebel_spec_force_gloves															100			
-armor_rebel_spec_force_helmet															100			
-armor_rebel_spec_force_leggings															100			
-weapon_carbine_ngant_zarvel_04_01															100			
-weapon_heavy_cr1_04_01															100			
-weapon_magna_guard_polearm_04_01															100			
-weapon_westar_pistol_04_01															100			
-weapon_westar_rifle_04_01															100			
-weapon_knuckler_buzz_knuck															100			
-weapon_sword_1h_pvp_04_01															100			
-weapon_sword_2h_pvp_04_01															100			
-item_tcg_loot_reward_series7_deed_vehicle_garage															100			
-item_tcg_loot_reward_series7_deed_commando_bunker															100			
-item_tcg_loot_reward_series7_deed_vip_bunker															100			
-item_tcg_loot_reward_series7_recon_backpack															100			
-item_tcg_loot_reward_series7_camo_armor_kit															100			
-item_tcg_loot_reward_series7_battle_worn_armor_kit															100			
-item_tcg_loot_reward_series6_deed_rebel_spire															100			
+item_gcw_rebel_token								1										
+armor_rebel_spec_force_belt								5										
+armor_rebel_spec_force_bicep_l								5										
+armor_rebel_spec_force_bicep_r								5										
+armor_rebel_spec_force_boots								5										
+armor_rebel_spec_force_bracer_l								5										
+armor_rebel_spec_force_bracer_r								5										
+armor_rebel_spec_force_chest_plate								5										
+armor_rebel_spec_force_gloves								5										
+armor_rebel_spec_force_helmet								5										
+armor_rebel_spec_force_leggings								5										
+weapon_carbine_ngant_zarvel_04_01								5										
+weapon_heavy_cr1_04_01								5										
+weapon_magna_guard_polearm_04_01								5										
+weapon_westar_pistol_04_01								5										
+weapon_westar_rifle_04_01								5										
+weapon_knuckler_buzz_knuck								5										
+weapon_sword_1h_pvp_04_01								5										
+weapon_sword_2h_pvp_04_01								5										
+item_tcg_loot_reward_series7_deed_vehicle_garage								20										
+item_tcg_loot_reward_series7_deed_commando_bunker								20										
+item_tcg_loot_reward_series7_deed_vip_bunker								20										
+item_tcg_loot_reward_series7_recon_backpack								5										
+item_tcg_loot_reward_series7_camo_armor_kit								5										
+item_tcg_loot_reward_series7_battle_worn_armor_kit								5										
+item_tcg_loot_reward_series6_deed_rebel_spire								20										

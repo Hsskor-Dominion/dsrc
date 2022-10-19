@@ -1629,6 +1629,10 @@ public class groundquests extends script.base_script
         {
             return true;
         }
+       if (isQuestActive(player, "smuggle_pvp_art_1") || isQuestActive(player, "smuggle_generic_art_1"))
+        {
+            return true;
+        }
         return false;
     }
     public static float getPlayerPlayedTimeWhenTimerEnds(obj_id player, int questCrc, int taskId) throws InterruptedException

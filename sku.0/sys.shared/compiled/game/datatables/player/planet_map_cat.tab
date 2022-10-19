@@ -14,22 +14,22 @@ guild_university	11	0	1
 hotel	12					
 medicalcenter	13			1		
 shuttleport	14					
-starport	15					
-themepark	16					
-city	17					
-waypoint	18					
-trainer	19					
-trainer_brawler	20	0	1			
-trainer_artisan	21	0	1			
-trainer_scout	22	0	1			
-trainer_marksman	23	0	1			
-trainer_entertainer	24	0	1			
-trainer_medic	25	0	1			
-junkshop	26					
-tavern	27			1		
-barracks	28			1		
-vendor	29					
-vendor_armor	30	0	1			
+starport	15			
+themepark	16			
+city	17			
+waypoint	18			
+trainer	19			
+trainer_brawler	20	0	1	
+trainer_artisan	21	0	1	
+trainer_scout	22	0	1	
+trainer_marksman	23	0	1	
+trainer_entertainer	24	0	1	
+trainer_medic	25	0	1	
+junkshop	26			
+tavern	27			1
+barracks	28			1
+vendor	29			
+vendor_armor	30	0	1	
 vendor_clothing	31	0	1			
 vendor_components	32	0	1			
 vendor_droids	33	0	1			
@@ -44,35 +44,37 @@ terminal	41	1
 terminal_bank	42	0	1			
 terminal_bazaar	43	0	1			
 terminal_mission	44	0	1			
-rebel_hq	45	0	1	1	rebel	1
-imperial_hq	46	0	1	1	imperial	1
-camp	47	0	1	1		
-cityhall	48	0	0	1		
-theater	49	0	0	1		
-vendor_pets	50	0	1			
-vendor_medical	51	0	1			
-poi	52					
-garage	53	1	0			
-museum	54	1	0			
-salon	55	1				
-space	56	1	0			
-space_recruiter	57	0	1			
-space_chassis_broker	58	0	1			
-space_chassis	59	1	0			
-trainer_starfighter_engineer	60	0	1			
-trainer_shipwright	61	0	1			
-trainer_pilot_privateer	62	0	1			
-trainer_pilot_rebel	63	0	1			
-trainer_pilot_imperial	64	0	1			
-vendor_ships	65	0	1			
-sf_rebel_forward_base	66	0	1	1	rebel	1
-sf_imperial_forward_base	67	0	1	1	imperial	1
-sf_rebel_minor_base	68	0	1	1	rebel	1
-sf_imperial_minor_base	69	0	1	1	imperial	1
-sf_rebel_major_base	70	0	1	1	rebel	1
-sf_imperial_major_base	71	0	1	1	imperial	1
-sf_rebel_hq	72	0	1	1	rebel	1
-sf_imperial_hq	73	0	1	1	imperial	1
+rebel	45	1			rebel	1
+imperial	46	1			imperial	1
+rebel_hq	47	0	1	1	rebel	1
+imperial_hq	48	0	1	1	imperial	1
+camp	49	0	1	1		
+cityhall	50	0	0	1		
+theater	51	0	0	1		
+vendor_pets	52	0	1			
+vendor_medical	53	0	1			
+poi	54					
+garage	55	1	0			
+museum	56	1	0			
+salon	57	1				
+space	58	1	0			
+space_recruiter	59	0	1			
+space_chassis_broker	60	0	1			
+space_chassis	61	1	0			
+trainer_starfighter_engineer	62	0	1			
+trainer_shipwright	63	0	1			
+trainer_pilot_privateer	64	0	1			
+trainer_pilot_rebel	65	0	1			
+trainer_pilot_imperial	66	0	1			
+vendor_ships	67	0	1			
+sf_rebel_forward_base	68	0	1	1	rebel	1
+sf_imperial_forward_base	69	0	1	1	imperial	1
+sf_rebel_minor_base	70	0	1	1	rebel	1
+sf_imperial_minor_base	71	0	1	1	imperial	1
+sf_rebel_major_base	72	0	1	1	rebel	1
+sf_imperial_major_base	73	0	1	1	imperial	1
+sf_rebel_hq	47	0	1	1	rebel	1
+sf_imperial_hq	48	0	1	1	imperial	1
 terminal_gcw_static_base	74	0	1	1		
 terminal_mission_entertainer	75	0	1			
 terminal_mission_artisan	76	0	1			

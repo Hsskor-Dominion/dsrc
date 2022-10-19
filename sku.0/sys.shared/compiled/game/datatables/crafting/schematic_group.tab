@@ -1969,4 +1969,10 @@ craftGcwToolsA	object/draft_schematic/item/gcw_spawner_tool.iff
 craftGcwToolsA	object/draft_schematic/item/gcw_tower_tool.iff
 craftGcwToolsA	object/draft_schematic/item/gcw_turret_tool.iff
 craftGcwToolsA	object/draft_schematic/item/gcw_vehicle_tool.iff
+craftStructureCampA	object/draft_schematic/camp/camp_basic.iff
+craftStructureCampB	object/draft_schematic/camp/camp_improved.iff
+craftStructureCampB	object/draft_schematic/camp/camp_advanced.iff
+craftStructureCampC	object/draft_schematic/camp/camp_quality.iff
+craftStructureCampD	object/draft_schematic/camp/camp_elite.iff
+craftStructureCampE	object/draft_schematic/camp/camp_luxury.iff
 end	end

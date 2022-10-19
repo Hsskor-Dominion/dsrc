@@ -817,19 +817,11 @@ public class factions extends script.base_script
             setAttributeAttained(target, attrib.IMPERIAL);
             setAttributeInterested(target, attrib.REBEL);
             ai_lib.setDefaultCalmMood(target, "npc_imperial");
-            if (pvpOnly == 1)
-            {
-                setObjVar(target, "huysMagicSpecialForcesOnlyObjvar", true);
-            }
         }
         else if (factionName.equals(FACTION_REBEL))
         {
             setAttributeAttained(target, attrib.REBEL);
             setAttributeInterested(target, attrib.IMPERIAL);
-            if (pvpOnly == 1)
-            {
-                setObjVar(target, "huysMagicSpecialForcesOnlyObjvar", true);
-            }
         }
         setObjVar(target, FACTION, factionName);
         pvpMakeNeutral(target);

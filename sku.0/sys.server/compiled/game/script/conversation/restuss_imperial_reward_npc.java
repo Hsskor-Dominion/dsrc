@@ -485,7 +485,7 @@ public class restuss_imperial_reward_npc extends script.base_script
                 return SCRIPT_CONTINUE;
             }
         }
-        if (response.equals("s_213"))
+        if (response.equals("s_205"))
         {
             doAnimationAction(player, "shake_head_no");
             if (restuss_imperial_reward_npc_condition__defaultCondition(player, npc))
@@ -1571,7 +1571,7 @@ public class restuss_imperial_reward_npc extends script.base_script
             }
             if (restuss_imperial_reward_npc_condition__defaultCondition(player, npc))
             {
-                string_id message = new string_id(c_stringFile, "s_155");
+                string_id message = new string_id(c_stringFile, "s_177");
                 utils.removeScriptVar(player, "conversation.restuss_imperial_reward_npc.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;
@@ -12055,7 +12055,7 @@ public class restuss_imperial_reward_npc extends script.base_script
                 }
                 if (hasResponse1)
                 {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_199");
+                    responses[responseIndex++] = new string_id(c_stringFile, "s_221");
                 }
                 if (hasResponse2)
                 {

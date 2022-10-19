@@ -56,6 +56,7 @@ public class utils extends script.base_script
     public static final int FORCE_SENSITIVE = 7;
     public static final int TRADER = 8;
     public static final int ENTERTAINER = 9;
+    public static final int CHRONICLER = 10;
     public static final String LIFEDAY_OWNER = "lifeday.owner";
     //public static final String XMAS_RECEIVED_V1 = "gift.xmas05";
     //public static final String XMAS_RECEIVED_V2 = "gift.xmas05v2";
@@ -6268,6 +6269,9 @@ public class utils extends script.base_script
             case ENTERTAINER:
                 professionName = "entertainer";
                 break;
+            case CHRONICLER:
+                professionName = "chronicler";
+                break;
             default:
                 break;
         }
@@ -6285,7 +6289,8 @@ public class utils extends script.base_script
             "class_officer_phase1_novice",
             "class_spy_phase1_novice",
             "class_medic_phase1_novice",
-            "class_entertainer_phase1_novice"
+            "class_entertainer_phase1_novice",
+            "class_chronicles_master"
         };
         int[] professionList = 
         {
@@ -6296,7 +6301,8 @@ public class utils extends script.base_script
             OFFICER,
             SPY,
             MEDIC,
-            ENTERTAINER
+            ENTERTAINER,
+	    CHRONICLER
         };
         for (int i = 0; i < noviceSkillList.length; i++)
         {

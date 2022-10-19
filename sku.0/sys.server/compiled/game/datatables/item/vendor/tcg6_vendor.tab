@@ -1,6 +1,8 @@
-item	cash	token0	token1	token2	token3	token16	class	script	note
+item	cash	token0	token1	token12	token13	token16	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
-item_pgc_token_03			4						
+item_pgc_token_03	500000								
+item_pgc_planet_hologram_lok	100000								
+item_pgc_planet_hologram_lok_02	100000								
 item_tcg_loot_reward_series1_nuna_ball_advertisement	10000								
 item_tcg_loot_reward_series4_t16_toy_02_01	20000								
 item_tcg_loot_reward_series5_creature_pet_deed_scurrier_02_01						1			

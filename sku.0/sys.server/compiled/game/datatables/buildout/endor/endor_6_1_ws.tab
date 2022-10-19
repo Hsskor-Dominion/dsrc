@@ -48,7 +48,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 9705689	0	object/building/mustafar/structures/must_crashed_republic_ship_gun.iff	0	1970	0	615	-0.497012	0.641092	-0.365984	0.45611		$|
 9705690	0	object/building/mustafar/structures/must_crashed_republic_ship_hull.iff	0	2006	0	606	0.0511876	0.204202	0.969831	-0.122922		$|
 9705691	0	object/building/mustafar/structures/must_crashed_republic_ship_engine_02.iff	0	220	0	590	0.459655	-0.161116	0.841207	0.234797		$|
-9705692	0	object/building/mustafar/structures/must_crashed_republic_ship_engine.iff	0	2005	0	641	-0.102593	-0.0359015	0.994005	-0.011835		$|
+9705692	0	object/building/mustafar/structures/must_crashed_republic_ship_engine.iff	0	2005	-5	641	-0.102593	-0.0359015	0.994005	-0.011835		$|
 9705693	0	object/static/space/debris/cargo_destroyed_large_a.iff	0	2000	0	645	0.101116	0.869314	-0.055898	0.480567		$|
 9705694	0	object/static/space/debris/cargo_destroyed_small_a.iff	0	1990	0	596	-0.363878	-0.188985	0.90893	0.0756578		$|
 9705695	0	object/static/space/debris/cargo_destroyed_large_a.iff	0	1980	0	600	0.982004	-0.188859	0	0		$|

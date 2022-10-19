@@ -351,6 +351,7 @@
 0x24f9c872	spacequest/assassinate/corellia_privateer_tier1_4a
 0x25802b44	quest/npe_han_comm_marksman_done
 0x2594f401	spacequest/rescue/naboo_privateer_tier3_2e
+0x25b37fd6	quest/smuggle_generic_art_1
 0x25b41ce1	quest/entertainer_imperial_06
 0x25c208ea	quest/som_tanray_hunt_20
 0x25ef3a48	quest/som_kenobi_cursed_shard_1
@@ -710,6 +711,7 @@
 0x472e2e91	quest/npe_pointer_inaldra
 0x473bce8b	quest/npe_brawler_1a
 0x475d1e07	spacequest/delivery_no_pickup/talus_station_mission5_4
+0x477cf60c	quest/gmf_the_skeleton
 0x47a99545	quest/corellia_tyrena_lost_love
 0x47b25f1c	quest/test_tasks_granting_quests
 0x47e75398	quest/talus_nashal_find_weakness
@@ -1828,6 +1830,7 @@
 0xaf14102c	quest/tatooine_entha_podracers_race3
 0xaf1cca53	spacequest/destroy/corellia_imperial_17
 0xaf361464	spacequest/patrol/corellia_imperial_tier4_1
+0xaf80b895	quest/smuggle_pvp_art_1
 0xafa49273	spacequest/destroy_duty/rori_station_imp_destroy_duty_tier3
 0xafb78ff0	spacequest/destroy_duty/stn_yavin4_company_all_debrisdestroy_tier2_1
 0xafbd016a	quest/npe_pilot_hard_3
@@ -2052,6 +2055,7 @@
 0xc3d4f9a8	spacequest/recovery_duty/ep3_indie_slavers_recovery
 0xc3e06144	spacequest/destroy_duty/dathomir_rebel_tier5
 0xc3e75e37	quest/legacy_button_jawatracks_reb_pt3
+0xc3e880d4	quest/event_cantina_jar_jar
 0xc3fa7d6c	quest/yavin_meganjobs_lostworker
 0xc4408470	quest/ep3_clone_relics_hunter_qakkee_3
 0xc46f4436	quest/outbreak_quest_administrative_building_rebel_05

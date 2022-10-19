@@ -325,13 +325,13 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -27777998	0	object/static/structure/general/data_terminal_free_s1.iff	0	1981.4	28	1512.03	-0.60582	0	0.795602	0		$|
 -27777997	0	object/static/item/item_security_scanner.iff	0	1976.53	29.78	1514.69	0.707108	0	-0.707106	0		$|
 -27777996	0	object/static/item/item_security_scanner.iff	0	1983.19	29.78	1514.46	0.70716	0	-0.707053	0		$|
--27777995	0	object/static/item/item_tech_console_sectional_a.iff	0	1979.39	28	1514.88	-3.2e-008	0	1	0		$|
+-27777995	0	object/static/item/item_tech_console_sectional_a.iff	0	1979.39	28	1514.88	-3.2E-08	0	1	0		$|
 -27777994	0	object/tangible/quest/corellia_coronet_government_work_courier.iff	0	1853.75	28	1901.85	0.707107	0	0.707107	0	quest.task.ground.retrieve_item_on_item	$|
--27777993	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	1832.61	28	1801.89	-3.2e-008	0	1	0	quest.task.ground.retrieve_item_on_item	$|
+-27777993	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	1832.61	28	1801.89	-3.2E-08	0	1	0	quest.task.ground.retrieve_item_on_item	$|
 -27777992	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	1868.1	30.5	1757.52	0.707162	0	-0.707051	0	quest.task.ground.retrieve_item_on_item	$|
 -27777991	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	1808.69	30.5	1745.53	0.707107	0	0.707107	0	quest.task.ground.retrieve_item_on_item	$|
--27777990	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	2037.24	28	1697.56	-3.2e-008	0	1	0	quest.task.ground.retrieve_item_on_item	$|
--27777989	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	1964.28	28.5	1526.7	-3.2e-008	0	1	0	quest.task.ground.retrieve_item_on_item	$|
+-27777990	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	2037.24	28	1697.56	-3.2E-08	0	1	0	quest.task.ground.retrieve_item_on_item	$|
+-27777989	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	1964.28	28.5	1526.7	-3.2E-08	0	1	0	quest.task.ground.retrieve_item_on_item	$|
 -27777988	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	1921.96	28	1445.08	0.995004	0	-0.0998334	0	quest.task.ground.retrieve_item_on_item	$|
 -27777987	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	1726.62	28	1498.98	0.670882	0	0.741564	0	quest.task.ground.retrieve_item_on_item	$|
 -27777986	0	object/tangible/quest/corellia_coronet_government_work_dropbox.iff	0	1556.62	29	1473.58	0.707108	0	-0.707106	0	quest.task.ground.retrieve_item_on_item	$|
@@ -350,4 +350,5 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -554866453	-958061858	object/static/worldbuilding/terminal/wall_monitorscreen_text_03.iff	1	1.49615	1.42315	-2.86355	0.707111	0	-0.707103	0		$|
 -1674487840	-958061858	object/building/kashyyyk/frn_sordaan_armory_static.iff	1	2.51887	0.662426	-1.01965	0.499222	0	0.866474	0		$|
 -1597615469	-958061858	object/tangible/ground_spawning/area_spawner.iff	1	0.108892	0.267105	-1.03995	0.999782	0	0.0208696	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|9.000000|fltMinSpawnTime|2|3.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|chronicle_reward_vendor|strSpawnerType|4|area|strSpawns|4|chronicles_reward_vendor|$|
+-1597615468	-958061858	object/tangible/ground_spawning/area_spawner.iff	1	2	0.267105	-1.03995	0.999782	0	0.0208696	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|9.000000|fltMinSpawnTime|2|3.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|vendor_tcg_9|strSpawnerType|4|area|strSpawns|4|vendor_tcg_9|$|
 -1236511939	0	object/tangible/planet_map_location/city.iff	0	1996.71	28	1409.2	1	0	0	0	planet_map.map_loc	$|

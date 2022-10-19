@@ -601,7 +601,7 @@ crafting_shipwright_defense_04	crafting_shipwright_defense_03		0	1	0	0	9000	2		c
 pilot						0																			0	
 pilot_rebel_navy	pilot		0	0	1	0	0	0						0											1	0
 pilot_rebel_navy_novice	pilot_rebel_navy		0	1	0	0	100	0			pilot_imperial_navy_novice,pilot_neutral_novice		0	0							cert_starships_y8_mining_ship,cert_starships_ykl37r,cert_starships_yt2400,private_rebel_navy_novice,cert_starships_z95headhunter,cert_ordnance_level1,cert_droid_astromech_1,droidcommand_mutedroid,spacepvprebel,spacefaction,spacebattlestatus				1	0
-pilot_rebel_navy_master	pilot_rebel_navy		0	1	0	0	5000	0		pilot_rebel_navy_starships_04,pilot_rebel_navy_weapons_04,pilot_rebel_navy_procedures_04,pilot_rebel_navy_droid_04		space_combat_general	7500000	7500000							cert_starships_yt2400,private_rebel_navy_master,cert_starships_bwing,cert_starships_ykl37r,cert_ordnance_level9,cert_ordnance_levelten,cert_droid_astromech_6,jstart3,inspacerr,cert_starships_firespray,cert_starships_y8_mining_ship,cert_starships_gunship_rebel	pilot_special_tactics=20			1	0
+pilot_rebel_navy_master	pilot_rebel_navy		0	1	0	0	5000	0		pilot_rebel_navy_starships_04,pilot_rebel_navy_weapons_04,pilot_rebel_navy_procedures_04,pilot_rebel_navy_droid_04		space_combat_general	7500000	7500000							cert_starships_yt2400,private_rebel_navy_master,cert_starships_bwing,cert_ordnance_level9,cert_ordnance_levelten,cert_droid_astromech_6,jstart3,inspacerr,cert_starships_firespray,cert_starships_gunship_rebel	pilot_special_tactics=20			1	0
 pilot_rebel_navy_starships_01	pilot_rebel_navy		0	0	0	0	1000	0		pilot_rebel_navy_novice		space_combat_general	7500	60000							private_rebel_navy_starships_1,cert_starships_ywing				1	0
 pilot_rebel_navy_starships_02	pilot_rebel_navy_starships_01		0	0	0	0	2000	0		pilot_rebel_navy_starships_01,pilot_rebel_navy_weapons_01,pilot_rebel_navy_procedures_01,pilot_rebel_navy_droid_01		space_combat_general	60000	200000							private_rebel_navy_starships_2,cert_starships_ywinglongprobe				1	0
 pilot_rebel_navy_starships_03	pilot_rebel_navy_starships_02		0	0	0	0	3000	0		pilot_rebel_navy_starships_02,pilot_rebel_navy_weapons_02,pilot_rebel_navy_procedures_02,pilot_rebel_navy_droid_02		space_combat_general	200000	1000000							private_rebel_navy_starships_3,cert_starships_xwing				1	0
@@ -620,7 +620,7 @@ pilot_rebel_navy_droid_03	pilot_rebel_navy_droid_02		0	0	0	0	3000	0		pilot_rebel
 pilot_rebel_navy_droid_04	pilot_rebel_navy_droid_03		0	1	0	0	4000	0		pilot_rebel_navy_starships_03,pilot_rebel_navy_weapons_03,pilot_rebel_navy_procedures_03,pilot_rebel_navy_droid_03		space_combat_general	1000000	7500000							private_rebel_navy_droid_4,droidcommand_shieldbacktofronthundred,droidcommand_shieldfronttobackhundred,droidcommand_shieldadjustfrontfour,droidcommand_shieldadjustrearfour,cert_droid_astromech_5,droidcommand_shieldemergencyfront,droidcommand_shieldemergencyrear				1	0
 pilot_imperial_navy	pilot		0	0	1	0	0	0						0											1	0
 pilot_imperial_navy_novice	pilot_imperial_navy		0	1	0	0	100	0			pilot_rebel_navy_novice,pilot_neutral_novice		0	0							cert_starships_y8_mining_ship,cert_starships_decimator,cert_starships_yt2400,private_imperial_navy_novice,cert_starships_tiefighterlight,cert_ordnance_level1,cert_droid_astromech_1,droidcommand_mutedroid,spacepvpimperial,spacefaction,spacebattlestatus				1	0
-pilot_imperial_navy_master	pilot_imperial_navy		0	1	0	0	5000	0		pilot_imperial_navy_starships_04,pilot_imperial_navy_weapons_04,pilot_imperial_navy_procedures_04,pilot_imperial_navy_droid_04		space_combat_general	7500000	7500000							private_imperial_navy_master,cert_starships_decimator,cert_starships_tiedefender,cert_starships_tieoppressor,cert_ordnance_level9,cert_ordnance_levelten,cert_droid_astromech_6,bstrike3,cert_starships_firespray,cert_starships_y8_mining_ship,cert_starships_gunship_imperial	pilot_special_tactics=20			1	0
+pilot_imperial_navy_master	pilot_imperial_navy		0	1	0	0	5000	0		pilot_imperial_navy_starships_04,pilot_imperial_navy_weapons_04,pilot_imperial_navy_procedures_04,pilot_imperial_navy_droid_04		space_combat_general	7500000	7500000							private_imperial_navy_master,cert_starships_tiedefender,cert_starships_tieoppressor,cert_ordnance_level9,cert_ordnance_levelten,cert_droid_astromech_6,bstrike3,cert_starships_firespray,cert_starships_gunship_imperial	pilot_special_tactics=20			1	0
 pilot_imperial_navy_starships_01	pilot_imperial_navy		0	0	0	0	1000	0		pilot_imperial_navy_novice		space_combat_general	7500	60000							private_imperial_navy_starships_1,cert_starships_tiefighter				1	0
 pilot_imperial_navy_starships_02	pilot_imperial_navy_starships_01		0	0	0	0	2000	0		pilot_imperial_navy_starships_01,pilot_imperial_navy_weapons_01,pilot_imperial_navy_procedures_01,pilot_imperial_navy_droid_01		space_combat_general	60000	200000							private_imperial_navy_starships_2,cert_starships_tiefighterin				1	0
 pilot_imperial_navy_starships_03	pilot_imperial_navy_starships_02		0	0	0	0	3000	0		pilot_imperial_navy_starships_02,pilot_imperial_navy_weapons_02,pilot_imperial_navy_procedures_02,pilot_imperial_navy_droid_02		space_combat_general	200000	1000000							private_imperial_navy_starships_3,cert_starships_tieinterceptor,cert_starships_tiebomber				1	0
@@ -1588,10 +1588,10 @@ expertise_bh_intimidate_2	expertise_bh_intimidate_1																					precisio
 expertise_bh_intimidate_3	expertise_bh_intimidate_2																					precision_modified=25			0	
 expertise_bh_intimidate_4	expertise_bh_intimidate_3																					precision_modified=25			0	
 expertise_bh_dread_strike_1	expertise_sp_jagged_edge_4									expertise_sp_jagged_edge_4											bh_dread_strike_1,bh_intimidate_1	bh_dire_snare=50,bh_dire_root=50			0	
-expertise_bh_stamina_1	expertise																					stamina_modified=10,camp=10			0	
-expertise_bh_stamina_2	expertise_bh_stamina_1																					stamina_modified=10,camp=10			0	
-expertise_bh_stamina_3	expertise_bh_stamina_2																					stamina_modified=10,camp=10			0	
-expertise_bh_stamina_4	expertise_bh_stamina_3																					stamina_modified=10,camp=10			0	
+expertise_bh_stamina_1	expertise																					foraging=5,camp=10	craftStructureCampA		0	
+expertise_bh_stamina_2	expertise_bh_stamina_1																					foraging=5,camp=10	craftStructureCampB		0	
+expertise_bh_stamina_3	expertise_bh_stamina_2																					foraging=5,camp=10	craftStructureCampC		0	
+expertise_bh_stamina_4	expertise_bh_stamina_3																					foraging=5,camp=10	craftStructureCampE		0	
 expertise_bh_precision_1	expertise																					precision_modified=10			0	
 expertise_bh_precision_2	expertise_bh_precision_1																					precision_modified=10			0	
 expertise_bh_precision_3	expertise_bh_precision_2																					precision_modified=10			0	
@@ -2296,7 +2296,7 @@ expertise_sp_increased_agility_1	expertise																					slope_move=10
 expertise_sp_increased_agility_2	expertise_sp_increased_agility_1																					slope_move=10				
 expertise_sp_increased_agility_3	expertise_sp_increased_agility_2																					slope_move=10				
 expertise_sp_increased_agility_4	expertise_sp_increased_agility_3																					slope_move=10				
-expertise_sp_cloaking_armor_1	expertise_bh_stamina_4									expertise_bh_stamina_4											co_mirror_armor	structure_assembly=10,mask_scent=30	craftStructureGroupA			
+expertise_sp_cloaking_armor_1	expertise_bh_stamina_4									expertise_bh_stamina_4											co_mirror_armor	structure_assembly=10,mask_scent=30	craftStructureCampA			
 expertise_sp_cloaking_armor_2	expertise_sp_cloaking_armor_1																									
 expertise_sp_glancing_armor_1	expertise									expertise_sp_protective_armor_4												expertise_glancing_blow_all=2				
 expertise_sp_glancing_armor_2	expertise_sp_glancing_armor_1																					expertise_glancing_blow_all=2				

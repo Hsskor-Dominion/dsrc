@@ -1,32 +1,34 @@
 strItemType	comments
 s	s
-item_schematic_spice_yarrock	Yarrock
-item_schematic_spice_pyrepenol	Pyrepenol
-item_schematic_spice_giggledust	Giggledust
-item_schematic_spice_scramjet	Scramjet
-item_schematic_spice_gunjack	Gunjack
-item_schematic_spice_h4b	Sedative h4b
-item_schematic_spice_droid_lube	Droid Lube
-item_schematic_spice_shadowpaw	Shadowpaw
-item_schematic_spice_muon_gold	Muon Gold
-item_schematic_spice_sweetblossom	Sweetblossom
-item_schematic_spice_crash_n_burn	Crash n burn
-item_schematic_spice_thruster_head	Thruster_Head
-item_schematic_spice_grey_gabaki	Grey Gabaki
-item_schematic_spice_neutron_pixey	Neutron_Pixey
-item_schematic_spice_booster_blue	Booster Blue
-item_roadmap_spice_booster_blue_01_02	Booster Blue Schematic
-item_roadmap_spice_crash_n_burn_01_02	Crash_n_burn Schematic
-item_roadmap_spice_droid_lube_01_02	Droid Lube Schematic
-item_roadmap_spice_giggledust_01_02	Giggledust Schematic
-item_roadmap_spice_grey_gabaki_01_02	Grey_Gabaki Schematic
-item_roadmap_spice_gunjack_01_02	Gunjack Schematic
-item_roadmap_spice_muon_gold_01_02	Muon Gold Schematic
-item_roadmap_spice_neutron_pixey_01_02	Neutron Pixey Schematic
-item_roadmap_spice_pyrepenol_01_02	Pyrepenol Schematic
-item_roadmap_spice_scramjet_01_02	Scramjet Schematic
-item_roadmap_spice_sedative_h4b_01_02	Sedative h4b Schematic
-item_roadmap_spice_shadowpaw_01_02	Shadowpaw Schematic
-item_roadmap_spice_sweetblossom_01_02	Sweetblossom Schematic
-item_roadmap_spice_thruster_head_01_02	Thruster Head Schematic
-item_roadmap_spice_yarrock_01_02	Yarrock Schematic
+object/tangible/painting/bestine_quest_painting.iff	Rare Painting
+object/tangible/veteran_reward/one_year_anniversary/painting_10.iff	Dusk in Kachirho
+object/tangible/painting/painting_zabrak_f.iff	Mercenaries' Despair
+object/tangible/painting/painting_zabrak_m.iff	Mercenaries' Lament
+item_painting_rodian_f_ad_01	Advertisement (Rodian)
+object/tangible/painting/painting_rodian_m.iff	Fighter (Painting)
+object/tangible/painting/painting_schematic_weapon_s03.iff	Poster Block Turret Schematic
+object/tangible/painting/painting_trandoshan_m.iff	Warrior's Honor (Painting)
+object/tangible/painting/painting_trandoshan_m_01.iff	Fighter's Courage (Painting)
+object/tangible/painting/painting_bothan_m.iff	Bothan Buff (Painting)
+object/tangible/painting/painting_bothan_f.iff	Bothan Beauty (Painting)
+object/tangible/veteran_reward/one_year_anniversary/painting_01.iff	Cast Wing in Flight
+item_painting_corl_02	Corellian Seaside (Painting)
+item_painting_droid_bright	Droid in Contrast
+object/tangible/veteran_reward/one_year_anniversary/painting_09.iff	Emperor's Eyes (TIE Sentinel)
+object/tangible/painting/painting_rodian_f.iff	Feared (Painting)
+object/tangible/veteran_reward/one_year_anniversary/painting_05.iff	Fighter Study
+object/tangible/veteran_reward/one_year_anniversary/painting_06.iff	Hutt Greed
+object/tangible/veteran_reward/one_year_anniversary/painting_08.iff	Imperial Oppression
+item_lifeday_painting_03_01_01	Life Day Painting (Proud Wookiee)
+item_lifeday_painting_01_01_01	Life Day Painting (Red Robed Wookiee)
+item_tow_decor_painting_02_04	Living Canals
+object/tangible/painting/painting_bw_stormtrooper.iff	No Division
+object/tangible/painting/painting_food_baking_s02.iff	Poster of Food Preparation
+object/tangible/painting/painting_schematic_weapon.iff	Poster of a Turret Schematic (Painting)
+object/tangible/painting/painting_schematic_transport_ship.iff	Poster of a Ship Schematic (Painting)
+item_lifeday_gift_04_02	Pilgrimage
+object/tangible/veteran_reward/one_year_anniversary/painting_03.iff	Tatooine Dune Speeder (Painting)
+item_lifeday_gift_04_04	Triumph
+object/tangible/painting/painting_vader_victory.iff	Victory
+item_housepack_painting_rebel_01_01	The War Phoenix
+item_housepack_painting_imperial_01_01	
