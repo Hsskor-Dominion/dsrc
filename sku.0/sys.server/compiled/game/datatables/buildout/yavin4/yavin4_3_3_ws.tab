@@ -4,6 +4,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 3465353	3465352	object/cell/cell.iff	1	0	0	0	1	0	0	0		$|
 3465354	3465352	object/cell/cell.iff	2	0	0	0	1	0	0	0		$|
 3465355	3465352	object/cell/cell.iff	3	0	0	0	1	0	0	0		$|
+-8	3465355	object/static/structure/general/xwing.iff	3	-6.7	2	72.5						
 3465356	3465352	object/cell/cell.iff	4	0	0	0	1	0	0	0		$|
 3465357	3465352	object/cell/cell.iff	5	0	0	0	1	0	0	0		$|
 3465358	3465352	object/cell/cell.iff	6	0	0	0	1	0	0	0		$|
@@ -11,10 +12,9 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 3465360	3465352	object/cell/cell.iff	8	0	0	0	1	0	0	0		$|
 3465361	3465352	object/cell/cell.iff	9	0	0	0	1	0	0	0		$|
 3465362	3465352	object/cell/cell.iff	10	0	0	0	1	0	0	0		$|
--4	3465362	object/tangible/npc/yavin_spawn/commander_byrne_spawner.iff	10	-9.4	58	-50.7	1	0	0	0		$|
--3		object/tangible/npc/yavin_spawn/ruwan_tokai.iff	0	917	69.6	951	1	0	0	0		$|
--1		object/tangible/npc/yavin_spawn/gins_darone.iff	0	909	69.6	948	1	0	0	0		$|
--2		object/tangible/npc/yavin_spawn/commander_byrne_spawner.iff	0	909	69.6	952	1	0	0	0		$|
+-3	0	object/tangible/npc/yavin_spawn/ruwan_tokai.iff	0	917	69.6	951	1	0	0	0		$|
+-1	0	object/tangible/npc/yavin_spawn/gins_darone.iff	0	909	69.6	948	1	0	0	0		$|
+-2	0	object/tangible/npc/yavin_spawn/commander_byrne_spawner.iff	0	909	69.6	952	1	0	0	0		$|
 8735428	0	object/tangible/camp/camp_tent_s6.iff	0	914.891	69.6598	959.934	0.994493	0	-0.104807	0		$|
 8735429	0	object/tangible/camp/camp_tent_s5.iff	0	906.79	69.7756	967.351	-0.54869	0	0.836026	0		$|
 8735431	0	object/tangible/camp/camp_tent_s5.iff	0	904.032	69.6119	952.29	0.506221	0	0.862404	0		$|
@@ -50,25 +50,13 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 553439963	0	object/tangible/collection/beetle_piranha.iff	0	1011.7	72.0126	1023.41	-0.644827	0	0.764329	0		$|
 3495384	0	object/tangible/poi/spawnegg/exterior_spawnegg.iff	0	4.582031	219.9427795	1132.734863	1	0	0	0		$|
 3495390	0	object/tangible/poi/spawnegg/exterior_spawnegg.iff	0	843.327393	147.3101654	6.790283	1	0	0	0		$|
-3495391	0	object/tangible/camp/camp_tent_s6.iff	0	818.891	69.6598	1149.934	0.994493	0	-0.104807	0		
-3495392	0	object/tangible/camp/camp_tent_s5.iff	0	810.79	69.7756	1157.351	-0.54869	0	0.836026	0		
-3495393	0	object/tangible/camp/camp_tent_s5.iff	0	808.032	69.6119	1142.29	0.506221	0	0.862404	0		
-3495394	0	object/tangible/camp/camp_tent_s5.iff	0	812.133	69.4527	1133.976	0.64864	0	0.761095	0		
-3495395	0	object/tangible/camp/camp_tent_s5.iff	0	820.188	69.5373	1136.289	0.949235	0	0.314566	0		
-3495396	0	object/static/item/item_tool_sensor_beacon.iff	0	804.29	69.8013	1158.828	1	0	0	0		
-3495397	0	object/static/item/item_tool_sensor_beacon.iff	0	800.973	69.4771	1142.337	1	0	0	0		
-3495398	0	object/static/item/item_tool_sensor_beacon.iff	0	806.441	69.2308	1127.968	1	0	0	0		
-3495399	0	object/static/item/item_tool_sensor_beacon.iff	0	822.601	69.4156	1129.975	1	0	0	0		
-3495400	0	object/static/item/item_tool_sensor_beacon.iff	0	828.656	69.7778	1140.967	1	0	0	0		
-3495401	0	object/static/item/item_tool_sensor_beacon.iff	0	825.673	69.9262	1157.921	1	0	0	0		
+3495396	0	object/static/item/item_tool_sensor_beacon.iff	0	804.29	69	1158.828	1	0	0	0		
+3495397	0	object/static/item/item_tool_sensor_beacon.iff	0	800.973	69	1142.337	1	0	0	0		
+3495398	0	object/static/item/item_tool_sensor_beacon.iff	0	806.441	69	1127.968	1	0	0	0		
+3495399	0	object/static/item/item_tool_sensor_beacon.iff	0	822.601	69	1129.975	1	0	0	0		
+3495400	0	object/static/item/item_tool_sensor_beacon.iff	0	828.656	69	1140.967	1	0	0	0		
+3495401	0	object/static/item/item_tool_sensor_beacon.iff	0	825.673	69	1157.921	1	0	0	0		
 3495402	0	object/static/structure/tatooine/antenna_tatt_style_1.iff	0	823.965	69.6575	1147.149	1	0	0	0		
-3495405	0	object/tangible/camp/camp_chair_s1.iff	0	812.078	69.7713	1150.565	-0.338946	0	0.940806	0		
-3495406	0	object/tangible/camp/camp_chair_s1.iff	0	810.325	69.7728	1150.17	0.444662	0	0.895699	0		
-3495407	0	object/tangible/camp/camp_chair_s1.iff	0	811.418	69.7456	1148.285	1	0	0	0		
-3495408	0	object/tangible/camp/camp_chair_s1.iff	0	814.518	69.6338	1141.952	0.408487	0	0.912764	0		
-3495409	0	object/tangible/camp/camp_chair_s1.iff	0	816.481	69.6295	1141.869	-0.488872	0	0.872355	0		
-3495410	0	object/tangible/camp/camp_chair_s1.iff	0	815.455	69.5975	1140.009	1	0	0	0		
-3495411	0	object/tangible/camp/camp_chair_s1.iff	0	816.491	69.6079	1140.67	0.828149	0	-0.560509	0		
-3495413	0	object/static/structure/general/banner_rebel_style_01.iff	0	814.373	69.8077	1146.122	0.700285	0	0.713863	0		
-3495414	0	object/static/structure/general/banner_rebel_style_01.iff	0	814.595	69.8282	1154.297	0.700285	0	0.713863	0		
-3495415	0	object/static/structure/general/xwing.iff	0	805	69.8282	1152	0.700285	0	0.713863	0		
+3495413	0	object/static/structure/general/banner_rebel_style_01.iff	0	814.373	68.8	1146.122	0.700285	0	0.713863	0		
+3495414	0	object/static/structure/general/banner_rebel_style_01.iff	0	814.595	68.8	1154.297	0.700285	0	0.713863	0		
+3495415	0	object/static/structure/general/xwing.iff	0	805	69.2	1152	0.700285	0	0.713863	0		

@@ -148,6 +148,7 @@ public class masterspawner extends script.base_script
         spawnBoba(self, oola);
         spawnCrumb(self, oola);
         spawnBib(self, oola);
+	spawnFennec(self);
     }
     public void spawnGuards(obj_id self) throws InterruptedException
     {
@@ -470,6 +471,14 @@ public class masterspawner extends script.base_script
         setObjVar(self, "PalaceInhabitants.gamGuard10", gamGuard10);
         setObjVar(gamGuard10, "palace", self);
         setName(gamGuard10, "Agtor");
+    }
+    public void spawnFennec(obj_id self) throws InterruptedException
+    {
+        obj_id fennec = create.object("fennec_shand", new location(-24f, 5f, 33f, "tatooine", getCellId(self, "throneroom")));
+        attachScript(fennec, "theme_park.tatooine.jabbaspawner.fennec_shand");
+        setObjVar(self, "PalaceInhabitants.fennec", fennec);
+        setObjVar(fennec, "palace", self);
+        setName(fennec, "Fennec Shand (Jabba's Assassin)");
     }
     public void spawnGamGuard11(obj_id self) throws InterruptedException
     {
@@ -1419,6 +1428,11 @@ public class masterspawner extends script.base_script
         spawnPrisoner8(self);
         return SCRIPT_CONTINUE;
     }
+    public int fennecShandDied(obj_id self, dictionary params) throws InterruptedException
+    {
+        spawnFennec(self);
+        return SCRIPT_CONTINUE;
+    }
     public int OnDetach(obj_id self) throws InterruptedException
     {
         debugServerConsoleMsg(self, "Detaching Jabba's Palace Spawn Script");
@@ -1479,6 +1493,8 @@ public class masterspawner extends script.base_script
         removeObjVar(self, "PalaceInhabitants.jabba2");
         destroyObject(getObjIdObjVar(self, "PalaceInhabitants.boba"));
         removeObjVar(self, "PalaceInhabitants.boba");
+        destroyObject(getObjIdObjVar(self, "PalaceInhabitants.fennec"));
+        removeObjVar(self, "PalaceInhabitants.fennec");
     }
     public void destroyGuards(obj_id self) throws InterruptedException
     {

@@ -56,7 +56,7 @@ object/tangible/painting/bestine_quest_painting.iff						1
 object/tangible/veteran_reward/one_year_anniversary/painting_10.iff						1			
 object/tangible/painting/painting_zabrak_f.iff						1			
 object/tangible/painting/painting_zabrak_m.iff						1			
-item_painting_rodian_f_ad_01						1			
+object/tangible/painting/painting_rodian_f_ad_01.iff						1			
 object/tangible/painting/painting_rodian_m.iff						1			
 object/tangible/painting/painting_schematic_weapon_s03.iff						1			
 object/tangible/painting/painting_trandoshan_m.iff						1			
@@ -64,10 +64,12 @@ object/tangible/painting/painting_trandoshan_m_01.iff						1
 object/tangible/painting/painting_bothan_m.iff						1			
 object/tangible/painting/painting_bothan_f.iff						1			
 object/tangible/veteran_reward/one_year_anniversary/painting_01.iff						1			
-item_painting_corl_02						1			
-item_painting_droid_bright						1			
+object/tangible/painting/painting_corl_01.iff						1			
+object/tangible/painting/painting_corl_02.iff						1			
+object/tangible/painting/painting_droid_bright.iff						1			
 object/tangible/veteran_reward/one_year_anniversary/painting_09.iff						1			
 object/tangible/painting/painting_rodian_f.iff						1			
 object/tangible/veteran_reward/one_year_anniversary/painting_05.iff						1			
 object/tangible/veteran_reward/one_year_anniversary/painting_06.iff						1			
 object/tangible/veteran_reward/one_year_anniversary/painting_08.iff						1			
+object/tangible/painting/painting_art_expo_01.iff	1								

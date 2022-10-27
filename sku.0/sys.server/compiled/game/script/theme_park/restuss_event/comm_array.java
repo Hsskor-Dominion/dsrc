@@ -80,7 +80,7 @@ public class comm_array extends script.base_script
         {
             if ((getStringObjVar(self, OBJ_FACTION)).equals(FAC_REBEL))
             {
-                if (groundquests.isTaskActive(player, "restuss_imperial_st3_comm_array", "hackCommImperial1"))
+                if (groundquests.isTaskActive(player, "restuss_imperial_st3_comm_array", "hackCommImperial1") || groundquests.isTaskActive(player, "gcw_imperial_command_post", "hackCommImperial"))
                 {
                     mi.addRootMenu(menu_info_types.ITEM_USE, SID_MNU_HACK);
                     return SCRIPT_CONTINUE;
@@ -98,7 +98,7 @@ public class comm_array extends script.base_script
             }
             else if ((getStringObjVar(self, OBJ_FACTION)).equals(FAC_IMPERIAL))
             {
-                if (groundquests.isTaskActive(player, "restuss_rebel_st3_comm_array", "hackCommRebel1"))
+                if (groundquests.isTaskActive(player, "restuss_rebel_st3_comm_array", "hackCommRebel1") || groundquests.isTaskActive(player, "gcw_rebel_command_post", "secureCommandRebel"))
                 {
                     mi.addRootMenu(menu_info_types.ITEM_USE, SID_MNU_HACK);
                     return SCRIPT_CONTINUE;
@@ -125,7 +125,7 @@ public class comm_array extends script.base_script
             {
                 if ((getStringObjVar(self, OBJ_FACTION)).equals(FAC_REBEL))
                 {
-                    if (groundquests.isTaskActive(player, "restuss_imperial_st3_comm_array", "hackCommImperial1"))
+                    if (groundquests.isTaskActive(player, "restuss_imperial_st3_comm_array", "hackCommImperial1") || groundquests.isTaskActive(player, "gcw_imperial_command_post", "hackCommImperial"))
                     {
                         utils.setScriptVar(self, "beingHacked", player);
                         sendSystemMessage(player, SID_HACK_PROGRESS);
@@ -144,7 +144,7 @@ public class comm_array extends script.base_script
                 }
                 else if ((getStringObjVar(self, OBJ_FACTION)).equals(FAC_IMPERIAL))
                 {
-                    if (groundquests.isTaskActive(player, "restuss_rebel_st3_comm_array", "hackCommRebel1"))
+                    if (groundquests.isTaskActive(player, "restuss_rebel_st3_comm_array", "hackCommRebel1") || groundquests.isTaskActive(player, "gcw_rebel_command_post", "secureCommandRebel"))
                     {
                         utils.setScriptVar(self, "beingHacked", player);
                         sendSystemMessage(player, SID_HACK_PROGRESS);

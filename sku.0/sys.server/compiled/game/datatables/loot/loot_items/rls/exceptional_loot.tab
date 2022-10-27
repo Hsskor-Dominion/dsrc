@@ -7,23 +7,14 @@ weapon_energy_lance_legendary	A Legendary Nightsister Energy Lance
 weapon_2h_sword_maul_legendary	A Legendary Power Hammer
 weapon_stun_baton_legendary	A Legendary Stun Baton
 weapon_rifle_legendary_t21	A Legendary T21 Rifle
-item_crystal_tyranus_cunning_01	Cunning of Tyranus
-item_monkey_lizard_dna	DNA Storage Device (Monkey Lizard)
 item_housepack_emperor_chair_01_01	Emperor's Senate Office Chair
 item_schematic_gungan_statue_s01	Gungan Statue Style 1 Schematic
 item_schematic_gungan_statue_s02	Gungan Statue Style 2 Schematic
 item_schematic_gungan_statue_s03	Gungan Statue Style 3 Schematic
 item_schematic_gungan_statue_s04	Gungan Statue Style 4 Schematic
 item_event_lifeday_holo_table	Holo-Entertainment Table
-item_jedi_robe_06_01	Jedi Master Cloak (Brown)
-item_jedi_robe_06_02	Jedi Master Cloak (Black)
-item_tow_decor_jedi_relic_02_03	Jedi Relic
 item_lifeday_gift_04_09	Life Day Lamp
 item_ep3_rewards_prayor_mobile	Prayer Mobile
-item_tow_crystal_uber_05_01	Shard of Ferocity
-item_tow_crystal_uber_05_02	Shard of Retaliation
-item_tow_holocron_ab_immune_02_01	Sith Holocron
-item_tow_decor_sith_relic_02_01	Sith Relic
 item_forage_worm_dna	DNA Storage Device (Forage Worm)
 item_dna_worm	DNA Storage Device (Forage Worm)
 item_pangrack_dna	DNA Storage Device (Pangrack)
@@ -36,7 +27,6 @@ item_schematic_hide_rack_s02	Animal Hide Rack Style 2 Schematic
 item_schematic_hide_rack_s03	Animal Hide Rack Style 3 Schematic
 item_schematic_hide_rack_s04	Animal Hide Rack Style 4 Schematic
 object/tangible/mission/quest_item/bren_kingal_q4_needed.iff	AT-ST pilot's helmet
-item_color_crystal_02_16	Bane's Heart
 item_treasure_map_bar_piece_curve_s1_schematic	Bar Corner Piece 1 Schematic
 item_treasure_map_bar_piece_curve_s2_schematic	Bar Corner Piece 2 Schematic
 item_treasure_map_bar_piece_straight_s1_schematic	Bar Corner Piece 3 Schematic
@@ -44,10 +34,8 @@ item_treasure_map_bar_piece_straight_s2_schematic	Bar Counter Large Schematic
 item_content_decor_hologram_disk_03_01	Data Disk Hologram
 item_content_bubble_tank_02_01	Decorative Bubble Tank
 object/tangible/container/drum/treasure_drum.iff	Drum
-item_event_lifeday_family_painting	Family Bonds
 item_costume_geonosian	Geonosian Costume Instructions
 item_lifeday_gift_04_11	Hanging Life Day Orb
-item_tow_schematic_jedi_statue_02_01	Schematic: Jedi Statue
 item_lifeday_gift_04_10	Kachirho Wall Cornucopia
 item_event_lifeday_monkey_cage	Kowakian Cage
 item_schematic_fruit_stand_lg	Large Fruit Stand Schematic
@@ -58,7 +46,6 @@ item_lifeday_gift_04_07	Miniature Wroshyr Tree
 object/tangible/painting/painting_droid_bright.iff	Modified Fusion Reactor Schematic
 item_costume_mynock	Mynock Costume Instructions
 item_publish_gift_update_16	Nym Collectible Globe
-item_power_crystal_04_21	Perfect Power Crystal
 item_event_lifeday_proton_chair	Proton Chair
 item_costume_rancor	Rancor Costume Instructions
 object/tangible/wearables/helmet/helmet_s06.iff	Endor Rebel Helmet
@@ -78,3 +65,4 @@ item_housepack_xeno_rug_01_01	Xeno Rug
 item_housepack_xeno_table_01_01	Xeno Table
 item_tow_proc_generic_03_01	Mustafarian Injector
 item_mooc_dna	DNA Storage Container (Mooc)
+item_monkey_lizard_dna	DNA Storage Device (Monkey Lizard)

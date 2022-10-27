@@ -84,13 +84,13 @@ public class cantina_jar_controller extends script.base_script
         {
             utils.removeScriptVar(self, "bhcelebs.beingDestroyed");
         }
-        obj_id bossk = create.object("lob_dizz", new location(43.8f, 0.1f, 0.5f, getLocation(self).area, getCellId(self, "foyer1")));
+        obj_id bossk = create.object("jar_jar", new location(43.8f, 0.1f, 0.5f, getLocation(self).area, getCellId(self, "foyer1")));
         if (isIdValid(bossk))
         {
             setInvulnerable(bossk, true);
 	    setName(bossk, "Jar Jar Binks");
             setObjVar(bossk, "bhcelebs.actor_role", "bossk");
-            attachScript(bossk, "event.bh_event.cantina_actor2");
+            attachScript(bossk, "event.bh_event.cantina_actor_jar_jar");
             setObjVar(bossk, "bhcelebs.cantina", self);
             dictionary webster = new dictionary();
             webster.put("locationTargetName", "startBosskLine1");

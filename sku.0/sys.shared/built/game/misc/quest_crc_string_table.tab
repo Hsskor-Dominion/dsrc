@@ -153,6 +153,7 @@
 0x0f9bbac2	spacequest/escort/naboo_imperial_tier3_4_a
 0x0f9c71a9	quest/crash_site_01_imp_engineering
 0x0f9f562e	quest/ep3_hunt_sordaan_walluga_bet
+0x0fe19180	quest/gcw_imperial_mining
 0x0fef0d79	quest/som_jundak_skull
 0x10094fc4	quest/recovery_quest_imperial_fail_02
 0x106ad63e	spacequest/patrol/corellia_privateer_1
@@ -261,6 +262,7 @@
 0x1b51cff1	spacequest/destroy_duty/ep3_kash_station_destroy_duty_veteran
 0x1b5a24ed	quest/ac_ongoing_launchpad_loruna_repeater
 0x1b631016	quest/tatooine_anchorjobs_leg
+0x1ba00d5d	quest/valarian_raid
 0x1bbb8d6e	quest/gcw_entertain_rallying
 0x1be68094	spacequest/destroy_surpriseattack/naboo_privateer_tier4_2d
 0x1bf38777	quest/tyrena_meet_the_meatlumps
@@ -383,6 +385,7 @@
 0x28c88906	quest/som_hk_history_eight
 0x28cb6eb7	spacequest/escort/naboo_imperial_tier3_1
 0x28f73a38	quest/entertainer_imperial_05
+0x291866a6	quest/gcw_imperial_space
 0x2944b08d	quest/npe_brawler_3
 0x296aa297	spacequest/patrol/tatooine_rebel_tier3_4_a
 0x296b3368	quest/corellia_coronet_capitol_problems_the_informant
@@ -616,6 +619,7 @@
 0x3f047aa3	spacequest/assassinate/stn_endor_irs_imp_tier3_2d
 0x3f102191	quest/u16_nym_themepark_jinkins_kole
 0x3f324cfe	quest/tatooine_eisley_drensbounty
+0x3f41c4a6	quest/gcw_imperial_pvp
 0x3f429994	spacequest/escort/dathomir_station_priv_storyquest_01_c
 0x3f4405d2	quest/naboo_kadaraa_tipping_the_balance_1
 0x3f561ac5	quest/ep3_myyydril_lorn_retrieve_6
@@ -624,6 +628,7 @@
 0x3f753414	spacequest/recovery/corellia_imperial_tier3_2
 0x3fa84b1f	spacequest/survival/corellia_privateer_tier3_2_a
 0x3faa35f0	spacequest/delivery_no_pickup/stn_dantooine_owner_all_repairmission_tier2_1
+0x3fb799ba	quest/npe_entertainer_valarian
 0x3fbcb1f4	quest/naboo_boss_nass_artifacts_mauler
 0x3fd5dbc0	quest/mtp_camp_quest_lok
 0x3fdf9e7f	quest/pointer_jabba
@@ -686,6 +691,7 @@
 0x44d3ffb0	quest/u16_nym_themepark_parts_2
 0x44d760d9	quest/legacy_naboo_the_keren_incident
 0x44ed5ca2	spacequest/destroy_surpriseattack/naboo_station_emperors_access_quest_4
+0x44eec9ba	quest/gcw_rebel_space
 0x4506f5f1	spacequest/recovery/corellia_imperial_tier3_3d
 0x450c2423	quest/ep3_rryatt_krepauk_cleanse_feral_wookiees
 0x451b1015	quest/newbie_gendra_meat_jerky
@@ -738,6 +744,7 @@
 0x4a0a8709	quest/outbreak_stun_baton_hidden_content
 0x4a1e38de	spacequest/delivery_no_pickup/talus_station_mission5_7
 0x4a34cf54	quest/test_various2
+0x4a434958	quest/event_cantina_hondo
 0x4a564bdc	quest/u16_nym_return_townsperson
 0x4a5aa597	spacequest/rescue/npe_med_main_2a
 0x4a5ddde8	quest/outbreak_rebel_opt_out
@@ -832,6 +839,7 @@
 0x5276002a	quest/recovery_quest_rebel_fail_06
 0x52856c8a	quest/ep3_myyydril_treesh_craft_1
 0x528dc1e2	quest/test_wave_event
+0x52980525	quest/gcw_rebel_ent
 0x52a55e2a	quest/npe_job_pointer_raylen
 0x52bfab2f	quest/ac_repeater_loruna_enf_30_dnpc2_hoolar_01
 0x52c99a78	quest/mtp_map_quest_naboo_03
@@ -848,6 +856,7 @@
 0x5399bb29	quest/outbreak_quest_rescue_06
 0x53a87575	spacequest/assassinate/stn_endor_irs_imp_tier3_1c
 0x53ad05c7	quest/legacy_naboo_droid_module_4
+0x53b2360d	quest/event_cantina_lando
 0x53c4277f	spacequest/delivery_no_pickup/poi_tatooine_privateer_2_c
 0x53e1bb38	quest/corellia_38_sidequest_01
 0x53e823ce	spacequest/delivery_no_pickup/poi_tatooine_privateer_1
@@ -1049,11 +1058,13 @@
 0x63e8cc40	spacequest/assassinate/tatooine_privateer_tier3_1_c
 0x63f763fd	quest/rtp_luke_01
 0x63fe1558	spacequest/patrol/orion_rank3_05
+0x6426cdc4	quest/gcw_rebel_mining
 0x6433700f	quest/npe_pointer_smuggler_template
 0x643b0c8d	spacequest/space_battle/naboo_privateer_tier4_4c_lose
 0x6461ea93	spacequest/destroy_duty/lok_imperial_ss_2a
 0x6473a864	quest/gcw_defend_imperial_barricade
 0x648963ea	quest/ep3_trando_ysith
+0x649574bd	quest/gcw_imperial_pve
 0x64cbd46a	quest/ep3_myyydril_talaoree_talkto_3
 0x64d0a730	spacequest/inspect/naboo_imperial_tier2_1
 0x64deb0c3	quest/tatooine_espa_body_building_2
@@ -1309,6 +1320,7 @@
 0x79c2747f	quest/npe_job_pointer_loche
 0x79ddcdef	quest/test_destroy_multiple_region
 0x79dfbdae	quest/npe_pointer_med_template
+0x79e5e4a4	quest/gcw_imperial_crafting
 0x79fb8f72	spacequest/space_battle/tatooine_rebel_tier3_3_a
 0x7a1f679c	spacequest/destroy/naboo_rebel_2
 0x7a41e949	spacequest/delivery_no_pickup/naboo_rebel_tier3_1_d
@@ -1612,6 +1624,7 @@
 0x9b3051ea	spacequest/destroy/master_rebel_2
 0x9b38f666	spacequest/inspect/naboo_imperial_tier4_1_a
 0x9b4fad50	spacequest/assassinate/rori_station_reb_storyquest_01_c
+0x9b61cd48	quest/gcw_rebel_pve
 0x9bb25ea6	quest/som_poison_miners
 0x9bb36928	quest/test_reward_on_quest_complete
 0x9bb850bd	spacequest/delivery_no_pickup/naboo_privateer_tier3_3b
@@ -1655,6 +1668,7 @@
 0x9fbc2a94	spacequest/destroy_duty/stn_endor_irs_imp_tier4_1
 0x9fccb157	quest/mtp_hideout_access_high_01
 0x9fe6cdf6	quest/ep3_trando_mosolium_zssik_07
+0x9fea4e35	quest/gcw_rebel_command_post
 0x9ff74dfe	quest/outbreak_quest_facility_05_rebel
 0x9ff92fc1	spacequest/escort_duty/rori_station_imp_escort_duty_tier3
 0xa0a922b4	spacequest/assassinate/corellia_rebel_tier4_4_a
@@ -1668,6 +1682,7 @@
 0xa126a73e	quest/mtp_find_infiltrator_5
 0xa132c4ad	spacequest/delivery/tatooine_privateer_tier4_1a
 0xa138a219	quest/ep3_hunt_sordaan_seek_harroom
+0xa18c379b	quest/npe_entertainer_jabba
 0xa18d5a93	spacequest/space_battle/tatooine_privateer_tier3_4_b
 0xa1a81667	spacequest/destroy_surpriseattack/dathomir_station_priv_storyquest_01_e
 0xa1abcf5a	spacequest/destroy/npe_med_main_3
@@ -1772,6 +1787,7 @@
 0xa9a09c14	quest/outbreak_quest_rescue_015
 0xa9a11bd6	quest/npe_side_crafting4
 0xa9e4a365	quest/ep3_myyydril_kinesworthy_epic_2
+0xa9f94327	quest/gcw_rebel_sensor
 0xaa03b663	spacequest/destroy/tatooine_imperial_4
 0xaa10fa7c	spacequest/destroy_duty/dathomir_station_priv_destroy_duty_tier3
 0xaa3d53f1	spacequest/patrol/corellia_imperial_tier3_1
@@ -1779,6 +1795,7 @@
 0xaa46c799	quest/som_kenobi_main_quest_3_visible
 0xaa46fd8a	quest/crash_site_03_reb_munitions
 0xaa7d82d7	spacequest/assassinate/tatooine_privateer_tier4_4b
+0xaaa5fa57	quest/jabba_raid
 0xaaac1da7	quest/restuss_rebel_stormtrooper_1
 0xaaf6e0dc	quest/mtp_corsec_intelligence_officer_intro
 0xaaf78dc8	quest/gcw_medic_heal
@@ -1811,6 +1828,7 @@
 0xad555259	spacequest/assassinate/naboo_imperial_tier4_3_b
 0xad6181a3	quest/outbreak_quest_rescue_014
 0xad6714fa	spacequest/destroy_duty/corellia_imperial_8
+0xad6cbcd0	quest/gcw_imperial_ent
 0xad7510b0	spacequest/delivery/talus_station_mission4_2
 0xad965ab9	quest/ep3_imp_cmd_richards
 0xada0ba47	quest/naboo_theed_goto_franchels
@@ -2021,6 +2039,7 @@
 0xc09f995c	spacequest/destroy_surpriseattack/npe_med_main_4b
 0xc0ae5981	quest/outbreak_quest_administrative_building_rebel_04
 0xc0b1c5b4	quest/npe_pilot_laetin2
+0xc0b57d53	quest/gcw_rebel_pvp
 0xc0dd529a	spacequest/escort/tatooine_privateer_tier2_4a
 0xc0e5d5cd	spacequest/escort_duty/tatooine_imperial_tier4_escortduty_1
 0xc0e91c1f	quest/tatooine_eisley_spice_of_death
@@ -2037,6 +2056,7 @@
 0xc1d3e2c8	quest/mtp_hideout_instance_kill_all_droids_success
 0xc2232a5c	quest/smuggle_illicit_5
 0xc234013c	spacequest/inspect/yavin_rebel_14
+0xc23e1f63	quest/gcw_imperial_sensor
 0xc28213f2	quest/naboo_24_gungan_power_grab_03
 0xc28531bc	quest/corellia_38_corsec_files_03
 0xc28b57c8	spacequest/destroy/restuss_imperial_destroy_2
@@ -2491,6 +2511,7 @@
 0xf1b4353a	quest/npe_frelka_transition
 0xf1e241aa	quest/outbreak_radio_delivery_02
 0xf1f0137c	spacequest/destroy_surpriseattack/ep3_clone_relics_boba_fett_3
+0xf1f97cc5	quest/gcw_imperial_command_post
 0xf1fbc938	quest/quest_08_dathomir_outpost_final
 0xf220a8a3	quest/u16_nym_themepark_repair_mixing_chamber
 0xf2310095	spacequest/recovery/corellia_imperial_tier3_1a
@@ -2649,6 +2670,7 @@
 0xfecba77a	spacequest/patrol/npe_med_main_4c
 0xff03e56a	quest/mun_marauder_1
 0xff1c18d7	spacequest/escort/poi_tatooine_privateer_3_a
+0xff2a62d3	quest/gcw_rebel_crafting
 0xff31b7cb	spacequest/delivery/naboo_imperial_tier3_2_b
 0xff33bd58	quest/mtp_camp_quest_tatooine
 0xff33cdce	quest/borvo_acklay_helmet

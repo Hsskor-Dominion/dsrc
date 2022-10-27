@@ -15,7 +15,7 @@ import java.util.List;
 public class contraband_art_chest extends script.base_script {
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException {
         if (utils.getContainingPlayer(self) == player) {
-            int mnu2 = mi.addRootMenu(menu_info_types.ITEM_USE, new string_id("npe", "crate_use"));
+            int mnu2 = mi.addRootMenu(menu_info_types.ITEM_USE, new string_id("npe", "steal"));
         }
         return SCRIPT_CONTINUE;
     }
@@ -30,7 +30,7 @@ public class contraband_art_chest extends script.base_script {
     }
     public void stealArt(obj_id self, obj_id player) throws InterruptedException
     {
-        int which_one = rand(1, 20);
+        int which_one = rand(1, 3);
         String poster = "";
         switch (which_one)
         {

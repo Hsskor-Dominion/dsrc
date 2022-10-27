@@ -73,24 +73,6 @@ public class npe_entertainer_2_questgiver extends script.base_script
     {
         String pTemplate = getSkillTemplate(player);
         groundquests.grantQuest(player, "npe_entertainer_2");
-        groundquests.sendSignal(player, "talked_to_anvar");
-        npe.givePerformPopUp(player, npc);
-        newbieTutorialSetToolbarElement(player, 9, "/StartDance");
-        newbieTutorialSetToolbarElement(player, 10, "/StopDance");
-        newbieTutorialHighlightUIElement(player, "/GroundHUD.Toolbar.volume.9", 5.0f);
-        newbieTutorialHighlightUIElement(player, "/GroundHUD.Toolbar.volume.10", 5.0f);
-        if (pTemplate.contains("entertainer"))
-        {
-            newbieTutorialSetToolbarElement(player, 4, "/flourish+1");
-            newbieTutorialSetToolbarElement(player, 5, "/flourish+2");
-            newbieTutorialSetToolbarElement(player, 6, "/flourish+3");
-            newbieTutorialSetToolbarElement(player, 7, "/flourish+4");
-            newbieTutorialSetToolbarElement(player, 16, "/flourish+5");
-            newbieTutorialSetToolbarElement(player, 17, "/flourish+6");
-            newbieTutorialSetToolbarElement(player, 18, "/flourish+7");
-            newbieTutorialSetToolbarElement(player, 19, "/flourish+8");
-            newbieTutorialHighlightUIElement(player, "/GroundHUD.Toolbar.volume.4", 5.0f);
-        }
     }
     public int npe_entertainer_2_questgiver_handleBranch2(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
