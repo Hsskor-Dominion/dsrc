@@ -9,8 +9,8 @@ public class township extends script.base_script
     public township()
     {
     }
-    public static final int MIN_LEVEL = 5;
-    public static final int TRAVEL_COST = 0;
+    public static final int MIN_LEVEL = 70;
+    public static final int TRAVEL_COST = 2500;
     public static final int RANK_TWO_AMOUNT = 200;
     public static final int RANK_THREE_AMOUNT = 300;
     public static final int RANK_FOUR_AMOUNT = 500;

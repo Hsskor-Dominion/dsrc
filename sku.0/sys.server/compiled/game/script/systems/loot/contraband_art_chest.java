@@ -15,7 +15,7 @@ import java.util.List;
 public class contraband_art_chest extends script.base_script {
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException {
         if (utils.getContainingPlayer(self) == player) {
-            int mnu2 = mi.addRootMenu(menu_info_types.ITEM_USE, new string_id("npe", "steal"));
+            int mnu2 = mi.addRootMenu(menu_info_types.ITEM_USE, new string_id("npe", "steal_art"));
         }
         return SCRIPT_CONTINUE;
     }

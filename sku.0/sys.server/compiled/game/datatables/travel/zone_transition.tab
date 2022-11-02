@@ -41,12 +41,12 @@ rryattGate_rryattFour	offset:189.7:-29.3:-500
 rryattGate_rryattFive	offset:1906:-193:-973					
 npe_space_station	instance:npe_space_station:dungeon1:hangarbay2:62.7:0.9:-33.5					Shared space station for new player experience
 npe_space_dungeon	instance:npe_space_dungeon:dungeon1:cave_entrance:6.1:9.7:4.3					Shared space station dungeon player experience
-aurillia_township	dathomir:5440:78:-4179					
+aurillia_township	dathomir:5306:78:-4145					
 tusken_encounter	tatooine:-3057.4:5.0:2103	won:feeder_tusken_01	won:feeder_tusken_01			
 axkva_min	dathomir:-3946:124:-48	won:axkva_min_intro	won:axkva_min_intro			
 ig88	lok:-7590.5:92:3491.4	won:found_ig88_encounter	won:found_ig88_encounter			
 dathomir_trade_outpost	dathomir:619:6.04:3092					
-mos_eisley	tatooine:3415:0:-4650					
+mos_eisley	tatooine:3528:0:-4804					
 coronet	corellia:-137:0:-4723					
 theed	naboo:-4856:0:4162					
 nym_stronghold	lok:416:0:5268					
