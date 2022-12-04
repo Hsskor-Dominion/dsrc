@@ -33,8 +33,8 @@ public class npe extends script.base_script
     public static final float PLAYER_PLACEMENT_RANGE = 3.0f;
     public static final float SPACE_PLAYER_PLACEMENT_RANGE = 100.0f;
     public static final String FINISH_PLANET = "tatooine";
-    public static final float FINISH_X = -2899.0f;
-    public static final float FINISH_Z = 2125.0f;
+    public static final float FINISH_X = 3531.0f;
+    public static final float FINISH_Z = -4803.0f;
     public static final int QUEST_ENUMERATION = 1;
     public static final String QUEST_REWORK_VAR = "npe.questRegrant";
     public static final String QUEST_REWORK_TABLE = "datatables/npe/reworked_quests.iff";
@@ -42,7 +42,7 @@ public class npe extends script.base_script
     public static final String SPACE_QUEST_TYPE = "strSpaceType";
     public static final String SPACE_QUEST_NAME = "strSpaceName";
     public static final string_id NOT_FROM_SPACE = new string_id("npe", "gamma_travel_not_from_space");
-    public static final int LEVEL_CAP = 10;
+    public static final int LEVEL_CAP = 54;
     public static void setResetDungeonObjvar(obj_id player) throws InterruptedException
     {
         if (isIdValid(space_dungeon.getDungeonIdForPlayer(player)))

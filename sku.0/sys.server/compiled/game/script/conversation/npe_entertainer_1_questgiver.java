@@ -15,15 +15,15 @@ public class npe_entertainer_1_questgiver extends script.base_script
     }
     public boolean npe_entertainer_1_questgiver_condition_playerCompletedQuest(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.hasCompletedQuest(player, "npe_entertainer_valarian");
+        return groundquests.hasCompletedQuest(player, "npe_entertainer_1");
     }
     public boolean npe_entertainer_1_questgiver_condition_playerStartedQuest(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "npe_entertainer_valarian");
+        return groundquests.isQuestActive(player, "npe_entertainer_1");
     }
     public boolean npe_entertainer_1_questgiver_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "npe_entertainer_valarian", "talktoqg2");
+        return groundquests.isTaskActive(player, "npe_entertainer_1", "talktoqg2");
     }
     public boolean npe_entertainer_1_questgiver_condition_playerOnOtherTraining(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -68,11 +68,30 @@ public class npe_entertainer_1_questgiver extends script.base_script
     public void npe_entertainer_1_questgiver_action_signalReward(obj_id player, obj_id npc) throws InterruptedException
     {
         groundquests.sendSignal(player, "npe_ent1_reward");
+        groundquests.grantQuest(player, "npe_han_comm_entertainer", false);
     }
     public void npe_entertainer_1_questgiver_action_giveQuest(obj_id player, obj_id npc) throws InterruptedException
     {
         String pTemplate = getSkillTemplate(player);
-        groundquests.grantQuest(player, "npe_entertainer_valarian");
+        groundquests.grantQuest(player, "npe_entertainer_1");
+        groundquests.sendSignal(player, "talked_to_anvar");
+        npe.givePerformPopUp(player, npc);
+        newbieTutorialSetToolbarElement(player, 9, "/StartDance");
+        newbieTutorialSetToolbarElement(player, 10, "/StopDance");
+        newbieTutorialHighlightUIElement(player, "/GroundHUD.Toolbar.volume.9", 5.0f);
+        newbieTutorialHighlightUIElement(player, "/GroundHUD.Toolbar.volume.10", 5.0f);
+        if (pTemplate.contains("entertainer"))
+        {
+            newbieTutorialSetToolbarElement(player, 4, "/flourish+1");
+            newbieTutorialSetToolbarElement(player, 5, "/flourish+2");
+            newbieTutorialSetToolbarElement(player, 6, "/flourish+3");
+            newbieTutorialSetToolbarElement(player, 7, "/flourish+4");
+            newbieTutorialSetToolbarElement(player, 16, "/flourish+5");
+            newbieTutorialSetToolbarElement(player, 17, "/flourish+6");
+            newbieTutorialSetToolbarElement(player, 18, "/flourish+7");
+            newbieTutorialSetToolbarElement(player, 19, "/flourish+8");
+            newbieTutorialHighlightUIElement(player, "/GroundHUD.Toolbar.volume.4", 5.0f);
+        }
     }
     public int npe_entertainer_1_questgiver_handleBranch2(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -214,7 +233,7 @@ public class npe_entertainer_1_questgiver extends script.base_script
         }
         setCondition(self, CONDITION_CONVERSABLE);
         setInvulnerable(self, true);
-        setName(self, "Unkar Tupp (Entertainer Gigs)");
+        setName(self, "Anvar Keyis");
         ai_lib.setDefaultCalmBehavior(self, ai_lib.BEHAVIOR_SENTINEL);
         return SCRIPT_CONTINUE;
     }
@@ -222,7 +241,7 @@ public class npe_entertainer_1_questgiver extends script.base_script
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setInvulnerable(self, true);
-        setName(self, "Unkar Tupp (Entertainer Gigs)");
+        setName(self, "Anvar Keyis");
         ai_lib.setDefaultCalmBehavior(self, ai_lib.BEHAVIOR_SENTINEL);
         return SCRIPT_CONTINUE;
     }
@@ -255,7 +274,14 @@ public class npe_entertainer_1_questgiver extends script.base_script
         }
         if (npe_entertainer_1_questgiver_condition_playerCompletedQuest(player, npc))
         {
-            groundquests.clearQuest(player, "npe_entertainer_1");
+            npe_entertainer_1_questgiver_action_facePlayer(player, npc);
+            string_id message = new string_id(c_stringFile, "s_39");
+            prose_package pp = new prose_package();
+            pp.stringId = message;
+            pp.actor.set(player);
+            pp.target.set(npc);
+            chat.chat(npc, player, null, null, pp);
+            return SCRIPT_CONTINUE;
         }
         if (npe_entertainer_1_questgiver_condition_playerStartedQuest(player, npc))
         {

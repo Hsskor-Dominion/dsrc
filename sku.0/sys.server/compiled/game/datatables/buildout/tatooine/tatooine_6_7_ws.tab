@@ -16,7 +16,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 60368	0	object/static/tatooine/rock_spire_skinny_tatooine_style_1.iff	0	156.6	5.95541	834.946	1	0	0	0		$|
 60369	0	object/static/tatooine/rock_spire_skinny_tatooine_style_2.iff	0	279.422	1.99999	813.907	1	0	0	0		$|
 60371	0	object/static/tatooine/rock_spire_lumpy_tatooine_style_2.iff	0	784.4	0.730737	403.209	1	0	0	0		$|
-60372	0	object/static/tatooine/rock_spire_lumpy_tatooine.iff	0	759.491	8e-006	453.761	1	0	0	0		$|
+60372	0	object/static/tatooine/rock_spire_lumpy_tatooine.iff	0	759.491	8E-06	453.761	1	0	0	0		$|
 60373	0	object/static/tatooine/rock_spire_skinny_tatooine_style_1.iff	0	894.136	1.49207	433	1	0	0	0		$|
 60374	0	object/static/tatooine/rock_spire_skinny_tatooine_style_2.iff	0	774.041	0.410507	418.705	1	0	0	0		$|
 60376	0	object/static/tatooine/rock_spire_lumpy_tatooine.iff	0	54.0134	10.4261	314.641	1	0	0	0		$|
@@ -26,3 +26,10 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 1189233	0	object/static/tatooine/rock_spire_skinny_tatooine.iff	0	374.048	0.332954	497.549	1	0	0	0		$|
 1189234	0	object/static/tatooine/rock_spire_skinny_tatooine.iff	0	665.937	0.454437	468.834	1	0	0	0		$|
 -1	0	object/tangible/spawning/static_npc/racing_coordinator.iff	0	328.9	2	901	1	0	0	0		$|
+-2	0	object/building/tatooine/capitol_tatooine.iff	0	464.4121	0	1018.85986	0.9099613	0	0.41469327	0		$|
+-3	0	object/static/item/eqp_platform_stage.iff	0	413.26	2	975.048	0.90630776	0	0.42261827	0		$|
+-4	0	object/static/item/eqp_platform_stage.iff	0	464.91333	5	958.9453	0.8661115	-0.27308393	0.39928287	0.12589341		$|
+-5	0	object/static/item/eqp_platform_stage.iff	0	405.70264	5	1031.7222	0.8661115	-0.27308393	0.39928287	0.12589341		$|
+-6	0	object/tangible/ground_spawning/area_spawner.iff	0	422	2	994	0.713838	0	-0.700312	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|vendor_tcg_1|strSpawnerType|4|area|strSpawns|4|vendor_tcg_1|$|
+-7	0	object/tangible/ground_spawning/area_spawner.iff	0	432.73	2	982.6963	0.713838	0	-0.700312	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|ent_questgiver_jabba|strSpawnerType|4|area|strSpawns|4|ent_questgiver_jabba|$|
+-8	0	object/tangible/ground_spawning/area_spawner.iff	0	430.0608	7.9232445	989.0708	0.72	0	-0.72	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|jabba_the_hutt|strSpawnerType|4|area|strSpawns|4|jabba_the_hutt|$|

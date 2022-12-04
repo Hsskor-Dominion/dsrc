@@ -134,4 +134,4 @@ gcw_region_endor_11	circle	-1932	-5432	2000		normal	fictional	0	0	spawnFalse	non
 gcw_region_endor_12	circle	1398	-4842	1250		normal	fictional	0	0	spawnFalse	none	1	0	0	0	
 gcw_region_endor_13	circle	3368	-3552	1000		normal	fictional	0	0	spawnFalse	none	1	0	0	0	
 gcw_region_endor_14	circle	5848	-5352	2000		normal	fictional	0	0	spawnFalse	none	1	0	0	0	
-gcw_scanner_endor	circle	-3018	5332	150		pvp_advanced	city	0	0	spawnFalse	other	1	1	1	1	
+gcw_scanner_endor	circle	-3018	5332	125		pvp_advanced	city	0	0	spawnFalse	other	1	1	1	1	
