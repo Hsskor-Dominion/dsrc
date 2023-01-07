@@ -108,7 +108,7 @@ public class npe_vendor_rallen extends script.base_script
         }
         setCondition(self, CONDITION_CONVERSABLE);
         setInvulnerable(self, true);
-        setName(self, "Tyrral");
+        setName(self, "Professor Sn'Oak (Beast Researcher)");
         attachScript(self, "npe.npc_vendor");
         return SCRIPT_CONTINUE;
     }
@@ -116,7 +116,7 @@ public class npe_vendor_rallen extends script.base_script
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setInvulnerable(self, true);
-        setName(self, "Tyrral");
+        setName(self, "Professor Sn'Oak (Beast Researcher)");
         attachScript(self, "npe.npc_vendor");
         return SCRIPT_CONTINUE;
     }

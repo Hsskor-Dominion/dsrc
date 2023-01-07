@@ -1,0 +1,32 @@
+rebel	imperial	room	loc_x	loc_y	loc_z	yaw	respawn_time	script	objvar	behavior
+s	s	s	f	f	f	f	i	s	s	e(wander=0,sentinel=1,loiter=2)[sentinel]
+object/tangible/gcw/flip_banner_onpole_rebel.iff	object/tangible/gcw/flip_banner_onpole_imperial.iff	world	970.98	72	1060.42	90				
+object/tangible/gcw/flip_banner_onpole_rebel.iff	object/tangible/gcw/flip_banner_onpole_imperial.iff	world	962.76	72	1066.8	90				
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	83.6	72	151.1	-90	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	949	72	1009	-104	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	950	72	1010	0	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	951	72	1011	90	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	952	72	1012	-68	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	953	72	1013	90	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	954	72	1014	-112	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	955	72	1015	180	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	956	72	1016	180	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	957	72	1017	-56	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	958	72	1018	71	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	959	72	1019	107	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	960	72	1020	-66	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	961	72	1021	-152	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	962	72	1022	158	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	963	72	1023	90	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	964	72	1024	116	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	965	72	1025	-65	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	966	72	1026	-101	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	967	72	1027	-117	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	968	72	1028	-180	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	969	72	1029	-135	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	970	72	1030	90	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	971	72	1031	0	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	972	72	1032	172	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	973	72	1033	125	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	974	72	1034	179	300			loiter
+gcw_base_rebel_commando	gcw_base_stormtrooper	world	975	72	1035	131	300			loiter

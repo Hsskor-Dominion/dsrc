@@ -12,7 +12,7 @@ clearFloraRadius = 0
 objectName = "space_crafting_n" "naboo_n1_deed"
 detailedDescription = "space_crafting_d" "ship_deed"
 containerType = CT_none
-appearanceFilename = "appearance/eqp_comp_chassis_deed.apt"
+appearanceFilename = "appearance/naboo_starfighter_base.apt"
 portalLayoutFilename = ""
 clientDataFile = ""
 

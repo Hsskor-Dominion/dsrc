@@ -83,3 +83,5 @@ undead_weapon_reb	object/weapon/ranged/rifle/rifle_t21.iff	object/weapon/ranged/
 undead_melee_01	object/weapon/melee/sword/sword_02.iff	object/weapon/melee/baton/baton_stun.iff	object/weapon/melee/sword/sword_nyax_force.iff	object/weapon/melee/baton/baton_gaderiffi.iff
 undead_melee_02	object/weapon/melee/sword/sword_01.iff	object/weapon/melee/knife/knife_stone.iff	object/weapon/melee/sword/sword_nyax_force.iff	object/weapon/melee/knife/knife_survival.iff
 fennec_ranged	object/weapon/ranged/rifle/ep3_loot_retaliation.iff			
+trandoshan_melee	object/weapon/melee/polearm/ep3/lance_trando.iff			
+wookiee_melee_02	object/weapon/melee/polearm/ep3/lance_wookiee.iff			

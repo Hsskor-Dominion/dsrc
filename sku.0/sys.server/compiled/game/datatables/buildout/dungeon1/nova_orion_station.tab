@@ -16,7 +16,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -1196074601	-57209999	object/tangible/collection/dwartii_statue_faya.iff	1	16.9633	0.0441449	-16.9336	0.926798	0	-0.375559	0	systems.collections.consume_click	collection.slotName|4|col_dwartii_statue:dwartii_statue_faya|$|
 -1121368925	-57209999	object/tangible/ground_spawning/patrol_waypoint.iff	1	15.1865	-1	4.00763	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|nova_orion_patrol_03_15038218_9|registerWithController|0|1|$|
 -1051323741	-57209999	object/tangible/ground_spawning/patrol_waypoint.iff	1	-19.6689	-2.57E-09	11.755	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|nova_orion_patrol_04_15038319_3|registerWithController|0|1|$|
--1023509108	-57209999	object/tangible/terminal/terminal_bank.iff	1	-19.3365	0	14.2085	0.453241	0	0.891388	0	terminal.bank:planet_map.map_loc	banking_bankid|4|dungeon1|$|
+-1023509108	-57209999	object/tangible/terminal/terminal_bazaar.iff	1	-19.3365	0	14.2085	0.453241	0	0.891388	0	terminal.bazaar:planet_map.map_loc	$|
 -859156733	-57209999	object/tangible/terminal/terminal_bank.iff	1	-18.237	0	15.7083	0.453241	0	0.891388	0	terminal.bank:planet_map.map_loc	banking_bankid|4|dungeon1|$|
 -699965862	-57209999	object/tangible/ground_spawning/patrol_spawner.iff	1	4.565	-2.57E-09	-22.1822	1	0	0	0	systems.spawning.spawner_patrol	fltMaxSpawnTime|2|9.000000|fltMinSpawnTime|2|3.000000|fltRadius|2|0.000000|intDefaultBehavior|0|3|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|patrolPathType|4|oscillate|registerWithController|0|1|strName|4|nova_orion_patrol_05|strPatrolPointNames|5|nova_orion_patrol_05_15038383_1:nova_orion_patrol_05_15038383_2:nova_orion_patrol_05_15038383_3:|strSpawnerType|4|patrol|strSpawns|4|nova_orion_employee|$|
 -355452170	-57209999	object/tangible/ground_spawning/patrol_waypoint.iff	1	10.6643	-2.57E-09	-15.404	1	0	0	0	systems.spawning.patrol_point_setup	ignoreInBuildoutArray|0|1|pointName|4|nova_orion_patrol_05_15038383_2|registerWithController|0|1|$|
@@ -101,6 +101,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -57209988	-57210000	object/cell/cell.iff	12	0	0	0	1	0	0	0		$|
 -776949303	-57209988	object/tangible/collection/col_dust_durni_10.iff	12	-62.5657	-1.0805	8.46502	1	0	0	0	systems.collections.consume_click	collection.aggro|4|false|collection.newbie_comm_series|0|1|collection.slotName|4|col_dust_durni_01:dust_durni_10|$|
 -57209987	-57210000	object/cell/cell.iff	13	0	0	0	1	0	0	0		$|
+-9776949303	-57209998	object/tangible/terminal/terminal_mission_bounty.iff	2	-23.5	0.8	17	1.2	0	0	0	systems.missions.base.mission_terminal_bounty	$|
 -57209986	-57210000	object/cell/cell.iff	14	0	0	0	1	0	0	0		$|
 -57209985	-57210000	object/cell/cell.iff	15	0	0	0	1	0	0	0		$|
 -1344017757	-57209985	object/tangible/collection/col_dust_durni_04.iff	15	7.69025	-30.1118	-21.8851	1	0	0	0	systems.collections.consume_click	collection.aggro|4|false|collection.newbie_comm_series|0|1|collection.slotName|4|col_dust_durni_01:dust_durni_04|$|
@@ -130,4 +131,4 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -57209970	-57210000	object/cell/cell.iff	30	0	0	0	1	0	0	0		$|
 -57209969	-57210000	object/cell/cell.iff	31	0	0	0	1	0	0	0		$|
 -116468574	-57209969	object/tangible/collection/col_dust_durni_03.iff	31	-0.008722	29.0011	68.9394	1	0	0	0	systems.collections.consume_click	collection.aggro|4|false|collection.newbie_comm_series|0|1|collection.slotName|4|col_dust_durni_01:dust_durni_03|$|
-5551241	-57209999	object/tangible/ground_spawning/area_spawner.iff	1	0	0	15	1	0	0	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|npe_entertainer_questgiver|strSpawnerType|4|area|strSpawns|4|npe_entertainer_questgiver|$|
+5551241	-57209999	object/tangible/ground_spawning/area_spawner.iff	1	0	0	15	1	0	0	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|cid|strSpawnerType|4|area|strSpawns|4|cid|$|

@@ -382,6 +382,8 @@ object/building/player/player_house_sandcrawler.iff	object/building/player/const
 																							object/tangible/terminal/terminal_player_structure.iff	-4.46	8.81	-13.52	foyer	90	
 object/building/player/player_pgc_merchant_tent_s01.iff	object/building/player/construction/construction_player_house_tatooine_small_style_01.iff			0									3	3	4320	600	1					4							
 																							object/tangible/terminal/terminal_player_structure.iff	-0.15	0.27	-2.76	r1	0	
+																							object/tangible/terminal/terminal_city_vote.iff	-1	1.95	-2.76	r1	0	
+																							object/tangible/terminal/terminal_city.iff	1	2	-2.76	r1	0	
 object/building/player/player_house_tcg_commando_bunker.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff			0	8								13	5	7200	0	1					4							
 																							object/tangible/terminal/terminal_player_structure.iff	3.2	0.4	3.16	entry	180	
 object/building/player/player_house_tcg_vehicle_garage.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff			6	8								13	5	7200	0	1					4							

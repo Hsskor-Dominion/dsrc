@@ -1,3 +1,5 @@
+//            Filename:     tatooine_city_deed
+//            Directory:    object/tangible/deed/city_deed
 
 @base object/tangible/deed/base/base_deed.iff
 
@@ -6,3 +8,10 @@
 @class object_template 7
 
 sharedTemplate = "object/tangible/saga_system/rewards/shared_structure_deed_player_tent_chronicler.iff"
+
+objvars = +[
+	"player_structure.deed.template" = "object/building/player/player_pgc_merchant_tent_s01",
+	"player_structure.deed.buildtime" = 10]
+
+scripts = +[
+	"item.structure_deed.city_hall_deed"]

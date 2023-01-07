@@ -29,10 +29,7 @@ collectible/npc_collectible:common
 generic/generic:other
 crafting_loot/loot_schematics
 wearables/dynamic_armor_standard
-wearables/dynamic_armor_jedi_standard
 crafting_loot/simple_kit
 crafting_loot/simple_kit
 crafting_loot/simple_kit
-crafting_loot/saber_crystals_color
-crafting_loot/saber_crystals_low:power_crystal
 crafting_loot/weapon_components:wp_comp_21_30

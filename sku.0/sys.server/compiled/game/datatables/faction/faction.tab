@@ -88,10 +88,10 @@ death_watch_special	0	0	0
 sith_shadow	1	1	0		fs_villager	Rebel,Imperial,death_watch	0
 fs_villager	1	1	0		sith_shadow	death_watch	0
 sith_shadow_nonaggro	1	0	0		fs_villager	Rebel,Imperial	0
-forest_outcast	1	1	0		forest_kerritamba		
-forest_kerritamba	1	1	0		forest_outcast		
-avatar_kashyyyk	0	1	0		avatar_blackscale		
-avatar_blackscale	0	1	0		avatar_kashyyyk		
+forest_outcast	1	1	0		forest_kerritamba	forest_outcast	
+forest_kerritamba	1	1	0		forest_outcast	forest_kerritamba	
+avatar_kashyyyk	0	1	0		avatar_blackscale	avatar_kashyyyk	
+avatar_blackscale	0	1	0		avatar_kashyyyk	avatar_blackscale	
 hsskor	1	1	1		kashyyyk_resistance		
 kashyyyk_resistance	1	1	1		hsskor		
 faction_sayormi	0	1	0				

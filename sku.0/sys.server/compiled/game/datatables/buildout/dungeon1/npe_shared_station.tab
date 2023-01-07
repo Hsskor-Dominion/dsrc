@@ -33,13 +33,17 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -24	-1	object/cell/cell.iff	23	0	0	0	1	0	0	0		$|
 -25	-1	object/cell/cell.iff	24	0	0	0	1	0	0	0		$|
 -136369189	-25	object/tangible/collection/col_dust_durni_09.iff	24	-10.517	-29.258	41.0624	0.990216	0	-0.139543	0	systems.collections.consume_click	collection.aggro|4|false|collection.slotName|4|col_dust_durni_01:dust_durni_09|$|
+-2023916977	-9	object/tangible/npc/rebel_recruiter_spawner.iff	8	45	0.8	-24	0.8	0	0.6553	0		$|
 -26	-1	object/cell/cell.iff	25	0	0	0	1	0	0	0		$|
 -27	-1	object/cell/cell.iff	26	0	0	0	1	0	0	0		$|
 -28	-1	object/cell/cell.iff	27	0	0	0	1	0	0	0		$|
 -29	-1	object/cell/cell.iff	28	0	0	0	1	0	0	0		$|
 -415569238	-29	object/tangible/collection/col_dust_durni_06.iff	28	-58.9335	28.8968	-6.21276	0.922997	0	0.384808	0	systems.collections.consume_click	collection.aggro|4|false|collection.slotName|4|col_dust_durni_01:dust_durni_06|$|
+-2023916976	-9	object/tangible/npc/imperial_recruiter_spawner.iff	8	36	0.8	-45	0.7	0	0.6554	0		$|
 -30	-1	object/cell/cell.iff	29	0	0	0	1	0	0	0		$|
 -1594601083	-30	object/tangible/collection/col_dust_durni_01.iff	29	-16.539	28.7041	-83.3105	0.980741	0.00484366	-0.193706	-0.0245236	systems.collections.consume_click	collection.aggro|4|false|collection.slotName|4|col_dust_durni_01:dust_durni_01|$|
+-2023916975	-9	object/tangible/ground_spawning/area_spawner.iff	8	48	0.8	-25	0.6	0	0.6555	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|2.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|1.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|heroic_echo_launch_rebel|strSpawnerType|4|area|strSpawns|4|heroic_echo_launch_rebel|$|
 -31	-1	object/cell/cell.iff	30	0	0	0	1	0	0	0		$|
 -32	-1	object/cell/cell.iff	31	0	0	0	1	0	0	0		$|
 -1479912272	-32	object/tangible/collection/col_dust_durni_03.iff	31	-0.260859	28.96	68.9996	0.926798	0	0.375559	0	systems.collections.consume_click	collection.aggro|4|false|collection.slotName|4|col_dust_durni_01:dust_durni_03|$|
+-2023916974	-9	object/tangible/ground_spawning/area_spawner.iff	8	34	0.8	-43	0.5	0	0.65596	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|2.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|1.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|heroic_echo_launch_imperial|strSpawnerType|4|area|strSpawns|4|heroic_echo_launch_imperial|$|
