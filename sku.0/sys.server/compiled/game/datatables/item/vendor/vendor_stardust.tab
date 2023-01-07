@@ -1,0 +1,7 @@
+item	cash	token0	token1	token2	token3	token4	token5	token6	token7	token8	token9	token10	token11	token12	token18	class	script	note
+s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
+item_pgc_planet_hologram_yavin4	100000																	"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
+item_pgc_planet_hologram_yavin4_02	100000																	"So in the case of this table only traders will see the ""all"" items."
+object/tangible/veteran_reward/frn_vet_holo_deathstar.iff	100000																	
+object/tangible/tcg/series5/decorative_deathstar_hologram.iff	100000																	
+object/static/structure/general/debris_deathstar_conduit.iff	100000																	

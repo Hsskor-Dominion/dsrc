@@ -1,0 +1,9 @@
+item	cash	token0	token1	token2	token3	token14	class	script	note
+s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
+item_pgc_token_01	100000								
+object/tangible/ship/components/weapon/wpn_sds_imperial_blaster_1.iff	100								
+object/tangible/ship/components/reactor/rct_cygnus_supercharged_mk2.iff	100								
+object/tangible/ship/components/weapon_capacitor/cap_qualdex_conservator_q7.iff	100								
+object/tangible/ship/components/engine/eng_cygnus_hd7.iff	100								
+item_tcg_loot_reward_series8_c3po_backpack						40			
+item_costume_jawa	100								
