@@ -8,7 +8,6 @@ object/tangible/loot/dungeon/death_watch_bunker/art_crate.iff						1
 item_tcg_loot_reward_series6_ric_920_speeder						1			
 item_tcg_loot_reward_series5_air2_swoop_speeder						1			
 item_tcg_loot_reward_series8_slave_1_itv_01						100			
-item_tcg_loot_reward_series3_armored_bantha						1			
 object/tangible/wearables/goggles/goggles_anniversary.iff						1			
 object/tangible/wearables/goggles/goggles_s01.iff						1			
 object/tangible/wearables/goggles/goggles_s02.iff						1			
@@ -16,7 +15,6 @@ object/tangible/wearables/goggles/goggles_s03.iff						1
 object/tangible/wearables/goggles/goggles_s04.iff						1			
 object/tangible/wearables/goggles/goggles_s05.iff						1			
 object/tangible/wearables/goggles/goggles_s06.iff						1			
-object/tangible/veteran_reward/frn_vet_podracer_statue.iff						1			
 object/tangible/veteran_reward/city_flag_kit.iff						1			
 item_publish_gift_27_04_01						1			
 item_tcg_loot_reward_series4_generic_rug_02_01						1			
@@ -29,16 +27,6 @@ object/tangible/loot/dungeon/death_watch_bunker/binary_liquid.iff						100
 object/tangible/veteran_reward/frn_vet_carbonite_gungan.iff						1			
 object/tangible/veteran_reward/frn_vet_carbonite_ugnaught.iff						1			
 object/tangible/veteran_reward/frn_vet_carbonite_geonosian.iff						1			
-item_tcg_loot_reward_series1_tusken_talisman						1			
-item_tcg_loot_reward_series3_greeter_tusken						1			
-item_tcg_loot_reward_series3_greeter_toydarian						1			
-item_tcg_loot_reward_series4_vendor_toydarian_02_01						1			
-item_tcg_loot_reward_series5_cybernetic_rots_arm						1			
 item_tcg_loot_reward_series5_galactic_hunters_poster						1			
 item_tcg_loot_reward_series9_fett						1			
 item_tcg_loot_reward_series9_mando						1			
-costume_4lom	100								
-costume_ig106	100								
-costume_droid_8t88	100								
-item_costume_toydarian	100								
-item_costume_kit	1								

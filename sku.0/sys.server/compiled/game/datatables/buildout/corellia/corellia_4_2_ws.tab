@@ -1145,7 +1145,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 7755375	0	object/tangible/terminal/terminal_bazaar.iff	0	1736	28	1500	0.707107	0	-0.707106	0		$|
 7755378	0	object/static/structure/general/streetlamp_large_style_02.iff	0	1713.8	28	1499.05	1	0	0	0		$|
 7755379	0	object/static/structure/general/streetlamp_large_style_02.iff	0	1726.15	28	1499.05	1	0	0	0		$|
-8105493	0	object/building/corellia/cantina_corellia.iff	0	1705.47	28	1649.5	0.707106	0	0.707107	0	structure.municipal.cantina:event.bh_event.cantina_lando_controller	$|
+8105493	0	object/building/corellia/cantina_corellia.iff	0	1705.47	28	1649.5	0.707106	0	0.707107	0	structure.municipal.cantina:stardust.event.cantina_lando_controller	$|
 8105494	8105493	object/cell/cell.iff	1	0	0	0	1	0	0	0		$|
 8105495	8105493	object/cell/cell.iff	2	0	0	0	1	0	0	0		$|
 8105496	8105493	object/cell/cell.iff	3	0	0	0	1	0	0	0		$|

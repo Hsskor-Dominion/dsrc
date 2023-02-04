@@ -194,8 +194,7 @@ public class valarian_raid extends script.base_script
     {
         if (response.equals("s_263"))
         {
-
-            if (valarian_raid_condition_isValarian(player, npc))
+            if (valarian_raid_condition__defaultCondition(player, npc))
             {
                 doAnimationAction(npc, "thumb_up");
                 groundquests.grantQuest(player, "valarian_raid");
@@ -217,7 +216,7 @@ public class valarian_raid extends script.base_script
         }
         if (response.equals("s_267"))
         {
-	    if (valarian_raid_condition__defaultCondition(player, npc))
+	    if (valarian_raid_condition_isValarian(player, npc))
             {
 		valarian_raid_action_vendor(player, npc);
                 doAnimationAction(npc, "thumb_up");

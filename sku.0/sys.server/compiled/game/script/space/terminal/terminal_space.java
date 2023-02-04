@@ -14,7 +14,7 @@ public class terminal_space extends script.terminal.base.base_terminal
     public static final string_id SID_LAUNCH_SHIP = new string_id("space/space_terminal", "launch_ship");
     public static final string_id SID_MUSTAFAR = new string_id("space/space_terminal", "mustafar_exception");
     public static final string_id SID_NOT_IN_COMBAT = new string_id("travel", "not_in_combat");
-    public static final string_id SID_PVP_NOW_OVERT = new string_id("space/space_interaction", "pvp_now_overt");
+    public static final string_id SID_PVP_NOW_OVERT2 = new string_id("space/space_interaction", "pvp_now_overt2");
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         requestPreloadCompleteTrigger(self);
@@ -218,7 +218,7 @@ public class terminal_space extends script.terminal.base.base_terminal
         Vector groupMemberStartIndex = utils.addElement(null, 0);
         utils.setScriptVar(player, "strLaunchPointName", "launching");
         Vector shipStartLocations = space_transition.getShipStartLocations(ship);
-        space_utils.sendSystemMessage(player, SID_PVP_NOW_OVERT);
+        space_utils.sendSystemMessage(player, SID_PVP_NOW_OVERT2);
         if (shipStartLocations != null && shipStartLocations.size() > 0)
         {
             int startIndex = 0;

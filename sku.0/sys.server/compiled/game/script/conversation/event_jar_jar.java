@@ -246,7 +246,7 @@ public class event_jar_jar extends script.base_script
             else
             {
                 doAnimationAction(npc, "soapbox");
-                string_id message = new string_id(c_stringFile, "s_269");
+                string_id message = new string_id(c_stringFile, "s_270");
                 utils.removeScriptVar(player, "conversation.event_jar_jar.branchId");
                 chat.chat(npc, player, message);
                 npcEndConversation(player);

@@ -11,11 +11,14 @@ item_deed_podracer_anakin						40
 item_tcg_loot_reward_series3_podracer_longtail						40			
 item_tcg_loot_reward_series2_podracer_mawhonic						40			
 item_tcg_loot_reward_series4_balta_podracer_02_01						40			
+object/tangible/veteran_reward/frn_vet_podracer_statue.iff						1			
 item_tcg_loot_reward_series4_location_itv_02_01						400			
 item_tcg_loot_reward_series1_housecleaning_kit						40			
 item_tcg_loot_reward_series2_organizational_datapad						40			
 item_tcg_loot_reward_series1_beru_whitesuns_cookbook						40			
 object/tangible/veteran_reward/structure_storage_increase_deed.iff						40			
+item_tcg_loot_reward_series3_greeter_toydarian						4			
+item_tcg_loot_reward_series4_vendor_toydarian_02_01						4			
 item_tcg_loot_reward_series1_vendor_jawa						4			
 item_tcg_loot_reward_series2_greeter_jawa						4			
 item_tcg_loot_reward_series9_jawa						4			
@@ -26,4 +29,10 @@ item_tcg_loot_reward_series6_build02_hk47_mustafar_diorama						40
 item_tcg_loot_reward_series6_build04_hkdroid_series_poster						40			
 item_tcg_loot_reward_series8_glowly_sculpture						4			
 item_tcg_loot_reward_series8_c3po_backpack						40			
+item_tcg_loot_reward_series5_cybernetic_rots_arm						1			
 item_costume_jawa	100								
+costume_4lom	100								
+costume_ig106	100								
+costume_droid_8t88	100								
+item_costume_toydarian	100								
+item_costume_kit	1								

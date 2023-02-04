@@ -4,20 +4,20 @@ mission_default	rectangle	-8000	-8000	8000	8000	normal	wasteland	1	90	mission	ot
 @tatooine_region_names:world_spawner	rectangle	-8000	-8000	8000	8000	normal	default	10	90	default	other	1	0	0	0	
 @tatooine_region_names:bestine	circle	-1218	-3688	336		normal	city	0	0	spawnFalse	other	0	1	1	0	
 @tatooine_region_names:fort_tusken	circle	-3900	6260	250		normal	city	0	0	spawnFalse	none	0	0	1	0	
-@tatooine_region_names:jabbas_palace	circle	-5983	-6267	500		normal	city	0	0	spawnFalse	none	0	0	1	0	
+@tatooine_region_names:jabbas_palace	circle	-5983	-6267	500		normal	city	0	0	spawnFalse	none	1	0	1	0	
 @tatooine_region_names:mos_eisley	circle	3460	-4768	456		normal	city	0	0	spawnFalse	other	0	1	1	0	
-@tatooine_region_names:mos_entha	circle	1488	3256	424		normal	city	0	0	spawnFalse	other	0	1	1	0	
+@tatooine_region_names:mos_entha	circle	1488	3256	424		normal	city	0	0	spawnFalse	other	1	1	1	0	
 @tatooine_region_names:mos_espa	circle	-2940	2190	533		normal	city	0	0	spawnFalse	other	1	1	1	0	
-@tatooine_region_names:mos_taike	circle	3832	2360	264		normal	city	0	0	spawnFalse	other	0	1	1	0	
-@tatooine_region_names:wayfar	circle	-5174	-6582	230		normal	city	0	0	spawnFalse	other	0	1	1	0	
-@tatooine_region_names:anchorhead	circle	102	-5360	125		normal	city	0	0	spawnFalse	other	0	1	1	0	
+@tatooine_region_names:mos_taike	circle	3832	2360	264		normal	city	0	0	spawnFalse	other	1	1	1	0	
+@tatooine_region_names:wayfar	circle	-5174	-6582	230		normal	city	0	0	spawnFalse	other	1	1	1	0	
+@tatooine_region_names:anchorhead	circle	102	-5360	125		normal	city	0	0	spawnFalse	other	1	1	1	0	
 bestine_nobuild_1	circle	-1218	-3688	700		normal	default	0	0	spawnFalse	none	0	0	0	0	
 mos_eisley_nobuild_1	circle	3460	-4768	900		normal	default	0	0	spawnFalse	none	0	0	0	0	
-mos_entha_nobuild_1	circle	1488	3256	900		normal	default	0	0	spawnFalse	none	0	0	0	0	
+mos_entha_nobuild_1	circle	1488	3256	900		normal	default	0	0	spawnFalse	none	1	0	0	0	
 mos_espa_nobuild_1	circle	-2712	2464	1100		normal	default	0	0	spawnFalse	none	1	0	0	0	
-mos_taike_nobuild_1	circle	3832	2360	500		normal	default	0	0	spawnFalse	none	0	0	0	0	
-wayfar_nobuild_1	circle	-5174	-6582	500		normal	default	0	0	spawnFalse	none	0	0	0	0	
-anchorhead_nobuild_1	circle	102	-5360	400		normal	default	0	0	spawnFalse	none	0	0	0	0	
+mos_taike_nobuild_1	circle	3832	2360	500		normal	default	0	0	spawnFalse	none	1	0	0	0	
+wayfar_nobuild_1	circle	-5174	-6582	500		normal	default	0	0	spawnFalse	none	1	0	0	0	
+anchorhead_nobuild_1	circle	102	-5360	400		normal	default	0	0	spawnFalse	none	1	0	0	0	
 @tatooine_region_names:plateau	rectangle	-1408	-7088	7760	1376	normal	wasteland	1	90	mission	other	1	0	0	0	
 @tatooine_region_names:eastern_oasis	circle	6289	-441	500		normal	wasteland	1	90	mission	other	1	0	0	0	
 @tatooine_region_names:northeastern_oasis	circle	5361	3945	1175		normal	wasteland	1	90	mission	other	1	0	0	0	
@@ -36,8 +36,8 @@ anchorhead_nobuild_1	circle	102	-5360	400		normal	default	0	0	spawnFalse	none	0	
 @tatooine_region_names:jundland_waste_2	circle	-3296	-1016	1250		normal	wasteland	1	90	mission	other	1	0	0	0	
 @tatooine_region_names:grand_arena	circle	872	5000	1130		normal	wasteland	1	90	mission	other	1	0	0	0	
 @tatooine_region_names:western_dune_sea_3	circle	-4904	-2536	2424		normal	wasteland	1	90	mission	other	1	0	0	0	
-@tatooine_region_names:jawa_mountain_fortress	circle	-6144	1856	200		normal	city	1	10	spawnFalse	none	0	0	1	0	
-@tatooine_region_names:imperial_oasis	circle	-5300	2681	90		normal	city	1	10	spawnFalse	none	0	0	1	0	
+@tatooine_region_names:jawa_mountain_fortress	circle	-6144	1856	200		normal	city	1	10	spawnFalse	none	1	0	1	0	
+@tatooine_region_names:imperial_oasis	circle	-5300	2681	90		normal	city	1	10	spawnFalse	none	1	0	1	0	
 tatooine_bib_newbie_1	circle	-1429.785889	-3773.310547	5		normal	default	0	0	spawnFalse	tatooine_bib_1	0	0	0	0	
 bestine_deliver_1	circle	-1033.882813	-3644.68042	5		normal	default	0	0	spawnFalse	tatooine_bestine	0	0	0	0	
 bestine_deliver_2	circle	-1010.281006	-3728.594238	2		normal	default	0	0	spawnFalse	tatooine_bestine	0	0	0	0	
@@ -107,9 +107,9 @@ mos_espa_deliver_12	circle	-2914.088135	2466.257813	10		normal	default	0	0	spawn
 @tatooine_region_names:arch_mesa	circle	-289	3851	300		normal	desert	9	15	spawnFalse	none	1	0	1	0	
 @tatooine_region_names:grand_arena_flats_1	circle	2592	4096	512		normal	desert	9	15	spawnFalse	none	1	0	1	0	
 @tatooine_region_names:grand_arena_flats_2	rectangle	1568	3872	2720	4384	normal	desert	9	15	spawnFalse	none	1	0	1	0	
-@tatooine_region_names:darklighter_estate_1	circle	-706	-6714	200		normal	desert	9	15	spawnFalse	none	0	0	1	0	
-@tatooine_region_names:fort_tusken_1	circle	-3981	6270	250		normal	desert	9	15	spawnFalse	none	0	0	1	0	
-@tatooine_region_names:jawa_mountain_fortress_1	circle	-6144	1856	300		normal	desert	9	15	spawnFalse	none	0	0	1	0	
+@tatooine_region_names:darklighter_estate_1	circle	-706	-6714	200		normal	desert	9	15	spawnFalse	none	1	0	1	0	
+@tatooine_region_names:fort_tusken_1	circle	-3981	6270	250		normal	desert	9	15	spawnFalse	none	1	0	1	0	
+@tatooine_region_names:jawa_mountain_fortress_1	circle	-6144	1856	300		normal	desert	9	15	spawnFalse	none	1	0	1	0	
 @tatooine_region_names:mushroom_mesa	circle	900	5567	250		normal	plateau	9	15	spawnFalse	none	1	0	1	0	
 @tatooine_region_names:benzin_plateau_1	circle	880	5456	720		normal	plateau	9	15	spawnFalse	none	1	0	1	0	
 @tatooine_region_names:benzin_plateau_2	circle	-192	5024	744		normal	plateau	9	15	spawnFalse	none	1	0	1	0	
@@ -117,7 +117,7 @@ mos_espa_deliver_12	circle	-2914.088135	2466.257813	10		normal	default	0	0	spawn
 @tatooine_region_names:benzin_plateau_4	circle	880	4368	650		normal	plateau	9	15	spawnFalse	none	1	0	1	0	
 @tatooine_region_names:eastern_oasis_1	circle	6244	-400	150		normal	desert	9	15	spawnFalse	none	1	0	1	0	
 @tatooine_region_names:oasis_northeast	circle	6665	5457	150		normal	desert	9	15	spawnFalse	none	1	0	1	0	
-@tatooine_region_names:imperial_oasis_1	circle	-5311	2684	200		normal	desert	9	15	spawnFalse	none	0	0	1	0	
+@tatooine_region_names:imperial_oasis_1	circle	-5311	2684	200		normal	desert	9	15	spawnFalse	none	1	0	1	0	
 @tatooine_region_names:oasis_south	circle	1828	-6053	150		normal	desert	9	15	spawnFalse	none	1	0	1	0	
 @tatooine_region_names:krayt_graveyard_1	rectangle	6560	4096	7488	4608	normal	desert	9	15	spawnFalse	none	0	0	1	0	
 @tatooine_region_names:w_dune_sea_1	circle	-5952	-2176	1344		normal	desert	9	15	spawnFalse	none	1	0	1	0	
@@ -212,9 +212,9 @@ mos_espa_deliver_12	circle	-2914.088135	2466.257813	10		normal	default	0	0	spawn
 @tatooine_region_names:old_ben_kenobis hut	circle	-4490	-2274	500		normal	wasteland	9	15	spawnFalse	none	0	0	0	0	
 @tatooine_region_names:sarlacc_pit	circle	-6161	-3375	500		normal	wasteland	9	15	spawnFalse	none	0	0	0	0	
 @tatooine_region_names:cave_central	circle	0	0	300		normal	wasteland	9	15	spawnFalse	none	0	0	0	0	
-@tatooine_region_names:jabba_palace	circle	-5857	-6175	500		normal	wasteland	9	15	spawnFalse	none	0	0	0	0	
-@tatooine_region_names:fort_tuskan	circle	-398	6253	500		normal	wasteland	9	15	spawnFalse	none	0	0	0	0	
-@tatooine_region_names:jawa_mountain_fortress_2	circle	-6140	1855	500		normal	wasteland	9	15	spawnFalse	none	0	0	0	0	
+@tatooine_region_names:jabba_palace	circle	-5857	-6175	500		normal	wasteland	9	15	spawnFalse	none	1	0	0	0	
+@tatooine_region_names:fort_tuskan	circle	-398	6253	500		normal	wasteland	9	15	spawnFalse	none	1	0	0	0	
+@tatooine_region_names:jawa_mountain_fortress_2	circle	-6140	1855	500		normal	wasteland	9	15	spawnFalse	none	1	0	0	0	
 sdungeon_tusken_village	circle	-5322	-4444	140		normal	city	0	0	spawnFalse	none	0	0	0	0	
 tatooine_darklighter_estate	circle	-672.5	-6723	193		normal	city	0	0	spawnFalse	none	0	0	0	0	
 tatooine_darklighter_estate_nobuild	circle	-672.5	-6723	293		normal	city	0	0	spawnFalse	none	0	0	0	0	

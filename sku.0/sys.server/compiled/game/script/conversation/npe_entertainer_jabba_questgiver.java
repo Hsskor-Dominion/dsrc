@@ -63,7 +63,7 @@ public class npe_entertainer_jabba_questgiver extends script.base_script
     }
     public void npe_entertainer_jabba_questgiver_action_signalReward(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.sendSignal(player, "npe_ent1_reward");
+        groundquests.sendSignal(player, "npe_ent2_reward");
     }
     public void npe_entertainer_jabba_questgiver_action_giveQuest(obj_id player, obj_id npc) throws InterruptedException
     {

@@ -65,7 +65,7 @@ public class jabba_raid extends script.base_script
         {
             if (jabba_raid_condition__defaultCondition(player, npc))
             {
-                doAnimationAction(npc, "thumb_up");
+                doAnimationAction(npc, "face_wink");
                 string_id message = new string_id(c_stringFile, "s_167");
                 utils.removeScriptVar(player, "conversation.jabba_raid.branchId");
                 chat.chat(npc, player, message);
@@ -94,7 +94,7 @@ public class jabba_raid extends script.base_script
         {
             if (jabba_raid_condition__defaultCondition(player, npc))
             {
-                doAnimationAction(npc, "shakefist");
+                doAnimationAction(npc, "face_eye_roll");
                 string_id message = new string_id(c_stringFile, "s_257");
                 int numberOfResponses = 0;
                 boolean hasResponse = false;
@@ -130,7 +130,7 @@ public class jabba_raid extends script.base_script
         {
             if (jabba_raid_condition__defaultCondition(player, npc))
             {
-                doAnimationAction(npc, "threaten");
+                doAnimationAction(npc, "look_casual");
                 string_id message = new string_id(c_stringFile, "s_273");
                 utils.removeScriptVar(player, "conversation.jabba_raid.branchId");
                 chat.chat(npc, player, message);
@@ -197,7 +197,7 @@ public class jabba_raid extends script.base_script
 
             if (jabba_raid_condition_isjabba(player, npc))
             {
-                doAnimationAction(npc, "thumb_up");
+                doAnimationAction(npc, "explain");
                 groundquests.grantQuest(player, "jabba_raid");
                 string_id message = new string_id(c_stringFile, "s_265");
                 utils.removeScriptVar(player, "conversation.jabba_raid.branchId");
@@ -207,7 +207,7 @@ public class jabba_raid extends script.base_script
             }
 	    else
             {
-                doAnimationAction(npc, "laugh");
+                doAnimationAction(npc, "fakepunch");
                 string_id message = new string_id(c_stringFile, "s_269");
                 utils.removeScriptVar(player, "conversation.jabba_raid.branchId");
                 chat.chat(npc, player, message);
@@ -219,8 +219,8 @@ public class jabba_raid extends script.base_script
         {
 	    if (jabba_raid_condition__defaultCondition(player, npc))
             {
-		jabba_raid_action_vendor(player, npc);
-                doAnimationAction(npc, "thumb_up");
+		        jabba_raid_action_vendor(player, npc);
+                doAnimationAction(npc, "handshake_tandem");
                 string_id message = new string_id(c_stringFile, "fence_fennec");
                 utils.removeScriptVar(player, "conversation.jabba_raid.branchId");
                 chat.chat(npc, player, message);
@@ -229,7 +229,7 @@ public class jabba_raid extends script.base_script
             }
             else
             {
-                doAnimationAction(npc, "waft");
+                doAnimationAction(npc, "dismiss");
                 string_id message = new string_id(c_stringFile, "s_269");
                 utils.removeScriptVar(player, "conversation.jabba_raid.branchId");
                 chat.chat(npc, player, message);
@@ -283,7 +283,7 @@ public class jabba_raid extends script.base_script
         }
         if (jabba_raid_condition_hasAnyQuest(player, npc))
         {
-            doAnimationAction(npc, "point_forward");
+            doAnimationAction(npc, "elbow");
             string_id message = new string_id(c_stringFile, "s_163");
             int numberOfResponses = 0;
             boolean hasResponse = false;
@@ -324,7 +324,7 @@ public class jabba_raid extends script.base_script
         }
         if (jabba_raid_condition__defaultCondition(player, npc))
         {
-            doAnimationAction(npc, "scare");
+            doAnimationAction(npc, "wtf");
             string_id message = new string_id(c_stringFile, "s_253");
             int numberOfResponses = 0;
             boolean hasResponse = false;

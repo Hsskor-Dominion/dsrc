@@ -1757,7 +1757,7 @@ public class buff_handler extends script.base_script
             CustomerServiceLog("SuspectedCheaterChannel: ", "Storing improvDance: " + improvDance);
 
         }
-        int actualPointsToSpend = 8;
+        int actualPointsToSpend = 20;
         if (isIdValid(bufferId) && exists(bufferId))
         {
             actualPointsToSpend += getEnhancedSkillStatisticModifierUncapped(bufferId, "expertise_en_inspire_base_point_increase");
