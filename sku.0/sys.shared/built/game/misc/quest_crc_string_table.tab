@@ -531,7 +531,6 @@
 0x3703e088	quest/npe_brawler_4
 0x371fbb09	spacequest/escort_duty/tatooine_privateer_tier4_1
 0x37413a98	quest/newbie_gendra_imperial_pilot
-0x3745db38	quest/restuss_rebel_space_destroy_1
 0x37824659	spacequest/assassinate/corellia_imperial_tier3_4_c
 0x37c17e39	quest/talus_dearic_coa_rebel_view
 0x37d2cd5e	quest/smuggle_pointer_generic_5
@@ -1787,7 +1786,6 @@
 0xa9a09c14	quest/outbreak_quest_rescue_015
 0xa9a11bd6	quest/npe_side_crafting4
 0xa9e4a365	quest/ep3_myyydril_kinesworthy_epic_2
-0xa9f94327	quest/gcw_rebel_sensor
 0xaa03b663	spacequest/destroy/tatooine_imperial_4
 0xaa10fa7c	spacequest/destroy_duty/dathomir_station_priv_destroy_duty_tier3
 0xaa3d53f1	spacequest/patrol/corellia_imperial_tier3_1
@@ -2056,7 +2054,6 @@
 0xc1d3e2c8	quest/mtp_hideout_instance_kill_all_droids_success
 0xc2232a5c	quest/smuggle_illicit_5
 0xc234013c	spacequest/inspect/yavin_rebel_14
-0xc23e1f63	quest/gcw_imperial_sensor
 0xc28213f2	quest/naboo_24_gungan_power_grab_03
 0xc28531bc	quest/corellia_38_corsec_files_03
 0xc28b57c8	spacequest/destroy/restuss_imperial_destroy_2

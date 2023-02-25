@@ -181,33 +181,33 @@ class_spy_phase4_04	class_spy_phase4_03	oneByFour	0	0	0	0	100	0		class_spy_phase
 class_spy_phase4_05	class_spy_phase4_04	oneByFour	0	0	0	0	100	0		class_spy_phase4_04		combat_general	2365000	3540940							sp_smoke_mirrors				1	0
 class_spy_phase4_master	class_spy_phase4	oneByFour	0	1	0	0	100	0		class_spy_phase4_05		combat_general	2723800	3540940							sp_dm_8,sp_hide_device_1,sp_neutralize_device_1,sp_shifty_setup	cybernetic_psychosis_resistance=2			1	0
 class_medic_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
-class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1,me_drag_1	cybernetic_psychosis_resistance=2,expertise_bm_incubation_quality=10,expertise_bm_incubation_time=3,expertise_bm_genetic_engineering=30,bm_mutation_chance_increase=3,expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20	craftArtisanChemicalGroupA		1	0
-class_medic_phase1_02	class_medic_phase1	oneByFour	0	0	0	0	100	0		class_medic_phase1_novice		combat_general	3700	16120							me_dm_1,me_bacta_ampule_1		craftMedicineStimpackGroupA		1	0
-class_medic_phase1_03	class_medic_phase1_02	oneByFour	0	0	0	0	100	0		class_medic_phase1_02		combat_general	12400	30160							me_dm_dot_1		craftMedicineStimpackGroupB		1	0
-class_medic_phase1_04	class_medic_phase1_03	oneByFour	0	0	0	0	100	0		class_medic_phase1_03		combat_general	23200	67730							me_ae_heal_2,me_rv_ooc,me_rv_pvp_single		craftMedicineStimpackGroupC		1	0
-class_medic_phase1_05	class_medic_phase1_04	oneByFour	0	0	0	0	100	0		class_medic_phase1_04		combat_general	52100	105300							me_dm_2,me_bacta_ampule_2		craftMedicineStimpackGroupD		1	0
+class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1,me_drag_1	cybernetic_psychosis_resistance=2,expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20			1	0
+class_medic_phase1_02	class_medic_phase1	oneByFour	0	0	0	0	100	0		class_medic_phase1_novice		combat_general	3700	16120							me_dm_1,me_bacta_ampule_1				1	0
+class_medic_phase1_03	class_medic_phase1_02	oneByFour	0	0	0	0	100	0		class_medic_phase1_02		combat_general	12400	30160							me_dm_dot_1				1	0
+class_medic_phase1_04	class_medic_phase1_03	oneByFour	0	0	0	0	100	0		class_medic_phase1_03		combat_general	23200	67730							me_ae_heal_2,me_rv_ooc,me_rv_pvp_single				1	0
+class_medic_phase1_05	class_medic_phase1_04	oneByFour	0	0	0	0	100	0		class_medic_phase1_04		combat_general	52100	105300							me_dm_2,me_bacta_ampule_2				1	0
 class_medic_phase1_master	class_medic_phase1	oneByFour	0	1	0	0	100	0		class_medic_phase1_05		combat_general	81000	151060							me_dm_3,me_bacta_ampule_3	cybernetic_psychosis_resistance=2			1	0
 class_medic_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
-class_medic_phase2_novice	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase1_master		combat_general	116200	205140							me_cure_affliction_1,me_dm_dot_2,wear_all_armor	expertise_bm_incubation_quality=10,expertise_bm_incubation_time=3,expertise_bm_genetic_engineering=30,bm_mutation_chance_increase=3	craftArtisanChemicalGroupB		1	0
-class_medic_phase2_02	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase2_novice		combat_general	157800	267540							me_buff_health_0,me_dm_dot_3,place_hospital	private_place_hospital=100	craftMedicineComponentGroupB		1	0
+class_medic_phase2_novice	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase1_master		combat_general	116200	205140							me_cure_affliction_1,me_dm_dot_2,wear_all_armor		craftArtisanChemicalGroupB		1	0
+class_medic_phase2_02	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase2_novice		combat_general	157800	267540							me_dm_dot_3,place_hospital	private_place_hospital=100	craftMedicineComponentGroupB		1	0
 class_medic_phase2_03	class_medic_phase2_02	oneByFour	0	0	0	0	100	0		class_medic_phase2_02		combat_general	205800	339690							me_ae_heal_3		craftMedicineComponentGroupC		1	0
 class_medic_phase2_04	class_medic_phase2_03	oneByFour	0	0	0	0	100	0		class_medic_phase2_03		combat_general	261300	423410							me_hot_1		craftMedicineComponentGroupD		1	0
 class_medic_phase2_05	class_medic_phase2_04	oneByFour	0	0	0	0	100	0		class_medic_phase2_04		combat_general	325700	519610							me_fld_dm_dot_1,me_rv_area,me_rv_pvp_area		craftMedicineComponentGroupE		1	0
 class_medic_phase2_master	class_medic_phase2	oneByFour	0	1	0	0	100	0		class_medic_phase2_05		combat_general	399700	629980							me_dm_4,me_bacta_ampule_4	cybernetic_psychosis_resistance=2	craftMedicineComponentGroupF		1	0
 class_medic_phase3	class	oneByFour	0	0	1	0	0	0															craftMedicineComponentGroupG		1	0
-class_medic_phase3_novice	class_medic_phase3	oneByFour	0	0	0	0	100	0		class_medic_phase2_master		combat_general	484600	756860							me_buff_health_1,me_dm_dot_4	expertise_bm_incubation_quality=10,expertise_bm_incubation_time=3,expertise_bm_genetic_engineering=30,bm_mutation_chance_increase=3	craftArtisanChemicalGroupC		1	0
+class_medic_phase3_novice	class_medic_phase3	oneByFour	0	0	0	0	100	0		class_medic_phase2_master		combat_general	484600	756860							me_buff_health_1,me_dm_dot_4		craftArtisanChemicalGroupC		1	0
 class_medic_phase3_02	class_medic_phase3	oneByFour	0	0	0	0	100	0		class_medic_phase3_novice		combat_general	582200	901160							me_fld_dm_dot_2		craftMedicalEnhancersA		1	0
 class_medic_phase3_03	class_medic_phase3_02	oneByFour	0	0	0	0	100	0		class_medic_phase3_02		combat_general	693200	1065610							me_dm_5,me_bacta_ampule_5		craftMedicalEnhancersB		1	0
 class_medic_phase3_04	class_medic_phase3_03	oneByFour	0	0	0	0	100	0		class_medic_phase3_03		combat_general	819700	1252940							me_ae_heal_4		craftMedicalEnhancersC		1	0
 class_medic_phase3_05	class_medic_phase3_04	oneByFour	0	0	0	0	100	0		class_medic_phase3_04		combat_general	963800	1466790							me_hot_2,me_bacta_ampule_6		craftMedicalEnhancersD		1	0
 class_medic_phase3_master	class_medic_phase3	oneByFour	0	1	0	0	100	0		class_medic_phase3_05		combat_general	1128300	1710540							me_dm_6,me_dm_dot_5	cybernetic_psychosis_resistance=2	craftArtisanChemicalGroupC		1	0
 class_medic_phase4	class	oneByFour	0	0	1	0	0	0						0											1	0
-class_medic_phase4_novice	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_phase3_master		combat_general	1315800	1988090							me_hot_3	expertise_bm_incubation_quality=10,expertise_bm_incubation_time=3,expertise_bm_genetic_engineering=30,bm_mutation_chance_increase=3			1	0
+class_medic_phase4_novice	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_phase3_master		combat_general	1315800	1988090							me_hot_3				1	0
 class_medic_phase4_02	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_phase4_novice		combat_general	1529300	2304380							me_fld_dm_dot_3,me_rv_combat				1	0
 class_medic_phase4_03	class_medic_phase4_02	oneByFour	0	0	0	0	100	0		class_medic_phase4_02		combat_general	1772600	2664480							me_ae_heal_5,me_dm_dot_6				1	0
 class_medic_phase4_04	class_medic_phase4_03	oneByFour	0	0	0	0	100	0		class_medic_phase4_03		combat_general	2049600	3074500							me_sh_1,me_bacta_bomb_1				1	0
 class_medic_phase4_05	class_medic_phase4_04	oneByFour	0	0	0	0	100	0		class_medic_phase4_04		combat_general	2365000	3540940							me_dm_8,me_bacta_grenade_1				1	0
-class_medic_phase4_master	class_medic_phase4	oneByFour	0	1	0	0	100	0		class_medic_phase4_05		combat_general	2723800	3540940							me_ae_heal_6,me_stasis_1	cybernetic_psychosis_resistance=2,me_doom_chance=20	craftMedicineStimpackGroupE,craftArtisanChemicalGroupD		1	0
+class_medic_phase4_master	class_medic_phase4	oneByFour	0	1	0	0	100	0		class_medic_phase4_05		combat_general	2723800	3540940							me_ae_heal_6,me_stasis_1,me_serotonin_boost_1	cybernetic_psychosis_resistance=2,me_doom_chance=20	craftMedicineStimpackGroupE,craftArtisanChemicalGroupD		1	0
 class_entertainer_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_entertainer_phase1_novice	class_entertainer_phase1	oneByFour	0	0	0	0	100	0				entertainer	100	4810							fizz,spotlight,startMusic+rock,flourish+1,flourish+2,flourish+3,flourish+4,flourish+5,flourish+6,flourish+7,flourish+8,imagedesign,covercharge,inspire,registerWithLocation,musician,dancer,groupdance,en_holographic_image,sp_decoy,of_inspiration_1,en_flush_with_success_buff_package	hair=1,face=1,instrument_customization=20,cybernetic_psychosis_resistance=2	craftDancePropA,craftInstrumentGroupA,craftInstrumentGroupB		1	0
 class_entertainer_phase1_02	class_entertainer_phase1	oneByFour	0	1	0	0	100	0		class_entertainer_phase1_novice		entertainer	3700	16120							prop_staff,colorlights,startDance+basic2	hair=1,instrument_customization=20			1	0
@@ -1980,10 +1980,10 @@ expertise_of_heal_dam_2	expertise_of_heal_dam_1																					expertise_he
 expertise_of_armor_kin_1	expertise																					expertise_innate_protection_kinetic=500			0	
 expertise_of_armor_kin_2	expertise_of_armor_kin_1																					expertise_innate_protection_kinetic=500			0	
 expertise_of_purge_1	expertise																				of_purge_1				0	
-expertise_of_heal_cool_1	expertise_me_cure_affliction_1									expertise_me_cure_affliction_1												exotic_heal_action_reduction=5			0	
-expertise_of_heal_cool_2	expertise_of_heal_cool_1																					exotic_heal_action_reduction=5			0	
-expertise_of_heal_cool_3	expertise_of_heal_cool_2																					exotic_heal_action_reduction=5			0	
-expertise_of_heal_cool_4	expertise_of_heal_cool_3																					exotic_heal_action_reduction=5			0	
+expertise_of_heal_cool_1	expertise																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
+expertise_of_heal_cool_2	expertise_of_heal_cool_1																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
+expertise_of_heal_cool_3	expertise_of_heal_cool_2																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
+expertise_of_heal_cool_4	expertise_of_heal_cool_3																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
 sm_title_bootlegger				1		1																			0	
 sm_title_pirate				1		1															sm_summon_medic				0	
 sm_title_master_smuggler				1		1															sm_off_the_books	expertise_junk_dealer_cut=5			0	
@@ -2006,31 +2006,28 @@ expertise_me_hot_duration_1	expertise																					expertise_healing_line
 expertise_me_hot_duration_2	expertise_me_hot_duration_1																					expertise_healing_line_me_hot=10			0	
 expertise_me_hot_duration_3	expertise_me_hot_duration_2																					expertise_healing_line_me_hot=15			0	
 expertise_me_hot_duration_4	expertise_me_hot_duration_3																					expertise_healing_line_me_hot=15			0	
-expertise_me_drag	expertise_me_hot_duration_4									expertise_me_hot_duration_4											me_drag_1				0	
+expertise_me_drag	expertise_me_heal_action_4									expertise_me_heal_action_4											me_drag_1				0	
 expertise_me_revive_duration_1	expertise																					expertise_cooldown_line_me_revive=5,expertise_cooldown_line_me_aoe_revive=5			0	
 expertise_me_revive_duration_2	expertise_me_revive_duration_1																					expertise_cooldown_line_me_revive=5,expertise_cooldown_line_me_aoe_revive=5			0	
 expertise_me_revive_duration_3	expertise_me_revive_duration_2																					expertise_cooldown_line_me_revive=5,expertise_cooldown_line_me_aoe_revive=5			0	
 expertise_me_blood_cleaners_1	expertise_me_revive_duration_3									expertise_me_revive_duration_3											me_blood_cleaners_1				0	
 expertise_me_bacta_bomb_1	expertise_me_serotonin_boost_1									expertise_me_serotonin_boost_1											me_bacta_bomb_1, me_bacta_grenade_1				0	
-expertise_me_heal_damage_1	expertise																					expertise_healing_all=5			0	
-expertise_me_heal_damage_2	expertise_me_heal_damage_1																					expertise_healing_all=5			0	
-expertise_me_heal_damage_3	expertise_me_heal_damage_2																					expertise_healing_all=5			0	
-expertise_me_heal_damage_4	expertise_me_heal_damage_3																					expertise_healing_all=5			0	
-expertise_me_cure_affliction_1	expertise_me_heal_damage_4									expertise_me_heal_damage_4											me_cure_affliction_1				0	
+expertise_me_heal_damage_1	expertise																					expertise_healing_all=3			0	
+expertise_me_heal_damage_2	expertise_me_heal_damage_1																					expertise_healing_all=3			0	
+expertise_me_heal_damage_3	expertise_me_heal_damage_2																					expertise_healing_all=3			0	
+expertise_me_heal_damage_4	expertise_me_heal_damage_3																					expertise_healing_all=3			0	
+expertise_me_cure_affliction_1	expertise_me_heal_damage_4									expertise_me_heal_damage_4															0	
 expertise_me_heal_action_1	expertise_me_cure_affliction_1									expertise_me_cure_affliction_1												exotic_heal_action_reduction=5			0	
 expertise_me_heal_action_2	expertise_me_heal_action_1																					exotic_heal_action_reduction=5			0	
 expertise_me_heal_action_3	expertise_me_heal_action_2																					exotic_heal_action_reduction=5			0	
 expertise_me_heal_action_4	expertise_me_heal_action_3																					exotic_heal_action_reduction=5			0	
-expertise_me_serotonin_boost_1	expertise_of_heal_cool_4									expertise_of_heal_cool_4											me_rv_area,me_serotonin_boost_1	expertise_cooldown_line_me_revive=4,expertise_cooldown_line_me_aoe_revive=4			0	
-expertise_me_serotonin_boost_2	expertise_me_serotonin_boost_1																					expertise_cooldown_line_me_revive=4,expertise_cooldown_line_me_aoe_revive=4			0	
-expertise_me_serotonin_boost_3	expertise_me_serotonin_boost_2																					expertise_cooldown_line_me_revive=4,expertise_cooldown_line_me_aoe_revive=4			0	
-expertise_me_serotonin_boost_4	expertise_me_serotonin_boost_3																					expertise_cooldown_line_me_revive=4,expertise_cooldown_line_me_aoe_revive=4			0	
-expertise_me_bacta_grenade_1	expertise_me_serotonin_boost_4									expertise_me_serotonin_boost_4											me_bacta_grenade_1				0	
+expertise_me_serotonin_boost_1	expertise																				me_serotonin_boost_1				0	
+expertise_me_bacta_grenade_1																					me_bacta_grenade_1				0	
 expertise_me_enhance_duration_1	expertise																					expertise_buff_duration_line_me_enhance=300			0	
 expertise_me_enhance_duration_2	expertise_me_enhance_duration_1																					expertise_buff_duration_line_me_enhance=300			0	
 expertise_me_enhance_duration_3	expertise_me_enhance_duration_2																					expertise_buff_duration_line_me_enhance=600			0	
 expertise_me_enhancement_specialist_1	expertise_me_enhance_duration_3									expertise_me_enhance_duration_3											me_enhance_action_1				0	
-expertise_me_reckless_stimulation_1	expertise_me_enhancement_specialist_1									expertise_me_enhancement_specialist_1											me_reckless_stimulation_1				0	
+expertise_me_reckless_stimulation_1	expertise_of_heal_cool_4									expertise_of_heal_cool_4											me_reckless_stimulation_1				0	
 expertise_me_stasis_1	expertise_me_reckless_stimulation_1									expertise_me_reckless_stimulation_1											me_stasis_1				0	
 expertise_me_vital_action_1	expertise																					expertise_action_line_me_dm=5			0	
 expertise_me_vital_action_2	expertise_me_vital_action_1																					expertise_action_line_me_dm=5			0	
@@ -2282,7 +2279,7 @@ expertise_sp_protective_armor_3	expertise_sp_protective_armor_2																	
 expertise_sp_protective_armor_4	expertise_sp_protective_armor_3																					expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300				
 expertise_sp_improved_arachnids_web_1	expertise																				sp_improved_cc_dot_0					
 expertise_sp_assassins_mark	expertise_bh_trap_duration_4									expertise_bh_trap_duration_4											sp_assassins_mark,bh_del_cc_1,bh_dm_cc_1	bh_dire_snare=50,bh_dire_root=50				
-expertise_sp_run_its_course_1	expertise_sp_improved_first_aid_2									expertise_sp_improved_first_aid_2											sp_run_its_course					
+expertise_sp_run_its_course_1	expertise_me_heal_damage_4									expertise_me_heal_damage_4											sp_run_its_course					
 expertise_sp_noxious_traps_1	expertise																					expertise_damage_line_fldmot=15				
 expertise_sp_noxious_traps_2	expertise_sp_noxious_traps_1																					expertise_damage_line_fldmot=15				
 expertise_sp_opportunity_1	expertise																					expertise_critical_niche_all=2				
@@ -2299,10 +2296,10 @@ expertise_sp_increased_agility_3	expertise_sp_increased_agility_2															
 expertise_sp_increased_agility_4	expertise_sp_increased_agility_3																					slope_move=10,agility_modified=10				
 expertise_sp_cloaking_armor_1	expertise_bh_stamina_4									expertise_bh_stamina_4											co_mirror_armor	structure_assembly=10,mask_scent=30	craftStructureCampA			
 expertise_sp_cloaking_armor_2	expertise_sp_cloaking_armor_1																									
-expertise_sp_glancing_armor_1	expertise									expertise_sp_protective_armor_4												expertise_glancing_blow_all=2				
-expertise_sp_glancing_armor_2	expertise_sp_glancing_armor_1																					expertise_glancing_blow_all=2				
-expertise_sp_glancing_armor_3	expertise_sp_glancing_armor_2																					expertise_glancing_blow_all=2				
-expertise_sp_glancing_armor_4	expertise_sp_glancing_armor_3																					expertise_glancing_blow_all=2				
+expertise_sp_glancing_armor_1	expertise									expertise_sp_protective_armor_4												expertise_glancing_blow_all=5				
+expertise_sp_glancing_armor_2	expertise_sp_glancing_armor_1																					expertise_glancing_blow_all=5				
+expertise_sp_glancing_armor_3	expertise_sp_glancing_armor_2																					expertise_glancing_blow_all=5				
+expertise_sp_glancing_armor_4	expertise_sp_glancing_armor_3																					expertise_glancing_blow_all=5				
 expertise_sp_deadly_pistols_1	expertise_sp_careful_observation_4									expertise_sp_careful_observation_4												expertise_damage_ranged=2				
 expertise_sp_deadly_pistols_2	expertise_sp_deadly_pistols_1																					expertise_damage_ranged=2				
 expertise_sp_deadly_pistols_3	expertise_sp_deadly_pistols_2																					expertise_damage_ranged=2				
@@ -2617,10 +2614,10 @@ expertise_engineering_droid_dexterity_1	expertise_engineering_droid_schematic_1_
 expertise_engineering_droid_dexterity_2	expertise_engineering_droid_dexterity_1																					droid_assembly=5	craftdroidGroupC			
 expertise_engineering_droid_dexterity_3	expertise_engineering_droid_dexterity_2																					droid_assembly=5	craftdroidGroupD			
 expertise_engineering_droid_dexterity_4	expertise_engineering_droid_dexterity_3																					droid_assembly=5	craftdroidGroupE			
-expertise_engineering_artisan_dexterity_1	expertise																					general_assembly=5,medicine_assembly=10,medicine_experimentation=10	craftArtisanNewbieGroupA,craftArtisanNewbieGroupB,craftArtisanSurveyGroupA,craftArtisanEngineeringGroupA,craftArtisanToolGroupA,craftArtisanChemicalGroupA			
-expertise_engineering_artisan_dexterity_2	expertise_engineering_artisan_dexterity_1																					general_assembly=5,medicine_assembly=10,medicine_experimentation=10	craftArtisanEngineeringGroupB,craftArtisanChemicalGroupB			
-expertise_engineering_artisan_dexterity_3	expertise_engineering_artisan_dexterity_2																					general_assembly=5,medicine_assembly=10,medicine_experimentation=10	craftArtisanEngineeringGroupC,craftArtisanChemicalGroupC			
-expertise_engineering_artisan_dexterity_4	expertise_engineering_artisan_dexterity_3																					general_assembly=5,medicine_assembly=10,medicine_experimentation=10	CraftArtisanEngineeringGroupD,craftArtisanMasterGroupA,craftArtisanVehicle,craftArtisanChemicalGroupD			
+expertise_engineering_artisan_dexterity_1	expertise																					general_assembly=5	craftArtisanNewbieGroupA,craftArtisanNewbieGroupB,craftArtisanSurveyGroupA,craftArtisanEngineeringGroupA,craftArtisanToolGroupA,craftArtisanChemicalGroupA			
+expertise_engineering_artisan_dexterity_2	expertise_engineering_artisan_dexterity_1																					general_assembly=5	craftArtisanEngineeringGroupB,craftArtisanChemicalGroupB			
+expertise_engineering_artisan_dexterity_3	expertise_engineering_artisan_dexterity_2																					general_assembly=5	craftArtisanEngineeringGroupC,craftArtisanChemicalGroupC			
+expertise_engineering_artisan_dexterity_4	expertise_engineering_artisan_dexterity_3																					general_assembly=5	CraftArtisanEngineeringGroupD,craftArtisanMasterGroupA,craftArtisanVehicle,craftArtisanChemicalGroupD			
 expertise_engineering_flame_jet_1	expertise																						craftExpertiseFlameJetModule			
 expertise_engineering_electrical_shock_1	expertise																						craftExpertiseElectricalShockModule			
 expertise_engineering_droid_insight_1	expertise																					expertise_complexity_decrease_droid=1				
@@ -2720,10 +2717,10 @@ expertise_bm_exceptional_nutrition_1	expertise																					expertise_bm_
 expertise_bm_pet_dodge_3	expertise_bm_pet_dodge_2																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_2	expertise_bm_pet_dodge_1																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_1	expertise_bm_evasion_3									expertise_bm_evasion_3												expertise_pet_dodge=5				
-expertise_bm_genetic_engineering_4	expertise_bm_genetic_engineering_3																					expertise_bm_genetic_engineering=30				
-expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2																					expertise_bm_genetic_engineering=30				
-expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1																					expertise_bm_genetic_engineering=30				
-expertise_bm_genetic_engineering_1	expertise_bm_incubation_mod_4									expertise_bm_incubation_mod_4												expertise_bm_genetic_engineering=30				
+expertise_bm_genetic_engineering_4	expertise_bm_genetic_engineering_3																					expertise_bm_genetic_engineering=30,medicine_assembly=10,medicine_experimentation=10	craftMedicineStimpackGroupC			
+expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2																					expertise_bm_genetic_engineering=30,medicine_assembly=10,medicine_experimentation=10	craftMedicineStimpackGroupB			
+expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1																					expertise_bm_genetic_engineering=30,medicine_assembly=10,medicine_experimentation=10	craftMedicineStimpackGroupA			
+expertise_bm_genetic_engineering_1	expertise																					expertise_bm_genetic_engineering=30,medicine_assembly=10,medicine_experimentation=10	craftArtisanChemicalGroupA			
 expertise_bm_add_first_pet_bar_1	expertise_bm_abilility_aquisition_mod_1									expertise_bm_abilility_aquisition_mod_1												expertise_bm_add_pet_bar=1				
 expertise_bm_specialized_supplements_1	expertise																					expertise_bm_pet_regen=100				
 expertise_bm_evasion_4	expertise_bm_evasion_3																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
@@ -2741,7 +2738,7 @@ expertise_bm_incubation_mod_4	expertise_bm_incubation_mod_3																					
 expertise_bm_incubation_mod_3	expertise_bm_incubation_mod_2																					expertise_bm_incubation_quality=10				
 expertise_bm_incubation_mod_2	expertise_bm_incubation_mod_1																					expertise_bm_incubation_quality=5				
 expertise_bm_incubation_mod_1	expertise_bm_incubation_base_1									expertise_bm_incubation_base_1												expertise_bm_incubation_quality=5				
-expertise_bm_beast_mastery_1	expertise			1																		expertise_bm_self_debuff_reduction=25				
+expertise_bm_beast_mastery_1	expertise			1																		expertise_bm_self_debuff_reduction=25,expertise_bm_incubation_quality=20,expertise_bm_incubation_time=12,bm_mutation_chance_increase=6				
 expertise_bm_abilility_aquisition_mod_1	expertise_bm_creature_knowledge_command_1									expertise_bm_creature_knowledge_command_1												expertise_bm_enhanced_skill_acquisition=15				
 expertise_bm_creature_knowledge_command_1	expertise																					creature_harvesting=10,creature_hit_bonus=5,creature_knowledge=5,expertise_bm_enhanced_skill_acquisition=5				
 expertise_bm_creature_knowledge_command_2	expertise_bm_creature_knowledge_command_1																					creature_harvesting=10,creature_hit_bonus=5,creature_knowledge=5,expertise_bm_enhanced_skill_acquisition=5				
@@ -2758,8 +2755,8 @@ expertise_bm_dna_harvesting_4	expertise_bm_dna_harvesting_3			1																	
 expertise_bm_dna_harvesting_3	expertise_bm_dna_harvesting_2			1																		creature_harvesting=10,creature_hit_bonus=5				
 expertise_bm_dna_harvesting_2	expertise_bm_dna_harvesting_1																					creature_harvesting=10,creature_hit_bonus=5				
 expertise_bm_dna_harvesting_1	expertise																					creature_harvesting=10,creature_hit_bonus=5				
-expertise_bm_attack_1	expertise_bm_creature_knowledge_command_4									expertise_bm_creature_knowledge_command_4											bm_pet_attack_1,tame,train_mount,bm_collect_dna,bm_creature_knowledge_command_1,bm_mend_pet_1	expertise_bm_base_mod=100,expertise_bm_train_mount=100,stored_pets=4,keep_creature=1,tame_non_aggro=80,tame_level=80,expertise_bm_add_pet_bar=1				
-expertise_bm_incubation_base_1	expertise_bm_dna_harvesting_4			1						expertise_bm_dna_harvesting_4												expertise_bm_base_mod=100,expertise_bm_dna_harvesting_1=120				
+expertise_bm_attack_1	expertise_bm_creature_knowledge_command_4									expertise_bm_creature_knowledge_command_4											bm_pet_attack_1,tame,train_mount,bm_creature_knowledge_command_1	expertise_bm_base_mod=100,expertise_bm_train_mount=100,stored_pets=4,keep_creature=1,tame_non_aggro=80,tame_level=80,expertise_bm_add_pet_bar=1,expertise_bm_self_debuff_reduction=5				
+expertise_bm_incubation_base_1	expertise_bm_genetic_engineering_4			1						expertise_bm_genetic_engineering_4											bm_mend_pet_1,bm_collect_dna	expertise_bm_base_mod=100,expertise_bm_dna_harvesting_1=100,expertise_bm_pet_regen=100,expertise_bm_self_debuff_reduction=5,expertise_bm_incubation_quality=20,expertise_bm_incubation_time=12,bm_mutation_chance_increase=6	craftMedicineStimpackGroupD			
 expertise_bm_mending_1	expertise_bm_attack_1									expertise_bm_attack_1											bm_mend_pet_1					
 expertise_bm_soothing_comfort_1	expertise_bm_mending_1									expertise_bm_mending_1											bm_soothing_comfort_1					
 costume			1	0	0	0	0	0						0											0	0

@@ -15,5 +15,5 @@ portalLayoutFilename = "appearance/star_destroyer_2005e3.pob"
 
 clientDataFile = "clientData/ship/client_shared_star_destroyer.cdf"
 
-objectName = "space_ship" "player_decimator"
-lookAtText = "space_ship" "player_decimator"
+objectName = "space_ship" "player_star_destroyer"
+lookAtText = "space_ship" "player_star_destroyer"

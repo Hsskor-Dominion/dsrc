@@ -650,10 +650,6 @@ public class live_conversions extends script.base_script
         {
             attachScript(player, "player.player_chat");
         }
-        if (!hasScript(player, "player.veteran_rewards"))
-        {
-            attachScript(player, "player.veteran_rewards");
-        }
         if (!hasScript(player, "player.player_beastmaster"))
         {
             attachScript(player, "player.player_beastmaster");
