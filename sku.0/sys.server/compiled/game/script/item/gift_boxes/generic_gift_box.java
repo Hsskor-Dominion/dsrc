@@ -1,8 +1,7 @@
 package script.item.gift_boxes;
 
 import script.*;
-import script.library.static_item;
-import script.library.utils;
+import script.library.*;
 
 import java.util.ArrayList;
 
