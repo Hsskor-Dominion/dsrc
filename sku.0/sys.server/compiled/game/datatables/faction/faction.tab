@@ -108,9 +108,3 @@ survivor	0	0	0
 afflicted	0	1	0		survivor,survivor_guard		
 survivor_guard	0	0	0		afflicted		
 sulfur_lake_pirate	0	1	0		nym		
-bhguild	1	1	0		underworld	spynet	
-spynet	1	1	0			bhguild	
-confederacy	1	1	0		republic	trade_federation,droid_army	
-republic	1	1	0		confederacy	fs_villager	
-sith	1	1	0		republic,jedi	sith_shadow	
-jedi	1	1	0		confederacy,sith	fs_villager	
