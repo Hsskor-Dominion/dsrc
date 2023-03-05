@@ -8583,4 +8583,4 @@ item_heron_gift_test	object/tangible/npe/npe_generic_uniform_box.iff					string:
 contraband_art_chest	object/tangible/smuggler/contraband/contraband_general.iff					string:items=rare_loot_chest_quality_1				item.gift_boxes.generic_gift_box			Art Contraband	Exceptional Loot Chest... Open it up!	
 contraband_spice_chest	object/tangible/smuggler/contraband/contraband_general.iff									systems.loot.contraband_spice_chest			Spice Contraband	Rare Loot Chest... Open it up!	
 contraband_spice_schematic_chest	object/tangible/smuggler/contraband/contraband_general.iff									systems.loot.contraband_spice_chest			Spice Contraband	Exceptional Loot Chest... Open it up!	
-painting_art_expo_01	object/static/item/painting_art_expo_01.iff													Art Expo Painting Submission	
+painting_art_expo_01	object/static/item/painting_art_expo_01.iff													Art Expo Painting
