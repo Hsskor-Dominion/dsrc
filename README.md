@@ -18,3 +18,9 @@ Imperial Outpost, Endor
 Sith Spirit PvE
 Reverse Engineering QoL Updates
 Restoration of Scout, Ranger, and Creature Handler (In Progress)
+
+
+
+This repo was forked from Stella Bellum. Please credit them (notably Cekis) if you use any of the work here.
+
+## Pull requests are welcome and encouraged
