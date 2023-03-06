@@ -5,19 +5,14 @@ bartender		cantina	-3.1	-0.5	3	-50			int:bartender.doNotMove=1
 bartender		cantina	2.9	-0.5	2.8	34			int:bartender.doNotMove=1	
 nova_rank3_quest_giver		medicalbay	-56	-1	7.6	159				
 nova_orion_rank1_quest_giver		hangarbay1	53	0.8	17.2	-58				
-rebel_recruiter		hangarbay1	50	0.8	18	-58				
 orion_rank3_quest_giver		cloninglab	-34.7	0.8	-36.7	16				
-nova_orion_skyron_waurie		armory	-33	0.6	21	-5				
-cradossk		armory	-48	0	34	125				
+nova_orion_skyron_waurie		armory	-33	0.6	21	-5
 nova_orion_dexen_eronoss		basementstorage	-19.7	-29.2	43.1	-133				
 nova_orion_garrick_orion		droidroom	16	-30	12	50				
-kinossk		droidroom	2.1	-31.7	0.5	-112				
 nova_orion_jonas_nova		r29	-18.5	28.9	-71.5	134				
 nova_orion_rank_advisor		inaldra	-8.2	0.8	42.9	-110				
 nova_orion_intro_station_quest_giver		hangarbay2	54.9	0.9	-27.9	146				
-imperial_recruiter		hangarbay2	38	0.9	-47	51				
 nova_orion_chassis_broker_01		hangarbay2	36	0.9	-45.9	51			int:chassis_broker.alreadyHasName=1	
-vendor_jawa2		hangarbay2	35	0.9	-43	50				
 nova_orion_chassis_broker_02		hangarbay1	37.2	0.8	38	128			int:chassis_broker.alreadyHasName=1	
 nova_orion_junk_dealer		cantina	-18.9	0	-13.7	41				
 nova_orion_human_resources_advisor		inaldra	-14.9	0.8	55.4	-121				
@@ -51,7 +46,7 @@ nova_orion_employee		dockingbay2	83.1	0.8	-16.9	-56	npc_use_terminal_low
 nova_orion_employee		dockingbay2	92.4	0.8	-7.1	34				
 nova_orion_employee		dockingbay2	97.6	0.8	-10	34	npc_use_terminal_low			
 nova_orion_employee		droidroom	17.9	-30	12.9	55		conversation.nova_orion_flavor_npc_droidroom_01		
-nova_orion_employee		droidroom	16.5	-30	12.5	-55		conversation.nova_orion_flavor_npc_droidroom_02		
+nova_orion_employee		droidroom	-7.2	-31.7	1.3	147		conversation.nova_orion_flavor_npc_droidroom_02		
 nova_orion_employee		basementroom01	-43.9	-29.3	-24.3	-31	npc_sitting_chair			
 nova_orion_employee		basementroom01	-41.3	-29.3	-35.5	-171	npc_sitting_chair			
 nova_orion_employee		basementroom01	-36.6	-29.3	-34.6	151	npc_sitting_chair			
@@ -65,11 +60,15 @@ nova_orion_employee		r30	-82.6	29	9.7	153	npc_sitting_chair
 nova_orion_employee		r30	-82.1	29	1.7	-170	conversation	conversation.nova_orion_flavor_npc_conversation_02a		
 nova_orion_employee		r30	-82.3	29	0.3	-3	conversation	conversation.nova_orion_flavor_npc_conversation_02b		
 nova_orion_employee		greenhouse	-20	29.5	0	89	npc_sitting_chair			
+nova_orion_employee		r31	-2.1	28.9	78	10	conversation	conversation.nova_orion_flavor_npc_conversation_01a		
+nova_orion_employee		r31	-1.9	28.9	79.5	174	conversation	conversation.nova_orion_flavor_npc_conversation_01b		
+rebel_recruiter		hangarbay1	50	0.8	18	-58				
+cradossk		armory	-48	0	34	125				
+kinossk		droidroom	2.1	-31.7	0.5	-112				
+imperial_recruiter		hangarbay2	38	0.9	-47	51				
+bothan_spy2		16a	-68.6837	-31.0247	-6.74123	90				
+bothan_spy		16a	-59.1277	-31.0266	7.15046	45				
 professor_snoak		greenhouse	-8	29.5	0	89				
 starter_worrt		greenhouse	-7	29.5	0	89				
 starter_womp		greenhouse	-7	29.5	-1	88				
 starter_rill		greenhouse	-7	29.5	1	90				
-nova_orion_employee		r31	-2.1	28.9	78	10	conversation	conversation.nova_orion_flavor_npc_conversation_01a		
-nova_orion_employee		r31	-1.9	28.9	79.5	174	conversation	conversation.nova_orion_flavor_npc_conversation_01b		
-bothan_spy		16a	-68.6837	-31.0247	-6.74123	90				
-bothan_spy2		16a	-59.1277	-31.0266	7.15046	45				

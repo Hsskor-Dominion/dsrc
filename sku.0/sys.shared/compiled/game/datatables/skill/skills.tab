@@ -181,7 +181,7 @@ class_spy_phase4_04	class_spy_phase4_03	oneByFour	0	0	0	0	100	0		class_spy_phase
 class_spy_phase4_05	class_spy_phase4_04	oneByFour	0	0	0	0	100	0		class_spy_phase4_04		combat_general	2365000	3540940							sp_smoke_mirrors				1	0
 class_spy_phase4_master	class_spy_phase4	oneByFour	0	1	0	0	100	0		class_spy_phase4_05		combat_general	2723800	3540940							sp_dm_8,sp_hide_device_1,sp_neutralize_device_1,sp_shifty_setup	cybernetic_psychosis_resistance=2			1	0
 class_medic_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
-class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1,me_drag_1	cybernetic_psychosis_resistance=2,expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20			1	0
+class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1	cybernetic_psychosis_resistance=2,expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20			1	0
 class_medic_phase1_02	class_medic_phase1	oneByFour	0	0	0	0	100	0		class_medic_phase1_novice		combat_general	3700	16120							me_dm_1,me_bacta_ampule_1				1	0
 class_medic_phase1_03	class_medic_phase1_02	oneByFour	0	0	0	0	100	0		class_medic_phase1_02		combat_general	12400	30160							me_dm_dot_1				1	0
 class_medic_phase1_04	class_medic_phase1_03	oneByFour	0	0	0	0	100	0		class_medic_phase1_03		combat_general	23200	67730							me_ae_heal_2,me_rv_ooc,me_rv_pvp_single				1	0
@@ -2756,7 +2756,7 @@ expertise_bm_dna_harvesting_3	expertise_bm_dna_harvesting_2			1																	
 expertise_bm_dna_harvesting_2	expertise_bm_dna_harvesting_1																					creature_harvesting=10,creature_hit_bonus=5				
 expertise_bm_dna_harvesting_1	expertise																					creature_harvesting=10,creature_hit_bonus=5				
 expertise_bm_attack_1	expertise_bm_creature_knowledge_command_4									expertise_bm_creature_knowledge_command_4											bm_pet_attack_1,tame,train_mount,bm_creature_knowledge_command_1	expertise_bm_base_mod=100,expertise_bm_train_mount=100,stored_pets=4,keep_creature=1,tame_non_aggro=80,tame_level=80,expertise_bm_add_pet_bar=1,expertise_bm_self_debuff_reduction=5				
-expertise_bm_incubation_base_1	expertise_bm_genetic_engineering_4			1						expertise_bm_genetic_engineering_4											bm_mend_pet_1,bm_collect_dna	expertise_bm_base_mod=100,expertise_bm_dna_harvesting_1=100,expertise_bm_pet_regen=100,expertise_bm_self_debuff_reduction=5,expertise_bm_incubation_quality=20,expertise_bm_incubation_time=12,bm_mutation_chance_increase=6	craftMedicineStimpackGroupD			
+expertise_bm_incubation_base_1	expertise_bm_genetic_engineering_4			1						expertise_bm_genetic_engineering_4											bm_mend_pet_1,bm_collect_dna,bm_revive_pet_1,bm_creature_knowledge_command_1	expertise_bm_base_mod=100,expertise_bm_dna_harvesting_1=100,expertise_bm_pet_regen=100,expertise_bm_self_debuff_reduction=5,expertise_bm_incubation_quality=20,expertise_bm_incubation_time=12,bm_mutation_chance_increase=6	craftMedicineStimpackGroupD			
 expertise_bm_mending_1	expertise_bm_attack_1									expertise_bm_attack_1											bm_mend_pet_1					
 expertise_bm_soothing_comfort_1	expertise_bm_mending_1									expertise_bm_mending_1											bm_soothing_comfort_1					
 costume			1	0	0	0	0	0						0											0	0
