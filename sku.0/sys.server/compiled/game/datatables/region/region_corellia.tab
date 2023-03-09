@@ -1,33 +1,33 @@
 regionName	geometry	minX_or_centerX	minZ_or_centerZ	maxX_or_radius	maxZ	pvpType	geographicalType	minDifficultyType	maxDifficultyType	spawnableType	missionType	buildable	municipal	visible	notify	environmentFlags
 s	e(rectangle=0,circle=1)[rectangle]	f	f	f	f	e(normal=0,truce=1,pvp_battlefield=2,pve_battlefield=3,pvp_advanced=4)[normal]	e(desert=0,forest=1,jungle=2,plateau=3,oasis=4,canyon=5,lake=6,lakeshore=7,beach=8,ocean=9,underwater=10,river=11,volcano=12,swamp=13,plains=14,prairie=15,mountains=16,hills=17,grassland=18,wasteland=19,city=20,fictional=21,pathfind=22,default=23,theater=24,overload=25)[default]	i	i	e(spawnFalse=0,spawnTrue=1,mission=2,default=3,difficulty=5)[spawnFalse]	e(none=0,destroy=1,other=2,tatooine_anchorhead=3,tatooine_bestine=4,tatooine_mos_eisley=5,tatooine_mos_entha=6,tatooine_mos_espa=7,tatooine_mos_taike=8,tatooine_wayfar=9,naboo_theed=10,naboo_deeja_peak=11,naboo_kaadara=12,naboo_moenia=13,naboo_keren=14,tatooine_bib_1=15,corellia_coronet=16,corellia_tyrena=17,corellia_bela_vistal=18,corellia_vreni_island=19,corellia_kor_vella=20,corellia_daoba_guerfel=21,rori_narmle=22,rori_restuss=23,talus_dearic=24,talus_nashal=25,yavin4_labor_outpost=26,yavin4_mining_outpost=27,endor_neutral_outpost=28,dantooine_mining_outpost=29,dantooine_pirate_outpost=30,dathomir_trade_outpost=31,dathomir_survey_outpost=32,lok_nyms_stronghold=33)[none]	b[1]	b[0]	b[0]	b[0]	s
-@corellia_region_names:mountain1	circle	4440	-4136	1080		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain2	rectangle	6032	-8000	8000	-3952	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain3	circle	-6152	1320	1800		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain4	circle	-6368	5424	1600		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain5	circle	-2224	5136	1360		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain6	rectangle	-2032	5440	4464	7488	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain7	circle	7112	6552	850		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain8	circle	232	2728	1272		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland1	circle	-4088	3176	1896		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland2	circle	3200	3728	864		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland3	circle	5368	5016	1112		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland4	circle	-5360	-1376	1392		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland5	circle	-992	-320	2720		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland6	circle	3536	-720	1552		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland7	circle	3336	-4536	3322.87866		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland8	circle	6760	-3000	1200		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:beach1	circle	-5352	-5160	2600		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:beach2	circle	-3048	-4888	3060.45825		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:beach3	circle	976	-5664	845		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:beach4	rectangle	4160	-2176	8000	5280	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:lake1	circle	2264	-152	1016		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:lake2	rectangle	-5744	-1984	-2912	-736	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:forest1	circle	-3696	-1968	608		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:forest2	circle	-2047	3272	615		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:forest3	rectangle	-2336	-784	-1056	1120	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:forest4	rectangle	-1861.86914	5877.84375	3765.86914	7434.15625	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:forest5	circle	6888	-7208	750		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:swamp1	circle	816	4560	1497.13574		normal	grassland	20	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain1	circle	4440	-4136	1080		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain2	rectangle	6032	-8000	8000	-3952	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain3	circle	-6152	1320	1800		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain4	circle	-6368	5424	1600		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain5	circle	-2224	5136	1360		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain6	rectangle	-2032	5440	4464	7488	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain7	circle	7112	6552	850		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain8	circle	232	2728	1272		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland1	circle	-4088	3176	1896		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland2	circle	3200	3728	864		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland3	circle	5368	5016	1112		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland4	circle	-5360	-1376	1392		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland5	circle	-992	-320	2720		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland6	circle	3536	-720	1552		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland7	circle	3336	-4536	3322.87866		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland8	circle	6760	-3000	1200		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:beach1	circle	-5352	-5160	2600		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:beach2	circle	-3048	-4888	3060.45825		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:beach3	circle	976	-5664	845		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:beach4	rectangle	4160	-2176	8000	5280	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:lake1	circle	2264	-152	1016		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:lake2	rectangle	-5744	-1984	-2912	-736	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:forest1	circle	-3696	-1968	608		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:forest2	circle	-2047	3272	615		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:forest3	rectangle	-2336	-784	-1056	1120	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:forest4	rectangle	-1861.86914	5877.84375	3765.86914	7434.15625	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:forest5	circle	6888	-7208	750		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:swamp1	circle	816	4560	1497.13574		normal	grassland	5	90	mission	other	1	0	0	0	
 @corellia_region_names:coronet	circle	-178	-4504	581		normal	city	0	0	spawnFalse	other	1	1	1	0	
 @corellia_region_names:tyrena	circle	-5282	-2526	622		normal	city	0	0	spawnFalse	other	1	1	1	0	
 @corellia_region_names:bela_vistal	circle	6788	-5654	480		normal	city	0	0	spawnFalse	other	1	1	1	0	

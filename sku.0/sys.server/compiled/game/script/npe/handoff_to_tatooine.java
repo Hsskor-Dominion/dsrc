@@ -9,8 +9,10 @@ public class handoff_to_tatooine extends script.base_script
     public handoff_to_tatooine()
     {
     }
-    public static final String questNewbieStart = "quest/speeder_quest";
-    public static final String questNewbieStartBH = "quest/speeder_quest";
+    public static final String questNewbieStart = "quest/legacy_button_start";
+    public static final String questNewbieStartSmuggler = "quest/speeder_quest";
+    public static final String questNewbieStartSpy = "quest/naboo_send_to_lt_jasper";
+    public static final String questNewbieStartBH = "quest/u13_vengeance_sidequest";
     public static final String questCrafterEntertainer = "quest/tatooine_eisley_noncombat";
     public int OnLogin(obj_id self) throws InterruptedException
     {
@@ -21,6 +23,8 @@ public class handoff_to_tatooine extends script.base_script
         int crafter = profession.indexOf("trader");
         int entertainer = profession.indexOf("entertainer");
         int bountyhunter = profession.indexOf("bounty_hunter");
+        int spy = profession.indexOf("spy");
+        int smuggler = profession.indexOf("smuggler");
         if (crafter > -1 || entertainer > -1)
         {
             if (!groundquests.isQuestActiveOrComplete(self, questCrafterEntertainer))
@@ -37,6 +41,28 @@ public class handoff_to_tatooine extends script.base_script
             else 
             {
                 groundquests.requestGrantQuest(self, questNewbieStartBH);
+            }
+        }
+        else if (spy > -1)
+        {
+            if (groundquests.hasCompletedQuest(self, questNewbieStartSpy) || groundquests.isQuestActive(self, questNewbieStartSpy))
+            {
+                detachScript(self, "npe.handoff_to_tatooine");
+            }
+            else
+            {
+                groundquests.requestGrantQuest(self, questNewbieStartSpy);
+            }
+        }
+        else if (smuggler > -1)
+        {
+            if (groundquests.hasCompletedQuest(self, questNewbieStartSmuggler) || groundquests.isQuestActive(self, questNewbieStartSmuggler))
+            {
+                detachScript(self, "npe.handoff_to_tatooine");
+            }
+            else
+            {
+                groundquests.requestGrantQuest(self, questNewbieStartSmuggler);
             }
         }
         else 
