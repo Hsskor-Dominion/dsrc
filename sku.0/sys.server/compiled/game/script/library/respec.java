@@ -788,13 +788,17 @@ public class respec extends script.base_script
         String profession = getSkillTemplate(self);
         obj_id objInv = utils.getInventoryContainer(self);
 
-        String questNewbieStart = "quest/speeder_quest";
-        String questNewbieStartBH = "quest/speeder_quest";
+        String questNewbieStart = "quest/legacy_button_start";
+        String questNewbieStartSmuggler = "quest/speeder_quest";
+        String questNewbieStartSpy = "quest/naboo_send_to_lt_jasper";
+        String questNewbieStartBH = "quest/u13_vengeance_sidequest";
         String questCrafterEntertainer = "quest/tatooine_eisley_noncombat";
 
         int crafter = profession.indexOf("trader");
         int entertainer = profession.indexOf("entertainer");
         int bountyhunter = profession.indexOf("bounty_hunter");
+        int spy = profession.indexOf("spy");
+        int smuggler = profession.indexOf("smuggler");
 
         if (crafter > -1 || entertainer > -1)
         {
@@ -813,6 +817,28 @@ public class respec extends script.base_script
             else 
             {
                 groundquests.requestGrantQuest(self, questNewbieStartBH);
+            }
+        }
+        else if (spy > -1)
+        {
+            if (groundquests.hasCompletedQuest(self, questNewbieStartSpy) || groundquests.isQuestActive(self, questNewbieStartSpy))
+            {
+                detachScript(self, "npe.handoff_to_tatooine");
+            }
+            else
+            {
+                groundquests.requestGrantQuest(self, questNewbieStartSpy);
+            }
+        }
+        else if (smuggler > -1)
+        {
+            if (groundquests.hasCompletedQuest(self, questNewbieStartSmuggler) || groundquests.isQuestActive(self, questNewbieStartSmuggler))
+            {
+                detachScript(self, "npe.handoff_to_tatooine");
+            }
+            else
+            {
+                groundquests.requestGrantQuest(self, questNewbieStartSmuggler);
             }
         }
         else 

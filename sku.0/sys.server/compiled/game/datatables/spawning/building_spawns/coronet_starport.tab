@@ -7,3 +7,6 @@ object/tangible/spawning/spawn_egg.iff		arrivals1	37.3	0.6	40.9	-160	city.interi
 object/tangible/spawning/spawn_egg.iff		foyer4	-6.7	0.6	65.7	30	city.interior_2_convo									
 object/tangible/spawning/spawn_egg.iff		foyer1	7.2	0.6	75.5	179	city.interior_2_convo									
 stardust_info		arrivals1	50	0.6	47.5	-93										
+vendor_jawa2		arrivals1	57	-0.5	35	-80										
+rebel_recruiter		world	-132	28	-4719	135				300	int:ai.defaultCalmBehavior=1					
+imperial_recruiter		world	-133	28	-4726	70				300	int:ai.defaultCalmBehavior=1					
