@@ -397,7 +397,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 8145361	8145352	object/cell/cell.iff	9	0	0	0	1	0	0	0		$|
 4485392	8145361	object/tangible/space/content_infrastructure/ground_npc_spawner.iff	9	-13.4	1.6	-15.6	0.89101	0	-0.45399	0		$|
 8145362	8145352	object/cell/cell.iff	10	0	0	0	1	0	0	0		$|
-8145375	0	object/building/tatooine/cantina_tatooine.iff	0	499.718	11.88	968.887	0.945784	0	-0.324796	0	theme_park.lok.cantina:planet_map.map_loc:structure.municipal.cantina:theme_park.dungeon.empire_day_interior_npc_spawner:stardust.event.cantina_hondo_controller	healing.canhealshock|0|1|safeLogout|0|1|empire_day_spawn_table|4|datatables/spawning/building_spawns/empire_day_rebel_nyms.iff|$|
+8145375	0	object/building/tatooine/cantina_tatooine.iff	0	499.718	11.88	968.887	0.945784	0	-0.324796	0	theme_park.lok.cantina:planet_map.map_loc:structure.municipal.cantina:theme_park.dungeon.empire_day_interior_npc_spawner:event.bhevent_hondo_controller	healing.canhealshock|0|1|safeLogout|0|1|empire_day_spawn_table|4|datatables/spawning/building_spawns/empire_day_rebel_nyms.iff|$|
 8145376	8145375	object/cell/cell.iff	1	0	0	0	1	0	0	0		$|
 493439929	8145376	object/tangible/collection/col_force_shui_table_05.iff	1	37.4934	0.286801	0.211066	0.761813	-0.254988	-0.45217	-0.38751		$|
 8145377	8145375	object/cell/cell.iff	2	0	0	0	1	0	0	0		$|
