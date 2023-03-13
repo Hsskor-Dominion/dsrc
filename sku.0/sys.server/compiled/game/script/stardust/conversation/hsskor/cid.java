@@ -23,11 +23,6 @@ public class cid extends script.base_script
     {
         return hasSkill(player, "social_language_basic_comprehend");
     }
-    public boolean cid_townspersonFriend_condition(obj_id player, obj_id npc) throws InterruptedException
-    {
-        float townspersonFaction = factions.getFactionStanding(player, "townsperson");
-        return townspersonFaction >= 500;
-    }
     public boolean cid_intimidated_condition(obj_id npc, obj_id player) throws InterruptedException
     {
         float intimidation = getEnhancedSkillStatisticModifierUncapped(player, "strength");
@@ -36,6 +31,10 @@ public class cid extends script.base_script
     public boolean cid_commando_condition(obj_id npc, obj_id player)
     {
         return hasSkill(player,"class_commando_phase1_novice");
+    }
+    public boolean cid_bountyhunter_condition(obj_id npc, obj_id player)
+    {
+        return hasSkill(player,"class_bountyhunter_phase1_novice");
     }
     public boolean cid_scorekeeper_condition(obj_id npc, obj_id player)
     {
@@ -108,7 +107,7 @@ public class cid extends script.base_script
         {
             if (cid_commando_condition(npc, player))
             {
-                groundquests.grantQuest(player, "cid_commando");
+                groundquests.grantQuest(player, "stardust_cid_commando");
                 final string_id message = new string_id(c_stringFile, "cid_offer_commando_mission");
 
                 utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
@@ -128,7 +127,7 @@ public class cid extends script.base_script
         }
         else if (response.equals("cid_apply_for_bounty_hunter_mission"))
         {
-            if (cid_townspersonFriend_condition(player, npc))
+            if (cid_bountyhunter_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "cid_go_see_cradossk");
 
@@ -149,9 +148,9 @@ public class cid extends script.base_script
         }
         else if (response.equals("cid_apply_for_entertainer_gig"))
         {
-            if (cid_townspersonFriend_condition(player, npc))
+            if (cid_scorekeeper_condition(npc, player))
             {
-                groundquests.grantQuest(player, "cid_entertain");
+                groundquests.grantQuest(player, "stardust_cid_entertain");
                 final string_id message = new string_id(c_stringFile, "cid_hires_you_to_entertain");
 
                 utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
@@ -178,6 +177,7 @@ public class cid extends script.base_script
             if (cid_intimidated_condition(npc, player))
             {
                 setObjVar(player, DEATHSTAR_PLANS, true);
+                groundquests.sendSignal(player, "jasper_to_cid");
                 final string_id message = new string_id(c_stringFile, "cid_talks_about_deathstar_plans");
 
                 utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
@@ -201,6 +201,7 @@ public class cid extends script.base_script
             {
                 cid_sells_info(player, npc);
                 setObjVar(player, DEATHSTAR_PLANS, true);
+                groundquests.sendSignal(player, "jasper_to_cid");
                 final string_id message = new string_id(c_stringFile, "cid_talks_about_deathstar_plans");
 
                 utils.removeScriptVar(player, "conversation.cid_conversation.branchId");

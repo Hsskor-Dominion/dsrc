@@ -21,7 +21,7 @@ public class bothan_spy extends script.base_script
     }
     public boolean bothan_spy_language_condition(obj_id npc, obj_id player) throws InterruptedException
     {
-        return hasSkill(player, "social_language_bothan_comprehend");
+        return hasSkill(player, "social_language_basic_comprehend");
     }
     public boolean bothan_spy_underworld_smuggler_condition(obj_id player, obj_id npc) throws InterruptedException
     {

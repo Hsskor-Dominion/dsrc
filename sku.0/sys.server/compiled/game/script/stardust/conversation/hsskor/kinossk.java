@@ -21,12 +21,12 @@ public class kinossk extends script.base_script
     }
     public boolean kinossk_language_condition(obj_id npc, obj_id player) throws InterruptedException
     {
-        return hasSkill(player, "social_language_trandoshan_comprehend");
+        return hasSkill(player, "social_language_basic_comprehend");
     }
     public boolean kinossk_trandoshanFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float hsskorFaction = factions.getFactionStanding(player, "hsskor");
-        return hsskorFaction >= -1;
+        return hsskorFaction >= 2500;
     }
     public boolean kinossk_medic_condition(obj_id npc, obj_id player)
     {
@@ -52,18 +52,18 @@ public class kinossk extends script.base_script
     }
     public void kinossk_entertainer_quest(obj_id player, obj_id npc) throws InterruptedException
     {
-        int questId = questGetQuestId("quest/kinossk_craft");
+        int questId = questGetQuestId("quest/stardust_kinossk_craft");
         groundquests.grantQuest(questId, player, npc, true);
     }
     public void kinossk_medic_quest(obj_id player, obj_id npc) throws InterruptedException
     {
-        int questId = questGetQuestId("quest/kinossk_heal");
+        int questId = questGetQuestId("quest/stardust_kinossk_heal");
         groundquests.grantQuest(questId, player, npc, true);
     }
     public void kinossk_prison_quest(obj_id player, obj_id npc) throws InterruptedException
     {
         money.requestPayment(player, npc, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
-        groundquests.requestGrantQuest(player, "quest/kinossk_prison_break", true);
+        groundquests.requestGrantQuest(player, "quest/stardust_kinossk_prison_break", true);
         int mission_bounty = 10000;
         int current_bounty = 0;
         mission_bounty += rand(1, 2000);

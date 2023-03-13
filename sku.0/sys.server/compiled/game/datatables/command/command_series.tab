@@ -157,8 +157,7 @@ sp_dot_5	sp_dot_0	88
 sp_improved_cc_dot_1	sp_improved_cc_dot_0	38
 sp_improved_cc_dot_2	sp_improved_cc_dot_0	54
 sp_improved_cc_dot_3	sp_improved_cc_dot_0	88
-sp_stealth_melee_0	sp_dot_1	10
-sp_stealth_melee_1	sp_dot_1	20
+sp_stealth_melee_1	sp_stealth_melee_0	20
 sp_stealth_melee_2	sp_dot_1	32
 sp_stealth_melee_3	sp_dot_1	46
 sp_stealth_melee_4	sp_dot_1	58

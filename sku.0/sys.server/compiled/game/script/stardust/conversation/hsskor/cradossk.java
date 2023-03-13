@@ -21,7 +21,7 @@ public class cradossk extends script.base_script
     }
     public boolean cradossk_language_condition(obj_id npc, obj_id player) throws InterruptedException
     {
-        return hasSkill(player, "social_language_trandoshan_comprehend");
+        return hasSkill(player, "social_language_basic_comprehend");
     }
     public boolean cradossk_trandoshanFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -52,18 +52,18 @@ public class cradossk extends script.base_script
     }
     public void cradossk_entertainer_quest(obj_id player, obj_id npc) throws InterruptedException
     {
-        int questId = questGetQuestId("quest/cradossk_entertain");
+        int questId = questGetQuestId("quest/stardust_cradossk_entertain");
         groundquests.grantQuest(questId, player, npc, true);
     }
     public void cradossk_bounty_quest(obj_id player, obj_id npc) throws InterruptedException
     {
-        int questId = questGetQuestId("quest/cradossk_bounty");
+        int questId = questGetQuestId("quest/stardust_cradossk_bounty");
         groundquests.grantQuest(questId, player, npc, true);
     }
     public void cradossk_arena_quest(obj_id player, obj_id npc) throws InterruptedException
     {
         money.requestPayment(player, npc, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
-        groundquests.requestGrantQuest(player, "quest/cradossk_arena", true);
+        groundquests.requestGrantQuest(player, "quest/stardust_cradossk_arena", true);
         int mission_bounty = 10000;
         int current_bounty = 0;
         mission_bounty += rand(1, 2000);
@@ -199,6 +199,7 @@ public class cradossk extends script.base_script
             if (cradossk_credits_condition(player, npc))
             {
                 cradossk_arena_quest(player, npc);
+                sendSystemMessage(player, new string_id("spam", "enter_arena"));
                 final string_id message = new string_id(c_stringFile, "cradossk_places_your_bounty");
 
                 utils.removeScriptVar(player, "conversation.cradossk_conversation.branchId");

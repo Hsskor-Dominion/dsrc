@@ -52,7 +52,7 @@ public class bothan_spy2 extends script.base_script
         {
             if (bothan_spy2_hasObjVar_condition(npc, player))
             {
-                final string_id message = new string_id(c_stringFile, "bothan_spy2_steals_stardust");
+                final string_id message = new string_id(c_stringFile, "bothan_spy2_talks_stardust");
 
                 utils.removeScriptVar(player, "conversation.bothan_spy2_conversation.branchId");
                 npcEndConversationWithMessage(player, message);

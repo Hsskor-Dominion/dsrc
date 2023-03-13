@@ -394,6 +394,7 @@ public class bib_fortuna_mos_eisley extends script.base_script
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setCondition(self, CONDITION_INTERESTING);
+        setName(self, "Beezer Fortuna");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException

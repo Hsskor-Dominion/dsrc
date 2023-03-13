@@ -160,7 +160,7 @@ class_spy_phase1_04	class_spy_phase1_03	oneByFour	0	0	0	0	100	0		class_spy_phase
 class_spy_phase1_05	class_spy_phase1_04	oneByFour	0	0	0	0	100	0		class_spy_phase1_04		combat_general	52100	105300							steal	expertise_movement_buff_invis_sp_buff_invis_1=-10			1	0
 class_spy_phase1_master	class_spy_phase1	oneByFour	0	1	0	0	100	0		class_spy_phase1_05		combat_general	81000	151060							sp_burst_of_shadows	cybernetic_psychosis_resistance=2			1	0
 class_spy_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
-class_spy_phase2_novice	class_spy_phase2	oneByFour	0	0	0	0	100	0		class_spy_phase1_master		combat_general	116200	205140							sp_dm_3,wear_all_armor				1	0
+class_spy_phase2_novice	class_spy_phase2	oneByFour	0	0	0	0	100	0		class_spy_phase1_master		combat_general	116200	205140							sp_dm_3,sp_stealth_melee_1 ,wear_all_armor				1	0
 class_spy_phase2_02	class_spy_phase2	oneByFour	0	0	0	0	100	0		class_spy_phase2_novice		combat_general	157800	267540								expertise_movement_buff_invis_sp_buff_stealth_1=-20			1	0
 class_spy_phase2_03	class_spy_phase2_02	oneByFour	0	0	0	0	100	0		class_spy_phase2_02		combat_general	205800	339690							sp_decoy				1	0
 class_spy_phase2_04	class_spy_phase2_03	oneByFour	0	0	0	0	100	0		class_spy_phase2_03		combat_general	261300	423410							sp_sh_1	expertise_movement_buff_invis_sp_buff_invis_1=-10			1	0
@@ -2104,7 +2104,7 @@ expertise_me_energy_armor_3	expertise_me_energy_armor_2																					expe
 expertise_me_energy_armor_4	expertise_me_energy_armor_3																					expertise_innate_protection_energy=150,expertise_innate_protection_all=75			0	
 expertise_me_enhance_dodge_1	expertise_me_energy_armor_4									expertise_me_energy_armor_4											me_enhance_dodge_1				0	
 expertise_co_remote_detonator_1	expertise																				co_remote_detonator_1				0	
-expertise_co_suppressing_fire_1	expertise_bh_carbine_act_4									expertise_bh_carbine_act_4											co_suppressing_fire	expertise_supression_speed=10,expertise_supression_glance=5			0	
+expertise_co_suppressing_fire_1	expertise_bh_carbine_act_4									expertise_bh_carbine_act_4											co_suppressing_fire				0	
 expertise_co_powered_armor_1	expertise																					expertise_innate_protection_all=250			0	
 expertise_co_powered_armor_2	expertise_co_powered_armor_1																					expertise_innate_protection_all=250			0	
 expertise_co_powered_armor_3	expertise_co_powered_armor_2																					expertise_innate_protection_all=250			0	
