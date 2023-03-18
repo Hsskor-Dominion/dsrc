@@ -2,7 +2,7 @@ factionName	playerAllowed	isAggro	isPvP	pvpFaction	enemies	allies	combatFactor
 s	i[0]	i[0]	i[0]	h	s	s	f[1]
 Imperial	1	1	1	imperial	Rebel		
 Rebel	1	1	1	rebel	Imperial		
-Hutt	1	1	0		naboo_security_force,nym,Imperial,corsec,narmle	jabba,borvo	
+Hutt	1	1	0		naboo_security_force,nym,Imperial,corsec,narmle	borvo	
 ImperialCitizen	0	0	0				
 RebelCitizen	0	0	0				
 Neutral	0	0	0				
@@ -48,7 +48,7 @@ aakuans	1	1	0		fed_dub,binayre,liberation_party
 fed_dub	1	1	0		liberation_party,binayre,lost_aqualish,drall		
 binayre	1	1	0		fed_dub,aakuans,corsec		
 liberation_party	1	1	0		fed_dub,corsec		
-jabba	1	1	0		valarian,borvo	Hutt	
+jabba	1	1	0		valarian,borvo		
 alkhara	1	1	0		desert_demon,spice_collective	tusken_raider,townsperson	
 desert_demon	1	1	0		swoop		
 jawa	1	1	0		tusken_raider		
@@ -85,8 +85,8 @@ geonosian_crazy	0	1	0		geonosian_mad_bunker,geonosian_crazed_monster
 aggro_corsec	0	1	0		afarathu,followers_of_lord_nyax,monumenter,rogue_corsec,lost_aqualish	corsec	
 death_watch	1	1	0		death_watch_special,jedi,sith		
 death_watch_special	0	0	0				
-sith_shadow	1	1	0		fs_villager	sith	0
-fs_villager	1	1	0		sith_shadow	jedi	0
+sith_shadow	1	1	0		fs_villager		0
+fs_villager	1	1	0		sith_shadow		0
 sith_shadow_nonaggro	1	0	0		fs_villager	Rebel,Imperial	0
 forest_outcast	1	1	0		forest_kerritamba	forest_outcast	
 forest_kerritamba	1	1	0		forest_outcast	forest_kerritamba	

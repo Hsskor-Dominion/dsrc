@@ -1963,7 +1963,7 @@ public class base_player extends script.base_script
                 String questNewbieStart = "quest/legacy_button_start";
                 String questNewbieStartSmuggler = "quest/speeder_quest";
                 String questNewbieStartSpy = "quest/naboo_send_to_lt_jasper";
-                String questNewbieStartBH = "quest/u13_vengeance_sidequest";
+                String questNewbieStartBH = "quest/stardust_send_to_boba";
                 String questCrafterEntertainer = "quest/tatooine_eisley_noncombat";
                 int crafter = profession.indexOf("trader");
                 int entertainer = profession.indexOf("entertainer");
