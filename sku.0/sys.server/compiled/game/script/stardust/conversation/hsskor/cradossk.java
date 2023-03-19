@@ -44,6 +44,14 @@ public class cradossk extends script.base_script
     {
         return hasObjVar(player, SCOREKEEPER_HERALD);
     }
+    public boolean cradossk_entertainer_quest_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return groundquests.isTaskActive(player, "stardust_entertain_cradossk", "talktocradossk");
+    }
+    public void cradossk_entertainer_signalReward(obj_id player, obj_id npc) throws InterruptedException
+    {
+        groundquests.sendSignal(player, "stardust_entertainer_cradossk_reward");
+    }
     public void cradossk_action_vendor(obj_id player, obj_id npc) throws InterruptedException
     {
         final dictionary d = new dictionary();
@@ -52,8 +60,8 @@ public class cradossk extends script.base_script
     }
     public void cradossk_entertainer_quest(obj_id player, obj_id npc) throws InterruptedException
     {
-        int questId = questGetQuestId("quest/stardust_cradossk_entertain");
-        groundquests.grantQuest(questId, player, npc, true);
+        String pTemplate = getSkillTemplate(player);
+        groundquests.grantQuest(player, "stardust_entertain_cradossk");
     }
     public void cradossk_bounty_quest(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -111,6 +119,25 @@ public class cradossk extends script.base_script
             responses[responseIndex++] = new string_id(c_stringFile, "cradossk_sign_up_for_arena");
 
             utils.setScriptVar(player, "conversation.cradossk_conversation.branchId", 3);
+
+            npcSpeak(player, message);
+            npcSetConversationResponses(player, responses);
+
+            return SCRIPT_CONTINUE;
+        }
+        else if (response.equals("cradossk_intro_offer_completed"))
+        {
+
+            final string_id message = new string_id(c_stringFile, "cradossk_honors_scorekeeper");
+            final int numberOfResponses = 2;
+
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
+
+            responses[responseIndex++] = new string_id(c_stringFile, "honor_to_the_scorekeeper");
+            responses[responseIndex++] = new string_id(c_stringFile, "what");
+
+            utils.setScriptVar(player, "conversation.cradossk_conversation.branchId", 4);
 
             npcSpeak(player, message);
             npcSetConversationResponses(player, responses);
@@ -176,7 +203,7 @@ public class cradossk extends script.base_script
         {
             if (cradossk_scorekeeper_condition(npc, player))
             {
-                groundquests.grantQuest(player, "cradossk_entertain");
+                cradossk_entertainer_quest(player, npc);
                 final string_id message = new string_id(c_stringFile, "cradossk_requests_dance");
 
                 utils.setScriptVar(player, "conversation.cradossk_conversation.branchId", 4);
@@ -219,7 +246,41 @@ public class cradossk extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
+    public int cradossk_handleBranch4(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        if (response.equals("honor_to_the_scorekeeper"))
+        {
+            if (cradossk_entertainer_quest_condition_playerFinishedMainTask(player, npc))
+            {
+                cradossk_entertainer_signalReward(player, npc);
+                final string_id message = new string_id(c_stringFile, "cradossk_honors_you");
 
+                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else
+            {
+                final string_id message = new string_id(c_stringFile, "cradossk_finds_you_lack_sweat");
+
+                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+        }
+        else if (response.equals("what"))
+        {
+            final string_id message = new string_id(c_stringFile, "cradossk_blesses_you");
+
+            utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+            npcEndConversationWithMessage(player, message);
+
+            return SCRIPT_CONTINUE;
+        }
+        return SCRIPT_DEFAULT;
+    }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
@@ -270,13 +331,14 @@ public class cradossk extends script.base_script
         if (cradossk_language_condition(npc, player))
         {
             final string_id message = new string_id(c_stringFile, "cradossk_intro");
-            final int numberOfResponses = 2;
+            final int numberOfResponses = 3;
 
             final string_id[] responses = new string_id[numberOfResponses];
             int responseIndex = 0;
 
             responses[responseIndex++] = new string_id(c_stringFile, "cradossk_intro_offer_hunter");
             responses[responseIndex++] = new string_id(c_stringFile, "cradossk_intro_offer_prey");
+            responses[responseIndex++] = new string_id(c_stringFile, "cradossk_intro_offer_completed");
 
             utils.setScriptVar(player, "conversation.cradossk_conversation.branchId", 1);
 
@@ -307,6 +369,10 @@ public class cradossk extends script.base_script
             return SCRIPT_CONTINUE;
         }
         else if (branchId == 3 && cradossk_handleBranch3(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        else if (branchId == 4 && cradossk_handleBranch4(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }

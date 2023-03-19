@@ -46,7 +46,7 @@ public class cid extends script.base_script
     }
     public boolean cid_entertainer_quest_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "stardust_entertainer_cid_reward", "talktocid");
+        return groundquests.isTaskActive(player, "stardust_entertain_cid", "talktocid");
     }
     public void cid_entertainer_quest(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -64,7 +64,7 @@ public class cid extends script.base_script
     }
     public void cid_entertainer_signalReward(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.sendSignal(player, "stardust_entertainer_cid_reward");
+        groundquests.sendSignal(player, "cid_reward");
     }
     public int cid_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -88,7 +88,7 @@ public class cid extends script.base_script
 
             return SCRIPT_CONTINUE;
         }
-        if (response.equals("cid_intro_offer_information"))
+        else if (response.equals("cid_intro_offer_information"))
         {
 
             final string_id message = new string_id(c_stringFile, "cid_looks_for_insight");
@@ -107,27 +107,24 @@ public class cid extends script.base_script
 
             return SCRIPT_CONTINUE;
         }
-        if (response.equals("cid_intro_finished_work"))
+        else if (response.equals("cid_intro_finished_work"))
         {
-            if (cid_entertainer_quest_condition_playerFinishedMainTask(npc, player))
-            {
-                cid_entertainer_signalReward(player, npc);
-                final string_id message = new string_id(c_stringFile, "cid_knew_you_could_do_it");
 
-                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
-                npcEndConversationWithMessage(player, message);
+            final string_id message = new string_id(c_stringFile, "cid_i_knew_you_could_do_it");
+            final int numberOfResponses = 2;
 
-                return SCRIPT_CONTINUE;
-            }
-            else
-            {
-                final string_id message = new string_id(c_stringFile, "cid_never_should_have_trusted_you");
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
 
-                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
-                npcEndConversationWithMessage(player, message);
+            responses[responseIndex++] = new string_id(c_stringFile, "you_are_welcome");
+            responses[responseIndex++] = new string_id(c_stringFile, "well_actually");
 
-                return SCRIPT_CONTINUE;
-            }
+            utils.setScriptVar(player, "conversation.cid_conversation.branchId", 4);
+
+            npcSpeak(player, message);
+            npcSetConversationResponses(player, responses);
+
+            return SCRIPT_CONTINUE;
         }
         return SCRIPT_DEFAULT;
     }
@@ -252,6 +249,41 @@ public class cid extends script.base_script
         return SCRIPT_DEFAULT;
     }
 
+    public int cid_handleBranch4(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        if (response.equals("you_are_welcome"))
+        {
+            if (cid_entertainer_quest_condition_playerFinishedMainTask(player, npc))
+            {
+                cid_entertainer_signalReward(player, npc);
+                final string_id message = new string_id(c_stringFile, "cid_takes_a_cut");
+
+                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else
+            {
+                final string_id message = new string_id(c_stringFile, "cid_increases_her_share");
+
+                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+        }
+        else if (response.equals("well_actually"))
+        {
+            final string_id message = new string_id(c_stringFile, "cid_well_what");
+
+            utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+            npcEndConversationWithMessage(player, message);
+
+            return SCRIPT_CONTINUE;
+        }
+        return SCRIPT_DEFAULT;
+    }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
@@ -339,6 +371,10 @@ public class cid extends script.base_script
             return SCRIPT_CONTINUE;
         }
         else if (branchId == 3 && cid_handleBranch3(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        else if (branchId == 4 && cid_handleBranch4(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
