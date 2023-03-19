@@ -44,19 +44,27 @@ public class cid extends script.base_script
     {
             return (money.hasFunds(player, money.MT_TOTAL, smuggler.TIER_4_GENERIC_PVP_FRONT_COST));
     }
+    public boolean cid_entertainer_quest_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return groundquests.isTaskActive(player, "stardust_entertainer_cid_reward", "talktocid");
+    }
     public void cid_entertainer_quest(obj_id player, obj_id npc) throws InterruptedException
     {
-        int questId = questGetQuestId("quest/cid_entertain");
-        groundquests.grantQuest(questId, player, npc, true);
+        String pTemplate = getSkillTemplate(player);
+        groundquests.grantQuest(player, "stardust_entertain_cid");
     }
     public void cid_commando_quest(obj_id player, obj_id npc) throws InterruptedException
     {
-        int questId = questGetQuestId("quest/cid_commando");
+        int questId = questGetQuestId("stardust_commando_batch");
         groundquests.grantQuest(questId, player, npc, true);
     }
     public void cid_sells_info(obj_id player, obj_id npc) throws InterruptedException
     {
         money.requestPayment(player, npc, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
+    }
+    public void cid_entertainer_signalReward(obj_id player, obj_id npc) throws InterruptedException
+    {
+        groundquests.sendSignal(player, "stardust_entertainer_cid_reward");
     }
     public int cid_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -80,7 +88,7 @@ public class cid extends script.base_script
 
             return SCRIPT_CONTINUE;
         }
-        else if (response.equals("cid_intro_offer_information"))
+        if (response.equals("cid_intro_offer_information"))
         {
 
             final string_id message = new string_id(c_stringFile, "cid_looks_for_insight");
@@ -99,6 +107,28 @@ public class cid extends script.base_script
 
             return SCRIPT_CONTINUE;
         }
+        if (response.equals("cid_intro_finished_work"))
+        {
+            if (cid_entertainer_quest_condition_playerFinishedMainTask(npc, player))
+            {
+                cid_entertainer_signalReward(player, npc);
+                final string_id message = new string_id(c_stringFile, "cid_knew_you_could_do_it");
+
+                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else
+            {
+                final string_id message = new string_id(c_stringFile, "cid_never_should_have_trusted_you");
+
+                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+        }
         return SCRIPT_DEFAULT;
     }
     public int cid_handleBranch2(obj_id player, obj_id npc, string_id response) throws InterruptedException
@@ -107,7 +137,7 @@ public class cid extends script.base_script
         {
             if (cid_commando_condition(npc, player))
             {
-                groundquests.grantQuest(player, "stardust_cid_commando");
+                cid_commando_quest(player, npc);
                 final string_id message = new string_id(c_stringFile, "cid_offer_commando_mission");
 
                 utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
@@ -150,7 +180,7 @@ public class cid extends script.base_script
         {
             if (cid_scorekeeper_condition(npc, player))
             {
-                groundquests.grantQuest(player, "stardust_cid_entertain");
+                cid_entertainer_quest(player, npc);
                 final string_id message = new string_id(c_stringFile, "cid_hires_you_to_entertain");
 
                 utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
@@ -271,13 +301,14 @@ public class cid extends script.base_script
         if (cid_language_condition(npc, player))
         {
             final string_id message = new string_id(c_stringFile, "cid_intro");
-            final int numberOfResponses = 2;
+            final int numberOfResponses = 3;
 
             final string_id[] responses = new string_id[numberOfResponses];
             int responseIndex = 0;
 
             responses[responseIndex++] = new string_id(c_stringFile, "cid_intro_offer_jobs");
             responses[responseIndex++] = new string_id(c_stringFile, "cid_intro_offer_information");
+            responses[responseIndex++] = new string_id(c_stringFile, "cid_intro_finished_work");
 
             utils.setScriptVar(player, "conversation.cid_conversation.branchId", 1);
 

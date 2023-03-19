@@ -165,13 +165,13 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 1177478	1177465	object/cell/cell.iff	13	0	0	0	1	0	0	0		$|
 1177479	1177465	object/cell/cell.iff	14	0	0	0	1	0	0	0		$|
 1177480	1177465	object/cell/cell.iff	15	0	0	0	1	0	0	0		$|
-1177481	1177465	object/cell/cell.iff	16	0	0	0	1	0	0	0	theme_park.gating.jabba.master_block	$|
+1177481	1177465	object/cell/cell.iff	16	0	0	0	1	0	0	0		$|
 1177482	1177465	object/cell/cell.iff	17	0	0	0	1	0	0	0		$|
 1177483	1177465	object/cell/cell.iff	18	0	0	0	1	0	0	0		$|
-1177484	1177465	object/cell/cell.iff	19	0	0	0	1	0	0	0	theme_park.gating.jabba.garage_block	$|
+1177484	1177465	object/cell/cell.iff	19	0	0	0	1	0	0	0		$|
 1177485	1177465	object/cell/cell.iff	20	0	0	0	1	0	0	0		$|
 1177486	1177465	object/cell/cell.iff	21	0	0	0	1	0	0	0		$|
-1177487	1177465	object/cell/cell.iff	22	0	0	0	1	0	0	0	theme_park.gating.jabba.throne_block	$|
+1177487	1177465	object/cell/cell.iff	22	0	0	0	1	0	0	0		$|
 -1963389494	1177487	object/soundobject/soundobject_jabba_max_rebo_band.iff	22	-10.1773	2	38.8708	1	0	0	0		$|
 -462819141	1177487	object/soundobject/soundobject_jabba_audience_chamber.iff	22	0.87989	2	44.2011	1	0	0	0		$|
 4275677	1177487	object/tangible/space/content_infrastructure/ground_npc_spawner.iff	22	8.11982	2	34.2394	0.844588	0	-0.535416	0	space.content_tools.npc_spawner	$|
