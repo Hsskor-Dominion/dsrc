@@ -15,7 +15,7 @@ class_trader	class		0	0	0	0	0	0						0											0	0
 class_bountyhunter_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_bountyhunter_phase1_novice	class_bountyhunter_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							bh_dm_1,bh_detect_camouflage_1	bounty_mission_level=1,droid_find_chance=5,cybernetic_psychosis_resistance=2			1	0
 class_bountyhunter_phase1_02	class_bountyhunter_phase1	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase1_novice		combat_general	3700	16120							bh_dm_crit_1	droid_find_chance=5,droid_find_speed=2			1	0
-class_bountyhunter_phase1_03	class_bountyhunter_phase1_02	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase1_02		combat_general	12400	30160							bh_dm_cc_1,bh_sh_0	droid_find_chance=5,droid_find_speed=2			1	0
+class_bountyhunter_phase1_03	class_bountyhunter_phase1_02	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase1_02		combat_general	12400	30160							bh_dm_cc_1,of_sh_0	droid_find_chance=5,droid_find_speed=2			1	0
 class_bountyhunter_phase1_04	class_bountyhunter_phase1_03	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase1_03		combat_general	23200	67730							bh_dm_2,bh_armor_duelist_1	droid_find_chance=5,droid_find_speed=3			1	0
 class_bountyhunter_phase1_05	class_bountyhunter_phase1_04	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase1_04		combat_general	52100	105300							bh_dm_crit_2	droid_find_chance=5,droid_find_speed=3			1	0
 class_bountyhunter_phase1_master	class_bountyhunter_phase1	oneByFour	0	1	0	0	100	0		class_bountyhunter_phase1_05		combat_general	81000	151060							bh_dm_cc_2	droid_find_chance=5,droid_find_speed=5,cybernetic_psychosis_resistance=2			1	0
@@ -23,21 +23,21 @@ class_bountyhunter_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_bountyhunter_phase2_novice	class_bountyhunter_phase2	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase1_master		combat_general	116200	205140							bh_dm_3,wear_all_armor,droid_track,bh_dm_crit_3	droid_find_chance=10,droid_find_speed=5,droid_tracks=1,droid_track_chance=25,droid_track_speed=25			1	0
 class_bountyhunter_phase2_02	class_bountyhunter_phase2	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase2_novice		combat_general	157800	267540							bh_dm_cc_3	droid_find_chance=10,droid_find_speed=5			1	0
 class_bountyhunter_phase2_03	class_bountyhunter_phase2_02	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase2_02		combat_general	205800	339690							bh_dm_4	droid_find_chance=10,droid_find_speed=5,droid_tracks=1			1	0
-class_bountyhunter_phase2_04	class_bountyhunter_phase2_03	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase2_03		combat_general	261300	423410							bh_sh_1	droid_find_chance=10,droid_find_speed=5,droid_track_chance=15			1	0
+class_bountyhunter_phase2_04	class_bountyhunter_phase2_03	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase2_03		combat_general	261300	423410							of_sh_1	droid_find_chance=10,droid_find_speed=5,droid_track_chance=15			1	0
 class_bountyhunter_phase2_05	class_bountyhunter_phase2_04	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase2_04		combat_general	325700	519610							bh_del_cc_1	droid_find_chance=10,droid_find_speed=5,droid_tracks=1,droid_track_speed=15			1	0
 class_bountyhunter_phase2_master	class_bountyhunter_phase2	oneByFour	0	1	0	0	100	0		class_bountyhunter_phase2_05		combat_general	399700	629980							bh_dm_5	bounty_mission_level=1,droid_find_chance=10,droid_find_speed=5,cybernetic_psychosis_resistance=2			1	0
 class_bountyhunter_phase3	class	oneByFour	0	0	1	0	0	0																	1	0
 class_bountyhunter_phase3_novice	class_bountyhunter_phase3	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase2_master		combat_general	484600	756860							bh_ae_dm_1	droid_find_chance=10,droid_find_speed=5,droid_tracks=1,droid_track_chance=15			1	0
 class_bountyhunter_phase3_02	class_bountyhunter_phase3	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase3_novice		combat_general	582200	901160							bh_del_dm_cc_dot_1	droid_find_chance=10			1	0
 class_bountyhunter_phase3_03	class_bountyhunter_phase3_02	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase3_02		combat_general	693200	1065610							bh_dm_6	droid_find_speed=10,droid_tracks=1,droid_track_speed=15			1	0
-class_bountyhunter_phase3_04	class_bountyhunter_phase3_03	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase3_03		combat_general	819700	1252940							bh_sh_2	droid_track_chance=15			1	0
+class_bountyhunter_phase3_04	class_bountyhunter_phase3_03	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase3_03		combat_general	819700	1252940							of_sh_2	droid_track_chance=15			1	0
 class_bountyhunter_phase3_05	class_bountyhunter_phase3_04	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase3_04		combat_general	963800	1466790							bh_del_cc_2	droid_tracks=1			1	0
 class_bountyhunter_phase3_master	class_bountyhunter_phase3	oneByFour	0	1	0	0	100	0		class_bountyhunter_phase3_05		combat_general	1128300	1710540							bh_dm_7	droid_find_speed=10,cybernetic_psychosis_resistance=2			1	0
 class_bountyhunter_phase4	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_bountyhunter_phase4_novice	class_bountyhunter_phase4	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase3_master		combat_general	1315800	1988090							bh_del_dm_cc_dot_2	droid_find_chance=10,droid_tracks=1,droid_track_chance=10,droid_track_speed=15			1	0
 class_bountyhunter_phase4_02	class_bountyhunter_phase4	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase4_novice		combat_general	1529300	2304380							bh_ae_dm_2				1	0
 class_bountyhunter_phase4_03	class_bountyhunter_phase4_02	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase4_02		combat_general	1772600	2664480							bh_dm_8	droid_find_speed=10,droid_tracks=1			1	0
-class_bountyhunter_phase4_04	class_bountyhunter_phase4_03	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase4_03		combat_general	2049600	3074500							bh_sh_3	bounty_mission_level=1,droid_track_chance=10			1	0
+class_bountyhunter_phase4_04	class_bountyhunter_phase4_03	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase4_03		combat_general	2049600	3074500							of_sh_3	bounty_mission_level=1,droid_track_chance=10			1	0
 class_bountyhunter_phase4_05	class_bountyhunter_phase4_04	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase4_04		combat_general	2365000	3540940							bh_del_cc_3,bountycheck	droid_tracks=2,droid_track_speed=10			1	0
 class_bountyhunter_phase4_master	class_bountyhunter_phase4	oneByFour	0	1	0	0	100	0		class_bountyhunter_phase4_05		combat_general	2723800	3540940							bh_del_dm_cc_dot_3,bh_conceal_1,bh_relentless_1	droid_find_chance=10,droid_find_speed=10,droid_tracks=2,droid_track_chance=10,cybernetic_psychosis_resistance=2			1	0
 class_forcesensitive_phase1	class	oneByFour	0	0	1	0	0	0																	1	0
@@ -71,7 +71,7 @@ class_forcesensitive_phase4_master	class_forcesensitive_phase4	oneByFour	0	1	0	0
 class_smuggler_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_smuggler_phase1_novice	class_smuggler_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							sm_fast_draw,sm_precision_strike,sm_inspect_cargo	cybernetic_psychosis_resistance=2,expertise_increase_smuggler_loot=4			1	0
 class_smuggler_phase1_02	class_smuggler_phase1	oneByFour	0	0	0	0	100	0		class_smuggler_phase1_novice		combat_general	3700	16120							sm_concussion_shot,sm_dizzy				1	0
-class_smuggler_phase1_03	class_smuggler_phase1_02	oneByFour	0	0	0	0	100	0		class_smuggler_phase1_02		combat_general	12400	30160							sm_ae_cover_fire,sm_sh_0,sm_ae_pin_down				1	0
+class_smuggler_phase1_03	class_smuggler_phase1_02	oneByFour	0	0	0	0	100	0		class_smuggler_phase1_02		combat_general	12400	30160							sm_ae_cover_fire,of_sh_0,sm_ae_pin_down				1	0
 class_smuggler_phase1_04	class_smuggler_phase1_03	oneByFour	0	0	0	0	100	0		class_smuggler_phase1_03		combat_general	23200	67730							sm_dm_1,sm_dm_cc_1,sm_dm_cc_melee_1,sm_dm_melee_1,sm_summon_smuggler,sm_sly_lie,sm_fast_talk	expertise_half_truth=100,expertise_sly_lie_bonus=10,expertise_fast_talk_bonus=10,expertise_fake_id=50,expertise_sly_lie_rank=10,expertise_fast_talk_rank=10			1	0
 class_smuggler_phase1_05	class_smuggler_phase1_04	oneByFour	0	0	0	0	100	0		class_smuggler_phase1_04		combat_general	52100	105300							fence,sm_ae_dm_cc_1,sm_ae_dm_cc_melee_1				1	0
 class_smuggler_phase1_master	class_smuggler_phase1	oneByFour	0	1	0	0	100	0		class_smuggler_phase1_05		combat_general	81000	151060							sm_dm_2,sm_dm_cc_2,sm_dm_cc_melee_2,sm_dm_melee_2	expertise_innocent_cargo=100,expertise_sly_lie_bonus=10,expertise_fast_talk_bonus=10,expertise_underworld_boss_bonus=200,cybernetic_psychosis_resistance=2			1	0
@@ -79,27 +79,27 @@ class_smuggler_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_smuggler_phase2_novice	class_smuggler_phase2	oneByFour	0	0	0	0	100	0		class_smuggler_phase1_master		combat_general	116200	205140							wear_all_armor,sm_ae_dm_cc_2,sm_ae_dm_cc_melee_2,sm_skullduggery	expertise_miss_by_luck=12			1	0
 class_smuggler_phase2_02	class_smuggler_phase2	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_novice		combat_general	157800	267540							sm_del_dm_cc_1,sm_dm_3,sm_dm_melee_3	expertise_sm_rank_range_buff=1,expertise_sm_rank_damage_buff=1			1	0
 class_smuggler_phase2_03	class_smuggler_phase2_02	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_02		combat_general	205800	339690							sm_modify_pistol_1,sm_ae_dm_1,sm_ae_dm_melee_1,sm_dm_cc_3,sm_dm_cc_melee_3				1	0
-class_smuggler_phase2_04	class_smuggler_phase2_03	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_03		combat_general	261300	423410							sm_sh_1,sm_ae_dm_cc_3,sm_ae_dm_cc_melee_3,sm_shoot_first_1				1	0
+class_smuggler_phase2_04	class_smuggler_phase2_03	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_03		combat_general	261300	423410							of_sh_1,sm_ae_dm_cc_3,sm_ae_dm_cc_melee_3,sm_shoot_first_1				1	0
 class_smuggler_phase2_05	class_smuggler_phase2_04	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_04		combat_general	325700	519610							sm_del_dm_cc_2,sm_dm_4,sm_dm_cc_4,sm_dm_cc_melee_4,sm_dm_melee_4				1	0
 class_smuggler_phase2_master	class_smuggler_phase2	oneByFour	0	1	0	0	100	0		class_smuggler_phase2_05		combat_general	399700	629980							sm_ae_dm_2,sm_ae_dm_melee_2,sm_dm_dot_1,sm_dm_dot_melee_1	cybernetic_psychosis_resistance=2			1	0
 class_smuggler_phase3	class	oneByFour	0	0	1	0	0	0																	1	0
 class_smuggler_phase3_novice	class_smuggler_phase3	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_master		combat_general	484600	756860							sm_ae_dm_cc_4,sm_ae_dm_cc_melee_4				1	0
 class_smuggler_phase3_02	class_smuggler_phase3	oneByFour	0	0	0	0	100	0		class_smuggler_phase3_novice		combat_general	582200	901160							sm_del_dm_cc_3,sm_dm_cc_5,sm_dm_cc_melee_5				1	0
 class_smuggler_phase3_03	class_smuggler_phase3_02	oneByFour	0	0	0	0	100	0		class_smuggler_phase3_02		combat_general	693200	1065610							sm_ae_dm_3,sm_ae_dm_melee_3,sm_dm_5,sm_dm_melee_5				1	0
-class_smuggler_phase3_04	class_smuggler_phase3_03	oneByFour	0	0	0	0	100	0		class_smuggler_phase3_03		combat_general	819700	1252940							sm_sh_2,sm_modify_pistol_2,sm_ae_dm_cc_5,sm_ae_dm_cc_melee_5,sm_dm_dot_2,sm_dm_dot_melee_2				1	0
+class_smuggler_phase3_04	class_smuggler_phase3_03	oneByFour	0	0	0	0	100	0		class_smuggler_phase3_03		combat_general	819700	1252940							of_sh_2,sm_modify_pistol_2,sm_ae_dm_cc_5,sm_ae_dm_cc_melee_5,sm_dm_dot_2,sm_dm_dot_melee_2				1	0
 class_smuggler_phase3_05	class_smuggler_phase3_04	oneByFour	0	0	0	0	100	0		class_smuggler_phase3_04		combat_general	963800	1466790							sm_dm_cc_6,sm_dm_cc_melee_6,				1	0
 class_smuggler_phase3_master	class_smuggler_phase3	oneByFour	0	1	0	0	100	0		class_smuggler_phase3_05		combat_general	1128300	1710540							sm_del_dm_cc_4,sm_ae_dm_4,sm_ae_dm_melee_4,sm_dm_6,sm_dm_melee_6	cybernetic_psychosis_resistance=2			1	0
 class_smuggler_phase4	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_smuggler_phase4_novice	class_smuggler_phase4	oneByFour	0	0	0	0	100	0		class_smuggler_phase3_master		combat_general	1315800	1988090							sm_dm_dot_3,sm_dm_dot_melee_3				1	0
 class_smuggler_phase4_02	class_smuggler_phase4	oneByFour	0	0	0	0	100	0		class_smuggler_phase4_novice		combat_general	1529300	2304380							sm_ae_dm_5,sm_ae_dm_melee_5				1	0
 class_smuggler_phase4_03	class_smuggler_phase4_02	oneByFour	0	0	0	0	100	0		class_smuggler_phase4_02		combat_general	1772600	2664480							sm_del_dm_cc_5				1	0
-class_smuggler_phase4_04	class_smuggler_phase4_03	oneByFour	0	0	0	0	100	0		class_smuggler_phase4_03		combat_general	2049600	3074500							sm_sh_3,sm_dm_7,sm_dm_melee_7				1	0
+class_smuggler_phase4_04	class_smuggler_phase4_03	oneByFour	0	0	0	0	100	0		class_smuggler_phase4_03		combat_general	2049600	3074500							of_sh_3,sm_dm_7,sm_dm_melee_7				1	0
 class_smuggler_phase4_05	class_smuggler_phase4_04	oneByFour	0	0	0	0	100	0		class_smuggler_phase4_04		combat_general	2365000	3540940							sm_modify_pistol_3,sm_dm_dot_4,sm_dm_dot_melee_4				1	0
 class_smuggler_phase4_master	class_smuggler_phase4	oneByFour	0	1	0	0	100	0		class_smuggler_phase4_05		combat_general	2723800	3540940							sm_del_dm_cc_6,sm_ae_dm_6,sm_ae_dm_melee_6,sm_disarm_trap_1,sm_buff_invis_ally_1,sm_inside_information	cybernetic_psychosis_resistance=2			1	0
 class_commando_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_commando_phase1_novice	class_commando_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							co_dm_1,co_empowered_attack	cybernetic_psychosis_resistance=2			1	0
 class_commando_phase1_02	class_commando_phase1	oneByFour	0	0	0	0	100	0		class_commando_phase1_novice		combat_general	3700	16120							co_del_ae_cc_1_1				1	0
-class_commando_phase1_03	class_commando_phase1_02	oneByFour	0	0	0	0	100	0		class_commando_phase1_02		combat_general	12400	30160							co_ae_dm_1,co_sh_0				1	0
+class_commando_phase1_03	class_commando_phase1_02	oneByFour	0	0	0	0	100	0		class_commando_phase1_02		combat_general	12400	30160							co_ae_dm_1,of_sh_0				1	0
 class_commando_phase1_04	class_commando_phase1_03	oneByFour	0	0	0	0	100	0		class_commando_phase1_03		combat_general	23200	67730							co_dm_2,co_remote_detonator_1	expertise_co_flash_bang=100,expertise_delay_line_co_remote_detonator=480,expertise_damage_line_co_remote_detonator=300			1	0
 class_commando_phase1_05	class_commando_phase1_04	oneByFour	0	0	0	0	100	0		class_commando_phase1_04		combat_general	52100	105300							co_del_ae_cc_1_2				1	0
 class_commando_phase1_master	class_commando_phase1	oneByFour	0	1	0	0	100	0		class_commando_phase1_05		combat_general	81000	151060							co_ae_dm_2,co_cluster_bomb	cybernetic_psychosis_resistance=2			1	0
@@ -107,21 +107,21 @@ class_commando_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_commando_phase2_novice	class_commando_phase2	oneByFour	0	0	0	0	100	0		class_commando_phase1_master		combat_general	116200	205140							co_dm_3,co_riddle_armor,wear_all_armor				1	0
 class_commando_phase2_02	class_commando_phase2	oneByFour	0	0	0	0	100	0		class_commando_phase2_novice		combat_general	157800	267540							co_del_ae_cc_1_3				1	0
 class_commando_phase2_03	class_commando_phase2_02	oneByFour	0	0	0	0	100	0		class_commando_phase2_02		combat_general	205800	339690							co_ae_dm_3				1	0
-class_commando_phase2_04	class_commando_phase2_03	oneByFour	0	0	0	0	100	0		class_commando_phase2_03		combat_general	261300	423410							co_sh_1,co_first_aid_training				1	0
+class_commando_phase2_04	class_commando_phase2_03	oneByFour	0	0	0	0	100	0		class_commando_phase2_03		combat_general	261300	423410							of_sh_1,co_first_aid_training				1	0
 class_commando_phase2_05	class_commando_phase2_04	oneByFour	0	0	0	0	100	0		class_commando_phase2_04		combat_general	325700	519610							co_del_ae_dm_1				1	0
 class_commando_phase2_master	class_commando_phase2	oneByFour	0	1	0	0	100	0		class_commando_phase2_05		combat_general	399700	629980							co_dm_4,co_hw_dm_1,co_hw_dm_crit_1	cybernetic_psychosis_resistance=2			1	0
 class_commando_phase3	class	oneByFour	0	0	1	0	0	0																	1	0
 class_commando_phase3_novice	class_commando_phase3	oneByFour	0	0	0	0	100	0		class_commando_phase2_master		combat_general	484600	756860							co_fld_dm_1,co_position_secured				1	0
 class_commando_phase3_02	class_commando_phase3	oneByFour	0	0	0	0	100	0		class_commando_phase3_novice		combat_general	582200	901160							co_del_ae_cc_2_1				1	0
 class_commando_phase3_03	class_commando_phase3_02	oneByFour	0	0	0	0	100	0		class_commando_phase3_02		combat_general	693200	1065610							co_dm_5				1	0
-class_commando_phase3_04	class_commando_phase3_03	oneByFour	0	0	0	0	100	0		class_commando_phase3_03		combat_general	819700	1252940							co_sh_2,co_hw_dot,co_ae_hw_dot				1	0
+class_commando_phase3_04	class_commando_phase3_03	oneByFour	0	0	0	0	100	0		class_commando_phase3_03		combat_general	819700	1252940							of_sh_2,co_hw_dot,co_ae_hw_dot				1	0
 class_commando_phase3_05	class_commando_phase3_04	oneByFour	0	0	0	0	100	0		class_commando_phase3_04		combat_general	963800	1466790							co_del_ae_dm_2				1	0
 class_commando_phase3_master	class_commando_phase3	oneByFour	0	1	0	0	100	0		class_commando_phase3_05		combat_general	1128300	1710540							co_dm_6	cybernetic_psychosis_resistance=2			1	0
 class_commando_phase4	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_commando_phase4_novice	class_commando_phase4	oneByFour	0	0	0	0	100	0		class_commando_phase3_master		combat_general	1315800	1988090							co_fld_dm_2,co_double_time				1	0
 class_commando_phase4_02	class_commando_phase4	oneByFour	0	0	0	0	100	0		class_commando_phase4_novice		combat_general	1529300	2304380							co_del_ae_cc_2_2				1	0
 class_commando_phase4_03	class_commando_phase4_02	oneByFour	0	0	0	0	100	0		class_commando_phase4_02		combat_general	1772600	2664480							co_dm_7				1	0
-class_commando_phase4_04	class_commando_phase4_03	oneByFour	0	0	0	0	100	0		class_commando_phase4_03		combat_general	2049600	3074500							co_sh_3				1	0
+class_commando_phase4_04	class_commando_phase4_03	oneByFour	0	0	0	0	100	0		class_commando_phase4_03		combat_general	2049600	3074500							of_sh_3				1	0
 class_commando_phase4_05	class_commando_phase4_04	oneByFour	0	0	0	0	100	0		class_commando_phase4_04		combat_general	2365000	3540940							co_del_ae_dm_3				1	0
 class_commando_phase4_master	class_commando_phase4	oneByFour	0	1	0	0	100	0		class_commando_phase4_05		combat_general	2723800	3540940							co_dm_8,co_conceal_device_1,co_kill_trap_1	cybernetic_psychosis_resistance=2			1	0
 class_officer_phase1	class	oneByFour	0	0	1	0	0	0						0							sysgroup				1	0
@@ -163,21 +163,21 @@ class_spy_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_spy_phase2_novice	class_spy_phase2	oneByFour	0	0	0	0	100	0		class_spy_phase1_master		combat_general	116200	205140							sp_dm_3,sp_stealth_melee_1 ,wear_all_armor				1	0
 class_spy_phase2_02	class_spy_phase2	oneByFour	0	0	0	0	100	0		class_spy_phase2_novice		combat_general	157800	267540								expertise_movement_buff_invis_sp_buff_stealth_1=-20			1	0
 class_spy_phase2_03	class_spy_phase2_02	oneByFour	0	0	0	0	100	0		class_spy_phase2_02		combat_general	205800	339690							sp_decoy				1	0
-class_spy_phase2_04	class_spy_phase2_03	oneByFour	0	0	0	0	100	0		class_spy_phase2_03		combat_general	261300	423410							sp_sh_1	expertise_movement_buff_invis_sp_buff_invis_1=-10			1	0
+class_spy_phase2_04	class_spy_phase2_03	oneByFour	0	0	0	0	100	0		class_spy_phase2_03		combat_general	261300	423410							of_sh_1	expertise_movement_buff_invis_sp_buff_invis_1=-10			1	0
 class_spy_phase2_05	class_spy_phase2_04	oneByFour	0	0	0	0	100	0		class_spy_phase2_04		combat_general	325700	519610							sp_fldmot_1				1	0
 class_spy_phase2_master	class_spy_phase2	oneByFour	0	1	0	0	100	0		class_spy_phase2_05		combat_general	399700	629980							sp_dm_4	cybernetic_psychosis_resistance=2			1	0
 class_spy_phase3	class	oneByFour	0	0	1	0	0	0																	1	0
 class_spy_phase3_novice	class_spy_phase3	oneByFour	0	0	0	0	100	0		class_spy_phase2_master		combat_general	484600	756860							sp_dot_1	expertise_movement_buff_invis_sp_buff_stealth_1=-20			1	0
 class_spy_phase3_02	class_spy_phase3	oneByFour	0	0	0	0	100	0		class_spy_phase3_novice		combat_general	582200	901160							sp_fldmot_2				1	0
 class_spy_phase3_03	class_spy_phase3_02	oneByFour	0	0	0	0	100	0		class_spy_phase3_02		combat_general	693200	1065610							sp_dm_5	expertise_movement_buff_invis_sp_buff_invis_1=-10			1	0
-class_spy_phase3_04	class_spy_phase3_03	oneByFour	0	0	0	0	100	0		class_spy_phase3_03		combat_general	819700	1252940							sp_sh_2				1	0
+class_spy_phase3_04	class_spy_phase3_03	oneByFour	0	0	0	0	100	0		class_spy_phase3_03		combat_general	819700	1252940							of_sh_2				1	0
 class_spy_phase3_05	class_spy_phase3_04	oneByFour	0	0	0	0	100	0		class_spy_phase3_04		combat_general	963800	1466790							sp_fld_debuff_ca	expertise_movement_buff_invis_sp_buff_invis_1=-10			1	0
 class_spy_phase3_master	class_spy_phase3	oneByFour	0	1	0	0	100	0		class_spy_phase3_05		combat_general	1128300	1710540							sp_dm_6	cybernetic_psychosis_resistance=2			1	0
 class_spy_phase4	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_spy_phase4_novice	class_spy_phase4	oneByFour	0	0	0	0	100	0		class_spy_phase3_master		combat_general	1315800	1988090							sp_cc_dot	expertise_movement_buff_invis_sp_buff_invis_1=-10			1	0
 class_spy_phase4_02	class_spy_phase4	oneByFour	0	0	0	0	100	0		class_spy_phase4_novice		combat_general	1529300	2304380							sp_fldmot_3				1	0
 class_spy_phase4_03	class_spy_phase4_02	oneByFour	0	0	0	0	100	0		class_spy_phase4_02		combat_general	1772600	2664480							sp_dm_7				1	0
-class_spy_phase4_04	class_spy_phase4_03	oneByFour	0	0	0	0	100	0		class_spy_phase4_03		combat_general	2049600	3074500							sp_sh_3	expertise_movement_buff_invis_sp_buff_invis_1=-5			1	0
+class_spy_phase4_04	class_spy_phase4_03	oneByFour	0	0	0	0	100	0		class_spy_phase4_03		combat_general	2049600	3074500							of_sh_3	expertise_movement_buff_invis_sp_buff_invis_1=-5			1	0
 class_spy_phase4_05	class_spy_phase4_04	oneByFour	0	0	0	0	100	0		class_spy_phase4_04		combat_general	2365000	3540940							sp_smoke_mirrors				1	0
 class_spy_phase4_master	class_spy_phase4	oneByFour	0	1	0	0	100	0		class_spy_phase4_05		combat_general	2723800	3540940							sp_dm_8,sp_hide_device_1,sp_neutralize_device_1,sp_shifty_setup	cybernetic_psychosis_resistance=2			1	0
 class_medic_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0

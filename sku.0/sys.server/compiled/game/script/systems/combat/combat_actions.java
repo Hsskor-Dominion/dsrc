@@ -3945,10 +3945,6 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int of_sh_0(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!healing.isDamaged(self)) {
-            sendSystemMessage(self, new string_id("healing", "no_damage_to_heal_self"));
-            return SCRIPT_OVERRIDE;
-        }
         if (!combatStandardAction("of_sh_0", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -3966,10 +3962,6 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int of_sh_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!healing.isDamaged(self)) {
-            sendSystemMessage(self, new string_id("healing", "no_damage_to_heal_self"));
-            return SCRIPT_OVERRIDE;
-        }
         if (!combatStandardAction("of_sh_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -3987,10 +3979,6 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int of_sh_2(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!healing.isDamaged(self)) {
-            sendSystemMessage(self, new string_id("healing", "no_damage_to_heal_self"));
-            return SCRIPT_OVERRIDE;
-        }
         if (!combatStandardAction("of_sh_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -4008,10 +3996,6 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int of_sh_3(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!healing.isDamaged(self)) {
-            sendSystemMessage(self, new string_id("healing", "no_damage_to_heal_self"));
-            return SCRIPT_OVERRIDE;
-        }
         if (!combatStandardAction("of_sh_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
