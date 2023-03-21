@@ -1244,7 +1244,7 @@ public class buff_handler extends script.base_script
                 buff.applyBuff(self, self, "co_pos_sec_critical_4");
             }
             int posSecuredBoO = (int)getSkillStatisticModifier(self, "expertise_co_pos_secured_line_armor");
-            if (posSecuredBoO == 1000)
+            if (posSecuredBoO == 0)
             {
                 buff.applyBuff(self, self, "co_base_of_operations");
             }

@@ -1033,7 +1033,7 @@ bh_shields_block	bh_shields	bh_shields	bh_shields	15		5		0		0		0		0		0	STATE_NON
 bh_shields_charged	bh_shields_recourse			10	command.bh_deflection	15	combat_multiply_damage_dealt	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	100	1	0	1	1	1
 bh_dread_strike	bh_dread_strike			10	command.bh_dread_strike	15	combat_divide_damage_dealt	25	expertise_healing_reduction	50		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 bh_relentless_onslaught	bh_relentless_onslaught			10	command.bh_relentless	15	expertise_action_all	75		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-bh_take_cover	bh_take_cover			10	command.bh_cover	40	expertise_glancing_blow_ranged	40	expertise_damage_all	10	radar_invis	0	expertise_strikethrough_chance	25	combat_strikethrough_value	10	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+bh_take_cover	bh_take_cover	snare		10	command.bh_cover	40	expertise_glancing_blow_ranged	40	expertise_damage_all	10	radar_invis	0	expertise_strikethrough_chance	25	slope_move	-100	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 bh_power_sprint	bh_power_sprint			10	command.bh_armor_sprint	30	movement	0	movement_resist_snare	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 bh_armor_duelist_heal_1	bh_duelist_stance			10	command.bh_armor_duelist	15	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 bh_armor_duelist_heal_2	bh_duelist_stance			20	command.bh_armor_duelist	15	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1

@@ -31,7 +31,7 @@ public class rtp_c3po_main extends script.base_script
     }
     public boolean rtp_c3po_main_condition_playerLevelCheck(obj_id player, obj_id npc) throws InterruptedException
     {
-        return (getLevel(player) < 80);
+        return (getLevel(player) < 5);
     }
     public boolean rtp_c3po_main_condition_questComplete(obj_id player, obj_id npc) throws InterruptedException
     {
