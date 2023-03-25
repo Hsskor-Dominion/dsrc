@@ -1854,7 +1854,7 @@ expertise_sm_path_off_the_books_1	expertise																				sm_off_the_books,
 expertise_sm_path_inside_information_1	expertise																				sm_inside_information				0	
 expertise_sm_path_flying_tackle_1	expertise_sm_path_pistol_whip_1									expertise_sm_path_pistol_whip_1												expertise_stun_line_sm_pistol_whip=50			0	
 expertise_sm_path_flying_tackle_2	expertise_sm_path_flying_tackle_1																					expertise_stun_line_sm_pistol_whip=50			0	
-expertise_sm_path_pistol_whip_1	expertise_of_dm_4									expertise_of_dm_4											of_pistol_dm,sm_pistol_whip_1	expertise_stun_line_sm_pistol_whip=100,expertise_buff_duration_line_sm_pistol_whip=2			0	
+expertise_sm_path_pistol_whip_1	expertise_of_dm_4									expertise_of_dm_4											sm_pistol_whip_1	expertise_stun_line_sm_pistol_whip=100,expertise_buff_duration_line_sm_pistol_whip=2			0	
 expertise_sm_path_beat_down_1	expertise_sm_path_pistol_whip_1									expertise_sm_path_pistol_whip_1												expertise_buff_duration_line_sm_pistol_whip=1			0	
 expertise_sm_path_beat_down_2	expertise_sm_path_beat_down_1																					expertise_buff_duration_line_sm_pistol_whip=1			0	
 expertise_sm_path_card_up_your_sleeve_1	expertise_sm_path_lucky_break_4									expertise_sm_path_lucky_break_4												expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
