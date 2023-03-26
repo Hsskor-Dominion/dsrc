@@ -1159,7 +1159,7 @@ vehicle_3	vehicle			1	command.detonateDroid	-1	expertise_glancing_blow_ranged	60
 vehicle_4	vehicle			1	command.detonateDroid	-1	expertise_glancing_blow_ranged	80		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 vehicle_5	vehicle			1	command.detonateDroid	-1	expertise_glancing_blow_ranged	90		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 exclude_self_exclusive_proxy_of_last_words	deadOfficersFTW			90	command.of_last_words	1	exclude_self	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-shmiGraveBuff	genBuff_4			100	buffs.genericBuff	3600	strength_modified	60	stamina_modified	60	agility_modified	60	precision_modified	60	luck_modified	60	STATE_NONE	none	clienteffect/bh_shields_effect.cef		1	0		1	1	1	0	1	1	0	1	1	1
+shmiGraveBuff	genBuff_4			100	buffs.genericBuff	3600	xp_bonus_general	10	stamina_modified	60	agility_modified	60	precision_modified	60	luck_modified	60	STATE_NONE	none	clienteffect/bh_shields_effect.cef		1	0		1	1	1	0	1	1	0	1	1	1
 sr88_mine	mine			5	buffs.cryobanSnare	30	movement	0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_health_0	medicConstitution			14	command.me_buff_health	600	constitution_modified	35		0		0		0		0	STATE_NONE	none	appearance/pt_heal_2.prt		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_health_2	medicConstitution			76	command.me_buff_health	600	constitution_modified	250		0		0		0		0	STATE_NONE	none	appearance/pt_heal_2.prt		1	0		1	1	1	0	1	1	0	1	1	1

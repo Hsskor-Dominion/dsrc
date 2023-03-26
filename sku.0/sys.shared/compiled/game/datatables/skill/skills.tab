@@ -2017,7 +2017,7 @@ expertise_me_heal_damage_2	expertise_me_heal_damage_1																					expert
 expertise_me_heal_damage_3	expertise_me_heal_damage_2																					expertise_healing_all=3			0	
 expertise_me_heal_damage_4	expertise_me_heal_damage_3																					expertise_healing_all=3			0	
 expertise_me_cure_affliction_1	expertise_me_heal_damage_4									expertise_me_heal_damage_4															0	
-expertise_me_heal_action_1	expertise_me_cure_affliction_1									expertise_me_cure_affliction_1												exotic_heal_action_reduction=5			0	
+expertise_me_heal_action_1	expertise																					exotic_heal_action_reduction=5			0	
 expertise_me_heal_action_2	expertise_me_heal_action_1																					exotic_heal_action_reduction=5			0	
 expertise_me_heal_action_3	expertise_me_heal_action_2																					exotic_heal_action_reduction=5			0	
 expertise_me_heal_action_4	expertise_me_heal_action_3																					exotic_heal_action_reduction=5			0	
