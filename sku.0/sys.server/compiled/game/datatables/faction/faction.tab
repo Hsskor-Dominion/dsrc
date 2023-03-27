@@ -37,13 +37,13 @@ bandit	1	1	0		townsperson
 pirate	1	1	0				
 thug	1	1	0		townsperson		
 townsperson	1	0	0		thug,bandit	Rebel,Imperial	
-gungan	1	1	0		plasma_thief,swamp_rat,borvo		
+gungan	1	1	0		plasma_thief,swamp_rat,borvo,trade_federation		
 naboo	1	1	0		borvo		
 plasma_thief	1	1	0		gungan		
 swamp_rat	1	1	0		gungan		
 naboo_security_force	1	1	0		borvo,naboo_pirate,plasma_thief,swamp_rat,trade_federation		
 naboo_pirate	1	1	0		naboo_security_force		
-trade_federation	1	1	0		borvo,naboo_security_force	droid_army	
+trade_federation	1	1	0		borvo,naboo_security_force,gungan	droid_army	
 aakuans	1	1	0		fed_dub,binayre,liberation_party		
 fed_dub	1	1	0		liberation_party,binayre,lost_aqualish,drall		
 binayre	1	1	0		fed_dub,aakuans,corsec		
@@ -83,7 +83,7 @@ geonosian_mad_bunker	0	1	0			geonosian_crazed_monster
 geonosian_crazed_monster	0	1	0			geonosian_mad_bunker	
 geonosian_crazy	0	1	0		geonosian_mad_bunker,geonosian_crazed_monster		
 aggro_corsec	0	1	0		afarathu,followers_of_lord_nyax,monumenter,rogue_corsec,lost_aqualish	corsec	
-death_watch	1	1	0		death_watch_special,jedi,sith		
+death_watch	1	1	0		death_watch_special,fs_villager,sith_shadow		
 death_watch_special	0	0	0				
 sith_shadow	1	1	0		fs_villager		0
 fs_villager	1	1	0		sith_shadow		0
