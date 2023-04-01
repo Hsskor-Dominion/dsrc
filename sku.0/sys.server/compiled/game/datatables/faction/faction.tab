@@ -34,7 +34,7 @@ endor_marauder	1	1	0		gondula_tribe,panshee_tribe
 panshee_tribe	1	1	0		donkuwah_tribe,korga_tribe,pubam,endor_marauder	gondula_tribe	
 pubam	1	1	0		gondula_tribe,panshee_tribe		
 bandit	1	1	0		townsperson		
-pirate	1	1	0				
+pirate	1	1	0			naboo_pirate	
 thug	1	1	0		townsperson		
 townsperson	1	0	0		thug,bandit	Rebel,Imperial	
 gungan	1	1	0		plasma_thief,swamp_rat,borvo,trade_federation		
@@ -43,7 +43,7 @@ plasma_thief	1	1	0		gungan
 swamp_rat	1	1	0		gungan		
 naboo_security_force	1	1	0		borvo,naboo_pirate,plasma_thief,swamp_rat,trade_federation		
 naboo_pirate	1	1	0		naboo_security_force		
-trade_federation	1	1	0		borvo,naboo_security_force,gungan	droid_army	
+trade_federation	1	1	0		naboo_security_force,gungan	droid_army	
 aakuans	1	1	0		fed_dub,binayre,liberation_party		
 fed_dub	1	1	0		liberation_party,binayre,lost_aqualish,drall		
 binayre	1	1	0		fed_dub,aakuans,corsec		
@@ -52,14 +52,14 @@ jabba	1	1	0		valarian,borvo
 alkhara	1	1	0		desert_demon,spice_collective	tusken_raider,townsperson	
 desert_demon	1	1	0		swoop		
 jawa	1	1	0		tusken_raider		
-swoop	1	1	0		desert_demon		
+swoop	1	1	0		desert_demon	cor_swoop	
 tusken_raider	1	1	0		jawa,alkhara		
 valarian	1	1	0		jabba		
 drall	1	1	0		corsec,fed_dub		
-borvo	1	1	0		gungan,trade_federation,jabba		
+borvo	1	1	0		naboo	Hutt	
 sif	1	1	0		Rebel,Imperial	Hutt	
 flail	1	1	0		hidden_daggers		
-cor_swoop	1	1	0		smashball		
+cor_swoop	1	1	0		smashball	swoop	
 restuss	1	1	0		garyn,cobral	narmle	
 narmle	1	1	0		spice_collective,kobola	restuss	
 rorgungan	1	1	0		spice_collective		

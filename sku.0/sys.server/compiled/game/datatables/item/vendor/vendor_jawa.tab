@@ -1,7 +1,7 @@
 item	cash	token0	token1	token2	token3	token14	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
-item_pgc_token_01	100000								
-item_tcg_loot_reward_series2_versafunction88_datapad	15000								
+item_pgc_token_01	500000								
+item_tcg_loot_reward_series2_versafunction88_datapad	100000								
 item_pgc_sandcrawler_house_deed						4			
 object/tangible/veteran_reward/frn_vet_holo_sandcrawler.iff						4			
 object/tangible/veteran_reward/frn_vet_holo_jawa.iff						4			

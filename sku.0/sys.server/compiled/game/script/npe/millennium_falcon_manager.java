@@ -119,9 +119,9 @@ public class millennium_falcon_manager extends script.base_script
         sequencer.registerSequenceObject(dayan, "dayan");
         setInvulnerable(dayan, true);
         obj_id jabbaInvis = create.object("object/tangible/npe/npe_node.iff", hanLoc);
-        setName(jabbaInvis, "Darth Vader");
+        setName(jabbaInvis, "Thrawn");
         sequencer.registerSequenceObject(jabbaInvis, "vader");
-        setObjVar(jabbaInvis, "convo.appearance", "object/mobile/darth_vader.iff");
+        setObjVar(jabbaInvis, "convo.appearance", "object/mobile/naboo_npc/thrawn.iff");
         utils.setScriptVar(self, "objVader", jabbaInvis);
         return SCRIPT_CONTINUE;
     }
