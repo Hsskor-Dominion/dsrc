@@ -10,7 +10,6 @@ public class stardust_info extends script.base_script
     {
     }
     public static String c_stringFile = "conversation/stardust_info";
-    public static final String NPE = OBJ_VAR_BASE + "npe";
     public boolean stardust_info_condition__defaultCondition(obj_id player, obj_id npc) throws InterruptedException
     {
         return true;
@@ -326,7 +325,7 @@ public class stardust_info extends script.base_script
         {
             doAnimationAction(npc, "greet");
             string_id message = new string_id(c_stringFile, "s_253");
-            removeObjVar(player, NPE);
+            removeObjVar(player, "npe");
             int numberOfResponses = 0;
             boolean hasResponse = false;
             boolean hasResponse0 = false;
