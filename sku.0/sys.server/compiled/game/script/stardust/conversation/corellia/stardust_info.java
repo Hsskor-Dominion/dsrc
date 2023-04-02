@@ -10,6 +10,7 @@ public class stardust_info extends script.base_script
     {
     }
     public static String c_stringFile = "conversation/stardust_info";
+    public static final String NPE = OBJ_VAR_BASE + "npe";
     public boolean stardust_info_condition__defaultCondition(obj_id player, obj_id npc) throws InterruptedException
     {
         return true;
@@ -283,6 +284,7 @@ public class stardust_info extends script.base_script
         if (stardust_info_condition_hasAnyQuest(player, npc))
         {
             doAnimationAction(npc, "point_forward");
+            removeObjVar(player, NPE);
             string_id message = new string_id(c_stringFile, "s_163");
             int numberOfResponses = 0;
             boolean hasResponse = false;
