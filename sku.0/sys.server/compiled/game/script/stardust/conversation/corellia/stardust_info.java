@@ -284,7 +284,6 @@ public class stardust_info extends script.base_script
         if (stardust_info_condition_hasAnyQuest(player, npc))
         {
             doAnimationAction(npc, "point_forward");
-            removeObjVar(player, NPE);
             string_id message = new string_id(c_stringFile, "s_163");
             int numberOfResponses = 0;
             boolean hasResponse = false;
@@ -327,6 +326,7 @@ public class stardust_info extends script.base_script
         {
             doAnimationAction(npc, "greet");
             string_id message = new string_id(c_stringFile, "s_253");
+            removeObjVar(player, NPE);
             int numberOfResponses = 0;
             boolean hasResponse = false;
             boolean hasResponse0 = false;
