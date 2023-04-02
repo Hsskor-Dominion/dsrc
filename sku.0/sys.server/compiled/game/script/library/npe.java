@@ -42,7 +42,7 @@ public class npe extends script.base_script
     public static final String SPACE_QUEST_TYPE = "strSpaceType";
     public static final String SPACE_QUEST_NAME = "strSpaceName";
     public static final string_id NOT_FROM_SPACE = new string_id("npe", "gamma_travel_not_from_space");
-    public static final int LEVEL_CAP = 22;
+    public static final int LEVEL_CAP = 90;
     public static void setResetDungeonObjvar(obj_id player) throws InterruptedException
     {
         if (isIdValid(space_dungeon.getDungeonIdForPlayer(player)))

@@ -154,8 +154,8 @@ class_officer_phase4_05	class_officer_phase4_04	oneByFour	0	0	0	0	100	0		class_o
 class_officer_phase4_master	class_officer_phase4	oneByFour	0	1	0	0	100	0		class_officer_phase4_05		combat_general	2723800	3540940							of_dm_8,of_rally_point_off,of_rally_point_def,of_drillmaster_1,of_charge_1	cybernetic_psychosis_resistance=2			1	0
 class_spy_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_spy_phase1_novice	class_spy_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							sp_dm_1,sp_reveal_shadows	cybernetic_psychosis_resistance=2			1	0
-class_spy_phase1_02	class_spy_phase1	oneByFour	0	0	0	0	100	0		class_spy_phase1_novice		combat_general	3700	16120							sp_buff_stealth_1				1	0
-class_spy_phase1_03	class_spy_phase1_02	oneByFour	0	0	0	0	100	0		class_spy_phase1_02		combat_general	12400	30160							sp_buff_invis_1,of_sh_0,sp_cloaked_recovery_0	expertise_movement_buff_invis_sp_buff_stealth_1=-20			1	0
+class_spy_phase1_02	class_spy_phase1	oneByFour	0	0	0	0	100	0		class_spy_phase1_novice		combat_general	3700	16120							sp_buff_stealth_1,of_sh_0				1	0
+class_spy_phase1_03	class_spy_phase1_02	oneByFour	0	0	0	0	100	0		class_spy_phase1_02		combat_general	12400	30160							sp_buff_invis_1,sp_cloaked_recovery_0	expertise_movement_buff_invis_sp_buff_stealth_1=-20			1	0
 class_spy_phase1_04	class_spy_phase1_03	oneByFour	0	0	0	0	100	0		class_spy_phase1_03		combat_general	23200	67730							sp_dm_2,sp_dot_0,sp_stealth_melee_0				1	0
 class_spy_phase1_05	class_spy_phase1_04	oneByFour	0	0	0	0	100	0		class_spy_phase1_04		combat_general	52100	105300							steal	expertise_movement_buff_invis_sp_buff_invis_1=-10			1	0
 class_spy_phase1_master	class_spy_phase1	oneByFour	0	1	0	0	100	0		class_spy_phase1_05		combat_general	81000	151060							sp_burst_of_shadows	cybernetic_psychosis_resistance=2			1	0

@@ -121,7 +121,7 @@ armorHinderanceFireRate	armorRof			1	buffs.armorHinderance	1		0		0		0		0		0	STAT
 weaponHinderance	weapon			1	buffs.weaponHinderance	-1	movement	0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 dessert_bofa_treat	food			1	buffs.foodDessert	1200	strength_modified	5	constitution_modified	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dish_travel_biscuits	food			1	buffs.foodMeal	1200	agility_modified	20	movement	15		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-drink_spiced_tea	food			1	buffs.foodBeverage	1200	precision_modified	10	constitution_modified	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+drink_spiced_tea	food			1	buffs.foodBeverage	1200	precision_modified	10	constitution_modified	10	xp_bonus_general	2		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dessert_blob_candy	food			1	buffs.foodDessert	1200	stamina_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dish_exo_protein_wafers	food			1	buffs.foodMeal	1200	stamina_modified	5	luck_modified	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_aitha	food			1	buffs.foodBeverage	1200	luck_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -415,7 +415,7 @@ npeStaminaBuff	doctorStamina			1	buffs.genericBuff	180	stamina_modified	5		0		0	
 npeDefenseBuff	genDefenseBonus			1	buffs.genericBuff	180	agility_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 npeMeleeAccuracy	genAccuracy			1	buffs.genericBuff	900	strength_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 npeRngAccuracy	genAccuracy			1	buffs.genericBuff	900	precision_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-dish_meat_jerky	food			1	buffs.foodMeal	900	constitution_modified	3		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+dish_meat_jerky	food			1	buffs.foodMeal	900	constitution_modified	3	xp_bonus_general	2		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 trivialRngAcc	genAccuracy			1	buffs.genericBuff	-1	precision_modified	3		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 trivialMeleeAcc	genAccuracy			1	buffs.genericBuff	-1	strength_modified	3		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 trivialComboRngSpeed	genRngSpeed			1	buffs.genericBuff	-1	precision_modified	1	strength	1		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
