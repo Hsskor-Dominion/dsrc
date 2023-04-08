@@ -158,7 +158,7 @@ class_spy_phase1_02	class_spy_phase1	oneByFour	0	0	0	0	100	0		class_spy_phase1_n
 class_spy_phase1_03	class_spy_phase1_02	oneByFour	0	0	0	0	100	0		class_spy_phase1_02		combat_general	12400	30160							sp_buff_invis_1,sp_cloaked_recovery_0	expertise_movement_buff_invis_sp_buff_stealth_1=-20			1	0
 class_spy_phase1_04	class_spy_phase1_03	oneByFour	0	0	0	0	100	0		class_spy_phase1_03		combat_general	23200	67730							sp_dm_2,sp_dot_0,sp_stealth_melee_0				1	0
 class_spy_phase1_05	class_spy_phase1_04	oneByFour	0	0	0	0	100	0		class_spy_phase1_04		combat_general	52100	105300							steal	expertise_movement_buff_invis_sp_buff_invis_1=-10			1	0
-class_spy_phase1_master	class_spy_phase1	oneByFour	0	1	0	0	100	0		class_spy_phase1_05		combat_general	81000	151060							sp_burst_of_shadows	cybernetic_psychosis_resistance=2			1	0
+class_spy_phase1_master	class_spy_phase1	oneByFour	0	1	0	0	100	0		class_spy_phase1_05		combat_general	81000	151060							sp_burst_of_shadows	cybernetic_psychosis_resistance=2,expertise_cooldown_line_sp_burst_shadows=120			1	0
 class_spy_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_spy_phase2_novice	class_spy_phase2	oneByFour	0	0	0	0	100	0		class_spy_phase1_master		combat_general	116200	205140							sp_dm_3,sp_stealth_melee_1,wear_all_armor				1	0
 class_spy_phase2_02	class_spy_phase2	oneByFour	0	0	0	0	100	0		class_spy_phase2_novice		combat_general	157800	267540								expertise_movement_buff_invis_sp_buff_stealth_1=-20			1	0
@@ -179,7 +179,7 @@ class_spy_phase4_02	class_spy_phase4	oneByFour	0	0	0	0	100	0		class_spy_phase4_n
 class_spy_phase4_03	class_spy_phase4_02	oneByFour	0	0	0	0	100	0		class_spy_phase4_02		combat_general	1772600	2664480							sp_dm_7				1	0
 class_spy_phase4_04	class_spy_phase4_03	oneByFour	0	0	0	0	100	0		class_spy_phase4_03		combat_general	2049600	3074500							of_sh_3	expertise_movement_buff_invis_sp_buff_invis_1=-5			1	0
 class_spy_phase4_05	class_spy_phase4_04	oneByFour	0	0	0	0	100	0		class_spy_phase4_04		combat_general	2365000	3540940							sp_smoke_mirrors				1	0
-class_spy_phase4_master	class_spy_phase4	oneByFour	0	1	0	0	100	0		class_spy_phase4_05		combat_general	2723800	3540940							sp_dm_8,sp_hide_device_1,sp_neutralize_device_1,sp_shifty_setup	cybernetic_psychosis_resistance=2			1	0
+class_spy_phase4_master	class_spy_phase4	oneByFour	0	1	0	0	100	0		class_spy_phase4_05		combat_general	2723800	3540940							sp_dm_8,sp_hide_device_1,sp_neutralize_device_1,sp_shifty_setup	cybernetic_psychosis_resistance=2,expertise_onstrikethrough_proc_sp_resonance=1,expertise_oncrit_proc_sp_savagery=1			1	0
 class_medic_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1	cybernetic_psychosis_resistance=2,expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20			1	0
 class_medic_phase1_02	class_medic_phase1	oneByFour	0	0	0	0	100	0		class_medic_phase1_novice		combat_general	3700	16120							me_dm_1,me_bacta_ampule_1				1	0

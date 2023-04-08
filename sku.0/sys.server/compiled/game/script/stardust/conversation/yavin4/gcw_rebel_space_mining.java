@@ -296,7 +296,7 @@ public class gcw_rebel_space_mining extends script.base_script
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
-        setName(self, "Juno Syndulla (Mining Operations)");
+        setName(self, "Freyta Smyth (Starlight Mining Operations)");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException
