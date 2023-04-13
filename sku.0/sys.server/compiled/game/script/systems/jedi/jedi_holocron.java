@@ -47,12 +47,8 @@ public class jedi_holocron extends script.base_script
 		grantSkill(player, "force_sensitive");
 		grantSkill(player, "class_forcesensitive_phase1");
 		grantSkill(player, "class_forcesensitive_phase1_novice");
-		grantSkill(player, "class_forcesensitive_phase1_02");
-		grantSkill(player, "class_forcesensitive_phase1_03");
-		grantSkill(player, "class_forcesensitive_phase1_04");
-		grantSkill(player, "class_forcesensitive_phase1_05");
-		grantSkill(player, "class_forcesensitive_phase1_master");
-		xp.grant(player, "jedi", 2000);
+		xp.grant(player, "jedi", 5000);
+        jedi_trials.initializePadawanTrials(player);
 		destroyObject(self);
             int mission_bounty = 25000;
             int current_bounty = 0;

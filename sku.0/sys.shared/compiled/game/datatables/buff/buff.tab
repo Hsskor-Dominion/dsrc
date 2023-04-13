@@ -224,7 +224,7 @@ kwi_boost_01	spice			4	buffs.spicePill	900	constitution_modified	-50	agility_mod
 kliknik_boost	spice			4	buffs.spicePill	900	constitution_modified	10	agility_modified	20	stamina_modified	20	xp_bonus_general	50		0	STATE_NONE	handleSpiceDownerEffect			1	0		1	1	1	0	1	1	0	1	1	1
 kliknik_boost_01	spice			4	buffs.spicePill	900	constitution_modified	10	agility_modified	20	stamina_modified	20	xp_bonus_general	50		0	STATE_NONE	handleSpiceDownerEffect			1	0		0	1	1	0	1	1	0	1	1	1
 spice_downer	spiceDowner			1	buffs.spiceDowner	30	constitution_modified	-50	agility_modified	-50	stamina_modified	-50	luck_modified	-50		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
-forceWeaken	forceWeaken	snare		1	jedi.forceWeaken	10	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+forceWeaken	forceWeaken	snare		1	jedi.forceWeaken	3600	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 forceWeaken_1	forceWeaken	snare		2	jedi.forceWeaken	20	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 saberArmorBreak	armorBreak			2	jedi.saberArmorBreak	20	private_armor_break	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 saberArmorBreak_1	armorBreak			5	jedi.saberArmorBreak	30	private_armor_break	185		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -852,8 +852,8 @@ fs_sh_1	fsCure			20	command.fs_sh	10	expertise_dot_immunity	5		0		0		0		0	STATE_
 fs_sh_2	fsCure			30	command.fs_sh	12	expertise_dot_immunity	5		0		0		0		0	STATE_NONE	fs_dot_immunity_recourse			1	0		1	1	1	0	1	1	0	1	1	1
 fs_sh_3	fsCure			40	command.fs_sh	14	expertise_dot_immunity	5		0		0		0		0	STATE_NONE	fs_dot_immunity_recourse			1	0		1	1	1	0	1	1	0	1	1	1
 invis_fs_buff_invis_1	invisibility			4	command.fs_buff_invis	30	invis	0	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-saberBlock	saberBlock			1	command.saberBlock	20	expertise_saber_block	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-fs_saber_reflect	fs_saber_reflect			1	command.fs_saber_reflect_buff	30	expertise_saber_block	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+saberBlock	saberBlock			1	command.saberBlock	20	expertise_saber_block	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+fs_saber_reflect	fs_saber_reflect			1	command.fs_saber_reflect_buff	30	expertise_saber_block	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 fs_soothing_aura_1	fs_soothing_aura			1	command.fs_path_soothing_aura	-1	expertise_healing_line_fs_heal	25		0		0		0		0	STATE_NONE	none			0	0		0	1	0	0	1	1	0	1	1	1
 fs_soothing_aura_2	fs_soothing_aura			1	command.fs_path_soothing_aura	-1	expertise_healing_line_fs_heal	50		0		0		0		0	STATE_NONE	none			0	0		0	1	0	0	1	1	0	1	1	1
 fs_soothing_aura_3	fs_soothing_aura			1	command.fs_path_soothing_aura	-1	expertise_healing_line_fs_heal	75		0		0		0		0	STATE_NONE	none			0	0		0	1	0	0	1	1	0	1	1	1

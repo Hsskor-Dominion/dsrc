@@ -8,6 +8,6 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 9705686	0	object/static/structure/general/skeleton_human_head.iff	0	484.903	199.937	2029.35	0.770253	-0.38234	0.473819	0.189793		$|
 9705687	0	object/static/structure/general/streetlamp_small_red_style_01.iff	0	484.772	198.324	2028.66	1	0	0	0		$|
 2055795	0	object/tangible/poi/spawnegg/exterior_spawnegg.iff	0	486.290527	200	2030.174316	1	0	0	0		$|
-8715839	0	object/building/general/space_dungeon_star_destroyer.iff	0	751	326	1245	1	0	0	0	theme_park.heroic.scorekeeper.sd_controller:systems.instance.instance_manager:systems.dungeon_sequencer.sequence_controller:structure.municipal.cloning_facility	$|
+8715839	0	object/building/general/space_dungeon_star_destroyer.iff	0	751	326	1245	1	0	0	0	theme_park.heroic.scorekeeper.sd_controller:structure.municipal.cloning_facility	$|
 8715898	0	object/ship/star_destroyer_bridge_exterior.iff	0	1077	1079.397	1060	1	0	0	0	structure.filler.filler	$|
 8715899	0	object/static/item/item_tool_sensor_beacon.iff	0	1079	199.61	1130	0.4	0	0.9	0		$|

@@ -1,6 +1,6 @@
 item	cash	token0	token1	token2	token3	token16	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
-item_tcg_loot_reward_series9_lepese_dictionary	20000						0		"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
+item_tcg_loot_reward_series9_lepese_dictionary						5	0		"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
 item_tcg_loot_reward_series1_sith_speeder						5	0		"So in the case of this table only traders will see the ""all"" items."
 item_tcg_loot_reward_series3_sith_meditation_room_deed						20	0		token0 is Axvia Minn
 item_tcg_loot_reward_series3_jedi_meditation_room_deed						20	0		token1 is Tusken

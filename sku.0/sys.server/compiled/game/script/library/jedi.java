@@ -204,20 +204,20 @@ public class jedi extends script.base_script
             removeAllJediBounties(objPlayer);
         }
     }
-    public static boolean hasForcePower(obj_id objPlayer, int intForcePowerCost) throws InterruptedException
-    {
-        int intCurrentPower = getForcePower(objPlayer);
-        if ((intCurrentPower - intForcePowerCost > 0) || (!isPlayer(objPlayer)))
-        {
-            return true;
-        }
-        else 
-        {
-            string_id strSpam = new string_id("jedi_spam", "no_force_power");
-            sendSystemMessage(objPlayer, strSpam);
-            return false;
-        }
-    }
+//    public static boolean hasForcePower(obj_id objPlayer, int intForcePowerCost) throws InterruptedException
+//    {
+//        int intCurrentPower = getForcePower(objPlayer);
+//        if ((intCurrentPower - intForcePowerCost > 0) || (!isPlayer(objPlayer)))
+//        {
+//            return true;
+//        }
+//        else
+//        {
+//            string_id strSpam = new string_id("jedi_spam", "no_force_power");
+//            sendSystemMessage(objPlayer, strSpam);
+//            return false;
+//        }
+//    }
     public static boolean drainForcePower(obj_id objPlayer, int intForcePowerCost) throws InterruptedException
     {
         return drainForcePower(objPlayer, intForcePowerCost, true);
@@ -356,50 +356,50 @@ public class jedi extends script.base_script
         }
         return damageMod;
     }
-    public static void recalculateForcePower(obj_id player) throws InterruptedException
-    {
-        int maxPower = getSkillStatisticModifier(player, "jedi_force_power_max");
-        int baseRegenRate = getSkillStatisticModifier(player, "jedi_force_power_regen");
-        int modRegenRate = (getEnhancedSkillStatisticModifier(player, "jedi_force_power_regen") - baseRegenRate);
-        if (modRegenRate > 15)
-        {
-            modRegenRate = 15;
-        }
-        baseRegenRate = baseRegenRate + modRegenRate;
-        float regenRate = baseRegenRate;
-        regenRate = regenRate / 10.0f;
-        if (hasSkill(player, "force_rank_light_novice"))
-        {
-            int force_power = getSkillStatisticModifier(player, "force_power_light");
-            int force_control = getSkillStatisticModifier(player, "force_control_light");
-            int force_manipulation = getSkillStatisticModifier(player, "force_manipulation_light");
-            maxPower += (force_power + force_control) * 10;
-            regenRate += (force_control + force_manipulation) / 100.0f;
-        }
-        else if (hasSkill(player, "force_rank_dark_novice"))
-        {
-            int force_power = getSkillStatisticModifier(player, "force_power_dark");
-            int force_control = getSkillStatisticModifier(player, "force_control_dark");
-            int force_manipulation = getSkillStatisticModifier(player, "force_manipulation_dark");
-            maxPower += (force_power + force_control) * 10;
-            regenRate += (force_control + force_manipulation) / 100.0f;
-        }
-        int meditateRate = 1;
-        if (hasObjVar(player, "jedi.meditate"))
-        {
-            meditateRate = getIntObjVar(player, "jedi.meditate");
-        }
-        regenRate *= meditateRate;
-        int regenPenalty = utils.getIntScriptVar(player, "jedi.regenPenalty");
-        if (regenPenalty < 1)
-        {
-            regenPenalty = 1;
-        }
-        regenRate /= regenPenalty;
-        setMaxForcePower(player, maxPower);
-        setForcePowerRegenRate(player, regenRate);
-        return;
-    }
+//    public static void recalculateForcePower(obj_id player) throws InterruptedException
+//    {
+//        int maxPower = getSkillStatisticModifier(player, "jedi_force_power_max");
+//        int baseRegenRate = getSkillStatisticModifier(player, "jedi_force_power_regen");
+//        int modRegenRate = (getEnhancedSkillStatisticModifier(player, "jedi_force_power_regen") - baseRegenRate);
+//        if (modRegenRate > 15)
+//        {
+//            modRegenRate = 15;
+//        }
+//        baseRegenRate = baseRegenRate + modRegenRate;
+//        float regenRate = baseRegenRate;
+//        regenRate = regenRate / 10.0f;
+//        if (hasSkill(player, "force_rank_light_novice"))
+//        {
+//            int force_power = getSkillStatisticModifier(player, "force_power_light");
+//            int force_control = getSkillStatisticModifier(player, "force_control_light");
+//            int force_manipulation = getSkillStatisticModifier(player, "force_manipulation_light");
+//            maxPower += (force_power + force_control) * 10;
+//            regenRate += (force_control + force_manipulation) / 100.0f;
+//        }
+//        else if (hasSkill(player, "force_rank_dark_novice"))
+//        {
+//            int force_power = getSkillStatisticModifier(player, "force_power_dark");
+//            int force_control = getSkillStatisticModifier(player, "force_control_dark");
+//            int force_manipulation = getSkillStatisticModifier(player, "force_manipulation_dark");
+//            maxPower += (force_power + force_control) * 10;
+//            regenRate += (force_control + force_manipulation) / 100.0f;
+//        }
+//        int meditateRate = 1;
+//        if (hasObjVar(player, "jedi.meditate"))
+//        {
+//            meditateRate = getIntObjVar(player, "jedi.meditate");
+//        }
+//        regenRate *= meditateRate;
+//        int regenPenalty = utils.getIntScriptVar(player, "jedi.regenPenalty");
+//        if (regenPenalty < 1)
+//        {
+//            regenPenalty = 1;
+//        }
+//        regenRate /= regenPenalty;
+//        setMaxForcePower(player, maxPower);
+//        setForcePowerRegenRate(player, regenRate);
+//        return;
+//    }
     public static boolean postponeGrantJedi() throws InterruptedException
     {
         String enabled = toLower(getConfigSetting("GameServer", "postponeJediGrant"));
@@ -413,35 +413,35 @@ public class jedi extends script.base_script
         }
         return false;
     }
-    public static boolean doNonCombatActionPrecheck(obj_id player, obj_id target, dictionary actionData) throws InterruptedException
-    {
-        int forceCost = actionData.getInt("intJediPowerCost");
-        float range = actionData.getFloat("fltRange");
-        float actionTime = actionData.getInt("fltActionTime");
-        if (isIdValid(player) && isIdValid(target) && exists(target))
-        {
-            if (player != target)
-            {
-                float dist = getDistance(target, player);
-                if (dist > range)
-                {
-                    sendSystemMessage(player, new string_id("cbt_spam", "out_of_range_single"));
-                    return false;
-                }
-            }
-        }
-        else 
-        {
-            return false;
-        }
-        forceCost = jedi.getModifiedForceCost(player, forceCost, actionData.getString("actionName"));
-        actionData.put("intJediPowerCost", forceCost);
-        if (!jedi.hasForcePower(player, forceCost))
-        {
-            return false;
-        }
-        return true;
-    }
+//    public static boolean doNonCombatActionPrecheck(obj_id player, obj_id target, dictionary actionData) throws InterruptedException
+//    {
+//        int forceCost = actionData.getInt("intJediPowerCost");
+//        float range = actionData.getFloat("fltRange");
+//        float actionTime = actionData.getInt("fltActionTime");
+//        if (isIdValid(player) && isIdValid(target) && exists(target))
+//        {
+//            if (player != target)
+//            {
+//                float dist = getDistance(target, player);
+//                if (dist > range)
+//                {
+//                    sendSystemMessage(player, new string_id("cbt_spam", "out_of_range_single"));
+//                    return false;
+//                }
+//            }
+//        }
+//        else
+//        {
+//            return false;
+//        }
+//        forceCost = jedi.getModifiedForceCost(player, forceCost, actionData.getString("actionName"));
+//        actionData.put("intJediPowerCost", forceCost);
+//        if (!jedi.hasForcePower(player, forceCost))
+//        {
+//            return false;
+//        }
+//        return true;
+//    }
     public static obj_id getCorrectFriendlyTarget(obj_id player, obj_id target, dictionary actionData) throws InterruptedException
     {
         float range = actionData.getFloat("fltRange");
@@ -604,552 +604,552 @@ public class jedi extends script.base_script
         }
         return true;
     }
-    public static boolean doBuffAction(obj_id self, obj_id target, String actionName) throws InterruptedException
-    {
-        int armorCount = utils.getIntScriptVar(self, armor.SCRIPTVAR_ARMOR_COUNT);
-        if (armorCount > 0)
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "not_with_armor"));
-            return false;
-        }
-        if (buff.isParalyzed(self))
-        {
-            return false;
-        }
-        actionName = combat.getBestAction(self, actionName);
-        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
-        if (actionData == null)
-        {
-            LOG("DESIGNER_FATAL", "Buff Action " + actionName + " has no entry in the jedi actions datatable");
-            return false;
-        }
-        target = getCorrectFriendlyTarget(self, target, actionData);
-        if (!isIdValid(target))
-        {
-            return false;
-        }
-        if (!doNonCombatActionPrecheck(self, target, actionData))
-        {
-            return false;
-        }
-        int forceCost = actionData.getInt("intJediPowerCost");
-        if (!jedi.hasForcePower(self, forceCost))
-        {
-            return false;
-        }
-        weapon_data weaponData = new weapon_data();
-        weaponData = getWeaponData(getCurrentWeapon(self));
-        int[] actionCost = combat.getActionCost(self, weaponData, actionData);
-        if (!combat.canDrainCombatActionAttributes(self, actionCost))
-        {
-            return false;
-        }
-        if (performJediBuffCommand(self, target, actionData))
-        {
-            jedi.drainForcePower(self, forceCost);
-            combat.drainCombatActionAttributes(self, actionCost);
-            int visValue = actionData.getInt("intVisibilityValue");
-            int visRange = actionData.getInt("intVisibilityRange");
-            jedi.jediActionPerformed(self, visValue, visRange);
-            int xpOverride = actionData.getInt("xpOverride");
-            if (xpOverride < 0)
-            {
-                xpOverride = forceCost;
-            }
-            jedi.grantJediXP(self, xpOverride);
-        }
-        else 
-        {
-            return false;
-        }
-        return true;
-    }
-    public static boolean doForceRun(obj_id self, obj_id target, String actionName) throws InterruptedException
-    {
-        int armorCount = utils.getIntScriptVar(self, armor.SCRIPTVAR_ARMOR_COUNT);
-        if (armorCount > 0)
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "not_with_armor"));
-            return false;
-        }
-        actionName = combat.getBestAction(self, actionName);
-        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
-        if (actionData == null)
-        {
-            LOG("DESIGNER_FATAL", "Action " + actionName + " has no entry in the jedi actions datatable");
-            return false;
-        }
-        target = getCorrectFriendlyTarget(self, target, actionData);
-        if (!isIdValid(target))
-        {
-            return false;
-        }
-        if (!doNonCombatActionPrecheck(self, target, actionData))
-        {
-            return false;
-        }
-        int forceCost = actionData.getInt("intJediPowerCost");
-        if (!jedi.hasForcePower(self, forceCost))
-        {
-            return false;
-        }
-        weapon_data weaponData = new weapon_data();
-        weaponData = getWeaponData(getCurrentWeapon(self));
-        int[] actionCost = combat.getActionCost(self, weaponData, actionData);
-        if (!combat.canDrainCombatActionAttributes(self, actionCost))
-        {
-            return false;
-        }
-        String buffName = actionData.getString("buffName");
-        if (!buff.canApplyBuff(self, buffName))
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "force_run_wont_stack"));
-            return false;
-        }
-        if (doBuffAction(self, target, actionName))
-        {
-            combat.drainCombatActionAttributes(self, actionCost);
-            jedi.drainForcePower(self, forceCost);
-            messageTo(self, "handleForceRunCost", null, 10, true);
-        }
-        else 
-        {
-            return false;
-        }
-        return true;
-    }
-    public static boolean regainConsciousness(obj_id self, obj_id target, String actionName) throws InterruptedException
-    {
-        actionName = combat.getBestAction(self, actionName);
-        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
-        if (actionData == null)
-        {
-            LOG("DESIGNER_FATAL", "Action " + actionName + " has no entry in the jedi actions datatable");
-            return false;
-        }
-        target = self;
-        if (!isIdValid(target))
-        {
-            return false;
-        }
-        if (!doNonCombatActionPrecheck(self, target, actionData))
-        {
-            return false;
-        }
-        int forceCost = actionData.getInt("intJediPowerCost");
-        if (!jedi.drainForcePower(self, forceCost))
-        {
-            return false;
-        }
-        pclib.clearEffectsForDeath(self);
-        setAttrib(self, HEALTH, 200);
-        int regenPenalty = utils.getIntScriptVar(self, "jedi.regenPenalty");
-        if (regenPenalty < 1)
-        {
-            regenPenalty = 1;
-        }
-        regenPenalty *= 2;
-        utils.setScriptVar(self, "jedi.regenPenalty", regenPenalty);
-        recalculateForcePower(self);
-        messageTo(self, "clearRegenPenalty", null, 30 * 60, false);
-        messageTo(self, "handlePlayerResuscitated", null, 0, true);
-        sendSystemMessage(self, SID_REGEN_TEMPORARILY_REDUCED);
-        int visValue = actionData.getInt("intVisibilityValue");
-        int visRange = actionData.getInt("intVisibilityRange");
-        jedi.jediActionPerformed(self, visValue, visRange);
-        playJediActionEffect(self, target, actionData);
-        int xpOverride = actionData.getInt("xpOverride");
-        if (xpOverride < 0)
-        {
-            xpOverride = forceCost;
-        }
-        jedi.grantJediXP(self, xpOverride);
-        return true;
-    }
-    public static boolean transferForce(obj_id self, obj_id target, String actionName) throws InterruptedException
-    {
-        int armorCount = utils.getIntScriptVar(self, armor.SCRIPTVAR_ARMOR_COUNT);
-        if (armorCount > 0)
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "not_with_armor"));
-            return false;
-        }
-        if (buff.isParalyzed(self))
-        {
-            return false;
-        }
-        actionName = combat.getBestAction(self, actionName);
-        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
-        if (actionData == null)
-        {
-            return false;
-        }
-        target = getCorrectFriendlyTarget(self, target, actionData);
-        if (!isIdValid(target))
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "not_this_target"));
-            return false;
-        }
-        if (target == self || !isPlayer(target) || !isJedi(target))
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "not_this_target"));
-            return false;
-        }
-        if (!doNonCombatActionPrecheck(self, target, actionData))
-        {
-            return false;
-        }
-        int forceCost = actionData.getInt("intJediPowerCost");
-        if (!jedi.drainForcePower(self, forceCost))
-        {
-            return false;
-        }
-        weapon_data weaponData = new weapon_data();
-        weaponData = getWeaponData(getCurrentWeapon(self));
-        int[] actionCost = combat.getActionCost(self, weaponData, actionData);
-        if (!combat.canDrainCombatActionAttributes(self, actionCost))
-        {
-            return false;
-        }
-        int targetPower = rand(actionData.getInt("minForceHeal"), actionData.getInt("maxForceHeal"));
-        alterForcePower(target, targetPower);
-        combat.drainCombatActionAttributes(self, actionCost);
-        prose_package pp = new prose_package();
-        pp.stringId = new string_id("cbt_spam", "forcetransfer_hit");
-        pp.actor.set(self);
-        pp.target.set(target);
-        pp.digitInteger = targetPower;
-        combat.sendCombatSpamMessageProse(self, target, pp, true, true, false);
-        int visValue = actionData.getInt("intVisibilityValue");
-        int visRange = actionData.getInt("intVisibilityRange");
-        jedi.jediActionPerformed(self, visValue, visRange);
-        healing._addMedicalHate(self, target, targetPower);
-        playJediActionEffect(self, target, actionData);
-        int xpOverride = actionData.getInt("xpOverride");
-        if (xpOverride < 0)
-        {
-            xpOverride = forceCost;
-        }
-        jedi.grantJediXP(self, xpOverride);
-        return true;
-    }
-    public static boolean channelForce(obj_id self, obj_id target, String actionName) throws InterruptedException
-    {
-        int armorCount = utils.getIntScriptVar(self, armor.SCRIPTVAR_ARMOR_COUNT);
-        if (armorCount > 0)
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "not_with_armor"));
-            return false;
-        }
-        if (buff.isParalyzed(self))
-        {
-            return false;
-        }
-        actionName = combat.getBestAction(self, actionName);
-        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
-        if (actionData == null)
-        {
-            return false;
-        }
-        target = getCorrectFriendlyTarget(self, target, actionData);
-        if (!isIdValid(target))
-        {
-            return false;
-        }
-        if (!doNonCombatActionPrecheck(self, target, actionData))
-        {
-            return false;
-        }
-        int minHealth = actionData.getInt("intMinHealthHeal");
-        int maxHealth = actionData.getInt("intMaxHealthHeal");
-        int minAction = (int)(getMaxAttrib(self, ACTION) * (actionData.getInt("intMinActionHeal") / 100.0f));
-        int maxAction = (int)(getMaxAttrib(self, ACTION) * (actionData.getInt("intMaxActionHeal") / 100.0f));
-        attribute[] curAttribs = getAttribs(self);
-        if (curAttribs[HEALTH].getValue() < maxHealth || !combat.canDrainCombatActionAttributes(self, new int[]
-        {
-            0,
-            maxAction,
-            0
-        }))
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "channel_ham_too_low"));
-            return false;
-        }
-        int forceCost = actionData.getInt("intJediPowerCost");
-        if (!jedi.drainForcePower(self, forceCost))
-        {
-            return false;
-        }
-        int newPower = rand(actionData.getInt("minForceHeal"), actionData.getInt("maxForceHeal"));
-        alterForcePower(self, newPower);
-        float duration = actionData.getFloat("buffDuration") * 60;
-        addAttribModifier(self, HEALTH, (rand(minHealth, maxHealth) * -1), 0, 0, duration);
-        combat.drainCombatActionAttributes(self, new int[]
-        {
-            0,
-            rand(minAction, maxAction),
-            0
-        });
-        int visValue = actionData.getInt("intVisibilityValue");
-        int visRange = actionData.getInt("intVisibilityRange");
-        jedi.jediActionPerformed(self, visValue, visRange);
-        playJediActionEffect(self, target, actionData);
-        int xpOverride = actionData.getInt("xpOverride");
-        if (xpOverride < 0)
-        {
-            xpOverride = forceCost;
-        }
-        jedi.grantJediXP(self, xpOverride);
-        return true;
-    }
-    public static boolean forceMeditate(obj_id self, String actionName) throws InterruptedException
-    {
-        int armorCount = utils.getIntScriptVar(self, armor.SCRIPTVAR_ARMOR_COUNT);
-        if (armorCount > 0)
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "not_with_armor"));
-            return false;
-        }
-        if (buff.isParalyzed(self))
-        {
-            return false;
-        }
-        actionName = combat.getBestAction(self, actionName);
-        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
-        if (actionData == null)
-        {
-            return false;
-        }
-        if (!doNonCombatActionPrecheck(self, self, actionData))
-        {
-            return false;
-        }
-        int forceCost = actionData.getInt("intJediPowerCost");
-        if (!jedi.drainForcePower(self, forceCost))
-        {
-            return false;
-        }
-        weapon_data weaponData = new weapon_data();
-        weaponData = getWeaponData(getCurrentWeapon(self));
-        int[] actionCost = combat.getActionCost(self, weaponData, actionData);
-        if (!combat.canDrainCombatActionAttributes(self, actionCost))
-        {
-            return false;
-        }
-        if (getState(self, STATE_MEDITATE) == 1)
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "already_in_meditative_state"));
-            return false;
-        }
-        setState(self, STATE_MEDITATE, true);
-        chat.setTempAnimationMood(self, "meditating");
-        buff.applyBuff(self, "forceMeditate");
-        combat.drainCombatActionAttributes(self, actionCost);
-        int meditateRate = actionData.getInt("maxForceHeal");
-        setObjVar(self, "jedi.meditate", meditateRate);
-        recalculateForcePower(self);
-        int visValue = actionData.getInt("intVisibilityValue");
-        int visRange = actionData.getInt("intVisibilityRange");
-        jedi.jediActionPerformed(self, visValue, visRange);
-        playJediActionEffect(self, self, actionData);
-        messageTo(self, "forceMeditateEffect", null, 5, false);
-        int xpOverride = actionData.getInt("xpOverride");
-        if (xpOverride < 0)
-        {
-            xpOverride = forceCost;
-        }
-        jedi.grantJediXP(self, xpOverride);
-        return true;
-    }
-    public static void stopForceMeditate(obj_id self) throws InterruptedException
-    {
-        if (getState(self, STATE_MEDITATE) == 1)
-        {
-            setState(self, STATE_MEDITATE, false);
-            chat.resetTempAnimationMood(self);
-        }
-        stopClientEffectObjByLabel(self, "forceMeditate");
-        removeObjVar(self, "jedi.meditate");
-        buff.removeBuff(self, "forceMeditate");
-        recalculateForcePower(self);
-    }
-    public static void applyFeedbackDamage(obj_id player, obj_id target, float damage) throws InterruptedException
-    {
-        damage *= 1.0f - (combat.convertProtectionToPercent(jedi.applyForceShield(target, (int)damage)));
-        int defense = getEnhancedSkillStatisticModifier(target, "force_defense");
-        if (defense > 0)
-        {
-            damage = damage * (1.0f / (1.0f + (defense / 100.0f)));
-        }
-        if (damage < 1)
-        {
-            return;
-        }
-        addAttribModifier(target, HEALTH, (int)damage * -1, 0.0f, 0.0f, MOD_POOL);
-        prose_package pp = new prose_package();
-        pp.stringId = new string_id("cbt_spam", "forcefeedback_hit");
-        pp.actor.set(player);
-        pp.target.set(target);
-        pp.digitInteger = (int)damage;
-        combat.sendCombatSpamMessageProse(player, target, pp, true, true, true, COMBAT_RESULT_HIT);
-    }
-    public static int applyForceShield(obj_id defender, int damage) throws InterruptedException
-    {
-        int armorCount = utils.getIntScriptVar(defender, armor.SCRIPTVAR_ARMOR_COUNT);
-        if (armorCount > 0)
-        {
-            return 0;
-        }
-        dictionary actionData = null;
-        if (buff.hasBuff(defender, "forceShield"))
-        {
-            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceShield");
-        }
-        else if (buff.hasBuff(defender, "forceShield_1"))
-        {
-            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceShield_1");
-        }
-        else if (buff.hasBuff(defender, "forceProtection"))
-        {
-            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceProtection");
-        }
-        float forceShield = 0;
-        if (actionData != null)
-        {
-            forceShield = getEnhancedSkillStatisticModifier(defender, "force_shield") * 100.0f;
-            int forceCost = (int)(damage * getModifiedExtraForceCost(defender, actionData.getFloat("extraForceCost"), actionData.getString("actionName")));
-            if (!jedi.drainForcePower(defender, forceCost))
-            {
-                buff.removeBuff(defender, actionData.getString("actionName"));
-            }
-            else 
-            {
-                playClientEffectObj(defender, "clienteffect/pl_force_shield_hit.cef", defender, "");
-            }
-        }
-        return (int)forceShield;
-    }
-    public static int applyForceArmor(obj_id defender, int damage) throws InterruptedException
-    {
-        int armorCount = utils.getIntScriptVar(defender, armor.SCRIPTVAR_ARMOR_COUNT);
-        if (armorCount > 0)
-        {
-            return 0;
-        }
-        dictionary actionData = null;
-        if (buff.hasBuff(defender, "forceArmor"))
-        {
-            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceArmor");
-        }
-        else if (buff.hasBuff(defender, "forceArmor_1"))
-        {
-            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceArmor_1");
-        }
-        else if (buff.hasBuff(defender, "forceProtection"))
-        {
-            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceProtection");
-        }
-        float forceArmor = 0;
-        if (actionData != null)
-        {
-            forceArmor = getEnhancedSkillStatisticModifier(defender, "force_armor") * 100.0f;
-            int forceCost = (int)(damage * getModifiedExtraForceCost(defender, actionData.getFloat("extraForceCost"), actionData.getString("actionName")));
-            if (!jedi.drainForcePower(defender, forceCost))
-            {
-                buff.removeBuff(defender, actionData.getString("actionName"));
-            }
-            else 
-            {
-                playClientEffectObj(defender, "clienteffect/pl_force_armor_hit.cef", defender, "");
-            }
-        }
-        return (int)forceArmor;
-    }
-    public static void performJediReactiveDefense(obj_id attacker, obj_id defender, weapon_data weaponData, hit_result hitData, dictionary actionData) throws InterruptedException
-    {
-        if (weaponData.weaponType == combat.WEAPON_TYPE_FORCE_POWER && getEnhancedSkillStatisticModifier(defender, "force_absorb") > 0)
-        {
-            float forceAbsorb = 0.0f;
-            if (buff.hasBuff(defender, "forceAbsorb"))
-            {
-                forceAbsorb = getModifiedExtraForceCost(defender, dataTableGetFloat(JEDI_ACTIONS_FILE, "forceAbsorb", "extraForceCost"), "forceAbsorb");
-            }
-            else 
-            {
-                forceAbsorb = getModifiedExtraForceCost(defender, dataTableGetFloat(JEDI_ACTIONS_FILE, "forceAbsorb_1", "extraForceCost"), "forceAbsorb_1");
-            }
-            int forceCost = combat.getForceCost(attacker, weaponData, actionData);
-            forceAbsorb *= forceCost;
-            alterForcePower(defender, (int)forceAbsorb);
-            prose_package pp = new prose_package();
-            pp.stringId = new string_id("cbt_spam", "forceabsorb_hit");
-            pp.actor.set(defender);
-            pp.digitInteger = (int)forceAbsorb;
-            combat.sendCombatSpamMessageProse(defender, pp, COMBAT_RESULT_HIT);
-            dictionary data = new dictionary();
-            data.put("effect", "clienteffect/pl_force_absorb_hit.cef");
-            data.put("target", defender);
-            messageTo(attacker, "playDelayedClientEffect", data, 1, false);
-        }
-        if (weaponData.weaponType == combat.WEAPON_TYPE_FORCE_POWER && getEnhancedSkillStatisticModifier(defender, "force_feedback") > 0)
-        {
-            float forceFeedback = getEnhancedSkillStatisticModifier(defender, "force_feedback") / 100.0f;
-            float feedbackDamage = forceFeedback * hitData.damage;
-            jedi.applyFeedbackDamage(defender, attacker, feedbackDamage);
-            dictionary data = new dictionary();
-            data.put("effect", "clienteffect/pl_force_feedback_hit.cef");
-            data.put("target", attacker);
-            messageTo(attacker, "playDelayedClientEffect", data, 1, false);
-        }
-    }
-    public static boolean isAvoidIncap(obj_id player) throws InterruptedException
-    {
-        if (buff.hasBuff(player, "avoidIncapacitation"))
-        {
-            return true;
-        }
-        if (buff.hasBuff(player, "avoidIncapacitation_1"))
-        {
-            return true;
-        }
-        if (buff.hasBuff(player, "avoidIncapacitation_2"))
-        {
-            return true;
-        }
-        if (buff.hasBuff(player, "avoidIncapacitation_3"))
-        {
-            return true;
-        }
-        if (buff.hasBuff(player, "avoidIncapacitation_4"))
-        {
-            return true;
-        }
-        if (buff.hasBuff(player, "avoidIncapacitation_5"))
-        {
-            return true;
-        }
-        return false;
-    }
-    public static int getModifiedForceCost(obj_id self, int baseForce, String actionName) throws InterruptedException
-    {
-        int row = dataTableSearchColumnForString(actionName, 0, JEDI_RANK_DATA);
-        if (row != -1)
-        {
-            if (hasSkill(self, "force_rank_light_novice"))
-            {
-                int force_manipulation = getSkillStatisticModifier(self, "force_manipulation_light");
-                float rank_mod = dataTableGetFloat(JEDI_RANK_DATA, row, "forceModLight");
-                return baseForce + (int)((force_manipulation * rank_mod) + 0.5);
-            }
-            else if (hasSkill(self, "force_rank_dark_novice"))
-            {
-                int force_manipulation = getSkillStatisticModifier(self, "force_manipulation_dark");
-                float rank_mod = dataTableGetFloat(JEDI_RANK_DATA, row, "forceModDark");
-                return baseForce + (int)((force_manipulation * rank_mod) + 0.5);
-            }
-        }
-        return baseForce;
-    }
+//    public static boolean doBuffAction(obj_id self, obj_id target, String actionName) throws InterruptedException
+//    {
+//        int armorCount = utils.getIntScriptVar(self, armor.SCRIPTVAR_ARMOR_COUNT);
+//        if (armorCount > 0)
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "not_with_armor"));
+//            return false;
+//        }
+//        if (buff.isParalyzed(self))
+//        {
+//            return false;
+//        }
+//        actionName = combat.getBestAction(self, actionName);
+//        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
+//        if (actionData == null)
+//        {
+//            LOG("DESIGNER_FATAL", "Buff Action " + actionName + " has no entry in the jedi actions datatable");
+//            return false;
+//        }
+//        target = getCorrectFriendlyTarget(self, target, actionData);
+//        if (!isIdValid(target))
+//        {
+//            return false;
+//        }
+//        if (!doNonCombatActionPrecheck(self, target, actionData))
+//        {
+//            return false;
+//        }
+//        int forceCost = actionData.getInt("intJediPowerCost");
+//        if (!jedi.hasForcePower(self, forceCost))
+//        {
+//            return false;
+//        }
+//        weapon_data weaponData = new weapon_data();
+//        weaponData = getWeaponData(getCurrentWeapon(self));
+//        int[] actionCost = combat.getActionCost(self, weaponData, actionData);
+//        if (!combat.canDrainCombatActionAttributes(self, actionCost))
+//        {
+//            return false;
+//        }
+//        if (performJediBuffCommand(self, target, actionData))
+//        {
+//            jedi.drainForcePower(self, forceCost);
+//            combat.drainCombatActionAttributes(self, actionCost);
+//            int visValue = actionData.getInt("intVisibilityValue");
+//            int visRange = actionData.getInt("intVisibilityRange");
+//            jedi.jediActionPerformed(self, visValue, visRange);
+//            int xpOverride = actionData.getInt("xpOverride");
+//            if (xpOverride < 0)
+//            {
+//                xpOverride = forceCost;
+//            }
+//            jedi.grantJediXP(self, xpOverride);
+//        }
+//        else
+//        {
+//            return false;
+//        }
+//        return true;
+//    }
+//    public static boolean doForceRun(obj_id self, obj_id target, String actionName) throws InterruptedException
+//    {
+//        int armorCount = utils.getIntScriptVar(self, armor.SCRIPTVAR_ARMOR_COUNT);
+//        if (armorCount > 0)
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "not_with_armor"));
+//            return false;
+//        }
+//        actionName = combat.getBestAction(self, actionName);
+//        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
+//        if (actionData == null)
+//        {
+//            LOG("DESIGNER_FATAL", "Action " + actionName + " has no entry in the jedi actions datatable");
+//            return false;
+//        }
+//        target = getCorrectFriendlyTarget(self, target, actionData);
+//        if (!isIdValid(target))
+//        {
+//            return false;
+//        }
+//        if (!doNonCombatActionPrecheck(self, target, actionData))
+//        {
+//            return false;
+//        }
+//        int forceCost = actionData.getInt("intJediPowerCost");
+//        if (!jedi.hasForcePower(self, forceCost))
+//        {
+//            return false;
+//        }
+//        weapon_data weaponData = new weapon_data();
+//        weaponData = getWeaponData(getCurrentWeapon(self));
+//        int[] actionCost = combat.getActionCost(self, weaponData, actionData);
+//        if (!combat.canDrainCombatActionAttributes(self, actionCost))
+//        {
+//            return false;
+//        }
+//        String buffName = actionData.getString("buffName");
+//        if (!buff.canApplyBuff(self, buffName))
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "force_run_wont_stack"));
+//            return false;
+//        }
+//        if (doBuffAction(self, target, actionName))
+//        {
+//            combat.drainCombatActionAttributes(self, actionCost);
+//            jedi.drainForcePower(self, forceCost);
+//            messageTo(self, "handleForceRunCost", null, 10, true);
+//        }
+//        else
+//        {
+//            return false;
+//        }
+//        return true;
+//    }
+//    public static boolean regainConsciousness(obj_id self, obj_id target, String actionName) throws InterruptedException
+//    {
+//        actionName = combat.getBestAction(self, actionName);
+//        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
+//        if (actionData == null)
+//        {
+//            LOG("DESIGNER_FATAL", "Action " + actionName + " has no entry in the jedi actions datatable");
+//            return false;
+//        }
+//        target = self;
+//        if (!isIdValid(target))
+//        {
+//            return false;
+//        }
+//        if (!doNonCombatActionPrecheck(self, target, actionData))
+//        {
+//            return false;
+//        }
+//        int forceCost = actionData.getInt("intJediPowerCost");
+//        if (!jedi.drainForcePower(self, forceCost))
+//        {
+//            return false;
+//        }
+//        pclib.clearEffectsForDeath(self);
+//        setAttrib(self, HEALTH, 200);
+//        int regenPenalty = utils.getIntScriptVar(self, "jedi.regenPenalty");
+//        if (regenPenalty < 1)
+//        {
+//            regenPenalty = 1;
+//        }
+//        regenPenalty *= 2;
+//        utils.setScriptVar(self, "jedi.regenPenalty", regenPenalty);
+//        recalculateForcePower(self);
+//        messageTo(self, "clearRegenPenalty", null, 30 * 60, false);
+//        messageTo(self, "handlePlayerResuscitated", null, 0, true);
+//        sendSystemMessage(self, SID_REGEN_TEMPORARILY_REDUCED);
+//        int visValue = actionData.getInt("intVisibilityValue");
+//        int visRange = actionData.getInt("intVisibilityRange");
+//        jedi.jediActionPerformed(self, visValue, visRange);
+//        playJediActionEffect(self, target, actionData);
+//        int xpOverride = actionData.getInt("xpOverride");
+//        if (xpOverride < 0)
+//        {
+//            xpOverride = forceCost;
+//        }
+//        jedi.grantJediXP(self, xpOverride);
+//        return true;
+//    }
+//    public static boolean transferForce(obj_id self, obj_id target, String actionName) throws InterruptedException
+//    {
+//        int armorCount = utils.getIntScriptVar(self, armor.SCRIPTVAR_ARMOR_COUNT);
+//        if (armorCount > 0)
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "not_with_armor"));
+//            return false;
+//        }
+//        if (buff.isParalyzed(self))
+//        {
+//            return false;
+//        }
+//        actionName = combat.getBestAction(self, actionName);
+//        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
+//        if (actionData == null)
+//        {
+//            return false;
+//        }
+//        target = getCorrectFriendlyTarget(self, target, actionData);
+//        if (!isIdValid(target))
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "not_this_target"));
+//            return false;
+//        }
+//        if (target == self || !isPlayer(target) || !isJedi(target))
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "not_this_target"));
+//            return false;
+//        }
+//        if (!doNonCombatActionPrecheck(self, target, actionData))
+//        {
+//            return false;
+//        }
+//        int forceCost = actionData.getInt("intJediPowerCost");
+//        if (!jedi.drainForcePower(self, forceCost))
+//        {
+//            return false;
+//        }
+//        weapon_data weaponData = new weapon_data();
+//        weaponData = getWeaponData(getCurrentWeapon(self));
+//        int[] actionCost = combat.getActionCost(self, weaponData, actionData);
+//        if (!combat.canDrainCombatActionAttributes(self, actionCost))
+//        {
+//            return false;
+//        }
+//        int targetPower = rand(actionData.getInt("minForceHeal"), actionData.getInt("maxForceHeal"));
+//        alterForcePower(target, targetPower);
+//        combat.drainCombatActionAttributes(self, actionCost);
+//        prose_package pp = new prose_package();
+//        pp.stringId = new string_id("cbt_spam", "forcetransfer_hit");
+//        pp.actor.set(self);
+//        pp.target.set(target);
+//        pp.digitInteger = targetPower;
+//        combat.sendCombatSpamMessageProse(self, target, pp, true, true, false);
+//        int visValue = actionData.getInt("intVisibilityValue");
+//        int visRange = actionData.getInt("intVisibilityRange");
+//        jedi.jediActionPerformed(self, visValue, visRange);
+//        healing._addMedicalHate(self, target, targetPower);
+//        playJediActionEffect(self, target, actionData);
+//        int xpOverride = actionData.getInt("xpOverride");
+//        if (xpOverride < 0)
+//        {
+//            xpOverride = forceCost;
+//        }
+//        jedi.grantJediXP(self, xpOverride);
+//        return true;
+//    }
+//    public static boolean channelForce(obj_id self, obj_id target, String actionName) throws InterruptedException
+//    {
+//        int armorCount = utils.getIntScriptVar(self, armor.SCRIPTVAR_ARMOR_COUNT);
+//        if (armorCount > 0)
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "not_with_armor"));
+//            return false;
+//        }
+//        if (buff.isParalyzed(self))
+//        {
+//            return false;
+//        }
+//        actionName = combat.getBestAction(self, actionName);
+//        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
+//        if (actionData == null)
+//        {
+//            return false;
+//        }
+//        target = getCorrectFriendlyTarget(self, target, actionData);
+//        if (!isIdValid(target))
+//        {
+//            return false;
+//        }
+//        if (!doNonCombatActionPrecheck(self, target, actionData))
+//        {
+//            return false;
+//        }
+//        int minHealth = actionData.getInt("intMinHealthHeal");
+//        int maxHealth = actionData.getInt("intMaxHealthHeal");
+//        int minAction = (int)(getMaxAttrib(self, ACTION) * (actionData.getInt("intMinActionHeal") / 100.0f));
+//        int maxAction = (int)(getMaxAttrib(self, ACTION) * (actionData.getInt("intMaxActionHeal") / 100.0f));
+//        attribute[] curAttribs = getAttribs(self);
+//        if (curAttribs[HEALTH].getValue() < maxHealth || !combat.canDrainCombatActionAttributes(self, new int[]
+//        {
+//            0,
+//            maxAction,
+//            0
+//        }))
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "channel_ham_too_low"));
+//            return false;
+//        }
+//        int forceCost = actionData.getInt("intJediPowerCost");
+//        if (!jedi.drainForcePower(self, forceCost))
+//        {
+//            return false;
+//        }
+//        int newPower = rand(actionData.getInt("minForceHeal"), actionData.getInt("maxForceHeal"));
+//        alterForcePower(self, newPower);
+//        float duration = actionData.getFloat("buffDuration") * 60;
+//        addAttribModifier(self, HEALTH, (rand(minHealth, maxHealth) * -1), 0, 0, duration);
+//        combat.drainCombatActionAttributes(self, new int[]
+//        {
+//            0,
+//            rand(minAction, maxAction),
+//            0
+//        });
+//        int visValue = actionData.getInt("intVisibilityValue");
+//        int visRange = actionData.getInt("intVisibilityRange");
+//        jedi.jediActionPerformed(self, visValue, visRange);
+//        playJediActionEffect(self, target, actionData);
+//        int xpOverride = actionData.getInt("xpOverride");
+//        if (xpOverride < 0)
+//        {
+//            xpOverride = forceCost;
+//        }
+//        jedi.grantJediXP(self, xpOverride);
+//        return true;
+//    }
+//    public static boolean forceMeditate(obj_id self, String actionName) throws InterruptedException
+//    {
+//        int armorCount = utils.getIntScriptVar(self, armor.SCRIPTVAR_ARMOR_COUNT);
+//        if (armorCount > 0)
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "not_with_armor"));
+//            return false;
+//        }
+//        if (buff.isParalyzed(self))
+//        {
+//            return false;
+//        }
+//        actionName = combat.getBestAction(self, actionName);
+//        dictionary actionData = dataTableGetRow(JEDI_ACTIONS_FILE, actionName);
+//        if (actionData == null)
+//        {
+//            return false;
+//        }
+//        if (!doNonCombatActionPrecheck(self, self, actionData))
+//        {
+//            return false;
+//        }
+//        int forceCost = actionData.getInt("intJediPowerCost");
+//        if (!jedi.drainForcePower(self, forceCost))
+//        {
+//            return false;
+//        }
+//        weapon_data weaponData = new weapon_data();
+//        weaponData = getWeaponData(getCurrentWeapon(self));
+//        int[] actionCost = combat.getActionCost(self, weaponData, actionData);
+//        if (!combat.canDrainCombatActionAttributes(self, actionCost))
+//        {
+//            return false;
+//        }
+//        if (getState(self, STATE_MEDITATE) == 1)
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "already_in_meditative_state"));
+//            return false;
+//        }
+//        setState(self, STATE_MEDITATE, true);
+//        chat.setTempAnimationMood(self, "meditating");
+//        buff.applyBuff(self, "forceMeditate");
+//        combat.drainCombatActionAttributes(self, actionCost);
+//        int meditateRate = actionData.getInt("maxForceHeal");
+//        setObjVar(self, "jedi.meditate", meditateRate);
+//        recalculateForcePower(self);
+//        int visValue = actionData.getInt("intVisibilityValue");
+//        int visRange = actionData.getInt("intVisibilityRange");
+//        jedi.jediActionPerformed(self, visValue, visRange);
+//        playJediActionEffect(self, self, actionData);
+//        messageTo(self, "forceMeditateEffect", null, 5, false);
+//        int xpOverride = actionData.getInt("xpOverride");
+//        if (xpOverride < 0)
+//        {
+//            xpOverride = forceCost;
+//        }
+//        jedi.grantJediXP(self, xpOverride);
+//        return true;
+//    }
+//    public static void stopForceMeditate(obj_id self) throws InterruptedException
+//    {
+//        if (getState(self, STATE_MEDITATE) == 1)
+//        {
+//            setState(self, STATE_MEDITATE, false);
+//            chat.resetTempAnimationMood(self);
+//        }
+//        stopClientEffectObjByLabel(self, "forceMeditate");
+//        removeObjVar(self, "jedi.meditate");
+//        buff.removeBuff(self, "forceMeditate");
+//        recalculateForcePower(self);
+//    }
+//    public static void applyFeedbackDamage(obj_id player, obj_id target, float damage) throws InterruptedException
+//    {
+//        damage *= 1.0f - (combat.convertProtectionToPercent(jedi.applyForceShield(target, (int)damage)));
+//        int defense = getEnhancedSkillStatisticModifier(target, "force_defense");
+//        if (defense > 0)
+//        {
+//            damage = damage * (1.0f / (1.0f + (defense / 100.0f)));
+//        }
+//        if (damage < 1)
+//        {
+//            return;
+//        }
+//        addAttribModifier(target, HEALTH, (int)damage * -1, 0.0f, 0.0f, MOD_POOL);
+//        prose_package pp = new prose_package();
+//        pp.stringId = new string_id("cbt_spam", "forcefeedback_hit");
+//        pp.actor.set(player);
+//        pp.target.set(target);
+//        pp.digitInteger = (int)damage;
+//        combat.sendCombatSpamMessageProse(player, target, pp, true, true, true, COMBAT_RESULT_HIT);
+//    }
+//    public static int applyForceShield(obj_id defender, int damage) throws InterruptedException
+//    {
+//        int armorCount = utils.getIntScriptVar(defender, armor.SCRIPTVAR_ARMOR_COUNT);
+//        if (armorCount > 0)
+//        {
+//            return 0;
+//        }
+//        dictionary actionData = null;
+//        if (buff.hasBuff(defender, "forceShield"))
+//        {
+//            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceShield");
+//        }
+//        else if (buff.hasBuff(defender, "forceShield_1"))
+//        {
+//            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceShield_1");
+//        }
+//        else if (buff.hasBuff(defender, "forceProtection"))
+//        {
+//            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceProtection");
+//        }
+//        float forceShield = 0;
+//        if (actionData != null)
+//        {
+//            forceShield = getEnhancedSkillStatisticModifier(defender, "force_shield") * 100.0f;
+//            int forceCost = (int)(damage * getModifiedExtraForceCost(defender, actionData.getFloat("extraForceCost"), actionData.getString("actionName")));
+//            if (!jedi.drainForcePower(defender, forceCost))
+//            {
+//                buff.removeBuff(defender, actionData.getString("actionName"));
+//            }
+//            else
+//            {
+//                playClientEffectObj(defender, "clienteffect/pl_force_shield_hit.cef", defender, "");
+//            }
+//        }
+//        return (int)forceShield;
+//    }
+//    public static int applyForceArmor(obj_id defender, int damage) throws InterruptedException
+//    {
+//        int armorCount = utils.getIntScriptVar(defender, armor.SCRIPTVAR_ARMOR_COUNT);
+//        if (armorCount > 0)
+//        {
+//            return 0;
+//        }
+//        dictionary actionData = null;
+//        if (buff.hasBuff(defender, "forceArmor"))
+//        {
+//            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceArmor");
+//        }
+//        else if (buff.hasBuff(defender, "forceArmor_1"))
+//        {
+//            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceArmor_1");
+//        }
+//        else if (buff.hasBuff(defender, "forceProtection"))
+//        {
+//            actionData = dataTableGetRow(JEDI_ACTIONS_FILE, "forceProtection");
+//        }
+//        float forceArmor = 0;
+//        if (actionData != null)
+//        {
+//            forceArmor = getEnhancedSkillStatisticModifier(defender, "force_armor") * 100.0f;
+//            int forceCost = (int)(damage * getModifiedExtraForceCost(defender, actionData.getFloat("extraForceCost"), actionData.getString("actionName")));
+//            if (!jedi.drainForcePower(defender, forceCost))
+//            {
+//                buff.removeBuff(defender, actionData.getString("actionName"));
+//            }
+//            else
+//            {
+//                playClientEffectObj(defender, "clienteffect/pl_force_armor_hit.cef", defender, "");
+//            }
+//        }
+//        return (int)forceArmor;
+//    }
+//    public static void performJediReactiveDefense(obj_id attacker, obj_id defender, weapon_data weaponData, hit_result hitData, dictionary actionData) throws InterruptedException
+//    {
+//        if (weaponData.weaponType == combat.WEAPON_TYPE_FORCE_POWER && getEnhancedSkillStatisticModifier(defender, "force_absorb") > 0)
+//        {
+//            float forceAbsorb = 0.0f;
+//            if (buff.hasBuff(defender, "forceAbsorb"))
+//            {
+//                forceAbsorb = getModifiedExtraForceCost(defender, dataTableGetFloat(JEDI_ACTIONS_FILE, "forceAbsorb", "extraForceCost"), "forceAbsorb");
+//            }
+//            else
+//            {
+//                forceAbsorb = getModifiedExtraForceCost(defender, dataTableGetFloat(JEDI_ACTIONS_FILE, "forceAbsorb_1", "extraForceCost"), "forceAbsorb_1");
+//            }
+//            int forceCost = combat.getForceCost(attacker, weaponData, actionData);
+//            forceAbsorb *= forceCost;
+//            alterForcePower(defender, (int)forceAbsorb);
+//            prose_package pp = new prose_package();
+//            pp.stringId = new string_id("cbt_spam", "forceabsorb_hit");
+//            pp.actor.set(defender);
+//            pp.digitInteger = (int)forceAbsorb;
+//            combat.sendCombatSpamMessageProse(defender, pp, COMBAT_RESULT_HIT);
+//            dictionary data = new dictionary();
+//            data.put("effect", "clienteffect/pl_force_absorb_hit.cef");
+//            data.put("target", defender);
+//            messageTo(attacker, "playDelayedClientEffect", data, 1, false);
+//        }
+//        if (weaponData.weaponType == combat.WEAPON_TYPE_FORCE_POWER && getEnhancedSkillStatisticModifier(defender, "force_feedback") > 0)
+//        {
+//            float forceFeedback = getEnhancedSkillStatisticModifier(defender, "force_feedback") / 100.0f;
+//            float feedbackDamage = forceFeedback * hitData.damage;
+//            jedi.applyFeedbackDamage(defender, attacker, feedbackDamage);
+//            dictionary data = new dictionary();
+//            data.put("effect", "clienteffect/pl_force_feedback_hit.cef");
+//            data.put("target", attacker);
+//            messageTo(attacker, "playDelayedClientEffect", data, 1, false);
+//        }
+//    }
+//    public static boolean isAvoidIncap(obj_id player) throws InterruptedException
+//    {
+//        if (buff.hasBuff(player, "avoidIncapacitation"))
+//        {
+//            return true;
+//        }
+//        if (buff.hasBuff(player, "avoidIncapacitation_1"))
+//        {
+//            return true;
+//        }
+//        if (buff.hasBuff(player, "avoidIncapacitation_2"))
+//        {
+//            return true;
+//        }
+//        if (buff.hasBuff(player, "avoidIncapacitation_3"))
+//        {
+//            return true;
+//        }
+//        if (buff.hasBuff(player, "avoidIncapacitation_4"))
+//        {
+//            return true;
+//        }
+//        if (buff.hasBuff(player, "avoidIncapacitation_5"))
+//        {
+//            return true;
+//        }
+//        return false;
+//    }
+//    public static int getModifiedForceCost(obj_id self, int baseForce, String actionName) throws InterruptedException
+//    {
+//        int row = dataTableSearchColumnForString(actionName, 0, JEDI_RANK_DATA);
+//        if (row != -1)
+//        {
+//            if (hasSkill(self, "force_rank_light_novice"))
+//            {
+//                int force_manipulation = getSkillStatisticModifier(self, "force_manipulation_light");
+//                float rank_mod = dataTableGetFloat(JEDI_RANK_DATA, row, "forceModLight");
+//                return baseForce + (int)((force_manipulation * rank_mod) + 0.5);
+//            }
+//            else if (hasSkill(self, "force_rank_dark_novice"))
+//            {
+//                int force_manipulation = getSkillStatisticModifier(self, "force_manipulation_dark");
+//                float rank_mod = dataTableGetFloat(JEDI_RANK_DATA, row, "forceModDark");
+//                return baseForce + (int)((force_manipulation * rank_mod) + 0.5);
+//            }
+//        }
+//        return baseForce;
+//    }
     public static int getModifiedMinDamage(obj_id self, int baseDamage, String actionName) throws InterruptedException
     {
         int row = dataTableSearchColumnForString(actionName, 0, JEDI_RANK_DATA);
@@ -1210,26 +1210,26 @@ public class jedi extends script.base_script
         }
         return baseSpeed;
     }
-    public static float getModifiedExtraForceCost(obj_id self, float baseForce, String actionName) throws InterruptedException
-    {
-        int row = dataTableSearchColumnForString(actionName, 0, JEDI_RANK_DATA);
-        if (row != -1)
-        {
-            if (hasSkill(self, "force_rank_light_novice"))
-            {
-                int force_control = getSkillStatisticModifier(self, "force_control_light");
-                float rank_mod = dataTableGetFloat(JEDI_RANK_DATA, row, "extraForceModLight");
-                return baseForce + (force_control * rank_mod);
-            }
-            else if (hasSkill(self, "force_rank_dark_novice"))
-            {
-                int force_control = getSkillStatisticModifier(self, "force_control_dark");
-                float rank_mod = dataTableGetFloat(JEDI_RANK_DATA, row, "extraForceModDark");
-                return baseForce + (force_control * rank_mod);
-            }
-        }
-        return baseForce;
-    }
+//    public static float getModifiedExtraForceCost(obj_id self, float baseForce, String actionName) throws InterruptedException
+//    {
+//        int row = dataTableSearchColumnForString(actionName, 0, JEDI_RANK_DATA);
+//        if (row != -1)
+//        {
+//            if (hasSkill(self, "force_rank_light_novice"))
+//            {
+//                int force_control = getSkillStatisticModifier(self, "force_control_light");
+//                float rank_mod = dataTableGetFloat(JEDI_RANK_DATA, row, "extraForceModLight");
+//                return baseForce + (force_control * rank_mod);
+//            }
+//            else if (hasSkill(self, "force_rank_dark_novice"))
+//            {
+//                int force_control = getSkillStatisticModifier(self, "force_control_dark");
+//                float rank_mod = dataTableGetFloat(JEDI_RANK_DATA, row, "extraForceModDark");
+//                return baseForce + (force_control * rank_mod);
+//            }
+//        }
+//        return baseForce;
+//    }
     public static int getModifiedBuffAmount(obj_id self, int baseAmount, int modNum, String actionName) throws InterruptedException
     {
         int row = dataTableSearchColumnForString(actionName, 0, JEDI_RANK_DATA);
@@ -1271,16 +1271,16 @@ public class jedi extends script.base_script
     }
     public static void jediDeathExperienceLoss(obj_id player, float modifier) throws InterruptedException
     {
-        final int JEDI_MIN_XP_CAP = -10000000;
+        final int JEDI_MIN_XP_CAP = -5000;
         final float XP_LOSS_PERCENTAGE = -0.05f;
         final String[] JEDI_XP_TYPES = 
         {
-            "jedi_general"
+            "jedi"
         };
         for (String jedi_xp_type : JEDI_XP_TYPES) {
             int xpCap = getExperienceCap(player, jedi_xp_type);
             int xpLoss = (int) (xpCap * XP_LOSS_PERCENTAGE * modifier);
-            int curXp = getExperiencePoints(player, "jedi_general");
+            int curXp = getExperiencePoints(player, "jedi");
             if (curXp + xpLoss < JEDI_MIN_XP_CAP) {
                 xpLoss = JEDI_MIN_XP_CAP - curXp;
             }

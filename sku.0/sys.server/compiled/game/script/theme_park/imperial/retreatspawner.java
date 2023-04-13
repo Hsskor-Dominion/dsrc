@@ -206,7 +206,7 @@ public class retreatspawner extends script.base_script
     {
         obj_id sithHall = getCellId(self, "hall9");
         location c5Location = new location(-6.5f, 0.2f, -31.0f, "naboo", sithHall);
-        obj_id c5 = create.staticObject("emperor_royal_guard", c5Location);
+        obj_id c5 = create.staticObject("stardust_carnor_jax", c5Location);
         int c5_yaw = 0;
         setYaw(c5, c5_yaw);
         setObjVar(self, "RetreatInhabitants.c5", c5);
@@ -217,7 +217,7 @@ public class retreatspawner extends script.base_script
     {
         obj_id sithHall = getCellId(self, "hall9");
         location c6Location = new location(-10.25f, 0.2f, -31.0f, "naboo", sithHall);
-        obj_id c6 = create.staticObject("emperor_royal_guard", c6Location);
+        obj_id c6 = create.staticObject("stardust_kir_kanos", c6Location);
         int c6_yaw = 0;
         setYaw(c6, c6_yaw);
         setObjVar(self, "RetreatInhabitants.c5", c6);
@@ -228,7 +228,7 @@ public class retreatspawner extends script.base_script
     {
         obj_id sithHall = getCellId(self, "hall9");
         location sithLocation = new location(-8.50f, -8.9f, -40.06f, "naboo", sithHall);
-        obj_id sith = create.staticObject("shadow_nco", sithLocation);
+        obj_id sith = create.staticObject("stardust_darth_lumiya", sithLocation);
         int sith_yaw = 0;
         setYaw(sith, sith_yaw);
         setObjVar(self, "RetreatInhabitants.darth", sith);

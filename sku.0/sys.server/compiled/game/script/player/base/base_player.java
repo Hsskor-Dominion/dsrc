@@ -500,18 +500,18 @@ public class base_player extends script.base_script
         {
             setObjVar(self, "tcTester", 1);
         }
-        if (getForcePower(self) > 0)
-        {
-            if (getJediState(self) == JEDI_STATE_NONE)
-            {
-                setJediState(self, JEDI_STATE_FORCE_SENSITIVE);
-            }
-        }
-        if (hasSkill(self, "jedi_padawan_novice"))
-        {
-            setSkillTemplate(self, "a");
-            attachScript(self, "player.player_jedi_conversion");
-        }
+//        if (getForcePower(self) > 0)
+//        {
+//            if (getJediState(self) == JEDI_STATE_NONE)
+//            {
+//                setJediState(self, JEDI_STATE_FORCE_SENSITIVE);
+//            }
+//        }
+//        if (hasSkill(self, "jedi_padawan_novice"))
+//        {
+//            setSkillTemplate(self, "a");
+//            attachScript(self, "player.player_jedi_conversion");
+//        }
         if (!isJedi(self))
         {
             if (hasObjVar(self, "jedi.postponeGrant"))
@@ -1637,6 +1637,9 @@ public class base_player extends script.base_script
             if (!buff.isInStance(self) && !buff.isInFocus(self))
             {
                 messageTo(self, "applyJediStance", null, 1.0f, false);
+                //factions.goOvertWithDelay(self, 0.0f);
+                doJediTEF(self);
+                sendSystemMessage(self, new string_id("jedi_spam", "awakening"));
             }
         }
         if (utils.isProfession(self, utils.SMUGGLER))
@@ -3419,7 +3422,7 @@ public class base_player extends script.base_script
         {
             buff.applyBuff(self, "cloning_sickness");
 
-	    xp.grant(self, "jedi", -1000000);
+	    xp.grant(self, "jedi", -100000);
         }
         else if (utils.hasScriptVar(self, "no_cloning_sickness"))
         {
@@ -3433,9 +3436,40 @@ public class base_player extends script.base_script
                 pvpNeutralSetMercenaryFaction(self, currentMercenaryFaction, false);
             }
         }
-	if (hasSkill(self, "class_forcesensitive_phase1_master"))
+    if (hasSkill(self, "class_forcesensitive_phase4_master"))
         {
-            buff.applyBuff(self, "costume_seven_obi_wan_ghost");
+            setState(self, STATE_GLOWING_JEDI, true);
+            buff.applyBuff(self, "forceWeaken");
+            revokeSkill(self, "class_forcesensitive_phase4_master");
+            revokeSkill(self, "class_forcesensitive_phase4_05");
+            revokeSkill(self, "class_forcesensitive_phase4_04");
+            revokeSkill(self, "class_forcesensitive_phase4_03");
+            revokeSkill(self, "class_forcesensitive_phase4_02");
+        }
+    else if (hasSkill(self, "class_forcesensitive_phase3_master"))
+        {
+            buff.applyBuff(self, "forceWeaken");
+            setState(self, STATE_GLOWING_JEDI, false);
+            revokeSkill(self, "class_forcesensitive_phase4_novice");
+            revokeSkill(self, "class_forcesensitive_phase3_master");
+            revokeSkill(self, "class_forcesensitive_phase3_05");
+            revokeSkill(self, "class_forcesensitive_phase3_04");
+            revokeSkill(self, "class_forcesensitive_phase3_03");
+            revokeSkill(self, "class_forcesensitive_phase3_02");
+        }
+    else if (hasSkill(self, "class_forcesensitive_phase2_master"))
+        {
+            buff.applyBuff(self, "forceWeaken");
+            revokeSkill(self, "class_forcesensitive_phase3_novice");
+            revokeSkill(self, "class_forcesensitive_phase2_master");
+            revokeSkill(self, "class_forcesensitive_phase2_05");
+            revokeSkill(self, "class_forcesensitive_phase2_04");
+            revokeSkill(self, "class_forcesensitive_phase2_03");
+            revokeSkill(self, "class_forcesensitive_phase2_02");
+        }
+    else if (hasSkill(self, "class_forcesensitive_phase1_master"))
+        {
+            buff.applyBuff(self, "forceWeaken");
         }
         CustomerServiceLog("Death", "(" + self + ") " + getName(self) + " has clone respawned at " + (getLocation(self)).toString());
         return SCRIPT_CONTINUE;

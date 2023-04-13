@@ -351,7 +351,7 @@ public class player_saga_quest extends script.base_script
         }
         if (!isRecipe && !isShared)
         {
-            if (!isGod(self))
+            if (!hasSkill(self,"class_chroniclers_master");
             {
                 if (!pgc_quests.handleChroniclesRelicCosts(self, taskDictionary))
                 {
@@ -361,7 +361,7 @@ public class player_saga_quest extends script.base_script
             }
             else 
             {
-                sendSystemMessage(self, "[GOD_MODE] Bypassing relic consumption for chronicle holocron creation.", "");
+                sendSystemMessage(self, "[CHRONICLE MASTER] Bypassing relic consumption for chronicle holocron creation.", "");
             }
         }
         obj_id playerInventory = utils.getInventoryContainer(self);
