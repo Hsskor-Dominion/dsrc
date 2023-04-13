@@ -500,18 +500,18 @@ public class base_player extends script.base_script
         {
             setObjVar(self, "tcTester", 1);
         }
-//        if (getForcePower(self) > 0)
-//        {
-//            if (getJediState(self) == JEDI_STATE_NONE)
-//            {
-//                setJediState(self, JEDI_STATE_FORCE_SENSITIVE);
-//            }
-//        }
-//        if (hasSkill(self, "jedi_padawan_novice"))
-//        {
-//            setSkillTemplate(self, "a");
-//            attachScript(self, "player.player_jedi_conversion");
-//        }
+        if (getForcePower(self) > 0)
+        {
+            if (getJediState(self) == JEDI_STATE_NONE)
+            {
+                setJediState(self, JEDI_STATE_FORCE_SENSITIVE);
+            }
+        }
+        if (hasSkill(self, "jedi_padawan_novice"))
+        {
+            setSkillTemplate(self, "a");
+            attachScript(self, "player.player_jedi_conversion");
+        }
         if (!isJedi(self))
         {
             if (hasObjVar(self, "jedi.postponeGrant"))
@@ -1638,7 +1638,7 @@ public class base_player extends script.base_script
             {
                 messageTo(self, "applyJediStance", null, 1.0f, false);
                 //factions.goOvertWithDelay(self, 0.0f);
-                doJediTEF(self);
+                jedi.doJediTEF(self);
                 sendSystemMessage(self, new string_id("jedi_spam", "awakening"));
             }
         }
