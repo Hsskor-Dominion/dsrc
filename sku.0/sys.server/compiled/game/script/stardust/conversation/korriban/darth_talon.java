@@ -182,7 +182,7 @@ public class darth_talon extends script.base_script
     {
         if (response.equals("force_trade"))
         {
-            if (darth_talon_sithFriend_condition(npc, player))
+            if (darth_talon_sithFriend_condition(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_trade");
 

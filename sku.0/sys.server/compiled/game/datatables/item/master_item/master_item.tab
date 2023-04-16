@@ -8584,3 +8584,4 @@ contraband_art_chest	object/tangible/smuggler/contraband/contraband_general.iff	
 contraband_spice_chest	object/tangible/smuggler/contraband/contraband_general.iff									systems.loot.contraband_spice_chest			Spice Contraband	Rare Loot Chest... Open it up!	
 contraband_spice_schematic_chest	object/tangible/smuggler/contraband/contraband_general.iff									systems.loot.contraband_spice_chest			Spice Contraband	Exceptional Loot Chest... Open it up!	
 painting_art_expo_01	object/static/item/painting_art_expo_01.iff													Art Expo Painting	
+item_ship_deed_stardestroyer	object/tangible/ship/crafted/chassis/stardestroyer_deed.iff							1				1	Deed for Star Destroyer Chassis	Deed for Star Destroyer Chassis earned from participating in epic Space Battles.	
