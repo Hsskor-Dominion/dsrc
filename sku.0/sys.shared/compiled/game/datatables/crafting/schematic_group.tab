@@ -1975,5 +1975,5 @@ craftStructureCampB	object/draft_schematic/camp/camp_advanced.iff
 craftStructureCampC	object/draft_schematic/camp/camp_quality.iff
 craftStructureCampD	object/draft_schematic/camp/camp_elite.iff
 craftStructureCampE	object/draft_schematic/camp/camp_luxury.iff
-craftShipwrightMaster	object/draft_schematic/space/chassis/player_stardestroyer.iff
+craftShipwrightMaster	object/draft_schematic/space/chassis/stardestroyer.iff
 end	end

@@ -34,8 +34,8 @@ public class bhguild_leader extends script.base_script
     }
     public boolean bhguild_leader_condition_isBHguild(obj_id player, obj_id npc) throws InterruptedException
     {
-        float bhFaction = factions.getFactionStanding(player, "bhguild");
-        if (bhFaction >= 0)
+        float bhFaction = factions.getFactionStanding(player, "underworld");
+        if (bhFaction <= -2500)
         {
             return true;
         }
@@ -220,7 +220,7 @@ public class bhguild_leader extends script.base_script
             {
 		        bhguild_leader_action_vendor(player, npc);
                 doAnimationAction(npc, "thumb_up");
-                string_id message = new string_id(c_stringFile, "fence_police");
+                string_id message = new string_id(c_stringFile, "fence_hunter");
                 utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
                 chat.chat(npc, player, message);
                 npcEndConversation(player);

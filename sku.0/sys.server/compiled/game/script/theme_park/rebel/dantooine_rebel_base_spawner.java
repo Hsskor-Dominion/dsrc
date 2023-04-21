@@ -32,7 +32,7 @@ public class dantooine_rebel_base_spawner extends script.base_script
         spawnMothma(self);
         spawnGeneral(self);
         spawnCaptain(self);
-        spawnLeia(self);
+        //spawnLeiaClone(self);
     }
     public void spawnLieutenant(obj_id self) throws InterruptedException
     {
@@ -54,18 +54,18 @@ public class dantooine_rebel_base_spawner extends script.base_script
         setYaw(ackbar, -4);
         return;
     }
-    public void spawnLeia(obj_id self) throws InterruptedException
-    {
-        obj_id room = getCellId(self, "jailcell2");
-        location leiaLocation = new location(-14.4f, 1.01f, -19.2f, "dantooine", room);
-        int yaw = 179;
-        obj_id leia = create.object("clone_relics_leia", leiaLocation);
-        setYaw(leia, yaw);
-        ai_lib.setDefaultCalmMood(leia, "conversation");
-        setObjVar(self, "HideoutInhabitants.leia", leia);
-        setObjVar(leia, "Hideout", self);
-        return;
-    }
+//    public void spawnLeiaClone(obj_id self) throws InterruptedException
+//    {
+//        obj_id room = getCellId(self, "hall2");
+//        location leiaLocation = new location(-2.01f, 7.01f, -10.8f, "dantooine", room);
+//        int yaw = 179;
+//        obj_id leia = create.object("clone_relics_leia", leiaLocation);
+//        setYaw(leia, yaw);
+//        ai_lib.setDefaultCalmMood(leia, "conversation");
+//        setObjVar(self, "HideoutInhabitants.leia", leia);
+//        setObjVar(leia, "Hideout", self);
+//        return;
+//    }
     public void spawnMothma(obj_id self) throws InterruptedException
     {
         obj_id room = getCellId(self, "hall2");

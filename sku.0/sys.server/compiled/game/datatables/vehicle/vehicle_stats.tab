@@ -46,7 +46,7 @@ object/mobile/vehicle/basilisk_war_droid.iff	0	21.9	1	205	103	2.9	9.9	7	1	1	1.5	
 object/mobile/vehicle/pod_racer_light_bending.iff	0	73.2	0	15	120	9.9	12.5	7	2	3	4	2.5	70	0.5	0.25		vehicle_3	
 object/mobile/vehicle/xj6_air_speeder.iff	0	22	1	154	77	2.9	9.9	7	2	3	4	2.5	45	0.5	0.25		vehicle_3	
 object/mobile/vehicle/fg_8t8_podracer.iff	0	73.2	0	15	120	9.9	12.5	7	2	3	4	2.5	70	0.5	0.25		vehicle_3	
-object/mobile/vehicle/air2_swoop_speeder.iff	0	22.1	1	190	95	2.9	9.9	7	2	3	4	2.5	45	0.5	0.25		vehicle_3	
+object/mobile/vehicle/air2_swoop_speeder.iff	0	10	1	190	95	2.9	9.9	7	2	3	4	2.5	45	0.5	0.25		vehicle_3	
 object/mobile/vehicle/landspeeder_usv5_s02.iff	0	17.9	1	154	77	2.9	7.9	7	2	3	4	2.5	45	0.5	0.25		vehicle_1	
 object/mobile/vehicle/podracer_anakin.iff	0	73.2	0	15	120	9.9	12.5	7	2	3	4	2.5	70	0.5	0.25		vehicle_3	
 object/mobile/vehicle/flare_s_swoop.iff	0	20	1	180	85	2.9	9.9	6	2	3	4	2.5	45	0.5	0.25		vehicle_4	

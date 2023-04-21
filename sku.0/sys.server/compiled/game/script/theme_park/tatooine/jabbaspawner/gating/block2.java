@@ -19,7 +19,7 @@ public class block2 extends script.base_script
         {
             string_id warning = new string_id("theme_park_jabba/warning", "barada");
             sendSystemMessage(item, warning);
-            return SCRIPT_OVERRIDE;
+            return SCRIPT_CONTINUE;
         }
         else 
         {
