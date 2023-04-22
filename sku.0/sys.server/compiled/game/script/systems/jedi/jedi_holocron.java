@@ -12,6 +12,10 @@ public class jedi_holocron extends script.base_script
     public jedi_holocron()
     {
     }
+    public boolean isJediReady(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return (getLevel(player) >= 90);
+    }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
         if (hasObjVar(self, "intUsed"))
@@ -40,16 +44,16 @@ public class jedi_holocron extends script.base_script
             }
             int max_force = getMaxForcePower(player);
             int current_force = getForcePower(player);
-            if (max_force < 1)
+            if (isJediReady(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
-		setSkillTemplate(player, "force_sensitive_1a");
-		grantSkill(player, "force_sensitive");
-		grantSkill(player, "class_forcesensitive_phase1");
-		grantSkill(player, "class_forcesensitive_phase1_novice");
-		xp.grant(player, "jedi", 5000);
-        jedi_trials.initializePadawanTrials(player);
-		destroyObject(self);
+		        setSkillTemplate(player, "force_sensitive_1a");
+		        grantSkill(player, "force_sensitive");
+		        grantSkill(player, "class_forcesensitive_phase1");
+		        grantSkill(player, "class_forcesensitive_phase1_novice");
+		        xp.grant(player, "jedi", 5000);
+                jedi_trials.initializePadawanTrials(player);
+                destroyObject(self);
             int mission_bounty = 25000;
             int current_bounty = 0;
             mission_bounty += rand(1, 2000);

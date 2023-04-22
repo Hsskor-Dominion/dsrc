@@ -80,13 +80,14 @@ public class echo_base_launch extends script.base_script
     }
     public boolean echo_base_launch_condition_isNotCorrectLevel(obj_id player, obj_id npc) throws InterruptedException
     {
-        return getLevel(player) < township.MIN_LEVEL;
+        return getLevel(player) > 0;
     }
     public void echo_base_launch_action_launchRebel(obj_id player, obj_id npc) throws InterruptedException
     {
         if (!instance.isFlaggedForInstance(player, "echo_base"))
         {
             instance.flagPlayerForInstance(player, "echo_base");
+            removeObjVar(player, "npe");
         }
         boolean sentToHoth = instance.requestInstanceMovement(player, "echo_base", 1, "rebel");
         if (sentToHoth)
@@ -99,6 +100,7 @@ public class echo_base_launch extends script.base_script
         if (!instance.isFlaggedForInstance(player, "echo_base"))
         {
             instance.flagPlayerForInstance(player, "echo_base");
+            removeObjVar(player, "npe");
         }
         boolean sentToHoth = instance.requestInstanceMovement(player, "echo_base", 2, "imperial");
         if (sentToHoth)
