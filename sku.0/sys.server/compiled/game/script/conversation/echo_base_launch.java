@@ -76,11 +76,11 @@ public class echo_base_launch extends script.base_script
                 }
             }
         }
-        return true;
+        return false;
     }
     public boolean echo_base_launch_condition_isNotCorrectLevel(obj_id player, obj_id npc) throws InterruptedException
     {
-        return getLevel(player) > 0;
+        return getLevel(player) < township.MIN_LEVEL;
     }
     public void echo_base_launch_action_launchRebel(obj_id player, obj_id npc) throws InterruptedException
     {
