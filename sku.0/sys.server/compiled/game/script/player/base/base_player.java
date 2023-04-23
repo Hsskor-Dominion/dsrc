@@ -11978,11 +11978,11 @@ public class base_player extends script.base_script
     }
     public int cmdMeditate(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
-        if (getPosture(self) != POSTURE_SITTING)
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "meditate_not_sitting"));
-            return SCRIPT_CONTINUE;
-        }
+//        if (getPosture(self) != POSTURE_SITTING)
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "meditate_not_sitting"));
+//            return SCRIPT_CONTINUE;
+//        }
         stealth.checkForAndMakeVisibleNoRecourse(self);
         if (getState(self, STATE_MEDITATE) == 1)
         {

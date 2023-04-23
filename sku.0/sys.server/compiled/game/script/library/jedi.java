@@ -356,7 +356,8 @@ public class jedi extends script.base_script
         }
         return damageMod;
     }
-//    public static void recalculateForcePower(obj_id player) throws InterruptedException
+      public static void recalculateForcePower(obj_id player) throws InterruptedException
+      {sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));}
 //    {
 //        int maxPower = getSkillStatisticModifier(player, "jedi_force_power_max");
 //        int baseRegenRate = getSkillStatisticModifier(player, "jedi_force_power_regen");
