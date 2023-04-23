@@ -245,7 +245,7 @@ public class yoda extends script.base_script
 
                 return SCRIPT_CONTINUE;
             }
-            else if (yoda_phase1_condition(npc, player))
+            else if (yoda_phase2_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_jedi_training");
                 jedi_trials.initializeKnightTrials(player);

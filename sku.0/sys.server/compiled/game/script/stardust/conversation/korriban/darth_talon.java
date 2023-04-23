@@ -244,7 +244,7 @@ public class darth_talon extends script.base_script
 
                 return SCRIPT_CONTINUE;
             }
-            else if (darth_talon_phase1_condition(npc, player))
+            else if (darth_talon_phase2_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_sith_training");
                 jedi_trials.initializeKnightTrials(player);

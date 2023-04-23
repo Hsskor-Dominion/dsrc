@@ -191,7 +191,6 @@ public class darth_sidious extends script.base_script
             if (darth_sidious_phase1_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_mission");
-                force_rank.addToForceRankSystem(player, force_rank.DARK_COUNCIL);
 
 
                 utils.removeScriptVar(player, "conversation.darth_sidious_conversation.branchId");
@@ -218,7 +217,6 @@ public class darth_sidious extends script.base_script
             if (darth_sidious_phase1_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_sith_training");
-                jedi_trials.initializeKnightTrials(player);
 
                 utils.removeScriptVar(player, "conversation.darth_sidious_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
