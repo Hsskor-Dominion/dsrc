@@ -414,7 +414,10 @@ public class jedi extends script.base_script
         }
         return false;
     }
-//    public static boolean doNonCombatActionPrecheck(obj_id player, obj_id target, dictionary actionData) throws InterruptedException
+      public static boolean doNonCombatActionPrecheck(obj_id player, obj_id target, dictionary actionData) throws InterruptedException
+      {
+          return true;
+      }
 //    {
 //        int forceCost = actionData.getInt("intJediPowerCost");
 //        float range = actionData.getFloat("fltRange");
@@ -1131,7 +1134,10 @@ public class jedi extends script.base_script
 //        }
 //        return false;
 //    }
-//    public static int getModifiedForceCost(obj_id self, int baseForce, String actionName) throws InterruptedException
+      public static int getModifiedForceCost(obj_id self, int baseForce, String actionName) throws InterruptedException
+      {
+          return baseForce;
+      }
 //    {
 //        int row = dataTableSearchColumnForString(actionName, 0, JEDI_RANK_DATA);
 //        if (row != -1)
@@ -1211,7 +1217,10 @@ public class jedi extends script.base_script
         }
         return baseSpeed;
     }
-//    public static float getModifiedExtraForceCost(obj_id self, float baseForce, String actionName) throws InterruptedException
+      public static float getModifiedExtraForceCost(obj_id self, float baseForce, String actionName) throws InterruptedException
+      {
+          return baseForce;
+      }
 //    {
 //        int row = dataTableSearchColumnForString(actionName, 0, JEDI_RANK_DATA);
 //        if (row != -1)
