@@ -7225,3 +7225,4 @@ public class utils extends script.base_script
         return (utils.getIntConfigSetting("GameServer", "debugMode") == 1);
     }
 }
+//

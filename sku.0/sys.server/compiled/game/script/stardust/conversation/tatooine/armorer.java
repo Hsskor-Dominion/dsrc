@@ -22,7 +22,7 @@ public class armorer extends script.base_script
     {
         return groundquests.hasCompletedQuest(player, "stardust_mando_crest");
     }
-    public boolean armorer_check_playerHasHelm(obj_id player) throws InterruptedException
+    public boolean armorer_check_playerHasHelm(obj_id player) throws InterruptedException//not yet working
     {
         if (utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff"))
         {

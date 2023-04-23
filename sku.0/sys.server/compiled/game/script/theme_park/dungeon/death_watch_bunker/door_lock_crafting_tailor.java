@@ -106,3 +106,4 @@ public class door_lock_crafting_tailor extends script.base_script
         return SCRIPT_CONTINUE;
     }
 }
+//
