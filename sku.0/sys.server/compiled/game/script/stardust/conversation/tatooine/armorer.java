@@ -22,6 +22,14 @@ public class armorer extends script.base_script
     {
         return groundquests.hasCompletedQuest(player, "stardust_mando_crest");
     }
+    public boolean armorer_check_playerHasHelm(obj_id player) throws InterruptedException
+    {
+        if (utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff"))
+        {
+                return true;
+        }
+        return false;
+    }
     public boolean armorerFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float bhFaction = factions.getFactionStanding(player, "death_watch");
@@ -86,10 +94,18 @@ public class armorer extends script.base_script
         else if (response.equals("seek_mandalore"))
         {
 
-            final string_id message = new string_id(c_stringFile, "s_273");
+            final string_id message = new string_id(c_stringFile, "npc_consider_training");
+            final int numberOfResponses = 1;
 
-            utils.removeScriptVar(player, "conversation.armorer_conversation.branchId");
-            npcEndConversationWithMessage(player, message);
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
+
+            responses[responseIndex++] = new string_id(c_stringFile, "become_mandalore");
+
+            utils.setScriptVar(player, "conversation.armorer_conversation.branchId", 3);
+
+            npcSpeak(player, message);
+            npcSetConversationResponses(player, responses);
 
             return SCRIPT_CONTINUE;
         }
@@ -160,11 +176,14 @@ public class armorer extends script.base_script
     }
     public int armorer_handleBranch3(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        if (response.equals("seek_mandalore"))
+        if (response.equals("become_mandalore"))
         {
             if (armorer_condition_playerCompletedCreed(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "for_mandalore");
+                grantSkill(player, "faction_rank_mando_novice");
+                grantSkill(player, "social_language_mando_speak");
+                grantSkill(player, "social_language_mando_comprehend");
 
                 utils.removeScriptVar(player, "conversation.armorer_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -201,6 +220,7 @@ public class armorer extends script.base_script
             {
                 final string_id message = new string_id(c_stringFile, "s_261");
                 armorer_action_grantQuest1(player, npc);
+                revokeSkill(player, "faction_rank_mando_novice");
 
                 utils.removeScriptVar(player, "conversation.armorer_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -237,6 +257,7 @@ public class armorer extends script.base_script
         if (response.equals("confirm_leave_enclave"))
         {
             final string_id message = new string_id(c_stringFile, "npc_very_well");
+            revokeSkill(player, "faction_rank_mando_novice");
 
             utils.removeScriptVar(player, "conversation.armorer_conversation.branchId");
             npcEndConversationWithMessage(player, message);

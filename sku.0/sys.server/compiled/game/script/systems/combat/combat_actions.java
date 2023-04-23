@@ -3,6 +3,7 @@ package script.systems.combat;
 import script.*;
 import script.combat_engine.combat_data;
 import script.combat_engine.weapon_data;
+import script.library.utils;
 import script.library.*;
 
 import java.util.Arrays;
@@ -11204,6 +11205,10 @@ public class combat_actions extends script.systems.combat.combat_base {
 
     public int bountycheck(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (hasSkill(target, "class_forcesensitive_phase1_novice")) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
+        if (hasSkill(target, "faction_rank_mando_novice")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }

@@ -87,7 +87,6 @@ public class echo_base_launch extends script.base_script
         if (!instance.isFlaggedForInstance(player, "echo_base"))
         {
             instance.flagPlayerForInstance(player, "echo_base");
-            removeObjVar(player, "npe");
         }
         boolean sentToHoth = instance.requestInstanceMovement(player, "echo_base", 1, "rebel");
         if (sentToHoth)
@@ -100,7 +99,6 @@ public class echo_base_launch extends script.base_script
         if (!instance.isFlaggedForInstance(player, "echo_base"))
         {
             instance.flagPlayerForInstance(player, "echo_base");
-            removeObjVar(player, "npe");
         }
         boolean sentToHoth = instance.requestInstanceMovement(player, "echo_base", 2, "imperial");
         if (sentToHoth)
@@ -197,6 +195,7 @@ public class echo_base_launch extends script.base_script
             {
                 doAnimationAction(npc, "salute1");
                 echo_base_launch_action_launchRebel(player, npc);
+                removeObjVar(player, "npe");
                 string_id message = new string_id(c_stringFile, "s_24");
                 utils.removeScriptVar(player, "conversation.echo_base_launch.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -298,6 +297,7 @@ public class echo_base_launch extends script.base_script
             {
                 doAnimationAction(npc, "salute2");
                 echo_base_launch_action_launchImperial(player, npc);
+                removeObjVar(player, "npe");
                 string_id message = new string_id(c_stringFile, "s_40");
                 utils.removeScriptVar(player, "conversation.echo_base_launch.branchId");
                 npcEndConversationWithMessage(player, message);

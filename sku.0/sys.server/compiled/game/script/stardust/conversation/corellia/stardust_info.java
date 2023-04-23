@@ -250,7 +250,7 @@ public class stardust_info extends script.base_script
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
-	setName(self, "IG-88SD1 (Project:Stardust Information)");
+	    setName(self, "IG-88SD1 (Project:Stardust Information)");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException

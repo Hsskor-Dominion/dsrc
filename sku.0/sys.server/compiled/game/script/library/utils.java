@@ -163,6 +163,10 @@ public class utils extends script.base_script
         {
             skillCheck = true;			
         }
+        if (hasSkill(player, "faction_rank_mando_novice"))
+        {
+            skillCheck = true;
+        }
         return skillCheck;
     }
     public static int unequipAndNotifyUncerted(obj_id player) throws InterruptedException
