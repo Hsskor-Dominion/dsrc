@@ -16,6 +16,10 @@ public class jedi_holocron extends script.base_script
     {
         return (getLevel(player) >= 90);
     }
+    public boolean isJediExplore(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return (badge.hasBadge(player, "bdg_exp_45_badges"));
+    }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
         if (hasObjVar(self, "intUsed"))
@@ -42,15 +46,19 @@ public class jedi_holocron extends script.base_script
             {
                 return SCRIPT_CONTINUE;
             }
-            int max_force = getMaxForcePower(player);
-            int current_force = getForcePower(player);
-            if (isJediReady(player, self))
+            if (!isJediReady(player, self))
+            {
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_level"));
+                return SCRIPT_OVERRIDE;
+            }
+            if (isJediExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
 		        setSkillTemplate(player, "force_sensitive_1a");
 		        grantSkill(player, "force_sensitive");
 		        grantSkill(player, "class_forcesensitive_phase1");
 		        grantSkill(player, "class_forcesensitive_phase1_novice");
+                grantSkill(player, "force_sensitive_heghtened_senses_surveying_04");
 		        xp.grant(player, "jedi", 5000);
                 jedi_trials.initializePadawanTrials(player);
                 destroyObject(self);
@@ -66,6 +74,14 @@ public class jedi_holocron extends script.base_script
             setObjVar(player, "jedi.bounty", mission_bounty);
             setJediBountyValue(player, current_bounty);
             updateJediScriptData(player, "jedi", 1);
+            }
+            else if (!isJediExplore(player, self))
+            {
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
+            }
+            else
+            {
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_no_effect"));
             }
         }
         return SCRIPT_CONTINUE;

@@ -2832,7 +2832,7 @@ faction_rank			1	0	0	1	0	0						0											0	0
 faction_rank_mando	faction_rank	pyramid	1	0	1	1	0	0						0											0	0
 faction_rank_mando_novice	faction_rank_mando	pyramid	1	1	0	1	0	0				force_rank_xp	0	15000											0	0
 faction_rank_mando_master	faction_rank_mando	pyramid	1	1	0	1	0	0		faction_rank_mando_rank_10		force_rank_xp	500000	625000											0	0
-faction_rank_mando_rank_01	faction_rank_mando	pyramid	1	1	0	1	0	0		faction_rank_mando_novice		force_rank_xp	10000	25000											0	0
+faction_rank_mando_rank_01	faction_rank_mando	pyramid	1	1	0	1	0	0		faction_rank_mando_novice		force_rank_xp	10000	25000								armor_assembly=10,armor_experimentation=10,armor_customization=10			0	0
 faction_rank_mando_rank_02	faction_rank_mando_rank_01	pyramid	1	0	0	1	0	0		faction_rank_mando_rank_01		force_rank_xp	20000	37500											0	0
 faction_rank_mando_rank_03	faction_rank_mando_rank_02	pyramid	1	0	0	1	0	0		faction_rank_mando_rank_02		force_rank_xp	30000	50000											0	0
 faction_rank_mando_rank_04	faction_rank_mando_rank_03	pyramid	1	0	0	1	0	0		faction_rank_mando_rank_03		force_rank_xp	40000	75000											0	0
