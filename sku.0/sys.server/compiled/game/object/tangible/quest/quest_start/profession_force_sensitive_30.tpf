@@ -6,6 +6,6 @@
 
 sharedTemplate = "object/tangible/quest/quest_start/shared_profession_force_sensitive_30.iff"
 
-scripts =+ [ "item.special.nomove" ]
+scripts =+ [ "systems.jedi.sith_holocron2","item.special.nomove" ]
 
 

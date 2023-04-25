@@ -18,7 +18,7 @@ public class sith_holocron extends script.base_script
     }
     public boolean isSithExplore(obj_id player, obj_id npc) throws InterruptedException
     {
-        return (badge.hasBadge(player, "bdg_exp_45_badges"));
+        return ((hasCompletedCollectionSlot(player, "col_jedi_npc") || hasCompletedCollectionSlot(player, "col_exar_kun_01") || badge.hasBadge(player, "bdg_must_obiwan_story_bad") || hasCompletedCollectionSlot(player, "inv_holocron_collection_02") || hasCompletedCollectionSlot(player, "col_axkva_min_01")) && badge.hasBadge(player, "bdg_exp_45_badges"));
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
@@ -48,17 +48,17 @@ public class sith_holocron extends script.base_script
             }
             if (!isSithReady(player, self))
             {
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_level"));
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_level_sith"));
                 return SCRIPT_OVERRIDE;
             }
             if (isSithExplore(player, self))
             {
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish_sith"));
 		        setSkillTemplate(player, "force_sensitive_1a");
 		        grantSkill(player, "force_sensitive");
 		        grantSkill(player, "class_forcesensitive_phase1");
 		        grantSkill(player, "class_forcesensitive_phase1_novice");
-                grantSkill(player, "force_sensitive_heghtened_senses_persuasion_04");
+                grantSkill(player, "force_sensitive_heightened_senses_persuasion_04");
 		        xp.grant(player, "jedi", 5000);
                 jedi_trials.initializePadawanTrials(player);
                 destroyObject(self);
@@ -77,7 +77,7 @@ public class sith_holocron extends script.base_script
             }
             else if (!isSithExplore(player, self))
             {
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore_sith"));
             }
             else
             {

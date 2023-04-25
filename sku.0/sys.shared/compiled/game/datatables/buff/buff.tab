@@ -224,7 +224,7 @@ kwi_boost_01	spice			4	buffs.spicePill	900	constitution_modified	-50	agility_mod
 kliknik_boost	spice			4	buffs.spicePill	900	constitution_modified	10	agility_modified	20	stamina_modified	20	xp_bonus_general	50		0	STATE_NONE	handleSpiceDownerEffect			1	0		1	1	1	0	1	1	0	1	1	1
 kliknik_boost_01	spice			4	buffs.spicePill	900	constitution_modified	10	agility_modified	20	stamina_modified	20	xp_bonus_general	50		0	STATE_NONE	handleSpiceDownerEffect			1	0		0	1	1	0	1	1	0	1	1	1
 spice_downer	spiceDowner			1	buffs.spiceDowner	30	constitution_modified	-50	agility_modified	-50	stamina_modified	-50	luck_modified	-50		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
-forceWeaken	forceWeaken	snare		1	jedi.forceWeaken	3600	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+forceWeaken	forceWeaken	snare		1	jedi.forceWeaken	3600	movement	0	healthPercent	-75	actionPercent	-75	luck_modified	-50		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 forceWeaken_1	forceWeaken	snare		2	jedi.forceWeaken	20	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 saberArmorBreak	armorBreak			2	jedi.saberArmorBreak	20	private_armor_break	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 saberArmorBreak_1	armorBreak			5	jedi.saberArmorBreak	30	private_armor_break	185		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -986,7 +986,7 @@ detectHiddenConsumable65	detectHidden			65	command.detectHiddenBuff	900	detect_h
 detectHiddenConsumable100	detectHidden			100	command.detectHiddenBuff	900	detect_hidden	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 invis_sm_buff_invis_1	invisibility			5	command.camouflageSelf	30	invis	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 pub28MeatPie	food			25	buffs.foodMeal	1200	constitution_modified	70		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-cloning_sickness	testCloneSickDoNotUse			50	jedi.forceWeaken	600	healthPercent	-75	actionPercent	-75		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
+cloning_sickness	testCloneSickDoNotUse			50	command.sampledna	600	healthPercent	-75	actionPercent	-75		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 roadmapTraderClicky	genBuff_4			50	buffs.genericBuff	120	general_experimentation	25	general_assembly	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 restuss_rebel_general_speech	inspiration			100	command.inspire	2400	precision_modified	40	constitution_modified	40		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 roadmapTraderClicky	genBuff_4			50	buffs.genericBuff	120	general_experimentation	25	general_assembly	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1

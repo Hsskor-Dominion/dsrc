@@ -18,7 +18,7 @@ public class jedi_holocron extends script.base_script
     }
     public boolean isJediExplore(obj_id player, obj_id npc) throws InterruptedException
     {
-        return (badge.hasBadge(player, "bdg_exp_45_badges"));
+        return ((hasCompletedCollectionSlot(player, "col_bdg_explore_jedi") || badge.hasBadge(player, "bdg_kash_grievous") || hasCompletedCollectionSlot(player, "col_bdg_hero_tatooine") || hasCompletedCollectionSlot(player, "inv_holocron_collection_02") || badge.hasBadge(player, "bdg_must_obiwan_story_good")) && badge.hasBadge(player, "bdg_exp_45_badges"));
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
@@ -58,7 +58,7 @@ public class jedi_holocron extends script.base_script
 		        grantSkill(player, "force_sensitive");
 		        grantSkill(player, "class_forcesensitive_phase1");
 		        grantSkill(player, "class_forcesensitive_phase1_novice");
-                grantSkill(player, "force_sensitive_heghtened_senses_surveying_04");
+                grantSkill(player, "force_sensitive_heightened_senses_surveying_04");
 		        xp.grant(player, "jedi", 5000);
                 jedi_trials.initializePadawanTrials(player);
                 destroyObject(self);
