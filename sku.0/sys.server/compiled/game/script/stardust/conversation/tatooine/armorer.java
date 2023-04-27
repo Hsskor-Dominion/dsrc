@@ -33,7 +33,7 @@ public class armorer extends script.base_script
     public boolean armorerFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float bhFaction = factions.getFactionStanding(player, "death_watch");
-        if (bhFaction >= 2500)
+        if (bhFaction >= 1000)
         {
             return true;
         }
