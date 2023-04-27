@@ -5,10 +5,10 @@ Rebel	1	1	1	rebel	Imperial
 Hutt	1	1	0		naboo_security_force,nym,Imperial,corsec,narmle	borvo	
 ImperialCitizen	0	0	0				
 RebelCitizen	0	0	0				
-Neutral	0	0	0				
+Neutral	1	0	0			Hutt,Imperial,Rebel	
 Unattackable	0	0	0	unattackable			
 clone_relics_claw	1	1	0				
-clone_relics_droid	0	1	0		clone_relics_scientist		
+clone_relics_droid	1	1	0		clone_relics_scientist	trade_federation	
 clone_relics_scientist	0	0	0		clone_relics_droid	Hutt,Imperial,Rebel	
 afarathu	1	1	0		corsec,survivor		
 beldonnas_league	1	1	0		followers_of_lord_nyax,lost_aqualish	corsec	
@@ -83,7 +83,7 @@ geonosian_mad_bunker	0	1	0			geonosian_crazed_monster
 geonosian_crazed_monster	0	1	0			geonosian_mad_bunker	
 geonosian_crazy	0	1	0		geonosian_mad_bunker,geonosian_crazed_monster		
 aggro_corsec	0	1	0		afarathu,followers_of_lord_nyax,monumenter,rogue_corsec,lost_aqualish	corsec	
-death_watch	1	1	0		death_watch_special,fs_villager,sith_shadow		
+death_watch	1	1	0		death_watch_special		
 death_watch_special	0	0	0				
 sith_shadow	1	1	0		fs_villager		0
 fs_villager	1	1	0		sith_shadow		0
@@ -98,7 +98,7 @@ faction_sayormi	0	1	0
 yavin_scavenger	0	1	0		Hutt, jabba		
 droid_army	0	1	0		mustafar_miners	trade_federation	
 mustafar_miners	0	1	0		droid_army		
-dark_jedi_kenobi	0	1	0				
+dark_jedi_kenobi	1	1	0				
 underworld	1	1	0				
 azure_cabal	1	0	0				
 heroic_tusken	0	1	0		espa,espa_guard		

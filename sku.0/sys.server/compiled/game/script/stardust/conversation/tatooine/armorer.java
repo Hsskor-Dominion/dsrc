@@ -278,7 +278,7 @@ public class armorer extends script.base_script
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setCondition(self, CONDITION_INTERESTING);
-        setName(self, "Death Watch Armorer");
+        setName(self, "a Mandalorian Armorer");
 
         return SCRIPT_CONTINUE;
     }
@@ -332,7 +332,6 @@ public class armorer extends script.base_script
         chat.chat(npc, "*Speaks in Mando'a*");
         return SCRIPT_CONTINUE;
     }
-
     public int OnNpcConversationResponse(obj_id npc, String conversationId, obj_id player, string_id response) throws InterruptedException
     {
         if (!conversationId.equals("armorer_conversation"))

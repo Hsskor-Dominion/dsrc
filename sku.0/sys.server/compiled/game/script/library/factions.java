@@ -774,6 +774,14 @@ public class factions extends script.base_script
             }
             setObjVar(target, FACTION + "." + factionName, value);
         }
+        if (value != 0.0f)
+        {
+            if (factionName.equals("death_watch"))
+            {
+                smuggler.checkMandoTitleGrants(target, value);
+            }
+            setObjVar(target, FACTION + "." + factionName, value);
+        }
         else 
         {
             removeObjVar(target, FACTION + "." + factionName);

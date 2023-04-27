@@ -38,7 +38,7 @@ class_bountyhunter_phase4_novice	class_bountyhunter_phase4	oneByFour	0	0	0	0	100
 class_bountyhunter_phase4_02	class_bountyhunter_phase4	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase4_novice		combat_general	1529300	2304380							bh_ae_dm_2				1	0
 class_bountyhunter_phase4_03	class_bountyhunter_phase4_02	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase4_02		combat_general	1772600	2664480							bh_dm_8	droid_find_speed=10,droid_tracks=1			1	0
 class_bountyhunter_phase4_04	class_bountyhunter_phase4_03	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase4_03		combat_general	2049600	3074500							of_sh_3	bounty_mission_level=1,droid_track_chance=10			1	0
-class_bountyhunter_phase4_05	class_bountyhunter_phase4_04	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase4_04		combat_general	2365000	3540940							bh_del_cc_3,bountycheck	droid_tracks=2,droid_track_speed=10			1	0
+class_bountyhunter_phase4_05	class_bountyhunter_phase4_04	oneByFour	0	0	0	0	100	0		class_bountyhunter_phase4_04		combat_general	2365000	3540940							bh_del_cc_3	droid_tracks=2,droid_track_speed=10			1	0
 class_bountyhunter_phase4_master	class_bountyhunter_phase4	oneByFour	0	1	0	0	100	0		class_bountyhunter_phase4_05		combat_general	2723800	3540940							bh_del_dm_cc_dot_3,bh_conceal_1,bh_relentless_1	droid_find_chance=10,droid_find_speed=10,droid_tracks=2,droid_track_chance=10,cybernetic_psychosis_resistance=2			1	0
 class_forcesensitive_phase1	class	oneByFour	0	0	1	0	0	0																	1	0
 class_forcesensitive_phase1_novice	class_forcesensitive_phase1	oneByFour	0	0	0	0	100	0				jedi	100	4810							fs_dm_1,fs_sweep_1,fs_mind_trick_1				1	0
@@ -1503,7 +1503,7 @@ force_rank_light_rank_07	force_rank_light_rank_06	pyramid	1	0	0	1	0	0		force_ran
 force_rank_light_rank_08	force_rank_light_rank_07	pyramid	1	1	0	1	0	0		force_rank_light_rank_07		force_rank_xp	150000	250000					forceRankedLight			expertise_stance_constitution=5,expertise_stance_glance_buff_line=1,expertise_focus_strength=25,expertise_focus_critical_buff_line=1,expertise_saber_block=1			0	0
 force_rank_light_rank_09	force_rank_light_rank_08	pyramid	1	0	0	1	0	0		force_rank_light_rank_08		force_rank_xp	200000	375000					forceRankedLight			expertise_stance_constitution=5,expertise_stance_glance_buff_line=1,expertise_focus_strength=25,expertise_focus_critical_buff_line=1,expertise_saber_block=1			0	0
 force_rank_light_rank_10	force_rank_light_rank_09	pyramid	1	1	0	1	0	0		force_rank_light_rank_09		force_rank_xp	300000	625000					forceRankedLight			expertise_stance_constitution=5,expertise_stance_glance_buff_line=1,expertise_focus_strength=25,expertise_focus_critical_buff_line=1,expertise_saber_block=1			0	0
-force_rank_dark	force_rank	pyramid	1	0	1	1	0	0						0					forceRankedDark						0	0
+force_rank_dark	force_rank	pyramid	1	1	1	1	0	0						0					forceRankedDark						0	0
 force_rank_dark_novice	force_rank_dark	pyramid	1	1	0	1	0	0				force_rank_xp	0	15000					forceRankedDark			expertise_stance_constitution=5,expertise_stance_glance_buff_line=1,expertise_focus_strength=25,expertise_focus_critical_buff_line=1,expertise_saber_block=1			0	0
 force_rank_dark_master	force_rank_dark	pyramid	1	1	0	1	0	0		force_rank_dark_rank_10		force_rank_xp	500000	625000					forceRankedDark			expertise_stance_constitution=5,expertise_stance_glance_buff_line=1,expertise_focus_strength=25,expertise_focus_critical_buff_line=1,expertise_saber_block=1			0	0
 force_rank_dark_rank_01	force_rank_dark	pyramid	1	1	0	1	0	0		force_rank_dark_novice		force_rank_xp	10000	25000					forceRankedDark			expertise_stance_constitution=5,expertise_stance_glance_buff_line=1,expertise_focus_strength=25,expertise_focus_critical_buff_line=1,expertise_saber_block=1			0	0
@@ -1987,9 +1987,9 @@ expertise_of_heal_cool_4	expertise_of_heal_cool_3																					expertise_
 sm_title_bootlegger				1		1																			0	
 sm_title_pirate				1		1															sm_summon_medic				0	
 sm_title_master_smuggler				1		1															sm_off_the_books	expertise_junk_dealer_cut=5			0	
-bh_titleinformant				1		1																			0	
-bh_title_inspector				1		1																			0	
-bh_title_agent				1		1																			0	
+bh_titleinformant				1		1																expertise_cooldown_line_dm=10			0	
+bh_title_inspector				1		1																expertise_cooldown_line_dm=10			0	
+bh_title_agent				1		1																expertise_cooldown_line_dm=10			0	
 pvp_imperial_retaliation_ability																					command_pvp_retaliation_ability,of_reinforcements_1				0	
 pvp_imperial_adrenaline_ability																					command_pvp_adrenaline_ability				0	
 pvp_imperial_unstoppable_ability																					command_pvp_unstoppable_ability				0	
@@ -2829,18 +2829,16 @@ class_chronicles_15	class_chronicles_14		0	0	0	0	0	0		class_chronicles_14		chron
 class_chronicles_16	class_chronicles_15		0	0	0	0	0	0		class_chronicles_15		chronicles	1225000	1860000											1	0
 class_chronicles_master	class_chronicles_16		0	1	0	0	0	0		class_chronicles_16		chronicles	1365000	1365000							meditate				1	0
 faction_rank			1	0	0	1	0	0						0											0	0
-faction_rank_mando	faction_rank	pyramid	1	0	1	1	0	0						0											0	0
-faction_rank_mando_novice	faction_rank_mando	pyramid	1	1	0	1	0	0				force_rank_xp	0	15000											0	0
-faction_rank_mando_master	faction_rank_mando	pyramid	1	1	0	1	0	0		faction_rank_mando_rank_10		force_rank_xp	500000	625000											0	0
-faction_rank_mando_rank_01	faction_rank_mando	pyramid	1	1	0	1	0	0		faction_rank_mando_novice		force_rank_xp	10000	25000								armor_assembly=10,armor_experimentation=10,armor_customization=10			0	0
-faction_rank_mando_rank_02	faction_rank_mando_rank_01	pyramid	1	0	0	1	0	0		faction_rank_mando_rank_01		force_rank_xp	20000	37500											0	0
-faction_rank_mando_rank_03	faction_rank_mando_rank_02	pyramid	1	0	0	1	0	0		faction_rank_mando_rank_02		force_rank_xp	30000	50000											0	0
-faction_rank_mando_rank_04	faction_rank_mando_rank_03	pyramid	1	0	0	1	0	0		faction_rank_mando_rank_03		force_rank_xp	40000	75000											0	0
-faction_rank_mando_rank_05	faction_rank_mando_rank_04	pyramid	1	1	0	1	0	0		faction_rank_mando_rank_04		force_rank_xp	60000	100000											0	0
-faction_rank_mando_rank_06	faction_rank_mando_rank_05	pyramid	1	0	0	1	0	0		faction_rank_mando_rank_05		force_rank_xp	80000	125000											0	0
-faction_rank_mando_rank_07	faction_rank_mando_rank_06	pyramid	1	0	0	1	0	0		faction_rank_mando_rank_06		force_rank_xp	100000	187500											0	0
-faction_rank_mando_rank_08	faction_rank_mando_rank_07	pyramid	1	1	0	1	0	0		faction_rank_mando_rank_07		force_rank_xp	150000	250000											0	0
-faction_rank_mando_rank_09	faction_rank_mando_rank_08	pyramid	1	0	0	1	0	0		faction_rank_mando_rank_08		force_rank_xp	200000	375000											0	0
-faction_rank_mando_rank_10	faction_rank_mando_rank_09	pyramid	1	1	0	1	0	0		faction_rank_mando_rank_09		force_rank_xp	300000	625000											0	0
+faction_rank_mando	faction_rank		1	1	1	1	0	0						0											0	0
+faction_rank_mando_novice	faction_rank_mando		1	1	0	1	0	0					0	0								armor_assembly=10,armor_experimentation=10,armor_customization=10			0	0
+faction_rank_mando_master	faction_rank_mando_novice		1	1	0	1	0	0		faction_rank_mando_novice			0	0								armor_assembly=10,armor_experimentation=10,armor_customization=10			0	0
 social_language_mando_speak	social_language		0	0	0	0	0	0					0	0				bothan,human,moncalamari,rodian,trandoshan,twilek,zabrak			language+mando	language_mando_speak=100			0	0
 social_language_mando_comprehend	social_language		0	0	0	0	0	0					0	0								language_mando_comprehend=100			0	0
+stardust_pvp				1		1															bountycheck				0	
+stardust_ace_of_aces				1		1																			0	
+stardust_admiral_imperial				1		1																			0	
+stardust_admiral_republic				1		1																			0	
+stardust_senator				1		1																			0	
+stardust_gov				1		1																			0	
+stardust_moff				1		1																			0	
+stardust_grand_moff				1		1																			0	

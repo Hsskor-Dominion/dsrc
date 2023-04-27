@@ -11204,11 +11204,15 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int bountycheck(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (hasSkill(target, "class_forcesensitive_phase1_novice")) {
+        if (hasSkill(target, "class_forcesensitive_phase2_novice")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
         if (hasSkill(target, "faction_rank_mando_novice")) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
+        if (hasSkill(target, "stardust_pvp")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }

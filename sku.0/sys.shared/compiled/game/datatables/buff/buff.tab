@@ -588,9 +588,9 @@ towCrystalDefenseBurst	genBuff_3			60	command.powerBoost	300	constitution_modifi
 towCrystalDotImmunity	genBuff_4			60	buffs.spiceHealth	300	expertise_dot_absorption_all	50	dot_resist_all	50		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 towHelmetAccuracy	genBuff_1			90	command.aim	-1	precision_modified	20	strength_modified	20		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 towGlovesHealEff	genBuff_1			90	command.sampledna	-1	agility_modified	20	stamina_modified	20		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-towCrystalUberCombat	towCrystal	haste		60	command.dazzle	180	constitution_modified	200	stamina_modified	200	precision_modified	200	strength_modified	200		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towCrystalUberDs	towCrystal			60	command.powerBoost	180	constitution_modified	200	luck_modified	200	agility_modified	200		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towCrystalABImmune	towCrystal	armorBreak		60	command.powerBoost	180	constitution_modified	150	stamina_modified	150		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towCrystalUberCombat	forceCrystalHealth	haste		60	command.dazzle	3600	constitution_modified	200	stamina_modified	200	precision_modified	200	strength_modified	200		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towCrystalUberDs	forceCrystalHealth			60	command.powerBoost	180	constitution_modified	200	luck_modified	200	agility_modified	200		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towCrystalABImmune	forceCrystalHealth	armorBreak		60	command.powerBoost	180	constitution_modified	150	stamina_modified	150		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 towRingAbsorption	genBuff_4			90	command.bandage	-1	agility_modified	20	constitution_modified	20	stamina_modified	20		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 towAbsorption	genBuff_4			60	command.bandage	900	agility_modified	20	constitution_modified	20	stamina_modified	20		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 proc_tow_proc_b_5	genBuff_4			90	command.dazzle	60	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1

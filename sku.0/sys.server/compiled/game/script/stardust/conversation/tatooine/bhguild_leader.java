@@ -32,10 +32,14 @@ public class bhguild_leader extends script.base_script
     {
         return groundquests.isTaskActive(player, "bhguild_leader", "returntobhguild");
     }
+    public boolean bhguild_leader_condition_isBHprof(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return hasSkill(player,"class_bountyhunter_phase1_novice");
+    }
     public boolean bhguild_leader_condition_isBHguild(obj_id player, obj_id npc) throws InterruptedException
     {
         float bhFaction = factions.getFactionStanding(player, "underworld");
-        if (bhFaction <= -2500)
+        if (bhFaction <= -50)
         {
             return true;
         }
@@ -61,336 +65,222 @@ public class bhguild_leader extends script.base_script
     }
     public int bhguild_leader_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        if (response.equals("s_165"))
+        if (response.equals("player_underworld"))
         {
-            if (bhguild_leader_condition__defaultCondition(player, npc))
-            {
-                doAnimationAction(npc, "thumb_up");
-                string_id message = new string_id(c_stringFile, "s_167");
-                utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
-                chat.chat(npc, player, message);
-                npcEndConversation(player);
-                return SCRIPT_CONTINUE;
-            }
+
+            final string_id message = new string_id(c_stringFile, "npc_consider");
+            final int numberOfResponses = 1;
+
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
+
+            responses[responseIndex++] = new string_id(c_stringFile, "player_seek_underworld");
+
+            utils.setScriptVar(player, "conversation.bhguild_leader_conversation.branchId", 2);
+
+            npcSpeak(player, message);
+            npcSetConversationResponses(player, responses);
+
+            return SCRIPT_CONTINUE;
         }
-        if (response.equals("s_169"))
+        else if (response.equals("player_join_guild"))
         {
-            if (bhguild_leader_condition__defaultCondition(player, npc))
-            {
-                doAnimationAction(npc, "standing_raise_fist");
-                bhguild_leader_action_signalReward(player, npc);
-                string_id message = new string_id(c_stringFile, "s_171");
-                utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
-                chat.chat(npc, player, message);
-                npcEndConversation(player);
-                return SCRIPT_CONTINUE;
-            }
+
+            final string_id message = new string_id(c_stringFile, "npc_explain");
+            final int numberOfResponses = 1;
+
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
+
+            responses[responseIndex++] = new string_id(c_stringFile, "player_confirm_join_guild");
+
+            utils.setScriptVar(player, "conversation.bhguild_leader_conversation.branchId", 3);
+
+            npcSpeak(player, message);
+            npcSetConversationResponses(player, responses);
+
+            return SCRIPT_CONTINUE;
         }
-        return SCRIPT_DEFAULT;
-    }
-    public int bhguild_leader_handleBranch26(obj_id player, obj_id npc, string_id response) throws InterruptedException
-    {
-        if (response.equals("s_255"))
+        else if (response.equals("player_leave"))
         {
-            if (bhguild_leader_condition__defaultCondition(player, npc))
-            {
-                doAnimationAction(npc, "shakefist");
-                string_id message = new string_id(c_stringFile, "s_257");
-                int numberOfResponses = 0;
-                boolean hasResponse = false;
-                boolean hasResponse0 = false;
-                if (bhguild_leader_condition__defaultCondition(player, npc))
-                {
-                    ++numberOfResponses;
-                    hasResponse = true;
-                    hasResponse0 = true;
-                }
-                if (hasResponse)
-                {
-                    int responseIndex = 0;
-                    string_id responses[] = new string_id[numberOfResponses];
-                    if (hasResponse0)
-                    {
-                        responses[responseIndex++] = new string_id(c_stringFile, "s_259");
-                    }
-                    utils.setScriptVar(player, "conversation.bhguild_leader.branchId", 27);
-                    npcSpeak(player, message);
-                    npcSetConversationResponses(player, responses);
-                }
-                else 
-                {
-                    utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
-                    chat.chat(npc, player, message);
-                    npcEndConversation(player);
-                }
-                return SCRIPT_CONTINUE;
-            }
-        }
-        if (response.equals("s_271"))
-        {
-            if (bhguild_leader_condition__defaultCondition(player, npc))
-            {
-                doAnimationAction(npc, "pose_proudly");
-                string_id message = new string_id(c_stringFile, "s_273");
-                utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
-                chat.chat(npc, player, message);
-                npcEndConversation(player);
-                return SCRIPT_CONTINUE;
-            }
+
+            final string_id message = new string_id(c_stringFile, "npc_are_you_sure");
+            final int numberOfResponses = 1;
+
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
+
+            responses[responseIndex++] = new string_id(c_stringFile, "confirm_leave_enclave");
+
+            utils.setScriptVar(player, "conversation.bhguild_leader_conversation.branchId", 4);
+
+            npcSpeak(player, message);
+            npcSetConversationResponses(player, responses);
+
+            return SCRIPT_CONTINUE;
         }
         return SCRIPT_DEFAULT;
     }
-    public int bhguild_leader_handleBranch27(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    public int bhguild_leader_handleBranch2(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        if (response.equals("s_259"))
+        if (response.equals("player_seek_underworld"))
         {
-            if (bhguild_leader_condition__defaultCondition(player, npc))
+            if (bhguild_leader_condition_isBHguild(player, npc))
             {
-                string_id message = new string_id(c_stringFile, "s_261");
-                int numberOfResponses = 0;
-                boolean hasResponse = false;
-                boolean hasResponse0 = false;
-                if (bhguild_leader_condition__defaultCondition(player, npc))
-                {
-                    ++numberOfResponses;
-                    hasResponse = true;
-                    hasResponse0 = true;
-                }
-                boolean hasResponse1 = false;
-                if (bhguild_leader_condition__defaultCondition(player, npc))
-                {
-                    ++numberOfResponses;
-                    hasResponse = true;
-                    hasResponse1 = true;
-                }
-                if (hasResponse)
-                {
-                    int responseIndex = 0;
-                    string_id responses[] = new string_id[numberOfResponses];
-                    if (hasResponse0)
-                    {
-                        responses[responseIndex++] = new string_id(c_stringFile, "s_263");
-                    }
-                    if (hasResponse1)
-                    {
-                        responses[responseIndex++] = new string_id(c_stringFile, "s_267");
-                    }
-                    utils.setScriptVar(player, "conversation.bhguild_leader.branchId", 28);
-                    npcSpeak(player, message);
-                    npcSetConversationResponses(player, responses);
-                }
-                else 
-                {
-                    utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
-                    chat.chat(npc, player, message);
-                    npcEndConversation(player);
-                }
-                return SCRIPT_CONTINUE;
-            }
-        }
-        return SCRIPT_DEFAULT;
-    }
-    public int bhguild_leader_handleBranch28(obj_id player, obj_id npc, string_id response) throws InterruptedException
-    {
-        if (response.equals("s_263"))
-        {
-            if (bhguild_leader_condition__defaultCondition(player, npc))
-            {
-                doAnimationAction(npc, "thumb_up");
-                groundquests.grantQuest(player, "bhguild_leader");
-                string_id message = new string_id(c_stringFile, "s_265");
-                utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
-                chat.chat(npc, player, message);
-                npcEndConversation(player);
-                return SCRIPT_CONTINUE;
-            }
-	    else
-            {
-                doAnimationAction(npc, "laugh");
-                string_id message = new string_id(c_stringFile, "s_269");
-                utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
-                chat.chat(npc, player, message);
-                npcEndConversation(player);
-                return SCRIPT_CONTINUE;
-            }
-        }
-        if (response.equals("s_267"))
-        {
-	    if (bhguild_leader_condition_isBHguild(player, npc))
-            {
-		        bhguild_leader_action_vendor(player, npc);
-                doAnimationAction(npc, "thumb_up");
-                string_id message = new string_id(c_stringFile, "fence_hunter");
-                utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
-                chat.chat(npc, player, message);
-                npcEndConversation(player);
+                final string_id message = new string_id(c_stringFile, "fence_items");
+                bhguild_leader_action_vendor(player, npc);
+
+                utils.removeScriptVar(player, "conversation.bhguild_leader_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
                 return SCRIPT_CONTINUE;
             }
             else
             {
-                doAnimationAction(npc, "wtf");
-                string_id message = new string_id(c_stringFile, "s_269");
-                utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
-                chat.chat(npc, player, message);
-                npcEndConversation(player);
+                final string_id message = new string_id(c_stringFile, "npc_you_are_not_a_friend");
+
+                utils.removeScriptVar(player, "conversation.bhguild_leader_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
                 return SCRIPT_CONTINUE;
             }
+        }
+        return SCRIPT_DEFAULT;
+    }
+    public int bhguild_leader_handleBranch3(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        if (response.equals("player_confirm_join_guild"))
+        {
+            if (bhguild_leader_condition_isBHguild(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "npc_affirm");
+                grantSkill(player, "stardust_pvp");
+                grantSkill(player, "social_language_hutt_speak");
+                grantSkill(player, "social_language_hutt_comprehend");
+
+                utils.removeScriptVar(player, "conversation.bhguild_leader_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (bhguild_leader_condition__defaultCondition(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "npc_deny");
+
+                utils.removeScriptVar(player, "conversation.bhguild_leader_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+        }
+        return SCRIPT_DEFAULT;
+    }
+    public int bhguild_leader_handleBranch4(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        if (response.equals("confirm_leave_enclave"))
+        {
+            final string_id message = new string_id(c_stringFile, "npc_remove_player");
+            revokeSkill(player, "stardust_pvp");
+
+            utils.removeScriptVar(player, "conversation.bhguild_leader_conversation.branchId");
+            npcEndConversationWithMessage(player, message);
+
+            return SCRIPT_CONTINUE;
         }
         return SCRIPT_DEFAULT;
     }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
-        if ((!isMob(self)) || (isPlayer(self)))
-        {
-            detachScript(self, "conversation.bhguild_leader");
-        }
         setCondition(self, CONDITION_CONVERSABLE);
+
         return SCRIPT_CONTINUE;
     }
+
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
-	    setName(self, "Grissk Karrga (Bounty Hunter's Guild Representative)");
+        setName(self, "Grissk Karrga (Bounty Hunter's Guild Leader)");
+
         return SCRIPT_CONTINUE;
     }
+
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException
     {
-        int menu = menuInfo.addRootMenu(menu_info_types.CONVERSE_START, null);
+        final int menu = menuInfo.addRootMenu(menu_info_types.CONVERSE_START, null);
         menu_info_data menuInfoData = menuInfo.getMenuItemById(menu);
         menuInfoData.setServerNotify(false);
-        setCondition(self, CONDITION_CONVERSABLE);
+
         return SCRIPT_CONTINUE;
     }
-    public int OnIncapacitated(obj_id self, obj_id killer) throws InterruptedException
-    {
-        clearCondition(self, CONDITION_CONVERSABLE);
-        detachScript(self, "conversation.bhguild_leader");
-        return SCRIPT_CONTINUE;
-    }
+
     public boolean npcStartConversation(obj_id player, obj_id npc, String convoName, string_id greetingId, prose_package greetingProse, string_id[] responses) throws InterruptedException
     {
         Object[] objects = new Object[responses.length];
         System.arraycopy(responses, 0, objects, 0, responses.length);
         return npcStartConversation(player, npc, convoName, greetingId, greetingProse, objects);
     }
-     public int OnStartNpcConversation(obj_id self, obj_id player) throws InterruptedException
+    public int OnStartNpcConversation(obj_id npc, obj_id player) throws InterruptedException
     {
-        obj_id npc = self;
         if (ai_lib.isInCombat(npc) || ai_lib.isInCombat(player))
         {
             return SCRIPT_OVERRIDE;
         }
-        if (bhguild_leader_condition_hasAnyQuest(player, npc))
+
+        // Since we can talk to the player, might as well face them.
+        faceTo(npc, player);
+
+        if (bhguild_leader_condition__defaultCondition(npc, player))
         {
-            doAnimationAction(npc, "point_forward");
-            string_id message = new string_id(c_stringFile, "s_163");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-     	if (bhguild_leader_condition_checkQ1(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            boolean hasResponse1 = false;
-            if (bhguild_leader_condition_playerFinishedMainTask(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse1 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_165");
-                }
-                if (hasResponse1)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_169");
-                }
-                utils.setScriptVar(player, "conversation.bhguild_leader.branchId", 1);
-                npcStartConversation(player, npc, "bhguild_leader", message, responses);
-            }
-            else 
-            {
-                chat.chat(npc, player, message);
-            }
+            doAnimationAction(npc, "pose_proudly");
+            final string_id message = new string_id(c_stringFile, "npc_intro");
+            final int numberOfResponses = 3;
+
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
+
+            responses[responseIndex++] = new string_id(c_stringFile, "player_underworld");
+            responses[responseIndex++] = new string_id(c_stringFile, "player_join_guild");
+            responses[responseIndex++] = new string_id(c_stringFile, "player_leave");
+
+            utils.setScriptVar(player, "conversation.bhguild_leader_conversation.branchId", 1);
+
+            npcStartConversation(player, npc, "bhguild_leader_conversation", message, responses);
+            bhguild_leader_action_signalReward(player, npc);
+
             return SCRIPT_CONTINUE;
         }
-        if (bhguild_leader_condition__defaultCondition(player, npc))
-        {
-            doAnimationAction(npc, "greet");
-            string_id message = new string_id(c_stringFile, "s_253");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-            if (bhguild_leader_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            boolean hasResponse1 = false;
-            if (bhguild_leader_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse1 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_255");
-                }
-                if (hasResponse1)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_271");
-                }
-                utils.setScriptVar(player, "conversation.bhguild_leader.branchId", 26);
-                npcStartConversation(player, npc, "bhguild_leader", message, responses);
-            }
-            else 
-            {
-                chat.chat(npc, player, message);
-            }
-            return SCRIPT_CONTINUE;
-        }
-        chat.chat(npc, "Error:  All conditions for OnStartNpcConversation were false.");
+
+        chat.chat(npc, "*Speaks in Mando'a*");
         return SCRIPT_CONTINUE;
     }
-    public int OnNpcConversationResponse(obj_id self, String conversationId, obj_id player, string_id response) throws InterruptedException
+    public int OnNpcConversationResponse(obj_id npc, String conversationId, obj_id player, string_id response) throws InterruptedException
     {
-        if (!conversationId.equals("bhguild_leader"))
+        if (!conversationId.equals("bhguild_leader_conversation"))
         {
             return SCRIPT_CONTINUE;
         }
-        obj_id npc = self;
-        int branchId = utils.getIntScriptVar(player, "conversation.bhguild_leader.branchId");
-	if (branchId == 1 && bhguild_leader_handleBranch1(player, npc, response) == SCRIPT_CONTINUE)
+
+        final int branchId = utils.getIntScriptVar(player, "conversation.bhguild_leader_conversation.branchId");
+
+        if (branchId == 1 && bhguild_leader_handleBranch1(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
-        if (branchId == 26 && bhguild_leader_handleBranch26(player, npc, response) == SCRIPT_CONTINUE)
+        else if (branchId == 2 && bhguild_leader_handleBranch2(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
-        if (branchId == 27 && bhguild_leader_handleBranch27(player, npc, response) == SCRIPT_CONTINUE)
+        else if (branchId == 3 && bhguild_leader_handleBranch3(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
-        if (branchId == 28 && bhguild_leader_handleBranch28(player, npc, response) == SCRIPT_CONTINUE)
+        else if (branchId == 4 && bhguild_leader_handleBranch4(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
         chat.chat(npc, "Error:  Fell through all branches and responses for OnNpcConversationResponse.");
-        utils.removeScriptVar(player, "conversation.bhguild_leader.branchId");
+        utils.removeScriptVar(player, "conversation.bhguild_leader_conversation.branchId");
         return SCRIPT_CONTINUE;
     }
+
 }
