@@ -17,6 +17,9 @@ item_tcg_loot_reward_series3_merr_sonn_jt12_jetpack_blueprints						1
 object/tangible/loot/dungeon/death_watch_bunker/jetpack_base.iff			4						
 object/tangible/loot/dungeon/death_watch_bunker/emulsion_protection.iff			4						
 object/tangible/loot/dungeon/death_watch_bunker/binary_liquid.iff			4						
+object/tangible/wearables/goggles/rebreather.iff			4						
+object/tangible/loot/dungeon/death_watch_bunker/mining_drill_reward.iff			2						
+object/tangible/dungeon/death_watch_bunker/gel_packet.iff			2						
 object/tangible/dungeon/death_watch_bunker/passkey_hall.iff			1						
 object/tangible/dungeon/death_watch_bunker/passkey_storage.iff			1						
 object/tangible/dungeon/death_watch_bunker/passkey_mine.iff			1						

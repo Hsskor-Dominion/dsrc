@@ -36,7 +36,7 @@ public class craft_tailor_droid extends script.base_script
         {
             return SCRIPT_CONTINUE;
         }
-        if (!hasSkill(giver, "class_domestics_phase4_master"))
+        if (!hasSkill(giver, "expertise_munition_armorsmith_advanced_theory_1"))
         {
             CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU was not a crafting tailor master, so erroring out.");
             string_id master_tailor = new string_id(MSGS, "master_tailor_required");
@@ -88,32 +88,6 @@ public class craft_tailor_droid extends script.base_script
                 checkForComplete(self, giver);
             }
         }
-        if (justGot.equals("object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_leggings.iff"))
-        {
-            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter leggings into the droid");
-            if (hasObjVar(self, "have.leggings"))
-            {
-                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a bounty hunter leggings into the droid, but the droid already had one.");
-                string_id already = new string_id(MSGS, "already_has_component");
-                sendSystemMessage(giver, already);
-                return SCRIPT_CONTINUE;
-            }
-            else if (hasObjVar(self, "have.gloves") || hasObjVar(self, "have.belt"))
-            {
-                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a bounty hunter leggings into the droid, but the droid was working on something else.");
-                string_id other = new string_id(MSGS, "making_something_else");
-                sendSystemMessage(giver, other);
-                return SCRIPT_CONTINUE;
-            }
-            else 
-            {
-                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter leggings into the droid, and everything is functioning properly");
-                setObjVar(self, "have.leggings", 1);
-                setObjVar(self, "making.leggings", 1);
-                destroyObject(item);
-                checkForComplete(self, giver);
-            }
-        }
         if (justGot.equals("object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_gloves.iff"))
         {
             CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter gloves into the droid");
@@ -136,6 +110,32 @@ public class craft_tailor_droid extends script.base_script
                 CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter gloves into the droid, and everything is functioning properly");
                 setObjVar(self, "making.gloves", 1);
                 setObjVar(self, "have.gloves", 1);
+                destroyObject(item);
+                checkForComplete(self, giver);
+            }
+        }
+        if (justGot.equals("object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_boots.iff"))
+        {
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter boots into the droid");
+            if (hasObjVar(self, "have.boots"))
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a boots into the droid, but it already had one.");
+                string_id already = new string_id(MSGS, "already_has_component");
+                sendSystemMessage(giver, already);
+                return SCRIPT_CONTINUE;
+            }
+            else if (hasObjVar(self, "have.bicep_r") || hasObjVar(self, "have.bicep_l") || hasObjVar(self, "have.chest_plate"))
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a boots into the droid, but the droid was already making something else.");
+                string_id other = new string_id(MSGS, "making_something_else");
+                sendSystemMessage(giver, other);
+                return SCRIPT_CONTINUE;
+            }
+
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a boots into the droid, and everything is functioning properly");
+                setObjVar(self, "making.boots", 1);
+                setObjVar(self, "have.boots", 1);
                 destroyObject(item);
                 checkForComplete(self, giver);
             }
