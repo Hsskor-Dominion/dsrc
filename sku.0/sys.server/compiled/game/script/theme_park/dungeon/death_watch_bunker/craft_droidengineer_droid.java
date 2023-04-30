@@ -36,7 +36,7 @@ public class craft_droidengineer_droid extends script.base_script
         {
             return SCRIPT_CONTINUE;
         }
-        if (!hasSkill(giver, "class_engineering_phase4_master"))
+        if (!hasSkill(giver, "expertise_munition_armorsmith_advanced_theory_1"))
         {
             CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU was not a crafting droidengineer master, so erroring out.");
             string_id master_droidengineer = new string_id(MSGS, "master_droidengineer_required");
