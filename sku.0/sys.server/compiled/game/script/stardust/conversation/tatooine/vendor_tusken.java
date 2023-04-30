@@ -19,7 +19,7 @@ public class vendor_tusken extends script.base_script
     public boolean tuskenFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float tuskenFaction = factions.getFactionStanding(player, "tusken_raider");
-        if (tuskenFaction >= 2500)
+        if (tuskenFaction >= 1000)
         {
             return true;
         }

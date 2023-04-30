@@ -26,7 +26,7 @@ public class yoda extends script.base_script
     public boolean yoda_jediFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float jediFaction = factions.getFactionStanding(player, "fs_villager");
-        return jediFaction >= 2500;
+        return jediFaction >= 1000;
     }
     public boolean yoda_phase1_condition(obj_id npc, obj_id player)
     {

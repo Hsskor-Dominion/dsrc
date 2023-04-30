@@ -29,7 +29,7 @@ public class keeper extends script.base_script
     public boolean keeper_jediFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float jediFaction = factions.getFactionStanding(player, "fs_villager");
-        return jediFaction >= 2500;
+        return jediFaction >= 1000;
     }
     public boolean keeper_phase1_condition(obj_id npc, obj_id player)
     {

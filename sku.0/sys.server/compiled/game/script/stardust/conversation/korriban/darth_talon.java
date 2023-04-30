@@ -26,7 +26,7 @@ public class darth_talon extends script.base_script
     public boolean darth_talon_sithFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float sithFaction = factions.getFactionStanding(player, "sith_shadow");
-        return sithFaction >= 2500;
+        return sithFaction >= 1000;
     }
     public boolean darth_talon_phase1_condition(obj_id npc, obj_id player)
     {

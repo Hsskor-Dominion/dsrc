@@ -26,7 +26,7 @@ public class starkiller extends script.base_script
     public boolean starkiller_sithFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float sithFaction = factions.getFactionStanding(player, "sith_shadow");
-        return sithFaction >= 2500;
+        return sithFaction >= 1000;
     }
     public boolean starkiller_phase1_condition(obj_id npc, obj_id player)
     {
