@@ -237,9 +237,10 @@ public class craft_tailor_droid extends script.base_script
         {
             makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_gloves_schematic.iff", player);
         }
-        if (hasObjVar(self, "making.leggings"))
+        if (hasObjVar(self, "making.boots"))
         {
-            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_leggings_schematic.iff", player);
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having boots made.");
+            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_boots_schematic.iff", player);
         }
         if (hasObjVar(self, "making.belt"))
         {

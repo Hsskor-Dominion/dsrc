@@ -346,6 +346,10 @@ public class craft_armorsmith_droid extends script.base_script
             CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a chest plate made.");
             makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_chest_plate_schematic.iff", player);
         }
+        if (hasObjVar(self, "making.leggings"))
+        {
+            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_leggings_schematic.iff", player);
+        }
         if (hasObjVar(self, "making.bicep_r"))
         {
             CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a right bicep made.");
@@ -356,10 +360,20 @@ public class craft_armorsmith_droid extends script.base_script
             CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a left bicep made.");
             makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_bicep_l_schematic.iff", player);
         }
-        if (hasObjVar(self, "making.boots"))
+        if (hasObjVar(self, "making.bracer_r"))
         {
-            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having boots made.");
-            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_boots_schematic.iff", player);
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a right bracer made.");
+            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_bracer_r_schematic.iff", player);
+        }
+        if (hasObjVar(self, "making.helmet"))
+        {
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a helmet made.");
+            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_helmet_schematic.iff", player);
+        }
+        if (hasObjVar(self, "making.bracer_l"))
+        {
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a left bracer made.");
+            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_bracer_l_schematic.iff", player);
         }
         removeObjVar(self, "making");
         removeObjVar(self, "have");
