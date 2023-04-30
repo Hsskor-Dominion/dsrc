@@ -88,6 +88,16 @@ public class cid extends script.base_script
 
             return SCRIPT_CONTINUE;
         }
+        else if (response.equals("cid_intro_offer_information_ent"))
+        {
+
+            final string_id message = new string_id(c_stringFile, "cid_ent_info");
+
+            utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+            npcEndConversationWithMessage(player, message);
+
+            return SCRIPT_CONTINUE;
+        }
         else if (response.equals("cid_intro_offer_information"))
         {
 
@@ -333,12 +343,13 @@ public class cid extends script.base_script
         if (cid_language_condition(npc, player))
         {
             final string_id message = new string_id(c_stringFile, "cid_intro");
-            final int numberOfResponses = 3;
+            final int numberOfResponses = 4;
 
             final string_id[] responses = new string_id[numberOfResponses];
             int responseIndex = 0;
 
             responses[responseIndex++] = new string_id(c_stringFile, "cid_intro_offer_jobs");
+            responses[responseIndex++] = new string_id(c_stringFile, "cid_intro_offer_information_ent");
             responses[responseIndex++] = new string_id(c_stringFile, "cid_intro_offer_information");
             responses[responseIndex++] = new string_id(c_stringFile, "cid_intro_finished_work");
 

@@ -39,6 +39,7 @@ public class factions extends script.base_script
     public static final String FACTION_REBEL = "Rebel";
     public static final String FACTION_HUTT = "Hutt";
     public static final String FACTION_NEUTRAL = "Neutral";
+    public static final String DEATH_WATCH = "death_watch";
     public static final int FACTION_FLAG_UNKNOWN = 0;
     public static final int FACTION_FLAG_REBEL = 1;
     public static final int FACTION_FLAG_IMPERIAL = 2;

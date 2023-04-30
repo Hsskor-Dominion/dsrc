@@ -1614,6 +1614,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         factions.goOvertWithDelay(self, 0.0f);
         sendSystemMessage(self, new string_id("jedi_spam", "awakening"));
+        setRegenRate(self, HEALTH, 400);
+        setRegenRate(self, ACTION, 300);
         return SCRIPT_CONTINUE;
     }
 
@@ -1626,6 +1628,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         factions.goOvertWithDelay(self, 0.0f);
         sendSystemMessage(self, new string_id("jedi_spam", "awakening"));
+        setRegenRate(self, HEALTH, 400);
+        setRegenRate(self, ACTION, 300);
         return SCRIPT_CONTINUE;
     }
 

@@ -6,6 +6,6 @@
 
 sharedTemplate = "object/tangible/quest/quest_start/shared_profession_trader_30.iff"
 
-scripts =+ [ "item.special.nomove" ]
+scripts =+ [ "stardust.systems.trader_quest3,item.special.nomove" ]
 
 

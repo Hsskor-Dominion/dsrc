@@ -6,7 +6,7 @@ bartender		cantina	2.9	-0.5	2.8	34			int:bartender.doNotMove=1
 nova_rank3_quest_giver		medicalbay	-56	-1	7.6	159				
 nova_orion_rank1_quest_giver		hangarbay1	53	0.8	17.2	-58				
 orion_rank3_quest_giver		cloninglab	-34.7	0.8	-36.7	16				
-nova_orion_skyron_waurie		armory	-33	0.6	21	-5
+nova_orion_skyron_waurie		armory	-33	0.6	21	-5				
 nova_orion_dexen_eronoss		basementstorage	-19.7	-29.2	43.1	-133				
 nova_orion_garrick_orion		droidroom	16	-30	12	50				
 nova_orion_jonas_nova		r29	-18.5	28.9	-71.5	134				
@@ -72,3 +72,4 @@ professor_snoak		greenhouse	-8	29.5	0	89
 starter_worrt		greenhouse	-7	29.5	0	89				
 starter_womp		greenhouse	-7	29.5	-1	88				
 starter_rill		greenhouse	-7	29.5	1	90				
+starter_rill		r22	62	-29	45	90				

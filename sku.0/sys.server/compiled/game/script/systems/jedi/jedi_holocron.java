@@ -18,7 +18,7 @@ public class jedi_holocron extends script.base_script
     }
     public boolean isJediExplore(obj_id player, obj_id npc) throws InterruptedException
     {
-        return ((hasCompletedCollectionSlot(player, "col_bdg_explore_jedi") || badge.hasBadge(player, "bdg_kash_grievous") || hasCompletedCollectionSlot(player, "col_bdg_hero_tatooine") || hasCompletedCollectionSlot(player, "inv_holocron_collection_02") || badge.hasBadge(player, "bdg_must_obiwan_story_good")) && badge.hasBadge(player, "bdg_exp_45_badges"));
+        return ((hasCompletedCollectionSlot(player, "bdg_exp_45_badges") || badge.hasBadge(player, "bdg_kash_grievous") || hasCompletedCollectionSlot(player, "col_bdg_hero_tatooine") || hasCompletedCollectionSlot(player, "inv_holocron_collection_02") || badge.hasBadge(player, "bdg_must_obiwan_story_good")) && badge.hasBadge(player, "count_50"));
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
