@@ -13,6 +13,7 @@ public class keeper extends script.base_script
     {
     }
     public static final String c_stringFile = "conversation/keeper";
+    public static final String STF_FILE = "stardust/quest";
     public static final String OBJ_VAR_BASE = "keeper.";
     public boolean keeper_defaultCondition()
     {
@@ -188,6 +189,13 @@ public class keeper extends script.base_script
                 final string_id message = new string_id(c_stringFile, "npc_offer_mission");
                 keeper_jedi_quest(player, npc);
                 factions.goOvertWithDelay(player, 0.0f);
+                obj_id[] objPlayers = getPlayerCreaturesInRange(player, 256.0f);
+                if (objPlayers != null && objPlayers.length > 0)
+                {
+                    for (obj_id objPlayer : objPlayers) {
+                        sendSystemMessage(objPlayer, new string_id(STF_FILE, "jedi_awakening"));
+                    }
+                }
 
 
                 utils.removeScriptVar(player, "conversation.keeper_conversation.branchId");

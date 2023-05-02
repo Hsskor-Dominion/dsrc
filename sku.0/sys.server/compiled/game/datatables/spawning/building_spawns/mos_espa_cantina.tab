@@ -13,5 +13,4 @@ object/tangible/spawning/spawn_egg.iff		none	alcove3	1.0656	-0.895	-14.9672	175	
 object/tangible/spawning/spawn_egg.iff		none	private_room	-19.6545	-0.895	25.0112	175	city.interior_2_convo									
 object/tangible/spawning/spawn_egg.iff		none	cantina	11.1732	-0.895	2.9361	175	city.interior_2_convo									
 object/mobile/ep3/cyborg_engineer_tatooine.iff		none	cantina	13	-0.895	0	90	conversation.cyborg_install_tatooine									
-object/mobile/ep3/cyborg_engineer_corellia.iff		none	cantina	15	-0.895	-1	45	conversation.cyborg_install_corellia									
-object/mobile/ep3/cyborg_engineer_naboo.iff		none	cantina	14	-0.895	-2	-45	conversation.cyborg_install_naboo									
+stardust_mod		none	cantina	15	-0.895	-1	45	conversation.cyborg_install_corellia									

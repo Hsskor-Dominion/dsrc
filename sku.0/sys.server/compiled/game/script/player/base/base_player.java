@@ -1639,7 +1639,13 @@ public class base_player extends script.base_script
                 messageTo(self, "applyJediStance", null, 1.0f, false);
                 //factions.goOvertWithDelay(self, 0.0f);
                 jedi.doJediTEF(self);
-                sendSystemMessage(self, new string_id("jedi_spam", "awakening"));
+                obj_id[] objPlayers = getPlayerCreaturesInRange(self, 256.0f);
+                if (objPlayers != null && objPlayers.length > 0)
+                {
+                    for (obj_id objPlayer : objPlayers) {
+                        sendSystemMessage(objPlayer, new string_id("jedi_spam", "awakening"));
+                    }
+                }
             }
         }
         if (utils.isProfession(self, utils.SMUGGLER))

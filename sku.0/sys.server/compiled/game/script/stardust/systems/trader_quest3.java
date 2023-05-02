@@ -47,6 +47,7 @@ public class trader_quest3 extends script.base_script
             {
                 sendSystemMessage(player, new string_id("stardust/quest", "trader_quest3"));
                 action_grantQuest3(player, self);
+                destroyObject(self);
                 return SCRIPT_CONTINUE;
             }
         }

@@ -30,41 +30,6 @@ public class quest_giver_object extends script.base_script
     public static final String DO_NOT_DESTROY = "do_not_destroy";
     public static final String IMPERIAL_ONLY = "imperial_only";
     public static final String REBEL_ONLY = "rebel_only";
-    public static final String[] TRADER_PROFESSION_QUEST_STARTERS = 
-    {
-        "object/tangible/quest/quest_start/profession_trader_10.iff",
-        "object/tangible/quest/quest_start/profession_trader_20.iff",
-        "object/tangible/quest/quest_start/profession_trader_30.iff"
-    };
-    public static final String[] ENT_PROFESSION_QUEST_STARTERS = 
-    {
-        "object/tangible/quest/quest_start/profession_entertainer_10.iff",
-        "object/tangible/quest/quest_start/profession_entertainer_20.iff",
-        "object/tangible/quest/quest_start/profession_entertainer_30.iff"
-    };
-    public int OnInitialize(obj_id self) throws InterruptedException
-    {
-        String template = getTemplateName(self);
-        if (template.endsWith("_30.iff"))
-        {
-            utils.replaceSnowflakeItem(self, template);
-            return SCRIPT_CONTINUE;
-        }
-        for (int i = 0; i < TRADER_PROFESSION_QUEST_STARTERS.length; ++i)
-        {
-            if (template.equals(TRADER_PROFESSION_QUEST_STARTERS[i]))
-            {
-                utils.replaceSnowflakeItem(self, template);
-                return SCRIPT_CONTINUE;
-            }
-            if (template.equals(ENT_PROFESSION_QUEST_STARTERS[i]))
-            {
-                utils.replaceSnowflakeItem(self, template);
-                return SCRIPT_CONTINUE;
-            }
-        }
-        return SCRIPT_CONTINUE;
-    }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
         String myTemplate = getTemplateName(self);

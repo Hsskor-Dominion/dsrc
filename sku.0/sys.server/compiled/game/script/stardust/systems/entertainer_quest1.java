@@ -45,6 +45,7 @@ public class entertainer_quest1 extends script.base_script
         {
                 sendSystemMessage(player, new string_id("stardust/quest", "ent_quest1"));
                 action_grantEntQuest1(player, self);
+                destroyObject(self);
                 return SCRIPT_CONTINUE;
         }
         return SCRIPT_CONTINUE;
