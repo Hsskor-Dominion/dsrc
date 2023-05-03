@@ -51,6 +51,10 @@ public class jedi_holocron extends script.base_script
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_level"));
                 return SCRIPT_OVERRIDE;
             }
+            if (!isJediExplore(player, self))
+            {
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
+            }
             if (isJediExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
@@ -75,13 +79,9 @@ public class jedi_holocron extends script.base_script
             setJediBountyValue(player, current_bounty);
             updateJediScriptData(player, "jedi", 1);
             }
-            else if (!isJediExplore(player, self))
-            {
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
-            }
             else
             {
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_no_effect"));
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
             }
         }
         return SCRIPT_CONTINUE;

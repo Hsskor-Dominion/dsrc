@@ -56,6 +56,10 @@ public class sith_holocron3 extends script.base_script
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_level_mando"));
                 return SCRIPT_OVERRIDE;
             }
+            if (!isMandoExplore(player, self))
+            {
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore_mando"));
+            }
             if (isMandoExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish_mando"));
@@ -80,10 +84,6 @@ public class sith_holocron3 extends script.base_script
                 setObjVar(player, "jedi.bounty", mission_bounty);
                 setJediBountyValue(player, current_bounty);
                 updateJediScriptData(player, "jedi", 1);
-            }
-            else if (!isMandoExplore(player, self))
-            {
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore_mando"));
             }
             else
             {

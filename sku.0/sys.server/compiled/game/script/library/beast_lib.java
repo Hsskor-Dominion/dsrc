@@ -1910,9 +1910,9 @@ public class beast_lib extends script.base_script
             return;
         }
         float happinessAdjustment = (getBCDBeastHappiness(bcd) / 100.0f) + 1.0f;
-        if (happinessAdjustment > 1.5f)
+        if (happinessAdjustment > 4f)
         {
-            happinessAdjustment = 1.5f;
+            happinessAdjustment = 4f;
         }
         else if (happinessAdjustment < 0.5f)
         {

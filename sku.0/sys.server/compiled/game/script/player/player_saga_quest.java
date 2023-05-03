@@ -334,7 +334,7 @@ public class player_saga_quest extends script.base_script
     }
     public boolean chroniclers_master_condition(obj_id self)
     {
-        return hasSkill(self,"class_chroniclers_master");
+        return hasSkill(self,"class_chronicles_master");
     }
     public boolean createChronicleQuestObject(obj_id self, dictionary taskDictionary) throws InterruptedException
     {
