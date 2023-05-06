@@ -3,6 +3,7 @@ package script.theme_park.racing.nashal;
 import script.dictionary;
 import script.library.colors;
 import script.library.utils;
+import script.library.static_item;
 import script.location;
 import script.obj_id;
 import script.string_id;
@@ -244,6 +245,8 @@ public class player_racing extends script.base_script
             removeObjVar(self, "racing.nashal.returnLoc");
             removeObjVar(self, "racing.nashal.isRacing");
             playMusic(self, "sound/music_lando_theme.snd");
+            obj_id playerInv = utils.getInventoryContainer(self);
+            static_item.createNewItemFunction("item_pgc_token_01", playerInv);
         }
         return SCRIPT_CONTINUE;
     }

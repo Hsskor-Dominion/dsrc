@@ -181,7 +181,7 @@ class_spy_phase4_04	class_spy_phase4_03	oneByFour	0	0	0	0	100	0		class_spy_phase
 class_spy_phase4_05	class_spy_phase4_04	oneByFour	0	0	0	0	100	0		class_spy_phase4_04		combat_general	2365000	3540940							sp_smoke_mirrors				1	0
 class_spy_phase4_master	class_spy_phase4	oneByFour	0	1	0	0	100	0		class_spy_phase4_05		combat_general	2723800	3540940							sp_dm_8,sp_hide_device_1,sp_neutralize_device_1,sp_shifty_setup	cybernetic_psychosis_resistance=2,expertise_onstrikethrough_proc_sp_resonance=1,expertise_oncrit_proc_sp_savagery=1			1	0
 class_medic_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
-class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1	cybernetic_psychosis_resistance=2,expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20			1	0
+class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1	cybernetic_psychosis_resistance=2,expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20,me_doom_chance=5			1	0
 class_medic_phase1_02	class_medic_phase1	oneByFour	0	0	0	0	100	0		class_medic_phase1_novice		combat_general	3700	16120							me_dm_1,me_bacta_ampule_1				1	0
 class_medic_phase1_03	class_medic_phase1_02	oneByFour	0	0	0	0	100	0		class_medic_phase1_02		combat_general	12400	30160							me_dm_dot_1				1	0
 class_medic_phase1_04	class_medic_phase1_03	oneByFour	0	0	0	0	100	0		class_medic_phase1_03		combat_general	23200	67730							me_ae_heal_2,me_rv_ooc,me_rv_pvp_single				1	0
@@ -207,7 +207,7 @@ class_medic_phase4_02	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_ph
 class_medic_phase4_03	class_medic_phase4_02	oneByFour	0	0	0	0	100	0		class_medic_phase4_02		combat_general	1772600	2664480							me_ae_heal_5,me_dm_dot_6				1	0
 class_medic_phase4_04	class_medic_phase4_03	oneByFour	0	0	0	0	100	0		class_medic_phase4_03		combat_general	2049600	3074500							me_sh_1,me_bacta_bomb_1				1	0
 class_medic_phase4_05	class_medic_phase4_04	oneByFour	0	0	0	0	100	0		class_medic_phase4_04		combat_general	2365000	3540940							me_dm_8,me_bacta_grenade_1				1	0
-class_medic_phase4_master	class_medic_phase4	oneByFour	0	1	0	0	100	0		class_medic_phase4_05		combat_general	2723800	3540940							me_ae_heal_6,me_stasis_1,me_serotonin_boost_1	cybernetic_psychosis_resistance=2,me_doom_chance=20	craftMedicineStimpackGroupE,craftArtisanChemicalGroupD		1	0
+class_medic_phase4_master	class_medic_phase4	oneByFour	0	1	0	0	100	0		class_medic_phase4_05		combat_general	2723800	3540940							me_ae_heal_6,me_stasis_1,me_serotonin_boost_1	cybernetic_psychosis_resistance=2,me_doom_chance=5	craftMedicineStimpackGroupE,craftArtisanChemicalGroupD		1	0
 class_entertainer_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_entertainer_phase1_novice	class_entertainer_phase1	oneByFour	0	0	0	0	100	0				entertainer	100	4810							fizz,startMusic+rock,flourish+1,flourish+2,flourish+3,flourish+4,flourish+5,flourish+6,flourish+7,flourish+8,imagedesign,covercharge,inspire,registerWithLocation,musician,dancer,groupdance,of_inspiration_1,en_flush_with_success_buff_package	hair=1,face=1,instrument_customization=20,cybernetic_psychosis_resistance=2	craftDancePropA,craftInstrumentGroupA,craftInstrumentGroupB		1	0
 class_entertainer_phase1_02	class_entertainer_phase1	oneByFour	0	1	0	0	100	0		class_entertainer_phase1_novice		entertainer	3700	16120							prop_staff,colorlights,startDance+basic2	hair=1,instrument_customization=20			1	0
@@ -2835,7 +2835,7 @@ faction_rank_mando_master	faction_rank_mando_novice		1	1	0	1	0	0		faction_rank_m
 social_language_mando_speak	social_language		0	1	0	0	0	0					0	0				bothan,human,moncalamari,rodian,trandoshan,twilek,zabrak			language+mando	language_mando_speak=100			0	0
 social_language_mando_comprehend	social_language		0	0	0	0	0	0					0	0								language_mando_comprehend=100			0	0
 stardust_pvp				1		1															bountycheck				0	
-stardust_ace_of_aces				1		1																			0	
+stardust_ace_of_aces				1		1															private_imperial_navy_master,cert_starships_tieoppressor,cert_starships_gunship_imperial,cert_gunship_stardestroyer,cert_starships_decimator,private_rebel_navy_master,cert_starships_bwing,cert_starships_gunship_rebel,cert_starships_yt1300,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral				0	
 stardust_admiral_imperial				1		1																			0	
 stardust_admiral_republic				1		1																			0	
 stardust_senator				1		1																			0	
@@ -2844,3 +2844,4 @@ stardust_gov				1		1																			0
 stardust_moff				1		1																			0	
 stardust_grand_moff				1		1																			0	
 stardust_sith_empress				1		1																			0	
+stardust_isb				1		1																			0	

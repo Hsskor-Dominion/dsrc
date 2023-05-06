@@ -3502,16 +3502,16 @@ public class combat_actions extends script.systems.combat.combat_base {
                 utils.setScriptVar(defender, "me_doom.doom_owner", attacker);
                 utils.setScriptVar(defender, "me_doom.doom_stage", 1);
                 buff.applyBuff(defender, attacker, "me_doom", 18.0f, 1.0f);
-                if (hasCommand(attacker, "me_bacta_resistance_1")) {
+                if (hasCommand(attacker, "me_dm_dot_1")) {
                     buff.applyBuff(defender, attacker, "me_bacta_resistance_1");
                 }
-                if (hasCommand(attacker, "me_electrolyte_drain_1")) {
+                if (hasCommand(attacker, "me_dm_dot_1")) {
                     buff.applyBuff(defender, attacker, "me_electrolyte_drain_1");
                 }
-                if (hasCommand(attacker, "me_induce_insanity_1")) {
+                if (hasCommand(attacker, "me_dm_dot_1")) {
                     buff.applyBuff(defender, attacker, "me_rheumatic_calamity_1");
                 }
-                if (hasCommand(attacker, "me_thyroid_rupture_1")) {
+                if (hasCommand(attacker, "me_dm_dot_1")) {
                     buff.applyBuff(defender, attacker, "me_thyroid_rupture_1");
                 }
             }

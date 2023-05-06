@@ -1737,11 +1737,11 @@ armor_station	armor_station			1	buffs.armor_station	-1	station_buff	0	armor_stat
 structure_station	structure_station			1	buffs.structure_station	-1	station_buff	0	structure_station	1536		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 weapon_station	weapon_station			1	buffs.weapon_station	-1	station_buff	0	weapon_station	526369		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 space_station	space_station			1	buffs.space_station	-1	station_buff	0	space_station	393216		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-event_halloween_costume_jawa	shapechange	halloween_shapechange		1	buffs.costume	1800	movement	0	event_halloween_costume	1		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-event_halloween_costume_toydarian	shapechange	halloween_shapechange		1	buffs.costume	1800	movement	0	event_halloween_costume	2		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-event_halloween_costume_hutt_female	shapechange	halloween_shapechange		1	buffs.costume	1800	movement	0	event_halloween_costume	3		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-event_halloween_costume_droid	shapechange	halloween_shapechange		1	buffs.costume	1800	movement	0	event_halloween_costume	4		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-event_halloween_costume_kowakian	shapechange	halloween_shapechange		1	buffs.costume	1800	movement	0	event_halloween_costume	5		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+event_halloween_costume_jawa	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	1		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+event_halloween_costume_toydarian	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	2		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+event_halloween_costume_hutt_female	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	3		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+event_halloween_costume_droid	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	4		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+event_halloween_costume_kowakian	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	5		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 event_halloween_costume_lockout	shapechange_lockout			1		300		0		0		0		0		0	STATE_NONE	none			0	1		0	0	0	1	1	1	0	0	1	1
 event_halloween_trick_cooldown	event_halloween_trick_cooldown			100	buffs.trickTreat	20	event_halloween_trick_cooldown	0		0		0		0		0	STATE_NONE	none			0	1		0	1	0	1	1	0	0	1	1	1
 event_halloween_trick_ready	event_halloween_trick_ready			100		120		0		0		0		0		0	STATE_NONE	none			0	1		0	1	0	1	1	0	0	1	1	1
@@ -1818,33 +1818,33 @@ sp_fang_dot_5	spyPoison			6	dot.spyPoison	26	dot_acid	450	dot	0		0		0		0	STATE_P
 sp_critbuff_resonance	sp_critbuff_resonance	sp_aura_1		1	command.sp_resonance	20	expertise_armor_neglect	2	shared	0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	3	1	0	1	1	1
 sp_critbuff_savagery	sp_critbuff_savagery	sp_aura_2		1	command.sp_savagery	20	expertise_critical_damage_increase	5	shared	0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	3	1	0	1	1	1
 sp_covert_mastery	sp_covert_mastery			1	buffs.hoth_ice_block	3	debuff_purge	100	dot_reduction_all	10	dot_immunity	5	movement_immunity	99		0	STATE_NONE	none			0	0		0	1	1	0	1	1	0	1	1	1
-costume_loveday_ewok_cupid	shapechange	costume		1	buffs.costume	3600	storyteller_costume	6		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_loveday_ewok_cupid	shapechange	costume		1	buffs.costume	28800	storyteller_costume	6		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 bh_prescience	bh_prescience			1	command.bh_prescience	6		0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 loveday_ewok_familiar	vr_familiar			4	buffs.loveday_familiar	-1	private_taunt_bonus	-2		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-costume_jawa	shapechange	costume		1	buffs.costume	3600	storyteller_costume	7		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_gungan	shapechange	costume		1	buffs.costume	3600	storyteller_costume	8		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_ewok	shapechange	costume		1	buffs.costume	3600	storyteller_costume	9		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_gamorrean_guard	shapechange	costume		1	buffs.costume	3600	storyteller_costume	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_battle_droid	shapechange	costume		1	buffs.costume	3600	storyteller_costume	11		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_jawa	shapechange	costume		1	buffs.costume	28800	storyteller_costume	7		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_gungan	shapechange	costume		1	buffs.costume	28800	storyteller_costume	8		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_ewok	shapechange	costume		1	buffs.costume	28800	storyteller_costume	9		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_gamorrean_guard	shapechange	costume		1	buffs.costume	28800	storyteller_costume	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_battle_droid	shapechange	costume		1	buffs.costume	28800	storyteller_costume	11		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 loveday_rejected	loveday_rejected			1	command.traumatize	900		0		0		0		0		0	STATE_NONE	none			1	1		0	0	0	0	1	1	0	1	1	1
-costume_droideka	shapechange	costume		1	buffs.costume	3600	storyteller_costume	4		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_monkey_lizard	shapechange	costume		1	buffs.costume	3600	storyteller_costume	5		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_toydarian	shapechange	costume		1	buffs.costume	3600	storyteller_costume	2		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_droideka	shapechange	costume		1	buffs.costume	28800	storyteller_costume	4		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_monkey_lizard	shapechange	costume		1	buffs.costume	28800	storyteller_costume	5		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_toydarian	shapechange	costume		1	buffs.costume	28800	storyteller_costume	2		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 tcg_series3_general_grievous_gutsack	exp_buff			20	buffs.tcg_series3_general_grievous_gutsack	3600	tcg_xp_bonus	20		0		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 tcg_series3_hh_15_torpedo_warhead	gcw_exp_buff			10	buffs.tcg_series3_hh_15_torpedo_warhead	3600	tcg_gcw_bonus	10		0		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 tcg_series3_wookiee_ceremonial_pipe	collection			20		1	random_collection_item	0		0		0		0		0	STATE_NONE	none			1	0		1	0	1	0	1	1	0	1	1	1
 tcg_series3_hands_of_seduction	hands_effect			10	buffs.batSwarm	-1	looping_hands_particle	0		0		0		0		0	STATE_NONE	none	appearance/pt_tcg_hand_effect_01.prt,appearance/pt_tcg_hand_effect_01.prt	hold_l,hold_r	0	0		0	0	0	0	1	1	0	0	0	1
-costume_4lom	shapechange	costume		1	buffs.costume	3600	storyteller_costume	12	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_dantari_m	shapechange	costume		1	buffs.costume	3600	storyteller_costume	13		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_dantari_f	shapechange	costume		1	buffs.costume	3600	storyteller_costume	14		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_muftak	shapechange	costume		1	buffs.costume	3600	storyteller_costume	15		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_royal_guard	shapechange	costume		1	buffs.costume	3600	storyteller_costume	16		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_droid_8t88	shapechange	costume		1	buffs.costume	3600	storyteller_costume	17	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_darktrooper	shapechange	costume		1	buffs.costume	3600	storyteller_costume	18		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_mustafarian_01	shapechange	costume		1	buffs.costume	3600	storyteller_costume	19		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_chevin	shapechange	costume		1	buffs.costume	3600	storyteller_costume	20		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_ig106	shapechange	costume		1	buffs.costume	3600	storyteller_costume	21		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_super_battle_droid	shapechange	costume		1	buffs.costume	3600	storyteller_costume	22		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_4lom	shapechange	costume		1	buffs.costume	28800	storyteller_costume	12	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_dantari_m	shapechange	costume		1	buffs.costume	28800	storyteller_costume	13		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_dantari_f	shapechange	costume		1	buffs.costume	28800	storyteller_costume	14		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_muftak	shapechange	costume		1	buffs.costume	28800	storyteller_costume	15		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_royal_guard	shapechange	costume		1	buffs.costume	28800	storyteller_costume	16		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_droid_8t88	shapechange	costume		1	buffs.costume	28800	storyteller_costume	17	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_darktrooper	shapechange	costume		1	buffs.costume	28800	storyteller_costume	18		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_mustafarian_01	shapechange	costume		1	buffs.costume	28800	storyteller_costume	19		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_chevin	shapechange	costume		1	buffs.costume	28800	storyteller_costume	20		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_ig106	shapechange	costume		1	buffs.costume	28800	storyteller_costume	21		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_super_battle_droid	shapechange	costume		1	buffs.costume	28800	storyteller_costume	22		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 sp_attack_invis_recourse	stealth_recourse			19	command.sp_expose_shadows	5		0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 battlefield_communication_run	battlefield_communication_run			1	command.battlefield_communication_run	90	battlefield_communcations_glow	0		0		0		0		0	STATE_NONE	none	appearance/pt_battlefield_runner.prt		1	1		0	1	0	0	1	1	0	1	1	0
 battlefield_radar_invisibility	battlefield_radar_invisibility			1	command.co_path_mirror_armor	900	radar_invis	0		0		0		0		0	STATE_NONE	none			1	0		0	1	0	0	1	1	0	1	1	0
@@ -1862,11 +1862,11 @@ event_empireday_imperial_propaganda_counter	empireday_imp_track_antipropaganda	c
 event_empireday_rebel_vandal_counter	empireday_reb_track_vandal	counter_vadal		1	buffs.rebel_lifeday_casual	900		0		0		0		0		0	STATE_NONE	none			1	0		0	0	0	1	1000	1	0	0	1	1
 tcg_series4_falleens_fist	tcg_resource_gather			1	buffs.tcg_series4_falleens_fist	3600		0		0		0		0		0	STATE_NONE	none	appearance/pt_falleens_fist.prt		1	0		0	0	1	1	1	1	0	0	1	1
 droid_hand_sample	droid_resource_gather			0	buffs.droid_hand_sampling	0	expertise_resource_sampling_increase	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-costume_spider_droid	shapechange	costume		1	buffs.costume	3600	storyteller_costume	23		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_undead_wookie	shapechange	costume		1	buffs.costume	3600	storyteller_costume	24		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_burning_ewok	shapechange	costume		1	buffs.costume	3600	storyteller_costume	25	costume_burning_effect	0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_chiss_01	shapechange	costume		1	buffs.costume	3600	storyteller_costume	26		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_exar_kun_cultist	shapechange	costume		1	buffs.costume	3600	storyteller_costume	27		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_spider_droid	shapechange	costume		1	buffs.costume	28800	storyteller_costume	23		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_undead_wookie	shapechange	costume		1	buffs.costume	28800	storyteller_costume	24		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_burning_ewok	shapechange	costume		1	buffs.costume	28800	storyteller_costume	25	costume_burning_effect	0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_chiss_01	shapechange	costume		1	buffs.costume	28800	storyteller_costume	26		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_exar_kun_cultist	shapechange	costume		1	buffs.costume	28800	storyteller_costume	27		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 tcg_series5_klorri_clan_shield	exp_buff			20	buffs.tcg_series3_general_grievous_gutsack	3600	tcg_xp_bonus	30		0		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 death_troopers_afflicted_toss	death_troopers_afflicted_toss			10	buffs.hoth_rotting_tauntaun	1	death_troopers_afflicted_toss	1		0		0		0		0	STATE_NONE	none			0	1		0	1	0	0	1	1	0	1	1	1
 death_troopers_death_wing_afflict	death_troopers_death_wing_afflict			10	buffs.death_troopers_death_wing_afflict	10	constitution_modified	-500	stamina_modified	-500		0		0		0	STATE_NONE	none	appearance/pt_brown_viral_spew.prt	head	1	1		0	1	0	0	1	1	0	1	1	1
@@ -1882,7 +1882,7 @@ tcg_series6_ponda_baba_arm	exp_buff			20	buffs.tcg_series6_ponda_baba_arm	3600	t
 tcg_series6_shock_collar	scalechange	beast		1	buffs.tcg_series6_shock_collar	600	beast_scale_up	2.4		0		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 tcg_series6_muzzle	scalechange	beast		1	buffs.tcg_series6_muzzle	600	beast_scale_down	0.4		0		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 tcg_series6_auto_feeder	autofeeder			1	buffs.tcg_series6_auto_feeder	-1	beast_auto_feeder	1		0		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
-costume_lifeday_monkey_lizard	shapechange	costume		1	buffs.costume	3600	storyteller_costume	28		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_lifeday_monkey_lizard	shapechange	costume		1	buffs.costume	28800	storyteller_costume	28		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 gcw_spy_destroy_patrol_explosive_stack	gcw_spy			1	buffs.gcw_spy_explosives_stack	3600		0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	5	1	0	1	1	1
 gcw_general_resistance_stack_imperial	gcw_general			1	buffs.gcw_general_resistance_stack_imperial	-1	expertise_damage_all	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	100	1	0	1	0	1
 gcw_general_resistance_stack_rebel	gcw_general			1	buffs.gcw_general_resistance_stack_rebel	-1	expertise_damage_all	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	100	1	0	1	0	1
@@ -1905,30 +1905,30 @@ loveday_hearts_item	shapechange	costume		1	buffs.loveday_hearts	300	loveday_hear
 tcg_series7_rocket_launcher	gcw_exp_buff			15	buffs.tcg_series3_hh_15_torpedo_warhead	3600	tcg_gcw_bonus	15		0		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 fs_saber_intercept	fs_saber_intercept			1	command.fs_saber_intercept	10	saber_intercept	1		0		0		0		0	STATE_NONE	none	appearance/pt_jedi_saber_intercept.prt		1	0		1	1	1	0	1	1	0	1	1	1
 gcw_mini_turret	gcw_mini_turret			1		1	gcw_mini_turret	1		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
-costume_esb_lando	shapechange	costume		1	buffs.costume	3600	storyteller_costume	29		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_esb_leia	shapechange	costume		1	buffs.costume	3600	storyteller_costume	30		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_esb_han_solo	shapechange	costume		1	buffs.costume	3600	storyteller_costume	31		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_esb_luke	shapechange	costume		1	buffs.costume	3600	storyteller_costume	32		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_esb_darth_vader	shapechange	costume		1	buffs.costume	3600	storyteller_costume	33		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_esb_yoda	shapechange	costume		1	buffs.costume	3600	storyteller_costume	34		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_esb_boba_fett	shapechange	costume		1	buffs.costume	3600	storyteller_costume	35		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_esb_lando	shapechange	costume		1	buffs.costume	28800	storyteller_costume	29		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_esb_leia	shapechange	costume		1	buffs.costume	28800	storyteller_costume	30		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_esb_han_solo	shapechange	costume		1	buffs.costume	28800	storyteller_costume	31		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_esb_luke	shapechange	costume		1	buffs.costume	28800	storyteller_costume	32		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_esb_darth_vader	shapechange	costume		1	buffs.costume	28800	storyteller_costume	33		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_esb_yoda	shapechange	costume		1	buffs.costume	28800	storyteller_costume	34		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_esb_boba_fett	shapechange	costume		1	buffs.costume	28800	storyteller_costume	35		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 bh_assault_action_buff	bh_assult			1	command.bh_innate_assault	15	expertise_action_line_dm	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	5	1	0	1	1	1
-costume_seven_obi_wan_ghost	shapechange	costume		1	command.fs_path_forsake_fear	3600	storyteller_costume	36	damage_dealt_mod	0.1	healthPercent	-66	actionPercent	-66	expertise_innate_protection_all	-3000	STATE_NONE	none			1	0		0	1	0	1	1	1	0	1	1	1
+costume_seven_obi_wan_ghost	shapechange	costume		1	command.fs_path_forsake_fear	28800	storyteller_costume	36	damage_dealt_mod	0.1	healthPercent	-66	actionPercent	-66	expertise_innate_protection_all	-3000	STATE_NONE	none			1	0		0	1	0	1	1	1	0	1	1	1
 duel_recording_tracker	duel_recording			1	buffs.duel_recorder	1800		0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-costume_axkva_min	shapechange	costume		1	buffs.costume	3600	storyteller_costume	37		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_meatlump_king	shapechange	costume		1	buffs.costume	3600	storyteller_costume	38		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_wampa	shapechange	costume		1	buffs.costume	3600	storyteller_costume	39		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_rancor	shapechange	costume		1	buffs.costume	3600	storyteller_costume	40		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_mutant_rancor	shapechange	costume		1	buffs.costume	3600	storyteller_costume	41		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_blackwing_rancor	shapechange	costume		1	buffs.costume	3600	storyteller_costume	42		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_tusken_king	shapechange	costume		1	buffs.costume	3600	storyteller_costume	43		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_zozpheratu	shapechange	costume		1	buffs.costume	3600	storyteller_costume	44		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_skeleton	shapechange	costume		1	buffs.costume	3600	storyteller_costume	45		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_geonosian	shapechange	costume		1	buffs.costume	3600	storyteller_costume	46		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_tauntaun	shapechange	costume		1	buffs.costume	3600	storyteller_costume	47		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_mynock	shapechange	costume		1	buffs.costume	3600	storyteller_costume	48		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_ugnaught	shapechange	costume		1	buffs.costume	3600	storyteller_costume	49		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_dug	shapechange	costume		1	buffs.costume	3600	storyteller_costume	50		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_axkva_min	shapechange	costume		1	buffs.costume	28800	storyteller_costume	37		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_meatlump_king	shapechange	costume		1	buffs.costume	28800	storyteller_costume	38		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_wampa	shapechange	costume		1	buffs.costume	28800	storyteller_costume	39		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_rancor	shapechange	costume		1	buffs.costume	28800	storyteller_costume	40		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_mutant_rancor	shapechange	costume		1	buffs.costume	28800	storyteller_costume	41		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_blackwing_rancor	shapechange	costume		1	buffs.costume	28800	storyteller_costume	42		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_tusken_king	shapechange	costume		1	buffs.costume	28800	storyteller_costume	43		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_zozpheratu	shapechange	costume		1	buffs.costume	28800	storyteller_costume	44		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_skeleton	shapechange	costume		1	buffs.costume	28800	storyteller_costume	45		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_geonosian	shapechange	costume		1	buffs.costume	28800	storyteller_costume	46		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_tauntaun	shapechange	costume		1	buffs.costume	28800	storyteller_costume	47		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_mynock	shapechange	costume		1	buffs.costume	28800	storyteller_costume	48		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_ugnaught	shapechange	costume		1	buffs.costume	28800	storyteller_costume	49		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_dug	shapechange	costume		1	buffs.costume	28800	storyteller_costume	50		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 scary_halloween_hand	event_halloween_hand			1	buffs.scary_halloween_hand	1800		0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 wod_decompose	wodDecompose			7	dot.commandoAcid	3600	dot_acid	800	dot	0		0		0		0	STATE_ACID_BURNED	none			1	1		1	1	1	0	1	1	0	1	1	1
 wod_avoid_damage	wod_avoid_damage			4	command.wod_avoid_damage	10	expertise_dodge	75	expertise_evasion_chance	75		0		0		0	STATE_NONE	none	appearance/pt_spy_avoid_damage.prt		1	0		1	1	1	0	1	1	0	1	1	1
@@ -1988,6 +1988,6 @@ set_bonus_ent_1	setBonusEnt			1	command.powerBoost	-1	strength_modified	30	agili
 set_bonus_ent_2	setBonusEnt			1	command.powerBoost	-1	strength_modified	60	agility_modified	60	expertise_action_weapon_melee	5		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 set_bonus_ent_3	setBonusEnt			1	command.powerBoost	-1	strength_modified	90	agility_modified	90	expertise_action_weapon_melee	10	expertise_undiminished_critical_melee	5	en_action_regen	0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 en_sprint	en_sprint			10	command.en_sprint	30	movement	0	movement_resist_snare	100		0		0		0	STATE_NONE	none	appearance/pt_ent_footwork.prt		1	0		1	1	1	0	1	1	0	1	1	1
-event_halloween_costume_skeleton1	shapechange	halloween_shapechange		1	buffs.costume	1800	movement	0	event_halloween_costume	51		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-costume_hutt_female	shapechange	halloween_shapechange		1	buffs.costume	1800	movement	0	event_halloween_costume	3		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+event_halloween_costume_skeleton1	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	51		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
+costume_hutt_female	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	3		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 gcw_rocket_turret	gcw_mini_turret			1		1	gcw_mini_turret	1		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
