@@ -105,3 +105,33 @@ tatooine_opening_cultist_12	static:item_tatooine_junk_mutant_womprat_01_01	35
 	static:weapon_sword_1h_04_01	3
 	static:item_npe_backpack_reward_01_01	1
 spymaster_21	object/tangible/quest/prof_spy_21_incom_plans.iff	1
+stardust_krrsantan	object/building/player/player_house_tree_house_01.iff	50
+	object/building/player/player_house_tree_house_02.iff	50
+stardust_darth_vader	item_color_crystal_02_00	50
+stardust_darth_sidious	object/tangible/jedi/no_drop_jedi_holocron_dark.iff	66
+stardust_darth_oblivion	item_pgc_token_03	50
+stardust_darth_lumiya	item_pgc_token_03	45
+stardust_darth_talon	item_pgc_token_03	40
+stardust_darth_ren	item_pgc_token_03	35
+stardust_carnor_jax	item_pgc_token_03	30
+stardust_kir_kanos	item_pgc_token_03	25
+stardust_kreel	item_pgc_token_03	20
+stardust_starkiller	item_pgc_token_03	15
+stardust_mand_armorer	item_pgc_token_03	10
+	object/tangible/dungeon/death_watch_bunker/gel_packet.iff	5
+	object/tangible/dungeon/death_watch_bunker/passkey_hall.iff	5
+	object/tangible/dungeon/death_watch_bunker/passkey_storage.iff	5
+	object/tangible/dungeon/death_watch_bunker/passkey_mine.iff	5
+stardust_mand_apostate	item_pgc_token_03	5
+	object/tangible/dungeon/death_watch_bunker/gel_packet.iff	5
+	object/tangible/dungeon/death_watch_bunker/passkey_hall.iff	5
+	object/tangible/dungeon/death_watch_bunker/passkey_storage.iff	5
+	object/tangible/dungeon/death_watch_bunker/passkey_mine.iff	5
+stardust_weak_sith	item_pgc_token_03	5
+stardust_keeper	item_pgc_token_03	1
+stardust_keeper2	item_pgc_token_03	1
+stardust_bendu	item_pgc_token_03	50
+stardust_maul	item_pgc_token_03	50
+stardust_revan	item_pgc_token_03	50
+rtp_luke_force_ghost	item_pgc_token_03	50
+stardust_jawa_warlord	item_pgc_token_03	50
