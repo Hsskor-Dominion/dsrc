@@ -53,17 +53,9 @@ public class force_shrine extends script.base_script
                     sendSystemMessage(player, SHOW_RESPECT);
                     return SCRIPT_CONTINUE;
                 }
-                if (padawan_quest_condition(self, player)) {
-                    grant_padawan_trials_quest(player, self);
-                    shrine_signalReward(player, self);
-                    return SCRIPT_CONTINUE;
-                 }
-                if (knight_quest_condition(self, player)) {
-                    grant_knight_trials_quest(player, self);
-                    shrine_signalReward2(player, self);
-                    return SCRIPT_CONTINUE;
-                }
                 jedi_trials.giveGenericForceShrineMessage(player);
+                grant_padawan_trials_quest(player);
+                shrine_signalReward(player);
             }
             if (item == menu_info_types.SERVER_MENU5)
             {
@@ -161,13 +153,13 @@ public class force_shrine extends script.base_script
         }
         return false;
     }
-    public boolean padawan_quest_condition(obj_id player, obj_id npc) throws InterruptedException
+    public boolean padawan_quest_condition(obj_id player, obj_id self) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "stardust_padawan", "talktoshrine");
+        return groundquests.isQuestActive(player, "stardust_padawan_pointer");
     }
-    public boolean knight_quest_condition(obj_id player, obj_id npc) throws InterruptedException
+    public boolean knight_quest_condition(obj_id player, obj_id self) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "stardust_knight", "talktoshrine2");
+        return groundquests.isQuestActive(player, "stardust_knight_pointer");
     }
     public boolean isOnJediTrials(obj_id player) throws InterruptedException
     {
@@ -222,20 +214,20 @@ public class force_shrine extends script.base_script
         }
         return false;
     }
-    public void shrine_signalReward(obj_id player, obj_id npc) throws InterruptedException
+    public void shrine_signalReward(obj_id player) throws InterruptedException
     {
-        groundquests.sendSignal(player, "stardust_padawan");
+        groundquests.sendSignal(player, "stardust_padawan_pointer");
     }
-    public void shrine_signalReward2(obj_id player, obj_id npc) throws InterruptedException
+    public void shrine_signalReward2(obj_id player) throws InterruptedException
     {
-        groundquests.sendSignal(player, "stardust_knight");
+        groundquests.sendSignal(player, "stardust_knight_pointer");
     }
-    public void grant_padawan_trials_quest(obj_id player, obj_id npc) throws InterruptedException
+    public void grant_padawan_trials_quest(obj_id player) throws InterruptedException
     {
         String pTemplate = getSkillTemplate(player);
         groundquests.grantQuest(player, "stardust_padawan_trials");
     }
-    public void grant_knight_trials_quest(obj_id player, obj_id npc) throws InterruptedException
+    public void grant_knight_trials_quest(obj_id player) throws InterruptedException
     {
         String pTemplate = getSkillTemplate(player);
         groundquests.grantQuest(player, "stardust_knight_trials");

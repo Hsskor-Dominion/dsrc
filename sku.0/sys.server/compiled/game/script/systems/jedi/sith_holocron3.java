@@ -18,7 +18,7 @@ public class sith_holocron3 extends script.base_script
     }
     public boolean isMandoExplore(obj_id player, obj_id npc) throws InterruptedException
     {
-        return ((badge.hasBadge(player, "bdg_deathtrooper_undead_rancor") || badge.hasBadge(player, "bdg_kash_wookiee_rage") || badge.hasBadge(player, "bdg_must_victory_army") || hasCompletedCollectionSlot(player, "col_ig88_factory_01") || hasCompletedCollectionSlot(player, "col_tusken_king_01")) && badge.hasBadge(player, "count_50"));
+        return ((badge.hasBadge(player, "bdg_deathtrooper_undead_rancor") || badge.hasBadge(player, "bdg_kash_wookiee_rage") || badge.hasBadge(player, "bdg_must_victory_army") || badge.hasBadge(player, "bdg_kill_deathwatch_overlord") || hasCompletedCollectionSlot(player, "col_ig88_factory_01") || hasCompletedCollectionSlot(player, "col_tusken_king_01")) && badge.hasBadge(player, "count_50"));
     }
     public void holocron_action_grantQuestRevan(obj_id player, obj_id npc) throws InterruptedException
     {

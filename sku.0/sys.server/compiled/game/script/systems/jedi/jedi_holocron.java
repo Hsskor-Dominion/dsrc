@@ -18,7 +18,7 @@ public class jedi_holocron extends script.base_script
     }
     public boolean isJediExplore(obj_id player, obj_id npc) throws InterruptedException
     {
-        return ((hasCompletedCollectionSlot(player, "bdg_exp_45_badges") || badge.hasBadge(player, "bdg_kash_grievous") || hasCompletedCollectionSlot(player, "col_bdg_hero_tatooine") || hasCompletedCollectionSlot(player, "inv_holocron_collection_02") || badge.hasBadge(player, "bdg_must_obiwan_story_good")) && badge.hasBadge(player, "count_50"));
+        return ((badge.hasBadge(player, "warren_compassion") || badge.hasBadge(player, "bdg_kash_grievous") || hasCompletedCollectionSlot(player, "col_bdg_hero_tatooine") || hasCompletedCollectionSlot(player, "inv_holocron_collection_02") || badge.hasBadge(player, "bdg_must_obiwan_story_good")) && badge.hasBadge(player, "count_50"));
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
@@ -54,6 +54,7 @@ public class jedi_holocron extends script.base_script
             if (!isJediExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
+                return SCRIPT_OVERRIDE;
             }
             if (isJediExplore(player, self))
             {
@@ -78,10 +79,6 @@ public class jedi_holocron extends script.base_script
             setObjVar(player, "jedi.bounty", mission_bounty);
             setJediBountyValue(player, current_bounty);
             updateJediScriptData(player, "jedi", 1);
-            }
-            else
-            {
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
             }
         }
         return SCRIPT_CONTINUE;
