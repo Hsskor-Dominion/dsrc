@@ -1820,7 +1820,7 @@ expertise_sm_path_innocent_cargo_2																									0
 expertise_sm_path_underworld_boss_1																									0	
 expertise_sm_path_long_odds_1																									0	
 expertise_sm_path_blindside_1	expertise_sm_path_skullduggery_1									expertise_sm_path_skullduggery_1												expertise_buff_duration_line_sm_skullduggery=13			0	
-expertise_sm_path_blindside_2	expertise_sm_path_blindside_1																					expertise_buff_duration_line_sm_skullduggery=13			0	
+expertise_sm_path_blindside_2	expertise_sm_path_blindside_1																					expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
 expertise_sm_path_skullduggery_1	expertise																				sm_skullduggery				0	
 expertise_sm_path_eat_dirt_1	expertise_sm_path_skullduggery_1									expertise_sm_path_skullduggery_1												expertise_miss_by_luck=6			0	
 expertise_sm_path_eat_dirt_2	expertise_sm_path_eat_dirt_1																					expertise_miss_by_luck=6			0	
@@ -1984,12 +1984,12 @@ expertise_of_heal_cool_1	expertise																					expertise_cooldown_line_o
 expertise_of_heal_cool_2	expertise_of_heal_cool_1																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
 expertise_of_heal_cool_3	expertise_of_heal_cool_2																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
 expertise_of_heal_cool_4	expertise_of_heal_cool_3																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
-sm_title_bootlegger				1		1																			0	
-sm_title_pirate				1		1															sm_summon_medic				0	
-sm_title_master_smuggler				1		1															sm_off_the_books	expertise_junk_dealer_cut=5			0	
-bh_titleinformant				1		1																expertise_cooldown_line_dm=10			0	
-bh_title_inspector				1		1																expertise_cooldown_line_dm=10			0	
-bh_title_agent				1		1																expertise_cooldown_line_dm=10			0	
+sm_title_bootlegger				1		1															sm_off_the_books	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
+sm_title_pirate				1		1															sm_summon_medic	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
+sm_title_master_smuggler				1		1																expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
+bh_titleinformant				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10			0	
+bh_title_inspector				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10			0	
+bh_title_agent				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10			0	
 pvp_imperial_retaliation_ability																					command_pvp_retaliation_ability,of_reinforcements_1				0	
 pvp_imperial_adrenaline_ability																					command_pvp_adrenaline_ability				0	
 pvp_imperial_unstoppable_ability																					command_pvp_unstoppable_ability				0	
@@ -2838,8 +2838,8 @@ stardust_pvp				1		1															bountycheck				0
 stardust_ace_of_aces				1		1															private_imperial_navy_master,cert_starships_tieoppressor,cert_starships_gunship_imperial,cert_gunship_stardestroyer,cert_starships_decimator,private_rebel_navy_master,cert_starships_bwing,cert_starships_gunship_rebel,cert_starships_yt1300,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral				0	
 stardust_admiral_imperial				1		1																			0	
 stardust_admiral_republic				1		1																			0	
-stardust_senator				1		1																			0	
 stardust_officer				1		1																			0	
+stardust_senator				1		1																			0	
 stardust_gov				1		1																			0	
 stardust_moff				1		1																			0	
 stardust_grand_moff				1		1																			0	

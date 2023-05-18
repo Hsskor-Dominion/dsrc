@@ -6,5 +6,3 @@
 
 volume = 1
 sharedTemplate = "object/intangible/vehicle/shared_geonosian_speeder_pcd.iff"
-
-scripts = +["item.special.nomove"]

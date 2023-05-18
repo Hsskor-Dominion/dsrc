@@ -5883,6 +5883,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
+        if (hasSkill(target, "stardust_pvp")) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
         if (!combatStandardAction("sm_shoot_first_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -5891,6 +5895,10 @@ public class combat_actions extends script.systems.combat.combat_base {
 
     public int sm_shoot_first_2(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (isBeingHuntedByBountyHunter(self, target)) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
+        if (hasSkill(target, "stardust_pvp")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
@@ -5905,6 +5913,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
+        if (hasSkill(target, "stardust_pvp")) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
         if (!combatStandardAction("sm_shoot_first_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -5916,6 +5928,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
+        if (hasSkill(target, "stardust_pvp")) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
         if (!combatStandardAction("sm_shoot_first_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -5924,6 +5940,10 @@ public class combat_actions extends script.systems.combat.combat_base {
 
     public int sm_shoot_first_5(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (isBeingHuntedByBountyHunter(self, target)) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
+        if (hasSkill(target, "stardust_pvp")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
@@ -11217,6 +11237,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(target, self);
         }
         if (hasSkill(target, "stardust_pvp")) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
+        if (hasSkill(target, "sm_title_bootlegger")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }

@@ -1190,7 +1190,7 @@ me_serotonin_purge_1	serotoninPurge			26	command.me_serotonin_purge	1	buff_purge
 me_burst_1	burst			34	command.me_burst	7	expertise_critical_niche_all	-3	strikethrough_vulnerable	5	critical_hit_vulnerable	5		0		0	STATE_NONE	none	clienteffect/medic_burst.cef		1	1		1	1	1	0	1	1	0	1	1	1
 me_evasion_1	evasion			34	command.me_evasion	12	expertise_dodge	35	expertise_evasion_chance	50	combat_evasion_value	50		0		0	STATE_NONE	none	clienteffect/medic_evasion.cef		1	0		1	1	1	0	1	1	0	1	1	1
 stackable_me_cranial_smash_1	cranialSmash			34	command.me_cranial_smash	1	stackable	5		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-me_cranial_smash_1	cranialSmash			34	command.me_cranial_smash	10	movement	0	combat_divide_damage_dealt	10		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+me_cranial_smash_1	cranialSmash			34	command.me_cranial_smash	10	movement	0	combat_divide_damage_dealt	25		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 fs_dot_immunity_recourse	fsCure			100	command.shock	25		0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 me_rheumatic_calamity_1	medicArthritus			34	command.me_induce_insanity	10	action_burn	65		0		0		0		0	STATE_NONE	none	clienteffect/medic_rheumatic.cef		1	1		1	1	1	0	1	1	0	1	1	1
 sp_burst_shadows	sp_burst_shadows			1	command.sp_burst_of_shadows	15	movement	0	expertise_damage_all	10	freeshot_case_crit	1	freeshot_case_strikethrough	1		0	STATE_NONE	none	appearance/pt_spy_burst_shadows.prt		1	0		0	1	1	0	1	1	0	1	1	1

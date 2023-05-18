@@ -18,8 +18,8 @@ public class vendor_ewok extends script.base_script
     }
     public boolean ewokFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
-        float ewokFaction = factions.getFactionStanding(player, "endor_marauder");
-        if (ewokFaction <= -1000)
+        float ewokFaction = factions.getFactionStanding(player, "panshee_tribe");
+        if (ewokFaction >= 1)
         {
             return true;
         }

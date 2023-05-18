@@ -9,26 +9,14 @@ public class politician extends script.base_script
     public politician()
     {
     }
-    public static String c_stringFile = "conversation/armorer";
+    public static String c_stringFile = "conversation/poliitician";
     public boolean politician_condition__defaultCondition(obj_id player, obj_id npc) throws InterruptedException
     {
         return true;
     }
-    public boolean politician_condition_playerCompletedCreed(obj_id player, obj_id npc) throws InterruptedException
+    public boolean politician_condition_playerReadyPolitics(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.hasCompletedQuest(player, "stardust_mando_creed");
-    }
-    public boolean politician_condition_playerCompletedCrest(obj_id player, obj_id npc) throws InterruptedException
-    {
-        return groundquests.hasCompletedQuest(player, "stardust_mando_crest");
-    }
-    public boolean politician_check_playerHasHelm(obj_id player) throws InterruptedException//not yet working
-    {
-        if (utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff"))
-        {
-                return true;
-        }
-        return false;
+        return groundquests.hasCompletedQuest(player, "stardust_politics");
     }
     public boolean politicianMayor_condition(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -278,7 +266,7 @@ public class politician extends script.base_script
             responses[responseIndex++] = new string_id(c_stringFile, "seek_info");
             responses[responseIndex++] = new string_id(c_stringFile, "seek_info2");
             responses[responseIndex++] = new string_id(c_stringFile, "seek_info3");
-            responses[responseIndex++] = new string_id(c_stringFile, "seek_info4");
+            responses[responseIndex++] = new string_id(c_stringFile, "seek_leave");
 
             utils.setScriptVar(player, "conversation.politician_conversation.branchId", 1);
 
