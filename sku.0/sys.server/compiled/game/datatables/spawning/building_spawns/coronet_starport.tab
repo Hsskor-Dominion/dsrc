@@ -12,6 +12,7 @@ rebel_recruiter		world	-132	28	-4719	135				300	int:ai.defaultCalmBehavior=1
 imperial_recruiter		world	-133	28	-4726	70				300	int:ai.defaultCalmBehavior=1					
 stardust_mod		world	-260	28	-4804	33				300						
 clone_relics_leia		world	-162	28	-4721	33				300						
+stardust_politician		world	-203	28	-4348	33				300						
 stardust_rebel_ace		departures1	-55.7	2.64	44.865	-55										
 heroic_sd_intro_neutral		departures1	-57.7	2.64	46	135										
 heroic_sd_intro_rebel		departures1	-48	2.64	40	-40										

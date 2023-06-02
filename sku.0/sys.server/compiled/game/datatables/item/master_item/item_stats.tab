@@ -3756,7 +3756,7 @@ item_tcg_loot_reward_series9_lepese_dictionary					tcg_series9_lepese_dictionary
 item_tcg_loot_reward_series2_mandalorian_strongbox					tcg_series2_mandalorian_strongbox					clienteffect/tcg_xp.cef	
 item_tcg_loot_reward_series1_nuna_ball_advertisement					tcg_series1_nuna_ball_advertisement					clienteffect/tcg_xp_instant_nuna_ball.cef	
 item_tcg_loot_reward_series1_radtrooper_badge					tcg_series1_radtrooper_badge					clienteffect/tcg_xp.cef	
-item_tcg_loot_reward_series2_versafunction88_datapad					tcg_series2_versafunction88_datapad					clienteffect/tcg_xp_instant.cef	
+item_tcg_loot_reward_series2_versafunction88_datapad			int:increaseAmount=100,int:nonGenericStorageItem=1		tcg_series2_versafunction88_datapad					clienteffect/tcg_xp_instant.cef	
 item_tcg_loot_reward_series2_chon_bust											
 item_tcg_loot_reward_series1_computer_console_01											
 item_tcg_loot_reward_series2_computer_console_02											

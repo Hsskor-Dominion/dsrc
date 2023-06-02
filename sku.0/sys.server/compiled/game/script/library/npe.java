@@ -517,7 +517,18 @@ public class npe extends script.base_script
         attachScript(player, "npe.handoff_to_tatooine");
         setCompletedTutorial(player, true);
         setObjVar(player, "comingFromTutorial", 1);
-        warpPlayer(player, FINISH_PLANET, FINISH_X, 0, FINISH_Z, null, 0.0f, 0.0f, 0.0f, null, false);
+        if (hasObjVar(player, "stardust_ent"))
+        {
+            warpPlayer(player, "tatooine", 3455, 0, -4630, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_farmer"))
+        {
+            warpPlayer(player, "tatooine", 3858, 0, 2350, null, 0, 0, 0, "", false);
+        }
+        else
+        {
+            warpPlayer(player, FINISH_PLANET, FINISH_X, 0, FINISH_Z, null, 0.0f, 0.0f, 0.0f, null, false);
+        }
         return true;
     }
     public static boolean teleportPlayerToLaunchLoc(obj_id player, boolean hyperspace) throws InterruptedException

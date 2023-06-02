@@ -39,7 +39,7 @@ public class bhguild_leader extends script.base_script
     public boolean bhguild_leader_condition_isBHguild(obj_id player, obj_id npc) throws InterruptedException
     {
         float bhFaction = factions.getFactionStanding(player, "underworld");
-        if (bhFaction <= -50)
+        if (bhFaction <= 1)
         {
             return true;
         }

@@ -35,7 +35,7 @@ public class stardust_info extends script.base_script
     public boolean stardust_info_condition_isTownsperson(obj_id player, obj_id npc) throws InterruptedException
     {
         float spyFaction = factions.getFactionStanding(player, "spynet");
-        if (spypersonFaction >= 5)
+        if (spyFaction >= 5)
         {
             return true;
         }

@@ -1380,6 +1380,11 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!stealth.canDetectCamouflage(self) || !combatStandardAction("fs_sense_danger_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        if (hasCommand(target, "bountycheck")) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+            sendSystemMessage(self, new string_id("spam", "sense_danger"));
+        }
         float detectSkill = getEnhancedSkillStatisticModifier(self, "detect_hidden");
         float distance = stealth.BASE_DETECT_CAMOUFLAGE_DISTANCE + (detectSkill / 20);
         float detectChance = 50.0f;
@@ -1613,7 +1618,6 @@ public class combat_actions extends script.systems.combat.combat_base {
             return SCRIPT_OVERRIDE;
         }
         factions.goOvertWithDelay(self, 0.0f);
-        sendSystemMessage(self, new string_id("jedi_spam", "awakening"));
         setRegenRate(self, HEALTH, 400);
         setRegenRate(self, ACTION, 300);
         return SCRIPT_CONTINUE;
@@ -1627,7 +1631,6 @@ public class combat_actions extends script.systems.combat.combat_base {
             return SCRIPT_OVERRIDE;
         }
         factions.goOvertWithDelay(self, 0.0f);
-        sendSystemMessage(self, new string_id("jedi_spam", "awakening"));
         setRegenRate(self, HEALTH, 400);
         setRegenRate(self, ACTION, 300);
         return SCRIPT_CONTINUE;
@@ -5883,7 +5886,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
-        if (hasSkill(target, "stardust_pvp")) {
+        if (hasCommand(target, "bountycheck")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
@@ -5898,7 +5901,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
-        if (hasSkill(target, "stardust_pvp")) {
+        if (hasCommand(target, "bountycheck")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
@@ -5913,7 +5916,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
-        if (hasSkill(target, "stardust_pvp")) {
+        if (hasCommand(target, "bountycheck")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
@@ -5928,7 +5931,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
-        if (hasSkill(target, "stardust_pvp")) {
+        if (hasCommand(target, "bountycheck")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
@@ -5943,7 +5946,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
-        if (hasSkill(target, "stardust_pvp")) {
+        if (hasCommand(target, "bountycheck")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }

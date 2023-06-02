@@ -1448,6 +1448,11 @@ public class base_player extends script.base_script
         {
             revokeSkill(self, "demo_combat");
         }
+        if (!hasSkill(self, "pvp_imperial_airstrike_ability") && !hasSkill(self, "pvp_rebel_airstrike_ability"))
+        {
+            revokeSkill(self, "stardust_admiral_republic");
+            revokeSkill(self, "stardust_admiral_imperial");
+        }
         boolean needsPrerequisites = true;
         int attempts = 0;
         while (needsPrerequisites && attempts < 100)
@@ -1643,7 +1648,7 @@ public class base_player extends script.base_script
                 if (objPlayers != null && objPlayers.length > 0)
                 {
                     for (obj_id objPlayer : objPlayers) {
-                        sendSystemMessage(objPlayer, new string_id("jedi_spam", "awakening"));
+                        sendSystemMessage(objPlayer, new string_id("jedi_spam", "disturbance"));
                     }
                 }
             }

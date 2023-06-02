@@ -639,7 +639,7 @@ pilot_imperial_navy_droid_03	pilot_imperial_navy_droid_02		0	0	0	0	3000	0		pilot
 pilot_imperial_navy_droid_04	pilot_imperial_navy_droid_03		0	1	0	0	4000	0		pilot_imperial_navy_starships_03,pilot_imperial_navy_weapons_03,pilot_imperial_navy_procedures_03,pilot_imperial_navy_droid_03		space_combat_general	1000000	7500000							private_imperial_navy_droid_4,droidcommand_weaponoverloadfour,droidcommand_weaponeffeciencyfour,droidcommand_engineoverloadfour,droidcommand_engineefficiencyfour,cert_droid_astromech_5				1	0
 pilot_neutral	pilot		0	0	1	0	0	0						0											1	0
 pilot_neutral_novice	pilot_neutral		0	1	0	0	100	0			pilot_rebel_navy_novice,pilot_imperial_navy_novice		0	0							cert_starships_yt1300,private_neutral_novice,cert_starships_lighthuttfighter,cert_ordnance_level1,cert_droid_astromech_1,droidcommand_mutedroid,spacepvpimperial,spacepvprebel,spacerebelhelper,spaceimperialhelper,spacefaction,spacebattlestatus				1	0
-pilot_neutral_master	pilot_neutral		0	1	0	0	5000	0		pilot_neutral_starships_04,pilot_neutral_weapons_04,pilot_neutral_procedures_04,pilot_neutral_droid_04		space_combat_general	7500000	7500000							private_neutral_mastercert_ordnance_level9,cert_ordnance_levelten,cert_droid_astromech_6,ptrap2,epulse3,cert_starships_firespray,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral	pilot_special_tactics=20			1	0
+pilot_neutral_master	pilot_neutral		0	1	0	0	5000	0		pilot_neutral_starships_04,pilot_neutral_weapons_04,pilot_neutral_procedures_04,pilot_neutral_droid_04		space_combat_general	7500000	7500000							private_neutral_master,cert_ordnance_level9,cert_ordnance_levelten,cert_droid_astromech_6,ptrap2,epulse3,cert_starships_firespray,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral	pilot_special_tactics=20			1	0
 pilot_neutral_starships_01	pilot_neutral		0	0	0	0	1000	0		pilot_neutral_novice		space_combat_general	7500	60000							private_neutral_starships_1,cert_starships_mediumhuttfighter				1	0
 pilot_neutral_starships_02	pilot_neutral_starships_01		0	0	0	0	2000	0		pilot_neutral_starships_01,pilot_neutral_weapons_01,pilot_neutral_procedures_01,pilot_neutral_droid_01		space_combat_general	60000	200000							private_neutral_starships_2,cert_starships_heavyhuttfighter,cert_starships_lightblacksunfighter,cert_starships_vwing,cert_naboo_n1				1	0
 pilot_neutral_starships_03	pilot_neutral_starships_02		0	0	0	0	3000	0		pilot_neutral_starships_02,pilot_neutral_weapons_02,pilot_neutral_procedures_02,pilot_neutral_droid_02		space_combat_general	200000	1000000							private_neutral_starships_3,cert_starships_mediumblacksunfighter				1	0
@@ -2755,8 +2755,8 @@ expertise_bm_dna_harvesting_4	expertise_bm_dna_harvesting_3			1																	
 expertise_bm_dna_harvesting_3	expertise_bm_dna_harvesting_2			1																		creature_harvesting=10,creature_hit_bonus=5				
 expertise_bm_dna_harvesting_2	expertise_bm_dna_harvesting_1																					creature_harvesting=10,creature_hit_bonus=5				
 expertise_bm_dna_harvesting_1	expertise																					creature_harvesting=10,creature_hit_bonus=5				
-expertise_bm_attack_1	expertise_bm_creature_knowledge_command_4			1						expertise_bm_creature_knowledge_command_4											bm_pet_attack_1,tame,train_mount,bm_creature_knowledge_command_1	expertise_bm_base_mod=100,expertise_bm_train_mount=100,stored_pets=4,keep_creature=1,tame_non_aggro=80,tame_level=80,expertise_bm_add_pet_bar=1,expertise_bm_self_debuff_reduction=5				
-expertise_bm_incubation_base_1	expertise_bm_genetic_engineering_4			1						expertise_bm_genetic_engineering_4											bm_mend_pet_1,bm_collect_dna,bm_revive_pet_1,bm_creature_knowledge_command_1	expertise_bm_base_mod=100,expertise_bm_dna_harvesting_1=100,expertise_bm_pet_regen=100,expertise_bm_self_debuff_reduction=5,expertise_bm_incubation_quality=20,expertise_bm_incubation_time=12,bm_mutation_chance_increase=6	craftMedicineStimpackGroupD			
+expertise_bm_attack_1	expertise_bm_creature_knowledge_command_4			1						expertise_bm_creature_knowledge_command_4											bm_pet_attack_1,tame,train_mount,bm_creature_knowledge_command_1,bm_revive_pet_1	expertise_bm_base_mod=100,expertise_bm_train_mount=100,stored_pets=4,keep_creature=1,tame_non_aggro=80,tame_level=80,expertise_bm_add_pet_bar=1,expertise_bm_self_debuff_reduction=5,bm_xp_mod_boost=5				
+expertise_bm_incubation_base_1	expertise_bm_genetic_engineering_4			1						expertise_bm_genetic_engineering_4											bm_mend_pet_1,bm_collect_dna,bm_revive_pet_1,bm_creature_knowledge_command_1	expertise_bm_base_mod=100,expertise_bm_dna_harvesting_1=100,expertise_bm_pet_regen=100,expertise_bm_self_debuff_reduction=5,expertise_bm_incubation_quality=20,expertise_bm_incubation_time=12,bm_mutation_chance_increase=6,expertise_bm_pet_revive_time=10,expertise_bm_pet_recovery=50	craftMedicineStimpackGroupD			
 expertise_bm_mending_1	expertise_bm_attack_1									expertise_bm_attack_1											bm_mend_pet_1					
 expertise_bm_soothing_comfort_1	expertise_bm_mending_1									expertise_bm_mending_1											bm_soothing_comfort_1					
 costume			1	0	0	0	0	0						0											0	0
@@ -2835,13 +2835,14 @@ faction_rank_mando_master	faction_rank_mando_novice		1	1	0	1	0	0		faction_rank_m
 social_language_mando_speak	social_language		0	1	0	0	0	0					0	0				bothan,human,moncalamari,rodian,trandoshan,twilek,zabrak			language+mando	language_mando_speak=100			0	0
 social_language_mando_comprehend	social_language		0	0	0	0	0	0					0	0								language_mando_comprehend=100			0	0
 stardust_pvp				1		1															bountycheck				0	
+stardust_spy				1		1															bountycheck,sm_inside_information				0	
 stardust_ace_of_aces				1		1															private_imperial_navy_master,cert_starships_tieoppressor,cert_starships_gunship_imperial,cert_gunship_stardestroyer,cert_starships_decimator,private_rebel_navy_master,cert_starships_bwing,cert_starships_gunship_rebel,cert_starships_yt1300,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral				0	
 stardust_admiral_imperial				1		1																			0	
 stardust_admiral_republic				1		1																			0	
-stardust_officer				1		1																			0	
-stardust_senator				1		1																			0	
+stardust_senator_candidate				1		1																			0	
+stardust_senator				1		1															veteranPlayerBuff				0	
+stardust_gov_candidate				1		1																			0	
 stardust_gov				1		1																			0	
 stardust_moff				1		1																			0	
 stardust_grand_moff				1		1																			0	
 stardust_sith_empress				1		1																			0	
-stardust_isb				1		1																			0	

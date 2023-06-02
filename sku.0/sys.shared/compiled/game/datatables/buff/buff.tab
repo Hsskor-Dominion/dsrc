@@ -273,7 +273,7 @@ innate_wookiee_roar	innateWookieeRoar			1	command.wookieeRoar	300	private_accura
 innate_vitalize	innateVitalize			1	command.vitalize	300	healthPercent	20	staminaPercent	-20	willpowerPercent	-20		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 newbie_bread	food			0	buffs.foodMeal	300	agility_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 newbie_meat	food			0	buffs.foodMeat	300	agility_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-newbie_melon	food			0	buffs.foodVegetable	300	stamina_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+newbie_melon	food			0	buffs.foodVegetable	300	xp_bonus_general	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 newbie_nectar	food			0	buffs.foodBeverage	300	luck_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 foraged_berries	food			0	buffs.foodMeal	300	stamina_modified	10	luck_modified	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 foraged_bugs	food			0	buffs.foodMeal	300	agility_modified	10	stamina_modified	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -921,7 +921,7 @@ invis_sp_buff_stealth_2	invisibility			4	command.stealth	-1	invis	0	movement	0		
 invis_sp_buff_stealth_3	invisibility			4	command.stealth	-1	invis	0	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 invis_sp_buff_stealth_4	invisibility			4	command.stealth	-1	invis	0	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 fs_force_run	fs_force_run			1	command.forceRun	15	slope_move	5	movement	0	movement_resist_snare	100	movement_resist_root	100		0	STATE_NONE	none	clienteffect/pl_force_run.cef,appearance/pt_force_speed.prt		1	0		1	1	1	0	1	1	0	1	1	1
-veteranPlayerBuff	vetBuff			1	command.veteranPlayerBuff	900	group	0	constitution_modified	20	stamina_modified	20	agility_modified	20		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+veteranPlayerBuff	vetBuff			1	command.veteranPlayerBuff	900	group	0	xp_bonus_general	50	general_assembly	10	general_experimentation	10	expertise_en_inspire_pulse_duration_increase	5	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 agiConsumable5	genBuff_3			3	command.diveShot	300	agility_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 agiConsumable10	genBuff_3			4	command.diveShot	300	agility_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 agiConsumable15	genBuff_3			5	command.diveShot	300	agility_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1435,7 +1435,7 @@ bh_flawless_strike	flawlessBead			1	command.bh_flawless_strike	6	bh_flawless_pro
 bh_flawless_proc_chance_1	bh_flawless_proc_chance_1			1	command.bh_flawless_strike	6	set_bonus_bh_utility_a_1	25	set_bonus_bh_utility_a_2	25	set_bonus_bh_utility_a_3	25		0		0	STATE_NONE	none			0	0		0	1	1	0	1	1	0	1	1	1
 festering_wound	festering_wound			1	command.thyroidRupture	30	dot_vulnerability_bleed	40		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 lelli_stun	lelli_stun			1	buffs.weaponHinderance	15	cooldown_execute_all	15		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
-bm_dancing_pet_entertainer	bm_player_buff			1	command.bm_dancing_pet_entertainer	900	expertise_en_inspire_pulse_duration_increase	2	expertise_en_inspire_buff_duration_increase	30		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+bm_dancing_pet_entertainer	bm_player_buff			1	command.bm_dancing_pet_entertainer	900	expertise_en_inspire_pulse_duration_increase	5	expertise_en_inspire_buff_duration_increase	30		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 elec_aspect	aspect			1	state.energy	-1	dt_vulnerability_exclusive_acid	100		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 cold_aspect	aspect			1	buffs.cryobanSnare	-1	dt_vulnerability_exclusive_heat	100		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 heat_aspect	aspect			1	state.onFire	-1	dt_vulnerability_exclusive_cold	100		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
@@ -1807,7 +1807,7 @@ event_lifeday_competitive_buff	lifeday			1	buffs.lifeday_competitive	3600		0		0	
 event_lifeday_no_laugh	event_lifeday_no_laugh			100		30		0		0		0		0		0	STATE_NONE	none			0	1		0	0	0	1	1	0	0	1	1	1
 event_lifeday_no_bark	event_lifeday_no_bark			100		300		0		0		0		0		0	STATE_NONE	none			0	1		0	0	0	1	1	0	0	1	1	1
 lifeday_bantha_surprise	food			1	buffs.lifeday_bantha_surprise	2700	constitution_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-tcg_diner_crafting_station	tcg_diner_station			1	buffs.tcg_diner	-1	structure_experimentation	6	food_experimentation	6	station_buff	0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+tcg_diner_crafting_station	tcg_diner_station			1	buffs.tcg_diner	-1	food_experimentation	6	station_buff	0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 sp_smoke_mirrors	sp_smoke_mirrors			1	command.sp_smoke_mirrors	6		0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 sp_fang_dot_0	spyPoison			1	dot.spyPoison	26	dot_acid	75	dot	0		0		0		0	STATE_POISONED	none			1	1		1	1	1	0	6	1	0	1	1	1
 sp_fang_dot_1	spyPoison			2	dot.spyPoison	26	dot_acid	150	dot	0		0		0		0	STATE_POISONED	none			1	1		1	1	1	0	6	1	0	1	1	1
