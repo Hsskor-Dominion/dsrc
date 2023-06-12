@@ -90,7 +90,7 @@ public class vehicle extends script.base_script
         100.0f,
         1.0f
     };
-    public static final int VEHICLE_DECAY_CYCLE = 600;
+    public static final int VEHICLE_DECAY_CYCLE = 6;
     public static final int CUSTOMIZATION_COUNT = 200;
     public static final String VAR_PALVAR_BASE = "ai.pet.palvar";
     public static final String VAR_PALVAR_VARS = VAR_PALVAR_BASE + ".vars";
@@ -401,34 +401,26 @@ public class vehicle extends script.base_script
         }
         return dataTableGetFloat(create.VEHICLE_TABLE, ref, "REPAIR_RATE");
     }
-    public static void decayVehicle(obj_id vehicle) throws InterruptedException
-    {
-        if (!isIdValid(vehicle))
-        {
+    public static void decayVehicle(obj_id vehicle) throws InterruptedException {
+        if (!isIdValid(vehicle)) {
             return;
         }
+
         int now = getGameTime();
         float decay_rate = getVehicleDecayRate(vehicle);
-        if (decay_rate <= 0.0f)
-        {
-            return;
-        }
+
         int decayAmt;
-        if (utils.hasScriptVar(vehicle, "decay.stamp"))
-        {
+        if (utils.hasScriptVar(vehicle, "decay.stamp")) {
             int stamp = utils.getIntScriptVar(vehicle, "decay.stamp");
             int delta = now - stamp;
             float ratio = delta / VEHICLE_DECAY_CYCLE;
             decayAmt = Math.round(ratio * decay_rate);
-        }
-        else 
-        {
+        } else {
             decayAmt = Math.round(decay_rate / 2.0f);
         }
-        if (decayAmt <= 0)
-        {
-            return;
-        }
+
+        decayAmt = Math.max(decayAmt, 10); // Set a minimum of 10 damage
+
         int currentHP = getHitpoints(vehicle);
         currentHP -= decayAmt;
         setHitpoints(vehicle, currentHP);
@@ -437,27 +429,35 @@ public class vehicle extends script.base_script
         params.put("hp", currentHP);
         params.put("penalty", decayAmt);
         messageTo(vcd, "handleStoreVehicleDamage", params, 0.0f, false);
-        utils.setScriptVar(vehicle, "decay.stamp", now);
+        utils.setScriptVar(vehicle, "decay.stamp", now + VEHICLE_DECAY_CYCLE); // Update decay stamp for the next cycle
+
+        // Schedule the next decay cycle
         messageTo(vehicle, "handleVehicleDecay", null, VEHICLE_DECAY_CYCLE, false);
     }
-    public static float getVehicleDecayRate(obj_id vehicle) throws InterruptedException
-    {
-        if (!isIdValid(vehicle))
-        {
+
+    public int handleVehicleDecay(obj_id self, dictionary params) throws InterruptedException {
+        decayVehicle(self); // Call the decay process
+        return SCRIPT_CONTINUE;
+    }
+
+    public static float getVehicleDecayRate(obj_id vehicle) throws InterruptedException {
+        if (!isIdValid(vehicle)) {
             return -1.0f;
         }
+
         obj_id controlDevice = callable.getCallableCD(vehicle);
-        if (!isIdValid(controlDevice))
-        {
+        if (!isIdValid(controlDevice)) {
             return -1.0f;
         }
+
         String ref = getVehicleReference(controlDevice);
-        if (ref == null || ref.equals(""))
-        {
+        if (ref == null || ref.equals("")) {
             return -1.0f;
         }
+
         return dataTableGetFloat(create.VEHICLE_TABLE, ref, "DECAY_RATE");
     }
+
     public static boolean isInValidUnpackLocation(obj_id master) throws InterruptedException
     {
         if (isSpaceScene())
@@ -942,6 +942,7 @@ public class vehicle extends script.base_script
         if (hasVehicleBuff && buff.canApplyBuff(vehicle, vehicleBuffName))
         {
             buff.applyBuff(vehicle, vehicleBuffName);
+            decayVehicle(vehicle);
         }
     }
     public static boolean canRepairDisabledVehicle(obj_id controlDevice) throws InterruptedException

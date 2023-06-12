@@ -139,19 +139,19 @@ class_officer_phase2_04	class_officer_phase2_03	oneByFour	0	0	0	0	100	0		class_o
 class_officer_phase2_05	class_officer_phase2_04	oneByFour	0	0	0	0	100	0		class_officer_phase2_04		combat_general	325700	519610							of_del_ae_dm_dot_1	expertise_critical_line_of_aoe=50,expertise_damage_line_of_aoe=100			1	0
 class_officer_phase2_master	class_officer_phase2	oneByFour	0	1	0	0	100	0		class_officer_phase2_05		combat_general	399700	629980							of_dm_4,of_buff_def_4,of_deb_def_4	cybernetic_psychosis_resistance=2			1	0
 class_officer_phase3	class	oneByFour	0	0	1	0	0	0																	1	0
-class_officer_phase3_novice	class_officer_phase3	oneByFour	0	0	0	0	100	0		class_officer_phase2_master		combat_general	484600	756860							of_del_ae_dm_1,of_ae_dm_cc_1				1	0
+class_officer_phase3_novice	class_officer_phase3	oneByFour	0	0	0	0	100	0		class_officer_phase2_master		combat_general	484600	756860							of_del_ae_dm_1,of_ae_dm_cc_1,of_reinforcements_2				1	0
 class_officer_phase3_02	class_officer_phase3	oneByFour	0	0	0	0	100	0		class_officer_phase3_novice		combat_general	582200	901160							of_del_ae_dot_1				1	0
 class_officer_phase3_03	class_officer_phase3_02	oneByFour	0	0	0	0	100	0		class_officer_phase3_02		combat_general	693200	1065610							of_dm_5				1	0
-class_officer_phase3_04	class_officer_phase3_03	oneByFour	0	0	0	0	100	0		class_officer_phase3_03		combat_general	819700	1252940							of_sh_2				1	0
+class_officer_phase3_04	class_officer_phase3_03	oneByFour	0	0	0	0	100	0		class_officer_phase3_03		combat_general	819700	1252940							of_sh_2,of_reinforcements_3				1	0
 class_officer_phase3_05	class_officer_phase3_04	oneByFour	0	0	0	0	100	0		class_officer_phase3_04		combat_general	963800	1466790							of_del_ae_dm_dot_2				1	0
 class_officer_phase3_master	class_officer_phase3	oneByFour	0	1	0	0	100	0		class_officer_phase3_05		combat_general	1128300	1710540							of_dm_6	cybernetic_psychosis_resistance=2			1	0
 class_officer_phase4	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_officer_phase4_novice	class_officer_phase4	oneByFour	0	0	0	0	100	0		class_officer_phase3_master		combat_general	1315800	1988090							of_del_ae_dm_2,of_ae_dm_cc_2				1	0
 class_officer_phase4_02	class_officer_phase4	oneByFour	0	0	0	0	100	0		class_officer_phase4_novice		combat_general	1529300	2304380							of_del_ae_dm_dot_3				1	0
 class_officer_phase4_03	class_officer_phase4_02	oneByFour	0	0	0	0	100	0		class_officer_phase4_02		combat_general	1772600	2664480							of_dm_7				1	0
-class_officer_phase4_04	class_officer_phase4_03	oneByFour	0	0	0	0	100	0		class_officer_phase4_03		combat_general	2049600	3074500							of_sh_3				1	0
+class_officer_phase4_04	class_officer_phase4_03	oneByFour	0	0	0	0	100	0		class_officer_phase4_03		combat_general	2049600	3074500							of_sh_3,of_reinforcements_4				1	0
 class_officer_phase4_05	class_officer_phase4_04	oneByFour	0	0	0	0	100	0		class_officer_phase4_04		combat_general	2365000	3540940							of_del_ae_dm_3,of_ae_dm_cc_3				1	0
-class_officer_phase4_master	class_officer_phase4	oneByFour	0	1	0	0	100	0		class_officer_phase4_05		combat_general	2723800	3540940							of_dm_8,of_rally_point_off,of_rally_point_def,of_drillmaster_1,of_charge_1	cybernetic_psychosis_resistance=2			1	0
+class_officer_phase4_master	class_officer_phase4	oneByFour	0	1	0	0	100	0		class_officer_phase4_05		combat_general	2723800	3540940							of_dm_8,of_rally_point_off,of_rally_point_def,of_drillmaster_1,of_charge_1,of_reinforcements_5	cybernetic_psychosis_resistance=2			1	0
 class_spy_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_spy_phase1_novice	class_spy_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							sp_dm_1,sp_reveal_shadows	cybernetic_psychosis_resistance=2			1	0
 class_spy_phase1_02	class_spy_phase1	oneByFour	0	0	0	0	100	0		class_spy_phase1_novice		combat_general	3700	16120							sp_buff_stealth_1,of_sh_0				1	0
@@ -620,7 +620,7 @@ pilot_rebel_navy_droid_03	pilot_rebel_navy_droid_02		0	0	0	0	3000	0		pilot_rebel
 pilot_rebel_navy_droid_04	pilot_rebel_navy_droid_03		0	1	0	0	4000	0		pilot_rebel_navy_starships_03,pilot_rebel_navy_weapons_03,pilot_rebel_navy_procedures_03,pilot_rebel_navy_droid_03		space_combat_general	1000000	7500000							private_rebel_navy_droid_4,droidcommand_shieldbacktofronthundred,droidcommand_shieldfronttobackhundred,droidcommand_shieldadjustfrontfour,droidcommand_shieldadjustrearfour,cert_droid_astromech_5,droidcommand_shieldemergencyfront,droidcommand_shieldemergencyrear				1	0
 pilot_imperial_navy	pilot		0	0	1	0	0	0						0											1	0
 pilot_imperial_navy_novice	pilot_imperial_navy		0	1	0	0	100	0			pilot_rebel_navy_novice,pilot_neutral_novice		0	0							cert_starships_decimator,private_imperial_navy_novice,cert_starships_tiefighterlight,cert_ordnance_level1,cert_droid_astromech_1,droidcommand_mutedroid,spacepvpimperial,spacefaction,spacebattlestatus				1	0
-pilot_imperial_navy_master	pilot_imperial_navy		0	1	0	0	5000	0		pilot_imperial_navy_starships_04,pilot_imperial_navy_weapons_04,pilot_imperial_navy_procedures_04,pilot_imperial_navy_droid_04		space_combat_general	7500000	7500000							private_imperial_navy_master,cert_starships_tieoppressor,cert_ordnance_level9,cert_ordnance_levelten,cert_droid_astromech_6,bstrike3,cert_starships_firespray,cert_starships_gunship_imperial,cert_gunship_stardestroyer	pilot_special_tactics=20			1	0
+pilot_imperial_navy_master	pilot_imperial_navy		0	1	0	0	5000	0		pilot_imperial_navy_starships_04,pilot_imperial_navy_weapons_04,pilot_imperial_navy_procedures_04,pilot_imperial_navy_droid_04		space_combat_general	7500000	7500000							private_imperial_navy_master,cert_starships_tieoppressor,cert_ordnance_level9,cert_ordnance_levelten,cert_droid_astromech_6,bstrike3,cert_starships_firespray,cert_starships_gunship_imperial	pilot_special_tactics=20			1	0
 pilot_imperial_navy_starships_01	pilot_imperial_navy		0	0	0	0	1000	0		pilot_imperial_navy_novice		space_combat_general	7500	60000							private_imperial_navy_starships_1,cert_starships_tiefighter				1	0
 pilot_imperial_navy_starships_02	pilot_imperial_navy_starships_01		0	0	0	0	2000	0		pilot_imperial_navy_starships_01,pilot_imperial_navy_weapons_01,pilot_imperial_navy_procedures_01,pilot_imperial_navy_droid_01		space_combat_general	60000	200000							private_imperial_navy_starships_2,cert_starships_tiefighterin,cert_starships_vwing				1	0
 pilot_imperial_navy_starships_03	pilot_imperial_navy_starships_02		0	0	0	0	3000	0		pilot_imperial_navy_starships_02,pilot_imperial_navy_weapons_02,pilot_imperial_navy_procedures_02,pilot_imperial_navy_droid_02		space_combat_general	200000	1000000							private_imperial_navy_starships_3,cert_starships_tieinterceptor,cert_starships_tiebomber				1	0
@@ -1991,16 +1991,16 @@ bh_titleinformant				1		1																expertise_cooldown_line_dm=10,expertise
 bh_title_inspector				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10			0	
 bh_title_agent				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10			0	
 pvp_imperial_retaliation_ability																					command_pvp_retaliation_ability,of_reinforcements_1				0	
-pvp_imperial_adrenaline_ability																					command_pvp_adrenaline_ability				0	
-pvp_imperial_unstoppable_ability																					command_pvp_unstoppable_ability				0	
-pvp_imperial_last_man_ability																					command_pvp_last_man_ability				0	
-pvp_imperial_aura_buff_self																					pvp_aura_buff_self				0	
+pvp_imperial_adrenaline_ability																					command_pvp_adrenaline_ability,of_reinforcements_2				0	
+pvp_imperial_unstoppable_ability																					command_pvp_unstoppable_ability,of_reinforcements_3				0	
+pvp_imperial_last_man_ability																					command_pvp_last_man_ability,of_reinforcements_4				0	
+pvp_imperial_aura_buff_self																					pvp_aura_buff_self,of_reinforcements_5				0	
 pvp_imperial_airstrike_ability																					pvp_airstrike_ability				0	
 pvp_rebel_retaliation_ability																					command_pvp_retaliation_rebel_ability,of_reinforcements_1				0	
-pvp_rebel_adrenaline_ability																					command_pvp_adrenaline_rebel_ability				0	
-pvp_rebel_unstoppable_ability																					command_pvp_unstoppable_rebel_ability				0	
-pvp_rebel_last_man_ability																					command_pvp_last_man_rebel_ability				0	
-pvp_rebel_aura_buff_self																					pvp_aura_buff_rebel_self				0	
+pvp_rebel_adrenaline_ability																					command_pvp_adrenaline_rebel_ability,of_reinforcements_2				0	
+pvp_rebel_unstoppable_ability																					command_pvp_unstoppable_rebel_ability,of_reinforcements_3				0	
+pvp_rebel_last_man_ability																					command_pvp_last_man_rebel_ability,of_reinforcements_4				0	
+pvp_rebel_aura_buff_self																					pvp_aura_buff_rebel_self,of_reinforcements_5				0	
 pvp_rebel_airstrike_ability																					pvp_airstrike_rebel_ability				0	
 expertise_me_hot_duration_1	expertise																					expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20			0	
 expertise_me_hot_duration_2	expertise_me_hot_duration_1																					expertise_healing_line_me_hot=10			0	
@@ -2440,10 +2440,10 @@ expertise_trader_business_accounting_1	expertise																				access_fee	e
 expertise_trader_business_accounting_2	expertise_trader_business_accounting_1																				premium_auctions	expertise_vendor_cost_decrease=1				
 expertise_trader_business_accounting_3	expertise_trader_business_accounting_2																					manage_vendor=1,hiring=10,vendor_item_limit=100,expertise_vendor_cost_decrease=1				
 expertise_trader_business_accounting_4	expertise_trader_business_accounting_3																					manage_vendor=1,hiring=10,vendor_item_limit=150,expertise_vendor_cost_decrease=1				
-expertise_trader_sampling_collection_1	expertise																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10				
-expertise_trader_sampling_collection_2	expertise_trader_sampling_collection_1																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10				
-expertise_trader_sampling_collection_3	expertise_trader_sampling_collection_2																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10				
-expertise_trader_sampling_collection_4	expertise_trader_sampling_collection_3																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10				
+expertise_trader_sampling_collection_1	expertise																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20				
+expertise_trader_sampling_collection_2	expertise_trader_sampling_collection_1																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20				
+expertise_trader_sampling_collection_3	expertise_trader_sampling_collection_2																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20				
+expertise_trader_sampling_collection_4	expertise_trader_sampling_collection_3																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20				
 expertise_trader_warehousing_1	expertise_trader_business_accounting_4									expertise_trader_business_accounting_4												vendor_item_limit=50				
 expertise_trader_warehousing_2	expertise_trader_warehousing_1																					vendor_item_limit=50				
 expertise_trader_warehousing_3	expertise_trader_warehousing_2																					vendor_item_limit=50				
@@ -2836,7 +2836,7 @@ social_language_mando_speak	social_language		0	1	0	0	0	0					0	0				bothan,human
 social_language_mando_comprehend	social_language		0	0	0	0	0	0					0	0								language_mando_comprehend=100			0	0
 stardust_pvp				1		1															bountycheck				0	
 stardust_spy				1		1															bountycheck,sm_inside_information				0	
-stardust_ace_of_aces				1		1															private_imperial_navy_master,cert_starships_tieoppressor,cert_starships_gunship_imperial,cert_gunship_stardestroyer,cert_starships_decimator,private_rebel_navy_master,cert_starships_bwing,cert_starships_gunship_rebel,cert_starships_yt1300,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral				0	
+stardust_ace_of_aces				1		1															cert_starships_firespray,cert_starships_tieoppressor,cert_starships_gunship_imperial,cert_gunship_stardestroyer,cert_starships_decimator,cert_starships_bwing,cert_starships_gunship_rebel,cert_starships_yt1300,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral,cert_starships_ykl37r,cert_starships_z95headhunter,cert_starships_ywing,cert_starships_ywinglongprobe,cert_starships_vwing,cert_starships_xwing,cert_starships_awing,cert_starships_arc170,cert_starships_grievous,cert_starships_jedistarfighter,cert_starships_advancedxwing,cert_starships_twing, cert_starships_decimator,cert_starships_tiefighterlight,cert_starships_tiefighter,cert_starships_tiefighterin,cert_starships_tieinterceptor,cert_starships_tiebomber,cert_starships_tieadvanced,cert_starships_tieaggressor,cert_starships_tieinterceptorimperialguard,cert_starships_tiedefender,cert_starships_lighthuttfighter,cert_starships_mediumhuttfighter,cert_starships_heavyhuttfighter,cert_starships_lightblacksunfighter,cert_naboo_n1,cert_starships_mediumblacksunfighter,cert_starships_heavyblacksunfighter,cert_starships_havoc,cert_starships_blacksunvaksai,cert_starships_blacksunheavyvaksai				0	
 stardust_admiral_imperial				1		1																			0	
 stardust_admiral_republic				1		1																			0	
 stardust_senator_candidate				1		1																			0	

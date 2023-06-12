@@ -3,6 +3,7 @@ package script.player.base;
 import script.*;
 import script.library.*;
 import script.library.xp;
+import script.library.storyteller;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -5797,13 +5798,14 @@ public class base_player extends script.base_script
     }
     public int OnCityChanged(obj_id self, int oldCityId, int newCityId) throws InterruptedException
     {
-        if ((oldCityId != 0) && cityExists(oldCityId)) {
+        if ((oldCityId != 0) && cityExists(oldCityId))
+        {
             sendSystemMessageProse(self, prose.getPackage(SID_LEAVE_CITY, cityGetName(oldCityId)));
             return SCRIPT_CONTINUE;
         }
 
         String cityName = cityGetName(newCityId);
-	    int city_rank = city.getCityRank(newCityId);
+        int city_rank = city.getCityRank(newCityId);
         string_id rank_name = new string_id("city/city", "rank" + city_rank);
         String spec = city.cityGetSpecString(newCityId);
         prose_package pp = new prose_package();
@@ -5811,25 +5813,62 @@ public class base_player extends script.base_script
         pp.target.set(cityName);
 
         String specpart = localize(rank_name);
-        if (spec != null && !spec.equals("null")) {
+        if (spec != null && !spec.equals("null"))
+        {
             specpart = specpart + ", " + localize(new string_id("city/city", spec));
         }
         int factionId = cityGetFaction(newCityId);
-        if ((-615855020) == factionId) {
+        if ((-615855020) == factionId)
+        {
             specpart = specpart + ", Imperial aligned";
-        } else if ((370444368) == factionId) {
+        }
+        else if ((370444368) == factionId)
+        {
             specpart = specpart + ", Rebel aligned";
         }
         pp.other.set(specpart);
         sendSystemMessageProse(self, pp);
 
         obj_id cityHallId = cityGetCityHall(newCityId);
-        if(cityHallId != null && cityName != null && hasObjVar(cityHallId, "city_visitor_message")) {
-                String cityVisitorMessage = getStringObjVar(cityHallId, "city_visitor_message");
-                sendConsoleMessage(self, "City(" + cityName + ") Message: " + cityVisitorMessage + "\\#DFDFDF");
+        if (cityHallId != null && cityName != null && hasObjVar(cityHallId, "city_visitor_message"))
+        {
+            String cityVisitorMessage = getStringObjVar(cityHallId, "city_visitor_message");
+            sendConsoleMessage(self, "City(" + cityName + ") Message: " + cityVisitorMessage + "\\#DFDFDF");
         }
+
+        // Retrieve the mayor's name and display it
+        obj_id mayor = cityGetLeader(newCityId);
+        String mayorName = cityGetCitizenName(newCityId, mayor);
+
+        // Force the player to join the mayor's story
+        obj_id storytellerAssistant = null; // Replace with the actual assistant's obj_id if available
+        storyInviteAccepted(mayor, mayorName, self, storytellerAssistant);
+
         return SCRIPT_CONTINUE;
     }
+
+    public void storyInviteAccepted(obj_id storytellerPlayer, String storytellerName, obj_id player, obj_id storytellerAssistant) throws InterruptedException
+    {
+        string_id message = new string_id("storyteller", "player_invited_name");
+        prose_package pp = prose.getPackage(message, player, player);
+        prose.setTO(pp, storytellerName);
+        sendSystemMessageProse(player, pp);
+        dictionary webster = new dictionary();
+        webster.put("addedPlayerName", getName(player));
+        webster.put("storytellerName", storytellerName);
+        if (isIdValid(storytellerAssistant))
+        {
+            messageTo(storytellerAssistant, "handleStorytellerPlayerHasBeenAdded", webster, 0, false);
+        }
+        else
+        {
+            messageTo(storytellerPlayer, "handleStorytellerPlayerHasBeenAdded", webster, 0, false);
+        }
+        utils.setScriptVar(player, "storytellerid", storytellerPlayer);
+        utils.setScriptVar(player, "storytellerName", storytellerName);
+        storyteller.showStorytellerEffectsInAreaToPlayer(player, storytellerPlayer);
+    }
+
     public int cmdGrantZoningRights(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
         if (target == self)
@@ -11770,12 +11809,12 @@ public class base_player extends script.base_script
                 {
                     storyteller.storyPlayerRemovedFromStory(storytellerPlayer, storytellerName, self);
                 }
-                else 
+                else
                 {
                     messageTo(storytellerPlayer, "handleStorytellerRemovePlayerNotInStory", null, 0, false);
                 }
             }
-            else 
+            else
             {
                 messageTo(storytellerPlayer, "handleStorytellerRemovePlayerNotInStory", null, 0, false);
             }

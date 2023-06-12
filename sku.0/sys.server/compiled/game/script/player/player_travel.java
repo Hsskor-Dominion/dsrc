@@ -21,6 +21,7 @@ public class player_travel extends script.base_script
     public static final string_id SID_SUI_SELECT_DESTINATION_HEADER = new string_id("travel/travel", "sui_select_destination_header");
     public static final string_id SID_SUI_SELECT_DESTINATION_LOC = new string_id("travel/travel", "sui_select_destination_loc");
     public static final string_id SID_CALLING_FOR_PICKUP = new string_id("travel", "calling_for_pickup");
+    public static final string_id NEED_SHUTTLE_BEACON = new string_id("stardust/itv", "you_need_a_camp_with_shuttle");
     public static final string_id SID_LOCATION_NOGOOD_FOR_PICKUP = new string_id("travel", "no_pickup_location");
     public static final string_id SID_LOCATION_INDOORS = new string_id("travel", "no_pickup_indoors");
     public static final string_id SID_ALREADY_OUT = new string_id("travel", "pickup_craft_already_out");
@@ -1134,6 +1135,23 @@ public class player_travel extends script.base_script
         if (combat.isInCombat(player))
         {
             sendSystemMessage(player, SID_IN_COMBAT);
+            return false;
+        }
+        obj_id[] nearbyObjects = getObjectsInRange(here, 120);
+        boolean hasShuttleBeacon = false;
+
+        for (obj_id nearbyObject : nearbyObjects)
+        {
+            String template = getTemplateName(nearbyObject);
+            if (template != null && template.equals("object/tangible/camp/camp_shuttle_beacon.iff"))
+            {
+                hasShuttleBeacon = true;
+                break;
+            }
+        }
+        if (!hasShuttleBeacon)
+        {
+            sendSystemMessage(player, NEED_SHUTTLE_BEACON);
             return false;
         }
         return true;

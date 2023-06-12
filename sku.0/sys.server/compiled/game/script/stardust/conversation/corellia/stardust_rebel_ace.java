@@ -3,17 +3,17 @@ package script.stardust.conversation.corellia;
 import script.library.*;
 import script.*;
 
-public class stardust_neutral_ace extends script.base_script
+public class stardust_rebel_ace extends script.base_script
 {
-    public stardust_neutral_ace()
+    public stardust_rebel_ace()
     {
     }
-    public static String c_stringFile = "conversation/stardust_neutral_ace";
-    public boolean stardust_neutral_ace_condition__defaultCondition(obj_id player, obj_id npc) throws InterruptedException
+    public static String c_stringFile = "conversation/stardust_rebel_ace";
+    public boolean stardust_rebel_ace_condition__defaultCondition(obj_id player, obj_id npc) throws InterruptedException
     {
         return true;
     }
-    public void stardust_neutral_ace_action_facePlayer(obj_id player, obj_id npc) throws InterruptedException
+    public void stardust_rebel_ace_action_facePlayer(obj_id player, obj_id npc) throws InterruptedException
     {
         faceTo(npc, player);
         return;
@@ -30,25 +30,25 @@ public class stardust_neutral_ace extends script.base_script
     {
         return ((badge.hasBadge(player, "pilot_rebel_navy_corellia") && badge.hasBadge(player, "pilot_rebel_navy_naboo") && badge.hasBadge(player, "pilot_rebel_navy_tatooine")));
     }
-    public int stardust_neutral_ace_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    public int stardust_rebel_ace_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("s_star_destroyer"))
         {
-            if (stardust_neutral_ace_condition__defaultCondition(player, npc))
+            if (stardust_rebel_ace_condition__defaultCondition(player, npc))
             {
                 string_id message = new string_id(c_stringFile, "s_lets_go");
-                utils.removeScriptVar(player, "conversation.stardust_neutral_ace.branchId");
+                utils.removeScriptVar(player, "conversation.stardust_rebel_ace.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;
             }
         }
-        if (response.equals("s_ace_of_aces_neutral"))
+        if (response.equals("s_ace_of_aces"))
         {
             if (stardust_imperial_condition_ace_of_aces(player, npc))
             {
                 grantSkill(player, "stardust_ace_of_aces");
                 string_id message = new string_id(c_stringFile, "grant_ace_of_aces");
-                utils.removeScriptVar(player, "conversation.stardust_neutral_ace.branchId");
+                utils.removeScriptVar(player, "conversation.stardust_rebel_ace.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;
             }
@@ -56,7 +56,7 @@ public class stardust_neutral_ace extends script.base_script
             {
                 grantSkill(player, "stardust_ace_of_aces");
                 string_id message = new string_id(c_stringFile, "grant_ace_of_aces");
-                utils.removeScriptVar(player, "conversation.stardust_neutral_ace.branchId");
+                utils.removeScriptVar(player, "conversation.stardust_rebel_ace.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;
             }
@@ -64,14 +64,14 @@ public class stardust_neutral_ace extends script.base_script
             {
                 grantSkill(player, "stardust_ace_of_aces");
                 string_id message = new string_id(c_stringFile, "grant_ace_of_aces");
-                utils.removeScriptVar(player, "conversation.stardust_neutral_ace.branchId");
+                utils.removeScriptVar(player, "conversation.stardust_rebel_ace.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;
             }
-            if (stardust_neutral_ace_condition__defaultCondition(player, npc))
+            if (stardust_rebel_ace_condition__defaultCondition(player, npc))
             {
                 string_id message = new string_id(c_stringFile, "s_move_along");
-                utils.removeScriptVar(player, "conversation.stardust_neutral_ace.branchId");
+                utils.removeScriptVar(player, "conversation.stardust_rebel_ace.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;
             }
@@ -82,7 +82,7 @@ public class stardust_neutral_ace extends script.base_script
     {
         if ((!isMob(self)) || (isPlayer(self)))
         {
-            detachScript(self, "conversation.stardust_neutral_ace");
+            detachScript(self, "conversation.stardust_rebel_ace");
         }
         setCondition(self, CONDITION_CONVERSABLE);
         return SCRIPT_CONTINUE;
@@ -90,7 +90,7 @@ public class stardust_neutral_ace extends script.base_script
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
-        setName(self, "Commander Tyrus Gikkin (Crimson Aces)");
+        setName(self, "Commander Venisa Doza (Jade Squadron Ace of Aces)");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException
@@ -104,7 +104,7 @@ public class stardust_neutral_ace extends script.base_script
     public int OnIncapacitated(obj_id self, obj_id killer) throws InterruptedException
     {
         clearCondition(self, CONDITION_CONVERSABLE);
-        detachScript(self, "conversation.stardust_neutral_ace");
+        detachScript(self, "conversation.stardust_rebel_ace");
         return SCRIPT_CONTINUE;
     }
     public boolean npcStartConversation(obj_id player, obj_id npc, String convoName, string_id greetingId, prose_package greetingProse, string_id[] responses) throws InterruptedException
@@ -120,7 +120,7 @@ public class stardust_neutral_ace extends script.base_script
         {
             return SCRIPT_OVERRIDE;
         }
-        if (stardust_neutral_ace_condition__defaultCondition(player, npc))
+        if (stardust_rebel_ace_condition__defaultCondition(player, npc))
         {
             doAnimationAction(npc, "salute2");
             doAnimationAction(player, "salute2");
@@ -128,14 +128,14 @@ public class stardust_neutral_ace extends script.base_script
             int numberOfResponses = 0;
             boolean hasResponse = false;
             boolean hasResponse0 = false;
-            if (stardust_neutral_ace_condition__defaultCondition(player, npc))
+            if (stardust_rebel_ace_condition__defaultCondition(player, npc))
             {
                 ++numberOfResponses;
                 hasResponse = true;
                 hasResponse0 = true;
             }
             boolean hasResponse1 = false;
-            if (stardust_neutral_ace_condition__defaultCondition(player, npc))
+            if (stardust_rebel_ace_condition__defaultCondition(player, npc))
             {
                 ++numberOfResponses;
                 hasResponse = true;
@@ -151,10 +151,10 @@ public class stardust_neutral_ace extends script.base_script
                 }
                 if (hasResponse1)
                 {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_ace_of_aces_neutral");
+                    responses[responseIndex++] = new string_id(c_stringFile, "s_ace_of_aces");
                 }
-                utils.setScriptVar(player, "conversation.stardust_neutral_ace.branchId", 1);
-                npcStartConversation(player, npc, "stardust_neutral_ace", message, responses);
+                utils.setScriptVar(player, "conversation.stardust_rebel_ace.branchId", 1);
+                npcStartConversation(player, npc, "stardust_rebel_ace", message, responses);
             }
             else 
             {
@@ -162,7 +162,7 @@ public class stardust_neutral_ace extends script.base_script
             }
             return SCRIPT_CONTINUE;
         }
-        if (stardust_neutral_ace_condition__defaultCondition(player, npc))
+        if (stardust_rebel_ace_condition__defaultCondition(player, npc))
         {
             doAnimationAction(npc, "dismiss");
             string_id message = new string_id(c_stringFile, "s_go_away");
@@ -174,18 +174,18 @@ public class stardust_neutral_ace extends script.base_script
     }
     public int OnNpcConversationResponse(obj_id self, String conversationId, obj_id player, string_id response) throws InterruptedException
     {
-        if (!conversationId.equals("stardust_neutral_ace"))
+        if (!conversationId.equals("stardust_rebel_ace"))
         {
             return SCRIPT_CONTINUE;
         }
         obj_id npc = self;
-        int branchId = utils.getIntScriptVar(player, "conversation.stardust_neutral_ace.branchId");
-        if (branchId == 1 && stardust_neutral_ace_handleBranch1(player, npc, response) == SCRIPT_CONTINUE)
+        int branchId = utils.getIntScriptVar(player, "conversation.stardust_rebel_ace.branchId");
+        if (branchId == 1 && stardust_rebel_ace_handleBranch1(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
         chat.chat(npc, "Error:  Fell through all branches and responses for OnNpcConversationResponse.");
-        utils.removeScriptVar(player, "conversation.stardust_neutral_ace.branchId");
+        utils.removeScriptVar(player, "conversation.stardust_rebel_ace.branchId");
         return SCRIPT_CONTINUE;
     }
 }

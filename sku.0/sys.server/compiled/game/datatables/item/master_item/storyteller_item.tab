@@ -9,7 +9,7 @@ st_pr_tiki_torch_01_01	object/tangible/storyteller/prop/pr_tiki_torch.iff	prop	1
 st_pr_tent_basic_01_01	object/tangible/storyteller/prop/pr_tent_basic.iff	prop	1000										
 st_pr_campfire_logs_smoldering_01_01	object/tangible/storyteller/prop/pr_campfire_logs_smoldering.iff	prop	1000										
 st_pr_atf_sith_altar	object/tangible/storyteller/prop/pr_atf_sith_altar.iff	prop	1000									1	
-st_pr_clone_barc_speeder	object/tangible/storyteller/prop/pr_clone_barc_speeder.iff	prop	1000										
+st_pr_clone_barc_speeder	b	prop	1000										
 st_pr_destroyed_transport_1	object/tangible/storyteller/prop/pr_destroyed_transport_1.iff	prop	1000										
 st_pr_destroyed_transport_2	object/tangible/storyteller/prop/pr_destroyed_transport_2.iff	prop	1000										
 st_pr_edb_all_meat_s01	object/tangible/storyteller/prop/pr_edb_all_meat_s01.iff	prop	1000									1	
@@ -177,16 +177,16 @@ st_pr_droid_scavenger	object/tangible/storyteller/prop/pr_droid_scavenger.iff	ot
 st_pr_jukebox	object/tangible/terminal/terminal_jukebox.iff	other	1000									1	
 st_pr_eventteam_nyms_main	object/tangible/storyteller/event_props/pr_anniversary_nyms_main.iff	prop	-1										
 st_pr_eventteam_nyms_chair	object/tangible/storyteller/event_props/pr_anniversary_nyms_chair.iff	prop	-1										
-st_o_elite_maker	none	other	1000										
-st_o_boss_maker	none	other	1000										
+st_o_elite_maker	none	other	10000										
+st_o_boss_maker	none	other	50000										
 st_o_destructible_prop_maker	none	other	1000										
 st_cn_dark_jedi	storyteller_dark_jedi	combat_npc	1000									1	1
-st_cn_vet_reward_dark_jedi_boss	storyteller_boss_dark_jedi	combat_npc	1000		2							1	1
-st_cn_vet_reward_super_battle_droid_boss	storyteller_boss_super_battle_droid	combat_npc	1000		2							1	1
-st_cn_vet_reward_rebel_commando_boss	storyteller_boss_rebel_commando	combat_npc	1000		2							1	1
-st_cn_vet_reward_stormtrooper_boss	storyteller_boss_stormtrooper	combat_npc	1000		2							1	1
-st_cn_vet_reward_nightsister_boss	storyteller_boss_nightsister	combat_npc	1000		2							1	1
-st_cn_vet_reward_tusken_boss	storyteller_boss_tusken_raider	combat_npc	1000		2							1	1
+st_cn_vet_reward_dark_jedi_boss	storyteller_boss_dark_jedi	combat_npc	50000		2							1	1
+st_cn_vet_reward_super_battle_droid_boss	storyteller_boss_super_battle_droid	combat_npc	50000		2							1	1
+st_cn_vet_reward_rebel_commando_boss	storyteller_boss_rebel_commando	combat_npc	50000		2							1	1
+st_cn_vet_reward_stormtrooper_boss	storyteller_boss_stormtrooper	combat_npc	50000		2							1	1
+st_cn_vet_reward_nightsister_boss	storyteller_boss_nightsister	combat_npc	50000		2							1	1
+st_cn_vet_reward_tusken_boss	storyteller_boss_tusken_raider	combat_npc	50000		2							1	1
 st_pr_holiday_lifeday_tree	object/tangible/storyteller/event_props/pr_lifeday_tree.iff	prop	1000										
 st_pr_holiday_loveday_fountain	object/tangible/storyteller/event_props/pr_love_day_fountain.iff	prop	1000		-1								
 st_o_buildout_blueprint	none	other	1000										

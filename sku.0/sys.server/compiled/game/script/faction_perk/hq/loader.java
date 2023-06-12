@@ -37,7 +37,7 @@ public class loader extends script.base_script
         permissionsMakePublic(self);
         setObjVar(self, "playersWithAlignedEnemyFlagsAllowed", 1);
         messageTo(self, "handleDelayedRefundChecker", null, 10.0f, true);
-        hq.removeCovertDetector(self);
+        //hq.removeCovertDetector(self);
         setCWData(self);
         return SCRIPT_CONTINUE;
     }

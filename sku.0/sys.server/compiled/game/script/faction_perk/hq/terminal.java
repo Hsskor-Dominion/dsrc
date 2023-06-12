@@ -123,7 +123,7 @@ public class terminal extends script.terminal.base.base_terminal
             mnuDonate = mi.addRootMenu(menu_info_types.SERVER_MENU1, MNU_DONATE);
             mi.addSubMenu(mnuDonate, menu_info_types.SERVER_MENU2, MNU_DONATE_MONEY);
         }
-        if (hasObjVar(structure, hq.VAR_OBJECTIVE_TRACKING) || isGod(player))
+        if (hasObjVar(structure, hq.VAR_OBJECTIVE_TRACKING) || isGod(player) || (player_structure.isAdmin(structure, player)))
         {
             if (mnuDonate <= -1)
             {
@@ -256,7 +256,7 @@ public class terminal extends script.terminal.base.base_terminal
             }
             else 
             {
-                if (hasObjVar(structure, hq.VAR_OBJECTIVE_TRACKING) || isGod(player))
+                if (hasObjVar(structure, hq.VAR_OBJECTIVE_TRACKING) || isGod(player) || (player_structure.isAdmin(structure, player)))
                 {
                     if (isGod(player))
                     {
@@ -531,11 +531,11 @@ public class terminal extends script.terminal.base.base_terminal
                     obj_id objBuilding = getTopMostContainer(self);
                     if (isIdValid(objBuilding))
                     {
-                        if (hasObjVar(objBuilding, "isPvpBase"))
+/*                        if (hasObjVar(objBuilding, "isPvpBase"))
                         {
                             sendSystemMessage(player, new string_id(STRING_FILE_LOC, "terminal_response_special_forces_no_turrets"));
                             return SCRIPT_CONTINUE;
-                        }
+                        }*/
                     }
                     else 
                     {

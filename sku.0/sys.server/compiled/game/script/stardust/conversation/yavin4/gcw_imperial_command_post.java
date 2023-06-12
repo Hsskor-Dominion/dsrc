@@ -19,7 +19,7 @@ public class gcw_imperial_command_post extends script.base_script
     }
     public boolean gcw_imperial_command_post_condition_killActive1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "gcw_imperial_command_post");
+        return groundquests.isQuestActive(player, "stardust_gcw_imperial_command_post");
     }
     public boolean gcw_imperial_command_post_condition_isImperial(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -38,7 +38,7 @@ public class gcw_imperial_command_post extends script.base_script
     }
     public void gcw_imperial_command_post_action_givekill1(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.grantQuest(player, "gcw_imperial_command_post");
+        groundquests.grantQuest(player, "stardust_gcw_imperial_command_post");
     }
     public void gcw_imperial_command_post_action_signalDone(obj_id player, obj_id npc) throws InterruptedException
     {

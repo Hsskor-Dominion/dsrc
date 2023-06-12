@@ -15,11 +15,11 @@ public class gcw_imperial_space_destroy extends script.base_script
     }
     public boolean gcw_imperial_space_destroy_condition_completedKill1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "gcw_imperial_space", "returnWulf");
+        return groundquests.isTaskActive(player, "stardust_gcw_imperial_space", "returnWulf");
     }
     public boolean gcw_imperial_space_destroy_condition_killActive1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "gcw_imperial_space");
+        return groundquests.isQuestActive(player, "stardust_gcw_imperial_space");
     }
     public boolean gcw_imperial_space_destroy_condition_inPhase1(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -46,8 +46,8 @@ public class gcw_imperial_space_destroy extends script.base_script
     }
     public void gcw_imperial_space_destroy_action_givekill1(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.clearQuest(player, "gcw_imperial_space");
-        groundquests.grantQuest(player, "gcw_imperial_space");
+        groundquests.clearQuest(player, "stardust_gcw_imperial_space");
+        groundquests.grantQuest(player, "stardust_gcw_imperial_space");
     }
     public void gcw_imperial_space_destroy_action_signalDone(obj_id player, obj_id npc) throws InterruptedException
     {
