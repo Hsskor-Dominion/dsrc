@@ -1531,6 +1531,63 @@ public class base_player extends script.base_script
             grantExperiencePoints(self, "scout", campXp);
             grantExperiencePoints(self, "camp", 0 - campXp);
         }
+// Skill-granting logic based on political experience
+        int politicalXp = getExperiencePoints(self, "political");
+
+// Define the experience thresholds for each skill
+        int[] skillThresholds = {
+                10000,   // social_politician_fiscal_01
+                20000,   // social_politician_martial_01
+                30000,   // social_politician_civic_01
+                40000,   // social_politician_urban_01
+                75000,  // social_politician_fiscal_02
+                100000,  // social_politician_martial_02
+                125000,  // social_politician_civic_02
+                150000,  // social_politician_urban_02
+                200000,  // social_politician_fiscal_03
+                250000,  // social_politician_martial_03
+                300000,  // social_politician_civic_03
+                350000,  // social_politician_urban_03
+                400000,  // social_politician_fiscal_04
+                450000,  // social_politician_martial_04
+                500000,  // social_politician_civic_04
+                550000,  // social_politician_urban_04
+                600000   // social_politician_master
+                // Add more thresholds for additional skills as needed
+        };
+
+// Define the skill list in the desired order
+        String[] skillList = {
+                "social_politician_fiscal_01",
+                "social_politician_martial_01",
+                "social_politician_civic_01",
+                "social_politician_urban_01",
+                "social_politician_fiscal_02",
+                "social_politician_martial_02",
+                "social_politician_civic_02",
+                "social_politician_urban_02",
+                "social_politician_fiscal_03",
+                "social_politician_martial_03",
+                "social_politician_civic_03",
+                "social_politician_urban_03",
+                "social_politician_fiscal_04",
+                "social_politician_martial_04",
+                "social_politician_civic_04",
+                "social_politician_urban_04",
+                "social_politician_master"
+                // Add more skills in the desired order as needed
+        };
+
+// Iterate through the skill thresholds and check if the player's experience exceeds each threshold
+        for (int i = 0; i < skillThresholds.length; i++) {
+            if (politicalXp >= skillThresholds[i]) {
+                // Grant the corresponding skill
+                grantSkill(self, skillList[i]);
+            } else {
+                // Exit the loop if the experience is below the current threshold
+                break;
+            }
+        }
         if (!utils.hasScriptVar(self, "bountyConsistencyCheck"))
         {
             Vector playerBountyMissionTargetId = new Vector();

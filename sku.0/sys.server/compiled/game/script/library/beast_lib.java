@@ -156,7 +156,7 @@ public class beast_lib extends script.base_script
     public static final float BEAST_WEAPON_SPEED = 1.5f;
     public static final int BASE_ATTENTION_PENALTY = -25;
     public static final int BEASTS_STORED_MAXIMUM = 10;
-    public static final int BEAST_LEVEL_MAX_DIFFERENCE = 10;
+    public static final int BEAST_LEVEL_MAX_DIFFERENCE = 100;
     public static final int STEROID_BUFF_LEVEL_CAP = 74;
     public static final boolean BEAST_DEBUG = false;
     public static final string_id SID_BEAST_TOO_HIGH_LEVEL = new string_id("beast", "cant_call_level");

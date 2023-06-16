@@ -11247,6 +11247,11 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
+        if (isBeingHuntedByBountyHunter(target, self)) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
+        sendSystemMessage(target, new string_id("stardust/mando_rank", "scanning"));
         obj_id originalTarget = target;
         if (bounty_hunter.canCheckForBounty(self, target)) {
             doAnimationAction(self, "anims.PLAYER_DRAW_DATAPAD");
