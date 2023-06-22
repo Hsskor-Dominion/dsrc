@@ -929,16 +929,16 @@ public class stealth extends script.base_script
             sendSystemMessage(player, new string_id("spam", "trap_no_trigger_installed"));
             return false;
         }
-        if (locations.isInCity(getLocation(player)))
-        {
-            sendSystemMessage(player, new string_id("spam", "no_trap_city"));
-            return false;
-        }
-        if (inTrapRestrictedRegion(player))
-        {
-            sendSystemMessage(player, new string_id("spam", "trap_restricted_region"));
-            return false;
-        }
+//        if (locations.isInCity(getLocation(player)))
+//        {
+//            sendSystemMessage(player, new string_id("spam", "no_trap_city"));
+//            return false;
+//        }
+//        if (inTrapRestrictedRegion(player))
+//        {
+//            sendSystemMessage(player, new string_id("spam", "trap_restricted_region"));
+//            return false;
+//        }
         if (utils.isInHouseCellSpace(player))
         {
             obj_id house = getTopMostContainer(player);

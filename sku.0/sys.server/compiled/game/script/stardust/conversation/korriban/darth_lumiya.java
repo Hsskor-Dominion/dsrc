@@ -44,21 +44,13 @@ public class darth_lumiya extends script.base_script
     {
         return hasSkill(player,"class_forcesensitive_phase4_novice");
     }
-    public boolean darth_lumiya_credits_condition(obj_id player, obj_id npc) throws InterruptedException
-    {
-        return (money.hasFunds(player, money.MT_TOTAL, smuggler.TIER_4_GENERIC_PVP_FRONT_COST));
-    }
-    public boolean darth_lumiya_hasObjVar_condition(obj_id npc, obj_id player)
-    {
-        return hasObjVar(player, SITH_APPRENTICE);
-    }
     public boolean darth_lumiya_sith_quest_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
     {
         return groundquests.isTaskActive(player, "stardust_darth_lumiya", "talktodarth_lumiya");
     }
     public void darth_lumiya_sith_signalReward(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.sendSignal(player, "stardust_entertainer_darth_lumiya_reward");
+        groundquests.sendSignal(player, "darth_lumiya_reward");
     }
     public void darth_lumiya_action_vendor(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -69,24 +61,7 @@ public class darth_lumiya extends script.base_script
     public void darth_lumiya_sith_quest(obj_id player, obj_id npc) throws InterruptedException
     {
         String pTemplate = getSkillTemplate(player);
-        groundquests.grantQuest(player, "stardust_sith_darth_lumiya");
-    }
-    public void darth_lumiya_bounty_quest(obj_id player, obj_id npc) throws InterruptedException
-    {
-        money.requestPayment(player, npc, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
-        groundquests.requestGrantQuest(player, "quest/stardust_darth_lumiya_arena", true);
-        int mission_bounty = 10000;
-        int current_bounty = 0;
-        mission_bounty += rand(1, 2000);
-        if (hasObjVar(player, "bounty.amount"))
-        {
-            current_bounty = getIntObjVar(player, "bounty.amount");
-        }
-        current_bounty += mission_bounty;
-        setObjVar(player, "bounty.amount", current_bounty);
-        setObjVar(player, "smuggler.bounty", mission_bounty);
-        setJediBountyValue(player, current_bounty);
-        updateJediScriptData(player, "smuggler", 1);
+        groundquests.grantQuest(player, "stardust_sith_starter");
     }
     public int darth_lumiya_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -110,13 +85,24 @@ public class darth_lumiya extends script.base_script
         }
         else if (response.equals("seek_jedi"))
         {
+            if (darth_lumiya_sithFriend_condition(npc, player))
+            {
+                final string_id message = new string_id(c_stringFile, "npc_aggro");
+                darth_lumiya_sith_quest(player, npc);
 
-            final string_id message = new string_id(c_stringFile, "npc_aggro");
+                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
 
-            utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
-            npcEndConversationWithMessage(player, message);
+                return SCRIPT_CONTINUE;
+            }
+            else {
+                final string_id message = new string_id(c_stringFile, "npc_aggro");
 
-            return SCRIPT_CONTINUE;
+                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
         }
         else if (response.equals("seek_balance"))
         {

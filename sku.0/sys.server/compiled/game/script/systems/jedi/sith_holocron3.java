@@ -59,6 +59,7 @@ public class sith_holocron3 extends script.base_script
             if (!isMandoExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore_mando"));
+                factions.goOvertWithDelay(player, 0.0f);
             }
             if (isMandoExplore(player, self))
             {
@@ -68,8 +69,9 @@ public class sith_holocron3 extends script.base_script
                 grantSkill(player, "class_forcesensitive_phase1");
                 grantSkill(player, "class_forcesensitive_phase1_novice");
                 grantSkill(player, "force_sensitive_heightened_senses_persuasion_04");
-                xp.grant(player, "jedi", 5000);
+                xp.grant(player, "jedi", 100);
                 factions.addFactionStanding(player, "sith_shadow", 50.0f);
+                factions.goOvertWithDelay(player, 0.0f);
                 holocron_action_grantQuestRevan(player, self);
                 jedi_trials.initializePadawanTrials(player);
                 destroyObject(self);

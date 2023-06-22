@@ -2923,6 +2923,7 @@ public class base_player extends script.base_script
     public int handlePlayerDeath(obj_id self, dictionary params) throws InterruptedException
     {
         groundquests.sendSignal(self, "smugglerEnemyIncap");
+        groundquests.sendSignal(self, "JediDeath");
         if (utils.hasScriptVar(self, pclib.VAR_SUI_CLONE))
         {
             int oldpid = utils.getIntScriptVar(self, pclib.VAR_SUI_CLONE);

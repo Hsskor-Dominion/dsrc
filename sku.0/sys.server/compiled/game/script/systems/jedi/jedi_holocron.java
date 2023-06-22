@@ -51,6 +51,11 @@ public class jedi_holocron extends script.base_script
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_level"));
                 return SCRIPT_OVERRIDE;
             }
+
+            // Damage the holocron by X hitpoints
+            int damageAmount = rand(10, 50);
+            damageItem(self, damageAmount);
+
             if (!isJediExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
@@ -82,5 +87,24 @@ public class jedi_holocron extends script.base_script
             }
         }
         return SCRIPT_CONTINUE;
+    }
+
+    private void damageItem(obj_id item, int amount) throws InterruptedException
+    {
+        int curHp = getHitpoints(item);
+        int newHp = curHp - amount;
+
+        if (newHp <= 0)
+        {
+            // Item is destroyed
+            destroyObject(item);
+        }
+        else
+        {
+            // Update item hitpoints
+            setMaxHitpoints(item, 1); // Set max hitpoints to 1 temporarily
+            setHitpoints(item, newHp);
+            setMaxHitpoints(item, newHp + 1); // Set max hitpoints to new value
+        }
     }
 }

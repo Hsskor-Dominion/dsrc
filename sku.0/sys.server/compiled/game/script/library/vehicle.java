@@ -90,7 +90,7 @@ public class vehicle extends script.base_script
         100.0f,
         1.0f
     };
-    public static final int VEHICLE_DECAY_CYCLE = 6;
+    public static final int VEHICLE_DECAY_CYCLE = 10;
     public static final int CUSTOMIZATION_COUNT = 200;
     public static final String VAR_PALVAR_BASE = "ai.pet.palvar";
     public static final String VAR_PALVAR_VARS = VAR_PALVAR_BASE + ".vars";

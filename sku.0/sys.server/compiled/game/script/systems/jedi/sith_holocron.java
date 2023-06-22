@@ -12,14 +12,17 @@ public class sith_holocron extends script.base_script
     public sith_holocron()
     {
     }
+
     public boolean isSithReady(obj_id player, obj_id npc) throws InterruptedException
     {
         return (getLevel(player) >= 90);
     }
+
     public boolean isSithExplore(obj_id player, obj_id npc) throws InterruptedException
     {
-        return ((hasCompletedCollectionSlot(player, "col_jedi_npc") || hasCompletedCollectionSlot(player, "col_exar_kun_01") || badge.hasBadge(player, "bdg_must_obiwan_story_bad") || hasCompletedCollectionSlot(player, "inv_holocron_collection_02") || hasCompletedCollectionSlot(player, "col_axkva_min_01")) && badge.hasBadge(player, "count_50"));
+        return ((hasCompletedCollectionSlot(player, "col_jedi_npc_kill") || hasCompletedCollectionSlot(player, "col_exar_kun_01") || badge.hasBadge(player, "bdg_must_obiwan_story_bad") || hasCompletedCollectionSlot(player, "inv_holocron_collection_02") || hasCompletedCollectionSlot(player, "col_axkva_min_01")) && badge.hasBadge(player, "count_50"));
     }
+
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
         if (hasObjVar(self, "intUsed"))
@@ -38,6 +41,7 @@ public class sith_holocron extends script.base_script
         }
         return SCRIPT_CONTINUE;
     }
+
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
     {
         if (item == menu_info_types.ITEM_USE)
@@ -46,39 +50,49 @@ public class sith_holocron extends script.base_script
             {
                 return SCRIPT_CONTINUE;
             }
+
             if (!isSithReady(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_level_sith"));
                 return SCRIPT_OVERRIDE;
             }
+
+            // Damage the holocron by X hitpoints
+            int damageAmount = rand(10, 50);
+            damageItem(self, damageAmount);
+
             if (!isSithExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore_sith"));
+                factions.goOvertWithDelay(player, 0.0f);
             }
+
             if (isSithExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish_sith"));
-		        setSkillTemplate(player, "force_sensitive_1a");
-		        grantSkill(player, "force_sensitive");
-		        grantSkill(player, "class_forcesensitive_phase1");
-		        grantSkill(player, "class_forcesensitive_phase1_novice");
+                setSkillTemplate(player, "force_sensitive_1a");
+                grantSkill(player, "force_sensitive");
+                grantSkill(player, "class_forcesensitive_phase1");
+                grantSkill(player, "class_forcesensitive_phase1_novice");
                 grantSkill(player, "force_sensitive_heightened_senses_persuasion_04");
-		        xp.grant(player, "jedi", 5000);
+                xp.grant(player, "jedi", 100);
                 factions.addFactionStanding(player, "sith_shadow", 50.0f);
+                factions.goOvertWithDelay(player, 0.0f);
                 jedi_trials.initializePadawanTrials(player);
                 destroyObject(self);
-            int mission_bounty = 25000;
-            int current_bounty = 0;
-            mission_bounty += rand(1, 2000);
-            if (hasObjVar(player, "bounty.amount"))
-            {
-                current_bounty = getIntObjVar(player, "bounty.amount");
-            }
-            current_bounty += mission_bounty;
-            setObjVar(player, "bounty.amount", current_bounty);
-            setObjVar(player, "jedi.bounty", mission_bounty);
-            setJediBountyValue(player, current_bounty);
-            updateJediScriptData(player, "jedi", 1);
+
+                int mission_bounty = 25000;
+                int current_bounty = 0;
+                mission_bounty += rand(1, 2000);
+                if (hasObjVar(player, "bounty.amount"))
+                {
+                    current_bounty = getIntObjVar(player, "bounty.amount");
+                }
+                current_bounty += mission_bounty;
+                setObjVar(player, "bounty.amount", current_bounty);
+                setObjVar(player, "jedi.bounty", mission_bounty);
+                setJediBountyValue(player, current_bounty);
+                updateJediScriptData(player, "jedi", 1);
             }
             else
             {
@@ -86,5 +100,24 @@ public class sith_holocron extends script.base_script
             }
         }
         return SCRIPT_CONTINUE;
+    }
+
+    private void damageItem(obj_id item, int amount) throws InterruptedException
+    {
+        int curHp = getHitpoints(item);
+        int newHp = curHp - amount;
+
+        if (newHp <= 0)
+        {
+            // Item is destroyed
+            destroyObject(item);
+        }
+        else
+        {
+            // Update item hitpoints
+            setMaxHitpoints(item, 1); // Set max hitpoints to 1 temporarily
+            setHitpoints(item, newHp);
+            setMaxHitpoints(item, newHp + 1); // Set max hitpoints to new value
+        }
     }
 }
