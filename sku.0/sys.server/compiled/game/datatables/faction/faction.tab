@@ -13,7 +13,7 @@ clone_relics_scientist	0	0	0		clone_relics_droid	Hutt,Imperial,Rebel
 afarathu	1	1	0		corsec,survivor		
 beldonnas_league	1	1	0		followers_of_lord_nyax,lost_aqualish	corsec	
 corsec	1	1	0		afarathu,followers_of_lord_nyax,monumenter,rogue_corsec,lost_aqualish	beldonnas_league	
-followers_of_lord_nyax	1	1	0		corsec,beldonnas_league	death_watch	
+followers_of_lord_nyax	1	1	0		corsec,beldonnas_league
 hidden_daggers	1	1	0		corsec,beldonnas_league,flail	rogue_corsec	
 meatlump	1	1	0		corsec,rogue_corsec,beldonnas_league		
 monumenter	1	1	0		corsec,beldonnas_league		

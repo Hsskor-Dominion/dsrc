@@ -11231,6 +11231,14 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int bountycheck(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        if (buff.hasBuff(target, "cloning_sickness")){
+            sendSystemMessage(self, new string_id("stardust/mando_rank", "dishonorable"));
+            return SCRIPT_OVERRIDE;
+        }
+        if (hasSkill(target, "faction_rank_mando")){
+            sendSystemMessage(self, new string_id("stardust/mando_rank", "mandalorian_challenge"));
+            factions.addUnmodifiedFactionStanding(self, "death_watch", -50);
+        }
         if (hasSkill(target, "class_forcesensitive_phase2_novice")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
@@ -11240,6 +11248,14 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(target, self);
         }
         if (hasSkill(target, "stardust_pvp")) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
+        if (hasSkill(target, "pvp_imperial_airstrike_ability")) {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
+        if (hasSkill(target, "pvp_rebel_airstrike_ability")) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }

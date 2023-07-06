@@ -128,8 +128,7 @@ public class bothan_spy3 extends script.base_script
             {
                 final string_id message = new string_id(c_stringFile, "npc_affirm");
                 grantSkill(player, "stardust_spy");
-                grantSkill(player, "social_language_hutt_speak");
-                grantSkill(player, "social_language_hutt_comprehend");
+                grantSkill(player, "stardust_pvp");
 
                 utils.removeScriptVar(player, "conversation.bothan_spy3_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -154,6 +153,7 @@ public class bothan_spy3 extends script.base_script
         {
             final string_id message = new string_id(c_stringFile, "npc_remove_player");
             revokeSkill(player, "stardust_spy");
+            revokeSkill(player, "stardust_pvp");
 
             utils.removeScriptVar(player, "conversation.bothan_spy3_conversation.branchId");
             npcEndConversationWithMessage(player, message);

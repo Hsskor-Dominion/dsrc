@@ -42,6 +42,18 @@ public class armorer extends script.base_script
             return false;
         }
     }
+    public boolean armorerAlly_condition(obj_id player, obj_id npc) throws InterruptedException
+    {
+        float bhFaction = factions.getFactionStanding(player, "death_watch");
+        if (bhFaction >= 2500)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public boolean armorerMandalore_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float bhFaction = factions.getFactionStanding(player, "death_watch");
@@ -190,7 +202,7 @@ public class armorer extends script.base_script
     {
         if (response.equals("become_mandalore"))
         {
-            if (armorerMandalore_condition(player, npc))
+            if (armorerMandalore_condition(player, npc) && armorer_condition_playerCompletedCreed(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "for_new_mandalore");
                 sendSystemMessage(player, new string_id("stardust/mando_rank", "mando_master"));
@@ -201,12 +213,26 @@ public class armorer extends script.base_script
 
                 return SCRIPT_CONTINUE;
             }
-            if (armorer_condition_playerCompletedCreed(player, npc))
+            else if (armorer_condition_playerCompletedCreed(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "for_mandalore");
                 sendSystemMessage(player, new string_id("stardust/mando_rank", "mando_novice"));
                 sendSystemMessage(player, new string_id("stardust/mando_rank", "mando_lang"));
+                grantSkill(player, "faction_rank_mando");
                 grantSkill(player, "faction_rank_mando_novice");
+                grantSkill(player, "social_language_mando_speak");
+                grantSkill(player, "social_language_mando_comprehend");
+
+                utils.removeScriptVar(player, "conversation.armorer_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (armorerAlly_condition(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "for_mandalore_foundling");
+                sendSystemMessage(player, new string_id("stardust/mando_rank", "mando_lang"));
+                grantSkill(player, "faction_rank_mando");
                 grantSkill(player, "social_language_mando_speak");
                 grantSkill(player, "social_language_mando_comprehend");
 

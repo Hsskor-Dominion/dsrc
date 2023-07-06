@@ -151,7 +151,7 @@ public class utils extends script.base_script
     public static boolean hasSpecialSkills(obj_id player) throws InterruptedException
     {
         boolean skillCheck = false;
-        if (hasSkill(player, "faction_rank_mando_novice"))
+        if (hasSkill(player, "faction_rank_mando"))
         {
             skillCheck = true;
         }

@@ -22,8 +22,8 @@ public class moff extends script.base_script
             final obj_id target = getLookAtTarget(self);
             final obj_id owner = player_structure.getOwner(target);
             player_structure.finalizePackUp(owner, target);
-            sendSystemMessageTestingOnly(self, "Declaring building " +getName(target) + " owned by " +getName(owner) + " abanonded by imperial decree...");
-            sendSystemMessageTestingOnly(owner, "Your builing has been declared abanonded by imperial decree...");
+            sendSystemMessageTestingOnly(self, "Declaring building " +getName(target) + " owned by " +getName(owner) + " abandoned by moff decree...");
+            sendSystemMessageTestingOnly(owner, "Your builing has been declared abandoned by moff decree...");
         }
         return SCRIPT_CONTINUE;
     }

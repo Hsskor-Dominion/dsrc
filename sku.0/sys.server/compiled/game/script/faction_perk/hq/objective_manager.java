@@ -12,23 +12,23 @@ public class objective_manager extends script.base_script
     private static final int VULN_DELAY = 14400;
     public int OnAttach(obj_id self) throws InterruptedException
     {
-        if (!hasObjVar(self, "isPvpBase"))
-        {
+//        if (!hasObjVar(self, "isPvpBase"))
+//        {
             messageTo(self, "handlePveVulnerability", null, VULN_DELAY, true);
             return SCRIPT_CONTINUE;
-        }
-        messageTo(self, "handleLoadVulnerability", null, VULN_DELAY, true);
-        return SCRIPT_CONTINUE;
+//        }
+//        messageTo(self, "handleLoadVulnerability", null, VULN_DELAY, true);
+//        return SCRIPT_CONTINUE;
     }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
-        if (!hasObjVar(self, "isPvpBase"))
-        {
+//        if (!hasObjVar(self, "isPvpBase"))
+//        {
             messageTo(self, "handlePveVulnerability", null, VULN_DELAY, true);
             return SCRIPT_CONTINUE;
-        }
-        messageTo(self, "handleLoadVulnerability", null, VULN_DELAY, true);
-        return SCRIPT_CONTINUE;
+//        }
+//        messageTo(self, "handleLoadVulnerability", null, VULN_DELAY, true);
+//        return SCRIPT_CONTINUE;
     }
     public int OnDetach(obj_id self) throws InterruptedException
     {
@@ -42,7 +42,7 @@ public class objective_manager extends script.base_script
     }
     public int handleLoadVulnerability(obj_id self, dictionary params) throws InterruptedException
     {
-        hq.loadVulnerability(self);
+        hq.loadFullTimeVulnerability(self);
         return SCRIPT_CONTINUE;
     }
     public int handleUnloadVulnerability(obj_id self, dictionary params) throws InterruptedException

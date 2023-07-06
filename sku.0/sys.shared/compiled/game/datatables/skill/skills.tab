@@ -201,8 +201,8 @@ class_medic_phase3_03	class_medic_phase3_02	oneByFour	0	0	0	0	100	0		class_medic
 class_medic_phase3_04	class_medic_phase3_03	oneByFour	0	0	0	0	100	0		class_medic_phase3_03		combat_general	819700	1252940							me_ae_heal_4		craftMedicalEnhancersC		1	0
 class_medic_phase3_05	class_medic_phase3_04	oneByFour	0	0	0	0	100	0		class_medic_phase3_04		combat_general	963800	1466790							me_hot_2,me_bacta_ampule_6		craftMedicalEnhancersD		1	0
 class_medic_phase3_master	class_medic_phase3	oneByFour	0	1	0	0	100	0		class_medic_phase3_05		combat_general	1128300	1710540							me_dm_6,me_dm_dot_5	cybernetic_psychosis_resistance=2	craftArtisanChemicalGroupC		1	0
-class_medic_phase4	class	oneByFour	0	0	1	0	0	0						0											1	0
-class_medic_phase4_novice	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_phase3_master		combat_general	1315800	1988090							me_hot_3				1	0
+class_medic_phase4	class	oneByFour	0	0	1	0	0	0						0									craftMedicineComponentGroupH		1	0
+class_medic_phase4_novice	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_phase3_master		combat_general	1315800	1988090							me_hot_3		craftMedicineComponentGroupI		1	0
 class_medic_phase4_02	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_phase4_novice		combat_general	1529300	2304380							me_fld_dm_dot_3,me_rv_combat				1	0
 class_medic_phase4_03	class_medic_phase4_02	oneByFour	0	0	0	0	100	0		class_medic_phase4_02		combat_general	1772600	2664480							me_ae_heal_5,me_dm_dot_6				1	0
 class_medic_phase4_04	class_medic_phase4_03	oneByFour	0	0	0	0	100	0		class_medic_phase4_03		combat_general	2049600	3074500							me_sh_1,me_bacta_bomb_1				1	0
@@ -1980,10 +1980,10 @@ expertise_of_heal_dam_2	expertise_of_heal_dam_1																					expertise_he
 expertise_of_armor_kin_1	expertise																					expertise_innate_protection_kinetic=500			0	
 expertise_of_armor_kin_2	expertise_of_armor_kin_1																					expertise_innate_protection_kinetic=500			0	
 expertise_of_purge_1	expertise																				of_purge_1				0	
-expertise_of_heal_cool_1	expertise																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
-expertise_of_heal_cool_2	expertise_of_heal_cool_1																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
-expertise_of_heal_cool_3	expertise_of_heal_cool_2																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
-expertise_of_heal_cool_4	expertise_of_heal_cool_3																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20			0	
+expertise_of_heal_cool_1	expertise																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20,healing_ability=10			0	
+expertise_of_heal_cool_2	expertise_of_heal_cool_1																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20,healing_ability=10			0	
+expertise_of_heal_cool_3	expertise_of_heal_cool_2																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20,healing_ability=10			0	
+expertise_of_heal_cool_4	expertise_of_heal_cool_3																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20,healing_ability=10			0	
 sm_title_bootlegger				1		1															sm_off_the_books	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
 sm_title_pirate				1		1															sm_summon_medic	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
 sm_title_master_smuggler				1		1																expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
@@ -2481,10 +2481,10 @@ expertise_trader_factory_production_1	expertise_trader_factory_energy_4									
 expertise_trader_factory_production_2	expertise_trader_factory_production_1																					factory_speed=5				
 expertise_trader_harvester_collection_1	expertise_trader_harvester_energy_4									expertise_trader_harvester_energy_4												expertise_harvester_collection_increase=20				
 expertise_trader_harvester_collection_2	expertise_trader_harvester_collection_1																					expertise_harvester_collection_increase=10				
-expertise_domestic_tailor_dexterity_1	expertise_domestic_tailor_socket_bonus_1									expertise_domestic_tailor_socket_bonus_1												clothing_assembly=5	craftClothingCasualGroupA			
-expertise_domestic_tailor_dexterity_2	expertise_domestic_tailor_dexterity_1																					clothing_assembly=5	craftClothingCasualGroupB			
-expertise_domestic_tailor_dexterity_3	expertise_domestic_tailor_dexterity_2																					clothing_assembly=5	craftClothingCasualGroupC			
-expertise_domestic_tailor_dexterity_4	expertise_domestic_tailor_dexterity_3																					clothing_assembly=5	craftClothingCasualGroupD			
+expertise_domestic_tailor_dexterity_1	expertise_domestic_tailor_socket_bonus_1									expertise_domestic_tailor_socket_bonus_1												clothing_assembly=5,clothing_repair=5	craftClothingCasualGroupA			
+expertise_domestic_tailor_dexterity_2	expertise_domestic_tailor_dexterity_1																					clothing_assembly=5,clothing_repair=5	craftClothingCasualGroupB			
+expertise_domestic_tailor_dexterity_3	expertise_domestic_tailor_dexterity_2																					clothing_assembly=5,clothing_repair=5	craftClothingCasualGroupC			
+expertise_domestic_tailor_dexterity_4	expertise_domestic_tailor_dexterity_3																					clothing_assembly=5,clothing_repair=5	craftClothingCasualGroupD			
 expertise_domestic_artisan_dexterity_1	expertise																					general_assembly=5	craftArtisanNewbieGroupA,craftArtisanNewbieGroupB,craftArtisanSurveyGroupA,craftArtisanEngineeringGroupA,craftArtisanToolGroupA,craftArtisanChemicalGroupA			
 expertise_domestic_artisan_dexterity_2	expertise_domestic_artisan_dexterity_1																					general_assembly=5	craftArtisanEngineeringGroupB,craftArtisanChemicalGroupB			
 expertise_domestic_artisan_dexterity_3	expertise_domestic_artisan_dexterity_2																					general_assembly=5	craftArtisanEngineeringGroupC,craftArtisanChemicalGroupC			
@@ -2567,18 +2567,18 @@ expertise_structure_architect_schematic_2_1	expertise																						craft
 expertise_structure_shipwright_schematic_1_1	expertise																						craftShipwrightExpertiseSchematics1,craftShipwrightNoviceGroupA,craftShipwrightEngGroupA,craftShipwrightPropulsionGroupA,craftShipwrightSystemsGroupA,craftShipwrightDefenseGroupA			
 expertise_structure_shipwright_schematic_2_1	expertise																						craftShipwrightExpertiseSchematics2			
 expertise_structure_shipwright_advanced_theory_1	expertise_structure_shipwright_hypothesis_4									expertise_structure_shipwright_hypothesis_4												chassis_experimentation=10,weapon_systems_experimentation=10,engine_experimentation=10,booster_experimentation=10,power_systems_experimentation=10,shields_experimentation=10,advanced_ship_experimentation=10	craftShipwrightMaster			
-expertise_munition_weaponsmith_dexterity_1	expertise_engineering_weaponsmith_socket_bonus_1									expertise_engineering_weaponsmith_socket_bonus_1												weapon_assembly=5	craftWeaponComponentMeleeGroupA,craftWeaponCoreGroupA,craftWeaponAppearanceMeleeGroupA,craftWeaponAppearanceMeleeGroupB,craftWeaponAppearanceMeleeGroupC			
-expertise_munition_weaponsmith_dexterity_2	expertise_munition_weaponsmith_dexterity_1																					weapon_assembly=5	craftWeaponCoreGroupB,craftWeaponAppearanceMeleeGroupD,craftWeaponAppearanceMeleeGroupE,craftWeaponAppearanceMeleeGroupF			
-expertise_munition_weaponsmith_dexterity_3	expertise_munition_weaponsmith_dexterity_2																					weapon_assembly=5	craftWeaponCoreGroupC,craftWeaponAppearanceMeleeGroupG,craftWeaponAppearanceMeleeGroupH,craftWeaponAppearanceMeleeGroupI			
-expertise_munition_weaponsmith_dexterity_4	expertise_munition_weaponsmith_dexterity_3																					weapon_assembly=5	craftWeaponComponentMeleeGroupB,craftWeaponCoreGroupD,craftWeaponAppearanceMeleeGroupJ,craftWeaponAppearanceMeleeGroupK,craftWeaponAppearanceMeleeGroupL			
+expertise_munition_weaponsmith_dexterity_1	expertise_engineering_weaponsmith_socket_bonus_1									expertise_engineering_weaponsmith_socket_bonus_1												weapon_assembly=5,weapon_repair=5	craftWeaponComponentMeleeGroupA,craftWeaponCoreGroupA,craftWeaponAppearanceMeleeGroupA,craftWeaponAppearanceMeleeGroupB,craftWeaponAppearanceMeleeGroupC			
+expertise_munition_weaponsmith_dexterity_2	expertise_munition_weaponsmith_dexterity_1																					weapon_assembly=5,weapon_repair=5	craftWeaponCoreGroupB,craftWeaponAppearanceMeleeGroupD,craftWeaponAppearanceMeleeGroupE,craftWeaponAppearanceMeleeGroupF			
+expertise_munition_weaponsmith_dexterity_3	expertise_munition_weaponsmith_dexterity_2																					weapon_assembly=5,weapon_repair=5	craftWeaponCoreGroupC,craftWeaponAppearanceMeleeGroupG,craftWeaponAppearanceMeleeGroupH,craftWeaponAppearanceMeleeGroupI			
+expertise_munition_weaponsmith_dexterity_4	expertise_munition_weaponsmith_dexterity_3																					weapon_assembly=5,weapon_repair=5	craftWeaponComponentMeleeGroupB,craftWeaponCoreGroupD,craftWeaponAppearanceMeleeGroupJ,craftWeaponAppearanceMeleeGroupK,craftWeaponAppearanceMeleeGroupL			
 expertise_munition_artisan_dexterity_1	expertise																					general_assembly=5	craftArtisanNewbieGroupA,craftArtisanNewbieGroupB,craftArtisanSurveyGroupA,craftArtisanEngineeringGroupA,craftArtisanToolGroupA,craftArtisanChemicalGroupA			
 expertise_munition_artisan_dexterity_2	expertise_munition_artisan_dexterity_1																					general_assembly=5	craftArtisanEngineeringGroupB,craftArtisanChemicalGroupB			
 expertise_munition_artisan_dexterity_3	expertise_munition_artisan_dexterity_2																					general_assembly=5	craftArtisanEngineeringGroupC,craftArtisanChemicalGroupC			
 expertise_munition_artisan_dexterity_4	expertise_munition_artisan_dexterity_3																					general_assembly=5	CraftArtisanEngineeringGroupD,craftArtisanMasterGroupA,craftArtisanVehicle,craftArtisanChemicalGroupD			
-expertise_munition_armorsmith_dexterity_1	expertise_munition_armorsmith_socket_bonus_1									expertise_munition_armorsmith_socket_bonus_1												armor_assembly=5	craftArmorAppearanceGroupB			
-expertise_munition_armorsmith_dexterity_2	expertise_munition_armorsmith_dexterity_1																					armor_assembly=5	craftArmorAppearanceGroupC			
-expertise_munition_armorsmith_dexterity_3	expertise_munition_armorsmith_dexterity_2																					armor_assembly=5	craftArmorAppearanceGroupD			
-expertise_munition_armorsmith_dexterity_4	expertise_munition_armorsmith_dexterity_3																					armor_assembly=5	craftArmorAppearanceGroupE			
+expertise_munition_armorsmith_dexterity_1	expertise_munition_armorsmith_socket_bonus_1									expertise_munition_armorsmith_socket_bonus_1												armor_assembly=5,armor_repair=5	craftArmorAppearanceGroupB			
+expertise_munition_armorsmith_dexterity_2	expertise_munition_armorsmith_dexterity_1																					armor_assembly=5,armor_repair=5	craftArmorAppearanceGroupC			
+expertise_munition_armorsmith_dexterity_3	expertise_munition_armorsmith_dexterity_2																					armor_assembly=5,armor_repair=5	craftArmorAppearanceGroupD			
+expertise_munition_armorsmith_dexterity_4	expertise_munition_armorsmith_dexterity_3																					armor_assembly=5,armor_repair=5	craftArmorAppearanceGroupE			
 expertise_munition_weaponsmith_insight_1	expertise																					expertise_complexity_decrease_weaponsmith=1				
 expertise_munition_weaponsmith_insight_2	expertise_munition_weaponsmith_insight_1																					expertise_complexity_decrease_weaponsmith=1				
 expertise_munition_artisan_hypothesis_1	expertise_munition_artisan_dexterity_4									expertise_munition_artisan_dexterity_4												expertise_experimentation_increase_artisan=3				
@@ -2614,10 +2614,10 @@ expertise_engineering_droid_dexterity_1	expertise_engineering_droid_schematic_1_
 expertise_engineering_droid_dexterity_2	expertise_engineering_droid_dexterity_1																					droid_assembly=5	craftdroidGroupC			
 expertise_engineering_droid_dexterity_3	expertise_engineering_droid_dexterity_2																					droid_assembly=5	craftdroidGroupD			
 expertise_engineering_droid_dexterity_4	expertise_engineering_droid_dexterity_3																					droid_assembly=5	craftdroidGroupE			
-expertise_engineering_artisan_dexterity_1	expertise																					general_assembly=5	craftArtisanNewbieGroupA,craftArtisanNewbieGroupB,craftArtisanSurveyGroupA,craftArtisanEngineeringGroupA,craftArtisanToolGroupA,craftArtisanChemicalGroupA			
-expertise_engineering_artisan_dexterity_2	expertise_engineering_artisan_dexterity_1																					general_assembly=5	craftArtisanEngineeringGroupB,craftArtisanChemicalGroupB			
-expertise_engineering_artisan_dexterity_3	expertise_engineering_artisan_dexterity_2																					general_assembly=5	craftArtisanEngineeringGroupC,craftArtisanChemicalGroupC			
-expertise_engineering_artisan_dexterity_4	expertise_engineering_artisan_dexterity_3																					general_assembly=5	CraftArtisanEngineeringGroupD,craftArtisanMasterGroupA,craftArtisanVehicle,craftArtisanChemicalGroupD			
+expertise_engineering_artisan_dexterity_1	expertise																					general_assembly=5,repair=5	craftArtisanNewbieGroupA,craftArtisanNewbieGroupB,craftArtisanSurveyGroupA,craftArtisanEngineeringGroupA,craftArtisanToolGroupA,craftArtisanChemicalGroupA			
+expertise_engineering_artisan_dexterity_2	expertise_engineering_artisan_dexterity_1																					general_assembly=5,repair=5	craftArtisanEngineeringGroupB,craftArtisanChemicalGroupB			
+expertise_engineering_artisan_dexterity_3	expertise_engineering_artisan_dexterity_2																					general_assembly=5,repair=5	craftArtisanEngineeringGroupC,craftArtisanChemicalGroupC			
+expertise_engineering_artisan_dexterity_4	expertise_engineering_artisan_dexterity_3																					general_assembly=5,repair=5	CraftArtisanEngineeringGroupD,craftArtisanMasterGroupA,craftArtisanVehicle,craftArtisanChemicalGroupD			
 expertise_engineering_flame_jet_1	expertise																						craftExpertiseFlameJetModule			
 expertise_engineering_electrical_shock_1	expertise																						craftExpertiseElectricalShockModule			
 expertise_engineering_droid_insight_1	expertise																					expertise_complexity_decrease_droid=1				
@@ -2830,12 +2830,12 @@ class_chronicles_16	class_chronicles_15		0	0	0	0	0	0		class_chronicles_15		chron
 class_chronicles_master	class_chronicles_16		0	1	0	0	0	0		class_chronicles_16		chronicles	1365000	1365000							meditate				1	0
 faction_rank			1	0	0	1	0	0						0											0	0
 faction_rank_mando	faction_rank		1	0	1	1	0	0						0											0	0
-faction_rank_mando_novice	faction_rank_mando		1	1	0	1	0	0					0	0								armor_assembly=10,armor_experimentation=10,armor_customization=10			0	0
-faction_rank_mando_master	faction_rank_mando_novice		1	1	0	1	0	0		faction_rank_mando_novice			0	0								armor_assembly=10,armor_experimentation=10,armor_customization=10			0	0
+faction_rank_mando_novice	faction_rank_mando		1	1	0	1	0	0					0	0								armor_assembly=10,armor_experimentation=10,armor_customization=10.weapon_assembly=10,weapon_experimentation=10,weapon_customization=10			0	0
+faction_rank_mando_master	faction_rank_mando_novice		1	1	0	1	0	0		faction_rank_mando_novice			0	0								armor_assembly=10,armor_experimentation=10,armor_customization=10.weapon_assembly=10,weapon_experimentation=10,weapon_customization=10			0	0
 social_language_mando_speak	social_language		0	1	0	0	0	0					0	0				bothan,human,moncalamari,rodian,trandoshan,twilek,zabrak			language+mando	language_mando_speak=100			0	0
 social_language_mando_comprehend	social_language		0	0	0	0	0	0					0	0								language_mando_comprehend=100			0	0
 stardust_pvp				1		1															bountycheck				0	
-stardust_spy				1		1															bountycheck,sm_inside_information				0	
+stardust_spy				1		1															sm_inside_information				0	
 stardust_ace_of_aces				1		1															cert_starships_firespray,cert_starships_tieoppressor,cert_starships_gunship_imperial,cert_starships_decimator,cert_starships_bwing,cert_starships_gunship_rebel,cert_starships_yt1300,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral,cert_starships_ykl37r,cert_starships_z95headhunter,cert_starships_ywing,cert_starships_ywinglongprobe,cert_starships_vwing,cert_starships_xwing,cert_starships_awing,cert_starships_arc170,cert_starships_grievous,cert_starships_jedistarfighter,cert_starships_advancedxwing,cert_starships_twing, cert_starships_decimator,cert_starships_tiefighterlight,cert_starships_tiefighter,cert_starships_tiefighterin,cert_starships_tieinterceptor,cert_starships_tiebomber,cert_starships_tieadvanced,cert_starships_tieaggressor,cert_starships_tieinterceptorimperialguard,cert_starships_tiedefender,cert_starships_lighthuttfighter,cert_starships_mediumhuttfighter,cert_starships_heavyhuttfighter,cert_starships_lightblacksunfighter,cert_naboo_n1,cert_starships_mediumblacksunfighter,cert_starships_heavyblacksunfighter,cert_starships_havoc,cert_starships_blacksunvaksai,cert_starships_blacksunheavyvaksai				0	
 stardust_admiral_imperial				1		1															cert_gunship_stardestroyer				0	
 stardust_admiral_republic				1		1																			0	

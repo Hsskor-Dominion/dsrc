@@ -625,11 +625,11 @@ item_tow_bracelet_survey_03_01	surveying=20
 item_tow_bracelet_proc_melee_03_01					proc_tow_proc_bracelet_melee			75			
 item_tow_bracelet_proc_rng_03_01					proc_tow_proc_bracelet_range			75			
 item_tow_bracelet_proc_combat_03_01					proc_tow_proc_bracelet_combo			75			
-item_tow_necklace_taming_03_01			int:skillmod.bonus.bm_creature_knowledge=2								
-item_tow_necklace_taming_03_02			int:skillmod.bonus.bm_creature_knowledge=4								
-item_tow_necklace_taming_03_03			int:skillmod.bonus.bm_creature_knowledge=6								
-item_tow_necklace_taming_03_04			int:skillmod.bonus.bm_creature_knowledge=8								
-item_tow_necklace_taming_03_05			int:skillmod.bonus.bm_creature_knowledge=10								
+item_tow_necklace_taming_03_01			int:skillmod.bonus.bm_creature_knowledge=2,int:skillmod.bonus.bm_xp_mod_boost=20								
+item_tow_necklace_taming_03_02			int:skillmod.bonus.bm_creature_knowledge=4,int:skillmod.bonus.bm_xp_mod_boost=40								
+item_tow_necklace_taming_03_03			int:skillmod.bonus.bm_creature_knowledge=6,int:skillmod.bonus.bm_xp_mod_boost=60								
+item_tow_necklace_taming_03_04			int:skillmod.bonus.bm_creature_knowledge=8,int:skillmod.bonus.bm_xp_mod_boost=80								
+item_tow_necklace_taming_03_05			int:skillmod.bonus.bm_creature_knowledge=10,int:skillmod.bonus.bm_xp_mod_boost=100								
 item_tow_ring_armorsmith_04_01					towArmorAssembly						
 item_tow_ring_weaponsmith_04_01					towWeaponAssembly						
 item_tow_ring_droideng_04_01					towDroidAssembly						
@@ -3484,7 +3484,7 @@ col_rebel_rank_cpt_01_01			string:collection.slotName=col_rebel_rank_01:col_rebe
 col_rebel_rank_gen_01_01			string:collection.slotName=col_rebel_rank_01:col_rebel_rank_gen_01_01								
 col_rebel_rank_lt_01_01			string:collection.slotName=col_rebel_rank_01:col_rebel_rank_lt_01_01								
 col_rebel_rank_maj_01_01			string:collection.slotName=col_rebel_rank_01:col_rebel_rank_maj_01_01								
-heroic_minder_creature_knowledge_gloves_02_01			int:skillmod.bonus.bm_creature_knowledge=1								
+heroic_minder_creature_knowledge_gloves_02_01			int:skillmod.bonus.bm_creature_knowledge=10,int:skillmod.bonus.bm_xp_mod_boost=100								
 col_trophy_bane_back_spider_02_01											
 col_trophy_finned_blaggart_02_01											
 col_trophy_murra_blanca_02_01											
@@ -4281,7 +4281,7 @@ item_tcg_loot_reward_series5_tiefighter_chair
 item_tcg_loot_reward_series5_deathstar_hologram											
 item_tcg_loot_reward_series5_theater_poster											
 item_tcg_loot_reward_series5_galactic_hunters_poster											
-item_tcg_loot_reward_series5_jabbas_roasting_spit			int:crafting.creator.xpType=46,int:crafting.private=1,int:crafting.repair_type=512,int:crafting.station=1,float:crafting.stationMod=45.000000,int:crafting.type=8644								
+item_tcg_loot_reward_series5_jabbas_roasting_spit			int:crafting.creator.xpType=46,int:crafting.private=1,int:crafting.repair_type=512,int:crafting.station=1,float:crafting.stationMod=35.000000,int:crafting.type=8644								
 item_tcg_loot_reward_series5_house_sign	special_sign_tcg_series5=1		string:static_item=item_tcg_loot_reward_series5_house_sign								
 item_tcg_loot_reward_series5_atat_head_itv			string:tcg.combineItemTemplatePattern=object/tangible/tcg/series5/combine_object_,string:tcg.setName=set5_atat,int:returnObjectToOwner=1								
 item_tcg_loot_reward_series5_lcd_screen											

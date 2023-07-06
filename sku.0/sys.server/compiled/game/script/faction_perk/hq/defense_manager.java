@@ -188,6 +188,7 @@ public class defense_manager extends script.base_script
         int myFac = pvpGetAlignedFaction(self);
         String myFacName = factions.getFaction(self);
         obj_id defense;
+        //fixed some issues that was causing the wrong sized turrets to be spawned. Credit to Rezec
         if (defenseType.equals("turret"))
         {
             int turretType = advanced_turret.TYPE_BLOCK;
@@ -203,6 +204,18 @@ public class defense_manager extends script.base_script
                 turretMinDam = 5000;
                 turretMaxDam = 7000;
                 turretSpeed = 3.0f;
+                if (template.contains("lg"))
+                {
+                    turretSize = advanced_turret.SIZE_LARGE;
+                    turretHitpoints = 600000;
+                    turretRange = 96.0f;
+                }
+                else if (template.contains("med"))
+                {
+                    turretSize = advanced_turret.SIZE_MEDIUM;
+                    turretHitpoints = 400000;
+                    turretRange = 80.0f;
+                }
             }
             else if (template.contains("dish"))
             {
@@ -210,6 +223,18 @@ public class defense_manager extends script.base_script
                 turretMinDam = 1750;
                 turretMaxDam = 2250;
                 turretSpeed = 1.0f;
+                if (template.contains("lg"))
+                {
+                    turretSize = advanced_turret.SIZE_LARGE;
+                    turretHitpoints = 600000;
+                    turretRange = 96.0f;
+                }
+                else if (template.contains("med"))
+                {
+                    turretSize = advanced_turret.SIZE_MEDIUM;
+                    turretHitpoints = 400000;
+                    turretRange = 80.0f;
+                }
             }
             else if (template.contains("lg"))
             {

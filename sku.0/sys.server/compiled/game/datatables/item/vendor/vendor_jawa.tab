@@ -36,3 +36,6 @@ costume_ig106	100
 costume_droid_8t88	100								
 item_costume_toydarian	100								
 item_costume_kit	1								
+object/tangible/crafting/station/armor_repair.iff	500000								
+object/tangible/crafting/station/clothing_repair.iff	500000								
+object/tangible/crafting/station/weapon_repair.iff	500000								
