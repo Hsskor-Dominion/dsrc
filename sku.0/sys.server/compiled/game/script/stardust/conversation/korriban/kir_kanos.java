@@ -26,7 +26,7 @@ public class kir_kanos extends script.base_script
     public boolean kir_kanos_sithFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float sithFaction = factions.getFactionStanding(player, "sith_shadow");
-        return sithFaction >= 1000;
+        return sithFaction >= 5000;
     }
     public boolean kir_kanos_phase1_condition(obj_id npc, obj_id player)
     {
@@ -160,7 +160,7 @@ public class kir_kanos extends script.base_script
     {
         if (response.equals("force_trade"))
         {
-            if (kir_kanos_sithFriend_condition(npc, player))
+            if (kir_kanos_sithFriend_condition(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_trade");
 
@@ -237,7 +237,6 @@ public class kir_kanos extends script.base_script
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
-        setCondition(self, CONDITION_INTERESTING);
 
         setName(self, "Kir Kanos (Imperial Royal Guard)");
 
@@ -247,7 +246,6 @@ public class kir_kanos extends script.base_script
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
-        setCondition(self, CONDITION_INTERESTING);
 
         setName(self, "Kir Kanos (Imperial Royal Guard)");
 

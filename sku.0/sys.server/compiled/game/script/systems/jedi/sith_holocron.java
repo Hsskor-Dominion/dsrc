@@ -20,7 +20,7 @@ public class sith_holocron extends script.base_script
 
     public boolean isSithExplore(obj_id player, obj_id npc) throws InterruptedException
     {
-        return ((hasCompletedCollectionSlot(player, "col_jedi_npc_kill") || hasCompletedCollectionSlot(player, "col_exar_kun_01") || badge.hasBadge(player, "bdg_must_obiwan_story_bad") || hasCompletedCollectionSlot(player, "inv_holocron_collection_02") || hasCompletedCollectionSlot(player, "col_axkva_min_01")) && badge.hasBadge(player, "count_50"));
+        return ((badge.hasBadge(player, "bdg_col_jedi_npc_kill") || badge.hasBadge(player, "bdg_must_obiwan_story_bad") || badge.hasBadge(player, "bdg_ground_dwartii_statue_crafting") ||badge.hasBadge(player, "bdg_kill_axkva_min")) && badge.hasBadge(player, "count_50"));
     }
 
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException

@@ -46,7 +46,7 @@ public class darth_lumiya extends script.base_script
     }
     public boolean darth_lumiya_sith_quest_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "stardust_darth_lumiya", "talktodarth_lumiya");
+        return groundquests.hasCompletedQuest(player, "sith_hunt_jedi");
     }
     public void darth_lumiya_sith_signalReward(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -146,7 +146,7 @@ public class darth_lumiya extends script.base_script
     {
         if (response.equals("force_trade"))
         {
-            if (darth_lumiya_sithFriend_condition(npc, player))
+            if (darth_lumiya_sithFriend_condition(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_trade");
 
@@ -173,7 +173,16 @@ public class darth_lumiya extends script.base_script
     {
         if (response.equals("seek_balance2"))
         {
-            if (darth_lumiya_phase1_condition(npc, player))
+            if (darth_lumiya_sith_quest_condition_playerFinishedMainTask(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "npc_offer_mission");
+
+                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (darth_lumiya_sithFriend_condition(player, npc))
             {
                 groundquests.grantQuest(player, "sith_hunt_jedi");
                 final string_id message = new string_id(c_stringFile, "npc_offer_mission");
