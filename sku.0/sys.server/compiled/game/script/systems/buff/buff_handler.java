@@ -519,24 +519,25 @@ public class buff_handler extends script.base_script
         stopClientEffectObjByLabel(self, effectName);
         return SCRIPT_CONTINUE;
     }
-    public int forcePowerAddBuffHandler(obj_id self, String effectName, String subtype, float duration, float value, String buffName, obj_id caster) throws InterruptedException
-    {
-        addSkillModModifier(self, effectName, subtype, (int)value, duration, false, false);
-        messageTo(self, "handleRecalculateForce", null, 0.1f, false);
-        return SCRIPT_CONTINUE;
-    }
-    public int forcePowerRemoveBuffHandler(obj_id self, String effectName, String subtype, float duration, float value, String buffName, obj_id caster) throws InterruptedException
-    {
-        if (hasSkillModModifier(self, effectName))
-        {
-            removeAttribOrSkillModModifier(self, effectName);
-        }
-        effectName = effectName.substring(0, (effectName.lastIndexOf("_")));
-        combat.removeCombatBuffEffect(self, effectName);
-        stopClientEffectObjByLabel(self, effectName);
-        jedi.recalculateForcePower(self);
-        return SCRIPT_CONTINUE;
-    }
+//    public int forcePowerAddBuffHandler(obj_id self, String effectName, String subtype, float duration, float value, String buffName, obj_id caster) throws InterruptedException
+//    {
+//        addSkillModModifier(self, effectName, subtype, (int)value, duration, false, false);
+//        messageTo(self, "handleRecalculateForce", null, 0.1f, false);
+//        return SCRIPT_CONTINUE;
+//    }
+//    public int forcePowerRemoveBuffHandler(obj_id self, String effectName, String subtype, float duration, float value, String buffName, obj_id caster) throws InterruptedException
+//    {
+//        if (hasSkillModModifier(self, effectName))
+//        {
+//            removeAttribOrSkillModModifier(self, effectName);
+//        }
+//        effectName = effectName.substring(0, (effectName.lastIndexOf("_")));
+//        combat.removeCombatBuffEffect(self, effectName);
+//        stopClientEffectObjByLabel(self, effectName);
+//        jedi.recalculateForcePower(self);
+//        return SCRIPT_CONTINUE;
+//    }
+    //testing to see if this fixes jedi attribute issues
     public int saberInterceptAddBuffHandler(obj_id self, String effectName, String subtype, float duration, float value, String buffName, obj_id caster) throws InterruptedException
     {
         utils.setScriptVar(self, combat.DAMAGE_REDIRECT, caster);

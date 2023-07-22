@@ -10,8 +10,8 @@ public class hq extends script.base_script
     public hq()
     {
     }
-    public static final float VULNERABILITY_CYCLE = 172800.0f;
-    public static final float VULNERABILITY_LENGTH = 10800.0f;
+    public static final float VULNERABILITY_CYCLE = 86400.0f; // 1 day (24 hours)
+    public static final float VULNERABILITY_LENGTH = 57600.0f; // 16 hours
     public static final String SCRIPT_CLONING_OVERRIDE = "faction_perk.hq.terminal_cloning_override";
     public static final String SCRIPT_INSURANCE_OVERRIDE = "faction_perk.hq.terminal_insurance_override";
     public static final String SCRIPT_TERMINAL_DISABLE = "faction_perk.hq.terminal_disable";

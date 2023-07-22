@@ -1,6 +1,6 @@
 template	name	requiredGcwRank	requiredFaction	pvpPlus	cost	declared	requiredClasses	classIDs	requiredLevel	uses	requiredSkill
 s	s	i	s	b[0]	i[10000]	i[0]	s	c	i[1]	i	s
-static:item_consumable_detect_hidden_02_04	Experimental Electrobinoculars	1	Either		2500	0		OFFICER = 4			
+static:item_consumable_detect_hidden_02_04	Experimental Electrobinoculars	3	Either		2500	0		OFFICER = 4			
 stealth:prx_trapCaltrop:100:5	Proximity Caltrop Trap x 5 [PvP+]	1	Either	1	6500		1,5,6	SPY = 5			
 stealth:rmt_trapCaltrop:100:5	Remote Caltrop Trap x 5	1	Either		8000		1,5,6	BOUNTY HUNTER = 6			
 stealth:prx_trapFlashbang:100:5	Proximity Flashbang Trap x 5 [PvP+]	1	Either	1	6500		1,5,6	FORCE_SENSITIVE = 7			

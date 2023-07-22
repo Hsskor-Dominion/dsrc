@@ -1661,7 +1661,7 @@ expertise_fs_general_exacting_strikes_1	expertise																					expertise_
 expertise_fs_general_exacting_strikes_2	expertise_fs_general_exacting_strikes_1																					expertise_damage_line_fs_sweep=2,expertise_damage_line_fs_dm=2			0	
 expertise_fs_general_exacting_strikes_3	expertise_fs_general_exacting_strikes_2																					expertise_damage_line_fs_sweep=2,expertise_damage_line_fs_dm=2			0	
 expertise_fs_general_exacting_strikes_4	expertise_fs_general_exacting_strikes_3																					expertise_damage_line_fs_sweep=2,expertise_damage_line_fs_dm=2			0	
-expertise_fs_general_force_cloak_1	expertise																				fs_buff_invis_1				0	
+expertise_fs_general_force_cloak_1	expertise																				fs_buff_invis_1	expertise_force_cloak_combat_escape=1			0	
 expertise_fs_general_heightened_speed_1	expertise																					expertise_movement_buff_fs_force_run=10			0	
 expertise_fs_general_heightened_speed_2	expertise_fs_general_heightened_speed_1																					expertise_movement_buff_fs_force_run=10			0	
 expertise_fs_general_heightened_speed_3	expertise_fs_general_heightened_speed_2																					expertise_movement_buff_fs_force_run=10			0	
@@ -2614,10 +2614,10 @@ expertise_engineering_droid_dexterity_1	expertise_engineering_droid_schematic_1_
 expertise_engineering_droid_dexterity_2	expertise_engineering_droid_dexterity_1																					droid_assembly=5	craftdroidGroupC			
 expertise_engineering_droid_dexterity_3	expertise_engineering_droid_dexterity_2																					droid_assembly=5	craftdroidGroupD			
 expertise_engineering_droid_dexterity_4	expertise_engineering_droid_dexterity_3																					droid_assembly=5	craftdroidGroupE			
-expertise_engineering_artisan_dexterity_1	expertise																					general_assembly=5,repair=5	craftArtisanNewbieGroupA,craftArtisanNewbieGroupB,craftArtisanSurveyGroupA,craftArtisanEngineeringGroupA,craftArtisanToolGroupA,craftArtisanChemicalGroupA			
-expertise_engineering_artisan_dexterity_2	expertise_engineering_artisan_dexterity_1																					general_assembly=5,repair=5	craftArtisanEngineeringGroupB,craftArtisanChemicalGroupB			
-expertise_engineering_artisan_dexterity_3	expertise_engineering_artisan_dexterity_2																					general_assembly=5,repair=5	craftArtisanEngineeringGroupC,craftArtisanChemicalGroupC			
-expertise_engineering_artisan_dexterity_4	expertise_engineering_artisan_dexterity_3																					general_assembly=5,repair=5	CraftArtisanEngineeringGroupD,craftArtisanMasterGroupA,craftArtisanVehicle,craftArtisanChemicalGroupD			
+expertise_engineering_artisan_dexterity_1	expertise																					general_assembly=5,crafting_repair=5	craftArtisanNewbieGroupA,craftArtisanNewbieGroupB,craftArtisanSurveyGroupA,craftArtisanEngineeringGroupA,craftArtisanToolGroupA,craftArtisanChemicalGroupA			
+expertise_engineering_artisan_dexterity_2	expertise_engineering_artisan_dexterity_1																					general_assembly=5,crafting_repair=5	craftArtisanEngineeringGroupB,craftArtisanChemicalGroupB			
+expertise_engineering_artisan_dexterity_3	expertise_engineering_artisan_dexterity_2																					general_assembly=5,crafting_repair=5	craftArtisanEngineeringGroupC,craftArtisanChemicalGroupC			
+expertise_engineering_artisan_dexterity_4	expertise_engineering_artisan_dexterity_3																					general_assembly=5,crafting_repair=5	CraftArtisanEngineeringGroupD,craftArtisanMasterGroupA,craftArtisanVehicle,craftArtisanChemicalGroupD			
 expertise_engineering_flame_jet_1	expertise																						craftExpertiseFlameJetModule			
 expertise_engineering_electrical_shock_1	expertise																						craftExpertiseElectricalShockModule			
 expertise_engineering_droid_insight_1	expertise																					expertise_complexity_decrease_droid=1				

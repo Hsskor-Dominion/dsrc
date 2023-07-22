@@ -60,9 +60,9 @@ public class terminal extends script.terminal.base.base_terminal
 
         obj_id structure = player_structure.getStructure(player);
 
-//        if (hasSkill(player, "class_spy_phase1_novice") || hasSkill(player, "stardust_spy")) {
-//            mi.addRootMenu(menu_info_types.SERVER_MENU13, MNU_SPYNET);
-//        }
+        if (hasSkill(player, "class_spy_phase1_novice") || hasSkill(player, "stardust_spy")) {
+            mi.addRootMenu(menu_info_types.SERVER_MENU13, MNU_SPYNET);
+        }
 
         if (hasSkill(player, "pvp_rebel_airstrike_ability") || hasSkill(player, "pvp_imperial_airstrike_ability")) {
             mi.addRootMenu(menu_info_types.SERVER_MENU12, MNU_OVERLOAD_GOD);
@@ -161,41 +161,7 @@ public class terminal extends script.terminal.base.base_terminal
         obj_id structure = player_structure.getStructure(player);
         if (item == menu_info_types.SERVER_MENU13)
         {
-                {
-                    if (hasObjVar(structure, "isPvpBase"))
-                    {
-                        int hqBlackoutPeriodStart = utils.getIntConfigSetting("ScriptFlags", "hqBlackoutPeriodStart");
-                        if (hqBlackoutPeriodStart == 0)
-                        {
-                            hqBlackoutPeriodStart = 2;
-                        }
-                        int hqBlackoutPeriodEnd = utils.getIntConfigSetting("ScriptFlags", "hqBlackoutPeriodEnd");
-                        if (hqBlackoutPeriodEnd == 0)
-                        {
-                            hqBlackoutPeriodEnd = 6;
-                        }
-                        Calendar currentCalendar = Calendar.getInstance();
-                        int currentHourOfDay = currentCalendar.get(Calendar.HOUR_OF_DAY);
-                        if ((currentHourOfDay >= hqBlackoutPeriodStart) && (currentHourOfDay <= hqBlackoutPeriodEnd))
-                        {
-                            prose_package pp1a = prose.getPackage(new string_id(STRING_FILE_LOC, "terminal_response32"), hqBlackoutPeriodStart);
-                            prose_package pp2a = prose.getPackage(new string_id(STRING_FILE_LOC, "terminal_response37"), hqBlackoutPeriodEnd);
-                            String oob1 = packOutOfBandProsePackage(null, pp1a);
-                            oob1 = packOutOfBandProsePackage(oob1, pp2a);
-                            sendSystemMessageOob(player, oob1);
-                            sendSystemMessageProse(player, prose.getPackage(new string_id(STRING_FILE_LOC, "terminal_response38"), currentHourOfDay));
-                        }
-                        else
-                        {
-                            long now = System.currentTimeMillis();
-                            long curTime = ((now / 1000) - 1072396555);
-                            int currentTime = (int)curTime;
-                            setObjVar(structure, hq.VAR_OBJECTIVE_STAMP, currentTime);
-                            setObjVar(structure, "lastReset", getGameTime());
-                            sendSystemMessage(player, SID_VULNERABILITY_RESET);
-                        }
-                    }
-            }//spy should learn fo vulnerability time, or pull up structure status similar to player admin
+            //this eventually will either show vulnerability time or make the base vulnerable
         }
         int intState = getState(player, STATE_FEIGN_DEATH);
         if (isDead(player) || isIncapacitated(player) || intState > 0)

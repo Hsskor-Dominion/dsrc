@@ -115,6 +115,7 @@ public class objective_terminal_uplink extends script.faction_perk.hq.objective_
             {
                 sendSystemMessage(player, BEGIN_SCANNING);
                 playJammingGame(self, player);
+                sendBaseSliceNotification(player);
             }
             else 
             {
@@ -125,6 +126,13 @@ public class objective_terminal_uplink extends script.faction_perk.hq.objective_
             }
         }
         return SCRIPT_CONTINUE;
+    }
+    private void sendBaseSliceNotification(obj_id player) throws InterruptedException
+    {
+        // Adjust the message to fit your requirements
+        string_id messageId = new string_id("stardust", "base_slice_notification");
+        prose_package pp = prose.getPackage(messageId, player);
+        sendFactionalSystemMessagePlanet(pp, null, -1.0f, true, true);
     }
     private void playJammingGame(obj_id self, obj_id player) throws InterruptedException
     {

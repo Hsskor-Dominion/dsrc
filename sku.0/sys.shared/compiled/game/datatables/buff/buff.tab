@@ -921,8 +921,8 @@ invis_sp_buff_stealth_2	invisibility			4	command.stealth	-1	invis	0	movement	0		
 invis_sp_buff_stealth_3	invisibility			4	command.stealth	-1	invis	0	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 invis_sp_buff_stealth_4	invisibility			4	command.stealth	-1	invis	0	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 fs_force_run	fs_force_run			1	command.forceRun	15	slope_move	5	movement	0	movement_resist_snare	100	movement_resist_root	100		0	STATE_NONE	none	clienteffect/pl_force_run.cef,appearance/pt_force_speed.prt		1	0		1	1	1	0	1	1	0	1	1	1
-veteranPlayerBuff	vetBuff			1	command.veteranPlayerBuff	900	group	0	xp_bonus_general	50	general_assembly	10	general_experimentation	10	expertise_en_inspire_pulse_duration_increase	5	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-agiConsumable5	genBuff_3			3	command.diveShot	300	agility_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+veteranPlayerBuff	vetBuff			1	command.veteranPlayerBuff	900	group	0	xp_bonus_general	50	tcg_gcw_bonus	10	expertise_en_inspire_pulse_duration_increase	5			STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+agiConsumable5	genBuff_3			3	command.diveShot	300	agility_modified	5		0				0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 agiConsumable10	genBuff_3			4	command.diveShot	300	agility_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 agiConsumable15	genBuff_3			5	command.diveShot	300	agility_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 agiConsumable20	genBuff_3			6	command.diveShot	300	agility_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1051,10 +1051,10 @@ proc_gcw_base_damage_d	gcwProcBuff			94	command.detonateDroid	180	proc_buff	1		0
 proc_gcw_base_damage_e	gcwProcBuff			95	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 banner_buff_commando	banner_com			1	Roadmap.commando	600	proc_buff	1	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 banner_buff_smuggler	banner_smug			1	Roadmap.smuggler	600	luck_modified	100	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-banner_buff_medic	banner_med			1	Roadmap.medic	600	constitution_modified	100	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-banner_buff_officer	banner_off			1	Roadmap.officer	600	precision_modified	100	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+banner_buff_medic	banner_med			1	Roadmap.medic	600	expertise_buff_duration_line_me_enhance	1200	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+banner_buff_officer	banner_off			1	Roadmap.officer	600	tcg_gcw_bonus	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	10	1	0	1	1	1
 banner_buff_spy	banner_spy			1	Roadmap.spy	600	agility_modified	100	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-banner_buff_bounty_hunter	banner_bh			1	Roadmap.bounty_hunter	600	expertise_critical_niche_all	5	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+banner_buff_bounty_hunter	banner_trad			1	Roadmap.bounty_hunter	600	expertise_resource_quality_increase	1	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 banner_buff_force_sensitive	banner_jedi			1	Roadmap.force_sensitive	600	strength_modified	100	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 gcw_base_damage_shield_a	gcw_damage_shield			1	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 gcw_base_damage_shield_b	gcw_damage_shield			2	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1129,10 +1129,10 @@ of_vortex_snare	snare			91	command.of_vortex	12	movement	0		0		0		0		0	STATE_NON
 proc_pvp_despair	procBuff			5	command.shock	-1	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 pvp_despair	pvpDebuff			15	command.shock	30	luck_modified	-40	precision_modified	-15	agility_modified	-30		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 of_last_words	deadOfficersFTW			91	command.of_last_words	30	healing_health	3500	healing_action	6000	expertise_damage_all	10	expertise_action_all	10		0	STATE_NONE	of_last_words_recourse	clienteffect/off_last_words.cef		1	0		1	1	1	0	1	1	0	1	1	1
-pvp_aura_buff_self	pvpAuraBuff			100	command.pvp_aura_buff_self	180	agility_modified	200	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750	pvp_aura_buff_self	0	STATE_NONE	none	appearance/pt_aurabuff_imperial_caster.prt		1	0		1	1	1	0	1	1	0	1	1	1
-pvp_aura_buff_target	pvpAuraBuff			99	command.pvp_aura_buff_self	10	agility_modified	200	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750		0	STATE_NONE	none	appearance/pt_aurabuff_imperial.prt		1	0		1	1	1	0	1	1	0	1	1	1
-pvp_aura_buff_rebel_self	pvpAuraBuff			100	command.pvp_aura_buff_rebel_self	180	agility_modified	200	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750	pvp_aura_buff_self	0	STATE_NONE	none	appearance/pt_aurabuff_rebel_caster.prt		1	0		1	1	1	0	1	1	0	1	1	1
-pvp_aura_buff_rebel_target	pvpAuraBuff			99	command.pvp_aura_buff_rebel_self	10	agility_modified	200	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750		0	STATE_NONE	none	appearance/pt_aurabuff_rebel.prt		1	0		1	1	1	0	1	1	0	1	1	1
+pvp_aura_buff_self	pvpAuraBuff			100	command.pvp_aura_buff_self	180	tcg_gcw_bonus	10	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750	pvp_aura_buff_self	0	STATE_NONE	none	appearance/pt_aurabuff_imperial_caster.prt		1	0		1	1	1	0	1	1	0	1	1	1
+pvp_aura_buff_target	pvpAuraBuff			99	command.pvp_aura_buff_self	10	tcg_gcw_bonus	10	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750		0	STATE_NONE	none	appearance/pt_aurabuff_imperial.prt		1	0		1	1	1	0	1	1	0	1	1	1
+pvp_aura_buff_rebel_self	pvpAuraBuff			100	command.pvp_aura_buff_rebel_self	180	tcg_gcw_bonus	10	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750	pvp_aura_buff_self	0	STATE_NONE	none	appearance/pt_aurabuff_rebel_caster.prt		1	0		1	1	1	0	1	1	0	1	1	1
+pvp_aura_buff_rebel_target	pvpAuraBuff			99	command.pvp_aura_buff_rebel_self	10	tcg_gcw_bonus	10	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750		0	STATE_NONE	none	appearance/pt_aurabuff_rebel.prt		1	0		1	1	1	0	1	1	0	1	1	1
 of_firepower	of_firepower			90	command.of_firepower	30	expertise_damage_line_of_aoe	125	expertise_critical_line_of_aoe	50		0		0		0	STATE_NONE	none	clienteffect/off_superior_firepower.cef		1	0		1	1	1	0	1	1	0	1	1	1
 of_tactical_drop_1	genBuff_3			26	command.powerBoost	900	constitution_modified	75		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 of_tactical_drop_2	genBuff_3			34	command.powerBoost	900	constitution_modified	75	expertise_critical_niche_all	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1978,8 +1978,8 @@ of_pt_proxy_7	pt_proxy			62	command.of_deb_def	1	paint_target	7		0		0		0		0	STAT
 of_pt_proxy_8	pt_proxy			72	command.of_deb_def	1	paint_target	8		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 of_deadeye_debuff	deadeye_debuff			70	command.of_deadeye_debuff	15	action_burn	50	glancing_blow_vulnerable	30		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 of_emergency_shield	of_emergency_shield			80	command.of_emergency_shield	10	combat_divide_damage_taken	75	combat_divide_damage_dealt	75		0		0		0	STATE_NONE	none	clienteffect/of_em_shields.cef		1	0		1	1	1	0	1	1	0	1	1	1
-banner_buff_entertainer	banner_ent			1	Roadmap.entertainer	600	expertise_dodge	2	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-banner_buff_trader	banner_trad			1	Roadmap.trader	600	expertise_glancing_blow_all	2	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+banner_buff_entertainer	banner_ent			1	Roadmap.entertainer	600	expertise_en_inspire_pulse_duration_increase	5	expertise_en_inspire_buff_duration_increase	30	tcg_gcw_bonus	10		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+banner_buff_trader	banner_trad			1	Roadmap.trader	600	expertise_resource_quality_increase	1	expertise_resource_sampling_increase	25	tcg_gcw_bonus	10		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 en_action_regen	en_action_regen			10	command.sm_general_elbow_grease	10	expertise_action_weapon_melee	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 set_bonus_trader_1	setBonusTrader			1	command.powerBoost	-1	stamina_modified	60		0		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 set_bonus_trader_2	setBonusTrader			1	command.powerBoost	-1	stamina_modified	90	agility_modified	90		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1

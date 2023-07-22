@@ -112,25 +112,25 @@ object/installation/faction_perk/turret/tower_sm.iff	object/installation/base/co
 			1																										
 object/installation/faction_perk/minefield/field_1x1.iff	object/installation/base/construction_installation_base.iff			-1								0	0	0	1000							4							
 																													
-object/building/faction_perk/hq/hq_s01_rebel.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s01_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s01_rebel.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s01_fp.iff	1	8	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_rebel.iff	0	0	-6	mainhall	0	
-object/building/faction_perk/hq/hq_s01_imp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s01_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s01_imp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s01_fp.iff	1	8	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_imperial.iff	0	0	-6	mainhall	0	
-object/building/faction_perk/hq/hq_s02_rebel.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s02_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s02_rebel.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s02_fp.iff	1	8	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_rebel.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s02_imp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s02_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s02_imp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s02_fp.iff	1	8	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_imperial.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s03_rebel.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s03_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s03_rebel.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s03_fp.iff	1	8	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_rebel.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s03_imp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s03_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s03_imp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s03_fp.iff	1	8	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_imperial.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s04_rebel.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s04_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s04_rebel.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s04_fp.iff	1	8	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_rebel.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s04_imp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s04_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s04_imp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s04_fp.iff	1	8	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_imperial.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s05_rebel.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s05_fp.iff		7	32							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s05_rebel.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s05_fp.iff	1	8	32							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_rebel.iff	0	1	12.5	mainhall	180	
-object/building/faction_perk/hq/hq_s05_imp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s05_fp.iff		7	32							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s05_imp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s05_fp.iff	1	8	32							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_imperial.iff	0	1	12.5	mainhall	180	
 object/building/player/player_merchant_tent_style_01.iff	object/building/player/construction/construction_player_house_tatooine_small_style_01.iff			0									3	3	4320	600	1		private_place_merchant_tent	100	place_merchant_tent	4							
 																							object/tangible/terminal/terminal_player_structure.iff	-0.15	0.27	-2.76	r1	0	
@@ -319,25 +319,25 @@ object/building/player/player_garage_naboo_style_01.iff	object/building/player/c
 																							object/tangible/terminal/terminal_player_structure_nosnap_mini.iff	-3	-1	-3	WORLD_DELTA	0	
 object/building/player/player_garage_corellia_style_01.iff	object/building/player/construction/construction_player_house_tatooine_small_style_01.iff		1			1	2	3			1		0	0	1000				private_place_garage	100	place_garage	4							
 																							object/tangible/terminal/terminal_player_structure_nosnap_mini.iff	-3	-1	-3	WORLD_DELTA	0	
-object/building/faction_perk/hq/hq_s01_rebel_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s01_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s01_rebel_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s01_fp.iff		9	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_rebel.iff	0	0	-6	mainhall	0	
-object/building/faction_perk/hq/hq_s01_imp_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s01_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s01_imp_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s01_fp.iff		9	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_imperial.iff	0	0	-6	mainhall	0	
-object/building/faction_perk/hq/hq_s02_rebel_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s02_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s02_rebel_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s02_fp.iff		9	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_rebel.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s02_imp_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s02_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s02_imp_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s02_fp.iff		9	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_imperial.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s03_rebel_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s03_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s03_rebel_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s03_fp.iff		9	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_rebel.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s03_imp_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s03_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s03_imp_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s03_fp.iff		9	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_imperial.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s04_rebel_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s04_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s04_rebel_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s04_fp.iff		9	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_rebel.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s04_imp_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s04_fp.iff		4	8							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s04_imp_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s04_fp.iff		9	8							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_imperial.iff	0	0.25	1.86	hall1	0	
-object/building/faction_perk/hq/hq_s05_rebel_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s05_fp.iff		7	32							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s05_rebel_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s05_fp.iff		9	32							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_rebel.iff	0	1	12.5	mainhall	180	
-object/building/faction_perk/hq/hq_s05_imp_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s05_fp.iff		7	32							0	0	200	100000		1					4							
+object/building/faction_perk/hq/hq_s05_imp_pvp.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff	object/building/faction_perk/hq/hq_s05_fp.iff		9	32							0	0	200	100000		1					4							
 																							object/tangible/terminal/terminal_hq_imperial.iff	0	1	12.5	mainhall	180	
 object/building/player/player_house_mustafar_lg.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff			-1	8								13	5	7200	0	1					4							
 																							object/tangible/terminal/terminal_player_structure.iff	-4.5	0.46	6.33	entrance	90	
@@ -382,8 +382,6 @@ object/building/player/player_house_sandcrawler.iff	object/building/player/const
 																							object/tangible/terminal/terminal_player_structure.iff	-4.46	8.81	-13.52	foyer	90	
 object/building/player/player_pgc_merchant_tent_s01.iff	object/building/player/construction/construction_player_house_tatooine_small_style_01.iff			0									3	3	4320	600	1					4							
 																							object/tangible/terminal/terminal_player_structure.iff	-0.15	0.27	-2.76	r1	0	
-																							object/tangible/terminal/terminal_stardust_vote.iff	-1	1.95	-2.76	r1	0	
-																							object/tangible/terminal/terminal_stardust.iff	1	2	-2.76	r1	0	
 object/building/player/player_house_tcg_commando_bunker.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff			0	8								13	5	7200	0	1					4							
 																							object/tangible/terminal/terminal_player_structure.iff	3.2	0.4	3.16	entry	180	
 object/building/player/player_house_tcg_vehicle_garage.iff	object/building/player/construction/construction_player_house_tatooine_large_style_01.iff			6	8								13	5	7200	0	1					4							
