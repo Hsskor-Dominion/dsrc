@@ -456,149 +456,149 @@ sl_dec_taunt	tauntBuff			2	command.combatFeint	600	private_taunt_bonus	-50		0		0
 sl_inc_dmg	dmgBuff			2	command.highYield	600	combat_multiply_damage_dealt	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 sl_inc_armor	armorBuff			2	command.powerBoost	600	private_armor_bonus	1200		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 calledShot	calledShot			1	command.calledShot	30		0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-roadmapFsClicky	genBuff_4			50	buffs.genericBuff	30	strength_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-roadmapBhClicky	genBuff_4			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-roadmapCommandoClicky	genBuff_4			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-roadmapOfficerClicky	genBuff_4			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-roadmapMedicClicky	genBuff_4			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-roadmapSpyClicky	genBuff_4			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-roadmapSmugglerClicky	genBuff_4			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-roadmapEntertainerClicky	genBuff_4			50	buffs.genericBuff	120	healing_music_wound	25	healing_dance_wound	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towMeleeDs_1	genBuff_4			20	command.powerBoost	30	private_melee_dmg_shield	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towMeleeDs_2	genBuff_4			25	command.powerBoost	30	private_melee_dmg_shield	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towMeleeDs_3	genBuff_4			30	command.powerBoost	30	private_melee_dmg_shield	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towRngDs_1	genBuff_4			20	command.powerBoost	30	private_damage_shield	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towRngDs_2	genBuff_4			25	command.powerBoost	30	private_damage_shield	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towRngDs_3	genBuff_4			30	command.powerBoost	30	private_damage_shield	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towComboDs_1	genBuff_4			20	command.powerBoost	30	private_damage_shield	10	private_melee_dmg_shield	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towComboDs_2	genBuff_4			25	command.powerBoost	30	private_damage_shield	25	private_melee_dmg_shield	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towComboDs_3	genBuff_4			30	command.powerBoost	30	private_damage_shield	35	private_melee_dmg_shield	35		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towMeleeAcc_1	genBuff_4			20	command.aim	60	strength_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towMeleeAcc_2	genBuff_4			25	command.aim	60	strength_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towMeleeAcc_3	genBuff_4			30	command.aim	60	strength_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towRngAcc_1	genBuff_4			20	command.aim	60	precision_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towRngAcc_2	genBuff_4			25	command.aim	60	precision_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towRngAcc_3	genBuff_4			30	command.aim	60	precision_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towComboAcc_1	genBuff_4			20	command.aim	60	strength_modified	60	ranged_accuracy	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towComboAcc_2	genBuff_4			25	command.aim	60	strength_modified	80	ranged_accuracy	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towComboAcc_3	genBuff_4			30	command.aim	60	strength_modified	100	ranged_accuracy	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towMeleeDef_1	genBuff_4			20	command.powerBoost	60	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towMeleeDef_2	genBuff_4			25	command.powerBoost	60	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towMeleeDef_3	genBuff_4			30	command.powerBoost	60	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towRngDef_1	genBuff_4			20	command.powerBoost	60	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towRngDef_2	genBuff_4			25	command.powerBoost	60	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towRngDef_3	genBuff_4			30	command.powerBoost	60	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPrivateDef_1	genBuff_4			20	command.powerBoost	60	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPrivateDef_2	genBuff_4			25	command.powerBoost	60	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPrivateDef_3	genBuff_4			30	command.powerBoost	60	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towComboSpeed_1	genBuff_4			20	command.consider	600	precision_modified	60	strength_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towComboSpeed_2	genBuff_4			25	command.consider	600	precision_modified	80	strength_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealth_1	genBuff_3			30	command.regeneration	900	constitution_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealth_2	genBuff_3			25	command.regeneration	1200	constitution_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealth_3	genBuff_3			30	command.regeneration	1500	constitution_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towConstitution_1	genBuff_3			20	command.regeneration	900	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towConstitution_2	genBuff_3			25	command.regeneration	1200	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towConstitution_3	genBuff_3			30	command.regeneration	1500	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towStamina_1	genBuff_3			20	command.regeneration	900	stamina_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towStamina_2	genBuff_3			25	command.regeneration	1200	stamina_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towStamina_3	genBuff_3			30	command.regeneration	1500	stamina_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towWillpower_1	genBuff_3			20	command.regeneration	900	luck_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towWillpower_2	genBuff_3			25	command.regeneration	1200	luck_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towWillpower_3	genBuff_3			30	command.regeneration	1500	luck_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthConst_1	genBuff_3			21	command.sampledna	900	constitution_modified	60	agility_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthConst_2	genBuff_3			26	command.sampledna	1200	constitution_modified	80	agility_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthStamina_1	genBuff_3			21	command.sampledna	900	constitution_modified	60	stamina_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthStamina_2	genBuff_3			26	command.sampledna	1200	constitution_modified	80	stamina_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthWillpower_1	genBuff_3			21	command.sampledna	900	constitution_modified	60	luck_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthWillpower_2	genBuff_3			26	command.sampledna	1200	constitution_modified	80	luck_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towConstStamina_1	genBuff_3			21	command.sampledna	900	agility_modified	60	stamina	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towConstStamina_2	genBuff_3			26	command.sampledna	1200	agility_modified	80	stamina	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towConstWillpower_1	genBuff_3			21	command.sampledna	900	agility_modified	60	willpower	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towConstWillpower_2	genBuff_3			26	command.sampledna	1200	agility_modified	80	willpower	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towStaminaWillpower_1	genBuff_3			21	command.sampledna	900	luck_modified	60	stamina	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towStaminaWillpower_2	genBuff_3			26	command.sampledna	1200	luck_modified	80	stamina	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthConstStamina	genBuff_3			22	command.secondChance	1200	constitution_modified	60	agility_modified	60	stamina_modified	60		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthConstWillpower	genBuff_3			22	command.secondChance	1200	constitution_modified	60	agility_modified	60	luck_modified	60		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthStaminaWillpower	genBuff_3			22	command.secondChance	1200	constitution_modified	60	stamina_modified	60	luck_modified	60		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towConstStaminaWillpower	genBuff_3			22	command.secondChance	1200	agility_modified	60	stamina_modified	60	luck_modified	60		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthConStaWill	genBuff_3			23	command.secondChance	1500	constitution_modified	60	agility_modified	60	stamina_modified	60	luck_modified	60		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_tow_proc_a_1	genBuff_4			20	command.detonateDroid	120	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_tow_proc_a_2	genBuff_4			25	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_tow_proc_a_3	genBuff_4			30	command.detonateDroid	300	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_tow_proc_b_1	genBuff_4			20	command.dazzle	120	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_tow_proc_b_2	genBuff_4			25	command.dazzle	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_tow_proc_b_3	genBuff_4			30	command.dazzle	300	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHaste_1	genBuff_4	haste		25	command.adrenalBoost	1800	slope_move	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHaste_2	genBuff_4	haste		30	command.adrenalBoost	1800	slope_move	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPoisonResist_1	genBuff_4			20	command.countertoxin	1800	strength_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPoisonResist_2	genBuff_4			25	command.countertoxin	1800	strength_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPoisonResist_3	genBuff_4			30	command.countertoxin	1800	strength_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPoisonAbsorb_1	genBuff_4			20	command.countertoxin	1800	precision_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPoisonAbsorb_2	genBuff_4			25	command.countertoxin	1800	precision_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPoisonAbsorb_3	genBuff_4			30	command.countertoxin	1800	precision_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPoisonResistAbsorb_1	genBuff_4			21	command.countertoxin	1800	strength_modified	60	precision_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPoisonResistAbsorb_2	genBuff_4			26	command.countertoxin	1800	strength_modified	80	precision_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towPoisonResistAbsorb_3	genBuff_4			31	command.countertoxin	1800	strength_modified	100	precision_modified	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towDiseaseResist_1	genBuff_4			20	command.countertoxin	1800	constitution_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towDiseaseResist_2	genBuff_4			25	command.countertoxin	1800	constitution_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towDiseaseResist_3	genBuff_4			30	command.countertoxin	1800	constitution_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towDiseaseAbsorb_1	genBuff_4			20	command.countertoxin	1800	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towDiseaseAbsorb_2	genBuff_4			25	command.countertoxin	1800	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towDiseaseAbsorb_3	genBuff_4			30	command.countertoxin	1800	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towDiseaseResistAbsorb_1	genBuff_4			21	command.countertoxin	1800	constitution_modified	60	agility_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towDiseaseResistAbsorb_2	genBuff_4			26	command.countertoxin	1800	constitution_modified	80	agility_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towDiseaseResistAbsorb_3	genBuff_4			31	command.countertoxin	1800	constitution_modified	100	agility_modified	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towBleedResist_1	genBuff_4			20	command.bandage	1800	stamina_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towBleedResist_2	genBuff_4			25	command.bandage	1800	stamina_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towBleedResist_3	genBuff_4			30	command.bandage	1800	stamina_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towBleedAbsorb_1	genBuff_4			20	command.bandage	1800	luck_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towBleedAbsorb_2	genBuff_4			25	command.bandage	1800	luck_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towBleedAbsorb_3	genBuff_4			30	command.bandage	1800	luck_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towBleedResistAbsorb_1	genBuff_4			21	command.bandage	1800	stamina_modified	60	luck_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towBleedResistAbsorb_2	genBuff_4			26	command.bandage	1800	stamina_modified	80	luck_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towBleedResistAbsorb_3	genBuff_4			31	command.bandage	1800	stamina_modified	100	luck_modified	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towFireResist_1	genBuff_4			20	command.countertoxinSpray	1800	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towFireResist_2	genBuff_4			25	command.countertoxinSpray	1800	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towFireResist_3	genBuff_4			30	command.countertoxinSpray	1800	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towFireAbsorb_1	genBuff_4			20	command.countertoxinSpray	1800	stamina_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towFireAbsorb_2	genBuff_4			25	command.countertoxinSpray	1800	stamina_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towFireAbsorb_3	genBuff_4			30	command.countertoxinSpray	1800	stamina_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towFireResistAbsorb_1	genBuff_4			21	command.countertoxinSpray	1800	agility_modified	60	stamina_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towFireResistAbsorb_2	genBuff_4			26	command.countertoxinSpray	1800	agility_modified	80	stamina_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towFireResistAbsorb_3	genBuff_4			31	command.countertoxinSpray	1800	agility_modified	100	stamina_modified	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-roadmapCQFinal	genBuff_1			80	command.inspire	-1	constitution_modified	60	agility_modified	60	strength_modified	60		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-roadmapRangedFinal	genBuff_1			80	command.inspire	-1	constitution_modified	80	agility_modified	80	precision_modified	80		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-roadmapDefenseFinal	genBuff_1			80	command.inspire	-1	constitution_modified	100	agility_modified	100	precision_modified	100		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-roadmapMedicFinal	genBuff_1			80	command.inspire	-1	constitution_modified	60	agility_modified	60	precision_modified	60		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-roadmapEntertainerFinal	genBuff_1			80	command.inspire	-1	constitution_modified	80	agility_modified	80	precision_modified	80		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-roadmapTraderFinal	genBuff_1			80	command.inspire	-1	constitution_modified	100	agility_modified	100	precision_modified	100		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-npeVisualAcuity	genBuff_4			5	buffs.genericBuff	60	precision_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-npeManualAcuity	genBuff_4			5	buffs.genericBuff	60	strength_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-npeHealEff	genBuff_4			5	buffs.genericBuff	60	healing_efficiency	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+roadmapFsClicky	towCrystal			50	buffs.genericBuff	30	strength_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+roadmapBhClicky	towCrystal			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+roadmapCommandoClicky	towCrystal			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+roadmapOfficerClicky	towCrystal			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+roadmapMedicClicky	towCrystal			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+roadmapSpyClicky	towCrystal			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+roadmapSmugglerClicky	towCrystal			50	buffs.genericBuff	30	precision_modified	125	stamina_modified	125		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+roadmapEntertainerClicky	towCrystal			50	buffs.genericBuff	120	healing_music_wound	25	healing_dance_wound	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towMeleeDs_1	towCrystal			20	command.powerBoost	30	private_melee_dmg_shield	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towMeleeDs_2	towCrystal			25	command.powerBoost	30	private_melee_dmg_shield	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towMeleeDs_3	towCrystal			30	command.powerBoost	30	private_melee_dmg_shield	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towRngDs_1	towCrystal			20	command.powerBoost	30	private_damage_shield	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towRngDs_2	towCrystal			25	command.powerBoost	30	private_damage_shield	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towRngDs_3	towCrystal			30	command.powerBoost	30	private_damage_shield	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towComboDs_1	towCrystal			20	command.powerBoost	30	private_damage_shield	10	private_melee_dmg_shield	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towComboDs_2	towCrystal			25	command.powerBoost	30	private_damage_shield	25	private_melee_dmg_shield	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towComboDs_3	towCrystal			30	command.powerBoost	30	private_damage_shield	35	private_melee_dmg_shield	35		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towMeleeAcc_1	towCrystal			20	command.aim	60	strength_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towMeleeAcc_2	towCrystal			25	command.aim	60	strength_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towMeleeAcc_3	towCrystal			30	command.aim	60	strength_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towRngAcc_1	towCrystal			20	command.aim	60	precision_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towRngAcc_2	towCrystal			25	command.aim	60	precision_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towRngAcc_3	towCrystal			30	command.aim	60	precision_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towComboAcc_1	towCrystal			20	command.aim	60	strength_modified	60	ranged_accuracy	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towComboAcc_2	towCrystal			25	command.aim	60	strength_modified	80	ranged_accuracy	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towComboAcc_3	towCrystal			30	command.aim	60	strength_modified	100	ranged_accuracy	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towMeleeDef_1	towCrystal			20	command.powerBoost	60	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towMeleeDef_2	towCrystal			25	command.powerBoost	60	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towMeleeDef_3	towCrystal			30	command.powerBoost	60	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towRngDef_1	towCrystal			20	command.powerBoost	60	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towRngDef_2	towCrystal			25	command.powerBoost	60	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towRngDef_3	towCrystal			30	command.powerBoost	60	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPrivateDef_1	towCrystal			20	command.powerBoost	60	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPrivateDef_2	towCrystal			25	command.powerBoost	60	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPrivateDef_3	towCrystal			30	command.powerBoost	60	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towComboSpeed_1	towCrystal			20	command.consider	600	precision_modified	60	strength_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towComboSpeed_2	towCrystal			25	command.consider	600	precision_modified	80	strength_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealth_1	towCrystal			30	command.regeneration	900	constitution_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealth_2	towCrystal			25	command.regeneration	1200	constitution_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealth_3	towCrystal			30	command.regeneration	1500	constitution_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towConstitution_1	towCrystal			20	command.regeneration	900	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towConstitution_2	towCrystal			25	command.regeneration	1200	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towConstitution_3	towCrystal			30	command.regeneration	1500	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towStamina_1	towCrystal			20	command.regeneration	900	stamina_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towStamina_2	towCrystal			25	command.regeneration	1200	stamina_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towStamina_3	towCrystal			30	command.regeneration	1500	stamina_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towWillpower_1	towCrystal			20	command.regeneration	900	luck_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towWillpower_2	towCrystal			25	command.regeneration	1200	luck_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towWillpower_3	towCrystal			30	command.regeneration	1500	luck_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthConst_1	towCrystal			21	command.sampledna	900	constitution_modified	60	agility_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthConst_2	towCrystal			26	command.sampledna	1200	constitution_modified	80	agility_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthStamina_1	towCrystal			21	command.sampledna	900	constitution_modified	60	stamina_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthStamina_2	towCrystal			26	command.sampledna	1200	constitution_modified	80	stamina_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthWillpower_1	towCrystal			21	command.sampledna	900	constitution_modified	60	luck_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthWillpower_2	towCrystal			26	command.sampledna	1200	constitution_modified	80	luck_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towConstStamina_1	towCrystal			21	command.sampledna	900	agility_modified	60	stamina	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towConstStamina_2	towCrystal			26	command.sampledna	1200	agility_modified	80	stamina	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towConstWillpower_1	towCrystal			21	command.sampledna	900	agility_modified	60	willpower	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towConstWillpower_2	towCrystal			26	command.sampledna	1200	agility_modified	80	willpower	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towStaminaWillpower_1	towCrystal			21	command.sampledna	900	luck_modified	60	stamina	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towStaminaWillpower_2	towCrystal			26	command.sampledna	1200	luck_modified	80	stamina	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthConstStamina	towCrystal			22	command.secondChance	1200	constitution_modified	60	agility_modified	60	stamina_modified	60		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthConstWillpower	towCrystal			22	command.secondChance	1200	constitution_modified	60	agility_modified	60	luck_modified	60		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthStaminaWillpower	towCrystal			22	command.secondChance	1200	constitution_modified	60	stamina_modified	60	luck_modified	60		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towConstStaminaWillpower	towCrystal			22	command.secondChance	1200	agility_modified	60	stamina_modified	60	luck_modified	60		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthConStaWill	towCrystal			23	command.secondChance	1500	constitution_modified	60	agility_modified	60	stamina_modified	60	luck_modified	60		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_tow_proc_a_1	towCrystal			20	command.detonateDroid	120	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_tow_proc_a_2	towCrystal			25	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_tow_proc_a_3	towCrystal			30	command.detonateDroid	300	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_tow_proc_b_1	towCrystal			20	command.dazzle	120	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_tow_proc_b_2	towCrystal			25	command.dazzle	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_tow_proc_b_3	towCrystal			30	command.dazzle	300	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHaste_1	towCrystal	haste		25	command.adrenalBoost	1800	slope_move	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHaste_2	towCrystal	haste		30	command.adrenalBoost	1800	slope_move	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPoisonResist_1	towCrystal			20	command.countertoxin	1800	strength_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPoisonResist_2	towCrystal			25	command.countertoxin	1800	strength_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPoisonResist_3	towCrystal			30	command.countertoxin	1800	strength_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPoisonAbsorb_1	towCrystal			20	command.countertoxin	1800	precision_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPoisonAbsorb_2	towCrystal			25	command.countertoxin	1800	precision_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPoisonAbsorb_3	towCrystal			30	command.countertoxin	1800	precision_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPoisonResistAbsorb_1	towCrystal			21	command.countertoxin	1800	strength_modified	60	precision_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPoisonResistAbsorb_2	towCrystal			26	command.countertoxin	1800	strength_modified	80	precision_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towPoisonResistAbsorb_3	towCrystal			31	command.countertoxin	1800	strength_modified	100	precision_modified	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towDiseaseResist_1	towCrystal			20	command.countertoxin	1800	constitution_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towDiseaseResist_2	towCrystal			25	command.countertoxin	1800	constitution_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towDiseaseResist_3	towCrystal			30	command.countertoxin	1800	constitution_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towDiseaseAbsorb_1	towCrystal			20	command.countertoxin	1800	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towDiseaseAbsorb_2	towCrystal			25	command.countertoxin	1800	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towDiseaseAbsorb_3	towCrystal			30	command.countertoxin	1800	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towDiseaseResistAbsorb_1	towCrystal			21	command.countertoxin	1800	constitution_modified	60	agility_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towDiseaseResistAbsorb_2	towCrystal			26	command.countertoxin	1800	constitution_modified	80	agility_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towDiseaseResistAbsorb_3	towCrystal			31	command.countertoxin	1800	constitution_modified	100	agility_modified	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towBleedResist_1	towCrystal			20	command.bandage	1800	stamina_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towBleedResist_2	towCrystal			25	command.bandage	1800	stamina_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towBleedResist_3	towCrystal			30	command.bandage	1800	stamina_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towBleedAbsorb_1	towCrystal			20	command.bandage	1800	luck_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towBleedAbsorb_2	towCrystal			25	command.bandage	1800	luck_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towBleedAbsorb_3	towCrystal			30	command.bandage	1800	luck_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towBleedResistAbsorb_1	towCrystal			21	command.bandage	1800	stamina_modified	60	luck_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towBleedResistAbsorb_2	towCrystal			26	command.bandage	1800	stamina_modified	80	luck_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towBleedResistAbsorb_3	towCrystal			31	command.bandage	1800	stamina_modified	100	luck_modified	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towFireResist_1	towCrystal			20	command.countertoxinSpray	1800	agility_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towFireResist_2	towCrystal			25	command.countertoxinSpray	1800	agility_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towFireResist_3	towCrystal			30	command.countertoxinSpray	1800	agility_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towFireAbsorb_1	towCrystal			20	command.countertoxinSpray	1800	stamina_modified	60		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towFireAbsorb_2	towCrystal			25	command.countertoxinSpray	1800	stamina_modified	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towFireAbsorb_3	towCrystal			30	command.countertoxinSpray	1800	stamina_modified	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towFireResistAbsorb_1	towCrystal			21	command.countertoxinSpray	1800	agility_modified	60	stamina_modified	60		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towFireResistAbsorb_2	towCrystal			26	command.countertoxinSpray	1800	agility_modified	80	stamina_modified	80		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towFireResistAbsorb_3	towCrystal			31	command.countertoxinSpray	1800	agility_modified	100	stamina_modified	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+roadmapCQFinal	towCrystal			80	command.inspire	-1	constitution_modified	60	agility_modified	60	strength_modified	60		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+roadmapRangedFinal	towCrystal			80	command.inspire	-1	constitution_modified	80	agility_modified	80	precision_modified	80		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+roadmapDefenseFinal	towCrystal			80	command.inspire	-1	constitution_modified	100	agility_modified	100	precision_modified	100		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+roadmapMedicFinal	towCrystal			80	command.inspire	-1	constitution_modified	60	agility_modified	60	precision_modified	60		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+roadmapEntertainerFinal	towCrystal			80	command.inspire	-1	constitution_modified	80	agility_modified	80	precision_modified	80		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+roadmapTraderFinal	towCrystal			80	command.inspire	-1	constitution_modified	100	agility_modified	100	precision_modified	100		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+npeVisualAcuity	towCrystal			5	buffs.genericBuff	60	precision_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+npeManualAcuity	towCrystal			5	buffs.genericBuff	60	strength_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+npeHealEff	towCrystal			5	buffs.genericBuff	60	healing_efficiency	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_simple_tea	food			3	buffs.foodBeverage	900	stamina_modified	3		0		0		0		0	STATE_NONE	none			1	0	AttributeModifier	1	1	1	0	1	1	0	1	1	1
-npeHealthLongDuration	genBuff_3			3	buffs.spiceMind	900	constitution_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-npeStaminaLongDuration	genBuff_3			3	buffs.spiceAction	900	stamina_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-npeWillLongDuration	genBuff_3			3	buffs.spiceMind	900	agility_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-npeRngSpeedLongDuration	genBuff_4			4	buffs.spiceAction	900	precision_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-npeMeleeSpeedLongDuration	genBuff_4			3	buffs.spiceAction	900	strength_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-npeComboAccLongDuration	genBuff_4			3	buffs.genericBuff	900	precision_modified	5	strength_modified	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towHealthMinor	genBuff_3			19	command.regeneration	300	constitution_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towCrystalOffenseBurst	genBuff_3			60	command.detonateDroid	300	constitution_modified	120	precision_modified	120	strength_modified	120		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towCrystalDefenseBurst	genBuff_3			60	command.powerBoost	300	constitution_modified	120	agility_modified	120		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towCrystalDotImmunity	genBuff_4			60	buffs.spiceHealth	300	expertise_dot_absorption_all	50	dot_resist_all	50		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+npeHealthLongDuration	towCrystal			3	buffs.spiceMind	900	constitution_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+npeStaminaLongDuration	towCrystal			3	buffs.spiceAction	900	stamina_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+npeWillLongDuration	towCrystal			3	buffs.spiceMind	900	agility_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+npeRngSpeedLongDuration	towCrystal			4	buffs.spiceAction	900	precision_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+npeMeleeSpeedLongDuration	towCrystal			3	buffs.spiceAction	900	strength_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+npeComboAccLongDuration	towCrystal			3	buffs.genericBuff	900	precision_modified	5	strength_modified	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towHealthMinor	towCrystal			19	command.regeneration	300	constitution_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towCrystalOffenseBurst	towCrystal			60	command.detonateDroid	300	constitution_modified	120	precision_modified	120	strength_modified	120		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towCrystalDefenseBurst	towCrystal			60	command.powerBoost	300	constitution_modified	120	agility_modified	120		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towCrystalDotImmunity	towCrystal			60	buffs.spiceHealth	300	expertise_dot_absorption_all	50	dot_resist_all	50		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 towHelmetAccuracy	genBuff_1			90	command.aim	-1	precision_modified	20	strength_modified	20		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 towGlovesHealEff	genBuff_1			90	command.sampledna	-1	agility_modified	20	stamina_modified	20		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-towCrystalUberCombat	forceCrystalHealth	haste		60	command.dazzle	3600	constitution_modified	200	stamina_modified	200	precision_modified	200	strength_modified	200		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towCrystalUberDs	forceCrystalHealth			60	command.powerBoost	180	constitution_modified	200	luck_modified	200	agility_modified	200		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towCrystalABImmune	forceCrystalHealth	armorBreak		60	command.powerBoost	180	constitution_modified	150	stamina_modified	150		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towRingAbsorption	genBuff_4			90	command.bandage	-1	agility_modified	20	constitution_modified	20	stamina_modified	20		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-towAbsorption	genBuff_4			60	command.bandage	900	agility_modified	20	constitution_modified	20	stamina_modified	20		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_tow_proc_b_5	genBuff_4			90	command.dazzle	60	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-proc_tow_proc_b_6	genBuff_4			90	command.dazzle	60	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-proc_tow_proc_b_7	genBuff_4			90	command.dazzle	60	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-proc_tow_proc_bracelet_melee	genBuff_4			90	command.detonateDroid	-1	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-proc_tow_proc_bracelet_range	genBuff_4			90	command.detonateDroid	-1	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-proc_tow_proc_bracelet_combo	genBuff_4			90	command.detonateDroid	-1	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+towCrystalUberCombat	towCrystal	haste		60	command.dazzle	3600	constitution_modified	200	stamina_modified	200	precision_modified	200	strength_modified	200		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towCrystalUberDs	towCrystal			60	command.powerBoost	180	constitution_modified	200	luck_modified	200	agility_modified	200		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towCrystalABImmune	towCrystal	armorBreak		60	command.powerBoost	180	constitution_modified	150	stamina_modified	150		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towRingAbsorption	towCrystal			90	command.bandage	-1	agility_modified	20	constitution_modified	20	stamina_modified	20		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+towAbsorption	towCrystal			60	command.bandage	900	agility_modified	20	constitution_modified	20	stamina_modified	20		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_tow_proc_b_5	towCrystal			90	command.dazzle	60	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+proc_tow_proc_b_6	towCrystal			90	command.dazzle	60	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+proc_tow_proc_b_7	towCrystal			90	command.dazzle	60	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+proc_tow_proc_bracelet_melee	towCrystal			90	command.detonateDroid	-1	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+proc_tow_proc_bracelet_range	towCrystal			90	command.detonateDroid	-1	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+proc_tow_proc_bracelet_combo	towCrystal			90	command.detonateDroid	-1	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 combatRegenDebuff	combatRegenDebuff			1	jedi.forceChoke	30	constitutionPercent	-99	willpowerPercent	-99	staminaPercent	-99		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 combatMoveDebuff	combatMoveDebuff			0	jedi.forceChoke	30	movement	0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 invis_blendIn	invisibility			1	command.blendIn	-1	invis	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
@@ -616,35 +616,35 @@ towWeaponAssembly	genBuff_4			80	buffs.genericBuff	-1	weapon_assembly	10		0		0		
 towDroidAssembly	genBuff_4			80	buffs.genericBuff	-1	droid_assembly	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 towMedAssembly	genBuff_4			80	buffs.genericBuff	-1	medicine_assembly	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 towFoodAssembly	genBuff_4			80	buffs.genericBuff	-1	food_assembly	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-towFacGuardDefenseItem	genBuff_4			58	command.powerBoost	20	agility_modified	160		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-towForemanCoolingItem	genBuff_4			58	command.countertoxinSpray	30	luck_modified	160		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towFacGuardDefenseItem	towCrystal			58	command.powerBoost	20	agility_modified	160		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+towForemanCoolingItem	towCrystal			58	command.countertoxinSpray	30	luck_modified	160		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 towForemanBurstRun	burstrun	escape		1	command.burstRun	60	movement	0		0		0		0		0	STATE_NONE	removeBurstRun			1	0		1	1	1	0	1	1	0	1	1	1
 towHk47MoveImmuneItem	snare	root	nullification	80	command.burstRun	20		0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 towMafosaMezImmune	mez	root	nullification	80	state.rage	20		0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 towCommanderIIRegenItem	genBuff_3			90	command.dazzle	180	constitution_modified	200	luck_modified	200	agility_modified	200		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-forceCrystalHealth	forceCrystalHealth			90	jedi.forceArmor	10800	constitution_modified	250		0		0		0		0	STATE_NONE	none			1	0		0	0	0	0	1	1	0	1	1	1
-forceCrystalForce	forceCrystalForce			90	jedi.forceArmor	10800	action	500	proc_buff	1		0		0		0	STATE_NONE	none			1	0		0	0	0	0	1	1	0	1	1	1
+forceCrystalHealth	towCrystal			90	jedi.forceArmor	10800	constitution_modified	250		0		0		0		0	STATE_NONE	none			1	0		0	0	0	0	1	1	0	1	1	1
+forceCrystalForce	towCrystal			90	jedi.forceArmor	10800	action	500	proc_buff	1		0		0		0	STATE_NONE	none			1	0		0	0	0	0	1	1	0	1	1	1
 stop	none			100	command.regeneration	-1	movement	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-contentChargedComboAcc_1	genBuff_4			10	command.aim	900	precision_modified	25	strength_modified	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedRngDefense_1	genBuff_4			9	command.powerBoost	900	luck_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedPoisonResist	genBuff_4			9	command.countertoxin	900	resistance_poison	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedHealth_1	genBuff_3			9	command.regeneration	900	constitution_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedTerrainNeg	genBuff_4			9	command.burstRun	900	slope_move	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedRngAcc	genBuff_4			9	command.aim	900	precision_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedMeleeAcc	genBuff_4			9	command.aim	900	strength_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedMeleeDef	genBuff_4			9	command.powerBoost	900	agility_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedComboAcc_2	genBuff_4			10	command.aim	900	precision_modified	25	strength_modified	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentClickWillpower	genBuff_3			45	command.traumatize	900	agility_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentClickRngDef	genBuff_4			45	command.powerBoost	900	agility_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentClickConstitution	genBuff_3			45	command.regeneration	900	constitution_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentWornComboDef	genBuff_3			75	command.powerBoost	-1	constitution_modified	5	agility_modified	4		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-contentChargedHealth_2	genBuff_3			9	command.regeneration	900	constitution_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_content_charged_proc_fire	genBuff_4			11	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_content_charged_proc_cold	genBuff_4			11	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedRngDefense_2	genBuff_4			9	command.powerBoost	900	precision_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedComboSpeed	genBuff_4			8	command.consider	900	precision_modified	5	strength_modified	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentWornThrantaBuff	genBuff_3			74	command.powerBoost	-1	constitution_modified	6	precision_modified	5	strength_modified	5		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-npeBugJuice	genBuff_4			3	command.powerBoost	900	agility_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedComboAcc_1	towCrystal			10	command.aim	900	precision_modified	25	strength_modified	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedRngDefense_1	towCrystal			9	command.powerBoost	900	luck_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedPoisonResist	towCrystal			9	command.countertoxin	900	resistance_poison	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedHealth_1	towCrystal			9	command.regeneration	900	constitution_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedTerrainNeg	towCrystal			9	command.burstRun	900	slope_move	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedRngAcc	towCrystal			9	command.aim	900	precision_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedMeleeAcc	towCrystal			9	command.aim	900	strength_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedMeleeDef	towCrystal			9	command.powerBoost	900	agility_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedComboAcc_2	towCrystal			10	command.aim	900	precision_modified	25	strength_modified	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentClickWillpower	towCrystal			45	command.traumatize	900	agility_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentClickRngDef	towCrystal			45	command.powerBoost	900	agility_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentClickConstitution	towCrystal			45	command.regeneration	900	constitution_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentWornComboDef	towCrystal			75	command.powerBoost	-1	constitution_modified	5	agility_modified	4		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+contentChargedHealth_2	towCrystal			9	command.regeneration	900	constitution_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_content_charged_proc_fire	towCrystal			11	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_content_charged_proc_cold	towCrystal			11	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedRngDefense_2	towCrystal			9	command.powerBoost	900	precision_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedComboSpeed	towCrystal			8	command.consider	900	precision_modified	5	strength_modified	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentWornThrantaBuff	towCrystal			74	command.powerBoost	-1	constitution_modified	6	precision_modified	5	strength_modified	5		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+npeBugJuice	towCrystal			3	command.powerBoost	900	agility_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 low_morale	low_morale			10	command.boostMorale	1200	combat_subtract_damage_dealt	100	glancing_blow_vulnerable	-100	luck_modified	-200		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 high_morale	high_morale			10	command.boostMorale	1200	combat_add_damage_dealt	100	expertise_dodge	10	luck_modified	200		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 volc_boss_one_1	volc_boss_one			1	command.powerBoost	-1	combat_add_damage_dealt	100		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
@@ -672,17 +672,17 @@ seethingAnger_4	cmSlow	root	snare	1	command.powerBoost	60	combat_multiply_damage
 drink_rancoraid	cmSnare			3	buffs.foodBeverage	180	movement_resist_snare	3		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 decrepitStrike	cmSlow			4	command.thyroidRupture	30	combat_slow	80		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 sk_shockWave	mez			1	command.concussionShot	2	delay_attack	0	movement	0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
-contentWornRngDef_1	genBuff_4			74	command.powerBoost	-1	agility_modified	15		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-contentWornRngAcc_1	genBuff_4			74	command.aim	-1	agility_modified	15		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-contentChargedComboSpeed_2	genBuff_4			24	command.consider	900	precision_modified	10	strength_modified	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_content_charged_proc_melee_poison_1	genBuff_4			11	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_content_charged_proc_range_heat_1	genBuff_4			11	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_content_charged_proc_melee_poison_2	genBuff_4			14	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_content_charged_proc_range_heat_2	genBuff_4			14	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedStamina_1	genBuff_3			12	command.regeneration	900	stamina_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedWill_1	genBuff_3			12	command.regeneration	900	agility_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentChargedHealthActionWill_1	genBuff_3			13	command.regeneration	900	constitution_modified	20	stamina_modified	20	agility_modified	20		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-contentClickDetectionAcc	genBuff_4			45	command.aim	1800	detect_hidden	10	precision_modified	5	strength_modified	5		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentWornRngDef_1	towCrystal			74	command.powerBoost	-1	agility_modified	15		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+contentWornRngAcc_1	towCrystal			74	command.aim	-1	agility_modified	15		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+contentChargedComboSpeed_2	towCrystal			24	command.consider	900	precision_modified	10	strength_modified	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_content_charged_proc_melee_poison_1	towCrystal			11	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_content_charged_proc_range_heat_1	towCrystal			11	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_content_charged_proc_melee_poison_2	towCrystal			14	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_content_charged_proc_range_heat_2	towCrystal			14	command.detonateDroid	900	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedStamina_1	towCrystal			12	command.regeneration	900	stamina_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedWill_1	towCrystal			12	command.regeneration	900	agility_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentChargedHealthActionWill_1	towCrystal			13	command.regeneration	900	constitution_modified	20	stamina_modified	20	agility_modified	20		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentClickDetectionAcc	towCrystal			45	command.aim	1800	detect_hidden	10	precision_modified	5	strength_modified	5		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 invis_stealth	invisibility			4	command.stealth	10	invis	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 invis_stealth_1	invisibility			4	command.stealth	15	invis	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 invis_stealth_2	invisibility			4	command.stealth	20	invis	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
@@ -921,63 +921,63 @@ invis_sp_buff_stealth_2	invisibility			4	command.stealth	-1	invis	0	movement	0		
 invis_sp_buff_stealth_3	invisibility			4	command.stealth	-1	invis	0	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 invis_sp_buff_stealth_4	invisibility			4	command.stealth	-1	invis	0	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 fs_force_run	fs_force_run			1	command.forceRun	15	slope_move	5	movement	0	movement_resist_snare	100	movement_resist_root	100		0	STATE_NONE	none	clienteffect/pl_force_run.cef,appearance/pt_force_speed.prt		1	0		1	1	1	0	1	1	0	1	1	1
-veteranPlayerBuff	vetBuff			1	command.veteranPlayerBuff	900	group	0	xp_bonus_general	50	tcg_gcw_bonus	10	expertise_en_inspire_pulse_duration_increase	5			STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-agiConsumable5	genBuff_3			3	command.diveShot	300	agility_modified	5		0				0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-agiConsumable10	genBuff_3			4	command.diveShot	300	agility_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-agiConsumable15	genBuff_3			5	command.diveShot	300	agility_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-agiConsumable20	genBuff_3			6	command.diveShot	300	agility_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-agiConsumable25	genBuff_3			7	command.diveShot	300	agility_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-agiConsumable30	genBuff_3			8	command.diveShot	300	agility_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-agiConsumable35	genBuff_3			9	command.diveShot	300	agility_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-agiConsumable40	genBuff_3			10	command.diveShot	300	agility_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-staConsumable5	genBuff_3			3	command.imageDesign	300	stamina_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-staConsumable10	genBuff_3			4	command.imageDesign	300	stamina_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-staConsumable15	genBuff_3			5	command.imageDesign	300	stamina_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-staConsumable20	genBuff_3			6	command.imageDesign	300	stamina_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-staConsumable25	genBuff_3			7	command.imageDesign	300	stamina_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-staConsumable30	genBuff_3			8	command.imageDesign	300	stamina_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-staConsumable35	genBuff_3			9	command.imageDesign	300	stamina_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-staConsumable40	genBuff_3			10	command.imageDesign	300	stamina_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-conConsumable5	genBuff_3			3	command.regeneration	300	constitution_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-conConsumable10	genBuff_3			4	command.regeneration	300	constitution_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-conConsumable15	genBuff_3			5	command.regeneration	300	constitution_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-conConsumable20	genBuff_3			6	command.regeneration	300	constitution_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-conConsumable25	genBuff_3			7	command.regeneration	300	constitution_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-conConsumable30	genBuff_3			8	command.regeneration	300	constitution_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-conConsumable35	genBuff_3			9	command.regeneration	300	constitution_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-conConsumable40	genBuff_3			10	command.regeneration	300	constitution_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-strConsumable5	genBuff_3			3	command.powerBoost	300	strength_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-strConsumable10	genBuff_3			4	command.powerBoost	300	strength_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-strConsumable15	genBuff_3			5	command.powerBoost	300	strength_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-strConsumable20	genBuff_3			6	command.powerBoost	300	strength_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-strConsumable25	genBuff_3			7	command.powerBoost	300	strength_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-strConsumable30	genBuff_3			8	command.powerBoost	300	strength_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-strConsumable35	genBuff_3			9	command.powerBoost	300	strength_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-strConsumable40	genBuff_3			10	command.powerBoost	300	strength_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-preConsumable5	genBuff_3			3	command.aim	300	precision_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-preConsumable10	genBuff_3			4	command.aim	300	precision_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-preConsumable15	genBuff_3			5	command.aim	300	precision_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-preConsumable20	genBuff_3			6	command.aim	300	precision_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-preConsumable25	genBuff_3			7	command.aim	300	precision_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-preConsumable30	genBuff_3			8	command.aim	300	precision_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-preConsumable35	genBuff_3			9	command.aim	300	precision_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-preConsumable40	genBuff_3			10	command.aim	300	precision_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-lckConsumable5	genBuff_3			3	command.stabilizers	300	luck_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-lckConsumable10	genBuff_3			4	command.stabilizers	300	luck_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-lckConsumable15	genBuff_3			5	command.stabilizers	300	luck_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-lckConsumable20	genBuff_3			6	command.stabilizers	300	luck_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-lckConsumable25	genBuff_3			7	command.stabilizers	300	luck_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-lckConsumable30	genBuff_3			8	command.stabilizers	300	luck_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-lckConsumable35	genBuff_3			9	command.stabilizers	300	luck_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-lckConsumable40	genBuff_3			10	command.stabilizers	300	luck_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+veteranPlayerBuff	vetBuff			1	command.veteranPlayerBuff	900	group	0	xp_bonus_general	50	tcg_gcw_bonus	10	expertise_en_inspire_pulse_duration_increase	5		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+agiConsumable5	stimpack			3	command.diveShot	300	agility_modified	5		0				0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+agiConsumable10	stimpack			4	command.diveShot	300	agility_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+agiConsumable15	stimpack			5	command.diveShot	300	agility_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+agiConsumable20	stimpack			6	command.diveShot	300	agility_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+agiConsumable25	stimpack			7	command.diveShot	300	agility_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+agiConsumable30	stimpack			8	command.diveShot	300	agility_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+agiConsumable35	stimpack			9	command.diveShot	300	agility_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+agiConsumable40	stimpack			10	command.diveShot	300	agility_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+staConsumable5	stimpack			3	command.imageDesign	300	stamina_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+staConsumable10	stimpack			4	command.imageDesign	300	stamina_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+staConsumable15	stimpack			5	command.imageDesign	300	stamina_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+staConsumable20	stimpack			6	command.imageDesign	300	stamina_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+staConsumable25	stimpack			7	command.imageDesign	300	stamina_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+staConsumable30	stimpack			8	command.imageDesign	300	stamina_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+staConsumable35	stimpack			9	command.imageDesign	300	stamina_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+staConsumable40	stimpack			10	command.imageDesign	300	stamina_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+conConsumable5	stimpack			3	command.regeneration	300	constitution_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+conConsumable10	stimpack			4	command.regeneration	300	constitution_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+conConsumable15	stimpack			5	command.regeneration	300	constitution_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+conConsumable20	stimpack			6	command.regeneration	300	constitution_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+conConsumable25	stimpack			7	command.regeneration	300	constitution_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+conConsumable30	stimpack			8	command.regeneration	300	constitution_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+conConsumable35	stimpack			9	command.regeneration	300	constitution_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+conConsumable40	stimpack			10	command.regeneration	300	constitution_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+strConsumable5	stimpack			3	command.powerBoost	300	strength_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+strConsumable10	stimpack			4	command.powerBoost	300	strength_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+strConsumable15	stimpack			5	command.powerBoost	300	strength_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+strConsumable20	stimpack			6	command.powerBoost	300	strength_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+strConsumable25	stimpack			7	command.powerBoost	300	strength_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+strConsumable30	stimpack			8	command.powerBoost	300	strength_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+strConsumable35	stimpack			9	command.powerBoost	300	strength_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+strConsumable40	stimpack			10	command.powerBoost	300	strength_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+preConsumable5	stimpack			3	command.aim	300	precision_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+preConsumable10	stimpack			4	command.aim	300	precision_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+preConsumable15	stimpack			5	command.aim	300	precision_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+preConsumable20	stimpack			6	command.aim	300	precision_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+preConsumable25	stimpack			7	command.aim	300	precision_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+preConsumable30	stimpack			8	command.aim	300	precision_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+preConsumable35	stimpack			9	command.aim	300	precision_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+preConsumable40	stimpack			10	command.aim	300	precision_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+lckConsumable5	stimpack			3	command.stabilizers	300	luck_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+lckConsumable10	stimpack			4	command.stabilizers	300	luck_modified	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+lckConsumable15	stimpack			5	command.stabilizers	300	luck_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+lckConsumable20	stimpack			6	command.stabilizers	300	luck_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+lckConsumable25	stimpack			7	command.stabilizers	300	luck_modified	25		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+lckConsumable30	stimpack			8	command.stabilizers	300	luck_modified	30		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+lckConsumable35	stimpack			9	command.stabilizers	300	luck_modified	35		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+lckConsumable40	stimpack			10	command.stabilizers	300	luck_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 proc_old_light_jedi_gift	jediElder			90	jedi.forceMeditate	-1	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 proc_old_dark_jedi_gift	jediElder			90	jedi.forceCloak	-1	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-agiConsumable45	genBuff_3			10	command.diveShot	300	agility_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-staConsumable45	genBuff_3			10	command.imageDesign	300	stamina_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-conConsumable45	genBuff_3			10	command.regeneration	300	constitution_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-strConsumable45	genBuff_3			10	command.powerBoost	300	strength_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-preConsumable45	genBuff_3			10	command.aim	300	precision_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-lckConsumable45	genBuff_3			10	command.stabilizers	300	luck_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+agiConsumable45	stimpack			10	command.diveShot	300	agility_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+staConsumable45	stimpack			10	command.imageDesign	300	stamina_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+conConsumable45	stimpack			10	command.regeneration	300	constitution_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+strConsumable45	stimpack			10	command.powerBoost	300	strength_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+preConsumable45	stimpack			10	command.aim	300	precision_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+lckConsumable45	stimpack			10	command.stabilizers	300	luck_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 incapWeaken	incapWeaken			1	command.deathBlow	60		0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 agroEffect	agroEffect			100	command.petIntimidateAttack	600		0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 detectHiddenConsumable20	detectHidden			20	command.detectHiddenBuff	900	detect_hidden	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1019,8 +1019,8 @@ criticalColdEffect	criticalEffect			10	buffs.cryobanSnare	6	movement	50	damage_d
 criticalAcidEffect	criticalEffect			10	command.concussionShot	3	critical_hit_vulnerable	75		0		0		0		0	STATE_NONE	applyCritImmunityBuff			1	1		1	1	1	0	1	1	0	1	1	1
 criticalElectricEffect	criticalEffect			10	command.shock	6	glancing_blow_vulnerable	75		0		0		0		0	STATE_NONE	applyCritImmunityBuff			1	1		1	1	1	0	1	1	0	1	1	1
 criticalImmunity	criticalEffect			100	state.anger	6		0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-contentClickDetectionAcc2	genBuff_4			45	command.aim	600	detect_hidden	30	luck_modified	30		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-selonianPSG	genBuff_3			45	buffs.genericBuff	180	agility_modified	30	constitution_modified	30		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+contentClickDetectionAcc2	stimpack			45	command.aim	600	detect_hidden	30	luck_modified	30		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+selonianPSG	towCrystal			45	buffs.genericBuff	180	agility_modified	30	constitution_modified	30		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 proc_generic_test	proc_generic_test			50	command.regeneration	-1	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 reac_generic_test	reac_generic_test			50	command.powerBoost	-1	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 bh_innate_assault	bh_innate_assault			10	command.aim	3	expertise_action_all	90		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1044,11 +1044,11 @@ stun_immune	stun			20	state.anger	7		0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	
 bh_return_fire_1	bh_return_fire_1			10	command.bh_return_fire_command	15	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 action_drain_immunity	actionDrain			100	command.bh_intimidate	20		0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 bh_intimidate	actionDrain			1	command.bh_intimidate	1	immediate_action_drain	1		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-proc_gcw_base_damage_a	gcwProcBuff			91	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_gcw_base_damage_b	gcwProcBuff			92	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_gcw_base_damage_c	gcwProcBuff			93	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_gcw_base_damage_d	gcwProcBuff			94	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-proc_gcw_base_damage_e	gcwProcBuff			95	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_gcw_base_damage_a	stimpack			91	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_gcw_base_damage_b	stimpack			92	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_gcw_base_damage_c	stimpack			93	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_gcw_base_damage_d	stimpack			94	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+proc_gcw_base_damage_e	stimpack			95	command.detonateDroid	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 banner_buff_commando	banner_com			1	Roadmap.commando	600	proc_buff	1	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 banner_buff_smuggler	banner_smug			1	Roadmap.smuggler	600	luck_modified	100	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 banner_buff_medic	banner_med			1	Roadmap.medic	600	expertise_buff_duration_line_me_enhance	1200	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1056,32 +1056,32 @@ banner_buff_officer	banner_off			1	Roadmap.officer	600	tcg_gcw_bonus	10		0		0		0
 banner_buff_spy	banner_spy			1	Roadmap.spy	600	agility_modified	100	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 banner_buff_bounty_hunter	banner_trad			1	Roadmap.bounty_hunter	600	expertise_resource_quality_increase	1	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 banner_buff_force_sensitive	banner_jedi			1	Roadmap.force_sensitive	600	strength_modified	100	tcg_gcw_bonus	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_damage_shield_a	gcw_damage_shield			1	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_damage_shield_b	gcw_damage_shield			2	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_damage_shield_c	gcw_damage_shield			3	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_damage_shield_d	gcw_damage_shield			4	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_damage_shield_e	gcw_damage_shield			5	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_reactive_heal_a	gcw_reactive_heal			5	command.powerBoost	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_reactive_heal_b	gcw_reactive_heal			4	command.powerBoost	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_reactive_heal_c	gcw_reactive_heal			3	command.powerBoost	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_reactive_heal_d	gcw_reactive_heal			2	command.powerBoost	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_reactive_heal_e	gcw_reactive_heal			1	command.powerBoost	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_reactive_action_a	gcw_reactive_action_heal			5	command.thyroidRupture	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_reactive_action_b	gcw_reactive_action_heal			4	command.thyroidRupture	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_reactive_action_c	gcw_reactive_action_heal			3	command.thyroidRupture	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_reactive_action_d	gcw_reactive_action_heal			2	command.thyroidRupture	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_reactive_action_e	gcw_reactive_action_heal			1	command.thyroidRupture	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_damage_absorb_a	gcw_base_damage_absorb			5	command.shock	1800	expertise_innate_protection_kinetic	100	expertise_innate_protection_energy	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_damage_absorb_b	gcw_base_damage_absorb			4	command.shock	1800	expertise_innate_protection_kinetic	200	expertise_innate_protection_energy	200		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_damage_absorb_c	gcw_base_damage_absorb			3	command.shock	1800	expertise_innate_protection_kinetic	300	expertise_innate_protection_energy	300		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_damage_absorb_d	gcw_base_damage_absorb			2	command.shock	1800	expertise_innate_protection_kinetic	500	expertise_innate_protection_energy	500		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_damage_absorb_e	gcw_base_damage_absorb			1	command.shock	1800	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_damage_shield_a	stimpack			1	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_damage_shield_b	stimpack			2	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_damage_shield_c	stimpack			3	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_damage_shield_d	stimpack			4	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_damage_shield_e	stimpack			5	command.duelistStance	30	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_reactive_heal_a	stimpack			5	command.powerBoost	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_reactive_heal_b	stimpack			4	command.powerBoost	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_reactive_heal_c	stimpack			3	command.powerBoost	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_reactive_heal_d	stimpack			2	command.powerBoost	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_reactive_heal_e	stimpack			1	command.powerBoost	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_reactive_action_a	stimpack			5	command.thyroidRupture	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_reactive_action_b	stimpack			4	command.thyroidRupture	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_reactive_action_c	stimpack			3	command.thyroidRupture	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_reactive_action_d	stimpack			2	command.thyroidRupture	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_reactive_action_e	stimpack			1	command.thyroidRupture	10	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_damage_absorb_a	stimpack			5	command.shock	1800	expertise_innate_protection_kinetic	100	expertise_innate_protection_energy	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_damage_absorb_b	stimpack			4	command.shock	1800	expertise_innate_protection_kinetic	200	expertise_innate_protection_energy	200		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_damage_absorb_c	stimpack			3	command.shock	1800	expertise_innate_protection_kinetic	300	expertise_innate_protection_energy	300		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_damage_absorb_d	stimpack			2	command.shock	1800	expertise_innate_protection_kinetic	500	expertise_innate_protection_energy	500		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_damage_absorb_e	stimpack			1	command.shock	1800	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 fs_forsake_fear	expertiseActionHeal	channeled		18	command.fs_path_forsake_fear	10	group	0	expertise_channel_action_heal	6		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_critical_heal_a	gcw_critical_heal			1	command.powerBoost	1800	avoid_incap_heal	800		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_critical_heal_b	gcw_critical_heal			2	command.powerBoost	1800	avoid_incap_heal	1600		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_critical_heal_c	gcw_critical_heal			3	command.powerBoost	1800	avoid_incap_heal	2500		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_critical_heal_d	gcw_critical_heal			4	command.powerBoost	1800	avoid_incap_heal	5000		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-gcw_base_critical_heal_e	gcw_critical_heal			5	command.powerBoost	1800	avoid_incap_heal	7500		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_critical_heal_a	stimpack			1	command.powerBoost	1800	avoid_incap_heal	800		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_critical_heal_b	stimpack			2	command.powerBoost	1800	avoid_incap_heal	1600		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_critical_heal_c	stimpack			3	command.powerBoost	1800	avoid_incap_heal	2500		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_critical_heal_d	stimpack			4	command.powerBoost	1800	avoid_incap_heal	5000		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+gcw_base_critical_heal_e	stimpack			5	command.powerBoost	1800	avoid_incap_heal	7500		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 gcw_base_critical_heal_recourse	snare	root	nullification	100	command.powerBoost	10	expertise_glancing_blow_all	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 vet_exp_buff_item_buff	exp_buff			20	command.cyborgStrengthBuff	1800	xp_bonus_general	20		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 exclusive_proxy_bh_del_cc_1	snare			25	command.bh_del_cc	10	exclusive_proxy	0	expertise_action_all	-5		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
@@ -1134,12 +1134,12 @@ pvp_aura_buff_target	pvpAuraBuff			99	command.pvp_aura_buff_self	10	tcg_gcw_bonu
 pvp_aura_buff_rebel_self	pvpAuraBuff			100	command.pvp_aura_buff_rebel_self	180	tcg_gcw_bonus	10	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750	pvp_aura_buff_self	0	STATE_NONE	none	appearance/pt_aurabuff_rebel_caster.prt		1	0		1	1	1	0	1	1	0	1	1	1
 pvp_aura_buff_rebel_target	pvpAuraBuff			99	command.pvp_aura_buff_rebel_self	10	tcg_gcw_bonus	10	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750		0	STATE_NONE	none	appearance/pt_aurabuff_rebel.prt		1	0		1	1	1	0	1	1	0	1	1	1
 of_firepower	of_firepower			90	command.of_firepower	30	expertise_damage_line_of_aoe	125	expertise_critical_line_of_aoe	50		0		0		0	STATE_NONE	none	clienteffect/off_superior_firepower.cef		1	0		1	1	1	0	1	1	0	1	1	1
-of_tactical_drop_1	genBuff_3			26	command.powerBoost	900	constitution_modified	75		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-of_tactical_drop_2	genBuff_3			34	command.powerBoost	900	constitution_modified	75	expertise_critical_niche_all	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-of_tactical_drop_3	genBuff_3			48	command.powerBoost	900	constitution_modified	75	expertise_critical_niche_all	5	expertise_dodge	3		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-of_tactical_drop_4	genBuff_3			62	command.powerBoost	900	constitution_modified	75	expertise_critical_niche_all	5	expertise_dodge	3	expertise_action_all	5		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-of_tactical_drop_5	genBuff_3			76	command.powerBoost	900	constitution_modified	75	expertise_critical_niche_all	5	expertise_dodge	4	expertise_action_all	5	expertise_damage_all	5	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-of_tactical_drop_6	genBuff_3			90	command.powerBoost	900	constitution_modified	100	expertise_critical_niche_all	7	expertise_dodge	5	expertise_action_all	7	expertise_damage_all	7	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_tactical_drop_1	stimpack			26	command.powerBoost	900	constitution_modified	75		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_tactical_drop_2	stimpack			34	command.powerBoost	900	constitution_modified	75	expertise_critical_niche_all	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_tactical_drop_3	stimpack			48	command.powerBoost	900	constitution_modified	75	expertise_critical_niche_all	5	expertise_dodge	3		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_tactical_drop_4	stimpack			62	command.powerBoost	900	constitution_modified	75	expertise_critical_niche_all	5	expertise_dodge	3	expertise_action_all	5		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_tactical_drop_5	stimpack			76	command.powerBoost	900	constitution_modified	75	expertise_critical_niche_all	5	expertise_dodge	4	expertise_action_all	5	expertise_damage_all	5	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_tactical_drop_6	stimpack			90	command.powerBoost	900	constitution_modified	100	expertise_critical_niche_all	7	expertise_dodge	5	expertise_action_all	7	expertise_damage_all	7	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 pvp_retaliation_ability	pvpOffensive			100	command.command_pvp_retaliation_ability	120	reac_buff	1		0		0		0		0	STATE_NONE	none	appearance/pt_officer_focus_fire.prt		1	0		1	1	1	0	1	1	0	1	1	1
 pvp_retaliation_rebel_ability	pvpOffensive			100	command.command_pvp_retaliation_rebel_ability	120	reac_buff	1		0		0		0		0	STATE_NONE	none	appearance/pt_officer_focus_fire.prt		1	0		1	1	1	0	1	1	0	1	1	1
 pvp_adrenaline_ability	pvp_adrenaline_ability			90	command.command_pvp_adrenaline_ability	120	reac_buff	1		0		0		0		0	STATE_NONE	none	appearance/pt_officer_tactics.prt		1	0		1	1	1	0	1	1	0	1	1	1
@@ -1327,15 +1327,15 @@ bh_surprise_attack_effect_improved_6	playerArmorReduce			90	command.bh_dm_crit	5
 aurekDuality	aurekBesh			1	command.detonateDroid	22		0		0		0		0		0	STATE_NONE	aurek_diminish			1	1		0	1	1	0	1	1	0	1	1	1
 beshDuality	aurekBesh			1	command.detonateDroid	22		0		0		0		0		0	STATE_NONE	besh_diminish			1	1		0	1	1	0	1	1	0	1	1	1
 aurek_besh_imbalance	aurek_besh_imbalance			1	command.powerBoost	-1		0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
-treasure_bonus_combat_critical_hit	treasure_buff			1	command.fs_dm_cc_crit	120	expertise_critical_niche_all	3	healthPercent	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-treasure_bonus_combat_strikethrough_chance	treasure_buff			1	command.armorBreak	120	expertise_strikethrough_chance	3	healing_action	1000		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-treasure_bonus_combat_dodge	treasure_buff			1	command.me_enhance_dodge	120	expertise_dodge	3	debuff_purge	1		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-treasure_bonus_combat_block_chance	treasure_buff			1	command.me_enhance_block	120	expertise_block_chance	3		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-treasure_bonus_combat_evasion_chance	treasure_buff			1	command.me_evasion	120	expertise_evasion_chance	3		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-treasure_bonus_snare_immunity	treasure_buff			1	command.sm_path_lucky_break	10	movement	0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-treasure_bonus_combat_critical_hit_reduction	treasure_buff			1	command.vitalize	120	combat_critical_hit_reduction	30	precision_modified	20		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-treasure_bonus_combat_parry	treasure_buff			1	command.parryRiposte	120	expertise_parry	3	strength_modified	20		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-treasure_bonus_heal_health_action	treasure_buff			1	command.bactaInfusion	120	healthPercent	15	healing_action	2000		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+treasure_bonus_combat_critical_hit	towCrystal			1	command.fs_dm_cc_crit	120	expertise_critical_niche_all	3	healthPercent	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+treasure_bonus_combat_strikethrough_chance	towCrystal			1	command.armorBreak	120	expertise_strikethrough_chance	3	healing_action	1000		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+treasure_bonus_combat_dodge	towCrystal			1	command.me_enhance_dodge	120	expertise_dodge	3	debuff_purge	1		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+treasure_bonus_combat_block_chance	towCrystal			1	command.me_enhance_block	120	expertise_block_chance	3		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+treasure_bonus_combat_evasion_chance	towCrystal			1	command.me_evasion	120	expertise_evasion_chance	3		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+treasure_bonus_snare_immunity	towCrystal			1	command.sm_path_lucky_break	10	movement	0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+treasure_bonus_combat_critical_hit_reduction	towCrystal			1	command.vitalize	120	combat_critical_hit_reduction	30	precision_modified	20		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+treasure_bonus_combat_parry	towCrystal			1	command.parryRiposte	120	expertise_parry	3	strength_modified	20		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+treasure_bonus_heal_health_action	towCrystal			1	command.bactaInfusion	120	healthPercent	15	healing_action	2000		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 human_ability_1	speciesTrait			1	command.human_ability	80	group	0	expertise_damage_all	3		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 wookiee_ability_1	speciesTrait			1	command.wookiee_ability	30	movement	65	expertise_damage_all	-25	glancing_blow_vulnerable	25		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 rodian_ability_1	speciesTrait			1	command.rodian_ability	30	expertise_action_all	38		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
@@ -1447,9 +1447,9 @@ ig_head_buff_1	ig_buff			1	command.ig88_droideka_shield	30	expertise_innate_prot
 ig_head_buff_2	ig_buff			1	command.ig88_droideka_electrify	30	healing_health	9000	healing_action	9000		0		0		0	STATE_NONE	none	clienteffect/off_last_words.cef		1	0		1	1	1	0	1	1	0	1	1	1
 ig_head_buff_3	ig_buff			1	command.bh_flawless_strike	30	combat_block_reduction	300	combat_dodge_reduction	300	combat_glancing_blow_reduction	300	combat_parry_reduction	300		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 ig_head_debuff_1	ig_buff			1	command.ig88_droideka_electrify	60	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-aurilian_crystal_small	aurilian_crystal_buff			1	command.aurilian_crystal_buff_sm	7200	stamina_modified	50	expertise_critical_niche_all	1		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
-aurilian_crystal_medium	aurilian_crystal_buff			2	command.aurilian_crystal_buff_med	7200	stamina_modified	100	expertise_critical_niche_all	2		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
-aurilian_crystal_large	aurilian_crystal_buff			3	command.aurilian_crystal_buff_lrg	7200	stamina_modified	150	expertise_critical_niche_all	3		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
+aurilian_crystal_small	towCrystal			1	command.aurilian_crystal_buff_sm	7200	stamina_modified	50	expertise_critical_niche_all	1		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
+aurilian_crystal_medium	towCrystal			2	command.aurilian_crystal_buff_med	7200	stamina_modified	100	expertise_critical_niche_all	2		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
+aurilian_crystal_large	towCrystal			3	command.aurilian_crystal_buff_lrg	7200	stamina_modified	150	expertise_critical_niche_all	3		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 me_ae_rez_debuff	super_rez_debuff			1	command.hemorrhage	15	stamina_modified	-1000	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 suin_healing_debuff	healingRedux			0	jedi.forceWeaken	4	expertise_healing_reduction	50		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 tusken_bane	tusken_bane			6	command.centerOfBeing	300	expertise_critical_niche_all	5	expertise_damage_all	10	expertise_dodge	5	expertise_strikethrough_chance	5	expertise_block_chance	5	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1

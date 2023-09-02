@@ -20,3 +20,6 @@ heroic_sd_intro_rebel		departures1	-48	2.64	40	-40
 stardust_imperial_ace		world	-220	28	-4352	33				300						
 stardust_neutral_ace		departures1	-53	2.64	42	-55										
 nexus_collector		world	-170	28	-4713	140										
+ent_questgiver_pointer		world	-178	28	-4740	140										
+stardust_reclamations		world	-164	28	-4753	140										
+professor_snoak		world	-171	28	-4714	140										

@@ -42,13 +42,13 @@ public class mando_item extends script.base_script
             if (mandoEnemy_condition(player, self))
             {
                 sendSystemMessage(player, new string_id("stardust/quest", "this_is_the_way"));
-                factions.addFactionStanding(player, factions.DEATH_WATCH, 1000.0f);
+                factions.addUnmodifiedFactionStanding(player, "death_watch", 1000);
                 return SCRIPT_CONTINUE;
             }
             else
             {
                 sendSystemMessage(player, new string_id("stardust/quest", "this_is_not_the_way"));
-                factions.addFactionStanding(player, factions.DEATH_WATCH, -1.0f);
+                factions.addUnmodifiedFactionStanding(player, "death_watch", -1);
                 return SCRIPT_CONTINUE;
             }
         }
