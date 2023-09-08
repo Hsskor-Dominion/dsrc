@@ -1449,7 +1449,7 @@ public class base_player extends script.base_script
         {
             revokeSkill(self, "demo_combat");
         }
-        float mandoFaction = factions.getFactionStanding(player, "death_watch");
+        float mandoFaction = factions.getFactionStanding(self, "death_watch");
         if (mandoFaction <= 0)
         {
             revokeSkill(self, "faction_rank_mando");
