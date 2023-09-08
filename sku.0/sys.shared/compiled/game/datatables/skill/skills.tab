@@ -2012,10 +2012,10 @@ expertise_me_revive_duration_2	expertise_me_revive_duration_1																			
 expertise_me_revive_duration_3	expertise_me_revive_duration_2																					expertise_cooldown_line_me_revive=5,expertise_cooldown_line_me_aoe_revive=5			0	
 expertise_me_blood_cleaners_1	expertise_me_revive_duration_3									expertise_me_revive_duration_3											me_blood_cleaners_1				0	
 expertise_me_bacta_bomb_1	expertise_me_serotonin_boost_1									expertise_me_serotonin_boost_1											me_bacta_bomb_1, me_bacta_grenade_1				0	
-expertise_me_heal_damage_1	expertise																					expertise_healing_all=3			0	
-expertise_me_heal_damage_2	expertise_me_heal_damage_1																					expertise_healing_all=3			0	
-expertise_me_heal_damage_3	expertise_me_heal_damage_2																					expertise_healing_all=3			0	
-expertise_me_heal_damage_4	expertise_me_heal_damage_3																					expertise_healing_all=3			0	
+expertise_me_heal_damage_1	expertise																					expertise_healing_all=3,expertise_buff_duration_line_me_enhance=300			0	
+expertise_me_heal_damage_2	expertise_me_heal_damage_1																					expertise_healing_all=3,expertise_buff_duration_line_me_enhance=300			0	
+expertise_me_heal_damage_3	expertise_me_heal_damage_2																					expertise_healing_all=3,expertise_buff_duration_line_me_enhance=300			0	
+expertise_me_heal_damage_4	expertise_me_heal_damage_3																					expertise_healing_all=3,expertise_buff_duration_line_me_enhance=300			0	
 expertise_me_cure_affliction_1	expertise_me_heal_damage_4									expertise_me_heal_damage_4															0	
 expertise_me_heal_action_1	expertise			1																		exotic_heal_action_reduction=5			0	
 expertise_me_heal_action_2	expertise_me_heal_action_1			1																		exotic_heal_action_reduction=5			0	
@@ -2717,10 +2717,10 @@ expertise_bm_exceptional_nutrition_1	expertise																					expertise_bm_
 expertise_bm_pet_dodge_3	expertise_bm_pet_dodge_2																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_2	expertise_bm_pet_dodge_1																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_1	expertise_bm_evasion_3									expertise_bm_evasion_3												expertise_pet_dodge=5				
-expertise_bm_genetic_engineering_4	expertise_bm_genetic_engineering_3			1																		expertise_bm_genetic_engineering=30,medicine_assembly=10,medicine_experimentation=10	craftMedicineStimpackGroupC			
-expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2			1																		expertise_bm_genetic_engineering=30,medicine_assembly=10,medicine_experimentation=10	craftMedicineStimpackGroupB			
-expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1			1																		expertise_bm_genetic_engineering=30,medicine_assembly=10,medicine_experimentation=10	craftMedicineStimpackGroupA			
-expertise_bm_genetic_engineering_1	expertise			1																		expertise_bm_genetic_engineering=30,medicine_assembly=10,medicine_experimentation=10	craftArtisanChemicalGroupA			
+expertise_bm_genetic_engineering_4	expertise_bm_genetic_engineering_3			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftMedicineStimpackGroupC			
+expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftMedicineStimpackGroupB			
+expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftMedicineStimpackGroupA			
+expertise_bm_genetic_engineering_1	expertise			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftArtisanChemicalGroupA			
 expertise_bm_add_first_pet_bar_1	expertise_bm_abilility_aquisition_mod_1									expertise_bm_abilility_aquisition_mod_1												expertise_bm_add_pet_bar=1				
 expertise_bm_specialized_supplements_1	expertise																					expertise_bm_pet_regen=100				
 expertise_bm_evasion_4	expertise_bm_evasion_3																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
