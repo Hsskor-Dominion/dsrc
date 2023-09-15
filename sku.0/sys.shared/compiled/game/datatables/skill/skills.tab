@@ -188,26 +188,26 @@ class_medic_phase1_04	class_medic_phase1_03	oneByFour	0	0	0	0	100	0		class_medic
 class_medic_phase1_05	class_medic_phase1_04	oneByFour	0	0	0	0	100	0		class_medic_phase1_04		combat_general	52100	105300							me_dm_2,me_bacta_ampule_2				1	0
 class_medic_phase1_master	class_medic_phase1	oneByFour	0	1	0	0	100	0		class_medic_phase1_05		combat_general	81000	151060							me_dm_3,me_bacta_ampule_3	cybernetic_psychosis_resistance=2			1	0
 class_medic_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
-class_medic_phase2_novice	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase1_master		combat_general	116200	205140							me_cure_affliction_1,me_dm_dot_2,wear_all_armor		craftArtisanChemicalGroupB		1	0
-class_medic_phase2_02	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase2_novice		combat_general	157800	267540							me_dm_dot_3,place_hospital	private_place_hospital=100	craftMedicineComponentGroupB		1	0
-class_medic_phase2_03	class_medic_phase2_02	oneByFour	0	0	0	0	100	0		class_medic_phase2_02		combat_general	205800	339690							me_ae_heal_3		craftMedicineComponentGroupC		1	0
-class_medic_phase2_04	class_medic_phase2_03	oneByFour	0	0	0	0	100	0		class_medic_phase2_03		combat_general	261300	423410							me_hot_1		craftMedicineComponentGroupD		1	0
-class_medic_phase2_05	class_medic_phase2_04	oneByFour	0	0	0	0	100	0		class_medic_phase2_04		combat_general	325700	519610							me_fld_dm_dot_1,me_rv_area,me_rv_pvp_area		craftMedicineComponentGroupE		1	0
-class_medic_phase2_master	class_medic_phase2	oneByFour	0	1	0	0	100	0		class_medic_phase2_05		combat_general	399700	629980							me_dm_4,me_bacta_ampule_4	cybernetic_psychosis_resistance=2	craftMedicineComponentGroupF		1	0
-class_medic_phase3	class	oneByFour	0	0	1	0	0	0															craftMedicineComponentGroupG		1	0
-class_medic_phase3_novice	class_medic_phase3	oneByFour	0	0	0	0	100	0		class_medic_phase2_master		combat_general	484600	756860							me_buff_health_1,me_dm_dot_4		craftArtisanChemicalGroupC		1	0
-class_medic_phase3_02	class_medic_phase3	oneByFour	0	0	0	0	100	0		class_medic_phase3_novice		combat_general	582200	901160							me_fld_dm_dot_2		craftMedicalEnhancersA		1	0
-class_medic_phase3_03	class_medic_phase3_02	oneByFour	0	0	0	0	100	0		class_medic_phase3_02		combat_general	693200	1065610							me_dm_5,me_bacta_ampule_5		craftMedicalEnhancersB		1	0
-class_medic_phase3_04	class_medic_phase3_03	oneByFour	0	0	0	0	100	0		class_medic_phase3_03		combat_general	819700	1252940							me_ae_heal_4		craftMedicalEnhancersC		1	0
-class_medic_phase3_05	class_medic_phase3_04	oneByFour	0	0	0	0	100	0		class_medic_phase3_04		combat_general	963800	1466790							me_hot_2,me_bacta_ampule_6		craftMedicalEnhancersD		1	0
-class_medic_phase3_master	class_medic_phase3	oneByFour	0	1	0	0	100	0		class_medic_phase3_05		combat_general	1128300	1710540							me_dm_6,me_dm_dot_5	cybernetic_psychosis_resistance=2	craftArtisanChemicalGroupC		1	0
-class_medic_phase4	class	oneByFour	0	0	1	0	0	0						0									craftMedicineComponentGroupH		1	0
-class_medic_phase4_novice	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_phase3_master		combat_general	1315800	1988090							me_hot_3		craftMedicineComponentGroupI		1	0
+class_medic_phase2_novice	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase1_master		combat_general	116200	205140							me_cure_affliction_1,me_dm_dot_2,wear_all_armor				1	0
+class_medic_phase2_02	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase2_novice		combat_general	157800	267540							me_dm_dot_3,place_hospital	private_place_hospital=100			1	0
+class_medic_phase2_03	class_medic_phase2_02	oneByFour	0	0	0	0	100	0		class_medic_phase2_02		combat_general	205800	339690							me_ae_heal_3				1	0
+class_medic_phase2_04	class_medic_phase2_03	oneByFour	0	0	0	0	100	0		class_medic_phase2_03		combat_general	261300	423410							me_hot_1				1	0
+class_medic_phase2_05	class_medic_phase2_04	oneByFour	0	0	0	0	100	0		class_medic_phase2_04		combat_general	325700	519610							me_fld_dm_dot_1,me_rv_area,me_rv_pvp_area				1	0
+class_medic_phase2_master	class_medic_phase2	oneByFour	0	1	0	0	100	0		class_medic_phase2_05		combat_general	399700	629980							me_dm_4,me_bacta_ampule_4	cybernetic_psychosis_resistance=2			1	0
+class_medic_phase3	class	oneByFour	0	0	1	0	0	0																	1	0
+class_medic_phase3_novice	class_medic_phase3	oneByFour	0	0	0	0	100	0		class_medic_phase2_master		combat_general	484600	756860							me_buff_health_1,me_dm_dot_4				1	0
+class_medic_phase3_02	class_medic_phase3	oneByFour	0	0	0	0	100	0		class_medic_phase3_novice		combat_general	582200	901160							me_fld_dm_dot_2				1	0
+class_medic_phase3_03	class_medic_phase3_02	oneByFour	0	0	0	0	100	0		class_medic_phase3_02		combat_general	693200	1065610							me_dm_5,me_bacta_ampule_5				1	0
+class_medic_phase3_04	class_medic_phase3_03	oneByFour	0	0	0	0	100	0		class_medic_phase3_03		combat_general	819700	1252940							me_ae_heal_4				1	0
+class_medic_phase3_05	class_medic_phase3_04	oneByFour	0	0	0	0	100	0		class_medic_phase3_04		combat_general	963800	1466790							me_hot_2,me_bacta_ampule_6				1	0
+class_medic_phase3_master	class_medic_phase3	oneByFour	0	1	0	0	100	0		class_medic_phase3_05		combat_general	1128300	1710540							me_dm_6,me_dm_dot_5	cybernetic_psychosis_resistance=2			1	0
+class_medic_phase4	class	oneByFour	0	0	1	0	0	0						0											1	0
+class_medic_phase4_novice	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_phase3_master		combat_general	1315800	1988090							me_hot_3				1	0
 class_medic_phase4_02	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_phase4_novice		combat_general	1529300	2304380							me_fld_dm_dot_3,me_rv_combat				1	0
 class_medic_phase4_03	class_medic_phase4_02	oneByFour	0	0	0	0	100	0		class_medic_phase4_02		combat_general	1772600	2664480							me_ae_heal_5,me_dm_dot_6				1	0
 class_medic_phase4_04	class_medic_phase4_03	oneByFour	0	0	0	0	100	0		class_medic_phase4_03		combat_general	2049600	3074500							me_sh_1,me_bacta_bomb_1				1	0
 class_medic_phase4_05	class_medic_phase4_04	oneByFour	0	0	0	0	100	0		class_medic_phase4_04		combat_general	2365000	3540940							me_dm_8,me_bacta_grenade_1				1	0
-class_medic_phase4_master	class_medic_phase4	oneByFour	0	1	0	0	100	0		class_medic_phase4_05		combat_general	2723800	3540940							me_ae_heal_6,me_stasis_1,me_serotonin_boost_1	cybernetic_psychosis_resistance=2,me_doom_chance=5	craftMedicineStimpackGroupE,craftArtisanChemicalGroupD		1	0
+class_medic_phase4_master	class_medic_phase4	oneByFour	0	1	0	0	100	0		class_medic_phase4_05		combat_general	2723800	3540940							me_ae_heal_6,me_stasis_1,me_serotonin_boost_1	cybernetic_psychosis_resistance=2,me_doom_chance=5			1	0
 class_entertainer_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_entertainer_phase1_novice	class_entertainer_phase1	oneByFour	0	0	0	0	100	0				entertainer	100	4810							fizz,startMusic+rock,flourish+1,flourish+2,flourish+3,flourish+4,flourish+5,flourish+6,flourish+7,flourish+8,imagedesign,covercharge,inspire,registerWithLocation,musician,dancer,groupdance,of_inspiration_1,en_flush_with_success_buff_package	hair=1,face=1,instrument_customization=20,cybernetic_psychosis_resistance=2	craftDancePropA,craftInstrumentGroupA,craftInstrumentGroupB		1	0
 class_entertainer_phase1_02	class_entertainer_phase1	oneByFour	0	1	0	0	100	0		class_entertainer_phase1_novice		entertainer	3700	16120							prop_staff,colorlights,startDance+basic2	hair=1,instrument_customization=20			1	0
@@ -1089,7 +1089,7 @@ outdoors_bio_engineer_dna_harvesting_04	outdoors_bio_engineer_dna_harvesting_03	
 outdoors_bio_engineer_production_01	outdoors_bio_engineer		1	0	0	1	6000	5		outdoors_bio_engineer_novice		crafting_medicine_general	10000	60000								medicine_assembly=10,medicine_experimentation=10	craftMedicineComponentGroupG,craftMedicineStimpackGroupC,craftMedicalEnhancersA		0	0
 outdoors_bio_engineer_production_02	outdoors_bio_engineer_production_01		1	0	0	1	7000	4		outdoors_bio_engineer_production_01		crafting_medicine_general	30000	100000								medicine_assembly=10,medicine_experimentation=10	craftMedicineComponentGroupH,craftMedicalEnhancersB		0	0
 outdoors_bio_engineer_production_03	outdoors_bio_engineer_production_02		1	0	0	1	8000	3		outdoors_bio_engineer_production_02		crafting_medicine_general	50000	160000								medicine_assembly=10,medicine_experimentation=10	craftMedicineComponentGroupI,craftMedicalEnhancersC		0	0
-outdoors_bio_engineer_production_04	outdoors_bio_engineer_production_03		1	1	0	1	9000	2		outdoors_bio_engineer_production_03		crafting_medicine_general	80000	160000								medicine_assembly=10,medicine_experimentation=10	craftMedicineStimpackGroupD,craftMedicalEnhancersD		0	0
+outdoors_bio_engineer_production_04	outdoors_bio_engineer_production_03		1	1	0	1	9000	2		outdoors_bio_engineer_production_03		crafting_medicine_general	80000	160000								medicine_assembly=10,medicine_experimentation=10	craftMedicineStimpackGroupD,craftMedicalEnhancersD,craftMedicineStimpackGroupE,craftArtisanChemicalGroupD		0	0
 combat_smuggler_prereq	combat	oneByFour	1	0	1	1	0	0						0											0	0
 combat_smuggler_prereq_novice	combat_smuggler_prereq	oneByFour	1	1	0	1	100	10				combat_general	1000	10000							cheapShot	pistol_defense=5,pistol_accuracy=5,ranged_speed=5			0	0
 combat_smuggler_prereq_01	combat_smuggler_prereq	oneByFour	1	0	0	1	1000	2		combat_smuggler_prereq_novice		combat_general	6000	20000							hipShot	pistol_defense=5,pistol_accuracy=5			0	0
@@ -2717,10 +2717,10 @@ expertise_bm_exceptional_nutrition_1	expertise																					expertise_bm_
 expertise_bm_pet_dodge_3	expertise_bm_pet_dodge_2																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_2	expertise_bm_pet_dodge_1																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_1	expertise_bm_evasion_3									expertise_bm_evasion_3												expertise_pet_dodge=5				
-expertise_bm_genetic_engineering_4	expertise_bm_genetic_engineering_3			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftMedicineStimpackGroupC			
-expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftMedicineStimpackGroupB			
-expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftMedicineStimpackGroupA			
-expertise_bm_genetic_engineering_1	expertise			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftArtisanChemicalGroupA			
+expertise_bm_genetic_engineering_4	expertise_bm_genetic_engineering_3			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftMedicineStimpackGroupD,craftMedicineComponentGroupD,craftMedicalEnhancersD,craftArtisanChemicalGroupD,			
+expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftMedicineStimpackGroupC,craftMedicineComponentGroupC,craftArtisanChemicalGroupC,craftMedicalEnhancersC,craftArtisanChemicalGroupC			
+expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftMedicineStimpackGroupB,craftArtisanChemicalGroupB,craftMedicineComponentGroupB,craftMedicalEnhancersB			
+expertise_bm_genetic_engineering_1	expertise			1																		expertise_bm_genetic_engineering=25,medicine_assembly=25,medicine_experimentation=25	craftMedicineStimpackGroupA,craftArtisanChemicalGroupA,craftMedicalEnhancersA			
 expertise_bm_add_first_pet_bar_1	expertise_bm_abilility_aquisition_mod_1									expertise_bm_abilility_aquisition_mod_1												expertise_bm_add_pet_bar=1				
 expertise_bm_specialized_supplements_1	expertise																					expertise_bm_pet_regen=100				
 expertise_bm_evasion_4	expertise_bm_evasion_3																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
@@ -2756,7 +2756,7 @@ expertise_bm_dna_harvesting_3	expertise_bm_dna_harvesting_2			1																	
 expertise_bm_dna_harvesting_2	expertise_bm_dna_harvesting_1																					creature_harvesting=10,creature_hit_bonus=5				
 expertise_bm_dna_harvesting_1	expertise																					creature_harvesting=10,creature_hit_bonus=5				
 expertise_bm_attack_1	expertise_bm_creature_knowledge_command_4			1						expertise_bm_creature_knowledge_command_4											bm_pet_attack_1,tame,train_mount,bm_creature_knowledge_command_1,bm_revive_pet_1	expertise_bm_base_mod=100,expertise_bm_train_mount=100,stored_pets=4,keep_creature=1,tame_non_aggro=80,tame_level=80,expertise_bm_add_pet_bar=1,expertise_bm_self_debuff_reduction=5,bm_xp_mod_boost=5				
-expertise_bm_incubation_base_1	expertise_bm_genetic_engineering_4			1						expertise_bm_genetic_engineering_4											bm_mend_pet_1,bm_collect_dna,bm_revive_pet_1,bm_creature_knowledge_command_1	expertise_bm_base_mod=100,expertise_bm_dna_harvesting_1=100,expertise_bm_pet_regen=100,expertise_bm_self_debuff_reduction=5,expertise_bm_incubation_quality=20,expertise_bm_incubation_time=12,bm_mutation_chance_increase=6,expertise_bm_pet_revive_time=10,expertise_bm_pet_recovery=50	craftMedicineStimpackGroupD			
+expertise_bm_incubation_base_1	expertise_bm_genetic_engineering_4			1						expertise_bm_genetic_engineering_4											bm_mend_pet_1,bm_collect_dna,bm_revive_pet_1,bm_creature_knowledge_command_1	expertise_bm_base_mod=100,expertise_bm_dna_harvesting_1=100,expertise_bm_pet_regen=100,expertise_bm_self_debuff_reduction=5,expertise_bm_incubation_quality=20,expertise_bm_incubation_time=12,bm_mutation_chance_increase=6,expertise_bm_pet_revive_time=10,expertise_bm_pet_recovery=50	craftMedicineStimpackGroupE,craftMedicineComponentGroupE,craftMedicineComponentGroupF,craftMedicineComponentGroupG,craftMedicineComponentGroupH,craftMedicineComponentGroupI			
 expertise_bm_mending_1	expertise_bm_attack_1									expertise_bm_attack_1											bm_mend_pet_1					
 expertise_bm_soothing_comfort_1	expertise_bm_mending_1									expertise_bm_mending_1											bm_soothing_comfort_1					
 costume			1	0	0	0	0	0						0											0	0

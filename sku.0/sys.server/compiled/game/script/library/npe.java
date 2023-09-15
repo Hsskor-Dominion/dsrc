@@ -517,6 +517,14 @@ public class npe extends script.base_script
         attachScript(player, "npe.handoff_to_tatooine");
         setCompletedTutorial(player, true);
         setObjVar(player, "comingFromTutorial", 1);
+
+        // Create a string_id for the broadcast message
+        String playerName = getPlayerName(player);
+        string_id broadcastMessage = new string_id("***INCOMING TRANSMISSION***", playerName + " has joined the galaxy!");
+
+        // Send the galaxy-wide message
+        sendSystemMessageGalaxy(broadcastMessage);
+
         if (hasObjVar(player, "stardust_ent"))
         {
             warpPlayer(player, "tatooine", 3455, 0, -4630, null, 0, 0, 0, "", false);

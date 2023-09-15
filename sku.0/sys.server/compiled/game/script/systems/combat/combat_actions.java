@@ -2158,9 +2158,9 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int fs_set_heroic_taunt_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!buff.hasBuff(self, "set_bonus_jedi_utility_b_3")) {
-            return SCRIPT_OVERRIDE;
-        }
+//        if (!buff.hasBuff(self, "set_bonus_jedi_utility_b_3")) {
+//            return SCRIPT_OVERRIDE;
+//        }
         if (!combatStandardAction("fs_set_heroic_taunt_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -8266,6 +8266,12 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int pvp_aura_buff_self(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        int factionBaseCount1 = getIntObjVar(self, "factionBaseCount");
+        if (factionBaseCount1 < 1)
+        {
+            sendSystemMessage(self, new string_id("stardust/gcw", "must_own_command_post"));
+            return SCRIPT_OVERRIDE;
+        }
         if (!combatStandardAction("pvp_aura_buff_self", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -8273,6 +8279,12 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int pvp_aura_buff_rebel_self(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        int factionBaseCount1 = getIntObjVar(self, "factionBaseCount");
+        if (factionBaseCount1 < 1)
+        {
+            sendSystemMessage(self, new string_id("stardust/gcw", "must_own_command_post"));
+            return SCRIPT_OVERRIDE;
+        }
         if (!combatStandardAction("pvp_aura_buff_rebel_self", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -8280,6 +8292,12 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int pvp_retaliation_ability(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        int factionBaseCount1 = getIntObjVar(self, "factionBaseCount");
+        if (factionBaseCount1 < 1)
+        {
+            sendSystemMessage(self, new string_id("stardust/gcw", "must_own_command_post"));
+            return SCRIPT_OVERRIDE;
+        }
         if (!combatStandardAction("pvp_retaliation_ability", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -8287,6 +8305,12 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int pvp_retaliation_rebel_ability(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        int factionBaseCount1 = getIntObjVar(self, "factionBaseCount");
+        if (factionBaseCount1 < 1)
+        {
+            sendSystemMessage(self, new string_id("stardust/gcw", "must_own_command_post"));
+            return SCRIPT_OVERRIDE;
+        }
         if (!combatStandardAction("pvp_retaliation_rebel_ability", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -8294,6 +8318,12 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int pvp_adrenaline_ability(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        int factionBaseCount1 = getIntObjVar(self, "factionBaseCount");
+        if (factionBaseCount1 < 1)
+        {
+            sendSystemMessage(self, new string_id("stardust/gcw", "must_own_command_post"));
+            return SCRIPT_OVERRIDE;
+        }
         if (!combatStandardAction("pvp_adrenaline_ability", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -8301,6 +8331,12 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int pvp_adrenaline_rebel_ability(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        int factionBaseCount1 = getIntObjVar(self, "factionBaseCount");
+        if (factionBaseCount1 < 1)
+        {
+            sendSystemMessage(self, new string_id("stardust/gcw", "must_own_command_post"));
+            return SCRIPT_OVERRIDE;
+        }
         if (!combatStandardAction("pvp_adrenaline_rebel_ability", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -8308,6 +8344,12 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int pvp_unstoppable_ability(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        int factionBaseCount1 = getIntObjVar(self, "factionBaseCount");
+        if (factionBaseCount1 < 1)
+        {
+            sendSystemMessage(self, new string_id("stardust/gcw", "must_own_command_post"));
+            return SCRIPT_OVERRIDE;
+        }
         if (!combatStandardAction("pvp_unstoppable_ability", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
@@ -8315,6 +8357,12 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int pvp_unstoppable_rebel_ability(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        int factionBaseCount1 = getIntObjVar(self, "factionBaseCount");
+        if (factionBaseCount1 < 1)
+        {
+            sendSystemMessage(self, new string_id("stardust/gcw", "must_own_command_post"));
+            return SCRIPT_OVERRIDE;
+        }
         if (!combatStandardAction("pvp_unstoppable_rebel_ability", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
