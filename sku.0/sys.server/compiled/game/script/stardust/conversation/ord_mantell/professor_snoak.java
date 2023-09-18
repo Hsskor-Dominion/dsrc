@@ -25,10 +25,11 @@ public class professor_snoak extends script.base_script
     }
     public static void snoakNpcVendor(obj_id player, obj_id npc) throws InterruptedException
     {
-        String[] options = new String[2];
-        string_id[] items = new string_id[2];
-        items[0] = new string_id("npe", "store_item3");
-        items[1] = new string_id("npe", "store_item1");
+        String[] options = new String[3];
+        string_id[] items = new string_id[3];
+        items[0] = new string_id("npe", "store_item1");
+        items[1] = new string_id("npe", "store_item2");
+        items[2] = new string_id("npe", "store_item3");
         for (int i = 0; i < items.length; i++)
         {
             options[i] = utils.packStringId(items[i]);

@@ -1105,14 +1105,20 @@ public class npe extends script.base_script
     }
     public static void npeNpcVendor(obj_id player, obj_id npc) throws InterruptedException
     {
-        String[] options = new String[2];
-        string_id[] items = new string_id[2];
-        items[0] = new string_id("npe", "store_item3");
-        items[1] = new string_id("npe", "store_item1");
+        String[] options = new String[3]; // Increase the size to 3
+        string_id[] items = new string_id[3]; // Increase the size to 3
+
+        // Add your items for each option
+        items[0] = new string_id("npe", "store_item1");
+        items[1] = new string_id("npe", "store_item2");
+        items[2] = new string_id("npe", "store_item3");
+
+        // Use a for loop to pack the items into options
         for (int i = 0; i < items.length; i++)
         {
             options[i] = utils.packStringId(items[i]);
         }
+
         sui.showSUIPage(sui.listbox(
                 npc,
                 player,
