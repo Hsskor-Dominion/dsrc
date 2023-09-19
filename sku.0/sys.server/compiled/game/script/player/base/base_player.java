@@ -3496,8 +3496,7 @@ public class base_player extends script.base_script
         if (!utils.hasScriptVar(self, "no_cloning_sickness") && !instance.isInInstanceArea(self))
         {
             buff.applyBuff(self, "cloning_sickness");
-
-	    xp.grant(self, "jedi", -100000);
+            xp.grant(self, "jedi", -100);
         }
         else if (utils.hasScriptVar(self, "no_cloning_sickness"))
         {
@@ -3520,6 +3519,7 @@ public class base_player extends script.base_script
             revokeSkill(self, "class_forcesensitive_phase4_04");
             revokeSkill(self, "class_forcesensitive_phase4_03");
             revokeSkill(self, "class_forcesensitive_phase4_02");
+            xp.grant(self, "jedi", -1000000);
         }
     else if (hasSkill(self, "class_forcesensitive_phase3_master"))
         {
@@ -3531,6 +3531,7 @@ public class base_player extends script.base_script
             revokeSkill(self, "class_forcesensitive_phase3_04");
             revokeSkill(self, "class_forcesensitive_phase3_03");
             revokeSkill(self, "class_forcesensitive_phase3_02");
+            xp.grant(self, "jedi", -100000);
         }
     else if (hasSkill(self, "class_forcesensitive_phase2_master"))
         {
@@ -3541,10 +3542,12 @@ public class base_player extends script.base_script
             revokeSkill(self, "class_forcesensitive_phase2_04");
             revokeSkill(self, "class_forcesensitive_phase2_03");
             revokeSkill(self, "class_forcesensitive_phase2_02");
+            xp.grant(self, "jedi", -10000);
         }
     else if (hasSkill(self, "class_forcesensitive_phase1_master"))
         {
             buff.applyBuff(self, "forceWeaken");
+            xp.grant(self, "jedi", -1000);
         }
         CustomerServiceLog("Death", "(" + self + ") " + getName(self) + " has clone respawned at " + (getLocation(self)).toString());
         return SCRIPT_CONTINUE;
