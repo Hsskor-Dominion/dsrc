@@ -1427,9 +1427,9 @@ sp_set_perfect_opportunity	spyActionWoot			1	command.sp_dm	12	expertise_action_a
 ig88_droideka_shield	ig88_shield			1	command.ig88_droideka_shield	60	combat_divide_damage_taken	50		0		0		0		0	STATE_NONE	none	appearance/pt_ig88_droideka_shield.prt		1	0		0	1	1	0	1	1	0	1	1	1
 ig88_droideka_electrify	ig88_electrify			1	command.ig88_droideka_electrify	10	movement	0	glancing_blow_vulnerable	100	expertise_strikethrough_chance	-100		0		0	STATE_NONE	none	clienteffect/ig88_droideka_electrify.cef		1	1		0	1	1	0	1	1	0	1	1	1
 ig88_shield	ig88_shield			1	command.ig88_droideka_shield	20	combat_divide_damage_taken	100		0		0		0		0	STATE_NONE	none	appearance/pt_ig88_shield.prt		1	0		0	1	1	0	1	1	0	1	1	1
-droideka_shield_1	droideka_shield			1	command.ig88_droideka_shield	5	combat_divide_damage_taken	10		0		0		0		0	STATE_NONE	none	appearance/pt_ig88_droideka_shield.prt		1	0		0	1	1	0	1	1	0	1	1	1
-droideka_shield_2	droideka_shield			1	command.ig88_droideka_shield	10	combat_divide_damage_taken	20		0		0		0		0	STATE_NONE	none	appearance/pt_ig88_droideka_shield.prt		1	0		0	1	1	0	1	1	0	1	1	1
-droideka_shield_3	droideka_shield			1	command.ig88_droideka_shield	15	combat_divide_damage_taken	30		0		0		0		0	STATE_NONE	none	appearance/pt_ig88_droideka_shield.prt		1	0		0	1	1	0	1	1	0	1	1	1
+droideka_shield_1	droideka_shield			1	command.ig88_droideka_shield	10	combat_divide_damage_taken	50		0		0		0		0	STATE_NONE	none	appearance/pt_ig88_droideka_shield.prt		1	0		0	1	1	0	1	1	0	1	1	1
+droideka_shield_2	droideka_shield			1	command.ig88_droideka_shield	10	combat_divide_damage_taken	60		0		0		0		0	STATE_NONE	none	appearance/pt_ig88_droideka_shield.prt		1	0		0	1	1	0	1	1	0	1	1	1
+droideka_shield_3	droideka_shield			1	command.ig88_droideka_shield	10	combat_divide_damage_taken	70		0		0		0		0	STATE_NONE	none	appearance/pt_ig88_droideka_shield.prt		1	0		0	1	1	0	1	1	0	1	1	1
 trader_assembly_collection_buff	crafting			100	buffs.genericBuff	3600	general_assembly	25		0		0		0		0	STATE_NONE	none	clienteffect/medic_serotonin_boost.cef		1	0		1	1	1	0	1	1	0	1	1	1
 bh_flawless_strike	flawlessBead			1	command.bh_flawless_strike	6	bh_flawless_proc_chance	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 bh_flawless_proc_chance_1	bh_flawless_proc_chance_1			1	command.bh_flawless_strike	6	set_bonus_bh_utility_a_1	25	set_bonus_bh_utility_a_2	25	set_bonus_bh_utility_a_3	25		0		0	STATE_NONE	none			0	0		0	1	1	0	1	1	0	1	1	1
