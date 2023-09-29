@@ -669,8 +669,8 @@ craftFoodDrinkGroupD	object/draft_schematic/food/drink_bespin_port.iff
 craftFoodDrinkGroupD	object/draft_schematic/food/drink_elshandruu_pica_thundercloud.iff
 craftFoodDrinkGroupD	object/draft_schematic/food/drink_tilla_tiil.iff
 craftFoodDrinkGroupD	object/draft_schematic/food/drink_vayerbok.iff
-craftFoodMaster	object/draft_schematic/genetic_engineering/beast_steroid_sub.iff
-craftFoodMaster	object/draft_schematic/genetic_engineering/beast_steroid_sub_adv.iff
+craftArtisanChemicalGroupD	object/draft_schematic/genetic_engineering/beast_steroid_sub.iff
+craftArtisanChemicalGroupD	object/draft_schematic/genetic_engineering/beast_steroid_sub_adv.iff
 craftFoodMaster	object/draft_schematic/food/drink_flameout.iff
 craftFoodMaster	object/draft_schematic/food/additive/additive_heavy.iff
 craftFoodMaster	object/draft_schematic/food/drink_breath_of_heaven.iff
