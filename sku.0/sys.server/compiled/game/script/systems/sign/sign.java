@@ -43,7 +43,7 @@ public class sign extends script.base_script
             mi.addSubMenu(management_root, menu_info_types.SERVER_MENU10, SID_TERMINAL_PACK_HOUSE);
         }
         int cityId = getCityAtLocation(getLocation(house), 0);
-        if (cityId > 0 && city.isTheCityMayor(player, cityId)
+        if (cityId > 0 && city.isTheCityMayor(player, cityId))
         {
             int management_root = mi.addRootMenu(menu_info_types.SERVER_TERMINAL_MANAGEMENT, SID_TERMINAL_MANAGEMENT);
             mi.addSubMenu(management_root, menu_info_types.SERVER_MENU11, SID_TERMINAL_CITY_PACK_HOUSE);
