@@ -3,8 +3,8 @@ s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
 item_pgc_token_01	500000								
 item_tcg_loot_reward_series3_general_grievous_gutsack	100000								
 object/tangible/deed/player_house_deed/mustafar_house_lg.iff						20			
+object/tangible/deed/vehicle_deed/barc_speeder_deed.iff						1			
 item_tcg_loot_reward_series3_swamp_speeder						4			
-object/tangible/deed/vehicle_deed/barc_speeder_deed.iff						4			
 object/tangible/veteran_reward/vehicle_walker_at_rt_camo.iff						4			
 item_tcg_loot_reward_series4_geonosian_speeder_02_01						4			
 item_tcg_loot_reward_series6_a1_deluxe_floater						4			

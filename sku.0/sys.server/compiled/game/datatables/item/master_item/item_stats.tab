@@ -3408,8 +3408,8 @@ col_reward_feather_duster_02_04			int:nocert=1,int:allProfs=1	index_color_1=34
 col_reward_feather_duster_02_05			int:nocert=1,int:allProfs=1	index_color_1=51							
 item_katiara_gravestone_quest_item											
 item_schematic_pistol_heroic_exar_01_01			string:loot_schematic.schematic=object/draft_schematic/weapon/appearance/weapon_appearance_pistol_heroic_exar.iff,int:loot_schematic.uses=1,string:loot_schematic.skill_req=class_munitions_phase4_master								
-item_deed_pod_racer_06_01			string:vehicle_attribs.object_ref=pod_racer_one,float:hit_points=15000								
-item_deed_pod_racer_06_02			string:vehicle_attribs.object_ref=pod_racer_two,float:hit_points=15000								
+item_deed_pod_racer_06_01			string:vehicle_attribs.object_ref=pod_racer_one,float:hit_points=1500								
+item_deed_pod_racer_06_02			string:vehicle_attribs.object_ref=pod_racer_two,float:hit_points=1500								
 item_event_ewok_berry_01_01			int:item.lifespan=1209600								
 item_event_ewok_drink_01_01			float:duration=1.0,float:effectiveness=1.0,string:buff_name=event_ewok_drink,int:item.lifespan=1209600								
 item_event_ewok_berry_01_02			float:duration=1.0,float:effectiveness=1.0,string:buff_name=event_ewok_berry,int:item.lifespan=1209600								
@@ -3787,8 +3787,8 @@ item_tcg_loot_reward_series9_vendor_serving_droid	special_vendor_tcg_series9_ser
 item_tcg_loot_reward_series1_target_creature			string:targetDummyCreatureName=tcg_target_creature_acklay								
 item_tcg_loot_reward_series2_video_game_table											
 item_tcg_loot_reward_series2_v_wing			boolean:ship_chassis.tcg_ship=true,boolean:ship_chassis.multifactional=true,string:ship_chassis.type=vwing,float:ship_chassis.hp=1850.0,float:ship_chassis.mass=66625.0								
-item_tcg_loot_reward_series2_podracer_mawhonic			string:vehicle_attribs.object_ref=pod_racer_two,float:hit_points=15000								
-item_tcg_loot_reward_series1_podracer_gasgano			string:vehicle_attribs.object_ref=pod_racer_one,float:hit_points=15000								
+item_tcg_loot_reward_series2_podracer_mawhonic			string:vehicle_attribs.object_ref=pod_racer_two,float:hit_points=1500								
+item_tcg_loot_reward_series1_podracer_gasgano			string:vehicle_attribs.object_ref=pod_racer_one,float:hit_points=1500								
 item_tcg_loot_reward_series1_mechno_chair			string:vehicle_attribs.object_ref=mechno_chair,float:hit_points=15000								
 item_tcg_loot_reward_series1_organa_speeder			string:vehicle_attribs.object_ref=organa_speeder,float:hit_points=15000								
 item_tcg_loot_reward_series1_sith_speeder			string:vehicle_attribs.object_ref=sith_speeder,float:hit_points=15000								
@@ -4094,7 +4094,7 @@ item_tcg_loot_reward_series3_jango_fett_memorial_statue
 item_tcg_loot_reward_series3_boba_fett_statue											
 item_tcg_loot_reward_series3_sith_meditation_room_deed			string:player_structure.deed.template=object/building/player/player_house_sith_meditation_room.iff,int:player_structure.deed.buildtime=90								
 item_tcg_loot_reward_series3_jedi_meditation_room_deed			string:player_structure.deed.template=object/building/player/player_house_jedi_meditation_room.iff,int:player_structure.deed.buildtime=90								
-item_tcg_loot_reward_series3_podracer_longtail			string:vehicle_attribs.object_ref=pod_racer_ipg_longtail,float:hit_points=15000								
+item_tcg_loot_reward_series3_podracer_longtail			string:vehicle_attribs.object_ref=pod_racer_ipg_longtail,float:hit_points=1500								
 item_tcg_loot_reward_series3_koro2_exodrive_airspeeder			string:vehicle_attribs.object_ref=koro2_speeder,float:hit_points=15000								
 item_tcg_loot_reward_series3_swamp_speeder			string:vehicle_attribs.object_ref=swamp_speeder,float:hit_points=15002								
 item_tcg_loot_reward_series3_armored_bantha			string:creatureName=tcg_armored_bantha								
@@ -4241,7 +4241,7 @@ item_tcg_loot_reward_series4_geonosian_speeder_02_01			string:vehicle_attribs.ob
 item_tcg_loot_reward_series4_senate_pod_02_01			string:vehicle_attribs.object_ref=senate_pod,float:hit_points=15000								
 item_tcg_loot_reward_series4_tauntaun_ride_02_01			int:money_total=0								
 item_tcg_loot_reward_series4_video_game_table_02_01			int:tcg_series=4								
-item_tcg_loot_reward_series4_balta_podracer_02_01			string:vehicle_attribs.object_ref=balta_podracer,float:hit_points=15000								
+item_tcg_loot_reward_series4_balta_podracer_02_01			string:vehicle_attribs.object_ref=balta_podracer,float:hit_points=1500								
 item_tcg_loot_reward_series4_peko_peko_mount_02_01			string:creatureName=tcg_peko_peko_mount								
 item_tcg_loot_reward_series4_falleens_fist_02_01					tcg_series4_falleens_fist						
 item_tcg_loot_reward_series4_ball_of_peace_02_01											
@@ -4268,9 +4268,9 @@ item_mini_vehicle_terminal_barc			string:template=object/mobile/barc_mini.iff
 item_mini_vehicle_terminal_awing			string:template=object/mobile/awing_mini.iff								
 item_auto_level_50_buddy_conversion			int:autoLevelTo=50								
 item_mini_vehicle_terminal_basilisk			string:template=object/mobile/basilisk_mini.iff								
-item_deed_pod_racer_06_03			string:vehicle_attribs.object_ref=lb_pod_racer_one,float:hit_points=15000								
+item_deed_pod_racer_06_03			string:vehicle_attribs.object_ref=lb_pod_racer_one,float:hit_points=1500								
 item_tcg_loot_reward_series5_xj6_air_speeder			string:vehicle_attribs.object_ref=xj6_air_speeder,float:hit_points=15000								
-item_tcg_loot_reward_series5_fg_8t8_podracer			string:vehicle_attribs.object_ref=fg_8t8_podracer,float:hit_points=15000								
+item_tcg_loot_reward_series5_fg_8t8_podracer			string:vehicle_attribs.object_ref=fg_8t8_podracer,float:hit_points=1500								
 item_tcg_loot_reward_series5_air2_swoop_speeder			string:vehicle_attribs.object_ref=air2_swoop_speeder,float:hit_points=15000								
 item_tcg_loot_reward_series5_player_house_hangar			string:player_structure.deed.template=object/building/player/player_house_hangar.iff,int:player_structure.deed.buildtime=90								
 item_tcg_loot_reward_series5_mustafar_diorama											
@@ -4303,7 +4303,7 @@ item_tcg_scurrier_final_palm_schematic			string:loot_schematic.schematic=object/
 item_tcg_loot_reward_series5_player_house_atat			string:player_structure.deed.template=object/building/player/player_house_atat.iff,int:player_structure.deed.buildtime=90								
 item_tcg_loot_reward_series5_armored_varactyl_statue			string:armored_creature_type=tcg5_armored_varactyl								
 item_deed_landspeeder_usv5_s02			string:vehicle_attribs.object_ref=landspeeder_usv5_s02,float:hit_points=15000								
-item_deed_podracer_anakin			string:vehicle_attribs.object_ref=podracer_anakin,float:hit_points=15000								
+item_deed_podracer_anakin			string:vehicle_attribs.object_ref=podracer_anakin,float:hit_points=1500								
 item_pgc_chronicle_master_robe											
 item_pgc_chronicle_master_sign											
 item_pgc_chronicle_master_sign_02											
