@@ -1,6 +1,6 @@
 objid	container	server_template_crc	cell_index	px	py	pz	qw	qx	qy	qz	scripts	objvars
 i	i	h	i	f	f	f	f	f	f	f	s	p
-61	0	object/building/naboo/cantina_naboo.iff	0	884.011	-192	565.697	-0.468594	0	0.883413	0		$|
+61	0	object/building/naboo/cantina_naboo.iff	0	884.011	-192	565.697	-0.468594	0	0.883413	0	event.bh_event.cantina_jar_controller	$|
 62	61	object/cell/cell.iff	1	0	0	0	1	0	0	0		$|
 63	61	object/cell/cell.iff	2	0	0	0	1	0	0	0		$|
 516454223	63	object/tangible/collection/hanging_light_02_03.iff	2	34.7048	4.09473	1.71322	0.988507	-0.00241446	-0.0450366	-0.144292		$|
