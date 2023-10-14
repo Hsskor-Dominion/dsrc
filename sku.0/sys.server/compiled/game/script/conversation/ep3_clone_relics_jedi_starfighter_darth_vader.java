@@ -306,7 +306,7 @@ public class ep3_clone_relics_jedi_starfighter_darth_vader extends script.base_s
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setInvulnerable(self, true);
-        setName(self, new string_id("ep3/npc_names", "clone_relics_darth_vader"));
+        setName(self, "Moff Gideon");
         ai_lib.setDefaultCalmBehavior(self, ai_lib.BEHAVIOR_SENTINEL);
         return SCRIPT_CONTINUE;
     }

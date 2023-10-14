@@ -151,17 +151,9 @@ public class utils extends script.base_script
     public static boolean hasSpecialSkills(obj_id player) throws InterruptedException
     {
         boolean skillCheck = false;
-        if (hasSkill(player, "class_commando_phase4_master"))
+        if (hasSkill(player, "faction_rank_mando"))
         {
             skillCheck = true;
-        }
-        if (hasSkill(player, "class_bountyhunter_phase4_master"))
-        {
-            skillCheck = true;
-        }
-        if (hasSkill(player, "class_officer_phase4_master"))
-        {
-            skillCheck = true;			
         }
         return skillCheck;
     }
@@ -7221,3 +7213,4 @@ public class utils extends script.base_script
         return (utils.getIntConfigSetting("GameServer", "debugMode") == 1);
     }
 }
+//

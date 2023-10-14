@@ -1,11 +1,11 @@
 item	cash	token0	token1	token2	token3	token14	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
-item_pgc_token_01	500000								
+item_pgc_token_03	500000								
 item_pgc_planet_hologram_naboo						4			
 item_pgc_planet_hologram_naboo_02						4			
 item_tcg_loot_reward_series3_swamp_speeder						4			
 item_tcg_loot_reward_series6_a1_deluxe_floater						4			
-object/tangible/deed/vehicle_deed/instant_travel_terminal_royal_ship_deed.iff						100			
+object/tangible/deed/vehicle_deed/instant_travel_terminal_royal_ship_deed.iff						4000			
 item_tcg_loot_reward_series4_home_itv_02_01						4			
 item_tcg_loot_reward_series1_vendor_gungan						4			
 item_tcg_loot_reward_series9_greeter_gungan						4			
@@ -25,7 +25,6 @@ item_tcg_loot_reward_series3_target_dummy						4
 item_tcg_loot_reward_series3_swg_tcg_painting						4			
 item_tcg_loot_reward_series1_vendor_gungan						4			
 item_tcg_loot_reward_series1_target_creature						4			
-item_tcg_loot_reward_series4_chewbacca_statuette_02_01						4			
 item_tcg_loot_reward_series4_peko_peko_mount_02_01						4			
 item_tcg_loot_reward_series4_ball_of_peace_02_01						4			
 item_tcg_loot_reward_series4_relaxation_pool_deed_02_01						4			
@@ -38,8 +37,8 @@ object/tangible/veteran_reward/frn_vet_holo_starfighter.iff						4
 item_tcg_loot_reward_series5_signal_unit						4			
 item_tcg_loot_reward_series6_house_lamp						4			
 item_tcg_loot_reward_series7_embroidered_sash						4			
-item_cs_dna_acklay						4			
-item_cs_dna_nexu						4			
-item_cs_dna_reek						4			
+item_cs_dna_acklay						400			
+item_cs_dna_nexu						400			
+item_cs_dna_reek						400			
 item_costume_gungan	100								
 item_costume_kit	1								

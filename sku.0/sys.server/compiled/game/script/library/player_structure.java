@@ -2149,31 +2149,31 @@ public class player_structure extends script.base_script
             sendSystemMessage(player, SID_GENERIC_CITY_PACKUP_ERROR);
             return;
         }
-        if ((getCalendarTime() - getPlayerLastLoginTime(owner)) < cityGetInactivePackupInactiveTimeSeconds())
-        {
-            if (hasObjVar(player, "qa.city_packup"))
-            {
-                sendSystemMessageTestingOnly(player, "Packup Failed to confirm due to the owner not being in violation (has not been logged out long enough)");
-            }
-            LOG("sissynoid", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack structure(" + structure + ") owned by Player(" + getOwner(structure) + ") - but owner has not been offline for 90 days - Removing City Abandoned Flag.");
-            CustomerServiceLog("city_house_packup", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack structure(" + structure + ") owned by Player(" + getOwner(structure) + ") - but owner has not been offline for 90 days - Removing City Abandoned Flag.");
-            player_structure.removeCityAbandoned(structure);
-            sendSystemMessage(player, SID_NOT_CITY_ABANDONED);
-            return;
-        }
+//        if ((getCalendarTime() - getPlayerLastLoginTime(owner)) < cityGetInactivePackupInactiveTimeSeconds())
+//        {
+//            if (hasObjVar(player, "qa.city_packup"))
+//            {
+//                sendSystemMessageTestingOnly(player, "Packup Failed to confirm due to the owner not being in violation (has not been logged out long enough)");
+//            }
+//            LOG("sissynoid", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack structure(" + structure + ") owned by Player(" + getOwner(structure) + ") - but owner has not been offline for 90 days - Removing City Abandoned Flag.");
+//            CustomerServiceLog("city_house_packup", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack structure(" + structure + ") owned by Player(" + getOwner(structure) + ") - but owner has not been offline for 90 days - Removing City Abandoned Flag.");
+//            player_structure.removeCityAbandoned(structure);
+//            sendSystemMessage(player, SID_NOT_CITY_ABANDONED);
+//            return;
+//        }
         int city_id = getCityAtLocation(getLocation(structure), 0);
-        if (!cityExists(city_id))
-        {
-            if (hasObjVar(player, "qa.city_packup"))
-            {
-                sendSystemMessageTestingOnly(player, "Packup Failed to confirm due to the offending structure no longer residing inside of a player city.");
-            }
-            LOG("sissynoid", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack structure(" + structure + ") owned by Player(" + getOwner(structure) + ") but the structure is no longer in a valid Player City.  Removing City Abandoned Tag.");
-            CustomerServiceLog("city_house_packup", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack structure(" + structure + ") owned by Player(" + getOwner(structure) + ") but the structure is no longer in a valid Player City.  Removing City Abandoned Tag.");
-            player_structure.removeCityAbandoned(structure);
-            sendSystemMessage(player, SID_NO_CITY);
-            return;
-        }
+//        if (!cityExists(city_id))
+//        {
+//            if (hasObjVar(player, "qa.city_packup"))
+//            {
+//                sendSystemMessageTestingOnly(player, "Packup Failed to confirm due to the offending structure no longer residing inside of a player city.");
+//            }
+//            LOG("sissynoid", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack structure(" + structure + ") owned by Player(" + getOwner(structure) + ") but the structure is no longer in a valid Player City.  Removing City Abandoned Tag.");
+//            CustomerServiceLog("city_house_packup", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack structure(" + structure + ") owned by Player(" + getOwner(structure) + ") but the structure is no longer in a valid Player City.  Removing City Abandoned Tag.");
+//            player_structure.removeCityAbandoned(structure);
+//            sendSystemMessage(player, SID_NO_CITY);
+//            return;
+//        }
         if (city.hasMayorProtectionFlag(owner, city_id))
         {
             if (hasObjVar(player, "qa.city_packup"))
@@ -2196,17 +2196,17 @@ public class player_structure extends script.base_script
             player_structure.removeCityAbandoned(structure);
             return;
         }
-        if (!player_structure.isCityAbandoned(structure))
-        {
-            if (hasObjVar(player, "qa.city_packup"))
-            {
-                sendSystemMessageTestingOnly(player, "Packup Failed to confirm due to Structure no longer being CityAbandoned");
-            }
-            LOG("sissynoid", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack this structure(" + structure + ") - but it is not abandoned - bail");
-            CustomerServiceLog("city_house_packup", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack this structure(" + structure + ") - but it is not abandoned - bail");
-            sendSystemMessage(player, SID_NOT_CITY_ABANDONED);
-            return;
-        }
+//        if (!player_structure.isCityAbandoned(structure))
+//        {
+//            if (hasObjVar(player, "qa.city_packup"))
+//            {
+//                sendSystemMessageTestingOnly(player, "Packup Failed to confirm due to Structure no longer being CityAbandoned");
+//            }
+//            LOG("sissynoid", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack this structure(" + structure + ") - but it is not abandoned - bail");
+//            CustomerServiceLog("city_house_packup", "City Pack Up System - Player (" + player + ")" + getPlayerFullName(player) + " attempted to pack this structure(" + structure + ") - but it is not abandoned - bail");
+//            sendSystemMessage(player, SID_NOT_CITY_ABANDONED);
+//            return;
+//        }
         if (!player_structure.isCityPackupAuthoritative(player, structure))
         {
             if (hasObjVar(player, "qa.city_packup"))
@@ -2248,12 +2248,12 @@ public class player_structure extends script.base_script
             LOG("sissynoid", "finalizeCityPackUp - Structure is Invalid");
             return;
         }
-        if (!isCityAbandoned(structure))
-        {
-            LOG("sissynoid", "finalizeCityPackUp - Is NOT CITY ABANDONED!");
-            CustomerServiceLog("city_house_packup", "City House Packup was called on Structure(" + structure + ") by player(" + player + ") but house was not City Abandoned!");
-            return;
-        }
+//        if (!isCityAbandoned(structure))
+//        {
+//            LOG("sissynoid", "finalizeCityPackUp - Is NOT CITY ABANDONED!");
+//            CustomerServiceLog("city_house_packup", "City House Packup was called on Structure(" + structure + ") by player(" + player + ") but house was not City Abandoned!");
+//            return;
+//        }
         int city_id = getCityAtLocation(getLocation(structure), 0);
         if (!cityExists(city_id))
         {

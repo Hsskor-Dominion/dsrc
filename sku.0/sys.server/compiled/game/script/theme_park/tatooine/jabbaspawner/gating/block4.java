@@ -15,7 +15,7 @@ public class block4 extends script.base_script
             return SCRIPT_CONTINUE;
         }
         int gating = getIntObjVar(item, "theme_park_jabba");
-        if (gating < 28)
+        if (gating < 0)
         {
             string_id warning = new string_id("theme_park_jabba/warning", "jabba");
             sendSystemMessage(item, warning);

@@ -110,6 +110,10 @@ public class npe_profession_trader extends script.base_script
         groundquests.grantQuest(player, "npe_pointer_artisan");
         groundquests.sendSignal(player, "found_trader");
     }
+    public void npe_profession_trader_action_found(obj_id player, obj_id npc) throws InterruptedException
+    {
+        groundquests.sendSignal(player, "found_trader");
+    }
     public void npe_profession_trader_action_signalTrader1Quest(obj_id player, obj_id npc) throws InterruptedException
     {
         groundquests.sendSignal(player, "npe_prof_artisan1_reward");
@@ -1215,6 +1219,7 @@ public class npe_profession_trader extends script.base_script
         {
             npe_profession_trader_action_facePlayer(player, npc);
             string_id message = new string_id(c_stringFile, "s_153");
+            npe_profession_trader_action_found(player, npc);
             chat.chat(npc, player, message);
             return SCRIPT_CONTINUE;
         }

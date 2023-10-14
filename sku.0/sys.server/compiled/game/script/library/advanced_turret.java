@@ -570,6 +570,10 @@ public class advanced_turret extends script.base_script
         dictionary params = new dictionary();
         params.put("target", target);
         messageTo(turret, "turretShot", params, getWeaponAttackSpeed(weapon), false);
+        if (pvpGetType(target) == PVPTYPE_COVERT)
+        {
+            factions.goOvertWithDelay(target, 0.0f);
+        }
     }
     public static void doLogging(String section, String message) throws InterruptedException
     {

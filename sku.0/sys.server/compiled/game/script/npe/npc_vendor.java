@@ -33,44 +33,85 @@ public class npc_vendor extends script.base_script
         switch (idx)
         {
             case 0:
-            obj_id stimpack = static_item.createNewItemFunction("item_stimpack_a_02_01", player);
-            if (isIdValid(stimpack))
-            {
-                d.put("player", player);
-                d.put("item", stimpack);
-                d.put("npc", self);
-                money.requestPayment(player, "Tyrral", price, "handleTransaction", d, true);
+                boolean playerHasItem1 = utils.playerHasStaticItemInBankOrInventory(player, "object/tangible/item/beast/bm_egg.iff");//prototype for choosing creature starters
+                if (!playerHasItem1)
+                {
+                    String starterBeast = "bm_" + "carrion_spat";
+                    obj_id inv = utils.getInventoryContainer(player);
+                    obj_id egg = createObject("object/tangible/item/beast/bm_egg.iff", inv, "");
+                    int hashCreatureType = incubator.getHashType(starterBeast);
+                    incubator.setUpEggWithDummyData(player, egg, hashCreatureType);
+                    if (isIdValid(egg))
+                    {
+                        d.put("player", player);
+                        d.put("item", egg);
+                        d.put("npc", self);
+                        money.requestPayment(player, "Tyrral", price, "handleTransaction", d, true);
+                        break;
+                    }
+                    else
+                    {
+                        CustomerServiceLog("NPE_VENDOR: ", "tried to create an invalid egg object.");
+                        break;
+                    }
+                }
+                string_id msgHasItem = new string_id(STF, "has_item");
+                chat.publicChat(self, player, msgHasItem);
                 break;
-            }
-            else 
-            {
-                CustomerServiceLog("NPE_VENDOR: ", "tried to create a item_stimpack_a_02_01 that had an invalid id.");
-                break;
-            }
             case 1:
-            boolean playerHasItem = utils.playerHasStaticItemInBankOrInventory(player, "item_pet_mount_carrion_01_01");//prototype for choosing creature starters
-            if (!playerHasItem)
-            {
-                obj_id starterBeast = static_item.createNewItemFunction("item_pet_mount_carrion_01_01", player);
-                if (isIdValid(starterBeast))
+                boolean playerHasItem2 = utils.playerHasStaticItemInBankOrInventory(player, "object/tangible/item/beast/bm_egg.iff");//prototype for choosing creature starters
+                if (!playerHasItem2)
                 {
-                    d.put("player", player);
-                    d.put("item", starterBeast);
-                    d.put("npc", self);
-                    money.requestPayment(player, "Tyrral", price, "handleTransaction", d, true);
-                    break;
+                    String starterBeast = "bm_" + "durni";
+                    obj_id inv = utils.getInventoryContainer(player);
+                    obj_id egg = createObject("object/tangible/item/beast/bm_egg.iff", inv, "");
+                    int hashCreatureType = incubator.getHashType(starterBeast);
+                    incubator.setUpEggWithDummyData(player, egg, hashCreatureType);
+                    if (isIdValid(egg))
+                    {
+                        d.put("player", player);
+                        d.put("item", egg);
+                        d.put("npc", self);
+                        money.requestPayment(player, "Tyrral", price, "handleTransaction", d, true);
+                        break;
+                    }
+                    else
+                    {
+                        CustomerServiceLog("NPE_VENDOR: ", "tried to create an invalid egg object.");
+                        break;
+                    }
                 }
-                else 
+                string_id msgHasItem2 = new string_id(STF, "has_item2");
+                chat.publicChat(self, player, msgHasItem2);
+                break;
+            case 2:
+                boolean playerHasItem3 = utils.playerHasStaticItemInBankOrInventory(player, "object/tangible/item/beast/bm_egg.iff");//prototype for choosing creature starters
+                if (!playerHasItem3)
                 {
-                    CustomerServiceLog("NPE_VENDOR: ", "tried to create a item_npe_tatooine_bug_juice_01_01 that had an invalid id.");
-                    break;
+                    String starterBeast = "bm_" + "womp_rat";
+                    obj_id inv = utils.getInventoryContainer(player);
+                    obj_id egg = createObject("object/tangible/item/beast/bm_egg.iff", inv, "");
+                    int hashCreatureType = incubator.getHashType(starterBeast);
+                    incubator.setUpEggWithDummyData(player, egg, hashCreatureType);
+                    if (isIdValid(egg))
+                    {
+                        d.put("player", player);
+                        d.put("item", egg);
+                        d.put("npc", self);
+                        money.requestPayment(player, "Tyrral", price, "handleTransaction", d, true);
+                        break;
+                    }
+                    else
+                    {
+                        CustomerServiceLog("NPE_VENDOR: ", "tried to create an invalid egg object.");
+                        break;
+                    }
                 }
-            }
-            string_id msgHasItem = new string_id(STF, "has_item");
-            chat.publicChat(self, player, msgHasItem);
-            break;
+                string_id msgHasItem3 = new string_id(STF, "has_item3");
+                chat.publicChat(self, player, msgHasItem3);
+                break;
             default:
-            break;
+                break;
         }
         return SCRIPT_CONTINUE;
     }

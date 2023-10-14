@@ -15,7 +15,7 @@ public class naboo_legacy_lt_maximilian_vox extends script.base_script
     }
     public boolean naboo_legacy_lt_maximilian_vox_condition_kickQuestActive_Imp(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "legacy_naboo_kick_imp") || ((groundquests.hasCompletedQuest(player, "legacy_together") || groundquests.hasCompletedQuest(player, "legacy_together_2")) && hasObjVar(player, content.IMPERIAL_PATH_OBJVAR_NAME));
+        return true;
     }
     public boolean naboo_legacy_lt_maximilian_vox_condition_kickQuestActive_Rebel(obj_id player, obj_id npc) throws InterruptedException
     {

@@ -36,7 +36,7 @@ public class craft_armorsmith_droid extends script.base_script
         {
             return SCRIPT_CONTINUE;
         }
-        if (!hasSkill(giver, "class_munitions_phase4_master"))
+        if (!hasSkill(giver, "expertise_munition_armorsmith_advanced_theory_1"))
         {
             CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU was not a crafting armorsmith master, so erroring out.");
             string_id master_armorsmith = new string_id(MSGS, "master_armorsmith_required");
@@ -140,28 +140,106 @@ public class craft_armorsmith_droid extends script.base_script
                 checkForComplete(self, giver);
             }
         }
-        if (justGot.equals("object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_boots.iff"))
+        if (justGot.equals("object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bracer_l.iff"))
         {
-            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter boots into the droid");
-            if (hasObjVar(self, "have.boots"))
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter left bracer into the droid");
+            if (hasObjVar(self, "have.bracer_l"))
             {
-                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a boots into the droid, but it already had one.");
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a left bracer into the droid, but the droid already had one.");
                 string_id already = new string_id(MSGS, "already_has_component");
                 sendSystemMessage(giver, already);
                 return SCRIPT_CONTINUE;
             }
-            else if (hasObjVar(self, "have.bicep_r") || hasObjVar(self, "have.bicep_l") || hasObjVar(self, "have.chest_plate"))
+            else if (hasObjVar(self, "have.bracer_r") || hasObjVar(self, "have.helmet"))
             {
-                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a boots into the droid, but the droid was already making something else.");
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a left bracer into the droid, but the droid was already making something else.");
                 string_id other = new string_id(MSGS, "making_something_else");
                 sendSystemMessage(giver, other);
                 return SCRIPT_CONTINUE;
             }
-            
+            else
             {
-                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a boots into the droid, and everything is functioning properly");
-                setObjVar(self, "making.boots", 1);
-                setObjVar(self, "have.boots", 1);
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a left bracer into the droid, and everything is functioning properly");
+                setObjVar(self, "have.bracer_l", 1);
+                setObjVar(self, "making.bracer_l", 1);
+                destroyObject(item);
+                checkForComplete(self, giver);
+            }
+        }
+        if (justGot.equals("object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff"))
+        {
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter helmet into the droid");
+            if (hasObjVar(self, "have.helmet"))
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a helmet into the droid, but the droid already had one.");
+                string_id already = new string_id(MSGS, "already_has_component");
+                sendSystemMessage(giver, already);
+                return SCRIPT_CONTINUE;
+            }
+            else if (hasObjVar(self, "have.bracer_r") || hasObjVar(self, "have.bracer_l"))
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a left bracer into the droid, but the droid was already making something else.");
+                string_id other = new string_id(MSGS, "making_something_else");
+                sendSystemMessage(giver, other);
+                return SCRIPT_CONTINUE;
+            }
+            else
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a left bracer into the droid, and everything is functioning properly");
+                setObjVar(self, "have.helmet", 1);
+                setObjVar(self, "making.helmet", 1);
+                destroyObject(item);
+                checkForComplete(self, giver);
+            }
+        }
+        if (justGot.equals("object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bracer_r.iff"))
+        {
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter right bracer into the droid");
+            if (hasObjVar(self, "have.bracer_r"))
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a right bracer into the droid, but the droid already had one.");
+                string_id already = new string_id(MSGS, "already_has_component");
+                sendSystemMessage(giver, already);
+                return SCRIPT_CONTINUE;
+            }
+            else if (hasObjVar(self, "have.helmet") || hasObjVar(self, "have.bracer_l"))
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a right bracer into the droid, but the droid was already making something else.");
+                string_id other = new string_id(MSGS, "making_something_else");
+                sendSystemMessage(giver, other);
+                return SCRIPT_CONTINUE;
+            }
+
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a right bracer into the droid, and everything is functioning properly");
+                setObjVar(self, "making.bracer_r", 1);
+                setObjVar(self, "have.bracer_r", 1);
+                destroyObject(item);
+                checkForComplete(self, giver);
+            }
+        }
+        if (justGot.equals("object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_leggings.iff"))
+        {
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter leggings into the droid");
+            if (hasObjVar(self, "have.leggings"))
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a bounty hunter leggings into the droid, but the droid already had one.");
+                string_id already = new string_id(MSGS, "already_has_component");
+                sendSystemMessage(giver, already);
+                return SCRIPT_CONTINUE;
+            }
+            else if (hasObjVar(self, "have.gloves") || hasObjVar(self, "have.belt"))
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU put a bounty hunter leggings into the droid, but the droid was working on something else.");
+                string_id other = new string_id(MSGS, "making_something_else");
+                sendSystemMessage(giver, other);
+                return SCRIPT_CONTINUE;
+            }
+            else
+            {
+                CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU placed a bounty hunter leggings into the droid, and everything is functioning properly");
+                setObjVar(self, "have.leggings", 1);
+                setObjVar(self, "making.leggings", 1);
                 destroyObject(item);
                 checkForComplete(self, giver);
             }
@@ -268,6 +346,10 @@ public class craft_armorsmith_droid extends script.base_script
             CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a chest plate made.");
             makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_chest_plate_schematic.iff", player);
         }
+        if (hasObjVar(self, "making.leggings"))
+        {
+            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_leggings_schematic.iff", player);
+        }
         if (hasObjVar(self, "making.bicep_r"))
         {
             CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a right bicep made.");
@@ -278,10 +360,20 @@ public class craft_armorsmith_droid extends script.base_script
             CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a left bicep made.");
             makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_bicep_l_schematic.iff", player);
         }
-        if (hasObjVar(self, "making.boots"))
+        if (hasObjVar(self, "making.bracer_r"))
         {
-            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having boots made.");
-            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_boots_schematic.iff", player);
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a right bracer made.");
+            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_bracer_r_schematic.iff", player);
+        }
+        if (hasObjVar(self, "making.helmet"))
+        {
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a helmet made.");
+            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_helmet_schematic.iff", player);
+        }
+        if (hasObjVar(self, "making.bracer_l"))
+        {
+            CustomerServiceLog("DUNGEON_DeathWatchBunker", "*Mandalorian Armor: Player %TU is now having a left bracer made.");
+            makeArmorPiece("object/tangible/loot/loot_schematic/death_watch_mandalorian_bracer_l_schematic.iff", player);
         }
         removeObjVar(self, "making");
         removeObjVar(self, "have");

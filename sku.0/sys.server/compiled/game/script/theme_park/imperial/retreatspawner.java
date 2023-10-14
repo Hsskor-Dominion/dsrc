@@ -33,6 +33,7 @@ public class retreatspawner extends script.base_script
         spawnHethrir(self);
         spawnEmperor(self);
         spawnDarth(self);
+        spawnSith(self);
         return;
     }
     public void spawnGuards(obj_id self) throws InterruptedException
@@ -41,6 +42,8 @@ public class retreatspawner extends script.base_script
         spawnCrimson2(self);
         spawnCrimson3(self);
         spawnCrimson4(self);
+        spawnCrimson5(self);
+        spawnCrimson6(self);
         obj_id st1 = spawnStormtrooper1(self);
         spawnStormtrooper2(self, st1);
         return;
@@ -197,6 +200,39 @@ public class retreatspawner extends script.base_script
         setYaw(c4, c4_yaw);
         setObjVar(self, "RetreatInhabitants.c4", c4);
         setObjVar(c4, "Retreat", self);
+        return;
+    }
+    public void spawnCrimson5(obj_id self) throws InterruptedException
+    {
+        obj_id sithHall = getCellId(self, "hall9");
+        location c5Location = new location(-6.5f, 0.2f, -31.0f, "naboo", sithHall);
+        obj_id c5 = create.staticObject("stardust_carnor_jax", c5Location);
+        int c5_yaw = 0;
+        setYaw(c5, c5_yaw);
+        setObjVar(self, "RetreatInhabitants.c5", c5);
+        setObjVar(c5, "Retreat", self);
+        return;
+    }
+    public void spawnCrimson6(obj_id self) throws InterruptedException
+    {
+        obj_id sithHall = getCellId(self, "hall9");
+        location c6Location = new location(-10.25f, 0.2f, -31.0f, "naboo", sithHall);
+        obj_id c6 = create.staticObject("stardust_kir_kanos", c6Location);
+        int c6_yaw = 0;
+        setYaw(c6, c6_yaw);
+        setObjVar(self, "RetreatInhabitants.c5", c6);
+        setObjVar(c6, "Retreat", self);
+        return;
+    }
+    public void spawnSith(obj_id self) throws InterruptedException
+    {
+        obj_id sithHall = getCellId(self, "hall9");
+        location sithLocation = new location(-8.50f, -8.9f, -40.06f, "naboo", sithHall);
+        obj_id sith = create.staticObject("stardust_darth_lumiya", sithLocation);
+        int sith_yaw = 0;
+        setYaw(sith, sith_yaw);
+        setObjVar(self, "RetreatInhabitants.darth", sith);
+        setObjVar(sith, "Retreat", self);
         return;
     }
     public obj_id spawnStormtrooper1(obj_id self) throws InterruptedException

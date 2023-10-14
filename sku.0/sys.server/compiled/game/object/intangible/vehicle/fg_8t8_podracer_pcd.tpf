@@ -6,5 +6,3 @@
 
 volume = 1
 sharedTemplate = "object/intangible/vehicle/shared_fg_8t8_podracer_pcd.iff"
-
-scripts = +["item.special.nomove"]

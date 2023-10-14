@@ -32,26 +32,13 @@ public class banner_buff_manager extends script.base_script
         {
             return null;
         }
-        switch (utils.getPlayerProfession(player))
+        if (factions.isImperial(player))//I replaced this section with a faction check
         {
-            case utils.COMMANDO:
-            return "banner_buff_commando";
-            case utils.SMUGGLER:
-            return "banner_buff_smuggler";
-            case utils.MEDIC:
-            return "banner_buff_medic";
-            case utils.OFFICER:
-            return "banner_buff_officer";
-            case utils.SPY:
-            return "banner_buff_spy";
-            case utils.BOUNTY_HUNTER:
-            return "banner_buff_bounty_hunter";
-            case utils.FORCE_SENSITIVE:
-            return "banner_buff_force_sensitive";
-            case utils.TRADER:
-            return "banner_buff_trader";
-            case utils.ENTERTAINER:
-            return "banner_buff_entertainer";
+            return "pvp_aura_buff_target";
+        }
+        if (factions.isRebel(player))
+        {
+            return "pvp_aura_buff_rebel_target";
         }
         return null;
     }
@@ -112,7 +99,7 @@ public class banner_buff_manager extends script.base_script
         {
             buff.applyBuff(players, buffToApply);
         }
-        messageTo(self, "buffPlayers", null, 5.0f, false);
+        messageTo(self, "buffPlayers", null, 8.0f, false);
         return SCRIPT_CONTINUE;
     }
     public int handleDeleteSelf(obj_id self, dictionary params) throws InterruptedException

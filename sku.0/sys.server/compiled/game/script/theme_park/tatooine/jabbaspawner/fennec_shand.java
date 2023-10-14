@@ -9,7 +9,7 @@ public class fennec_shand extends script.base_script
     }
     public int OnAttach(obj_id self) throws InterruptedException
     {
-	aiEquipPrimaryWeapon(self);
+	    aiEquipPrimaryWeapon(self);
         return SCRIPT_CONTINUE;
     }
     public int OnDestroy(obj_id self) throws InterruptedException

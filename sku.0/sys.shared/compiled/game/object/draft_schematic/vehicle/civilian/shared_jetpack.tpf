@@ -12,7 +12,7 @@
 attributes = [
 	[name = "crafting" "complexity", experiment = "" "", value = 25..25],
 	[name = "crafting" "xp", experiment = "" "", value = 1800..1800],
-	[name = "crafting" "hit_points", experiment = "crafting" "exp_durability", value = 1500..3000]]
+	[name = "crafting" "hit_points", experiment = "crafting" "exp_durability", value = 1500..20000]]
 
 slots = [
 	[name = "craft_vehicle_ingredients_n" "vehicle_body", hardpoint = ""],

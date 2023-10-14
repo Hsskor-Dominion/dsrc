@@ -309,7 +309,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -973025876	0	object/tangible/spawning/city_sign_spawner.iff	0	477.04	323.197	748.223	1	0	0	0	systems.spawning.spawn_tangible	spawn.object|4|object/tangible/sign/all_sign_city_s03.iff|$|
 -702235656	0	object/tangible/spawning/city_sign_spawner.iff	0	633.924	305.627	545.332	1	0	0	0	systems.spawning.spawn_tangible	spawn.object|4|object/tangible/sign/all_sign_city_s03.iff|$|
 -439008402	0	object/tangible/spawning/city_sign_spawner.iff	0	1219.68	326	460.127	1	0	0	0	systems.spawning.spawn_tangible	spawn.object|4|object/tangible/sign/all_sign_city_s03.iff|$|
--439008401	0	object/tangible/ground_spawning/area_spawner.iff	0	853	360.6	574	1	0	0	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|5.000000|fltMinSpawnTime|2|3.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|smuggler_art_broker|strSpawnerType|4|area|strSpawns|4|smuggler_art_broker|$|
+-439008401	0	object/tangible/ground_spawning/area_spawner.iff	0	853	360.6	574	1	0	0	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|5.000000|fltMinSpawnTime|2|3.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|smuggler_art_broker2|strSpawnerType|4|area|strSpawns|4|smuggler_art_broker2|$|
 -439008400	0	object/static/item/item_painting_agrilat_swamp_style_02.iff	0	851.21	360.6	574.4	-0.017452449	0	1	0		$|
 -439008399	0	object/static/item/item_painting_agrilat_swamp_style_01.iff	0	851.299	363.19998	575	-0.017452449	0	0.998477	0		$|
 -439008398	0	object/static/item/item_painting_corellia_style_02.iff	0	852.4995	362	580	-0.21643966	0	0.976296	0		$|

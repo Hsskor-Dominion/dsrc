@@ -34,8 +34,8 @@ public class stardust_info extends script.base_script
     }
     public boolean stardust_info_condition_isTownsperson(obj_id player, obj_id npc) throws InterruptedException
     {
-        float townspersonFaction = factions.getFactionStanding(player, "spynet");
-        if (townspersonFaction >= 0)
+        float spyFaction = factions.getFactionStanding(player, "spynet");
+        if (spyFaction >= 5)
         {
             return true;
         }
@@ -132,6 +132,18 @@ public class stardust_info extends script.base_script
             {
                 doAnimationAction(npc, "pose_proudly");
                 string_id message = new string_id(c_stringFile, "s_273");
+                utils.removeScriptVar(player, "conversation.stardust_info.branchId");
+                chat.chat(npc, player, message);
+                npcEndConversation(player);
+                return SCRIPT_CONTINUE;
+            }
+        }
+        if (response.equals("dubug_me"))
+        {
+            if (stardust_info_condition__defaultCondition(player, npc))
+            {
+                doAnimationAction(npc, "pose_proudly");
+                string_id message = new string_id(c_stringFile, "debugging");
                 utils.removeScriptVar(player, "conversation.stardust_info.branchId");
                 chat.chat(npc, player, message);
                 npcEndConversation(player);
@@ -250,7 +262,7 @@ public class stardust_info extends script.base_script
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
-	setName(self, "IG-88SD1 (Project:Stardust Information)");
+	    setName(self, "IG-88DS1 (Project:Stardust Information)");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException
@@ -273,96 +285,37 @@ public class stardust_info extends script.base_script
         System.arraycopy(responses, 0, objects, 0, responses.length);
         return npcStartConversation(player, npc, convoName, greetingId, greetingProse, objects);
     }
-     public int OnStartNpcConversation(obj_id self, obj_id player) throws InterruptedException
+    public int OnStartNpcConversation(obj_id npc, obj_id player) throws InterruptedException
     {
-        obj_id npc = self;
         if (ai_lib.isInCombat(npc) || ai_lib.isInCombat(player))
         {
             return SCRIPT_OVERRIDE;
         }
-        if (stardust_info_condition_hasAnyQuest(player, npc))
+
+        // Since we can talk to the player, might as well face them.
+        faceTo(npc, player);
+
+        if (stardust_info_condition__defaultCondition(npc, player))
         {
-            doAnimationAction(npc, "point_forward");
-            string_id message = new string_id(c_stringFile, "s_163");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-     	if (stardust_info_condition_checkQ1(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            boolean hasResponse1 = false;
-            if (stardust_info_condition_playerFinishedMainTask(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse1 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_165");
-                }
-                if (hasResponse1)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_169");
-                }
-                utils.setScriptVar(player, "conversation.stardust_info.branchId", 1);
-                npcStartConversation(player, npc, "stardust_info", message, responses);
-            }
-            else 
-            {
-                chat.chat(npc, player, message);
-            }
+            final string_id message = new string_id(c_stringFile, "s_253");
+            removeObjVar(player, "npe");
+            final int numberOfResponses = 3;
+
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
+
+            responses[responseIndex++] = new string_id(c_stringFile, "s_255");
+            responses[responseIndex++] = new string_id(c_stringFile, "s_271");
+            responses[responseIndex++] = new string_id(c_stringFile, "debug_me");
+
+            utils.setScriptVar(player, "conversation.npe_entertainer_pointer_conversation.branchId", 26);
+
+            npcStartConversation(player, npc, "npe_entertainer_pointer_conversation", message, responses);
+
             return SCRIPT_CONTINUE;
         }
-        if (stardust_info_condition__defaultCondition(player, npc))
-        {
-            doAnimationAction(npc, "greet");
-            string_id message = new string_id(c_stringFile, "s_253");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-            if (stardust_info_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            boolean hasResponse1 = false;
-            if (stardust_info_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse1 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_255");
-                }
-                if (hasResponse1)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_271");
-                }
-                utils.setScriptVar(player, "conversation.stardust_info.branchId", 26);
-                npcStartConversation(player, npc, "stardust_info", message, responses);
-            }
-            else 
-            {
-                chat.chat(npc, player, message);
-            }
-            return SCRIPT_CONTINUE;
-        }
-        chat.chat(npc, "Error:  All conditions for OnStartNpcConversation were false.");
+
+        chat.chat(npc, "*debugging*");
         return SCRIPT_CONTINUE;
     }
     public int OnNpcConversationResponse(obj_id self, String conversationId, obj_id player, string_id response) throws InterruptedException

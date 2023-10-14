@@ -71,7 +71,7 @@ slots = [
 	complexity = 0,
 	appearance = "" ]]
 skillCommands = ["unskilled"]
-manufactureScripts = ["systems.crafting.armor.component.crafting_new_armor_droideng_final"]
+manufactureScripts = ["systems.crafting.armor.component.crafting_new_armor_mand_final"]
 
 @class intangible_object_template 1
 

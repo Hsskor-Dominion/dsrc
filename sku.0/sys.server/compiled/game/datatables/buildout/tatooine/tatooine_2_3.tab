@@ -18,7 +18,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -1674935354	0	object/static/flora/flora_flower_tato_funnel_sm.iff	0	608.084	21.149	257.972	1	0	0	0		$|
 -1674620933	0	object/static/structure/tatooine/pillar_ruined_large_style_01.iff	0	1644.17	35	1834.64	0.991562	0	0.129634	0		$|
 -1673386233	0	object/tangible/quest/jedi_gifts_1_wardrobe.iff	0	1639.94	35	1839.53	0.875175	0	0.483807	0	quest.task.ground.retrieve_item_on_item	$|
--1630372071	0	object/static/structure/general/prp_junk_s8.iff	0	1643.15	35.2407	1843.63	2.11e-008	0.0856913	-2.86e-008	0.996322		$|
+-1630372071	0	object/static/structure/general/prp_junk_s8.iff	0	1643.15	35.2407	1843.63	2.11E-08	0.0856913	-2.86E-08	0.996322		$|
 -1630083603	0	object/static/structure/tatooine/pillar_ruined_small_style_01.iff	0	372.313	50	977.799	1	0	0	0		$|
 -1610939430	0	object/static/structure/tatooine/wall_ruined_tatooine_small_style_01.iff	0	374.958	50	969.763	1	0	0	0		$|
 -1560898579	0	object/static/item/item_chair_tato_cafe_s01.iff	0	1640.85	35.253	1838.62	-0.683341	0.683341	0.181783	0.181784		$|
@@ -107,3 +107,4 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -2	0	object/tangible/quest/legacy_head_bag.iff	0	1648.08	35.9162	1823.32	-0.0247703	0.0670643	0.7042	0.706393	quest.task.ground.retrieve_item_on_item	$|
 -1	0	object/building/kashyyyk/thm_kash_rodian_bannerpole_s01.iff	0	0	195	0	1	0	0	0		$|
 -1383205109	0	object/tangible/collection/col_tatooine_vistas_marker_10.iff	0	1669.4	36.4508	1808.89	0.913089	0	-0.407761	0	systems.collections.trigger_volume_vistas	collection.marker|4|tatooine_vistas_10|$|
+-5000000	0	object/tangible/stardust/holocron_maul_01.iff	0	1773.5308	8.571726	1852.7224	1	0	0	0		$|

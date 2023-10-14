@@ -19,4 +19,4 @@
 @class object_template 2
 sharedTemplate = "object/tangible/jedi/shared_jedi_holocron_dark.iff"
 
-scripts =+ ["systems.jedi.jedi_holocron"]
+scripts =+ ["systems.jedi.sith_holocron"]

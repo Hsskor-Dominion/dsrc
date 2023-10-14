@@ -332,6 +332,10 @@ public class player_saga_quest extends script.base_script
         utils.removeScriptVar(self, "temp_pgcTaskDictionary");
         return SCRIPT_CONTINUE;
     }
+    public boolean chroniclers_master_condition(obj_id self)
+    {
+        return hasSkill(self,"class_chronicles_master");
+    }
     public boolean createChronicleQuestObject(obj_id self, dictionary taskDictionary) throws InterruptedException
     {
         if (taskDictionary == null || taskDictionary.isEmpty())
@@ -351,7 +355,7 @@ public class player_saga_quest extends script.base_script
         }
         if (!isRecipe && !isShared)
         {
-            if (!isGod(self))
+            if (!chroniclers_master_condition(self))
             {
                 if (!pgc_quests.handleChroniclesRelicCosts(self, taskDictionary))
                 {
@@ -361,7 +365,7 @@ public class player_saga_quest extends script.base_script
             }
             else 
             {
-                sendSystemMessage(self, "[GOD_MODE] Bypassing relic consumption for chronicle holocron creation.", "");
+                sendSystemMessage(self, "[CHRONICLE MASTER] Bypassing relic consumption for chronicle holocron creation.", "");
             }
         }
         obj_id playerInventory = utils.getInventoryContainer(self);

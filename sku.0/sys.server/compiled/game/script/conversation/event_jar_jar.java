@@ -223,7 +223,7 @@ public class event_jar_jar extends script.base_script
             }
 	    else
             {
-                doAnimationAction(npc, "laugh");
+                doAnimationAction(npc, "laugh_pointing");
                 string_id message = new string_id(c_stringFile, "s_269");
                 utils.removeScriptVar(player, "conversation.event_jar_jar.branchId");
                 chat.chat(npc, player, message);

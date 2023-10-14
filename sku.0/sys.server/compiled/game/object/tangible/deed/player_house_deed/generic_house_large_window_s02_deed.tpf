@@ -22,7 +22,8 @@ sharedTemplate = "object/tangible/deed/player_house_deed/shared_generic_house_la
 
 objvars = +[
 	"player_structure.deed.template" = "object/building/player/player_house_generic_large_window_s02.iff",
-	"player_structure.deed.buildtime" = 300]
+	"player_structure.deed.buildtime" = 300,
+	"player_structure.deed.scene" = "tatooine,naboo,corellia,talus,rori,lok,dantooine,endor,yavin4,dathomir"]
 
 scripts = +[
 	"item.structure_deed.player_structure_deed"]

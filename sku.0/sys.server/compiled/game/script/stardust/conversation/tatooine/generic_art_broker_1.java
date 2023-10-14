@@ -31,12 +31,8 @@ public class generic_art_broker_1 extends script.base_script
     }
     public boolean generic_art_broker_1_condition_missionTierRequirement(obj_id player, obj_id npc) throws InterruptedException
     {
-        float underworldFaction = factions.getFactionStanding(player, "underworld");
-        if (smuggler.getSmuggleTier(underworldFaction) == 1)
-        {
-            return true;
-        }
-        return false;
+        float underworldSmugglerFaction = factions.getFactionStanding(player, "underworld");
+        return underworldSmugglerFaction >= 1000;
     }
     public boolean generic_art_broker_1_condition_hasMissionFunds(obj_id player, obj_id npc) throws InterruptedException
     {

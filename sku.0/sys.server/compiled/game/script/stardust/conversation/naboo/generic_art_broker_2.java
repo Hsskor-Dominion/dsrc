@@ -31,12 +31,8 @@ public class generic_art_broker_2 extends script.base_script
     }
     public boolean generic_art_broker_2_condition_missionTierRequirement(obj_id player, obj_id npc) throws InterruptedException
     {
-        float underworldFaction = factions.getFactionStanding(player, "underworld");
-        if (smuggler.getSmuggleTier(underworldFaction) == 1)
-        {
-            return true;
-        }
-        return false;
+        float underworldSmugglerFaction = factions.getFactionStanding(player, "underworld");
+        return underworldSmugglerFaction >= 1000;
     }
     public boolean generic_art_broker_2_condition_hasMissionFunds(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -82,7 +78,7 @@ public class generic_art_broker_2 extends script.base_script
         if (money.hasFunds(player, money.MT_TOTAL, smuggler.TIER_4_GENERIC_PVP_FRONT_COST))
         {
             money.requestPayment(player, npc, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
-            groundquests.requestGrantQuest(player, "quest/smuggle_pvp_art_1", true);
+            groundquests.requestGrantQuest(player, "quest/smuggle_pvp_art_2", true);
             int mission_bounty = 15000;
             int current_bounty = 0;
             mission_bounty += rand(1, 2000);

@@ -269,24 +269,24 @@ trader_0d	class_engineering_phase4_master						***Class Specific: Belt
 chronicles	class_chronicles_novice	appearance/eqp_booster_pack.apt	@static_item_n:item_pgc_starter_kit	item_pgc_starter_kit			
 chronicles	class_chronicles_2	appearance/eqp_booster_pack.apt	@static_item_n:item_pgc_booster_pack	item_pgc_booster_pack			
 chronicles	class_chronicles_4	appearance/eqp_booster_pack.apt	@static_item_n:item_pgc_booster_pack	item_pgc_booster_pack			
-chronicles	class_chronicles_5	appearance/pcg_robe_statue.apt	@static_item_n:item_pgc_chronicle_master_statuette	item_pgc_chronicle_master_statuette			
+chronicles	class_chronicles_5	appearance/eqp_booster_pack.apt	@static_item_n:item_pgc_booster_pack	item_pgc_booster_pack			
 chronicles	class_chronicles_6	appearance/eqp_booster_pack.apt	@static_item_n:item_pgc_booster_pack	item_pgc_booster_pack			
 chronicles	class_chronicles_8	appearance/eqp_booster_pack.apt	@static_item_n:item_pgc_booster_pack	item_pgc_booster_pack			
 chronicles	class_chronicles_10	appearance/eqp_booster_pack.apt	@static_item_n:item_pgc_booster_pack	item_pgc_booster_pack			
-chronicles	class_chronicles_11	appearance/thm_sign_pgc_hanging.apt	@static_item_n:item_special_sign_pgc_consumable	item_special_sign_pgc_consumable			
-chronicles	class_chronicles_12	appearance/eqp_force_crystal.apt	@obj_n:profession_force_sensitive_10_n	object/tangible/quest/quest_start/profession_force_sensitive_10.iff			
-chronicles	class_chronicles_13	appearance/thm_sign_pgc_standing.apt	@static_item_n:item_special_sign_pgc_consumable_02	item_special_sign_pgc_consumable_02			
-chronicles	class_chronicles_14	appearance/thm_prp_holocron_splinters.apt	@obj_n:profession_force_sensitive_20_n	object/tangible/quest/quest_start/profession_force_sensitive_20.iff			
-chronicles	class_chronicles_15	appearance/ply_pgc_merchant_tent_s01_r0.apt	@static_item_n:item_pgc_chronicler_tent_deed	item_pgc_chronicler_tent_deed			
-chronicles	class_chronicles_16	appearance/atf_sith_s01.apt	@obj_n:profession_force_sensitive_30_n	object/tangible/quest/quest_start/profession_force_sensitive_30.iff			
-chronicles	class_chronicles_master	appearance/pgc_robe_s01_m.sat	@static_item_n:item_pgc_chronicle_master_robe	item_pgc_booster_pack,item_pgc_chronicle_master_robe			
+chronicles	class_chronicles_11	appearance/eqp_booster_pack.apt	@static_item_n:item_pgc_booster_pack	item_pgc_booster_pack			
+chronicles	class_chronicles_12	appearance/eqp_booster_pack.apt	@static_item_n:item_pgc_booster_pack	item_pgc_booster_pack			
+chronicles	class_chronicles_13	appearance/pcg_robe_statue.apt	@static_item_n:item_pgc_chronicle_master_statuette	item_pgc_chronicle_master_statuette			
+chronicles	class_chronicles_14	appearance/thm_sign_pgc_hanging.apt	@static_item_n:item_special_sign_pgc_consumable	item_special_sign_pgc_consumable			
+chronicles	class_chronicles_15	appearance/thm_sign_pgc_standing.apt	@static_item_n:item_special_sign_pgc_consumable_02	item_special_sign_pgc_consumable_02			
+chronicles	class_chronicles_16	appearance/ply_pgc_merchant_tent_s01_r0.apt	@static_item_n:item_pgc_chronicler_tent_deed	item_pgc_chronicler_tent_deed			
+chronicles	class_chronicles_master	appearance/pgc_robe_s01_m.sat	@static_item_n:item_pgc_chronicle_master_robe	item_pgc_chronicle_master_robe			
 force_sensitive_1a	class_forcesensitive_phase1_novice						
-force_sensitive_1a	class_forcesensitive_phase1_02						
+force_sensitive_1a	class_forcesensitive_phase1_02	appearance/eqp_force_crystal.apt	@obj_n:profession_force_sensitive_10_n	object/tangible/quest/quest_start/profession_force_sensitive_10.iff			
 force_sensitive_1a	class_forcesensitive_phase1_03						
 force_sensitive_1a	class_forcesensitive_phase1_04						***Class Specific: Specialty Backpack/Replace as Ring due to Popular Demand
 force_sensitive_1a	class_forcesensitive_phase1_05						Profession Quest Item
 force_sensitive_1a	class_forcesensitive_phase1_master						
-force_sensitive_1a	class_forcesensitive_phase2_novice						***Class Specific: Starting Armor Set
+force_sensitive_1a	class_forcesensitive_phase2_novice	appearance/thm_prp_holocron_splinters.apt	@obj_n:profession_force_sensitive_20_n	object/tangible/quest/quest_start/profession_force_sensitive_20.iff			***Class Specific: Starting Armor Set
 force_sensitive_1a	class_forcesensitive_phase2_02						Profession Quest Item
 force_sensitive_1a	class_forcesensitive_phase2_03						***Class Specific: Level 30 weapon
 force_sensitive_1a	class_forcesensitive_phase2_04						
@@ -303,4 +303,4 @@ force_sensitive_1a	class_forcesensitive_phase4_02
 force_sensitive_1a	class_forcesensitive_phase4_03						***Class Specific: Long Re-use Clicky
 force_sensitive_1a	class_forcesensitive_phase4_04						
 force_sensitive_1a	class_forcesensitive_phase4_05						
-force_sensitive_1a	class_forcesensitive_phase4_master						***Class Specific: Belt
+force_sensitive_1a	class_forcesensitive_phase4_master	appearance/atf_sith_s01.apt	@obj_n:profession_force_sensitive_30_n	object/tangible/quest/quest_start/profession_force_sensitive_30.iff			***Class Specific: Belt

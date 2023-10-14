@@ -15,11 +15,11 @@ public class gcw_imperial_weapon_crafting extends script.base_script
     }
     public boolean gcw_imperial_weapon_crafting_condition_completedCrafting1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "gcw_imperial_crafting", "returnEli");
+        return groundquests.isTaskActive(player, "stardust_gcw_imperial_crafting", "returnEli");
     }
     public boolean gcw_imperial_weapon_crafting_condition_craftingActive1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "gcw_imperial_crafting");
+        return groundquests.isQuestActive(player, "stardust_gcw_imperial_crafting");
     }
     public boolean gcw_imperial_weapon_crafting_condition_inPhase1(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -38,7 +38,7 @@ public class gcw_imperial_weapon_crafting extends script.base_script
     }
     public void gcw_imperial_weapon_crafting_action_giveCrafting1(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.grantQuest(player, "gcw_imperial_crafting");
+        groundquests.grantQuest(player, "stardust_gcw_imperial_crafting");
     }
     public void gcw_imperial_weapon_crafting_action_signalDone(obj_id player, obj_id npc) throws InterruptedException
     {

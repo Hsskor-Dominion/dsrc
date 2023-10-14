@@ -124,22 +124,22 @@ public class force_rank extends script.base_script
         setObjVar(player, VAR_COUNCIL, council);
         if (council == LIGHT_COUNCIL)
         {
-            setJediState(player, JEDI_STATE_FORCE_RANKED_LIGHT);
+            //setJediState(player, JEDI_STATE_FORCE_RANKED_LIGHT);
             pvpSetAlignedFaction(player, getFactionId("Rebel"));
         }
-        else 
+        else
         {
-            setJediState(player, JEDI_STATE_FORCE_RANKED_DARK);
+            //setJediState(player, JEDI_STATE_FORCE_RANKED_DARK);
             pvpSetAlignedFaction(player, getFactionId("Imperial"));
         }
         pvpMakeDeclared(player);
         grantSkill(player, rank_skill);
         prose_package pp = prose.getPackage(new string_id(STF_FILE, "council_joined"), getCouncilName(council), 0);
         sendSystemMessageProse(player, pp);
-        if (!hasScript(player, SCRIPT_FRS_PLAYER))
-        {
-            attachScript(player, SCRIPT_FRS_PLAYER);
-        }
+//        if (!hasScript(player, SCRIPT_FRS_PLAYER))
+//        {
+//            attachScript(player, SCRIPT_FRS_PLAYER);
+//        }
         getEnclaveObjId(player, council, "enclaveIdResponse");
         force_rank.grantRankItems(player);
         return true;
@@ -2753,14 +2753,14 @@ public class force_rank extends script.base_script
         {
             gain = 1;
         }
-        if (!jedi.hasForcePower(defender, drain))
-        {
-            drain = getForcePower(defender);
-            if (drain == 0)
-            {
-                return false;
-            }
-        }
+//        if (!jedi.hasForcePower(defender, drain))
+//        {
+//            drain = getForcePower(defender);
+//            if (drain == 0)
+//            {
+//                return false;
+//            }
+//        }
         alterForcePower(defender, -drain);
         alterForcePower(player, gain);
         prose_package pp = new prose_package();
@@ -2854,14 +2854,14 @@ public class force_rank extends script.base_script
         {
             drain = 1;
         }
-        if (!jedi.hasForcePower(defender, drain))
-        {
-            drain = getForcePower(defender);
-            if (drain == 0)
-            {
-                return false;
-            }
-        }
+//        if (!jedi.hasForcePower(defender, drain))
+//        {
+//            drain = getForcePower(defender);
+//            if (drain == 0)
+//            {
+//                return false;
+//            }
+//        }
         alterForcePower(defender, -drain);
         prose_package pp = new prose_package();
         pp.stringId = new string_id("cbt_spam", "frs_light_vigilance");

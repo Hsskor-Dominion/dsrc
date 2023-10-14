@@ -8,4 +8,4 @@ volume = 1
 sharedTemplate = "object/intangible/vehicle/shared_gift_stap_pcd.iff"
 
 objvars = +[ "schematic.name" = "object/draft_schematic/vehicle/civilian/speeder_stap.iff" ]
-scripts = +[ "systems.vehicle_system.vehicle_deconstruct","item.special.nomove"]
+scripts = +[ "systems.vehicle_system.vehicle_deconstruct"]

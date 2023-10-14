@@ -1,9 +1,13 @@
 package script.theme_park.fort_tusken;
 
+import script.library.*;
 import script.dictionary;
 import script.library.create;
+import script.library.factions;
+import script.library.utils;
 import script.location;
 import script.obj_id;
+import script.string_id;
 
 public class fort_tusken extends script.base_script
 {
@@ -97,4 +101,23 @@ public class fort_tusken extends script.base_script
         create.addDestroyMessage(sandperson, "tuskenDead", 300.0f, self);
         return SCRIPT_CONTINUE;
     }
+    public int OnReceivedItem(obj_id self, obj_id srcContainer, obj_id transferer, obj_id item) throws InterruptedException
+    {
+        utils.setScriptVar(item, factions.IN_ADHOC_PVP_AREA, true);
+
+        // Apply the corresponding buff to the player upon entering Fort Tusken
+        if (isPlayer(item) && hasSkill(item, "faction_rank_mando_master"))
+        {
+            String structureTemplate = getTemplateName(self);
+            String buffToApply = "";
+            buffToApply = "banner_buff_bounty_hunter";
+            if (!buffToApply.equals(""))
+            {
+                buff.applyBuff(item, buffToApply);
+            }
+        }
+
+        return SCRIPT_CONTINUE;
+    }
+
 }

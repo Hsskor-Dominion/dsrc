@@ -2,7 +2,7 @@ item	cash	token0	token1	token2	token3	token4	token5	token6	token7	token8	token9	
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
 item_pgc_planet_hologram_dantooine	100000																	"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
 item_pgc_planet_hologram_dantooine_02	100000																	"So in the case of this table only traders will see the ""all"" items."
-item_tcg_loot_reward_series7_rocket_launcher	15000																	
+item_tcg_loot_reward_series7_rocket_launcher	100000																	
 item_gcw_rebel_token								1										
 armor_rebel_spec_force_belt								5										
 armor_rebel_spec_force_bicep_l								5										
@@ -22,7 +22,6 @@ weapon_westar_rifle_04_01								5
 weapon_knuckler_buzz_knuck								5										
 weapon_sword_1h_pvp_04_01								5										
 weapon_sword_2h_pvp_04_01								5										
-item_tcg_loot_reward_series7_deed_vehicle_garage								20										
 item_tcg_loot_reward_series7_deed_commando_bunker								20										
 item_tcg_loot_reward_series7_deed_vip_bunker								20										
 item_tcg_loot_reward_series7_recon_backpack								5										

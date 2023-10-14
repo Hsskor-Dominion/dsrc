@@ -107,7 +107,7 @@ public class full_heal_item extends script.base_script
                 {
                     int max_hp = getMaxAttrib(player, HEALTH);
                     int hp = getAttrib(player, HEALTH);
-                    int to_heal = max_hp - hp;
+                    int to_heal = 1000;
                     if (to_heal <= 0)
                     {
                         sendSystemMessage(player, SID_NO_NEED_TO_HEAL);

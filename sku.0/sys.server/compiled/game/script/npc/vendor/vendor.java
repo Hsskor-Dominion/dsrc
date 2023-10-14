@@ -135,7 +135,6 @@ public class vendor extends script.base_script
             }
         }
         setObjVar(self, VENDOR_CONTAINER_LIST_OBJVAR, containerList);
-        chat.chat(self, "I'm open for business");
         if (exists(self))
         {
             String logData = "";

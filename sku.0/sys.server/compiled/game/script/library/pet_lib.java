@@ -457,7 +457,7 @@ public class pet_lib extends script.base_script
         }
         int playerLevel = getLevel(player);
         int commandLevel = 0;
-        if (modulePotency >= 100 && isTrader && playerLevel >= 60)
+        if (modulePotency >= 80 && isTrader && playerLevel >= 60)
         {
             commandLevel = 3;
         }
@@ -3476,11 +3476,12 @@ public class pet_lib extends script.base_script
         float spdBonus = getPetAbilityAttackSpdBonus(petControlDevice, wpnSpeed);
         int minDamage = getIntObjVar(petControlDevice, "creature_attribs.minDamage");
         int maxDamage = getIntObjVar(petControlDevice, "creature_attribs.maxDamage");
+        int DroidSkillMod = getSkillStatMod(player, "droid_level");
         if (isIdValid(player) && exists(player))
         {
-            if (level > 60 && !craftinglib.isTrader(player))
+            if (level > 60)
             {
-                level = 60;
+                level = 60 + DroidSkillMod;
             }
             dictionary droidDefaultStatsDict = dataTableGetRow(TBL_MOB_STAT_BALANCE, level - 1);
             myHealth = droidDefaultStatsDict.getInt("HP");
@@ -5397,11 +5398,9 @@ public class pet_lib extends script.base_script
     }
     public static int getDroidCapLevel(obj_id who, int level) throws InterruptedException
     {
-        if (craftinglib.isTrader(who))
-        {
-            return 90;
-        }
-        return 60;
+        int baseLevel = craftinglib.isTrader(who) ? 70 : 60;
+        int skillMod = getSkillStatMod(who, "droid_level");
+        return baseLevel + skillMod;
     }
     public static void initDroidDefaultStats(obj_id deed) throws InterruptedException
     {

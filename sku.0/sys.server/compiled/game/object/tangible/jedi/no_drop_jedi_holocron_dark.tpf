@@ -19,6 +19,6 @@
 @class object_template 2
 sharedTemplate = "object/tangible/jedi/shared_no_drop_jedi_holocron_dark.iff"
 
-scripts =+ ["systems.jedi.jedi_holocron","item.special.nomove"]
+scripts =+ ["systems.jedi.sith_holocron","item.special.nomove"]
 
 objvars = +["noTrade"=1]

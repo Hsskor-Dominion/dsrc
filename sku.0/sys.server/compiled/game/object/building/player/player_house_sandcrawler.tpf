@@ -10,4 +10,4 @@
 
 sharedTemplate = "object/building/player/shared_player_house_sandcrawler.iff"
 
-objvars =+["tcg.static_item_deed"="item_pgc_sandcrawler_house_deed", "structure.capacity_override"=350]
+objvars =+["tcg.static_item_deed"="item_pgc_sandcrawler_house_deed", "structure.capacity_override"=350, "player_structure.deed.scene" = "lok,dantooine,tatooine"]

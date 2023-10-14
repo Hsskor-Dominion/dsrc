@@ -7,4 +7,4 @@
 volume = 1
 sharedTemplate = "object/intangible/vehicle/shared_flare_s_swoop_pcd.iff"
 objvars = +[ "schematic.name" = "object/draft_schematic/vehicle/civilian/flare_s_swoop_crafted.iff" ]
-scripts = +[ "systems.vehicle_system.vehicle_deconstruct","item.special.nomove"]
+scripts = +[ "systems.vehicle_system.vehicle_deconstruct"]

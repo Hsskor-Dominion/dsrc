@@ -2577,11 +2577,17 @@ public class player_building extends script.base_script
         LOG("LOG_CHANNEL", "You change your residence to this building");
         sendSystemMessage(self, new string_id(STF, "change_residence"));
         setHouseId(self, structure);
+
+        // Get the planet name of the building's location
+        location loc = getLocation(structure);
+        String buildingPlanet = loc.area;
+        setObjVar(self, "residency_planet", buildingPlanet);
+
         setObjVar(self, player_structure.VAR_RESIDENCE_CAN_DECLARE, current_time);
         setObjVar(structure, player_structure.VAR_RESIDENCE_BUILDING, self);
         messageTo(oldresidence, "removeResidentVar", null, 0.0f, true);
         city.setCityResidence(self, structure);
-	skill.noisyGrantSkill(self, "social_politician_novice");
+        skill.noisyGrantSkill(self, "social_politician_novice");
         return SCRIPT_CONTINUE;
     }
     public int transferStructure(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException

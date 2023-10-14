@@ -976,6 +976,31 @@ public class smuggler extends script.base_script
         }
         return;
     }
+    public static void checkMandoTitleGrants(obj_id player, float value) throws InterruptedException
+    {
+        if (value <= -1.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando_novice"))
+            {
+                revokeSkill(player, "faction_rank_mando_novice");
+            }
+        }
+        if (value <= -1.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando_master"))
+            {
+                revokeSkill(player, "faction_rank_mando_master");
+            }
+        }
+        if (value <= -1.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando"))
+            {
+                revokeSkill(player, "faction_rank_mando");
+            }
+        }
+        return;
+    }
     public static void checkRewardQuestGrants(obj_id target, float value) throws InterruptedException
     {
         if (value >= 1000.0f)

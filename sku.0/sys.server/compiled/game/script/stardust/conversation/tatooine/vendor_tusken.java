@@ -1,6 +1,7 @@
 package script.stardust.conversation.tatooine;
 
 import script.*;
+import script.library.factions;
 import script.library.ai_lib;
 import script.library.chat;
 import script.library.utils;
@@ -14,6 +15,18 @@ public class vendor_tusken extends script.base_script
     public boolean vendor_tusken_condition__defaultCondition(obj_id player, obj_id npc) throws InterruptedException
     {
         return true;
+    }
+    public boolean tuskenFriend_condition(obj_id player, obj_id npc) throws InterruptedException
+    {
+        float tuskenFaction = factions.getFactionStanding(player, "tusken_raider");
+        if (tuskenFaction >= 1000)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     public void vendor_tusken_action_showTokenVendorUI(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -64,9 +77,15 @@ public class vendor_tusken extends script.base_script
         {
             return SCRIPT_OVERRIDE;
         }
-        if (vendor_tusken_condition__defaultCondition(player, npc))
+        if (tuskenFriend_condition(player, npc))
         {
             vendor_tusken_action_showTokenVendorUI(player, npc);
+            string_id message = new string_id(c_stringFile, "s_4");
+            chat.chat(npc, player, message);
+            return SCRIPT_CONTINUE;
+        }
+        else if (vendor_tusken_condition__defaultCondition(player, npc))
+        {
             string_id message = new string_id(c_stringFile, "s_4");
             chat.chat(npc, player, message);
             return SCRIPT_CONTINUE;

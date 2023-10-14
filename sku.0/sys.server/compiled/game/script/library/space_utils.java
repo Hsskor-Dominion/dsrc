@@ -1021,7 +1021,8 @@ public class space_utils extends script.base_script
             "sorosuub_space_yacht",
             "gunship_rebel",
             "gunship_imperial",
-            "gunship_neutral"
+            "gunship_neutral",
+            "stardestroyer"
         };
         for (String TYPE : TYPES) {
             int intIndex = strType.indexOf(TYPE);

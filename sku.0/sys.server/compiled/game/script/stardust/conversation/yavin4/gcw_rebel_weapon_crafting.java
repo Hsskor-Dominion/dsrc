@@ -15,11 +15,11 @@ public class gcw_rebel_weapon_crafting extends script.base_script
     }
     public boolean gcw_rebel_weapon_crafting_condition_completedCrafting1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "gcw_rebel_crafting", "returnAp5");
+        return groundquests.isTaskActive(player, "stardust_gcw_rebel_crafting", "returnAp5");
     }
     public boolean gcw_rebel_weapon_crafting_condition_craftingActive1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "gcw_rebel_crafting");
+        return groundquests.isQuestActive(player, "stardust_gcw_rebel_crafting");
     }
     public boolean gcw_rebel_weapon_crafting_condition_inPhase1(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -38,7 +38,7 @@ public class gcw_rebel_weapon_crafting extends script.base_script
     }
     public void gcw_rebel_weapon_crafting_action_giveCrafting1(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.grantQuest(player, "gcw_rebel_crafting");
+        groundquests.grantQuest(player, "stardust_gcw_rebel_crafting");
     }
     public void gcw_rebel_weapon_crafting_action_signalDone(obj_id player, obj_id npc) throws InterruptedException
     {

@@ -31,7 +31,7 @@ public class evac_shuttle extends script.base_script
     {
         if (item == menu_info_types.CONVERSE_START)
         {
-            instance.requestExitPlayer(instance.getInstanceName(trial.getParent(self)), player);
+            warpPlayer(player, "corellia", -74.9f, 0, -4712.6f, null, 0, 0, 0, "", false);
         }
         return SCRIPT_CONTINUE;
     }
