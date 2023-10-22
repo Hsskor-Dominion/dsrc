@@ -60,8 +60,7 @@ public class darth_lumiya extends script.base_script
     }
     public void darth_lumiya_sith_quest(obj_id player, obj_id npc) throws InterruptedException
     {
-        String pTemplate = getSkillTemplate(player);
-        groundquests.grantQuest(player, "stardust_sith_starter");
+        groundquests.grantQuest(player, "sith_hunt_jedi");
     }
     public int darth_lumiya_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -85,7 +84,7 @@ public class darth_lumiya extends script.base_script
         }
         else if (response.equals("seek_jedi"))
         {
-            if (darth_lumiya_sithFriend_condition(npc, player))
+            if (darth_lumiya_sithFriend_condition(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "npc_aggro");
                 darth_lumiya_sith_quest(player, npc);
@@ -184,7 +183,7 @@ public class darth_lumiya extends script.base_script
             }
             else if (darth_lumiya_sithFriend_condition(player, npc))
             {
-                groundquests.grantQuest(player, "sith_hunt_jedi");
+                darth_lumiya_sith_quest(player, npc);
                 final string_id message = new string_id(c_stringFile, "npc_offer_mission");
 
                 utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
