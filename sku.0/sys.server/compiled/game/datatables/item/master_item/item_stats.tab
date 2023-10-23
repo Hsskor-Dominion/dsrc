@@ -630,11 +630,11 @@ item_tow_necklace_taming_03_02			int:skillmod.bonus.bm_creature_knowledge=4,int:
 item_tow_necklace_taming_03_03			int:skillmod.bonus.bm_creature_knowledge=6,int:skillmod.bonus.bm_xp_mod_boost=60								
 item_tow_necklace_taming_03_04			int:skillmod.bonus.bm_creature_knowledge=8,int:skillmod.bonus.bm_xp_mod_boost=80								
 item_tow_necklace_taming_03_05			int:skillmod.bonus.bm_creature_knowledge=10,int:skillmod.bonus.bm_xp_mod_boost=100								
-item_tow_ring_armorsmith_04_01					towArmorAssembly						
-item_tow_ring_weaponsmith_04_01					towWeaponAssembly						
-item_tow_ring_droideng_04_01					towDroidAssembly						
-item_tow_ring_bioeng_04_01					towMedAssembly						
-item_tow_ring_chef_04_01					towFoodAssembly						
+item_tow_ring_armorsmith_04_01			int:skillmod.bonus.armor_experimentation=5		towArmorAssembly						
+item_tow_ring_weaponsmith_04_01			int:skillmod.bonus.weapon_experimentation=5		towWeaponAssembly						
+item_tow_ring_droideng_04_01			int:skillmod.bonus.droid_experimentation=5		towDroidAssembly						
+item_tow_ring_bioeng_04_01			int:skillmod.bonus.bm_mutation_chance_increase=5,int:skillmod.bonus.expertise_bm_incubation_quality=10,int:skillmod.bonus.expertise_bm_genetic_engineering=5		towMedAssembly						
+item_tow_ring_chef_04_01			int:skillmod.bonus.food_experimentation=5		towFoodAssembly						
 item_tow_factory_gaurd_trinket_04_01					towFacGuardDefenseItem	long_reuse_4	1800				
 item_tow_foreman_fire_absorb_04_01					towForemanCoolingItem	long_reuse_4	1800				
 item_tow_foreman_burst_run_04_01				index_color_1=11	burstRun	long_reuse_4	1800				

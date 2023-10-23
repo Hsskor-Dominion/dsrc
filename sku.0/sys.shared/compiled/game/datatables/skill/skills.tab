@@ -2830,8 +2830,8 @@ class_chronicles_16	class_chronicles_15		0	0	0	0	0	0		class_chronicles_15		chron
 class_chronicles_master	class_chronicles_16		0	1	0	0	0	0		class_chronicles_16		chronicles	1365000	1365000							meditate				1	0
 faction_rank			1	0	0	1	0	0						0											0	0
 faction_rank_mando	faction_rank		1	0	1	1	0	0						0											0	0
-faction_rank_mando_novice	faction_rank_mando		1	1	0	1	0	0					0	0								armor_assembly=10,armor_experimentation=10,armor_customization=10.weapon_assembly=10,weapon_experimentation=10,weapon_customization=10			0	0
-faction_rank_mando_master	faction_rank_mando_novice		1	1	0	1	0	0		faction_rank_mando_novice			0	0								armor_assembly=10,armor_experimentation=10,armor_customization=10.weapon_assembly=10,weapon_experimentation=10,weapon_customization=10			0	0
+faction_rank_mando_novice	faction_rank_mando		1	1	0	1	0	0					0	0								armor_assembly=5,armor_experimentation=5,armor_customization=5.weapon_assembly=5,weapon_experimentation=5,weapon_customization=5			0	0
+faction_rank_mando_master	faction_rank_mando_novice		1	1	0	1	0	0		faction_rank_mando_novice			0	0								armor_assembly=5,armor_experimentation=5,armor_customization=5.weapon_assembly=5,weapon_experimentation=5,weapon_customization=5			0	0
 social_language_mando_speak	social_language		0	1	0	0	0	0					0	0				bothan,human,moncalamari,rodian,trandoshan,twilek,zabrak			language+mando	language_mando_speak=100			0	0
 social_language_mando_comprehend	social_language		0	0	0	0	0	0					0	0								language_mando_comprehend=100			0	0
 stardust_pvp				1		1															bountycheck				0	
