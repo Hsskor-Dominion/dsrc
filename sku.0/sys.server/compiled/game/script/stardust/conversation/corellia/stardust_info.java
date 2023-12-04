@@ -1,4 +1,4 @@
-package script.stardust.conversation.tatooine;
+package script.stardust.conversation.corellia;
 
 import script.library.*;
 import script.library.factions;
@@ -59,35 +59,6 @@ public class stardust_info extends script.base_script
         int questId = questGetQuestId("quest/stardust_info");
         groundquests.grantQuest(questId, player, npc, true);
     }
-    public int stardust_info_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
-    {
-        if (response.equals("s_165"))
-        {
-            if (stardust_info_condition__defaultCondition(player, npc))
-            {
-                doAnimationAction(npc, "thumb_up");
-                string_id message = new string_id(c_stringFile, "s_167");
-                utils.removeScriptVar(player, "conversation.stardust_info.branchId");
-                chat.chat(npc, player, message);
-                npcEndConversation(player);
-                return SCRIPT_CONTINUE;
-            }
-        }
-        if (response.equals("s_169"))
-        {
-            if (stardust_info_condition__defaultCondition(player, npc))
-            {
-                doAnimationAction(npc, "standing_raise_fist");
-                stardust_info_action_signalReward(player, npc);
-                string_id message = new string_id(c_stringFile, "s_171");
-                utils.removeScriptVar(player, "conversation.stardust_info.branchId");
-                chat.chat(npc, player, message);
-                npcEndConversation(player);
-                return SCRIPT_CONTINUE;
-            }
-        }
-        return SCRIPT_DEFAULT;
-    }
     public int stardust_info_handleBranch26(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("s_255"))
@@ -138,7 +109,7 @@ public class stardust_info extends script.base_script
                 return SCRIPT_CONTINUE;
             }
         }
-        if (response.equals("dubug_me"))
+        if (response.equals("debug_me"))
         {
             if (stardust_info_condition__defaultCondition(player, npc))
             {
@@ -147,6 +118,7 @@ public class stardust_info extends script.base_script
                 utils.removeScriptVar(player, "conversation.stardust_info.branchId");
                 chat.chat(npc, player, message);
                 npcEndConversation(player);
+                removeObjVar(player, "npe");
                 return SCRIPT_CONTINUE;
             }
         }
@@ -298,8 +270,7 @@ public class stardust_info extends script.base_script
         if (stardust_info_condition__defaultCondition(npc, player))
         {
             final string_id message = new string_id(c_stringFile, "s_253");
-            removeObjVar(player, "npe");
-            final int numberOfResponses = 3;
+            final int numberOfResponses = 4;
 
             final string_id[] responses = new string_id[numberOfResponses];
             int responseIndex = 0;
@@ -308,9 +279,9 @@ public class stardust_info extends script.base_script
             responses[responseIndex++] = new string_id(c_stringFile, "s_271");
             responses[responseIndex++] = new string_id(c_stringFile, "debug_me");
 
-            utils.setScriptVar(player, "conversation.npe_entertainer_pointer_conversation.branchId", 26);
+            utils.setScriptVar(player, "conversation.stardust_info.branchId", 26);
 
-            npcStartConversation(player, npc, "npe_entertainer_pointer_conversation", message, responses);
+            npcStartConversation(player, npc, "stardust_info", message, responses);
 
             return SCRIPT_CONTINUE;
         }
@@ -326,10 +297,6 @@ public class stardust_info extends script.base_script
         }
         obj_id npc = self;
         int branchId = utils.getIntScriptVar(player, "conversation.stardust_info.branchId");
-	if (branchId == 1 && stardust_info_handleBranch1(player, npc, response) == SCRIPT_CONTINUE)
-        {
-            return SCRIPT_CONTINUE;
-        }
         if (branchId == 26 && stardust_info_handleBranch26(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
