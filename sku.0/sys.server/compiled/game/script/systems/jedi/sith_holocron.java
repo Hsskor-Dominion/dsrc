@@ -75,7 +75,7 @@ public class sith_holocron extends script.base_script
                 grantSkill(player, "class_forcesensitive_phase1");
                 grantSkill(player, "class_forcesensitive_phase1_novice");
                 grantSkill(player, "force_sensitive_heightened_senses_persuasion_04");
-                xp.grant(player, "jedi", 100);
+                xp.grant(player, "jedi", 5000);
                 factions.addFactionStanding(player, "sith_shadow", 50.0f);
                 factions.goOvertWithDelay(player, 0.0f);
                 jedi_trials.initializePadawanTrials(player);
