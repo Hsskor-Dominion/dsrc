@@ -18,7 +18,42 @@ public class sith_holocron3 extends script.base_script
     }
     public boolean isMandoExplore(obj_id player, obj_id npc) throws InterruptedException
     {
-        return ((badge.hasBadge(player, "bdg_deathtrooper_undead_rancor") || badge.hasBadge(player, "bdg_kash_wookiee_rage") || badge.hasBadge(player, "bdg_must_victory_army") || badge.hasBadge(player, "bdg_kill_deathwatch_overlord") || hasCompletedCollectionSlot(player, "col_ig88_factory_01") || hasCompletedCollectionSlot(player, "col_tusken_king_01")) && badge.hasBadge(player, "count_50"));
+        int explore_requirement = rand(1, 10);
+        String explore = "";
+        switch (explore_requirement)
+        {
+            case 1:
+                explore = "warren_hero";
+                break;
+            case 2:
+                explore = "col_ig88_factory_01";
+                break;
+            case 3:
+                explore = "col_tusken_king_01";
+                break;
+            case 4:
+                explore = "bdg_kill_deathwatch_overlord";
+                break;
+            case 5:
+                explore = "bdg_deathtrooper_undead_rancor";
+                break;
+            case 6:
+                explore = "bdg_kash_arena_champ";
+                break;
+            case 7:
+                explore = "bdg_kash_avatar_zssik";
+                break;
+            case 8:
+                explore = "bdg_thm_park_jabba_badge";
+                break;
+            case 9:
+                explore = "bdg_must_victory_army";
+                break;
+            case 10:
+                explore = "bdg_kash_wookiee_rage";
+                break;
+        }
+        return badge.hasBadge(player, explore) && badge.hasBadge(player, "count_50");
     }
     public void holocron_action_grantQuestRevan(obj_id player, obj_id npc) throws InterruptedException
     {

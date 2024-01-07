@@ -18,7 +18,42 @@ public class jedi_holocron extends script.base_script
     }
     public boolean isJediExplore(obj_id player, obj_id npc) throws InterruptedException
     {
-        return ((badge.hasBadge(player, "warren_compassion") || badge.hasBadge(player, "bdg_kash_grievous") || hasCompletedCollectionSlot(player, "col_bdg_hero_tatooine") || hasCompletedCollectionSlot(player, "inv_holocron_collection_02") || badge.hasBadge(player, "bdg_must_obiwan_story_good")) && badge.hasBadge(player, "count_50"));
+        int explore_requirement = rand(1, 10);
+        String explore = "";
+        switch (explore_requirement)
+        {
+            case 1:
+                explore = "warren_compassion";
+                break;
+            case 2:
+                explore = "bdg_kash_grievous";
+                break;
+            case 3:
+                explore = "bdg_must_obiwan_story_good";
+                break;
+            case 4:
+                explore = "inv_holocron_collection_02";
+                break;
+            case 5:
+                explore = "col_bdg_hero_tatooine";
+                break;
+            case 6:
+                explore = "bdg_kash_arena_champ";
+                break;
+            case 7:
+                explore = "bdg_kash_avatar_zssik";
+                break;
+            case 8:
+                explore = "bdg_thm_park_jabba_badge";
+                break;
+            case 9:
+                explore = "bdg_thm_park_rebel_badge";
+                break;
+            case 10:
+                explore = "bdg_library_trivia";
+                break;
+        }
+        return badge.hasBadge(player, explore) && badge.hasBadge(player, "count_50");
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
@@ -53,12 +88,13 @@ public class jedi_holocron extends script.base_script
             }
 
             // Damage the holocron by X hitpoints
-            int damageAmount = rand(10, 50);
+            int damageAmount = rand(5, 10);
             damageItem(self, damageAmount);
 
             if (!isJediExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
+                factions.goOvertWithDelay(player, 0.0f);
                 return SCRIPT_OVERRIDE;
             }
             if (isJediExplore(player, self))

@@ -8585,4 +8585,5 @@ contraband_spice_chest	object/tangible/smuggler/contraband/contraband_general.if
 contraband_spice_schematic_chest	object/tangible/smuggler/contraband/contraband_general.iff									systems.loot.contraband_spice_chest			Spice Contraband	Exceptional Loot Chest... Open it up!	
 item_schematic_stardestroyer	object/tangible/loot/loot_schematic/generic_limited_use.iff							1		item.loot_schematic.loot_schematic		1	Schematic for Star Destroyer Chassis	Schematic for Star Destroyer Chassis earned from participating in epic Space Battles.	
 item_ship_deed_stardestroyer	object/tangible/ship/crafted/chassis/stardestroyer_deed.iff							1				1	Deed for Star Destroyer Chassis	Deed for Star Destroyer Chassis earned from participating in epic Space Battles.	
-sith_holocron	object/tangible/jedi/no_drop_jedi_holocron_dark.iff							1				1		This holocron appears to be one of many holocrons of the same type. You should collect all of the holocrons to unlock its knowledge.	Something, something, darkside.
+sith_holocron	object/tangible/jedi/no_drop_jedi_holocron_dark.iff							1				1		Something, something, darkside.	
+jedi_holocron	object/tangible/jedi/no_drop_jedi_holocron_light.iff							1				1		The holocrons contain the most closely guarded secrets of the Jedi Order. -Jocasta Nu	

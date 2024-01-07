@@ -23,6 +23,10 @@ public class darth_talon extends script.base_script
     {
         return hasSkill(player, "social_language_basic_comprehend");
     }
+    public boolean darth_talon_chronicler_condition(obj_id npc, obj_id player) throws InterruptedException
+    {
+        return hasSkill(player, "class_chronicles_master");
+    }
     public boolean darth_talon_sithFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float sithFaction = factions.getFactionStanding(player, "sith_shadow");
@@ -56,13 +60,30 @@ public class darth_talon extends script.base_script
     {
         return hasObjVar(player, SITH_APPRENTICE);
     }
-    public boolean darth_talon_sith_quest_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
+    public boolean darth_talon_sith_quest_condition_on_diplomacy(obj_id npc, obj_id player) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "stardust_darth_talon", "talktodarth_talon");
+        // Check if the player has any diplomacy quests or is on "jedi_gift_exchange"
+        return (groundquests.isQuestActive(player, "stardust_sith_diplomacy1") ||
+                groundquests.isQuestActive(player, "stardust_sith_diplomacy2") ||
+                groundquests.isQuestActive(player, "stardust_sith_diplomacy3"));
     }
-    public void darth_talon_sith_signalReward(obj_id player, obj_id npc) throws InterruptedException
+    public void darth_talon_diplomacy_mission(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.sendSignal(player, "stardust_entertainer_darth_talon_reward");
+        int diplomacy_mission = rand(1, 3);
+        String mission = "";
+        switch (diplomacy_mission)
+        {
+            case 1:
+                mission = "stardust_sith_diplomacy1";
+                break;
+            case 2:
+                mission = "stardust_sith_diplomacy2";
+                break;
+            case 3:
+                mission = "stardust_sith_diplomacy3";
+                break;
+        }
+        groundquests.grantQuest(player, mission);
     }
     public void darth_talon_action_vendor(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -70,15 +91,9 @@ public class darth_talon extends script.base_script
         d.put("player", player);
         messageTo(npc, "showInventorySUI", d, 0, false);
     }
-    public void darth_talon_sith_quest(obj_id player, obj_id npc) throws InterruptedException
-    {
-        String pTemplate = getSkillTemplate(player);
-        groundquests.grantQuest(player, "stardust_sith_darth_talon");
-    }
     public void darth_talon_bounty_quest(obj_id player, obj_id npc) throws InterruptedException
     {
-        money.requestPayment(player, npc, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
-        groundquests.requestGrantQuest(player, "quest/stardust_darth_talon_arena", true);
+        money.requestPayment(player, npc, smuggler.TIER_5_GENERIC_PVP_FRONT_COST, "none", null, true);
         int mission_bounty = 10000;
         int current_bounty = 0;
         mission_bounty += rand(1, 2000);
@@ -88,9 +103,9 @@ public class darth_talon extends script.base_script
         }
         current_bounty += mission_bounty;
         setObjVar(player, "bounty.amount", current_bounty);
-        setObjVar(player, "smuggler.bounty", mission_bounty);
+        setObjVar(player, "jedi.bounty", mission_bounty);
         setJediBountyValue(player, current_bounty);
-        updateJediScriptData(player, "smuggler", 1);
+        updateJediScriptData(player, "jedi", 1);
     }
     public int darth_talon_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -158,6 +173,24 @@ public class darth_talon extends script.base_script
 
             return SCRIPT_CONTINUE;
         }
+        else if (response.equals("seek_serve"))
+        {
+
+            final string_id message = new string_id(c_stringFile, "npc_considers");
+            final int numberOfResponses = 1;
+
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
+
+            responses[responseIndex++] = new string_id(c_stringFile, "confirm_serve");
+
+            utils.setScriptVar(player, "conversation.darth_talon_conversation.branchId", 5);
+
+            npcSpeak(player, message);
+            npcSetConversationResponses(player, responses);
+
+            return SCRIPT_CONTINUE;
+        }
         else if (response.equals("seek_to_leave_order"))
         {
 
@@ -169,7 +202,7 @@ public class darth_talon extends script.base_script
 
             responses[responseIndex++] = new string_id(c_stringFile, "confirm_leave_order");
 
-            utils.setScriptVar(player, "conversation.darth_talon_conversation.branchId", 5);
+            utils.setScriptVar(player, "conversation.darth_talon_conversation.branchId", 6);
 
             npcSpeak(player, message);
             npcSetConversationResponses(player, responses);
@@ -272,6 +305,62 @@ public class darth_talon extends script.base_script
     }
     public int darth_talon_handleBranch5(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
+        if (response.equals("confirm_serve"))
+        {
+            if (!darth_talon_chronicler_condition(npc, player))
+            {
+                final string_id message = new string_id(c_stringFile, "npc_you_must_master_chronicles");
+
+                utils.removeScriptVar(player, "conversation.darth_talon_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            if (darth_talon_sith_quest_condition_on_diplomacy(npc, player))
+            {
+                final string_id message = new string_id(c_stringFile, "npc_already_on_diplomacy");
+
+                utils.removeScriptVar(player, "conversation.darth_talon_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (darth_talon_phase2_condition(npc, player))
+            {
+                final string_id message = new string_id(c_stringFile, "npc_offer_sith_diplomacy");
+                //experimental diplomacy missions
+                darth_talon_diplomacy_mission(player, npc);
+                darth_talon_bounty_quest(player, npc);
+
+                utils.removeScriptVar(player, "conversation.darth_talon_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (darth_talon_phase1_condition(npc, player))
+            {
+                final string_id message = new string_id(c_stringFile, "npc_offer_sith_meditation");
+                groundquests.grantQuest(player, "stardust_sith_meditation");
+
+                utils.removeScriptVar(player, "conversation.darth_talon_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else
+            {
+                final string_id message = new string_id(c_stringFile, "npc_you_are_not_sith");
+
+                utils.removeScriptVar(player, "conversation.darth_talon_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+        }
+        return SCRIPT_DEFAULT;
+    }
+    public int darth_talon_handleBranch6(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
         if (response.equals("confirm_leave_order"))
         {
                 final string_id message = new string_id(c_stringFile, "npc_very_well");
@@ -335,7 +424,7 @@ public class darth_talon extends script.base_script
         if (darth_talon_language_condition(npc, player))
         {
             final string_id message = new string_id(c_stringFile, "npc_intro");
-            final int numberOfResponses = 5;
+            final int numberOfResponses = 6;
 
             final string_id[] responses = new string_id[numberOfResponses];
             int responseIndex = 0;
@@ -344,6 +433,7 @@ public class darth_talon extends script.base_script
             responses[responseIndex++] = new string_id(c_stringFile, "seek_jedi");
             responses[responseIndex++] = new string_id(c_stringFile, "seek_balance");
             responses[responseIndex++] = new string_id(c_stringFile, "seek_sith");
+            responses[responseIndex++] = new string_id(c_stringFile, "seek_serve");
             responses[responseIndex++] = new string_id(c_stringFile, "seek_to_leave_order");
 
 
@@ -384,6 +474,10 @@ public class darth_talon extends script.base_script
             return SCRIPT_CONTINUE;
         }
         else if (branchId == 5 && darth_talon_handleBranch5(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        else if (branchId == 6 && darth_talon_handleBranch6(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }

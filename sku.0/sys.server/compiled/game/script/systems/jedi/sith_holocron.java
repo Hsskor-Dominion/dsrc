@@ -13,14 +13,49 @@ public class sith_holocron extends script.base_script
     {
     }
 
-    public boolean isSithReady(obj_id player, obj_id npc) throws InterruptedException
+    public boolean isSithReady(obj_id player, obj_id self) throws InterruptedException
     {
         return (getLevel(player) >= 90);
     }
 
-    public boolean isSithExplore(obj_id player, obj_id npc) throws InterruptedException
+    public boolean isSithExplore(obj_id player, obj_id self) throws InterruptedException
     {
-        return ((badge.hasBadge(player, "bdg_col_jedi_npc_kill") || badge.hasBadge(player, "bdg_must_obiwan_story_bad") || badge.hasBadge(player, "bdg_ground_dwartii_statue_crafting") ||badge.hasBadge(player, "bdg_kill_axkva_min")) && badge.hasBadge(player, "count_50"));
+        int explore_requirement = rand(1, 10);
+        String explore = "";
+        switch (explore_requirement)
+        {
+            case 1:
+                explore = "warren_hero";
+                break;
+            case 2:
+                explore = "bdg_col_jedi_npc_kill";
+                break;
+            case 3:
+                explore = "bdg_must_obiwan_story_bad";
+                break;
+            case 4:
+                explore = "bdg_ground_dwartii_statue_crafting";
+                break;
+            case 5:
+                explore = "col_bdg_hero_tatooine";
+                break;
+            case 6:
+                explore = "bdg_kash_arena_champ";
+                break;
+            case 7:
+                explore = "bdg_kash_avatar_zssik";
+                break;
+            case 8:
+                explore = "bdg_thm_park_jabba_badge";
+                break;
+            case 9:
+                explore = "bdg_thm_park_imperial_badge";
+                break;
+            case 10:
+                explore = "bdg_library_trivia";
+                break;
+        }
+        return badge.hasBadge(player, explore) && badge.hasBadge(player, "count_50");
     }
 
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
@@ -58,15 +93,15 @@ public class sith_holocron extends script.base_script
             }
 
             // Damage the holocron by X hitpoints
-            int damageAmount = rand(10, 50);
+            int damageAmount = rand(5, 10);
             damageItem(self, damageAmount);
 
             if (!isSithExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore_sith"));
                 factions.goOvertWithDelay(player, 0.0f);
+                return SCRIPT_OVERRIDE;
             }
-
             if (isSithExplore(player, self))
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish_sith"));
@@ -97,6 +132,7 @@ public class sith_holocron extends script.base_script
             else
             {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore_sith"));
+                factions.goOvertWithDelay(player, 0.0f);
             }
         }
         return SCRIPT_CONTINUE;
