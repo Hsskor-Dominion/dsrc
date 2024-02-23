@@ -6065,9 +6065,24 @@ public class utils extends script.base_script
 
         for (String pair : split(objVarList, ',')) {
             objVarToSet = split(pair, '=');
+
+            // Ensure objVarToSet has at least two elements
+            if (objVarToSet.length < 2) {
+                // Log an error or handle the case where the objVar pair is not well-formed
+                continue;
+            }
+
             objVarValue = objVarToSet[1];
             objVarNameAndType = split(objVarToSet[0], ':');
+
+            // Ensure objVarNameAndType has at least two elements
+            if (objVarNameAndType.length < 2) {
+                // Log an error or handle the case where the objVar name and type are not well-formed
+                continue;
+            }
+
             objVarName = objVarNameAndType[1];
+
             switch (objVarNameAndType[0]) {
                 case "string":
                     setObjVar(object, objVarName, objVarValue);

@@ -14,9 +14,9 @@ public class dantooine_rebel_base_spawner extends script.base_script
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         spawnEveryone(self);
-        messageTo(self, "doGuards", null, 10, true);
-        messageTo(self, "doDroids", null, 30, true);
-        messageTo(self, "doGating", null, 20, true);
+        messageTo(self, "doGuards", null, 20, true);
+        messageTo(self, "doDroids", null, 40, true);
+        messageTo(self, "doGating", null, 30, true);
         return SCRIPT_CONTINUE;
     }
     public void spawnEveryone(obj_id self) throws InterruptedException

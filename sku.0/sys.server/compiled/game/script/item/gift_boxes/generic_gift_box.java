@@ -263,7 +263,7 @@ public class generic_gift_box extends script.base_script
     
         if (static_item.isStaticItem(itemName))
         {
-            static_item.createNewItemFunction(itemName, inventory, count);generic_gift_box.java
+            static_item.createNewItemFunction(itemName, inventory, count);
         }
         else
         {
