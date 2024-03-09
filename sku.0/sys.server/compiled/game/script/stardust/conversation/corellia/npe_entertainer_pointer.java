@@ -55,6 +55,7 @@ public class npe_entertainer_pointer extends script.base_script
             final string_id message = new string_id(c_stringFile, "npc_explain_gigs");
 
             utils.removeScriptVar(player, "conversation.npe_entertainer_pointer_conversation.branchId");
+            modifyCollectionSlotValue(player, "ent_fan_01", 1);
             npcEndConversationWithMessage(player, message);
 
             return SCRIPT_CONTINUE;
