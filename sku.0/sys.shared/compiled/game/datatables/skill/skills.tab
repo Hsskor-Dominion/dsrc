@@ -2007,15 +2007,16 @@ expertise_me_hot_duration_2	expertise_me_hot_duration_1																					expe
 expertise_me_hot_duration_3	expertise_me_hot_duration_2																					expertise_healing_line_me_hot=15			0	
 expertise_me_hot_duration_4	expertise_me_hot_duration_3																					expertise_healing_line_me_hot=15			0	
 expertise_me_drag	expertise_me_heal_action_4			1						expertise_me_heal_action_4											me_drag_1				0	
-expertise_me_revive_duration_1	expertise																					expertise_cooldown_line_me_revive=5,expertise_cooldown_line_me_aoe_revive=5			0	
-expertise_me_revive_duration_2	expertise_me_revive_duration_1																					expertise_cooldown_line_me_revive=5,expertise_cooldown_line_me_aoe_revive=5			0	
-expertise_me_revive_duration_3	expertise_me_revive_duration_2																					expertise_cooldown_line_me_revive=5,expertise_cooldown_line_me_aoe_revive=5			0	
-expertise_me_blood_cleaners_1	expertise_me_revive_duration_3									expertise_me_revive_duration_3											me_blood_cleaners_1				0	
+expertise_me_revive_duration_1	expertise_me_enhance_duration_4									expertise_me_enhance_duration_4												expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3			0	
+expertise_me_revive_duration_2	expertise_me_revive_duration_1																					expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3			0	
+expertise_me_revive_duration_3	expertise_me_revive_duration_2																					expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3			0	
+expertise_me_revive_duration_4	expertise_me_revive_duration_3																					expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3			0	
+expertise_me_blood_cleaners_1	expertise_me_revive_duration_4									expertise_me_revive_duration_3											me_blood_cleaners_1				0	
 expertise_me_bacta_bomb_1	expertise_me_serotonin_boost_1									expertise_me_serotonin_boost_1											me_bacta_bomb_1, me_bacta_grenade_1				0	
-expertise_me_heal_damage_1	expertise																					expertise_healing_all=3,expertise_buff_duration_line_me_enhance=300			0	
-expertise_me_heal_damage_2	expertise_me_heal_damage_1																					expertise_healing_all=3,expertise_buff_duration_line_me_enhance=300			0	
-expertise_me_heal_damage_3	expertise_me_heal_damage_2																					expertise_healing_all=3,expertise_buff_duration_line_me_enhance=300			0	
-expertise_me_heal_damage_4	expertise_me_heal_damage_3																					expertise_healing_all=3,expertise_buff_duration_line_me_enhance=300			0	
+expertise_me_heal_damage_1	expertise																					expertise_healing_all=3			0	
+expertise_me_heal_damage_2	expertise_me_heal_damage_1																					expertise_healing_all=3			0	
+expertise_me_heal_damage_3	expertise_me_heal_damage_2																					expertise_healing_all=3			0	
+expertise_me_heal_damage_4	expertise_me_heal_damage_3																					expertise_healing_all=3			0	
 expertise_me_cure_affliction_1	expertise_me_heal_damage_4									expertise_me_heal_damage_4															0	
 expertise_me_heal_action_1	expertise			1																		exotic_heal_action_reduction=5			0	
 expertise_me_heal_action_2	expertise_me_heal_action_1			1																		exotic_heal_action_reduction=5			0	
@@ -2023,37 +2024,38 @@ expertise_me_heal_action_3	expertise_me_heal_action_2			1																		exoti
 expertise_me_heal_action_4	expertise_me_heal_action_3			1																		exotic_heal_action_reduction=5			0	
 expertise_me_serotonin_boost_1	expertise																				me_serotonin_boost_1				0	
 expertise_me_bacta_grenade_1																					me_bacta_grenade_1				0	
-expertise_me_enhance_duration_1	expertise																					expertise_buff_duration_line_me_enhance=300			0	
+expertise_me_enhance_duration_1	expertise_sp_run_its_course_1									expertise_sp_run_its_course_1												expertise_buff_duration_line_me_enhance=300			0	
 expertise_me_enhance_duration_2	expertise_me_enhance_duration_1																					expertise_buff_duration_line_me_enhance=300			0	
-expertise_me_enhance_duration_3	expertise_me_enhance_duration_2																					expertise_buff_duration_line_me_enhance=600			0	
-expertise_me_enhancement_specialist_1	expertise_me_enhance_duration_3									expertise_me_enhance_duration_3											me_enhance_action_1				0	
+expertise_me_enhance_duration_3	expertise_me_enhance_duration_2																					expertise_buff_duration_line_me_enhance=300			0	
+expertise_me_enhance_duration_4	expertise_me_enhance_duration_3																					expertise_buff_duration_line_me_enhance=300			0	
+expertise_me_enhancement_specialist_1	expertise_me_enhance_duration_4									expertise_me_enhance_duration_3											me_enhance_action_1				0	
 expertise_me_reckless_stimulation_1	expertise_of_heal_cool_4			1						expertise_of_heal_cool_4											me_reckless_stimulation_1				0	
 expertise_me_stasis_1	expertise_me_reckless_stimulation_1									expertise_me_reckless_stimulation_1											me_stasis_1				0	
 expertise_me_vital_action_1	expertise																					expertise_action_line_me_dm=5			0	
 expertise_me_vital_action_2	expertise_me_vital_action_1																					expertise_action_line_me_dm=5			0	
 expertise_me_vital_action_3	expertise_me_vital_action_2																					expertise_action_line_me_dm=5			0	
 expertise_me_vital_action_4	expertise_me_vital_action_3																					expertise_action_line_me_dm=10			0	
-expertise_me_bacta_resistance_1	expertise_me_dot_damage_4									expertise_me_dot_damage_4											me_bacta_resistance_1				0	
-expertise_me_dot_damage_1	expertise																					expertise_dot_increase=5			0	
+expertise_me_bacta_resistance_1	expertise_me_reckless_stimulation_1									expertise_me_reckless_stimulation_1											me_bacta_resistance_1				0	
+expertise_me_dot_damage_1	expertise_me_drag									expertise_me_drag												expertise_dot_increase=5			0	
 expertise_me_dot_damage_2	expertise_me_dot_damage_1																					expertise_dot_increase=5			0	
 expertise_me_dot_damage_3	expertise_me_dot_damage_2																					expertise_dot_increase=5			0	
 expertise_me_dot_damage_4	expertise_me_dot_damage_3																					expertise_dot_increase=5			0	
-expertise_me_serotonin_purge_1	expertise_me_dot_damage_4									expertise_me_dot_damage_4											me_serotonin_purge_1				0	
+expertise_me_serotonin_purge_1	expertise_me_bacta_resistance_1									expertise_me_bacta_resistance_1											me_serotonin_purge_1				0	
 expertise_me_induce_insanity_1	expertise_me_serotonin_purge_1									expertise_me_serotonin_purge_1											me_induce_insanity_1				0	
 expertise_me_vital_damage_1	expertise																					expertise_damage_line_me_dm=5			0	
 expertise_me_vital_damage_2	expertise_me_vital_damage_1																					expertise_damage_line_me_dm=5			0	
 expertise_me_vital_damage_3	expertise_me_vital_damage_2																					expertise_damage_line_me_dm=5			0	
 expertise_me_vital_damage_4	expertise_me_vital_damage_3																					expertise_damage_line_me_dm=5			0	
 expertise_me_electrolyte_drain_1	expertise_me_vital_damage_4									expertise_me_vital_damage_4											me_electrolyte_drain_1				0	
-expertise_me_dot_duration_1	expertise_me_bacta_resistance_1									expertise_me_bacta_resistance_1												expertise_dot_duration_line_me_dot=3			0	
+expertise_me_dot_duration_1	expertise_me_dot_damage_4									expertise_me_dot_damage_4												expertise_dot_duration_line_me_dot=3			0	
 expertise_me_dot_duration_2	expertise_me_dot_duration_1																					expertise_dot_duration_line_me_dot=3			0	
 expertise_me_dot_duration_3	expertise_me_dot_duration_2																					expertise_dot_duration_line_me_dot=4			0	
 expertise_me_dot_duration_4	expertise_me_dot_duration_3																					expertise_dot_duration_line_me_dot=4			0	
-expertise_me_traumatize_1	expertise_me_agro_healing_4									expertise_me_agro_healing_4											me_traumatize_1	stamina_modified=25			0	
+expertise_me_traumatize_1	expertise_me_dot_duration_4									expertise_me_dot_duration_4											me_traumatize_1	stamina_modified=25			0	
 expertise_me_traumatize_2	expertise_me_traumatize_1																					stamina_modified=25			0	
 expertise_me_traumatize_3	expertise_me_traumatize_2																					stamina_modified=25			0	
 expertise_me_traumatize_4	expertise_me_traumatize_3																					stamina_modified=25			0	
-expertise_me_thyroid_rupture_1	expertise_me_traumatize_4									expertise_me_traumatize_4															0	
+expertise_me_thyroid_rupture_1	expertise_me_revive_duration_4									expertise_me_revive_duration_4															0	
 expertise_me_strength_1	expertise																					strength_modified=10			0	
 expertise_me_strength_2	expertise_me_strength_1																					strength_modified=10			0	
 expertise_me_strength_3	expertise_me_strength_2																					strength_modified=10			0	
@@ -2703,26 +2705,28 @@ expertise_bm_add_third_pet_bar_1	expertise																					expertise_bm_add_
 expertise_bm_savagery_3	expertise_bm_savagery_2																					expertise_bm_pet_damage=100,expertise_bm_pet_attack_speed=100,expertise_bm_add_pet_bar=1				
 expertise_bm_savagery_2	expertise_bm_savagery_1																					expertise_bm_pet_damage=25				
 expertise_bm_savagery_1	expertise_bm_evasion_4			1						expertise_bm_evasion_4												expertise_bm_pet_damage=100,expertise_bm_pet_attack_speed=100,expertise_bm_add_pet_bar=1				
-expertise_bm_fortitude_4	expertise_bm_fortitude_3			1																		expertise_bm_pet_armor=30,expertise_bm_pet_health=25				
-expertise_bm_fortitude_3	expertise_bm_fortitude_2			1																		expertise_bm_pet_armor=30,expertise_bm_pet_health=25				
-expertise_bm_fortitude_2	expertise_bm_fortitude_1			1																		expertise_bm_pet_armor=30,expertise_bm_pet_health=25				
-expertise_bm_fortitude_1	expertise_bm_attack_1			1						expertise_bm_attack_1												expertise_bm_pet_armor=30,expertise_bm_pet_health=25				
+expertise_bm_fortitude_4	expertise_bm_fortitude_3			1																		expertise_bm_pet_armor=40				
+expertise_bm_fortitude_3	expertise_bm_fortitude_2			1																		expertise_bm_pet_armor=40				
+expertise_bm_fortitude_2	expertise_bm_fortitude_1			1																		expertise_bm_pet_armor=40				
+expertise_bm_fortitude_1	expertise_bm_attack_1			1						expertise_bm_attack_1												expertise_bm_pet_armor=40				
 expertise_bm_add_second_pet_bar_1	expertise																					expertise_bm_add_pet_bar=1				
 expertise_bm_dexterity_training_1	expertise_bm_fortitude_4									expertise_bm_fortitude_4												expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
 expertise_bm_dexterity_training_2	expertise_bm_dexterity_training_1																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
 expertise_bm_dexterity_training_3	expertise_bm_dexterity_training_2																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2,expertise_bm_add_pet_bar=1				
 expertise_bm_dexterity_training_4	expertise_bm_dexterity_training_3																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
-expertise_bm_exceptional_nutrition_2	expertise_bm_exceptional_nutrition_1																					expertise_bm_pet_health=50				
-expertise_bm_exceptional_nutrition_1	expertise																					expertise_bm_pet_health=50				
+expertise_bm_exceptional_nutrition_4	expertise_bm_exceptional_nutrition_3																					expertise_bm_pet_health=25,bm_xp_mod_boost=25				
+expertise_bm_exceptional_nutrition_3	expertise_bm_exceptional_nutrition_2																					expertise_bm_pet_health=25,bm_xp_mod_boost=25				
+expertise_bm_exceptional_nutrition_2	expertise_bm_exceptional_nutrition_1																					expertise_bm_pet_health=25,bm_xp_mod_boost=25				
+expertise_bm_exceptional_nutrition_1	expertise_bm_improved_healing_4									expertise_bm_improved_healing_4												expertise_bm_pet_health=25,bm_xp_mod_boost=25				
 expertise_bm_pet_dodge_3	expertise_bm_pet_dodge_2																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_2	expertise_bm_pet_dodge_1																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_1	expertise_bm_evasion_3									expertise_bm_evasion_3												expertise_pet_dodge=5				
-expertise_bm_genetic_engineering_4	expertise_bm_genetic_engineering_3			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30	craftMedicineStimpackGroupD,craftMedicineComponentGroupD,craftArtisanChemicalGroupD			
-expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30	craftArtisanChemicalGroupC,craftArtisanChemicalGroupC,craftMedicineStimpackGroupC			
-expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30	craftMedicineStimpackGroupB,craftArtisanChemicalGroupB,craftMedicineComponentGroupB			
-expertise_bm_genetic_engineering_1	expertise			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30	craftMedicineStimpackGroupA,craftArtisanChemicalGroupA			
-expertise_bm_add_first_pet_bar_1	expertise_bm_abilility_aquisition_mod_1									expertise_bm_abilility_aquisition_mod_1												expertise_bm_add_pet_bar=1				
-expertise_bm_specialized_supplements_1	expertise																					expertise_bm_pet_regen=100				
+expertise_bm_genetic_engineering_4	expertise_bm_genetic_engineering_3			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftMedicineStimpackGroupD,craftMedicineComponentGroupD,craftArtisanChemicalGroupD			
+expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftArtisanChemicalGroupC,craftArtisanChemicalGroupC,craftMedicineStimpackGroupC			
+expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftMedicineStimpackGroupB,craftArtisanChemicalGroupB,craftMedicineComponentGroupB			
+expertise_bm_genetic_engineering_1	expertise			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftMedicineStimpackGroupA,craftArtisanChemicalGroupA			
+expertise_bm_add_first_pet_bar_1	expertise																					expertise_bm_add_pet_bar=1,expertise_bm_pet_health=100				
+expertise_bm_specialized_supplements_1	expertise_bm_exceptional_nutrition_4									expertise_bm_exceptional_nutrition_4												expertise_bm_pet_regen=100,expertise_bm_add_pet_bar=1				
 expertise_bm_evasion_4	expertise_bm_evasion_3																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
 expertise_bm_evasion_3	expertise_bm_evasion_2																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
 expertise_bm_evasion_2	expertise_bm_evasion_1																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
@@ -2744,9 +2748,10 @@ expertise_bm_creature_knowledge_command_1	expertise																					creature
 expertise_bm_creature_knowledge_command_2	expertise_bm_creature_knowledge_command_1																					creature_harvesting=10,creature_hit_bonus=5,creature_knowledge=5,expertise_bm_enhanced_skill_acquisition=5				
 expertise_bm_creature_knowledge_command_3	expertise_bm_creature_knowledge_command_2																					creature_harvesting=10,creature_hit_bonus=5,creature_knowledge=5,expertise_bm_enhanced_skill_acquisition=5				
 expertise_bm_creature_knowledge_command_4	expertise_bm_creature_knowledge_command_3			1																		creature_harvesting=10,creature_hit_bonus=5,creature_knowledge=5,expertise_bm_enhanced_skill_acquisition=5				
+expertise_bm_improved_healing_4	expertise_bm_improved_healing_3																					expertise_bm_improved_pet_heal=20				
 expertise_bm_improved_healing_3	expertise_bm_improved_healing_2																					expertise_bm_improved_pet_heal=20				
 expertise_bm_improved_healing_2	expertise_bm_improved_healing_1																					expertise_bm_improved_pet_heal=20				
-expertise_bm_improved_healing_1	expertise_bm_mending_1									expertise_bm_mending_1												expertise_bm_improved_pet_heal=20				
+expertise_bm_improved_healing_1	expertise_bm_incubation_base_1									expertise_bm_incubation_base_1												expertise_bm_improved_pet_heal=20				
 expertise_bm_pet_recovery_3	expertise_bm_pet_recovery_2																					expertise_bm_pet_revive_time=5,expertise_bm_pet_recovery=25				
 expertise_bm_pet_recovery_2	expertise_bm_pet_recovery_1																					expertise_bm_pet_revive_time=5,expertise_bm_pet_recovery=25				
 expertise_bm_pet_recovery_1	expertise_bm_soothing_comfort_1									expertise_bm_soothing_comfort_1												expertise_bm_pet_revive_time=5,expertise_bm_pet_recovery=25				
