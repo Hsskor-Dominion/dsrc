@@ -15,11 +15,11 @@ public class block2 extends script.base_script
             return SCRIPT_CONTINUE;
         }
         int gating = getIntObjVar(item, "theme_park_jabba");
-        if (gating < 15)
+        if (gating < 0)
         {
             string_id warning = new string_id("theme_park_jabba/warning", "barada");
             sendSystemMessage(item, warning);
-            return SCRIPT_OVERRIDE;
+            return SCRIPT_CONTINUE;
         }
         else 
         {

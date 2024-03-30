@@ -18,6 +18,7 @@ public class terminal extends script.terminal.base.base_terminal
     private static final string_id UNDER_ATTACK = new string_id("hq", "under_attack");
     private static final string_id MNU_OVERLOAD = new string_id("hq", "mnu_overload");
     private static final string_id MNU_OVERLOAD_GOD = new string_id("hq", "mnu_overload_god_intentional_code_string");
+    private static final string_id MNU_SPYNET = new string_id("stardust/gcw", "spynet_hack");
     private static final string_id MNU_SHUTDOWN = new string_id("hq", "mnu_shutdown");
     private static final string_id MNU_DEFENSE_STATUS = new string_id("hq", "mnu_defense_status");
     private static final string_id MNU_RESET_VULNERABILITY = new string_id("hq", "mnu_reset_vulnerability");
@@ -47,97 +48,103 @@ public class terminal extends script.terminal.base.base_terminal
         }
         return super.OnInitialize(self);
     }
-    public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
-    {
-        if (stealth.hasInvisibleBuff(player))
-        {
+    public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException {
+        if (stealth.hasInvisibleBuff(player)) {
             sendSystemMessage(player, SID_NO_STEALTH);
             return super.OnObjectMenuRequest(self, player, mi);
         }
-        if (isGod(player) && getGodLevel(player) >= 15)
-        {
+
+        if (isGod(player) && getGodLevel(player) >= 15) {
             mi.addRootMenu(menu_info_types.SERVER_MENU12, MNU_OVERLOAD_GOD);
         }
-        int intState = getState(player, STATE_FEIGN_DEATH);
-        if (isDead(player) || isIncapacitated(player) || intState > 0)
-        {
-            return super.OnObjectMenuRequest(self, player, mi);
-        }
+
         obj_id structure = player_structure.getStructure(player);
-        if (!isIdValid(structure))
-        {
+
+        if (hasSkill(player, "class_spy_phase1_novice") || hasSkill(player, "stardust_spy")) {
+            mi.addRootMenu(menu_info_types.SERVER_MENU13, MNU_SPYNET);
+        }
+
+        if (hasSkill(player, "pvp_rebel_airstrike_ability") || hasSkill(player, "pvp_imperial_airstrike_ability")) {
+            mi.addRootMenu(menu_info_types.SERVER_MENU12, MNU_OVERLOAD_GOD);
+        }
+
+        int intState = getState(player, STATE_FEIGN_DEATH);
+        if (isDead(player) || isIncapacitated(player) || intState > 0) {
             return super.OnObjectMenuRequest(self, player, mi);
         }
+
+        if (!isIdValid(structure)) {
+            return super.OnObjectMenuRequest(self, player, mi);
+        }
+
         String buildingTemplate = getTemplateName(structure);
-        if (pvpGetAlignedFaction(player) != pvpGetAlignedFaction(structure))
-        {
-            if (pvpGetType(player) == PVPTYPE_NEUTRAL)
-            {
+
+        if (pvpGetAlignedFaction(player) != pvpGetAlignedFaction(structure)) {
+            if (pvpGetType(player) == PVPTYPE_NEUTRAL) {
                 sendSystemMessage(player, new string_id(STRING_FILE_LOC, "terminal_response01"));
                 return super.OnObjectMenuRequest(self, player, mi);
             }
-            if (hasObjVar(structure, hq.VAR_OBJECTIVE_TRACKING))
-            {
+
+            if (hasObjVar(structure, hq.VAR_OBJECTIVE_TRACKING)) {
                 obj_id[] objectives = getObjIdArrayObjVar(structure, hq.VAR_OBJECTIVE_ID);
-                if (objectives == null || objectives.length == 0)
-                {
+                if (objectives == null || objectives.length == 0) {
                     return super.OnObjectMenuRequest(self, player, mi);
                 }
+
                 obj_id[] disabled = getObjIdArrayObjVar(structure, hq.VAR_OBJECTIVE_DISABLED);
-                if (disabled == null || disabled.length != objectives.length)
-                {
+                if (disabled == null || disabled.length != objectives.length) {
                     prose_package ppDisableOther = prose.getPackage(hq.PROSE_DISABLE_OTHER, objectives[objectives.length - 1], self);
                     sendSystemMessageProse(player, ppDisableOther);
                     return super.OnObjectMenuRequest(self, player, mi);
                 }
+
                 mi.addRootMenu(menu_info_types.ITEM_USE, MNU_OVERLOAD);
             }
+
             return super.OnObjectMenuRequest(self, player, mi);
         }
+
         int management_root = mi.addRootMenu(menu_info_types.ITEM_USE, SID_TERMINAL_MANAGEMENT);
-        if (management_root > -1)
-        {
+
+        if (management_root > -1) {
             mi.addSubMenu(management_root, menu_info_types.SERVER_TERMINAL_MANAGEMENT_STATUS, SID_TERMINAL_MANAGEMENT_STATUS);
-            if (player_structure.isAdmin(structure, player))
-            {
-                if (!player_structure.isFactionPerkBase(buildingTemplate))
-                {
-                    mi.addSubMenu(management_root, menu_info_types.SERVER_TERMINAL_MANAGEMENT_PAY, SID_TERMINAL_MANAGEMENT_PAY);
-                }
-                if (hasObjVar(structure, "isPvpBase"))
-                {
+
+            if ((player_structure.isAdmin(structure, player) || hasSkill(player, "class_spy_phase1_novice") || hasSkill(player, "stardust_spy")) && !player_structure.isFactionPerkBase(buildingTemplate)) {
+                mi.addSubMenu(management_root, menu_info_types.SERVER_TERMINAL_MANAGEMENT_PAY, SID_TERMINAL_MANAGEMENT_PAY);
+
+                if (hasObjVar(structure, "isPvpBase")) {
                     int stamp = getIntObjVar(structure, "lastReset");
                     int now = getGameTime();
-                    if (now > stamp + 1209600 || !hasObjVar(structure, "lastReset"))
-                    {
+                    if (now > stamp + 1209600 || !hasObjVar(structure, "lastReset")) {
                         mi.addSubMenu(management_root, menu_info_types.SERVER_MENU6, MNU_RESET_VULNERABILITY);
                     }
                 }
+
                 mi.addSubMenu(management_root, menu_info_types.SERVER_MENU5, MNU_DEFENSE_STATUS);
                 mi.addSubMenu(management_root, menu_info_types.SERVER_TERMINAL_MANAGEMENT_DESTROY, SID_TERMINAL_MANAGEMENT_DESTROY);
             }
         }
+
         int mnuDonate = -1;
-        if (!player_structure.isFactionPerkBase(buildingTemplate))
-        {
+
+        if (!player_structure.isFactionPerkBase(buildingTemplate)) {
             mnuDonate = mi.addRootMenu(menu_info_types.SERVER_MENU1, MNU_DONATE);
             mi.addSubMenu(mnuDonate, menu_info_types.SERVER_MENU2, MNU_DONATE_MONEY);
         }
-        if (hasObjVar(structure, hq.VAR_OBJECTIVE_TRACKING) || isGod(player))
-        {
-            if (mnuDonate <= -1)
-            {
+
+        if (hasObjVar(structure, hq.VAR_OBJECTIVE_TRACKING) || isGod(player) || player_structure.isAdmin(structure, player)) {
+            if (mnuDonate <= -1) {
                 mnuDonate = mi.addRootMenu(menu_info_types.SERVER_MENU1, MNU_DONATE);
             }
             mi.addSubMenu(mnuDonate, menu_info_types.SERVER_MENU4, MNU_DONATE_DEED);
         }
-        if (utils.hasScriptVar(self, SCRIPTVAR_COUNTDOWN) && pvpGetType(player) != PVPTYPE_NEUTRAL)
-        {
-            if (hasObjVar(structure, "isPvpBase"))
-            {
+
+        if (utils.hasScriptVar(self, SCRIPTVAR_COUNTDOWN) && pvpGetType(player) != PVPTYPE_NEUTRAL) {
+            if (hasObjVar(structure, "isPvpBase")) {
                 mi.addRootMenu(menu_info_types.SERVER_MENU9, MNU_SHUTDOWN);
             }
         }
+
         return super.OnObjectMenuRequest(self, player, mi);
     }
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
@@ -147,16 +154,20 @@ public class terminal extends script.terminal.base.base_terminal
             sendSystemMessage(player, SID_NO_STEALTH);
             return SCRIPT_CONTINUE;
         }
-        if (isGod(player) && item == menu_info_types.SERVER_MENU12 && getGodLevel(player) >= 15)
+        if (item == menu_info_types.SERVER_MENU12)
         {
             startCountdown(self, player);
+        }
+        obj_id structure = player_structure.getStructure(player);
+        if (item == menu_info_types.SERVER_MENU13)
+        {
+            //this eventually will either show vulnerability time or make the base vulnerable
         }
         int intState = getState(player, STATE_FEIGN_DEATH);
         if (isDead(player) || isIncapacitated(player) || intState > 0)
         {
             return SCRIPT_CONTINUE;
         }
-        obj_id structure = player_structure.getStructure(player);
         if (!isIdValid(structure))
         {
             return SCRIPT_CONTINUE;
@@ -256,7 +267,7 @@ public class terminal extends script.terminal.base.base_terminal
             }
             else 
             {
-                if (hasObjVar(structure, hq.VAR_OBJECTIVE_TRACKING) || isGod(player))
+                if (hasObjVar(structure, hq.VAR_OBJECTIVE_TRACKING) || isGod(player) || (player_structure.isAdmin(structure, player)))
                 {
                     if (isGod(player))
                     {
@@ -531,11 +542,11 @@ public class terminal extends script.terminal.base.base_terminal
                     obj_id objBuilding = getTopMostContainer(self);
                     if (isIdValid(objBuilding))
                     {
-                        if (hasObjVar(objBuilding, "isPvpBase"))
+/*                        if (hasObjVar(objBuilding, "isPvpBase"))
                         {
                             sendSystemMessage(player, new string_id(STRING_FILE_LOC, "terminal_response_special_forces_no_turrets"));
                             return SCRIPT_CONTINUE;
-                        }
+                        }*/
                     }
                     else 
                     {

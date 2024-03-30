@@ -157,6 +157,10 @@ public class boba_fett extends script.base_script
     {
         groundquests.sendSignal(player, "receivedReward");
     }
+    public void boba_fett_action_signalStarterQuest(obj_id player, obj_id npc) throws InterruptedException
+    {
+        groundquests.sendSignal(player, "talk_to_boba");
+    }
     public void boba_fett_action_removeQuest1(obj_id player, obj_id npc) throws InterruptedException
     {
         groundquests.clearQuest(player, "ep3_clone_relics_boba_fett_1");
@@ -3790,6 +3794,7 @@ public class boba_fett extends script.base_script
         if (boba_fett_condition__defaultCondition(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_704");
+            boba_fett_action_signalStarterQuest(player, npc);
             int numberOfResponses = 0;
             boolean hasResponse = false;
             boolean hasResponse0 = false;

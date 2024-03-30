@@ -10,4 +10,4 @@ radlee_mathiss	Radlee Mathiss	cantina	-3.3	-0.9	5.8	90	npc.static_quest.quest_co
 kathikiis_ruwahurr	Kathikiis Ruwahurr	alcove1	20.6	-0.9	-19.2	-1	npc.static_quest.quest_convo			10	string:quest_table=kathikiis_ruwahurr					
 nurla_slinthiss	Nurla Slinthiss	stage	-4.4	-0.9	-18.1	-1	npc.static_quest.quest_convo			10	string:quest_table=nurla_slinthiss					
 rebel_recruiter		office	-25	-0.9	-1.6	45				300						
-vendor_tcg_3	Mister Bones	cantina	2	-0.9	5.7	-175			npc_standing_drinking							
+vendor_droid	Mister Bones	cantina	2	-0.9	5.7	-175			npc_standing_drinking							

@@ -101,7 +101,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -57209988	-57210000	object/cell/cell.iff	12	0	0	0	1	0	0	0		$|
 -776949303	-57209988	object/tangible/collection/col_dust_durni_10.iff	12	-62.5657	-1.0805	8.46502	1	0	0	0	systems.collections.consume_click	collection.aggro|4|false|collection.newbie_comm_series|0|1|collection.slotName|4|col_dust_durni_01:dust_durni_10|$|
 -57209987	-57210000	object/cell/cell.iff	13	0	0	0	1	0	0	0		$|
--9776949303	-57209998	object/tangible/terminal/terminal_mission_bounty.iff	2	-23.5	0.8	17	1.2	0	0	0	systems.missions.base.mission_terminal_bounty	$|
+-9776949303	-57209998	object/tangible/terminal/terminal_mission_bounty.iff	2	-23.5	0.7	17	-0.707106	0	0.555291	0	systems.missions.base.mission_terminal_bounty	$|
 -57209986	-57210000	object/cell/cell.iff	14	0	0	0	1	0	0	0		$|
 -57209985	-57210000	object/cell/cell.iff	15	0	0	0	1	0	0	0		$|
 -1344017757	-57209985	object/tangible/collection/col_dust_durni_04.iff	15	7.69025	-30.1118	-21.8851	1	0	0	0	systems.collections.consume_click	collection.aggro|4|false|collection.newbie_comm_series|0|1|collection.slotName|4|col_dust_durni_01:dust_durni_04|$|

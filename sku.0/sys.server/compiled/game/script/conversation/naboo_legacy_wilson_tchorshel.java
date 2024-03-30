@@ -19,7 +19,7 @@ public class naboo_legacy_wilson_tchorshel extends script.base_script
     }
     public boolean naboo_legacy_wilson_tchorshel_condition_kickQuestActive_Rebel(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "legacy_naboo_kick_reb") || ((groundquests.hasCompletedQuest(player, "legacy_together") || groundquests.hasCompletedQuest(player, "legacy_together_2")) && hasObjVar(player, content.REBEL_PATH_OBJVAR_NAME));
+        return true;
     }
     public boolean naboo_legacy_wilson_tchorshel_condition_seekingDroidParts_Rebel(obj_id player, obj_id npc) throws InterruptedException
     {

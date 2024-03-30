@@ -13,7 +13,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -1991447409	0	object/static/item/item_container_inorganic_minerals.iff	0	969.183	76.7092	1404.71	0.710914	0	-0.703279	0		$|
 -1974199725	0	object/static/structure/general/xwing.iff	0	1000.6	73.5	1440.94	1	0	0	0		$|
 -1973320246	0	object/static/particle/pt_poi_broken_electronics.iff	0	767.008	100	1476.65	1	0	0	0		$|
--1958409338	0	object/static/worldbuilding/structures/camp_tent_s06.iff	0	766.669	104.414	1511.63	0.998385	-0.0567874	-7.6794e-005	0.00135012		$|
+-1958409338	0	object/static/worldbuilding/structures/camp_tent_s06.iff	0	766.669	104.414	1511.63	0.998385	-0.0567874	-7.6794E-05	0.00135012		$|
 -1954224043	0	object/static/structure/tatooine/debris_tatt_crate_1.iff	0	969.613	73.5	1401.14	-0.019203	0	0.999816	0		$|
 -1905838330	0	object/static/structure/content/exar_kun_column_top.iff	0	733.854	100	1466.91	-0.368355	-0.557793	0.64499	-0.370363		$|
 -1902232798	0	object/static/structure/tatooine/debris_tatt_drum_dented_1.iff	0	752.858	104.508	1517.27	0.662133	-0.00886883	0.00783719	0.749292		$|
@@ -59,7 +59,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -1227570674	0	object/static/structure/content/exar_kun_column_complete.iff	0	765.668	96.0612	1482.64	0.664551	0.215417	0.209216	0.684248		$|
 -1220895126	0	object/tangible/quest/heroic/heroic_exar_kun_entrance.iff	0	749.629	89	1479.58	1	0	0	0	theme_park.heroic.exar_kun.exar_kun_door_enter	$|
 -1201779841	0	object/static/structure/corellia/corl_tent_hut_s01.iff	0	758.002	102.838	1447.93	0.706647	0.0323671	0.706808	-0.00497175		$|
--1193186724	0	object/static/structure/tatooine/palette_tatooine_food_crates_01.iff	0	746.464	103.745	1441.43	-1.37002e-006	0.0189469	0.99982	-7.24139e-005		$|
+-1193186724	0	object/static/structure/tatooine/palette_tatooine_food_crates_01.iff	0	746.464	103.745	1441.43	-1.37002E-06	0.0189469	0.99982	-7.24139E-05		$|
 -1187769299	0	object/static/structure/tatooine/antenna_tatt_style_2.iff	0	1765	26.3815	1284	-0.707107	0	0.707107	0		$|
 -1186904263	0	object/static/particle/particle_campfire_style_1.iff	0	738.116	94.6492	1480.77	1	0	0	0		$|
 -1180886881	0	object/static/structure/content/exar_kun_column_bottom.iff	0	756.495	88.9654	1475.5	0.688592	0.663552	-0.0350881	0.29036		$|
@@ -124,7 +124,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -367231919	0	object/static/structure/content/exar_kun_worklamp.iff	0	741.048	89	1483.21	0.780955	0	0.624587	0		$|
 -346102088	0	object/static/structure/content/exar_kun_torch_01.iff	0	744.544	88.2572	1480.82	1	0	0	0		$|
 -341324867	0	object/static/structure/tatooine/debris_tatt_crate_1.iff	0	752.996	104.247	1519.47	0.978297	-0.0304543	0.196073	0.0596918		$|
--298740443	0	object/static/installation/mockup_power_generator_fusion_style_1.iff	0	1752.48	28.5477	1263.83	0.707178	0.0705854	0.703503	-1.01669e-006		$|
+-298740443	0	object/static/installation/mockup_power_generator_fusion_style_1.iff	0	1752.48	28.5477	1263.83	0.707178	0.0705854	0.703503	-1.01669E-06		$|
 -274377645	0	object/static/structure/content/exar_kun_scaffolding.iff	0	775.303	103.699	1504.76	1	0	0	0		$|
 -267408752	0	object/static/structure/content/exar_kun_worklamp.iff	0	735.378	96	1485.25	0.810731	0	-0.585419	0		$|
 -250842038	0	object/static/structure/content/exar_kun_worklamp.iff	0	751.428	100	1465.57	0	0	1	0		$|
@@ -164,3 +164,4 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -1205633017	0	object/tangible/ground_spawning/area_spawner.iff	0	756.714	104.131	1511.4	-0.317385	0	0.948297	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|329.000000|fltMinSpawnTime|2|249.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|exar_kun_dig_site_16|strSpawnerType|4|area|strSpawns|4|yavin4/exar_kun_dig_site_cultists|$|
 -530627430	0	object/tangible/ground_spawning/area_spawner.iff	0	764.101	100	1495.14	-0.318839	0	0.947809	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|329.000000|fltMinSpawnTime|2|249.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|exar_kun_dig_site_17|strSpawnerType|4|area|strSpawns|4|yavin4/exar_kun_dig_site_cultists|$|
 -1183371219	0	object/tangible/ground_spawning/area_spawner.iff	0	724.971	100	1486.41	0.503404	0	0.864051	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|329.000000|fltMinSpawnTime|2|249.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|exar_kun_dig_site_18|strSpawnerType|4|area|strSpawns|4|yavin4/exar_kun_dig_site_cultists|$|
+-11833701218	0	object/tangible/ground_spawning/area_spawner.iff	0	982	73.67	1429	0.713838	0	0.0756909	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|lesser_prophet_of_the_light_side|strSpawnerType|4|area|strSpawns|4|lesser_prophet_of_the_light_side|$|

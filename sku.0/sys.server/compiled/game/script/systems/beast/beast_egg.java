@@ -50,7 +50,7 @@ public class beast_egg extends script.base_script
             {
                 mi.addRootMenu(menu_info_types.ITEM_USE, SID_EGG_HATCH);
             }
-            if (incubator.isEggMountType(egg) && hasSkill(player, "expertise_bm_train_mount_1") && !incubator.isEggMountFlagged(egg))
+            if (incubator.isEggMountType(egg) && hasSkill(player, "expertise_bm_attack_1") && !incubator.isEggMountFlagged(egg))
             {
                 mi.addRootMenu(menu_info_types.SERVER_MENU1, SID_MAKE_MOUNT);
             }
@@ -87,10 +87,13 @@ public class beast_egg extends script.base_script
                 {
                     playClientEffectObj(player, "appearance/pt_egg_crack.prt", player, "");
                     destroyObject(self);
+                    // Grant collection based on the creature
+                    String creatureName = beast_lib.getBCDBeastType(bcd);
+                    grantCreatureCollection(player, creatureName);
                     return SCRIPT_CONTINUE;
                 }
             }
-            if (item == menu_info_types.SERVER_MENU1 && hasSkill(player, "expertise_bm_train_mount_1") && !incubator.isEggMountFlagged(egg))
+            if (item == menu_info_types.SERVER_MENU1 && hasSkill(player, "expertise_bm_attack_1") && !incubator.isEggMountFlagged(egg))
             {
                 if (!incubator.isEggMountType(egg))
                 {
@@ -284,5 +287,213 @@ public class beast_egg extends script.base_script
             }
         }
         return SCRIPT_CONTINUE;
+    }
+    private void grantCreatureCollection(obj_id player, String creatureName) throws InterruptedException
+    {
+        // Check if creatureName starts with "bm_" and remove it
+        if (creatureName.startsWith("bm_"))
+        {
+            creatureName = creatureName.substring(3);
+        }
+
+        // Mapping between creature names and corresponding collection names
+        dictionary creatureCollectionMap = new dictionary();
+        // Corellia
+        creatureCollectionMap.put("bagersat", "corellia_bagersat");
+        creatureCollectionMap.put("bark_mite", "corellia_bark_mite");
+        creatureCollectionMap.put("boar_wolf", "corellia_boar_wolf");
+        creatureCollectionMap.put("carrion_spat", "corellia_carrion_spat");
+        creatureCollectionMap.put("butterfly", "corellia_butterfly");
+        creatureCollectionMap.put("sand_panther", "corellia_sand_panther");
+        creatureCollectionMap.put("slice_hound", "corellia_slice_hound");
+        creatureCollectionMap.put("dalyrake", "corellia_dalyrake");
+        creatureCollectionMap.put("durni", "corellia_durni");
+        creatureCollectionMap.put("falumpaset", "corellia_falumpaset");
+        creatureCollectionMap.put("gronda", "corellia_gronda");
+        creatureCollectionMap.put("gubbur", "corellia_gubbur");
+        creatureCollectionMap.put("gulginaw", "corellia_gulginaw");
+        creatureCollectionMap.put("gurreck", "corellia_gurreck");
+        creatureCollectionMap.put("horned_rasp", "corellia_horned_rasp");
+        creatureCollectionMap.put("klicknik", "corellia_klicknik");
+        creatureCollectionMap.put("krabhu", "corellia_krabhu");
+        creatureCollectionMap.put("langlatch", "corellia_langlatch");
+        creatureCollectionMap.put("murra", "corellia_murra");
+        creatureCollectionMap.put("narglatch", "corellia_narglatch");
+        creatureCollectionMap.put("plumed_rasp", "corellia_plumed_rasp");
+        creatureCollectionMap.put("sharnaff", "corellia_sharnaff");
+        creatureCollectionMap.put("stintaril", "corellia_stintaril");
+        creatureCollectionMap.put("swirl_prong", "corellia_swirl_prong");
+        creatureCollectionMap.put("tanc_mite", "corellia_tanc_mite");
+        creatureCollectionMap.put("tusk_cat", "corellia_tusk_cat");
+        creatureCollectionMap.put("vynock", "corellia_vynock");
+        creatureCollectionMap.put("womp_rat", "corellia_womp_rat");
+        creatureCollectionMap.put("worrt", "corellia_worrt");
+        //Dantooine
+        creatureCollectionMap.put("bol", "dantooine_bol");
+        creatureCollectionMap.put("dune_lizard", "dantooine_dune_lizard");
+        creatureCollectionMap.put("graul", "dantooine_graul");
+        creatureCollectionMap.put("huurton", "dantooine_huurton");
+        creatureCollectionMap.put("piket", "dantooine_piket");
+        creatureCollectionMap.put("quenkar", "dantooine_quenkar");
+        creatureCollectionMap.put("thune", "dantooine_thune");
+        creatureCollectionMap.put("voritor_lizard", "dantooine_voritor_lizard");
+        creatureCollectionMap.put("hawk_bat", "dantooine_hawk_bat");
+        //Dathomir
+        creatureCollectionMap.put("bane_back_spider", "dathomir_bane_back_spider");
+        creatureCollectionMap.put("baz_nitch", "dathomir_baz_nitch");
+        creatureCollectionMap.put("blackwing_rancor", "dathomir_blackwing_rancor");
+        creatureCollectionMap.put("bolma", "dathomir_bolma");
+        creatureCollectionMap.put("brackaset", "dathomir_brackaset");
+        creatureCollectionMap.put("gaping_spider", "dathomir_gaping_spider");
+        creatureCollectionMap.put("kwi", "dathomir_kwi");
+        creatureCollectionMap.put("malkloc", "dathomir_malkloc");
+        creatureCollectionMap.put("purbole", "dathomir_purbole");
+        creatureCollectionMap.put("rancor", "dathomir_rancor");
+        creatureCollectionMap.put("reptilian_flyer", "dathomir_reptilian_flyer");
+        creatureCollectionMap.put("shear_mite", "dathomir_shear_mite");
+        creatureCollectionMap.put("spiderclan_consort", "dathomir_spiderclan_consort");
+        creatureCollectionMap.put("spiderclan_queen", "dathomir_spiderclan_queen");
+        creatureCollectionMap.put("verne", "dathomir_verne");
+        creatureCollectionMap.put("voritor_lizard", "dathomir_voritor_lizard");
+        // Endor
+        creatureCollectionMap.put("angler", "endor_angler");
+        creatureCollectionMap.put("barbed_quenkar", "endor_barbed_quenkar");
+        creatureCollectionMap.put("bark_mite", "endor_bark_mite");
+        creatureCollectionMap.put("bearded_jax", "endor_bearded_jax");
+        creatureCollectionMap.put("blurrg", "endor_blurrg");
+        creatureCollectionMap.put("boar_wolf", "endor_boar_wolf");
+        creatureCollectionMap.put("bolle_bol", "endor_bolle_bol");
+        creatureCollectionMap.put("bordok", "endor_bordok");
+        creatureCollectionMap.put("borgle", "endor_borgle");
+        creatureCollectionMap.put("condor_dragon", "endor_condor_dragon");
+        creatureCollectionMap.put("gackle_bat", "endor_gackle_bat");
+        creatureCollectionMap.put("gurrck", "endor_gurrck");
+        creatureCollectionMap.put("hanadak", "endor_hanadak");
+        creatureCollectionMap.put("lantern_bird", "endor_lantern_bird");
+        creatureCollectionMap.put("merek", "endor_merek");
+        creatureCollectionMap.put("remmer", "endor_remmer");
+        creatureCollectionMap.put("roba", "endor_roba");
+        creatureCollectionMap.put("squall", "endor_squall");
+        // Kashyyyk
+        creatureCollectionMap.put("bolotaur", "kashyyyk_bolotaur");
+        creatureCollectionMap.put("bantha", "kashyyyk_bantha");
+        creatureCollectionMap.put("minstyngar", "kashyyyk_minstyngar");
+        creatureCollectionMap.put("mouf", "kashyyyk_mouf");
+        creatureCollectionMap.put("purbole", "kashyyyk_purbole");
+        creatureCollectionMap.put("skreeg", "kashyyyk_skreeg");
+        creatureCollectionMap.put("spined_puc", "kashyyyk_spined_puc");
+        creatureCollectionMap.put("uller", "kashyyyk_uller");
+        creatureCollectionMap.put("urnsoris", "kashyyyk_urnsoris");
+        creatureCollectionMap.put("uwari_beetle", "kashyyyk_uwari_beetle");
+        creatureCollectionMap.put("varactyl", "kashyyyk_varactyl");
+        creatureCollectionMap.put("walluga", "kashyyyk_walluga");
+        creatureCollectionMap.put("webweaver", "kashyyyk_webweaver");
+        // Lok
+        creatureCollectionMap.put("flit", "lok_flit");
+        creatureCollectionMap.put("gurk", "lok_gurk");
+        creatureCollectionMap.put("gurnaset", "lok_gurnaset");
+        creatureCollectionMap.put("kimogila", "lok_kimogila");
+        creatureCollectionMap.put("kusak", "lok_kusak");
+        creatureCollectionMap.put("langlatch", "lok_langlatch");
+        creatureCollectionMap.put("pharple", "lok_pharple");
+        creatureCollectionMap.put("salt_mynock", "lok_salt_mynock");
+        creatureCollectionMap.put("snorbal", "lok_snorbal");
+        creatureCollectionMap.put("spined_snake", "lok_spined_snake");
+        creatureCollectionMap.put("vesp", "lok_vesp");
+        // Mustafar
+        creatureCollectionMap.put("blistmok", "mustafar_blistmok");
+        creatureCollectionMap.put("jundak", "mustafar_jundak");
+        creatureCollectionMap.put("kabaza_beetle", "mustafar_kabaza_beetle");
+        creatureCollectionMap.put("lava_flea", "mustafar_lava_flea");
+        creatureCollectionMap.put("tanray", "mustafar_tanray");
+        creatureCollectionMap.put("tulrus", "mustafar_tulrus");
+        creatureCollectionMap.put("xandank", "mustafar_xandank");
+        // Naboo
+        creatureCollectionMap.put("capper_spineflap", "naboo_capper_spineflap");
+        creatureCollectionMap.put("chuba", "naboo_chuba");
+        creatureCollectionMap.put("dwarf_nuna", "naboo_dwarf_nuna");
+        creatureCollectionMap.put("falumpaset", "naboo_falumpaset");
+        creatureCollectionMap.put("fambaa", "naboo_fambaa");
+        creatureCollectionMap.put("fanned_rawl", "naboo_fanned_rawl");
+        creatureCollectionMap.put("flewt", "naboo_flewt");
+        creatureCollectionMap.put("gnort", "naboo_gnort");
+        creatureCollectionMap.put("gualama", "naboo_gualama");
+        creatureCollectionMap.put("hermit_spider", "naboo_hermit_spider");
+        creatureCollectionMap.put("horned_krevol", "naboo_horned_krevol");
+        creatureCollectionMap.put("ikopi", "naboo_ikopi");
+        creatureCollectionMap.put("kaadu", "naboo_kaadu");
+        creatureCollectionMap.put("mott", "naboo_mott");
+        creatureCollectionMap.put("narglatch", "naboo_narglatch");
+        creatureCollectionMap.put("nuna", "naboo_nuna");
+        creatureCollectionMap.put("peko_peko", "naboo_peko_peko");
+        creatureCollectionMap.put("shaupaut", "naboo_shaupaut");
+        creatureCollectionMap.put("tusk_cat", "naboo_tusk_cat");
+        creatureCollectionMap.put("veermok", "naboo_veermok");
+        // Rori
+        creatureCollectionMap.put("bark_mite", "rori_bark_mite");
+        creatureCollectionMap.put("bearded_jax", "rori_bearded_jax");
+        creatureCollectionMap.put("borgle", "rori_borgle");
+        creatureCollectionMap.put("capper_spineflap", "rori_capper_spineflap");
+        creatureCollectionMap.put("huf_dun", "rori_huf_dun");
+        creatureCollectionMap.put("kai_tok", "rori_kai_tok");
+        creatureCollectionMap.put("pugoriss", "rori_pugoriss");
+        creatureCollectionMap.put("squall", "rori_squall");
+        creatureCollectionMap.put("torton", "rori_torton");
+        creatureCollectionMap.put("vir_vur", "rori_vir_vur");
+        // Talus
+        creatureCollectionMap.put("bark_mite", "talus_bark_mite");
+        creatureCollectionMap.put("dalyrake", "talus_dalyrake");
+        creatureCollectionMap.put("falumpaset", "talus_falumpaset");
+        creatureCollectionMap.put("frynock", "talus_frynock");
+        creatureCollectionMap.put("gaping_spider", "talus_gaping_spider");
+        creatureCollectionMap.put("guf_drolg", "talus_guf_drolg");
+        creatureCollectionMap.put("gulignaw", "talus_gulignaw");
+        creatureCollectionMap.put("gurreck", "talus_gurreck");
+        creatureCollectionMap.put("horned_rasp", "talus_horned_rasp");
+        creatureCollectionMap.put("kima", "talus_kima");
+        creatureCollectionMap.put("murra", "talus_murra");
+        // Tatooine
+        creatureCollectionMap.put("bantha", "tatooine_bantha");
+        creatureCollectionMap.put("bocatt", "tatooine_bocatt");
+        creatureCollectionMap.put("cu_pa", "tatooine_cu_pa");
+        creatureCollectionMap.put("dewback", "tatooine_dewback");
+        creatureCollectionMap.put("dune_lizard", "tatooine_dune_lizard");
+        creatureCollectionMap.put("dwarf_nuna", "tatooine_dwarf_nuna");
+        creatureCollectionMap.put("eopie", "tatooine_eopie");
+        creatureCollectionMap.put("mynock", "tatooine_mynock");
+        creatureCollectionMap.put("rock_mite", "tatooine_rock_mite");
+        creatureCollectionMap.put("ronto", "tatooine_ronto");
+        creatureCollectionMap.put("squill", "tatooine_squill");
+        creatureCollectionMap.put("tanc_mite", "tatooine_tanc_mite");
+        creatureCollectionMap.put("womp_rat", "tatooine_womp_rat");
+        creatureCollectionMap.put("worrt", "tatooine_worrt");
+        creatureCollectionMap.put("zucca_boar", "tatooine_zucca_boar");
+        // Yavin4
+        creatureCollectionMap.put("acklay", "yavin4_acklay");
+        creatureCollectionMap.put("choku", "yavin4_choku");
+        creatureCollectionMap.put("crystal_snake", "yavin4_crystal_snake");
+        creatureCollectionMap.put("finned_blaggart", "yavin4_finned_blaggart");
+        creatureCollectionMap.put("kliknik", "yavin4_kliknik");
+        creatureCollectionMap.put("mamien", "yavin4_mamien");
+        creatureCollectionMap.put("mawgax", "yavin4_mawgax");
+        creatureCollectionMap.put("nexu", "yavin4_nexu");
+        creatureCollectionMap.put("reek", "yavin4_reek");
+        creatureCollectionMap.put("skreeg", "yavin4_skreeg");
+        creatureCollectionMap.put("spined_puc", "yavin4_spined_puc");
+        creatureCollectionMap.put("stintaril", "yavin4_stintaril");
+        creatureCollectionMap.put("tanc_mite", "yavin4_tanc_mite");
+        creatureCollectionMap.put("tybis", "yavin4_tybis");
+        creatureCollectionMap.put("whisper_bird", "yavin4_whisper_bird");
+        creatureCollectionMap.put("woolamander", "yavin4_woolamander");
+
+        // Lowercase the creatureName for case-insensitive comparison
+        creatureName = creatureName.toLowerCase();
+
+        // Check if creatureName exists in the dictionary
+        if (creatureCollectionMap.containsKey(creatureName))
+        {
+            String collectionName = creatureCollectionMap.getString(creatureName);
+            modifyCollectionSlotValue(player, collectionName, 1);
+        }
     }
 }

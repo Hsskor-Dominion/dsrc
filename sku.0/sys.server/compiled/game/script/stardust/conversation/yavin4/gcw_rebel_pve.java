@@ -19,7 +19,7 @@ public class gcw_rebel_pve extends script.base_script
     }
     public boolean gcw_rebel_pve_condition_killActive1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "gcw_rebel_pve");
+        return groundquests.isQuestActive(player, "stardust_gcw_rebel_pve");
     }
     public boolean gcw_rebel_pve_condition_isRebel(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -38,7 +38,7 @@ public class gcw_rebel_pve extends script.base_script
     }
     public void gcw_rebel_pve_action_givekill1(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.grantQuest(player, "gcw_rebel_pve");
+        groundquests.grantQuest(player, "stardust_gcw_rebel_pve");
     }
     public void gcw_rebel_pve_action_signalDone(obj_id player, obj_id npc) throws InterruptedException
     {

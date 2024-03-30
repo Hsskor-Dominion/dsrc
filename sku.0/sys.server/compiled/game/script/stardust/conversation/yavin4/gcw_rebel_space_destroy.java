@@ -15,11 +15,11 @@ public class gcw_rebel_space_destroy extends script.base_script
     }
     public boolean gcw_rebel_space_destroy_condition_completedKill1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "gcw_rebel_space", "returnGrollo");
+        return groundquests.isTaskActive(player, "stardust_gcw_rebel_space", "returnGrollo");
     }
     public boolean gcw_rebel_space_destroy_condition_killActive1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "gcw_rebel_space");
+        return groundquests.isQuestActive(player, "stardust_gcw_imperial_space");
     }
     public boolean gcw_rebel_space_destroy_condition_inPhase1(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -27,31 +27,31 @@ public class gcw_rebel_space_destroy extends script.base_script
         {
             return true;
         }
-        else 
+        else
         {
             return false;
         }
     }
     public boolean gcw_rebel_space_destroy_condition_ifFailedOne(obj_id player, obj_id npc) throws InterruptedException
     {
-        if (space_quest.hasFailedQuestRecursive(player, "destroy", "master_rebel_1") || space_quest.hasAbortedQuestRecursive(player, "destroy", "master_rebel_1"))
+        if (space_quest.hasFailedQuestRecursive(player, "destroy", "master_imperial_1") || space_quest.hasAbortedQuestRecursive(player, "destroy", "master_imperial_1"))
         {
             return true;
         }
         return false;
     }
-    public boolean gcw_rebel_space_destroy_condition_isImperialPlayer(obj_id player, obj_id npc) throws InterruptedException
+    public boolean gcw_rebel_space_destroy_condition_isRebelPlayer(obj_id player, obj_id npc) throws InterruptedException
     {
         return factions.isImperial(player);
     }
     public void gcw_rebel_space_destroy_action_givekill1(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.clearQuest(player, "gcw_rebel_space");
-        groundquests.grantQuest(player, "gcw_rebel_space");
+        groundquests.clearQuest(player, "stardust_gcw_rebel_space");
+        groundquests.grantQuest(player, "stardust_gcw_rebel_space");
     }
     public void gcw_rebel_space_destroy_action_signalDone(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.sendSignal(player, "returnedGrollo");
+        groundquests.sendSignal(player, "returnedWulf");
     }
     public int gcw_rebel_space_destroy_handleBranch4(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -215,7 +215,7 @@ public class gcw_rebel_space_destroy extends script.base_script
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
-        setName(self, "Shara Bey (Green Squadron)");
+        setName(self, "Raar Anyell (Alpha Squadron)");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException
@@ -245,7 +245,7 @@ public class gcw_rebel_space_destroy extends script.base_script
         {
             return SCRIPT_OVERRIDE;
         }
-        if (gcw_rebel_space_destroy_condition_isImperialPlayer(player, npc))
+        if (gcw_rebel_space_destroy_condition_isRebelPlayer(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_47");
             chat.chat(npc, player, message);
@@ -294,7 +294,7 @@ public class gcw_rebel_space_destroy extends script.base_script
                 utils.setScriptVar(player, "conversation.gcw_rebel_space_destroy.branchId", 14);
                 npcStartConversation(player, npc, "gcw_rebel_space_destroy", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -344,7 +344,7 @@ public class gcw_rebel_space_destroy extends script.base_script
                 utils.setScriptVar(player, "conversation.gcw_rebel_space_destroy.branchId", 14);
                 npcStartConversation(player, npc, "gcw_rebel_space_destroy", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }

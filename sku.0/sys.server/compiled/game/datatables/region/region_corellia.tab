@@ -1,33 +1,33 @@
 regionName	geometry	minX_or_centerX	minZ_or_centerZ	maxX_or_radius	maxZ	pvpType	geographicalType	minDifficultyType	maxDifficultyType	spawnableType	missionType	buildable	municipal	visible	notify	environmentFlags
 s	e(rectangle=0,circle=1)[rectangle]	f	f	f	f	e(normal=0,truce=1,pvp_battlefield=2,pve_battlefield=3,pvp_advanced=4)[normal]	e(desert=0,forest=1,jungle=2,plateau=3,oasis=4,canyon=5,lake=6,lakeshore=7,beach=8,ocean=9,underwater=10,river=11,volcano=12,swamp=13,plains=14,prairie=15,mountains=16,hills=17,grassland=18,wasteland=19,city=20,fictional=21,pathfind=22,default=23,theater=24,overload=25)[default]	i	i	e(spawnFalse=0,spawnTrue=1,mission=2,default=3,difficulty=5)[spawnFalse]	e(none=0,destroy=1,other=2,tatooine_anchorhead=3,tatooine_bestine=4,tatooine_mos_eisley=5,tatooine_mos_entha=6,tatooine_mos_espa=7,tatooine_mos_taike=8,tatooine_wayfar=9,naboo_theed=10,naboo_deeja_peak=11,naboo_kaadara=12,naboo_moenia=13,naboo_keren=14,tatooine_bib_1=15,corellia_coronet=16,corellia_tyrena=17,corellia_bela_vistal=18,corellia_vreni_island=19,corellia_kor_vella=20,corellia_daoba_guerfel=21,rori_narmle=22,rori_restuss=23,talus_dearic=24,talus_nashal=25,yavin4_labor_outpost=26,yavin4_mining_outpost=27,endor_neutral_outpost=28,dantooine_mining_outpost=29,dantooine_pirate_outpost=30,dathomir_trade_outpost=31,dathomir_survey_outpost=32,lok_nyms_stronghold=33)[none]	b[1]	b[0]	b[0]	b[0]	s
-@corellia_region_names:mountain1	circle	4440	-4136	1080		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain2	rectangle	6032	-8000	8000	-3952	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain3	circle	-6152	1320	1800		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain4	circle	-6368	5424	1600		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain5	circle	-2224	5136	1360		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain6	rectangle	-2032	5440	4464	7488	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain7	circle	7112	6552	850		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:mountain8	circle	232	2728	1272		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland1	circle	-4088	3176	1896		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland2	circle	3200	3728	864		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland3	circle	5368	5016	1112		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland4	circle	-5360	-1376	1392		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland5	circle	-992	-320	2720		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland6	circle	3536	-720	1552		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland7	circle	3336	-4536	3322.87866		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:grassland8	circle	6760	-3000	1200		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:beach1	circle	-5352	-5160	2600		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:beach2	circle	-3048	-4888	3060.45825		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:beach3	circle	976	-5664	845		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:beach4	rectangle	4160	-2176	8000	5280	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:lake1	circle	2264	-152	1016		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:lake2	rectangle	-5744	-1984	-2912	-736	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:forest1	circle	-3696	-1968	608		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:forest2	circle	-2047	3272	615		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:forest3	rectangle	-2336	-784	-1056	1120	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:forest4	rectangle	-1861.86914	5877.84375	3765.86914	7434.15625	normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:forest5	circle	6888	-7208	750		normal	grassland	20	90	mission	other	1	0	0	0	
-@corellia_region_names:swamp1	circle	816	4560	1497.13574		normal	grassland	20	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain1	circle	4440	-4136	1080		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain2	rectangle	6032	-8000	8000	-3952	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain3	circle	-6152	1320	1800		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain4	circle	-6368	5424	1600		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain5	circle	-2224	5136	1360		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain6	rectangle	-2032	5440	4464	7488	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain7	circle	7112	6552	850		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:mountain8	circle	232	2728	1272		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland1	circle	-4088	3176	1896		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland2	circle	3200	3728	864		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland3	circle	5368	5016	1112		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland4	circle	-5360	-1376	1392		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland5	circle	-992	-320	2720		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland6	circle	3536	-720	1552		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland7	circle	3336	-4536	3322.87866		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:grassland8	circle	6760	-3000	1200		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:beach1	circle	-5352	-5160	2600		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:beach2	circle	-3048	-4888	3060.45825		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:beach3	circle	976	-5664	845		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:beach4	rectangle	4160	-2176	8000	5280	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:lake1	circle	2264	-152	1016		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:lake2	rectangle	-5744	-1984	-2912	-736	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:forest1	circle	-3696	-1968	608		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:forest2	circle	-2047	3272	615		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:forest3	rectangle	-2336	-784	-1056	1120	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:forest4	rectangle	-1861.86914	5877.84375	3765.86914	7434.15625	normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:forest5	circle	6888	-7208	750		normal	grassland	5	90	mission	other	1	0	0	0	
+@corellia_region_names:swamp1	circle	816	4560	1497.13574		normal	grassland	5	90	mission	other	1	0	0	0	
 @corellia_region_names:coronet	circle	-178	-4504	581		normal	city	0	0	spawnFalse	other	1	1	1	0	
 @corellia_region_names:tyrena	circle	-5282	-2526	622		normal	city	0	0	spawnFalse	other	1	1	1	0	
 @corellia_region_names:bela_vistal	circle	6788	-5654	480		normal	city	0	0	spawnFalse	other	1	1	1	0	
@@ -199,7 +199,7 @@ vreni_island_deliver_15	circle	-5278.166504	-6426.113281	5		normal	default	0	0	s
 vreni_island_deliver_16	circle	-5300.422363	-6418.937012	5		normal	default	0	0	spawnFalse	corellia_vreni_island	0	0	0	0	
 vreni_island_deliver_17	circle	-5158.716309	-6426.324707	5		normal	default	0	0	spawnFalse	corellia_vreni_island	0	0	0	0	
 vreni_island_deliver_18	circle	-5157.971191	-6394.400391	5		normal	default	0	0	spawnFalse	corellia_vreni_island	0	0	0	0	
-@corellia_region_names:world_spawner	rectangle	-8000	-8000	8000	8000	normal	default	20	40	default	other	1	0	0	0	
+@corellia_region_names:world_spawner	rectangle	-8000	-8000	8000	8000	normal	default	7	40	default	other	1	0	0	0	
 sdungeon_rogue_corsec_bunker	circle	5225	1567	128		normal	city	0	0	spawnFalse	none	0	0	0	0	
 sdungeon_imperial_outpost	circle	4664	-5784	128		normal	city	0	0	spawnFalse	none	0	0	0	0	
 corellia_rebel_hideout	circle	-6506.5	5991.5	225		normal	city	0	0	spawnFalse	none	0	0	0	0	
@@ -281,20 +281,20 @@ eastedge_corellia_nobuild	rectangle	7640	-7640	8000	7640	normal	default	0	0	spaw
 old_battlefield_nobuild_cor1	circle	263	4620	256		normal	default	0	0	spawnFalse	none	0	0	0	0	
 old_battlefield_nobuild_cor2	circle	-1870	-1223	192		normal	default	0	0	spawnFalse	none	0	0	0	0	
 old_battlefield_nobuild_cor3	circle	3785	-4037	192		normal	default	0	0	spawnFalse	none	0	0	0	0	
-@corellia_region_names:se_medium	rectangle	290	-7858.666667	8000	-6070	normal	fictional	25	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:eastern_medium	rectangle	4090	-6075.333333	8000	4570	normal	fictional	25	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:southern_central_easy	rectangle	-2090	-6075.333333	4080	-1950	normal	fictional	20	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:southwestern_medium	rectangle	-7870	-5200	-2090	0	normal	fictional	20	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northwestern_medium	rectangle	-7875.333333	8	-2090	7870	normal	fictional	30	35	spawnTrue	none	1	0	0	0	
-@corellia_region_names:central_medium	rectangle	-2075.333333	-1958.666667	840	4570	normal	fictional	25	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:central_easy	rectangle	824.666667	-1958.666667	4090	4570	normal	fictional	20	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northeastern_hard	rectangle	-2092	4570	7950	7882	normal	fictional	35	40	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northeastern_dark_adept_hard	circle	5477.833333	7078.833333	250		normal	fictional	35	40	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northwestern_gronda_hard	circle	-3241	4099	250		normal	fictional	35	40	spawnTrue	none	1	0	0	0	
-@corellia_region_names:eastern_rogue_corsec_medium	circle	5135.666667	1635.666667	211		normal	fictional	25	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:lord_nyax_hard	circle	1649.666667	-500.333333	175		normal	fictional	30	40	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northern_beladonas_hard	circle	6229	5779	221		normal	fictional	35	40	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northern_selonian_hard	circle	2441.5	5011.515432	250		normal	fictional	35	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:se_medium	rectangle	290	-7858.666667	8000	-6070	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:eastern_medium	rectangle	4090	-6075.333333	8000	4570	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:southern_central_easy	rectangle	-2090	-6075.333333	4080	-1950	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:southwestern_medium	rectangle	-7870	-5200	-2090	0	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northwestern_medium	rectangle	-7875.333333	8	-2090	7870	normal	fictional	7	35	spawnTrue	none	1	0	0	0	
+@corellia_region_names:central_medium	rectangle	-2075.333333	-1958.666667	840	4570	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:central_easy	rectangle	824.666667	-1958.666667	4090	4570	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northeastern_hard	rectangle	-2092	4570	7950	7882	normal	fictional	7	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northeastern_dark_adept_hard	circle	5477.833333	7078.833333	250		normal	fictional	7	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northwestern_gronda_hard	circle	-3241	4099	250		normal	fictional	7	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:eastern_rogue_corsec_medium	circle	5135.666667	1635.666667	211		normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:lord_nyax_hard	circle	1649.666667	-500.333333	175		normal	fictional	7	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northern_beladonas_hard	circle	6229	5779	221		normal	fictional	7	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northern_selonian_hard	circle	2441.5	5011.515432	250		normal	fictional	7	40	spawnTrue	none	1	0	0	0	
 tomi_jinsen_spawn_block	circle	-518	-5063	125		normal	city	0	0	spawnFalse	none	0	0	0	0	
 meatlump_1_spawn_block	circle	-143	-5016	75		normal	city	0	0	spawnFalse	none	0	0	0	0	
 meatlump_2_spawn_block	circle	-75	-4983	75		normal	city	0	0	spawnFalse	none	0	0	0	0	

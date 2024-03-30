@@ -251,7 +251,7 @@ public class thug_raid extends script.base_script
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
-	setName(self, "Seedoe (Thug Gang Leader)");
+	    setName(self, "Seedoe (Thug Gang Leader)");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException

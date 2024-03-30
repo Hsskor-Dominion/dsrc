@@ -2,18 +2,18 @@ factionName	playerAllowed	isAggro	isPvP	pvpFaction	enemies	allies	combatFactor
 s	i[0]	i[0]	i[0]	h	s	s	f[1]
 Imperial	1	1	1	imperial	Rebel		
 Rebel	1	1	1	rebel	Imperial		
-Hutt	1	1	0		naboo_security_force,nym,Imperial,corsec,narmle	jabba,borvo	
+Hutt	1	1	0		naboo_security_force,nym,Imperial,corsec,narmle	borvo	
 ImperialCitizen	0	0	0				
 RebelCitizen	0	0	0				
-Neutral	0	0	0				
+Neutral	1	0	0			Hutt,Imperial,Rebel	
 Unattackable	0	0	0	unattackable			
 clone_relics_claw	1	1	0				
-clone_relics_droid	0	1	0		clone_relics_scientist		
+clone_relics_droid	1	1	0		clone_relics_scientist	trade_federation	
 clone_relics_scientist	0	0	0		clone_relics_droid	Hutt,Imperial,Rebel	
 afarathu	1	1	0		corsec,survivor		
 beldonnas_league	1	1	0		followers_of_lord_nyax,lost_aqualish	corsec	
 corsec	1	1	0		afarathu,followers_of_lord_nyax,monumenter,rogue_corsec,lost_aqualish	beldonnas_league	
-followers_of_lord_nyax	1	1	0		corsec,beldonnas_league	death_watch	
+followers_of_lord_nyax	1	1	0		corsec,beldonnas_league
 hidden_daggers	1	1	0		corsec,beldonnas_league,flail	rogue_corsec	
 meatlump	1	1	0		corsec,rogue_corsec,beldonnas_league		
 monumenter	1	1	0		corsec,beldonnas_league		
@@ -34,32 +34,32 @@ endor_marauder	1	1	0		gondula_tribe,panshee_tribe
 panshee_tribe	1	1	0		donkuwah_tribe,korga_tribe,pubam,endor_marauder	gondula_tribe	
 pubam	1	1	0		gondula_tribe,panshee_tribe		
 bandit	1	1	0		townsperson		
-pirate	1	1	0				
+pirate	1	1	0			naboo_pirate	
 thug	1	1	0		townsperson		
 townsperson	1	0	0		thug,bandit	Rebel,Imperial	
-gungan	1	1	0		plasma_thief,swamp_rat,borvo		
+gungan	1	1	0		plasma_thief,swamp_rat,borvo,trade_federation		
 naboo	1	1	0		borvo		
 plasma_thief	1	1	0		gungan		
 swamp_rat	1	1	0		gungan		
 naboo_security_force	1	1	0		borvo,naboo_pirate,plasma_thief,swamp_rat,trade_federation		
 naboo_pirate	1	1	0		naboo_security_force		
-trade_federation	1	1	0		borvo,naboo_security_force	droid_army	
+trade_federation	1	1	0		naboo_security_force,gungan	droid_army	
 aakuans	1	1	0		fed_dub,binayre,liberation_party		
 fed_dub	1	1	0		liberation_party,binayre,lost_aqualish,drall		
 binayre	1	1	0		fed_dub,aakuans,corsec		
 liberation_party	1	1	0		fed_dub,corsec		
-jabba	1	1	0		valarian,borvo	Hutt	
+jabba	1	1	0		valarian,borvo		
 alkhara	1	1	0		desert_demon,spice_collective	tusken_raider,townsperson	
 desert_demon	1	1	0		swoop		
 jawa	1	1	0		tusken_raider		
-swoop	1	1	0		desert_demon		
+swoop	1	1	0		desert_demon	cor_swoop	
 tusken_raider	1	1	0		jawa,alkhara		
 valarian	1	1	0		jabba		
 drall	1	1	0		corsec,fed_dub		
-borvo	1	1	0		gungan,trade_federation,jabba		
+borvo	1	1	0		naboo	Hutt	
 sif	1	1	0		Rebel,Imperial	Hutt	
 flail	1	1	0		hidden_daggers		
-cor_swoop	1	1	0		smashball		
+cor_swoop	1	1	0		smashball	swoop	
 restuss	1	1	0		garyn,cobral	narmle	
 narmle	1	1	0		spice_collective,kobola	restuss	
 rorgungan	1	1	0		spice_collective		
@@ -83,10 +83,10 @@ geonosian_mad_bunker	0	1	0			geonosian_crazed_monster
 geonosian_crazed_monster	0	1	0			geonosian_mad_bunker	
 geonosian_crazy	0	1	0		geonosian_mad_bunker,geonosian_crazed_monster		
 aggro_corsec	0	1	0		afarathu,followers_of_lord_nyax,monumenter,rogue_corsec,lost_aqualish	corsec	
-death_watch	1	1	0		death_watch_special,jedi,sith		
+death_watch	1	1	0		death_watch_special		
 death_watch_special	0	0	0				
-sith_shadow	1	1	0		fs_villager	sith	0
-fs_villager	1	1	0		sith_shadow	jedi	0
+sith_shadow	1	1	0		fs_villager		0
+fs_villager	1	1	0		sith_shadow		0
 sith_shadow_nonaggro	1	0	0		fs_villager	Rebel,Imperial	0
 forest_outcast	1	1	0		forest_kerritamba	forest_outcast	
 forest_kerritamba	1	1	0		forest_outcast	forest_kerritamba	
@@ -98,7 +98,7 @@ faction_sayormi	0	1	0
 yavin_scavenger	0	1	0		Hutt, jabba		
 droid_army	0	1	0		mustafar_miners	trade_federation	
 mustafar_miners	0	1	0		droid_army		
-dark_jedi_kenobi	0	1	0				
+dark_jedi_kenobi	1	1	0				
 underworld	1	1	0				
 azure_cabal	1	0	0				
 heroic_tusken	0	1	0		espa,espa_guard		
@@ -108,9 +108,3 @@ survivor	0	0	0
 afflicted	0	1	0		survivor,survivor_guard		
 survivor_guard	0	0	0		afflicted		
 sulfur_lake_pirate	0	1	0		nym		
-bhguild	1	1	0		underworld	spynet	
-spynet	1	1	0			bhguild	
-confederacy	1	1	0		republic	trade_federation,droid_army	
-republic	1	1	0		confederacy	fs_villager	
-sith	1	1	0		republic,jedi	sith_shadow	
-jedi	1	1	0		confederacy,sith	fs_villager	

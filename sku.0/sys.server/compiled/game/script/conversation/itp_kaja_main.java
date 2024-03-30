@@ -27,7 +27,7 @@ public class itp_kaja_main extends script.base_script
     }
     public boolean itp_kaja_main_condition_playerLevelCheck(obj_id player, obj_id npc) throws InterruptedException
     {
-        return (getLevel(player) < 80);
+        return (getLevel(player) < 5);
     }
     public boolean itp_kaja_main_condition_itp_kaja_02_complete(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -124,6 +124,7 @@ public class itp_kaja_main extends script.base_script
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
+        setName(self, "Kaja Or'Zee (Imperial Academy Headmaster)");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException

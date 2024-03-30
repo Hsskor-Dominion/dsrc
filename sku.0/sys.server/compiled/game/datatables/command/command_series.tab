@@ -88,10 +88,6 @@ of_tactical_sup_3	of_tactical_sup_1	48
 of_tactical_sup_4	of_tactical_sup_1	62
 of_tactical_sup_5	of_tactical_sup_1	76
 of_tactical_sup_6	of_tactical_sup_1	90
-of_reinforcements_2	of_reinforcements_1	48
-of_reinforcements_3	of_reinforcements_1	62
-of_reinforcements_4	of_reinforcements_1	76
-of_reinforcements_5	of_reinforcements_1	90
 of_deb_def_5	of_deb_def_4	48
 of_deb_def_6	of_deb_def_4	62
 of_deb_def_7	of_deb_def_4	76
@@ -157,8 +153,7 @@ sp_dot_5	sp_dot_0	88
 sp_improved_cc_dot_1	sp_improved_cc_dot_0	38
 sp_improved_cc_dot_2	sp_improved_cc_dot_0	54
 sp_improved_cc_dot_3	sp_improved_cc_dot_0	88
-sp_stealth_melee_0	sp_dot_1	10
-sp_stealth_melee_1	sp_dot_1	20
+sp_stealth_melee_1	sp_stealth_melee_0	20
 sp_stealth_melee_2	sp_dot_1	32
 sp_stealth_melee_3	sp_dot_1	46
 sp_stealth_melee_4	sp_dot_1	58
@@ -206,12 +201,9 @@ en_spiral_kick_3	en_spiral_kick_0	76
 en_spiral_kick_4	en_spiral_kick_0	90
 en_holographic_recall	en_holographic_image	26
 bm_mend_pet_2	bm_mend_pet_1	54
-bm_mend_pet_3	bm_mend_pet_1	82
-bm_revive_pet_1	bm_mend_pet_1	10
-bm_creature_knowledge_command_1	bm_mend_pet_1	10
+bm_mend_pet_3	bm_mend_pet_2	82
 bm_pet_trick_1	bm_pet_attack_1	10
 bm_pet_trick_2	bm_pet_attack_1	10
-bm_revive_pet_1	bm_pet_attack_1	10
 bm_follow_1	bm_pet_attack_1	10
 bm_stay_1	bm_pet_attack_1	10
 trainPet	bm_pet_attack_1	10

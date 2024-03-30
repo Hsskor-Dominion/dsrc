@@ -1,0 +1,27 @@
+item	cash	token0	token1	token2	token3	token16	class	script	note
+s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
+item_pgc_token_03	1000000								
+object/tangible/deed/player_house_deed/mustafar_house_lg.iff						10			
+object/tangible/deed/vehicle_deed/landspeeder_lava_skiff_deed.iff						4			
+item_pet_mount_lava_flea_01_01						1			
+item_tcg_loot_reward_series9_computer_console_01						1			
+object/tangible/veteran_reward/data_terminal_s1.iff						1			
+object/tangible/veteran_reward/data_terminal_s2.iff						1			
+object/tangible/veteran_reward/data_terminal_s3.iff						1			
+object/tangible/veteran_reward/data_terminal_s4.iff						1			
+object/tangible/veteran_reward/frn_tech_console_sectional_a.iff						1			
+object/tangible/veteran_reward/frn_tech_console_sectional_b.iff						1			
+object/tangible/veteran_reward/frn_tech_console_sectional_c.iff						1			
+object/tangible/veteran_reward/frn_tech_console_sectional_d.iff						1			
+item_tcg_loot_reward_series2_computer_console_02						1			
+item_tcg_loot_reward_series1_painting_trooper						1			
+item_tcg_loot_reward_series3_empal_surecon_center_medical_table						1			
+item_tcg_loot_reward_series4_medical_table_02_01						1			
+item_tcg_loot_reward_series3_target_dummy						1			
+item_tcg_loot_reward_series1_target_creature						1			
+object/tangible/veteran_reward/frn_vet_holo_starfighter.iff						1			
+item_tcg_loot_reward_series5_mustafar_diorama						1			
+item_tcg_loot_reward_series5_signal_unit						1			
+object/tangible/deed/vehicle_deed/instant_travel_terminal_royal_ship_deed.iff						100			
+costume_mustafarian_01	100								
+item_costume_kit	1								

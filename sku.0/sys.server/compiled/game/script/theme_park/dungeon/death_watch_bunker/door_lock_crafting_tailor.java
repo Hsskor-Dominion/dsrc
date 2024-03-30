@@ -30,7 +30,7 @@ public class door_lock_crafting_tailor extends script.base_script
                 messageTo(self, "unlockTerminal", null, 30, false);
                 return SCRIPT_CONTINUE;
             }
-            if (hasSkill(player, "class_domestics_phase4_master"))
+            if (hasSkill(player, "expertise_munition_armorsmith_advanced_theory_1"))
             {
                 if (checkForIngredients(player))
                 {
@@ -64,7 +64,7 @@ public class door_lock_crafting_tailor extends script.base_script
     {
         if (utils.playerHasItemByTemplate(player, "object/tangible/loot/dungeon/death_watch_bunker/mining_drill_reward.iff"))
         {
-            if (utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_belt.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_leggings.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_gloves.iff"))
+            if (utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_belt.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_gloves.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_boots.iff"))
             {
                 return true;
             }
@@ -106,3 +106,4 @@ public class door_lock_crafting_tailor extends script.base_script
         return SCRIPT_CONTINUE;
     }
 }
+//

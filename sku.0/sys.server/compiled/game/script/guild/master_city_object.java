@@ -140,7 +140,7 @@ public class master_city_object extends script.base_script
             CustomerServiceLog("player_city", "Updating City: Vote Interval not Updated - Should have been set to " + cityVoteInterval + ". City: " + name + " (" + city_id + "/" + cityHall + ")");
         }
         obj_id incumbent_mayor = cityGetLeader(city_id);
-        grantExperiencePoints(incumbent_mayor, xp.POLITICAL, 750);
+        grantExperiencePoints(incumbent_mayor, xp.POLITICAL, 7500);
         validateCityRadius(city_id, self);
         checkCivicCap(city_id, self);
         collectTaxes(city_id, self);
@@ -211,7 +211,7 @@ public class master_city_object extends script.base_script
             if (isIdValid(((obj_id)vote_ids.get(i))))
             {
                 CustomerServiceLog("player_city", "Election Cycle: Player has recieved " + (Integer) vote_counts.get(i) + " votes granting " + (Integer) vote_counts.get(i) * 100 + " points of " + xp.POLITICAL + " XP for running in the " + city_name + " (" + city_id + "/" + cityHall + ") election. " + ((obj_id)vote_ids.get(i)));
-                grantExperiencePoints(((obj_id)vote_ids.get(i)), xp.POLITICAL, (Integer) vote_counts.get(i) * 300);
+                grantExperiencePoints(((obj_id)vote_ids.get(i)), xp.POLITICAL, (Integer) vote_counts.get(i) * 3000);
                 xp_granted++;
             }
             else 

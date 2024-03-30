@@ -17,7 +17,7 @@ yavin4	rectangle	-8000	-8000	8000	8000	normal	default	0	0	spawnFalse	none	1	0	0	
 @yavin4_region_names:mountain_six	circle	5744	-4304	1936		normal	jungle	70	90	mission	other	1	0	0	0	
 @yavin4_region_names:yavin4_labor_outpost	circle	-6925	-5707	200		normal	city	1	10000	spawnFalse	other	0	1	1	0	
 @yavin4_region_names:yavin4_mining_outpost	circle	-307	4861	200		normal	city	1	10000	spawnFalse	other	0	1	1	0	
-@yavin4_region_names:yavin4_imperial_fort	circle	4030	-6215	200		normal	city	1	10000	spawnFalse	other	0	0	1	0	
+@yavin4_region_names:yavin4_imperial_fort	circle	4030	-6215	200		normal	city	1	10000	spawnFalse	other	1	0	1	0	
 yavin4_labor_outpost_nobuild_1	circle	-6925	-5707	200		normal	default	1	10000	spawnFalse	none	0	0	0	0	
 yavin4_mining_outpost_nobuild_1	circle	-307	4861	200		normal	default	1	10000	spawnFalse	none	0	0	0	0	
 yavin4_labor_outpost_1	circle	-6953.841797	-5734.776367	2		normal	default	1	10000	spawnFalse	yavin4_labor_outpost	0	0	0	0	
@@ -35,7 +35,7 @@ yavin4_mining_outpost_7	circle	-311.915222	4824.621582	5		normal	default	1	10000
 yavin4_mining_outpost_8	circle	-274.233734	4827.906738	2		normal	default	1	10000	spawnFalse	yavin4_mining_outpost	0	0	0	0	
 yavin4_mining_outpost_9	circle	-258.202026	4837.590332	2		normal	default	1	10000	spawnFalse	yavin4_mining_outpost	0	0	0	0	
 yavin4_mining_outpost_10	circle	-256.416534	4892.178711	5		normal	default	1	10000	spawnFalse	yavin4_mining_outpost	0	0	0	0	
-yavin4_imperial_base	circle	4034	-6212	128		normal	city	1	10000	spawnFalse	none	0	0	0	0	
+yavin4_imperial_base	circle	4034	-6212	128		normal	city	1	10000	spawnFalse	none	1	0	0	0	
 yavin4_blueleaf_temple	circle	-830	-2056	250		normal	city	1	10000	spawnFalse	none	0	0	0	0	
 yavin4_exar_kun_temple	circle	5056	5537	400		normal	city	1	10000	spawnFalse	none	0	0	0	0	
 yavin4_woolamander_temple	circle	512	-655	400		normal	city	1	10000	spawnFalse	none	0	0	0	0	
@@ -68,7 +68,7 @@ yavin4_masassi_temple	circle	-3038	-2960	500		normal	city	1	10000	spawnFalse	non
 @yavin4_region_names:yunteh_mountains_1	circle	-6384	1744	1616		normal	fictional	1	100	spawnFalse	none	1	0	1	0	
 @yavin4_region_names:yunteh_mountains_2	circle	-4000	640	1344		normal	fictional	1	100	spawnFalse	none	1	0	1	0	
 @yavin4_region_names:nacolo_peak	circle	3728	-2480	912		normal	fictional	1	100	spawnFalse	none	1	0	1	0	
-@yavin4_region_names:imperial_fort	circle	4030	-6230	200		normal	city	1	100	spawnFalse	none	0	0	1	0	
+@yavin4_region_names:imperial_fort	circle	4030	-6230	200		normal	city	1	100	spawnFalse	none	1	0	1	0	
 yavin4_coa2_imperial_base	circle	1596	-3533	60		normal	city	0	0	spawnFalse	none	0	0	0	0	
 yavin4_coa2_rebel_base	circle	-4238	2277	60		normal	city	0	0	spawnFalse	none	0	0	0	0	
 yavin4_geo_bunker_nobuild	circle	-6488	-417	250		normal	city	0	0	spawnFalse	none	0	0	0	0	
@@ -80,8 +80,8 @@ yavin4_jedi_enclave_dark	circle	5070.1	310.18	577		normal	pathfind	0	0	spawnTrue
 yavin4_jedi_enclave_light	circle	-5513.72	4911.81	577		normal	pathfind	0	0	spawnTrue	none	0	0	0	0	
 northedge_yavin4_nobuild	rectangle	-8000	7640	8000	8000	normal	default	0	0	spawnFalse	none	0	0	0	0	
 westedge_yavin4_nobuild	rectangle	-8000	-7639.5	-7640	7640	normal	default	0	0	spawnFalse	none	0	0	0	0	
-southedge_yavin4_nobuild	rectangle	-8000	-8000	8000	-7640	normal	default	0	0	spawnFalse	none	0	0	0	0	
-eastedge_yavin4_nobuild	rectangle	7640	-7640	7999	7640	normal	default	0	0	spawnFalse	none	0	0	0	0	
+southedge_yavin4_nobuild	rectangle	-8000	-8000	8000	-7640	normal	default	0	0	spawnFalse	none	1	0	0	0	
+eastedge_yavin4_nobuild	rectangle	7640	-7640	7999	7640	normal	default	0	0	spawnFalse	none	1	0	0	0	
 old_battlefield_nobuild_yav1	circle	3791	-2416	256		normal	default	0	0	spawnFalse	none	0	0	0	0	
 old_battlefield_nobuild_yav2	circle	-4230	3755	256		normal	default	0	0	spawnFalse	none	0	0	0	0	
 @yavin4_region_names:southwestern_easy	rectangle	-8000	-6875.333333	-1790	-1240	normal	fictional	65	75	spawnTrue	none	1	0	0	0	

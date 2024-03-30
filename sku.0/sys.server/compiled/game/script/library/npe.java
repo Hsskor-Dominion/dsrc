@@ -42,7 +42,7 @@ public class npe extends script.base_script
     public static final String SPACE_QUEST_TYPE = "strSpaceType";
     public static final String SPACE_QUEST_NAME = "strSpaceName";
     public static final string_id NOT_FROM_SPACE = new string_id("npe", "gamma_travel_not_from_space");
-    public static final int LEVEL_CAP = 22;
+    public static final int LEVEL_CAP = 90;
     public static void setResetDungeonObjvar(obj_id player) throws InterruptedException
     {
         if (isIdValid(space_dungeon.getDungeonIdForPlayer(player)))
@@ -517,7 +517,26 @@ public class npe extends script.base_script
         attachScript(player, "npe.handoff_to_tatooine");
         setCompletedTutorial(player, true);
         setObjVar(player, "comingFromTutorial", 1);
-        warpPlayer(player, FINISH_PLANET, FINISH_X, 0, FINISH_Z, null, 0.0f, 0.0f, 0.0f, null, false);
+
+        // Create a string_id for the broadcast message
+        String playerName = getPlayerName(player);
+        string_id broadcastMessage = new string_id("***INCOMING TRANSMISSION***", playerName + " has joined the galaxy!");
+
+        // Send the galaxy-wide message
+        sendSystemMessageGalaxy(broadcastMessage);
+
+        if (hasObjVar(player, "stardust_ent"))
+        {
+            warpPlayer(player, "tatooine", 3455, 0, -4630, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_farmer"))
+        {
+            warpPlayer(player, "tatooine", 3858, 0, 2350, null, 0, 0, 0, "", false);
+        }
+        else
+        {
+            warpPlayer(player, FINISH_PLANET, FINISH_X, 0, FINISH_Z, null, 0.0f, 0.0f, 0.0f, null, false);
+        }
         return true;
     }
     public static boolean teleportPlayerToLaunchLoc(obj_id player, boolean hyperspace) throws InterruptedException
@@ -1086,14 +1105,20 @@ public class npe extends script.base_script
     }
     public static void npeNpcVendor(obj_id player, obj_id npc) throws InterruptedException
     {
-        String[] options = new String[2];
-        string_id[] items = new string_id[2];
-        items[0] = new string_id("npe", "store_item3");
-        items[1] = new string_id("npe", "store_item1");
+        String[] options = new String[3]; // Increase the size to 3
+        string_id[] items = new string_id[3]; // Increase the size to 3
+
+        // Add your items for each option
+        items[0] = new string_id("npe", "store_item1");
+        items[1] = new string_id("npe", "store_item2");
+        items[2] = new string_id("npe", "store_item3");
+
+        // Use a for loop to pack the items into options
         for (int i = 0; i < items.length; i++)
         {
             options[i] = utils.packStringId(items[i]);
         }
+
         sui.showSUIPage(sui.listbox(
                 npc,
                 player,

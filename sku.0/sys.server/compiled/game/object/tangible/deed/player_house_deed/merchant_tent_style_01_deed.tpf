@@ -23,7 +23,8 @@ sharedTemplate = "object/tangible/deed/player_house_deed/shared_merchant_tent_st
 
 objvars = +[
 	"player_structure.deed.template" = "object/building/player/player_merchant_tent_style_01.iff",
-	"player_structure.deed.buildtime" = 90]
+	"player_structure.deed.buildtime" = 90,
+	"player_structure.deed.scene" = "tatooine,naboo,corellia,talus,rori,lok,dantooine,endor,yavin4,dathomir"]
 
 scripts = +[
 	"item.structure_deed.player_structure_deed"]

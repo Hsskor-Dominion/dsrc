@@ -5,5 +5,3 @@
 @class object_template 0
 
 sharedTemplate = "object/tangible/tcg/series5/shared_vehicle_deed_fg_8t8_podracer.iff"
-
-scripts = +["item.special.nomove"]

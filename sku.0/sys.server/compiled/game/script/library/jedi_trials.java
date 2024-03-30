@@ -4,6 +4,8 @@ import script.dictionary;
 import script.location;
 import script.obj_id;
 import script.string_id;
+import script.library.*;
+import script.*;
 
 import java.util.Vector;
 
@@ -164,6 +166,7 @@ public class jedi_trials extends script.base_script
                 String questListSting = getJediTrialsQuestListAsString(player, questList);
                 String custQuestListLogMsg = "Padawan trials quest list: Padawan trials quest list for Player %TU is: " + questListSting + ".";
                 CustomerServiceLog(PADAWAN_TRIALS_LOG, custQuestListLogMsg, player);
+                groundquests.grantQuest(player, "stardust_padawan_pointer");
             }
             else 
             {

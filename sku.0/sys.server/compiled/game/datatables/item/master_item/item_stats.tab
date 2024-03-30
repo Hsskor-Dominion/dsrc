@@ -625,16 +625,16 @@ item_tow_bracelet_survey_03_01	surveying=20
 item_tow_bracelet_proc_melee_03_01					proc_tow_proc_bracelet_melee			75			
 item_tow_bracelet_proc_rng_03_01					proc_tow_proc_bracelet_range			75			
 item_tow_bracelet_proc_combat_03_01					proc_tow_proc_bracelet_combo			75			
-item_tow_necklace_taming_03_01			int:skillmod.bonus.bm_creature_knowledge=2								
-item_tow_necklace_taming_03_02			int:skillmod.bonus.bm_creature_knowledge=4								
-item_tow_necklace_taming_03_03			int:skillmod.bonus.bm_creature_knowledge=6								
-item_tow_necklace_taming_03_04			int:skillmod.bonus.bm_creature_knowledge=8								
-item_tow_necklace_taming_03_05			int:skillmod.bonus.bm_creature_knowledge=10								
-item_tow_ring_armorsmith_04_01					towArmorAssembly						
-item_tow_ring_weaponsmith_04_01					towWeaponAssembly						
-item_tow_ring_droideng_04_01					towDroidAssembly						
-item_tow_ring_bioeng_04_01					towMedAssembly						
-item_tow_ring_chef_04_01					towFoodAssembly						
+item_tow_necklace_taming_03_01			int:skillmod.bonus.bm_creature_knowledge=2,int:skillmod.bonus.bm_xp_mod_boost=20								
+item_tow_necklace_taming_03_02			int:skillmod.bonus.bm_creature_knowledge=4,int:skillmod.bonus.bm_xp_mod_boost=40								
+item_tow_necklace_taming_03_03			int:skillmod.bonus.bm_creature_knowledge=6,int:skillmod.bonus.bm_xp_mod_boost=60								
+item_tow_necklace_taming_03_04			int:skillmod.bonus.bm_creature_knowledge=8,int:skillmod.bonus.bm_xp_mod_boost=80								
+item_tow_necklace_taming_03_05			int:skillmod.bonus.bm_creature_knowledge=10,int:skillmod.bonus.bm_xp_mod_boost=100								
+item_tow_ring_armorsmith_04_01			int:skillmod.bonus.armor_experimentation=5		towArmorAssembly						
+item_tow_ring_weaponsmith_04_01			int:skillmod.bonus.weapon_experimentation=5		towWeaponAssembly						
+item_tow_ring_droideng_04_01			int:skillmod.bonus.droid_experimentation=5		towDroidAssembly						
+item_tow_ring_bioeng_04_01			int:skillmod.bonus.bm_mutation_chance_increase=5,int:skillmod.bonus.expertise_bm_incubation_quality=10,int:skillmod.bonus.expertise_bm_genetic_engineering=5		towMedAssembly						
+item_tow_ring_chef_04_01			int:skillmod.bonus.food_experimentation=5		towFoodAssembly						
 item_tow_factory_gaurd_trinket_04_01					towFacGuardDefenseItem	long_reuse_4	1800				
 item_tow_foreman_fire_absorb_04_01					towForemanCoolingItem	long_reuse_4	1800				
 item_tow_foreman_burst_run_04_01				index_color_1=11	burstRun	long_reuse_4	1800				
@@ -1154,8 +1154,8 @@ item_npe_necklace_protection_02_01	agility_modified=3
 item_npe_gen_craft_tool_trader_03_01	general_assembly=5		int:crafting.tool=1,int:crafting.type=4096,float:prototypeTime=0.0								
 item_respec_token_01_01											
 item_npe_uniform_crate_01_01											
-item_content_medic_ring_03_01	constitution_modified=5										
-item_content_trader_ring_03_01	agility_modified=5										
+item_content_medic_ring_03_01	expertise_healing_all=3										
+item_content_trader_ring_03_01	general_assembly=5										
 item_content_instrument_bandfill_03_01	stamina_modified=5										
 item_content_dance_prop_03_01	stamina_modified=5										
 item_junk_creature_1thru10_01_01											
@@ -3408,8 +3408,8 @@ col_reward_feather_duster_02_04			int:nocert=1,int:allProfs=1	index_color_1=34
 col_reward_feather_duster_02_05			int:nocert=1,int:allProfs=1	index_color_1=51							
 item_katiara_gravestone_quest_item											
 item_schematic_pistol_heroic_exar_01_01			string:loot_schematic.schematic=object/draft_schematic/weapon/appearance/weapon_appearance_pistol_heroic_exar.iff,int:loot_schematic.uses=1,string:loot_schematic.skill_req=class_munitions_phase4_master								
-item_deed_pod_racer_06_01			string:vehicle_attribs.object_ref=pod_racer_one,float:hit_points=15000								
-item_deed_pod_racer_06_02			string:vehicle_attribs.object_ref=pod_racer_two,float:hit_points=15000								
+item_deed_pod_racer_06_01			string:vehicle_attribs.object_ref=pod_racer_one,float:hit_points=1500								
+item_deed_pod_racer_06_02			string:vehicle_attribs.object_ref=pod_racer_two,float:hit_points=1500								
 item_event_ewok_berry_01_01			int:item.lifespan=1209600								
 item_event_ewok_drink_01_01			float:duration=1.0,float:effectiveness=1.0,string:buff_name=event_ewok_drink,int:item.lifespan=1209600								
 item_event_ewok_berry_01_02			float:duration=1.0,float:effectiveness=1.0,string:buff_name=event_ewok_berry,int:item.lifespan=1209600								
@@ -3484,7 +3484,7 @@ col_rebel_rank_cpt_01_01			string:collection.slotName=col_rebel_rank_01:col_rebe
 col_rebel_rank_gen_01_01			string:collection.slotName=col_rebel_rank_01:col_rebel_rank_gen_01_01								
 col_rebel_rank_lt_01_01			string:collection.slotName=col_rebel_rank_01:col_rebel_rank_lt_01_01								
 col_rebel_rank_maj_01_01			string:collection.slotName=col_rebel_rank_01:col_rebel_rank_maj_01_01								
-heroic_minder_creature_knowledge_gloves_02_01			int:skillmod.bonus.bm_creature_knowledge=1								
+heroic_minder_creature_knowledge_gloves_02_01			int:skillmod.bonus.bm_creature_knowledge=10,int:skillmod.bonus.bm_xp_mod_boost=100								
 col_trophy_bane_back_spider_02_01											
 col_trophy_finned_blaggart_02_01											
 col_trophy_murra_blanca_02_01											
@@ -3756,7 +3756,7 @@ item_tcg_loot_reward_series9_lepese_dictionary					tcg_series9_lepese_dictionary
 item_tcg_loot_reward_series2_mandalorian_strongbox					tcg_series2_mandalorian_strongbox					clienteffect/tcg_xp.cef	
 item_tcg_loot_reward_series1_nuna_ball_advertisement					tcg_series1_nuna_ball_advertisement					clienteffect/tcg_xp_instant_nuna_ball.cef	
 item_tcg_loot_reward_series1_radtrooper_badge					tcg_series1_radtrooper_badge					clienteffect/tcg_xp.cef	
-item_tcg_loot_reward_series2_versafunction88_datapad					tcg_series2_versafunction88_datapad					clienteffect/tcg_xp_instant.cef	
+item_tcg_loot_reward_series2_versafunction88_datapad			int:increaseAmount=100,int:nonGenericStorageItem=1		tcg_series2_versafunction88_datapad					clienteffect/tcg_xp_instant.cef	
 item_tcg_loot_reward_series2_chon_bust											
 item_tcg_loot_reward_series1_computer_console_01											
 item_tcg_loot_reward_series2_computer_console_02											
@@ -3787,8 +3787,8 @@ item_tcg_loot_reward_series9_vendor_serving_droid	special_vendor_tcg_series9_ser
 item_tcg_loot_reward_series1_target_creature			string:targetDummyCreatureName=tcg_target_creature_acklay								
 item_tcg_loot_reward_series2_video_game_table											
 item_tcg_loot_reward_series2_v_wing			boolean:ship_chassis.tcg_ship=true,boolean:ship_chassis.multifactional=true,string:ship_chassis.type=vwing,float:ship_chassis.hp=1850.0,float:ship_chassis.mass=66625.0								
-item_tcg_loot_reward_series2_podracer_mawhonic			string:vehicle_attribs.object_ref=pod_racer_two,float:hit_points=15000								
-item_tcg_loot_reward_series1_podracer_gasgano			string:vehicle_attribs.object_ref=pod_racer_one,float:hit_points=15000								
+item_tcg_loot_reward_series2_podracer_mawhonic			string:vehicle_attribs.object_ref=pod_racer_two,float:hit_points=1500								
+item_tcg_loot_reward_series1_podracer_gasgano			string:vehicle_attribs.object_ref=pod_racer_one,float:hit_points=1500								
 item_tcg_loot_reward_series1_mechno_chair			string:vehicle_attribs.object_ref=mechno_chair,float:hit_points=15000								
 item_tcg_loot_reward_series1_organa_speeder			string:vehicle_attribs.object_ref=organa_speeder,float:hit_points=15000								
 item_tcg_loot_reward_series1_sith_speeder			string:vehicle_attribs.object_ref=sith_speeder,float:hit_points=15000								
@@ -4094,7 +4094,7 @@ item_tcg_loot_reward_series3_jango_fett_memorial_statue
 item_tcg_loot_reward_series3_boba_fett_statue											
 item_tcg_loot_reward_series3_sith_meditation_room_deed			string:player_structure.deed.template=object/building/player/player_house_sith_meditation_room.iff,int:player_structure.deed.buildtime=90								
 item_tcg_loot_reward_series3_jedi_meditation_room_deed			string:player_structure.deed.template=object/building/player/player_house_jedi_meditation_room.iff,int:player_structure.deed.buildtime=90								
-item_tcg_loot_reward_series3_podracer_longtail			string:vehicle_attribs.object_ref=pod_racer_ipg_longtail,float:hit_points=15000								
+item_tcg_loot_reward_series3_podracer_longtail			string:vehicle_attribs.object_ref=pod_racer_ipg_longtail,float:hit_points=1500								
 item_tcg_loot_reward_series3_koro2_exodrive_airspeeder			string:vehicle_attribs.object_ref=koro2_speeder,float:hit_points=15000								
 item_tcg_loot_reward_series3_swamp_speeder			string:vehicle_attribs.object_ref=swamp_speeder,float:hit_points=15002								
 item_tcg_loot_reward_series3_armored_bantha			string:creatureName=tcg_armored_bantha								
@@ -4241,7 +4241,7 @@ item_tcg_loot_reward_series4_geonosian_speeder_02_01			string:vehicle_attribs.ob
 item_tcg_loot_reward_series4_senate_pod_02_01			string:vehicle_attribs.object_ref=senate_pod,float:hit_points=15000								
 item_tcg_loot_reward_series4_tauntaun_ride_02_01			int:money_total=0								
 item_tcg_loot_reward_series4_video_game_table_02_01			int:tcg_series=4								
-item_tcg_loot_reward_series4_balta_podracer_02_01			string:vehicle_attribs.object_ref=balta_podracer,float:hit_points=15000								
+item_tcg_loot_reward_series4_balta_podracer_02_01			string:vehicle_attribs.object_ref=balta_podracer,float:hit_points=1500								
 item_tcg_loot_reward_series4_peko_peko_mount_02_01			string:creatureName=tcg_peko_peko_mount								
 item_tcg_loot_reward_series4_falleens_fist_02_01					tcg_series4_falleens_fist						
 item_tcg_loot_reward_series4_ball_of_peace_02_01											
@@ -4268,9 +4268,9 @@ item_mini_vehicle_terminal_barc			string:template=object/mobile/barc_mini.iff
 item_mini_vehicle_terminal_awing			string:template=object/mobile/awing_mini.iff								
 item_auto_level_50_buddy_conversion			int:autoLevelTo=50								
 item_mini_vehicle_terminal_basilisk			string:template=object/mobile/basilisk_mini.iff								
-item_deed_pod_racer_06_03			string:vehicle_attribs.object_ref=lb_pod_racer_one,float:hit_points=15000								
+item_deed_pod_racer_06_03			string:vehicle_attribs.object_ref=lb_pod_racer_one,float:hit_points=1500								
 item_tcg_loot_reward_series5_xj6_air_speeder			string:vehicle_attribs.object_ref=xj6_air_speeder,float:hit_points=15000								
-item_tcg_loot_reward_series5_fg_8t8_podracer			string:vehicle_attribs.object_ref=fg_8t8_podracer,float:hit_points=15000								
+item_tcg_loot_reward_series5_fg_8t8_podracer			string:vehicle_attribs.object_ref=fg_8t8_podracer,float:hit_points=1500								
 item_tcg_loot_reward_series5_air2_swoop_speeder			string:vehicle_attribs.object_ref=air2_swoop_speeder,float:hit_points=15000								
 item_tcg_loot_reward_series5_player_house_hangar			string:player_structure.deed.template=object/building/player/player_house_hangar.iff,int:player_structure.deed.buildtime=90								
 item_tcg_loot_reward_series5_mustafar_diorama											
@@ -4281,7 +4281,7 @@ item_tcg_loot_reward_series5_tiefighter_chair
 item_tcg_loot_reward_series5_deathstar_hologram											
 item_tcg_loot_reward_series5_theater_poster											
 item_tcg_loot_reward_series5_galactic_hunters_poster											
-item_tcg_loot_reward_series5_jabbas_roasting_spit			int:crafting.creator.xpType=46,int:crafting.private=1,int:crafting.repair_type=512,int:crafting.station=1,float:crafting.stationMod=45.000000,int:crafting.type=8644								
+item_tcg_loot_reward_series5_jabbas_roasting_spit			int:crafting.creator.xpType=46,int:crafting.private=1,int:crafting.repair_type=512,int:crafting.station=1,float:crafting.stationMod=35.000000,int:crafting.type=8644								
 item_tcg_loot_reward_series5_house_sign	special_sign_tcg_series5=1		string:static_item=item_tcg_loot_reward_series5_house_sign								
 item_tcg_loot_reward_series5_atat_head_itv			string:tcg.combineItemTemplatePattern=object/tangible/tcg/series5/combine_object_,string:tcg.setName=set5_atat,int:returnObjectToOwner=1								
 item_tcg_loot_reward_series5_lcd_screen											
@@ -4303,7 +4303,7 @@ item_tcg_scurrier_final_palm_schematic			string:loot_schematic.schematic=object/
 item_tcg_loot_reward_series5_player_house_atat			string:player_structure.deed.template=object/building/player/player_house_atat.iff,int:player_structure.deed.buildtime=90								
 item_tcg_loot_reward_series5_armored_varactyl_statue			string:armored_creature_type=tcg5_armored_varactyl								
 item_deed_landspeeder_usv5_s02			string:vehicle_attribs.object_ref=landspeeder_usv5_s02,float:hit_points=15000								
-item_deed_podracer_anakin			string:vehicle_attribs.object_ref=podracer_anakin,float:hit_points=15000								
+item_deed_podracer_anakin			string:vehicle_attribs.object_ref=podracer_anakin,float:hit_points=1500								
 item_pgc_chronicle_master_robe											
 item_pgc_chronicle_master_sign											
 item_pgc_chronicle_master_sign_02											
@@ -4665,21 +4665,21 @@ item_tcg_loot_reward_series8_torture_table			string:tcg.combineItemTemplatePatte
 item_tcg_loot_reward_series8_armored_tauntaun_statue			string:armored_creature_type=tcg8_armored_tauntaun								
 item_imperial_station_token_01_01											
 item_rebel_station_token_01_01											
-item_schematic_spice_yarrock			string:loot_schematic.schematic=object/draft_schematic/spices/spice_yarrock.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_pyrepenol			string:loot_schematic.schematic=object/draft_schematic/spices/spice_pyrepenol.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_giggledust			string:loot_schematic.schematic=object/draft_schematic/spices/spice_giggledust.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_scramjet			string:loot_schematic.schematic=object/draft_schematic/spices/spice_scramjet.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_gunjack			string:loot_schematic.schematic=object/draft_schematic/spices/spice_gunjack.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_h4b			string:loot_schematic.schematic=object/draft_schematic/spices/spice_sedative_h4b.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_droid_lube			string:loot_schematic.schematic=object/draft_schematic/spices/spice_droid_lube.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_shadowpaw			string:loot_schematic.schematic=object/draft_schematic/spices/spice_shadowpaw.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_muon_gold			string:loot_schematic.schematic=object/draft_schematic/spices/spice_muon_gold.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_sweetblossom			string:loot_schematic.schematic=object/draft_schematic/spices/spice_sweetblossoom.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_crash_n_burn			string:loot_schematic.schematic=object/draft_schematic/spices/spice_crash_n_burn.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_thruster_head			string:loot_schematic.schematic=object/draft_schematic/spices/spice_thruster_head.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_grey_gabaki			string:loot_schematic.schematic=object/draft_schematic/spices/spice_grey_gabaki.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_neutron_pixey			string:loot_schematic.schematic=object/draft_schematic/spices/spice_neutron_pixey.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
-item_schematic_spice_booster_blue			string:loot_schematic.schematic=object/draft_schematic/spices/spice_booster_blue.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=10								
+item_schematic_spice_yarrock			string:loot_schematic.schematic=object/draft_schematic/spices/spice_yarrock.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_pyrepenol			string:loot_schematic.schematic=object/draft_schematic/spices/spice_pyrepenol.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_giggledust			string:loot_schematic.schematic=object/draft_schematic/spices/spice_giggledust.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_scramjet			string:loot_schematic.schematic=object/draft_schematic/spices/spice_scramjet.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_gunjack			string:loot_schematic.schematic=object/draft_schematic/spices/spice_gunjack.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_h4b			string:loot_schematic.schematic=object/draft_schematic/spices/spice_sedative_h4b.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_droid_lube			string:loot_schematic.schematic=object/draft_schematic/spices/spice_droid_lube.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_shadowpaw			string:loot_schematic.schematic=object/draft_schematic/spices/spice_shadowpaw.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_muon_gold			string:loot_schematic.schematic=object/draft_schematic/spices/spice_muon_gold.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_sweetblossom			string:loot_schematic.schematic=object/draft_schematic/spices/spice_sweetblossoom.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_crash_n_burn			string:loot_schematic.schematic=object/draft_schematic/spices/spice_crash_n_burn.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_thruster_head			string:loot_schematic.schematic=object/draft_schematic/spices/spice_thruster_head.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_grey_gabaki			string:loot_schematic.schematic=object/draft_schematic/spices/spice_grey_gabaki.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_neutron_pixey			string:loot_schematic.schematic=object/draft_schematic/spices/spice_neutron_pixey.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
+item_schematic_spice_booster_blue			string:loot_schematic.schematic=object/draft_schematic/spices/spice_booster_blue.iff,string:loot_schematic.skill_req=class_smuggler_phase4_master,int:loot_schematic.uses=1								
 item_cs_dna_mutated_narglatch			string:beast.dna.creature_template=object/mobile/beast_master/bm_mutated_narglatch.iff,float:beast.dna.quality=90.000000,int:beast.dna.cs_item=1								
 item_cs_dna_nexu			string:beast.dna.creature_template=object/mobile/beast_master/bm_nexu.iff,float:beast.dna.quality=90.000000,int:beast.dna.cs_item=1								
 item_cs_dna_reek			string:beast.dna.creature_template=object/mobile/beast_master/bm_reek.iff,float:beast.dna.quality=90.000000,int:beast.dna.cs_item=1								
@@ -4795,3 +4795,5 @@ item_ring_set_ent_01_01	strength_modified=30,agility_modified=30		int:item.set.s
 item_ring_set_trader_01_01	luck_modified=30,precision_modified=30,strength_modified=30		int:item.set.set_id=140001								
 rebel_trooper_hat_schematic			string:loot_schematic.schematic=object/draft_schematic/clothing/clothing_hat_rebel_trooper.iff,int:loot_schematic.uses=1,string:loot_schematic.skill_req=class_domestics_phase4_master								
 item_tauntaun_dna			string:beast.dna.creature_template=object/mobile/beast_master/bm_tauntaun.iff,float:beast.dna.quality=90.000000,int:beast.dna.cs_item=1								
+item_schematic_stardestroyer			int:loot_schematic.type=1,string:loot_schematic.skill_req=class_structures_phase4_novice,string:loot_schematic.schematic=object/draft_schematic/space/chassis/stardestroyer.iff,int:loot_schematic.uses=1								
+item_ship_deed_stardestroyer			float:ship_chassis.hp=9000.0,float:ship_chassis.mass=9600000.0,string:ship_chassis.type=stardestroyer								

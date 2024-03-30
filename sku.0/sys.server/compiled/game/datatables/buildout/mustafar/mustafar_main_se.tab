@@ -771,3 +771,4 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 3465393	3465379	object/cell/cell.iff	14	0	0	0	1	0	0	0		$|
 3465394	3465379	object/cell/cell.iff	15	0	0	0	1	0	0	0		$|
 -54117327	0	object/tangible/ground_spawning/area_spawner.iff	0	1105.91	101	3335.31	-0.478762	0	0	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|heroic_echo_darth_vader|strSpawnerType|4|area|strSpawns|4|heroic_echo_darth_vader|$|
+-54117326	0	object/tangible/ground_spawning/area_spawner.iff	0	950	230	2680	-0.478762	0	0.792641	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|vendor_mustafar|strSpawnerType|4|area|strSpawns|4|vendor_mustafar|$|

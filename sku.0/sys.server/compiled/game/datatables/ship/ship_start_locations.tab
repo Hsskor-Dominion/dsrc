@@ -100,4 +100,4 @@ object/ship/player/player_gunship_rebel.iff		bridge	0	1.8	15.4
 		storage3	5.7	-3.5	-4.2	
 		storage4	-5.7	-3.5	-4.2	
 object/ship/player/player_havoc.iff	ship_gunner1					
-object/ship/player/player_imperial_star_destroyer.iff		mainhangar	0	2	39.3	
+object/ship/player/player_stardestroyer.iff		mainhangar	0	2	39.3	

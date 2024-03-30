@@ -50,26 +50,26 @@ clothing_experimentation	1055	1056	4	1
 structure_assembly	1095	1100	3	
 expertise_damage_weapon_9	1111	1118	14	
 structure_experimentation	1136	1141	4	1
-chassis_assembly	1177	1184	3	
-engine_assembly	1218	1220	3	
+chassis_assembly	1177	1184	1	
+engine_assembly	1218	1220	1	
 expertise_damage_weapon_10	1241	1247	14	
-booster_assembly	1259	1264	3	
-power_systems	1300	1305	3	
+booster_assembly	1259	1264	1	
+power_systems	1300	1305	1	
 expertise_damage_weapon_11	1310	1316	14	
-weapon_systems	1341	1346	3	
-shields_assembly	1382	1392	3	
-advanced_assembly	1420	1426	3	
+weapon_systems	1341	1346	1	
+shields_assembly	1382	1392	1	
+advanced_assembly	1420	1426	1	
 cybernetic_experimentation	1430	1460	4	1
-chassis_experimentation	1464	1470	4	1
+chassis_experimentation	1464	1470	1	1
 expertise_action_weapon_0	1496	1500	10	
-weapon_systems_experimentation	1510	1512	4	1
-engine_experimentation	1546	1552	4	1
+weapon_systems_experimentation	1510	1512	1	1
+engine_experimentation	1546	1552	1	1
 cybernetic_assembly	1555	1585	3	
-booster_experimentation	1587	1594	4	1
+booster_experimentation	1587	1594	1	1
 expertise_action_weapon_1	1600	1609	10	
-power_systems_experimentation	1628	1633	4	1
-shields_experimentation	1669	1676	4	1
-advanced_ship_experimentation	1710	1715	4	1
+power_systems_experimentation	1628	1633	1	1
+shields_experimentation	1669	1676	1	1
+advanced_ship_experimentation	1710	1715	1	1
 camouflage	1751	1762	1	
 camouflage	1792	1797	1	
 expertise_action_weapon_2	1820	1821	10	

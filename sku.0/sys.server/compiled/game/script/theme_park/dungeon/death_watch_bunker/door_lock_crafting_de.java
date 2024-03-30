@@ -30,7 +30,7 @@ public class door_lock_crafting_de extends script.base_script
                 messageTo(self, "unlockTerminal", null, 30, false);
                 return SCRIPT_CONTINUE;
             }
-            if (hasSkill(player, "class_engineering_phase4_master"))
+            if (hasSkill(player, "expertise_munition_armorsmith_advanced_theory_1"))
             {
                 if (checkForIngredients(player))
                 {
@@ -62,13 +62,10 @@ public class door_lock_crafting_de extends script.base_script
     }
     public boolean checkForIngredients(obj_id player) throws InterruptedException
     {
-        if (utils.playerHasItemByTemplate(player, "object/tangible/loot/dungeon/death_watch_bunker/mining_drill_reward.iff"))
-        {
-            if (utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bracer_r.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bracer_l.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff"))
+            if (utils.playerHasItemByTemplate(player, "object/tangible/loot/dungeon/death_watch_bunker/mining_drill_reward.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bicep_r.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bicep_l.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_chest_plate.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bracer_l.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_bracer_r.iff") || utils.playerHasItemByTemplate(player, "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_leggings.iff"))
             {
                 return true;
             }
-        }
         return false;
     }
     public int unlockTerminal(obj_id self, dictionary params) throws InterruptedException
@@ -106,3 +103,4 @@ public class door_lock_crafting_de extends script.base_script
         return SCRIPT_CONTINUE;
     }
 }
+//

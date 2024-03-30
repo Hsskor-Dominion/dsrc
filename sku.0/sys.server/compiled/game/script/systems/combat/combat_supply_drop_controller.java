@@ -46,28 +46,77 @@ public class combat_supply_drop_controller extends script.base_script
         int supplyId = params.getInt("supplyId");
         location loc = getLocation(self);
         String itemString = "";
-        switch (supplyId)
+
+        if (factions.isImperial(owner))
         {
-            case 13:
-            itemString = "officer_reinforcement_1";
-            break;
-            case 14:
-            itemString = "officer_reinforcement_2";
-            break;
-            case 15:
-            itemString = "officer_reinforcement_3";
-            break;
-            case 16:
-            itemString = "officer_reinforcement_4";
-            break;
-            case 17:
-            itemString = "officer_reinforcement_5";
-            break;
+            switch (supplyId)
+            {
+                case 13:
+                    itemString = "officer_reinforcement_imperial_1";
+                    break;
+                case 14:
+                    itemString = "officer_reinforcement_imperial_2";
+                    break;
+                case 15:
+                    itemString = "officer_reinforcement_imperial_3";
+                    break;
+                case 16:
+                    itemString = "officer_reinforcement_imperial_4";
+                    break;
+                case 17:
+                    itemString = "officer_reinforcement_imperial_5";
+                    break;
+            }
         }
-        if (supplyId > 12 && supplyId <= 17 && (itemString != null || !itemString.equals("")))
+        else if (factions.isRebel(owner))
+        {
+            switch (supplyId)
+            {
+                case 13:
+                    itemString = "officer_reinforcement_rebel_1";
+                    break;
+                case 14:
+                    itemString = "officer_reinforcement_rebel_2";
+                    break;
+                case 15:
+                    itemString = "officer_reinforcement_rebel_3";
+                    break;
+                case 16:
+                    itemString = "officer_reinforcement_rebel_4";
+                    break;
+                case 17:
+                    itemString = "officer_reinforcement_rebel_5";
+                    break;
+            }
+        }
+        else
+        {
+            // For neutral players without a faction
+            switch (supplyId)
+            {
+                case 13:
+                    itemString = "officer_reinforcement_1";
+                    break;
+                case 14:
+                    itemString = "officer_reinforcement_2";
+                    break;
+                case 15:
+                    itemString = "officer_reinforcement_3";
+                    break;
+                case 16:
+                    itemString = "officer_reinforcement_4";
+                    break;
+                case 17:
+                    itemString = "officer_reinforcement_5";
+                    break;
+            }
+        }
+
+        if (supplyId > 12 && supplyId <= 17 && !itemString.isEmpty())
         {
             summonOfficerPet(owner, itemString, loc);
         }
+
         dictionary d = new dictionary();
         d.put("owner", owner);
         messageTo(self, "startTakeOffSequence", d, 2.0f, false);

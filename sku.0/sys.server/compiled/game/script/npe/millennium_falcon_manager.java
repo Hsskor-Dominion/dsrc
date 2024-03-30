@@ -119,10 +119,10 @@ public class millennium_falcon_manager extends script.base_script
         sequencer.registerSequenceObject(dayan, "dayan");
         setInvulnerable(dayan, true);
         obj_id jabbaInvis = create.object("object/tangible/npe/npe_node.iff", hanLoc);
-        setName(jabbaInvis, "Darth Vader");
-        sequencer.registerSequenceObject(jabbaInvis, "vader");
-        setObjVar(jabbaInvis, "convo.appearance", "object/mobile/darth_vader.iff");
-        utils.setScriptVar(self, "objVader", jabbaInvis);
+        setName(jabbaInvis, "Thrawn");
+        sequencer.registerSequenceObject(jabbaInvis, "thrawn");//replaces darth vader
+        setObjVar(jabbaInvis, "convo.appearance", "object/mobile/naboo_npc/thrawn.iff");
+        utils.setScriptVar(self, "objThrawn", jabbaInvis);
         return SCRIPT_CONTINUE;
     }
     public int phaseTwo(obj_id self, dictionary params) throws InterruptedException
@@ -191,7 +191,7 @@ public class millennium_falcon_manager extends script.base_script
         destroyObject(utils.getObjIdScriptVar(self, "objChewie"));
         destroyObject(utils.getObjIdScriptVar(self, "objDroid"));
         destroyObject(utils.getObjIdScriptVar(self, "objDayan"));
-        destroyObject(utils.getObjIdScriptVar(self, "objVader"));
+        destroyObject(utils.getObjIdScriptVar(self, "objThrawn"));
         destroyObject(utils.getObjIdScriptVar(self, "objPoint1"));
         destroyObject(utils.getObjIdScriptVar(self, "objPoint2"));
         destroyObject(utils.getObjIdScriptVar(self, "objPoint3"));
