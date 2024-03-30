@@ -161,7 +161,7 @@ public class terminal extends script.terminal.base.base_terminal
         obj_id structure = player_structure.getStructure(player);
         if (item == menu_info_types.SERVER_MENU13)
         {
-            //this eventually will either show vulnerability time or make the base vulnerable
+            hq.loadHqTerminals(self);
         }
         int intState = getState(player, STATE_FEIGN_DEATH);
         if (isDead(player) || isIncapacitated(player) || intState > 0)

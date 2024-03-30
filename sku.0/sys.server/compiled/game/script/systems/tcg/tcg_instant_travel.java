@@ -368,6 +368,22 @@ public class tcg_instant_travel extends script.base_script
         {
             return false;
         }
+        obj_id[] nearbyObjects = getObjectsInRange(here, 64);
+        boolean hasShuttleBeacon = false;
+
+        for (obj_id nearbyObject : nearbyObjects)
+        {
+            String template = getTemplateName(nearbyObject);
+            if (template != null && template.equals("object/tangible/camp/camp_shuttle_beacon.iff"))
+            {
+                hasShuttleBeacon = true;
+                break;
+            }
+        }
+        if (!hasShuttleBeacon)
+        {
+            return false;
+        }
         return true;
     }
     public boolean isOwner(obj_id object, obj_id player) throws InterruptedException

@@ -19,6 +19,7 @@ public class masterspawner extends script.base_script
         messageTo(self, "doGuards", null, 10, true);
         messageTo(self, "doMonks", null, 30, true);
         messageTo(self, "doGating", null, 20, true);
+        setObjVar(self, "healing.canhealshock", 1);
         return SCRIPT_CONTINUE;
     }
     public int OnHearSpeech(obj_id self, obj_id speaker, String text) throws InterruptedException

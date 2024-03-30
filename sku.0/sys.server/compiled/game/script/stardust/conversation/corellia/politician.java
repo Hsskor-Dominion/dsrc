@@ -287,14 +287,11 @@ public class politician extends script.base_script
             final string_id message = new string_id(c_stringFile, "npc_very_well");
             revokeSkill(player, "stardust_pvp");
             revokeSkill(player, "stardust_spy");
-            revokeSkill(player, "faction_rank_mando");
             revokeSkill(player, "faction_rank_mando_novice");
-            revokeSkill(player, "faction_rank_mando_master");
-            revokeSkill(player, "faction_rank_mando_master");
             revokeSkill(player, "stardust_admiral_imperial");
             revokeSkill(player, "stardust_admiral_republic");
-            factions.addFactionStanding(player, "underworld", -5000.0f);
             factions.addFactionStanding(player, "underworld", 10000.0f);
+            factions.addFactionStanding(player, "underworld", -5000.0f);
 
             utils.removeScriptVar(player, "conversation.politician_conversation.branchId");
             npcEndConversationWithMessage(player, message);

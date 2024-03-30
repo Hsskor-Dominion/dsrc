@@ -1,10 +1,9 @@
 dungeon	enter_one	enter_two	exit_one	exit_two	min_players	max_players	key_required	failure_string	player_script	time_limit	lockoutTimer	vehicle_allowed
 s[required]	s[0,0,0,none]	s[0,0,0,none]	s[0,0,0,tatooine]	s[0,0,0,tatooine]	i[0]	i[8]	s[none]	s[no_key]	s[none]	i[3600]	e(none=0,daily=1)[none]	i[0]
-heroic_axkva_min	30,30,0,r1		-3956,0,-47,dathomir				heroic_axkva_min				none	
+heroic_axkva_min	30,30,0,r1		-3956,0,-47,dathomir								none	
 heroic_ig88	0,0,43,r1		416,0,5268,lok				heroic_ig88				none	
 heroic_tusken_army	321,0,52,none		-3051,0,2611,tatooine				heroic_tusken_army		theme_park.heroic.tusken.tusken_player	7200	none	1
 heroic_star_destroyer	0,173,30,secondaryhangar		-137,0,-4723,corellia				heroic_star_destroyer			7200	none	
-heroic_scorekeeper	0,173,30,secondaryhangar		-3085,200,5351,endor							7200	none	
 heroic_exar_kun	-11,0,-131.69,r1		5096,0,5511,yavin4				heroic_exar_kun			7200	none	
 uplink_cave	-85,0,128,mainroom		-3601,158,3486,mustafar				uplink_cave		theme_park.dungeon.mustafar_trials.establish_the_link.link_player		none	
 old_republic_facility	12,0,0,entrance		-768,87,6078,mustafar				old_republic_facility				none	

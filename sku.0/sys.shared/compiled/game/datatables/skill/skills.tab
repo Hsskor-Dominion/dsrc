@@ -2055,7 +2055,7 @@ expertise_me_traumatize_1	expertise_me_dot_duration_4									expertise_me_dot_d
 expertise_me_traumatize_2	expertise_me_traumatize_1																					stamina_modified=25			0	
 expertise_me_traumatize_3	expertise_me_traumatize_2																					stamina_modified=25			0	
 expertise_me_traumatize_4	expertise_me_traumatize_3																					stamina_modified=25			0	
-expertise_me_thyroid_rupture_1	expertise_me_revive_duration_4									expertise_me_revive_duration_4															0	
+expertise_me_thyroid_rupture_1	expertise_me_revive_duration_4									expertise_me_revive_duration_4											me_thyroid_rupture_1				0	
 expertise_me_strength_1	expertise																					strength_modified=10			0	
 expertise_me_strength_2	expertise_me_strength_1																					strength_modified=10			0	
 expertise_me_strength_3	expertise_me_strength_2																					strength_modified=10			0	

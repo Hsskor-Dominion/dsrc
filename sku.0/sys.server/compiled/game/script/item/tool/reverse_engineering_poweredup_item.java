@@ -5,6 +5,7 @@ import script.library.reverse_engineering;
 import script.library.sui;
 import script.library.trial;
 import script.library.utils;
+import script.library.ai_lib;
 
 public class reverse_engineering_poweredup_item extends script.base_script
 {
@@ -37,7 +38,23 @@ public class reverse_engineering_poweredup_item extends script.base_script
         addSkillModModifier(player, slotName + "_powerup", mod, (int)finalPower, -1, false, false);
         reverse_engineering.applyBuffIcon(player, self);
         reverse_engineering.recalcPoolsIfNeeded(player, mod);
+
         return SCRIPT_CONTINUE;
+    }
+    private void damageItem(obj_id item, int amount) throws InterruptedException
+    {
+        int curHp = getHitpoints(item);
+        int newHp = curHp - amount;
+
+        if (newHp <= 0)
+        {
+            // Item is destroyed
+            destroyObject(item);
+        }
+        else
+        {
+            setHitpoints(item, newHp);
+        }
     }
     public int OnAboutToBeTransferred(obj_id self, obj_id destContainer, obj_id transferer) throws InterruptedException
     {
@@ -67,7 +84,7 @@ public class reverse_engineering_poweredup_item extends script.base_script
             {
                 return SCRIPT_CONTINUE;
             }
-            else 
+            else
             {
                 int power = getIntObjVar(self, reverse_engineering.ENGINEERING_POWER);
                 String mod = getStringObjVar(self, reverse_engineering.ENGINEERING_MODIFIER);
@@ -79,10 +96,17 @@ public class reverse_engineering_poweredup_item extends script.base_script
                 }
                 if (!hasSkillModModifier(transferer, slotName + "_powerup"))
                 {
-                    obj_id player = getFirstParentInWorld(self);
-                    reverse_engineering.applyBuffIcon(player, self);
-                    addSkillModModifier(player, slotName + "_powerup", mod, (int)finalPower, -1, false, false);
-                    reverse_engineering.recalcPoolsIfNeeded(player, mod);
+                    obj_id player = utils.getContainingPlayer(self); // Get the player object
+                    if (isIdValid(player))
+                    {
+                        obj_id itemWithPowerUp = getObjectInSlot(player, slotName); // Get the equipped item
+                        reverse_engineering.applyBuffIcon(player, itemWithPowerUp); // Apply buff icon to the equipped item
+                        addSkillModModifier(player, slotName + "_powerup", mod, (int)finalPower, -1, false, false);
+                        reverse_engineering.recalcPoolsIfNeeded(player, mod);
+                        // Apply damage to the equipped item
+                        damageItem(itemWithPowerUp, 10);
+                        sendSystemMessage(player, new string_id("stardust", "testing_stuff"));
+                    }
                 }
             }
         }

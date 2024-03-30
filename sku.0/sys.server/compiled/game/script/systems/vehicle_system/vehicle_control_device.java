@@ -2,6 +2,7 @@ package script.systems.vehicle_system;
 
 import script.*;
 import script.library.*;
+import script.library.vehicle;
 
 import java.util.Vector;
 
@@ -25,6 +26,11 @@ public class vehicle_control_device extends script.base_script
     public static final int TCG_PCD_OLD_MAX_HEALTH = 1500;
     public static final int TCG_PCD_OLD_NEW_DIFFERENCE = 13500;
     public static final String TCG_VEHICLE_PCD_UPDATED = "tcg.vehicle_pcd_maxhealth_update";
+    private static final float DECAY_DURATION = 3600.0f; // Decay duration in seconds
+    private static final String DECAY_TIMER = "vehicle_decay_timer"; // Timer name for decay
+    public static final int VEHICLE_DECAY_CYCLE = 60;
+
+
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         if (debug)
@@ -119,35 +125,26 @@ public class vehicle_control_device extends script.base_script
         }
         return SCRIPT_CONTINUE;
     }
-    public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
-    {
-        if (item == menu_info_types.VEHICLE_GENERATE)
-        {
-            if (ai_lib.aiIsDead(player))
-            {
+    public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException {
+        if (item == menu_info_types.VEHICLE_GENERATE) {
+            if (ai_lib.aiIsDead(player)) {
                 sendSystemMessage(player, vehicle.SID_NOT_WHILE_DEAD);
                 return SCRIPT_CONTINUE;
             }
-            if (callable.hasCallable(player, callable.CALLABLE_TYPE_RIDEABLE) && callable.getControlDeviceType(self) == callable.CALLABLE_TYPE_RIDEABLE)
-            {
+            if (callable.hasCallable(player, callable.CALLABLE_TYPE_RIDEABLE) && callable.getControlDeviceType(self) == callable.CALLABLE_TYPE_RIDEABLE) {
                 obj_id cd = callable.getCallableCD(callable.getCallable(player, callable.CALLABLE_TYPE_RIDEABLE));
-                if (cd != self)
-                {
+                if (cd != self) {
                     sendSystemMessage(player, pet_lib.SID_SYS_CANT_CALL_ANOTHER_RIDEABLE);
                     return SCRIPT_CONTINUE;
-                }
-                else 
-                {
+                } else {
                     vehicle.storeVehicle(self, player);
                     callable.restoreCallable(player);
                     return SCRIPT_CONTINUE;
                 }
             }
-            if (callable.hasCDCallable(self))
-            {
+            if (callable.hasCDCallable(self)) {
                 obj_id currentPet = callable.getCDCallable(self);
-                if (isIdValid(currentPet))
-                {
+                if (isIdValid(currentPet)) {
                     dictionary dict = new dictionary();
                     dict.put("signalId", getGameTime());
                     sendSystemMessage(player, SID_FAILED_TO_CALL);
@@ -156,80 +153,142 @@ public class vehicle_control_device extends script.base_script
                     sendDirtyObjectMenuNotification(self);
                     CustomerServiceLog("vehicle_bug", "VCD-OnObjectMenuSelect::Sent signal to destroy with ID: " + dict.getInt("signalId"));
                     return SCRIPT_CONTINUE;
-                }
-                else 
-                {
+                } else {
                     callable.setCDCallable(self, null);
                     sendDirtyObjectMenuNotification(self);
                 }
             }
-            if (!vehicle.isInValidUnpackLocation(player))
-            {
+            if (!vehicle.isInValidUnpackLocation(player)) {
                 return SCRIPT_CONTINUE;
             }
-            if (callable.getControlDeviceType(self) == callable.CALLABLE_TYPE_RIDEABLE && getMovementPercent(player) == 0.0f)
-            {
+            if (callable.getControlDeviceType(self) == callable.CALLABLE_TYPE_RIDEABLE && getMovementPercent(player) == 0.0f) {
                 sendSystemMessage(player, new string_id("pet/pet_menu", "cant_call_vehicle_rooted"));
                 return SCRIPT_CONTINUE;
             }
-            if (ai_lib.isInCombat(player))
-            {
+            if (ai_lib.isInCombat(player)) {
                 sendSystemMessage(player, vehicle.SID_NOT_WHILE_IN_COMBAT);
                 return SCRIPT_CONTINUE;
             }
-            if (callable.getControlDeviceType(self) == callable.CALLABLE_TYPE_RIDEABLE && callable.hasCallable(player, callable.CALLABLE_TYPE_FAMILIAR))
-            {
+            if (callable.getControlDeviceType(self) == callable.CALLABLE_TYPE_RIDEABLE && callable.hasCallable(player, callable.CALLABLE_TYPE_FAMILIAR)) {
                 obj_id objCallable = callable.getCallable(player, callable.CALLABLE_TYPE_FAMILIAR);
                 callable.storeCallable(player, objCallable);
             }
-            if (callable.getControlDeviceType(self) == callable.CALLABLE_TYPE_RIDEABLE && callable.hasCallable(player, callable.CALLABLE_TYPE_COMBAT_PET))
-            {
+            if (callable.getControlDeviceType(self) == callable.CALLABLE_TYPE_RIDEABLE && callable.hasCallable(player, callable.CALLABLE_TYPE_COMBAT_PET)) {
                 obj_id objCallable = callable.getCallable(player, callable.CALLABLE_TYPE_COMBAT_PET);
-                if (beast_lib.isBeast(objCallable))
-                {
+                if (beast_lib.isBeast(objCallable)) {
                     utils.setScriptVar(player, callable.SCRIPTVAR_RIDEABLE_PACKED_CALLABLE, callable.getCallableCD(objCallable));
                 }
                 callable.storeCallable(player, objCallable);
             }
             obj_id vehicle = createVehicle(player, self);
-            if (!isIdValid(vehicle))
-            {
+            if (!isIdValid(vehicle)) {
                 LOG("vehicle-bug", "OnObjectMenuSelect(): failed to create vehicle");
                 return SCRIPT_CONTINUE;
             }
+
+            // Start the decay timer
+            utils.setScriptVar(vehicle, DECAY_TIMER, getGameTime() + DECAY_DURATION);
+
+            // Call the decay handler function
+            handleVehicleDecay(vehicle);
+
             return SCRIPT_CONTINUE;
-        }
-        else if (item == menu_info_types.VEHICLE_STORE)
-        {
-            if (callable.hasCDCallable(self))
-            {
+        } else if (item == menu_info_types.VEHICLE_STORE) {
+            if (callable.hasCDCallable(self)) {
                 obj_id currentPet = callable.getCDCallable(self);
-                if (isIdValid(currentPet))
-                {
+                if (isIdValid(currentPet)) {
                     vehicle.storeVehicle(self, player);
                     callable.restoreCallable(player);
                     return SCRIPT_CONTINUE;
-                }
-                else 
-                {
+                } else {
                     callable.setCDCallable(self, null);
                     sendDirtyObjectMenuNotification(self);
                     LOG("vehicle-bug", "OnObjectMenuSelect(): vcd id=[" + self + "] selected VEHICLE_STORE but the scriptvar on the VCD is INVALID, setting count to zero anyway.");
                 }
-            }
-            else 
-            {
+            } else {
                 sendDirtyObjectMenuNotification(self);
                 LOG("vehicle-bug", "OnObjectMenuSelect(): vcd id=[" + self + "] selected VEHICLE_STORE but the VCD has no scriptvar, setting count to zero anyway.");
             }
             return SCRIPT_CONTINUE;
-        }
-        else 
-        {
+        } else {
             LOG("", "Radial menu selection not in available list: " + item);
         }
         return SCRIPT_CONTINUE;
     }
+
+    public void handleVehicleDecay(obj_id vehicle) throws InterruptedException {
+        if (isIdValid(vehicle) && utils.hasScriptVar(vehicle, DECAY_TIMER)) {
+            // Check if the decay timer has expired
+            float decayTime = utils.getFloatScriptVar(vehicle, DECAY_TIMER);
+            if (getGameTime() >= decayTime) {
+                // Perform decay actions here
+                performVehicleDecay(vehicle);
+                // Perform any necessary cleanup after decay
+                // ...
+            } else {
+                // Schedule the next check for decay
+                float timeRemaining = decayTime - getGameTime();
+                messageTo(vehicle, "handleVehicleDecay", null, timeRemaining, false);
+            }
+        }
+    }
+
+    public void performVehicleDecay(obj_id vehicle) throws InterruptedException {
+        if (!isIdValid(vehicle)) {
+            return;
+        }
+        int now = getGameTime();
+        float decay_rate = getVehicleDecayRate(vehicle);
+        if (decay_rate <= 0.0f) {
+            return;
+        }
+        int decayAmt;
+        if (utils.hasScriptVar(vehicle, "decay.stamp")) {
+            int stamp = utils.getIntScriptVar(vehicle, "decay.stamp");
+            int delta = now - stamp;
+            float ratio = delta / VEHICLE_DECAY_CYCLE;
+            decayAmt = Math.round(ratio * decay_rate);
+        } else {
+            decayAmt = Math.round(decay_rate / 2.0f);
+        }
+        if (decayAmt <= 0) {
+            return;
+        }
+        int currentHP = getHitpoints(vehicle);
+        currentHP -= decayAmt;
+        setHitpoints(vehicle, currentHP);
+        obj_id vcd = callable.getCallableCD(vehicle);
+        dictionary params = new dictionary();
+        params.put("hp", currentHP);
+        params.put("penalty", decayAmt);
+        messageTo(vcd, "handleStoreVehicleDamage", params, 0.0f, false);
+        utils.setScriptVar(vehicle, "decay.stamp", now);
+        messageTo(vehicle, "handleVehicleDecay", null, VEHICLE_DECAY_CYCLE, false);
+    }
+    public static String getVehicleReference2(obj_id controlDevice) throws InterruptedException
+    {
+        if (!isIdValid(controlDevice))
+        {
+            return null;
+        }
+        return getStringObjVar(controlDevice, "vehicle_attribs.object_ref");
+    }
+    public float getVehicleDecayRate(obj_id vehicle) throws InterruptedException {
+        if (!isIdValid(vehicle)) {
+            return -1.0f;
+        }
+        obj_id controlDevice = callable.getCallableCD(vehicle);
+        if (!isIdValid(controlDevice)) {
+            return -1.0f;
+        }
+        String ref = getVehicleReference2(controlDevice);
+        if (ref == null || ref.equals("")) {
+            return -1.0f;
+        }
+        // Adjust this line to retrieve the decay rate from your custom vehicle table
+        return dataTableGetFloat(create.VEHICLE_TABLE, ref, "DECAY_RATE");
+    }
+
     public void destroyCurrentPet(obj_id petControlDevice) throws InterruptedException
     {
         if (callable.hasCDCallable(petControlDevice))
