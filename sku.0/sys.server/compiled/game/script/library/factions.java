@@ -39,6 +39,7 @@ public class factions extends script.base_script
     public static final String FACTION_REBEL = "Rebel";
     public static final String FACTION_HUTT = "Hutt";
     public static final String FACTION_NEUTRAL = "Neutral";
+    public static final String DEATH_WATCH = "death_watch";
     public static final int FACTION_FLAG_UNKNOWN = 0;
     public static final int FACTION_FLAG_REBEL = 1;
     public static final int FACTION_FLAG_IMPERIAL = 2;
@@ -771,6 +772,14 @@ public class factions extends script.base_script
             if ((utils.getPlayerProfession(target) == utils.BOUNTY_HUNTER) && (factionName.equals("underworld")))
             {
                 smuggler.checkBountyTitleGrants(target, value);
+            }
+            setObjVar(target, FACTION + "." + factionName, value);
+        }
+        if (value != 0.0f)
+        {
+            if (factionName.equals("death_watch"))
+            {
+                smuggler.checkMandoTitleGrants(target, value);
             }
             setObjVar(target, FACTION + "." + factionName, value);
         }

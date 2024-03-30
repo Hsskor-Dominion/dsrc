@@ -2,8 +2,8 @@ item	cash	token0	token1	token2	token3	token4	token5	token6	token7	token8	token9	
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
 item_pgc_planet_hologram_yavin4	100000																	"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
 item_pgc_planet_hologram_yavin4_02	100000																	"So in the case of this table only traders will see the ""all"" items."
-item_tcg_loot_reward_series1_radtrooper_badge	10000																	
-item_tcg_loot_reward_series3_hh_15_torpedo_warhead	15000																	
+item_tcg_loot_reward_series1_radtrooper_badge	100000																	
+item_tcg_loot_reward_series3_hh_15_torpedo_warhead	100000																	
 item_gcw_imperial_token									1									
 armor_galactic_marine_belt									5									
 armor_galactic_marine_bicep_l									5									
@@ -23,7 +23,6 @@ weapon_westar_rifle_04_01									5
 weapon_knuckler_buzz_knuck									5									
 weapon_sword_1h_pvp_04_01									5									
 weapon_sword_2h_pvp_04_01									5									
-item_tcg_loot_reward_series7_deed_vehicle_garage									20									
 item_tcg_loot_reward_series7_deed_commando_bunker									20									
 item_tcg_loot_reward_series7_deed_vip_bunker									20									
 item_tcg_loot_reward_series7_armored_backpack									5									
@@ -31,4 +30,4 @@ item_tcg_loot_reward_series5_atat_head_itv									20
 item_tcg_loot_reward_series5_atat_blueprint									20									
 item_tcg_loot_reward_series5_atat_statuette									20									
 item_tcg_loot_reward_series7_atst_chair									20									
-item_tcg_loot_reward_series6_deed_emperor_spire									20
+item_tcg_loot_reward_series6_deed_emperor_spire									20									

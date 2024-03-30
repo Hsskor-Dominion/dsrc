@@ -12,7 +12,7 @@ public class handoff_to_tatooine extends script.base_script
     public static final String questNewbieStart = "quest/legacy_button_start";
     public static final String questNewbieStartSmuggler = "quest/speeder_quest";
     public static final String questNewbieStartSpy = "quest/naboo_send_to_lt_jasper";
-    public static final String questNewbieStartBH = "quest/u13_vengeance_sidequest";
+    public static final String questNewbieStartBH = "quest/stardust_send_to_boba";
     public static final String questCrafterEntertainer = "quest/tatooine_eisley_noncombat";
     public int OnLogin(obj_id self) throws InterruptedException
     {

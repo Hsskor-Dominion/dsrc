@@ -2,6 +2,7 @@ package script.systems.vehicle_system;
 
 import script.*;
 import script.library.*;
+import script.library.vehicle;
 
 public class vehicle_base extends script.base_script
 {
@@ -14,6 +15,45 @@ public class vehicle_base extends script.base_script
     public static final string_id SID_CITY_GARAGE_BANNED = new string_id("city/city", "garage_banned");
     public static final string_id SID_NO_GROUND_VEHICLE_IN_SPACE = new string_id("space/space_interaction", "no_ground_vehicle_in_space");
     public static final boolean debug = false;
+    public static final int VEHICLE_DECAY_CYCLE = 60;
+    public static void decayVehicle(obj_id vehicle) throws InterruptedException {
+        if (!isIdValid(vehicle)) {
+            return;
+        }
+
+        int now = getGameTime();
+        float decay_rate = getVehicleDecayRate(vehicle);
+
+        int decayAmt;
+        if (utils.hasScriptVar(vehicle, "decay.stamp")) {
+            int stamp = utils.getIntScriptVar(vehicle, "decay.stamp");
+            int delta = now - stamp;
+            float ratio = delta / VEHICLE_DECAY_CYCLE;
+            decayAmt = Math.round(ratio * decay_rate);
+        } else {
+            decayAmt = Math.round(decay_rate / 2.0f);
+        }
+
+        decayAmt = Math.max(decayAmt, 10); // Set a minimum of 10 damage
+
+        int currentHP = getHitpoints(vehicle);
+        currentHP -= decayAmt;
+        setHitpoints(vehicle, currentHP);
+        obj_id vcd = callable.getCallableCD(vehicle);
+        dictionary params = new dictionary();
+        params.put("hp", currentHP);
+        params.put("penalty", decayAmt);
+        messageTo(vcd, "handleStoreVehicleDamage", params, 0.0f, false);
+        utils.setScriptVar(vehicle, "decay.stamp", now + VEHICLE_DECAY_CYCLE); // Update decay stamp for the next cycle
+
+        // Schedule the next decay cycle
+        messageTo(vehicle, "handleVehicleDecay", null, VEHICLE_DECAY_CYCLE, false);
+    }
+
+    public int handleVehicleDecay(obj_id self, dictionary params) throws InterruptedException {
+        decayVehicle(self); // Call the decay process
+        return SCRIPT_CONTINUE;
+    }
     public int revertVehicleMod(obj_id self, dictionary params) throws InterruptedException
     {
         if (params == null || !params.containsKey("type"))
@@ -43,6 +83,7 @@ public class vehicle_base extends script.base_script
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         setAttributeAttained(self, attrib.VEHICLE);
+        messageTo(self, "handleVehicleDecay", null, VEHICLE_DECAY_CYCLE, false);
         if (!hasScript(self, VCDPING_VEHICLE_SCRIPT_NAME))
         {
             if (debug)
@@ -89,10 +130,36 @@ public class vehicle_base extends script.base_script
         }
         return SCRIPT_CONTINUE;
     }
-    public int handleVehicleDecay(obj_id self, dictionary params) throws InterruptedException
+    public static String getVehicleReference(obj_id controlDevice) throws InterruptedException
+    {
+        if (!isIdValid(controlDevice))
+        {
+            return null;
+        }
+        return getStringObjVar(controlDevice, "vehicle_attribs.object_ref");
+    }
+    public static float getVehicleDecayRate(obj_id vehicle) throws InterruptedException {
+        if (!isIdValid(vehicle)) {
+            return -1.0f;
+        }
+
+        obj_id controlDevice = callable.getCallableCD(vehicle);
+        if (!isIdValid(controlDevice)) {
+            return -1.0f;
+        }
+
+        String ref = getVehicleReference(controlDevice);
+        if (ref == null || ref.equals("")) {
+            return -1.0f;
+        }
+
+        return dataTableGetFloat(create.VEHICLE_TABLE, ref, "DECAY_RATE");
+    }
+/*    public int handleVehicleDecay(obj_id self, dictionary params) throws InterruptedException
     {
         return SCRIPT_CONTINUE;
-    }
+    }*/
+
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
         if (isDead(self) || ai_lib.aiIsDead(player) || self == null || self == obj_id.NULL_ID || !isIdValid(self))

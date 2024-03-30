@@ -8,19 +8,19 @@ public class reverse_engineering extends script.base_script
     public reverse_engineering()
     {
     }
-    public static final String[] POWERUP_TYPES = 
+    public static final String[] POWERUP_TYPES =
     {
         "armor",
         "clothing",
         "weapon"
     };
-    public static final String[] POWERUP_SLOTS = 
+    public static final String[] POWERUP_SLOTS =
     {
         "chest2",
         "chest1",
         "hold_r"
     };
-    public static final String[] POWERUP_ITEMS = 
+    public static final String[] POWERUP_ITEMS =
     {
         "item_reverse_engineering_powerup_armor_02_01",
         "item_reverse_engineering_powerup_clothing_02_01",
@@ -77,7 +77,7 @@ public class reverse_engineering extends script.base_script
             }
             addModsAndScript(player, powerup, item);
         }
-        else 
+        else
         {
             sendSystemMessage(player, new string_id("spam", "powerup_must_equip_item"));
         }
@@ -192,7 +192,7 @@ public class reverse_engineering extends script.base_script
         {
             buffName = getMyBuffIconString(itemWithPowerUp);
         }
-        else 
+        else
         {
             buffName = getMyBuffIconInt(powerUp);
         }
@@ -228,24 +228,64 @@ public class reverse_engineering extends script.base_script
     {
         addModsAndScript(player, powerUp, itemToPowerUp, 0.0f);
     }
-    public static void addModsAndScript(obj_id player, obj_id powerUp, obj_id itemToPowerUp, float remainingTime) throws InterruptedException
-    {
+    public static void addModsAndScript(obj_id player, obj_id powerUp, obj_id itemToPowerUp, float remainingTime) throws InterruptedException {
         float timeStamp = getGameTime();
-        if (remainingTime > 0.0f)
-        {
+        if (remainingTime > 0.0f) {
             timeStamp = remainingTime;
         }
         setObjVar(itemToPowerUp, ENGINEERING_MODIFIER, getStringObjVar(powerUp, ENGINEERING_MODIFIER));
         setObjVar(itemToPowerUp, ENGINEERING_RATIO, getIntObjVar(powerUp, ENGINEERING_RATIO));
         setObjVar(itemToPowerUp, ENGINEERING_POWER, getIntObjVar(powerUp, ENGINEERING_POWER));
         setObjVar(itemToPowerUp, ENGINEERING_TIMESTAMP, timeStamp);
-        if (!isPoweredUpItem(itemToPowerUp))
-        {
+        if (!isPoweredUpItem(itemToPowerUp)) {
             attachScript(itemToPowerUp, POWERUP_SCRIPT);
         }
         powerUpAttached(player, itemToPowerUp);
         applyBuffIcon(player, powerUp, itemToPowerUp);
         static_item.decrementStaticItem(powerUp);
+
+        // Trigger damage on the item
+        int damageAmount = getDamageAmountByItemType(itemToPowerUp);
+        damageItem(itemToPowerUp, damageAmount, player);
+    }
+
+    private static void damageItem(obj_id item, int damageAmount, obj_id player) throws InterruptedException {
+        if (damageAmount <= 0) {
+            return;
+        }
+
+        int curHp = getHitpoints(item);
+        int newHp = curHp - damageAmount;
+
+        if (newHp <= 0) {
+            // Item is destroyed
+            destroyObject(item);
+            sendSystemMessage(player, new string_id("stardust/crafting", "item_destroyed"));
+        } else {
+            setHitpoints(item, newHp);
+        }
+
+        // Display damage message based on item type
+        String itemTemplateName = getTemplateName(item);
+        if (itemTemplateName.contains("armor")) {
+            sendSystemMessage(player, new string_id("stardust/crafting", "armor_damaged"));
+        } else if (itemTemplateName.contains("shirt")) {
+            sendSystemMessage(player, new string_id("stardust/crafting", "shirt_damaged"));
+        } else if (itemTemplateName.contains("weapon")) {
+            sendSystemMessage(player, new string_id("stardust/crafting", "weapon_damaged"));
+        }
+    }
+
+    private static int getDamageAmountByItemType(obj_id item) throws InterruptedException {
+        String itemTemplateName = getTemplateName(item);
+        if (itemTemplateName.contains("armor")) {
+            return 200;
+        } else if (itemTemplateName.contains("shirt")) {
+            return 2;
+        } else if (itemTemplateName.contains("weapon")) {
+            return 20;
+        }
+        return 0;
     }
     public static void removeModsAndScript(obj_id player, obj_id itemWithPowerUp) throws InterruptedException
     {

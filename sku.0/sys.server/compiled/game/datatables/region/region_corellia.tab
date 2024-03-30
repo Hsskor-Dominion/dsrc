@@ -199,7 +199,7 @@ vreni_island_deliver_15	circle	-5278.166504	-6426.113281	5		normal	default	0	0	s
 vreni_island_deliver_16	circle	-5300.422363	-6418.937012	5		normal	default	0	0	spawnFalse	corellia_vreni_island	0	0	0	0	
 vreni_island_deliver_17	circle	-5158.716309	-6426.324707	5		normal	default	0	0	spawnFalse	corellia_vreni_island	0	0	0	0	
 vreni_island_deliver_18	circle	-5157.971191	-6394.400391	5		normal	default	0	0	spawnFalse	corellia_vreni_island	0	0	0	0	
-@corellia_region_names:world_spawner	rectangle	-8000	-8000	8000	8000	normal	default	20	40	default	other	1	0	0	0	
+@corellia_region_names:world_spawner	rectangle	-8000	-8000	8000	8000	normal	default	7	40	default	other	1	0	0	0	
 sdungeon_rogue_corsec_bunker	circle	5225	1567	128		normal	city	0	0	spawnFalse	none	0	0	0	0	
 sdungeon_imperial_outpost	circle	4664	-5784	128		normal	city	0	0	spawnFalse	none	0	0	0	0	
 corellia_rebel_hideout	circle	-6506.5	5991.5	225		normal	city	0	0	spawnFalse	none	0	0	0	0	
@@ -281,20 +281,20 @@ eastedge_corellia_nobuild	rectangle	7640	-7640	8000	7640	normal	default	0	0	spaw
 old_battlefield_nobuild_cor1	circle	263	4620	256		normal	default	0	0	spawnFalse	none	0	0	0	0	
 old_battlefield_nobuild_cor2	circle	-1870	-1223	192		normal	default	0	0	spawnFalse	none	0	0	0	0	
 old_battlefield_nobuild_cor3	circle	3785	-4037	192		normal	default	0	0	spawnFalse	none	0	0	0	0	
-@corellia_region_names:se_medium	rectangle	290	-7858.666667	8000	-6070	normal	fictional	25	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:eastern_medium	rectangle	4090	-6075.333333	8000	4570	normal	fictional	25	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:southern_central_easy	rectangle	-2090	-6075.333333	4080	-1950	normal	fictional	20	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:southwestern_medium	rectangle	-7870	-5200	-2090	0	normal	fictional	20	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northwestern_medium	rectangle	-7875.333333	8	-2090	7870	normal	fictional	30	35	spawnTrue	none	1	0	0	0	
-@corellia_region_names:central_medium	rectangle	-2075.333333	-1958.666667	840	4570	normal	fictional	25	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:central_easy	rectangle	824.666667	-1958.666667	4090	4570	normal	fictional	20	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northeastern_hard	rectangle	-2092	4570	7950	7882	normal	fictional	35	40	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northeastern_dark_adept_hard	circle	5477.833333	7078.833333	250		normal	fictional	35	40	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northwestern_gronda_hard	circle	-3241	4099	250		normal	fictional	35	40	spawnTrue	none	1	0	0	0	
-@corellia_region_names:eastern_rogue_corsec_medium	circle	5135.666667	1635.666667	211		normal	fictional	25	30	spawnTrue	none	1	0	0	0	
-@corellia_region_names:lord_nyax_hard	circle	1649.666667	-500.333333	175		normal	fictional	30	40	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northern_beladonas_hard	circle	6229	5779	221		normal	fictional	35	40	spawnTrue	none	1	0	0	0	
-@corellia_region_names:northern_selonian_hard	circle	2441.5	5011.515432	250		normal	fictional	35	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:se_medium	rectangle	290	-7858.666667	8000	-6070	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:eastern_medium	rectangle	4090	-6075.333333	8000	4570	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:southern_central_easy	rectangle	-2090	-6075.333333	4080	-1950	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:southwestern_medium	rectangle	-7870	-5200	-2090	0	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northwestern_medium	rectangle	-7875.333333	8	-2090	7870	normal	fictional	7	35	spawnTrue	none	1	0	0	0	
+@corellia_region_names:central_medium	rectangle	-2075.333333	-1958.666667	840	4570	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:central_easy	rectangle	824.666667	-1958.666667	4090	4570	normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northeastern_hard	rectangle	-2092	4570	7950	7882	normal	fictional	7	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northeastern_dark_adept_hard	circle	5477.833333	7078.833333	250		normal	fictional	7	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northwestern_gronda_hard	circle	-3241	4099	250		normal	fictional	7	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:eastern_rogue_corsec_medium	circle	5135.666667	1635.666667	211		normal	fictional	7	30	spawnTrue	none	1	0	0	0	
+@corellia_region_names:lord_nyax_hard	circle	1649.666667	-500.333333	175		normal	fictional	7	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northern_beladonas_hard	circle	6229	5779	221		normal	fictional	7	40	spawnTrue	none	1	0	0	0	
+@corellia_region_names:northern_selonian_hard	circle	2441.5	5011.515432	250		normal	fictional	7	40	spawnTrue	none	1	0	0	0	
 tomi_jinsen_spawn_block	circle	-518	-5063	125		normal	city	0	0	spawnFalse	none	0	0	0	0	
 meatlump_1_spawn_block	circle	-143	-5016	75		normal	city	0	0	spawnFalse	none	0	0	0	0	
 meatlump_2_spawn_block	circle	-75	-4983	75		normal	city	0	0	spawnFalse	none	0	0	0	0	

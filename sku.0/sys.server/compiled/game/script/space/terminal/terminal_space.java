@@ -190,6 +190,7 @@ public class terminal_space extends script.terminal.base.base_terminal
                             }
                         }
                         launch(player, ship, membersApprovedByShipOwner, locFinalDestination, groundLoc);
+                        removeObjVar(player, "npe");
                     }
                     return SCRIPT_CONTINUE;
                 }

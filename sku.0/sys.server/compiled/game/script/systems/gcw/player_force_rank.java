@@ -37,7 +37,7 @@ public class player_force_rank extends script.base_script
     }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
-        detachScript(self, "systems.gcw.player_force_rank");
+        //detachScript(self, "systems.gcw.player_force_rank");
         return SCRIPT_OVERRIDE;
     }
     public int OnAttach(obj_id self) throws InterruptedException

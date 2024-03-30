@@ -148,7 +148,7 @@ public class masterspawner extends script.base_script
         spawnBoba(self, oola);
         spawnCrumb(self, oola);
         spawnBib(self, oola);
-	spawnFennec(self);
+        spawnFennec(self);
     }
     public void spawnGuards(obj_id self) throws InterruptedException
     {
@@ -220,7 +220,7 @@ public class masterspawner extends script.base_script
     }
     public obj_id spawnBib(obj_id self, obj_id oola) throws InterruptedException
     {
-        obj_id bib = create.staticObject("bib_fortuna", new location(-12.09f, 2.0f, 49.41f, "tatooine", getCellId(self, "throneroom")));
+        obj_id bib = create.staticObject("bib_fortuna", new location(-24f, 5f, 33f, "tatooine", getCellId(self, "throneroom")));
         faceTo(bib, oola);
         attachScript(bib, "theme_park.tatooine.jabbaspawner.bib");
         setObjVar(self, "PalaceInhabitants.bib", bib);
@@ -281,6 +281,7 @@ public class masterspawner extends script.base_script
         setObjVar(self, "PalaceInhabitants.sy", sy);
         setObjVar(sy, "palace", self);
         setObjVar(oola, "sy", sy);
+        setCondition(sy, CONDITION_INTERESTING);
     }
     public void spawnDroopy(obj_id self, obj_id oola) throws InterruptedException
     {
@@ -309,6 +310,7 @@ public class masterspawner extends script.base_script
         attachScript(crumb, "theme_park.tatooine.jabbaspawner.crumb");
         setObjVar(crumb, "palace", self);
         setObjVar(crumb, "ai.defaultCalmBehavior", 1);
+        setCondition(crumb, CONDITION_INTERESTING);
     }
     public void spawnPDroid(obj_id self, obj_id oola) throws InterruptedException
     {
@@ -474,11 +476,11 @@ public class masterspawner extends script.base_script
     }
     public void spawnFennec(obj_id self) throws InterruptedException
     {
-        obj_id fennec = create.object("fennec_shand", new location(-24f, 5f, 33f, "tatooine", getCellId(self, "throneroom")));
+        obj_id fennec = create.object("fennec_shand", new location(-12.09f, 2.0f, 49.41f, "tatooine", getCellId(self, "throneroom")));
         attachScript(fennec, "theme_park.tatooine.jabbaspawner.fennec_shand");
         setObjVar(self, "PalaceInhabitants.fennec", fennec);
         setObjVar(fennec, "palace", self);
-        setName(fennec, "Fennec Shand (Jabba's Assassin)");
+        setName(fennec, "Fennec Shand (Fett's Assassin)");
     }
     public void spawnGamGuard11(obj_id self) throws InterruptedException
     {

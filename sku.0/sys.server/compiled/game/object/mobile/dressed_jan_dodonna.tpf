@@ -24,6 +24,3 @@
 
 sharedTemplate = "object/mobile/shared_dressed_jan_dodonna.iff"
 
-scripts = +[
-	"npc.celebrity.dodonna"]
-

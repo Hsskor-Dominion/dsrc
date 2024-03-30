@@ -15,11 +15,11 @@ public class gcw_imperial_ent extends script.base_script
     }
     public boolean gcw_imperial_ent_condition_playerCompletedQuest(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.hasCompletedQuest(player, "gcw_imperial_ent");
+        return groundquests.hasCompletedQuest(player, "stardust_gcw_imperial_ent");
     }
     public boolean gcw_imperial_ent_condition_playerStartedQuest(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "gcw_imperial_ent");
+        return groundquests.isQuestActive(player, "stardust_gcw_imperial_ent");
     }
     public boolean gcw_imperial_ent_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -28,7 +28,7 @@ public class gcw_imperial_ent extends script.base_script
     public boolean gcw_imperial_ent_condition_notEntertainer(obj_id player, obj_id npc) throws InterruptedException
     {
         String pTemplate = getSkillTemplate(player);
-        if (pTemplate.contains("entertainer"))
+        if (pTemplate.contains("entertainer") && (factions.isImperial(player)))
         {
             return false;
         }
@@ -71,7 +71,7 @@ public class gcw_imperial_ent extends script.base_script
     public void gcw_imperial_ent_action_giveQuest(obj_id player, obj_id npc) throws InterruptedException
     {
         String pTemplate = getSkillTemplate(player);
-        groundquests.grantQuest(player, "gcw_imperial_ent");
+        groundquests.grantQuest(player, "stardust_gcw_imperial_ent");
     }
     public int gcw_imperial_ent_handleBranch2(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -93,6 +93,7 @@ public class gcw_imperial_ent extends script.base_script
             {
                 doAnimationAction(npc, "wave_finger_warning");
                 string_id message = new string_id(c_stringFile, "s_38");
+                gcw_imperial_ent_action_signalReward(player, npc);
                 utils.removeScriptVar(player, "conversation.gcw_imperial_ent.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;

@@ -1,6 +1,6 @@
 objid	container	server_template_crc	cell_index	px	py	pz	qw	qx	qy	qz	scripts	objvars
 i	i	h	i	f	f	f	f	f	f	f	s	p
-108	0	object/building/naboo/cantina_naboo.iff	0	776.64	4.17	1522.46	0.764842	0	0.644217	0	planet_map.map_loc:structure.municipal.cantina:theme_park.dungeon.generic_spawner	spawn_table|4|datatables/spawning/building_spawns/moenia_cantina.iff|healing.canhealshock|0|1|safeLogout|0|1|$|
+108	0	object/building/naboo/cantina_naboo.iff	0	776.64	4.17	1522.46	0.764842	0	0.644217	0	planet_map.map_loc:structure.municipal.cantina:theme_park.dungeon.generic_spawner:event.bh_event.cantina_jar_controller	spawn_table|4|datatables/spawning/building_spawns/moenia_cantina.iff|healing.canhealshock|0|1|safeLogout|0|1|$|
 109	108	object/cell/cell.iff	1	0	0	0	1	0	0	0		$|
 110	108	object/cell/cell.iff	2	0	0	0	1	0	0	0		$|
 516454247	110	object/tangible/collection/hanging_light_02_04.iff	2	31.6084	4.15823	-6.67701	1	0	0	0		$|
@@ -317,9 +317,9 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 1722458	0	object/static/structure/general/nboo_imprv_flower_urn_s01.iff	0	821.112	3.75	1239.8	1	0	0	0		$|
 1722461	0	object/tangible/furniture/all/frn_all_potted_plants_sml_s02.iff	0	828.76	4.75386	1242.37	1	0	0	0		$|
 1722462	0	object/tangible/furniture/all/frn_all_potted_plants_sml_s02.iff	0	813.443	4.7503	1242.29	1	0	0	0		$|
-1722465	0	object/tangible/furniture/all/frn_all_potted_plants_sml_s02.iff	0	814.219	4.74036	1187.79	-0.000000032	0	1	0		$|
-1722466	0	object/tangible/furniture/all/frn_all_potted_plants_sml_s02.iff	0	830.418	1.89187	1187.8	-0.000000032	0	1	0		$|
-1722467	0	object/static/structure/general/nboo_imprv_flower_urn_s01.iff	0	822.209	3.75	1190.36	-0.000000032	0	1	0		$|
+1722465	0	object/tangible/furniture/all/frn_all_potted_plants_sml_s02.iff	0	814.219	4.74036	1187.79	-3.2E-08	0	1	0		$|
+1722466	0	object/tangible/furniture/all/frn_all_potted_plants_sml_s02.iff	0	830.418	1.89187	1187.8	-3.2E-08	0	1	0		$|
+1722467	0	object/static/structure/general/nboo_imprv_flower_urn_s01.iff	0	822.209	3.75	1190.36	-3.2E-08	0	1	0		$|
 1722468	0	object/static/structure/naboo/nboo_imprv_short_curved_wall_small_s01.iff	0	813.243	3.75	1190.3	0.707107	0	0.707107	0		$|
 1722469	0	object/static/structure/naboo/nboo_imprv_pillar_pillar_s03.iff	0	817.243	3.75	1186.3	1	0	0	0		$|
 1722470	0	object/static/structure/naboo/nboo_imprv_pillar_pillar_s03.iff	0	827.243	3.75	1186.3	1	0	0	0		$|
@@ -381,14 +381,14 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 2776067	0	object/tangible/furniture/all/frn_bench_generic.iff	0	634.25	6.249	1177.47	1	0	0	0		$|
 2776068	0	object/tangible/furniture/all/frn_bench_generic.iff	0	588.657	4.73	1239.2	1	0	0	0		$|
 2776069	0	object/tangible/furniture/all/frn_bench_generic.iff	0	591.375	4.73	1242.07	0.707108	0	-0.707106	0		$|
-2776070	0	object/tangible/furniture/all/frn_bench_generic.iff	0	588.605	4.73	1261.27	-0.000000032	0	1	0		$|
+2776070	0	object/tangible/furniture/all/frn_bench_generic.iff	0	588.605	4.73	1261.27	-3.2E-08	0	1	0		$|
 2776071	0	object/tangible/furniture/all/frn_bench_generic.iff	0	591.616	4.73	1258.24	0.707107	0	-0.707106	0		$|
 2776098	0	object/tangible/furniture/all/frn_bench_generic.iff	0	695.339	6.249	1165.76	0.707107	0	0.707106	0		$|
 2776099	0	object/tangible/furniture/all/frn_bench_generic.iff	0	723.158	6.249	1165.57	0.707107	0	-0.707106	0		$|
 2776100	0	object/tangible/furniture/all/frn_bench_generic.iff	0	818.414	3.75	1239.84	1	0	0	0		$|
 2776101	0	object/tangible/furniture/all/frn_bench_generic.iff	0	823.556	3.75	1239.8	1	0	0	0		$|
-2776102	0	object/tangible/furniture/all/frn_bench_generic.iff	0	819.534	3.75	1190.3	-0.000000032	0	1	0		$|
-2776103	0	object/tangible/furniture/all/frn_bench_generic.iff	0	824.749	3.75	1190.29	-0.000000032	0	1	0		$|
+2776102	0	object/tangible/furniture/all/frn_bench_generic.iff	0	819.534	3.75	1190.3	-3.2E-08	0	1	0		$|
+2776103	0	object/tangible/furniture/all/frn_bench_generic.iff	0	824.749	3.75	1190.29	-3.2E-08	0	1	0		$|
 3575388	0	object/static/structure/naboo/nboo_imprv_pillar_pillar_s01.iff	0	951.943	3.75	1221.04	1	0	-0.0004	0		$|
 3575407	0	object/static/structure/naboo/nboo_imprv_lattice_wall_short_s01.iff	0	952.157	3.75	1243.51	0.707111	0	-0.707102	0		$|
 3575408	0	object/static/structure/naboo/nboo_imprv_lattice_wall_short_s01.iff	0	952.246	3.75	1251.4	0.707111	0	-0.707102	0		$|
@@ -398,7 +398,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 4015380	0	object/static/structure/naboo/gate_narrow_s02.iff	0	888.698	3.75	1173.08	0.707113	0	0.7071	0		$|
 4015381	0	object/static/structure/naboo/wallend_a1_naboo_theed_style_1.iff	0	899.615	2.11126	1178.09	0.707107	0	-0.707106	0		$|
 4015382	0	object/static/structure/naboo/wall_a1_naboo_theed_style_1.iff	0	902.036	2.11126	1234.79	0.707107	0	0.707107	0		$|
-4015383	0	object/static/structure/naboo/wall_a1_naboo_theed_style_1.iff	0	882.103	2.11126	1234.32	-0.000000263	0	1	0		$|
+4015383	0	object/static/structure/naboo/wall_a1_naboo_theed_style_1.iff	0	882.103	2.11126	1234.32	-2.63E-07	0	1	0		$|
 4015384	0	object/static/structure/naboo/nboo_imprv_pillar_pillar_s01.iff	0	881.543	3.75	1234.44	1	0	0	0		$|
 4015385	0	object/static/structure/naboo/nboo_imprv_lattice_wall_short_s01.iff	0	888.715	3.75	1177.09	0.707107	0	-0.707106	0		$|
 4215406	0	object/building/naboo/starport_naboo.iff	0	631.584	4.17	1494.34	0.466913	0	0.884303	0	structure.municipal.starport	travel.air_time|0|60|travel.cost|0|150|travel.ground_time|0|300|travel.point_name|4|Moenia Starport|travel.shuttle_available|0|1|travel.version|0|3|$|
@@ -616,7 +616,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 6336625	0	object/tangible/terminal/terminal_mission_scout.iff	0	598.233	3.75	1232.31	0.707107	0	-0.707106	0		$|
 6336628	0	object/tangible/terminal/terminal_mission_scout.iff	0	597.839	3.75	1268.25	0.707107	0	-0.707106	0		$|
 6336636	0	object/tangible/terminal/terminal_mission_artisan.iff	0	582.563	3.75	1268.24	0.707107	0	0.707106	0		$|
-6336638	0	object/tangible/terminal/terminal_mission_entertainer.iff	0	581.138	3.75	1266.73	-0.000000032	0	1	0		$|
+6336638	0	object/tangible/terminal/terminal_mission_entertainer.iff	0	581.138	3.75	1266.73	-3.2E-08	0	1	0		$|
 6336640	0	object/tangible/terminal/terminal_mission_artisan.iff	0	583.041	3.75	1232.12	0.707107	0	0.707107	0		$|
 6336643	0	object/tangible/terminal/terminal_mission_entertainer.iff	0	581.689	3.75	1233.34	1	0	0	0		$|
 6336647	0	object/tangible/terminal/terminal_mission_scout.iff	0	696.054	4.17	1439.24	0.464172	0	0.885745	0		$|
@@ -667,7 +667,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 1717675	0	object/building/naboo/filler_building_naboo_theed_style_6.iff	0	651.612	3.75	1176.68	0.707108	0	0.707106	0		$|
 1717679	0	object/building/naboo/thm_nboo_block_bldg_64x32_style_01.iff	0	850.4	3.75	1304.69	-0.40776	0	0.913089	0		$|
 1717704	0	object/building/naboo/thm_nboo_block_bldg_32x16_style_02.iff	0	590.558	3.75	1201.85	0.921061	0	0.389418	0		$|
-1717710	0	object/building/naboo/thm_nboo_block_bldg_64x32_s02.iff	0	795.412	3.75	1163.95	-0.000000032	0	1	0		$|
+1717710	0	object/building/naboo/thm_nboo_block_bldg_64x32_s02.iff	0	795.412	3.75	1163.95	-3.2E-08	0	1	0		$|
 1717713	0	object/building/naboo/filler_building_naboo_theed_style_10.iff	0	853.244	3.75	1169.25	1	0	0	0		$|
 1717717	0	object/building/naboo/thm_nboo_block_bldg_32x16_style_01.iff	0	884.459	3.75	1193.5	-0.707106	0	0.707107	0		$|
 1717720	0	object/building/naboo/filler_building_naboo_theed_style_9.iff	0	669.187	4.92018	1343.75	0.0741355	0	0.997248	0		$|

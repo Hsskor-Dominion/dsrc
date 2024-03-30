@@ -88,11 +88,14 @@ public class restuss_rebel_reward_npc extends script.base_script
     }
     public boolean restuss_rebel_reward_npc_condition_readyForBadge(obj_id player, obj_id npc) throws InterruptedException
     {
-        if (restuss_event.getWinningFaction(npc) > restuss_event.WINNER_NONE)
+        float imp_r = gcw.getImperialPercentileByRegion(npc);
+        float reb_r = gcw.getRebelPercentileByRegion(npc);
+
+        if (reb_r > imp_r)
         {
             return true;
         }
-        else 
+        else
         {
             return false;
         }

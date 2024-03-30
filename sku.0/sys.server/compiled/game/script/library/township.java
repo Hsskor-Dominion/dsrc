@@ -9,7 +9,7 @@ public class township extends script.base_script
     public township()
     {
     }
-    public static final int MIN_LEVEL = 70;
+    public static final int MIN_LEVEL = 1;
     public static final int TRAVEL_COST = 2500;
     public static final int RANK_TWO_AMOUNT = 200;
     public static final int RANK_THREE_AMOUNT = 300;
@@ -42,7 +42,7 @@ public class township extends script.base_script
             LOG("force_sensitive", "township.isTownshipEligible -- player is invalid.");
             return false;
         }
-        return getLevel(player) >= MIN_LEVEL || space_skill.isMasterPilot(player);
+        return hasSkill(player,"class_forcesensitive_phase1_novice");
     }
     public static boolean giveTravelListFromAurilia(obj_id player, obj_id npc) throws InterruptedException
     {

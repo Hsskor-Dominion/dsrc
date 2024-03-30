@@ -48,14 +48,14 @@ public class force_shrine extends script.base_script
         int posture = getPosture(player);
         if (canMeditateHere(self, player))
         {
-            if (item == menu_info_types.SERVER_ITEM_OPTIONS)
-            {
-                if (posture != POSTURE_CROUCHED)
-                {
+            if (item == menu_info_types.SERVER_ITEM_OPTIONS) {
+                if (posture != POSTURE_CROUCHED) {
                     sendSystemMessage(player, SHOW_RESPECT);
                     return SCRIPT_CONTINUE;
                 }
                 jedi_trials.giveGenericForceShrineMessage(player);
+                grant_padawan_trials_quest(player);
+                shrine_signalReward(player);
             }
             if (item == menu_info_types.SERVER_MENU5)
             {
@@ -153,6 +153,14 @@ public class force_shrine extends script.base_script
         }
         return false;
     }
+    public boolean padawan_quest_condition(obj_id player, obj_id self) throws InterruptedException
+    {
+        return groundquests.isQuestActive(player, "stardust_padawan_pointer");
+    }
+    public boolean knight_quest_condition(obj_id player, obj_id self) throws InterruptedException
+    {
+        return groundquests.isQuestActive(player, "stardust_knight_pointer");
+    }
     public boolean isOnJediTrials(obj_id player) throws InterruptedException
     {
         if (hasObjVar(player, jedi_trials.PADAWAN_QUESTLIST_OBJVAR) || hasObjVar(player, jedi_trials.KNIGHT_QUESTLIST_OBJVAR))
@@ -205,6 +213,24 @@ public class force_shrine extends script.base_script
             }
         }
         return false;
+    }
+    public void shrine_signalReward(obj_id player) throws InterruptedException
+    {
+        groundquests.sendSignal(player, "stardust_padawan_pointer");
+    }
+    public void shrine_signalReward2(obj_id player) throws InterruptedException
+    {
+        groundquests.sendSignal(player, "stardust_knight_pointer");
+    }
+    public void grant_padawan_trials_quest(obj_id player) throws InterruptedException
+    {
+        String pTemplate = getSkillTemplate(player);
+        groundquests.grantQuest(player, "stardust_padawan_trials");
+    }
+    public void grant_knight_trials_quest(obj_id player) throws InterruptedException
+    {
+        String pTemplate = getSkillTemplate(player);
+        groundquests.grantQuest(player, "stardust_knight_trials");
     }
     public void issuePadawanRobe(obj_id player) throws InterruptedException
     {

@@ -90,10 +90,11 @@ public class click_combat_token extends script.base_script
                 if (getCount(self) >= 0)
                 {
                     respec.startNpcRespec(player, self, true);
+                    destroyObject(self);
                 }
                 else 
                 {
-                    destroyObject(self);
+                    sendSystemMessage(player, new string_id("spam", "youssa_max_level"));
                 }
             }
         }

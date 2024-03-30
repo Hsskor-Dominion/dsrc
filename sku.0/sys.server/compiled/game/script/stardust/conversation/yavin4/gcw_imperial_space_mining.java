@@ -33,7 +33,7 @@ public class gcw_imperial_space_mining extends script.base_script
             if (currentBoxResourceName.contains("space_metal_obsidian") || currentBoxResourceName.contains("Obsidian Asteroid")) {
                 currentBoxCount = getResourceContainerQuantity(currentBox);
                 if (currentBoxCount >= 500) {
-                    if (groundquests.isTaskActive(player, "gcw_imperial_mining", "returnPekt")) {
+                    if (groundquests.isTaskActive(player, "stardust_gcw_imperial_mining", "returnPekt")) {
                         return true;
                     }
                 }
@@ -43,7 +43,7 @@ public class gcw_imperial_space_mining extends script.base_script
     }
     public boolean gcw_imperial_space_mining_condition_spaceMineActive1(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "gcw_imperial_mining");
+        return groundquests.isQuestActive(player, "stardust_gcw_imperial_mining");
     }
     public boolean gcw_imperial_space_mining_condition_completedSpaceMine2(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -63,7 +63,7 @@ public class gcw_imperial_space_mining extends script.base_script
             if (currentBoxResourceName.contains("space_gas_organometallic") || currentBoxResourceName.contains("Organometallic Asteroid")) {
                 currentBoxCount = getResourceContainerQuantity(currentBox);
                 if (currentBoxCount >= 250) {
-                    if (groundquests.isTaskActive(player, "gcw_imperial_space_mining_2", "returnPekt2")) {
+                    if (groundquests.isTaskActive(player, "gcw_imperial_space_mining", "returnPekt2")) {
                         return true;
                     }
                 }
@@ -73,7 +73,7 @@ public class gcw_imperial_space_mining extends script.base_script
     }
     public boolean gcw_imperial_space_mining_condition_spaceMineActive2(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isQuestActive(player, "gcw_imperial_space_mining_2");
+        return groundquests.isQuestActive(player, "stardust_gcw_imperial_mining");
     }
     public boolean gcw_imperial_space_mining_condition_inPhase2(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -118,8 +118,8 @@ public class gcw_imperial_space_mining extends script.base_script
     {
         obj_id mobj = space_quest._getQuest(player, "space_mining_destroy", "restuss_imperial_mining_1");
         if (mobj != null) space_quest.setSilentQuestAborted(player, mobj);
-        groundquests.clearQuest(player, "gcw_imperial_mining");
-        groundquests.grantQuest(player, "gcw_imperial_mining");
+        groundquests.clearQuest(player, "stardust_gcw_imperial_mining");
+        groundquests.grantQuest(player, "stardust_gcw_imperial_mining");
     }
     public void gcw_imperial_space_mining_action_signalDone(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -158,8 +158,8 @@ public class gcw_imperial_space_mining extends script.base_script
     {
         obj_id mobj = space_quest._getQuest(player, "space_mining_destroy", "gcw_imperial_mining_1");
         if (mobj != null) space_quest.setSilentQuestAborted(player, mobj);
-        groundquests.clearQuest(player, "gcw_imperial_mining");
-        groundquests.grantQuest(player, "gcw_imperial_mining");
+        groundquests.clearQuest(player, "stardust_gcw_imperial_mining");
+        groundquests.grantQuest(player, "stardust_gcw_imperial_mining");
     }
     public void gcw_imperial_space_mining_action_signalDone2(obj_id player, obj_id npc) throws InterruptedException
     {

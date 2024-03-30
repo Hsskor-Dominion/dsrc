@@ -3,6 +3,7 @@ package script.player.base;
 import script.*;
 import script.library.*;
 import script.library.xp;
+import script.library.storyteller;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -1448,6 +1449,16 @@ public class base_player extends script.base_script
         {
             revokeSkill(self, "demo_combat");
         }
+        float mandoFaction = factions.getFactionStanding(self, "death_watch");
+        if (mandoFaction <= 0)
+        {
+            revokeSkill(self, "faction_rank_mando");
+        }
+        if (!hasSkill(self, "pvp_imperial_airstrike_ability") && !hasSkill(self, "pvp_rebel_airstrike_ability"))
+        {
+            revokeSkill(self, "stardust_admiral_republic");
+            revokeSkill(self, "stardust_admiral_imperial");
+        }
         boolean needsPrerequisites = true;
         int attempts = 0;
         while (needsPrerequisites && attempts < 100)
@@ -1524,6 +1535,63 @@ public class base_player extends script.base_script
         {
             grantExperiencePoints(self, "scout", campXp);
             grantExperiencePoints(self, "camp", 0 - campXp);
+        }
+// Skill-granting logic based on political experience
+        int politicalXp = getExperiencePoints(self, "political");
+
+// Define the experience thresholds for each skill
+        int[] skillThresholds = {
+                10000,   // social_politician_fiscal_01
+                20000,   // social_politician_martial_01
+                30000,   // social_politician_civic_01
+                40000,   // social_politician_urban_01
+                75000,  // social_politician_fiscal_02
+                100000,  // social_politician_martial_02
+                125000,  // social_politician_civic_02
+                150000,  // social_politician_urban_02
+                200000,  // social_politician_fiscal_03
+                250000,  // social_politician_martial_03
+                300000,  // social_politician_civic_03
+                350000,  // social_politician_urban_03
+                400000,  // social_politician_fiscal_04
+                450000,  // social_politician_martial_04
+                500000,  // social_politician_civic_04
+                550000,  // social_politician_urban_04
+                600000   // social_politician_master
+                // Add more thresholds for additional skills as needed
+        };
+
+// Define the skill list in the desired order
+        String[] skillList = {
+                "social_politician_fiscal_01",
+                "social_politician_martial_01",
+                "social_politician_civic_01",
+                "social_politician_urban_01",
+                "social_politician_fiscal_02",
+                "social_politician_martial_02",
+                "social_politician_civic_02",
+                "social_politician_urban_02",
+                "social_politician_fiscal_03",
+                "social_politician_martial_03",
+                "social_politician_civic_03",
+                "social_politician_urban_03",
+                "social_politician_fiscal_04",
+                "social_politician_martial_04",
+                "social_politician_civic_04",
+                "social_politician_urban_04",
+                "social_politician_master"
+                // Add more skills in the desired order as needed
+        };
+
+// Iterate through the skill thresholds and check if the player's experience exceeds each threshold
+        for (int i = 0; i < skillThresholds.length; i++) {
+            if (politicalXp >= skillThresholds[i]) {
+                // Grant the corresponding skill
+                grantSkill(self, skillList[i]);
+            } else {
+                // Exit the loop if the experience is below the current threshold
+                break;
+            }
         }
         if (!utils.hasScriptVar(self, "bountyConsistencyCheck"))
         {
@@ -1637,6 +1705,15 @@ public class base_player extends script.base_script
             if (!buff.isInStance(self) && !buff.isInFocus(self))
             {
                 messageTo(self, "applyJediStance", null, 1.0f, false);
+                //factions.goOvertWithDelay(self, 0.0f);
+                jedi.doJediTEF(self);
+                obj_id[] objPlayers = getPlayerCreaturesInRange(self, 256.0f);
+                if (objPlayers != null && objPlayers.length > 0)
+                {
+                    for (obj_id objPlayer : objPlayers) {
+                        sendSystemMessage(objPlayer, new string_id("jedi_spam", "disturbance"));
+                    }
+                }
             }
         }
         if (utils.isProfession(self, utils.SMUGGLER))
@@ -1963,7 +2040,7 @@ public class base_player extends script.base_script
                 String questNewbieStart = "quest/legacy_button_start";
                 String questNewbieStartSmuggler = "quest/speeder_quest";
                 String questNewbieStartSpy = "quest/naboo_send_to_lt_jasper";
-                String questNewbieStartBH = "quest/u13_vengeance_sidequest";
+                String questNewbieStartBH = "quest/stardust_send_to_boba";
                 String questCrafterEntertainer = "quest/tatooine_eisley_noncombat";
                 int crafter = profession.indexOf("trader");
                 int entertainer = profession.indexOf("entertainer");
@@ -2851,6 +2928,7 @@ public class base_player extends script.base_script
     public int handlePlayerDeath(obj_id self, dictionary params) throws InterruptedException
     {
         groundquests.sendSignal(self, "smugglerEnemyIncap");
+        groundquests.sendSignal(self, "JediDeath");
         if (utils.hasScriptVar(self, pclib.VAR_SUI_CLONE))
         {
             int oldpid = utils.getIntScriptVar(self, pclib.VAR_SUI_CLONE);
@@ -3418,8 +3496,7 @@ public class base_player extends script.base_script
         if (!utils.hasScriptVar(self, "no_cloning_sickness") && !instance.isInInstanceArea(self))
         {
             buff.applyBuff(self, "cloning_sickness");
-
-	    xp.grant(self, "jedi", -1000000);
+            xp.grant(self, "jedi", -100);
         }
         else if (utils.hasScriptVar(self, "no_cloning_sickness"))
         {
@@ -3433,9 +3510,44 @@ public class base_player extends script.base_script
                 pvpNeutralSetMercenaryFaction(self, currentMercenaryFaction, false);
             }
         }
-	if (hasSkill(self, "class_forcesensitive_phase1_master"))
+    if (hasSkill(self, "class_forcesensitive_phase4_master"))
         {
-            buff.applyBuff(self, "costume_seven_obi_wan_ghost");
+            setState(self, STATE_GLOWING_JEDI, true);
+            buff.applyBuff(self, "forceWeaken");
+            revokeSkill(self, "class_forcesensitive_phase4_master");
+            revokeSkill(self, "class_forcesensitive_phase4_05");
+            revokeSkill(self, "class_forcesensitive_phase4_04");
+            revokeSkill(self, "class_forcesensitive_phase4_03");
+            revokeSkill(self, "class_forcesensitive_phase4_02");
+            xp.grant(self, "jedi", -1000000);
+        }
+    else if (hasSkill(self, "class_forcesensitive_phase3_master"))
+        {
+            buff.applyBuff(self, "forceWeaken");
+            setState(self, STATE_GLOWING_JEDI, false);
+            revokeSkill(self, "class_forcesensitive_phase4_novice");
+            revokeSkill(self, "class_forcesensitive_phase3_master");
+            revokeSkill(self, "class_forcesensitive_phase3_05");
+            revokeSkill(self, "class_forcesensitive_phase3_04");
+            revokeSkill(self, "class_forcesensitive_phase3_03");
+            revokeSkill(self, "class_forcesensitive_phase3_02");
+            xp.grant(self, "jedi", -100000);
+        }
+    else if (hasSkill(self, "class_forcesensitive_phase2_master"))
+        {
+            buff.applyBuff(self, "forceWeaken");
+            revokeSkill(self, "class_forcesensitive_phase3_novice");
+            revokeSkill(self, "class_forcesensitive_phase2_master");
+            revokeSkill(self, "class_forcesensitive_phase2_05");
+            revokeSkill(self, "class_forcesensitive_phase2_04");
+            revokeSkill(self, "class_forcesensitive_phase2_03");
+            revokeSkill(self, "class_forcesensitive_phase2_02");
+            xp.grant(self, "jedi", -10000);
+        }
+    else if (hasSkill(self, "class_forcesensitive_phase1_master"))
+        {
+            buff.applyBuff(self, "forceWeaken");
+            xp.grant(self, "jedi", -1000);
         }
         CustomerServiceLog("Death", "(" + self + ") " + getName(self) + " has clone respawned at " + (getLocation(self)).toString());
         return SCRIPT_CONTINUE;
@@ -5752,13 +5864,14 @@ public class base_player extends script.base_script
     }
     public int OnCityChanged(obj_id self, int oldCityId, int newCityId) throws InterruptedException
     {
-        if ((oldCityId != 0) && cityExists(oldCityId)) {
+        if ((oldCityId != 0) && cityExists(oldCityId))
+        {
             sendSystemMessageProse(self, prose.getPackage(SID_LEAVE_CITY, cityGetName(oldCityId)));
             return SCRIPT_CONTINUE;
         }
 
         String cityName = cityGetName(newCityId);
-	    int city_rank = city.getCityRank(newCityId);
+        int city_rank = city.getCityRank(newCityId);
         string_id rank_name = new string_id("city/city", "rank" + city_rank);
         String spec = city.cityGetSpecString(newCityId);
         prose_package pp = new prose_package();
@@ -5766,25 +5879,62 @@ public class base_player extends script.base_script
         pp.target.set(cityName);
 
         String specpart = localize(rank_name);
-        if (spec != null && !spec.equals("null")) {
+        if (spec != null && !spec.equals("null"))
+        {
             specpart = specpart + ", " + localize(new string_id("city/city", spec));
         }
         int factionId = cityGetFaction(newCityId);
-        if ((-615855020) == factionId) {
+        if ((-615855020) == factionId)
+        {
             specpart = specpart + ", Imperial aligned";
-        } else if ((370444368) == factionId) {
+        }
+        else if ((370444368) == factionId)
+        {
             specpart = specpart + ", Rebel aligned";
         }
         pp.other.set(specpart);
         sendSystemMessageProse(self, pp);
 
         obj_id cityHallId = cityGetCityHall(newCityId);
-        if(cityHallId != null && cityName != null && hasObjVar(cityHallId, "city_visitor_message")) {
-                String cityVisitorMessage = getStringObjVar(cityHallId, "city_visitor_message");
-                sendConsoleMessage(self, "City(" + cityName + ") Message: " + cityVisitorMessage + "\\#DFDFDF");
+        if (cityHallId != null && cityName != null && hasObjVar(cityHallId, "city_visitor_message"))
+        {
+            String cityVisitorMessage = getStringObjVar(cityHallId, "city_visitor_message");
+            sendConsoleMessage(self, "City(" + cityName + ") Message: " + cityVisitorMessage + "\\#DFDFDF");
         }
+
+        // Retrieve the mayor's name and display it
+        obj_id mayor = cityGetLeader(newCityId);
+        String mayorName = cityGetCitizenName(newCityId, mayor);
+
+        // Force the player to join the mayor's story
+        obj_id storytellerAssistant = null; // Replace with the actual assistant's obj_id if available
+        storyInviteAccepted(mayor, mayorName, self, storytellerAssistant);
+
         return SCRIPT_CONTINUE;
     }
+
+    public void storyInviteAccepted(obj_id storytellerPlayer, String storytellerName, obj_id player, obj_id storytellerAssistant) throws InterruptedException
+    {
+        string_id message = new string_id("storyteller", "player_invited_name");
+        prose_package pp = prose.getPackage(message, player, player);
+        prose.setTO(pp, storytellerName);
+        sendSystemMessageProse(player, pp);
+        dictionary webster = new dictionary();
+        webster.put("addedPlayerName", getName(player));
+        webster.put("storytellerName", storytellerName);
+        if (isIdValid(storytellerAssistant))
+        {
+            messageTo(storytellerAssistant, "handleStorytellerPlayerHasBeenAdded", webster, 0, false);
+        }
+        else
+        {
+            messageTo(storytellerPlayer, "handleStorytellerPlayerHasBeenAdded", webster, 0, false);
+        }
+        utils.setScriptVar(player, "storytellerid", storytellerPlayer);
+        utils.setScriptVar(player, "storytellerName", storytellerName);
+        storyteller.showStorytellerEffectsInAreaToPlayer(player, storytellerPlayer);
+    }
+
     public int cmdGrantZoningRights(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
         if (target == self)
@@ -11725,12 +11875,12 @@ public class base_player extends script.base_script
                 {
                     storyteller.storyPlayerRemovedFromStory(storytellerPlayer, storytellerName, self);
                 }
-                else 
+                else
                 {
                     messageTo(storytellerPlayer, "handleStorytellerRemovePlayerNotInStory", null, 0, false);
                 }
             }
-            else 
+            else
             {
                 messageTo(storytellerPlayer, "handleStorytellerRemovePlayerNotInStory", null, 0, false);
             }
@@ -11944,11 +12094,11 @@ public class base_player extends script.base_script
     }
     public int cmdMeditate(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
-        if (getPosture(self) != POSTURE_SITTING)
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "meditate_not_sitting"));
-            return SCRIPT_CONTINUE;
-        }
+//        if (getPosture(self) != POSTURE_SITTING)
+//        {
+//            sendSystemMessage(self, new string_id("jedi_spam", "meditate_not_sitting"));
+//            return SCRIPT_CONTINUE;
+//        }
         stealth.checkForAndMakeVisibleNoRecourse(self);
         if (getState(self, STATE_MEDITATE) == 1)
         {

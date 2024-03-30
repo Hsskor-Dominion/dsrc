@@ -151,17 +151,9 @@ public class utils extends script.base_script
     public static boolean hasSpecialSkills(obj_id player) throws InterruptedException
     {
         boolean skillCheck = false;
-        if (hasSkill(player, "class_commando_phase4_master"))
+        if (hasSkill(player, "faction_rank_mando"))
         {
             skillCheck = true;
-        }
-        if (hasSkill(player, "class_bountyhunter_phase4_master"))
-        {
-            skillCheck = true;
-        }
-        if (hasSkill(player, "class_officer_phase4_master"))
-        {
-            skillCheck = true;			
         }
         return skillCheck;
     }
@@ -6073,9 +6065,24 @@ public class utils extends script.base_script
 
         for (String pair : split(objVarList, ',')) {
             objVarToSet = split(pair, '=');
+
+            // Ensure objVarToSet has at least two elements
+            if (objVarToSet.length < 2) {
+                // Log an error or handle the case where the objVar pair is not well-formed
+                continue;
+            }
+
             objVarValue = objVarToSet[1];
             objVarNameAndType = split(objVarToSet[0], ':');
+
+            // Ensure objVarNameAndType has at least two elements
+            if (objVarNameAndType.length < 2) {
+                // Log an error or handle the case where the objVar name and type are not well-formed
+                continue;
+            }
+
             objVarName = objVarNameAndType[1];
+
             switch (objVarNameAndType[0]) {
                 case "string":
                     setObjVar(object, objVarName, objVarValue);
@@ -7221,3 +7228,4 @@ public class utils extends script.base_script
         return (utils.getIntConfigSetting("GameServer", "debugMode") == 1);
     }
 }
+//
