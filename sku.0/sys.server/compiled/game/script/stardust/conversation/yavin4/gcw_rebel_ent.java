@@ -252,7 +252,7 @@ public class gcw_rebel_ent extends script.base_script
         }
         if (gcw_rebel_ent_condition_playerCompletedQuest(player, npc))
         {
-            groundquests.clearQuest(player, "gcw_rebel_ent");
+            groundquests.sendSignal(player, "gcw_ent_reward");
         }
         if (gcw_rebel_ent_condition_playerStartedQuest(player, npc))
         {

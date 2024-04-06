@@ -138,7 +138,7 @@ public class interface_scanning_tool extends script.base_script
                 }
                 string_id compName = getNameStringId(toolContent);
                 sendSystemMessage(player, "The tool start scanning the " + localize(compName) + "...", null);
-                int lootChance = 5 + (level / 2);
+                int lootChance = 5 + (level);
                 int lootRoll = rand(1, 100);
                 destroyObject(toolContent);
                 if (lootChance >= lootRoll) {

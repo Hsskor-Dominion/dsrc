@@ -224,7 +224,7 @@ kwi_boost_01	spice			4	buffs.spicePill	900	constitution_modified	50	agility_modi
 kliknik_boost	spice			4	buffs.spicePill	900	constitution_modified	10	agility_modified	20	stamina_modified	20	xp_bonus_general	50		0	STATE_NONE	handleSpiceDownerEffect			1	0		1	1	1	0	1	1	0	1	1	1
 kliknik_boost_01	spice			4	buffs.spicePill	900	constitution_modified	10	agility_modified	20	stamina_modified	20	xp_bonus_general	50		0	STATE_NONE	handleSpiceDownerEffect			1	0		0	1	1	0	1	1	0	1	1	1
 spice_downer	spiceDowner			1	buffs.spiceDowner	60	constitution_modified	-100	agility_modified	-100	stamina_modified	-100	luck_modified	-100		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
-forceWeaken	forceWeaken	snare		1	jedi.forceWeaken	3600	movement	0	healthPercent	75	actionPercent	-75	luck_modified	-50		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+forceWeaken	forceWeaken	snare		1	jedi.forceWeaken	3600	movement	0	healthPercent	-75	actionPercent	-75	luck_modified	-50		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 forceWeaken_1	forceWeaken	snare		2	jedi.forceWeaken	20	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 saberArmorBreak	armorBreak			2	jedi.saberArmorBreak	20	private_armor_break	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 saberArmorBreak_1	armorBreak			5	jedi.saberArmorBreak	30	private_armor_break	185		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1136,10 +1136,10 @@ pvp_aura_buff_rebel_target	pvpAuraBuff			99	command.pvp_aura_buff_rebel_self	10	
 of_firepower	of_firepower			90	command.of_firepower	30	expertise_damage_line_of_aoe	125	expertise_critical_line_of_aoe	50		0		0		0	STATE_NONE	none	clienteffect/off_superior_firepower.cef		1	0		1	1	1	0	1	1	0	1	1	1
 of_tactical_drop_1	stimpack			26	command.powerBoost	900	expertise_action_all	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 of_tactical_drop_2	stimpack			34	command.powerBoost	900	expertise_action_all	2		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-of_tactical_drop_3	stimpack			48	command.powerBoost	900	expertise_action_all	3		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-of_tactical_drop_4	stimpack			62	command.powerBoost	900	expertise_action_all	4		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-of_tactical_drop_5	stimpack			76	command.powerBoost	900	expertise_action_all	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-of_tactical_drop_6	stimpack			90	command.powerBoost	900	expertise_action_all	6		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_tactical_drop_3	stimpack			48	command.powerBoost	900	expertise_action_all	4		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_tactical_drop_4	stimpack			62	command.powerBoost	900	expertise_action_all	6		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_tactical_drop_5	stimpack			76	command.powerBoost	900	expertise_action_all	8		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_tactical_drop_6	stimpack			90	command.powerBoost	900	expertise_action_all	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 pvp_retaliation_ability	pvpOffensive			100	command.command_pvp_retaliation_ability	120	reac_buff	1		0		0		0		0	STATE_NONE	none	appearance/pt_officer_focus_fire.prt		1	0		1	1	1	0	1	1	0	1	1	1
 pvp_retaliation_rebel_ability	pvpOffensive			100	command.command_pvp_retaliation_rebel_ability	120	reac_buff	1		0		0		0		0	STATE_NONE	none	appearance/pt_officer_focus_fire.prt		1	0		1	1	1	0	1	1	0	1	1	1
 pvp_adrenaline_ability	pvp_adrenaline_ability			90	command.command_pvp_adrenaline_ability	120	reac_buff	1		0		0		0		0	STATE_NONE	none	appearance/pt_officer_tactics.prt		1	0		1	1	1	0	1	1	0	1	1	1
@@ -1944,7 +1944,7 @@ wod_rancor_super_strength	wod_rancor_super_strength			1	buffs.wod_super_strength
 wod_adaptive_biology	wod_adaptive_biology			1	buffs.wod_adaptive_bio	-1	dot_reduction_all	25	dot_resist_all	20		0		0		0	STATE_NONE	none			1	0		0	1	1	0	5	1	0	1	1	1
 wod_lethal_reflexes	wod_lethal_reflexes			1	buffs.wod_lethal_reflexes	-1	expertise_critical_niche_all	15		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	5	1	0	1	1	1
 wod_unstoppable_attack	wod_unstoppable_attack			1	buffs.wod_unstoppable_attack	-1	combat_glancing_blow_reduction	100	combat_block_reduction	100	combat_parry_reduction	100	combat_dodge_reduction	100		0	STATE_NONE	none			1	0		0	1	1	0	5	1	0	1	1	1
-tcg_series8_severed_wampa_arm	towCrystal			70	buffs.tcg_series8_wampa_arm	600	constitution_modified	100	agility_modified	100	stamina_modified	100	luck_modified	100		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
+tcg_series8_severed_wampa_arm	towCrystal			70	buffs.tcg_series8_wampa_arm	300	constitution_modified	100	agility_modified	100	stamina_modified	100	luck_modified	100		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 of_cc_melee_1	snare			4	command.sm_dm_cc_melee	2	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
 of_cc_melee_2	snare			12	command.sm_dm_cc_melee	4	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
 of_cc_melee_3	snare			20	command.sm_dm_cc_melee	6	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1

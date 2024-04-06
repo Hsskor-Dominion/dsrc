@@ -1,9 +1,6 @@
 package script.conversation;
 
-import script.library.ai_lib;
-import script.library.chat;
-import script.library.groundquests;
-import script.library.utils;
+import script.library.*;
 import script.*;
 
 public class npe_force_sensitive extends script.base_script
@@ -58,15 +55,17 @@ public class npe_force_sensitive extends script.base_script
     }
     public boolean npe_force_sensitive_condition_isFSTemplate(obj_id player, obj_id npc) throws InterruptedException
     {
-        String pTemplate = getSkillTemplate(player);
-        if (pTemplate.contains("force_sensitive"))
-        {
-            return true;
-        }
-        else 
-        {
-            return false;
-        }
+        boolean hasBadge = badge.hasBadge(player, "npe_finish_all_pilot");
+        boolean isLevel10Above = getLevel(player) >= 10;
+        return hasBadge || isLevel10Above;
+    }
+    public void action_leaveStation(obj_id player, obj_id npc) throws InterruptedException
+    {
+        string_id stfPrompt = new string_id("npe", "exit_station_prompt");
+        string_id stfTitle = new string_id("npe", "exit_station");
+        String prompt = utils.packStringId(stfPrompt);
+        String title = utils.packStringId(stfTitle);
+        int pid = sui.msgbox(player, player, prompt, sui.OK_CANCEL, title, 0, "handTransfer");
     }
     public void npe_force_sensitive_action_giveFSQuest(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -302,11 +301,14 @@ public class npe_force_sensitive extends script.base_script
     }
     public int npe_force_sensitive_handleBranch19(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        if (response.equals("s_80"))
+        if (response.equals("travel_jedi_path"))
         {
             if (npe_force_sensitive_condition__defaultCondition(player, npc))
             {
-                string_id message = new string_id(c_stringFile, "s_82");
+                string_id message = new string_id(c_stringFile, "travel_jedi_confirm");
+                setObjVar(player, "stardust_jedi", 1);
+                action_leaveStation(player, npc);
+
                 utils.removeScriptVar(player, "conversation.npe_force_sensitive.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;
@@ -314,6 +316,20 @@ public class npe_force_sensitive extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
+    public int npe_force_sensitive_handleBranch20(obj_id player, obj_id npc, string_id response) throws InterruptedException
+{
+    if (response.equals("s_80"))
+    {
+        if (npe_force_sensitive_condition__defaultCondition(player, npc))
+        {
+            string_id message = new string_id(c_stringFile, "s_82");
+            utils.removeScriptVar(player, "conversation.npe_force_sensitive.branchId");
+            npcEndConversationWithMessage(player, message);
+            return SCRIPT_CONTINUE;
+        }
+    }
+    return SCRIPT_DEFAULT;
+}
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         if ((!isMob(self)) || (isPlayer(self)))
@@ -374,6 +390,7 @@ public class npe_force_sensitive extends script.base_script
         {
             npe_force_sensitive_action_facePlayer(player, npc);
             string_id message = new string_id(c_stringFile, "s_42");
+            setObjVar(player, "stardust_sith", 1);
             chat.chat(npc, player, message);
             return SCRIPT_CONTINUE;
         }
@@ -401,7 +418,7 @@ public class npe_force_sensitive extends script.base_script
                 utils.setScriptVar(player, "conversation.npe_force_sensitive.branchId", 3);
                 npcStartConversation(player, npc, "npe_force_sensitive", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -431,7 +448,7 @@ public class npe_force_sensitive extends script.base_script
                 utils.setScriptVar(player, "conversation.npe_force_sensitive.branchId", 6);
                 npcStartConversation(player, npc, "npe_force_sensitive", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -461,7 +478,7 @@ public class npe_force_sensitive extends script.base_script
                 utils.setScriptVar(player, "conversation.npe_force_sensitive.branchId", 8);
                 npcStartConversation(player, npc, "npe_force_sensitive", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -491,7 +508,7 @@ public class npe_force_sensitive extends script.base_script
                 utils.setScriptVar(player, "conversation.npe_force_sensitive.branchId", 10);
                 npcStartConversation(player, npc, "npe_force_sensitive", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -521,7 +538,7 @@ public class npe_force_sensitive extends script.base_script
                 utils.setScriptVar(player, "conversation.npe_force_sensitive.branchId", 12);
                 npcStartConversation(player, npc, "npe_force_sensitive", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -551,18 +568,33 @@ public class npe_force_sensitive extends script.base_script
                 utils.setScriptVar(player, "conversation.npe_force_sensitive.branchId", 14);
                 npcStartConversation(player, npc, "npe_force_sensitive", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
             return SCRIPT_CONTINUE;
         }
-        if (npe_force_sensitive_condition_isFSTemplate(player, npc))
-        {
+        if (npe_force_sensitive_condition_isFSTemplate(player, npc)) {
             npe_force_sensitive_action_facePlayer(player, npc);
             string_id message = new string_id(c_stringFile, "s_76");
-            chat.chat(npc, player, message);
-            return SCRIPT_CONTINUE;
+            int numberOfResponses = 0;
+            boolean hasResponse = false;
+            boolean hasResponse0 = false;
+            if (npe_force_sensitive_condition__defaultCondition(player, npc)) {
+                ++numberOfResponses;
+                hasResponse = true;
+                hasResponse0 = true;
+            }
+            if (hasResponse) {
+                int responseIndex = 0;
+                string_id responses[] = new string_id[numberOfResponses];
+                if (hasResponse0) {
+                    responses[responseIndex++] = new string_id(c_stringFile, "travel_jedi_path");
+                }
+                utils.setScriptVar(player, "conversation.npe_force_sensitive.branchId", 19);
+                npcStartConversation(player, npc, "npe_force_sensitive", message, responses);
+                return SCRIPT_CONTINUE; // Add this line to prevent falling through
+            }
         }
         if (npe_force_sensitive_condition__defaultCondition(player, npc))
         {
@@ -585,10 +617,10 @@ public class npe_force_sensitive extends script.base_script
                 {
                     responses[responseIndex++] = new string_id(c_stringFile, "s_80");
                 }
-                utils.setScriptVar(player, "conversation.npe_force_sensitive.branchId", 19);
+                utils.setScriptVar(player, "conversation.npe_force_sensitive.branchId", 20);
                 npcStartConversation(player, npc, "npe_force_sensitive", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -642,6 +674,10 @@ public class npe_force_sensitive extends script.base_script
             return SCRIPT_CONTINUE;
         }
         if (branchId == 19 && npe_force_sensitive_handleBranch19(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        if (branchId == 20 && npe_force_sensitive_handleBranch20(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }

@@ -571,11 +571,11 @@ item_tow_schematic_rifle_03_01			string:loot_schematic.schematic=object/draft_sc
 item_tow_schematic_rifle_03_02			string:loot_schematic.schematic=object/draft_schematic/weapon/appearance/weapon_appearance_rifle_disrupter.iff,string:loot_schematic.skill_req=class_munitions_phase4_master								
 item_tow_schematic_vehicle_02_01			string:vehicle_attribs.object_ref=lava_skiff,float:hit_points=1500								
 item_tow_schematic_vehicle_02_02			string:vehicle_attribs.object_ref=desert_skiff,float:hit_points=1500								
-item_tow_buff_crystal_02_01				index_color_1=1	towCrystalOffenseBurst	long_reuse_3	3600			appearance/pt_special_hit_concuss.prt	
-item_tow_buff_crystal_02_02				index_color_1=22	towCrystalDefenseBurst	long_reuse_3	3600			appearance/pt_special_hit_concuss.prt	
-item_tow_buff_crystal_02_03				index_color_1=30	towCrystalDotImmunity	towCrystalDotImmunity	3600			appearance/pt_special_hit_concuss.prt	
-item_tow_holocron_ab_immune_02_01					towCrystalABImmune	towCrystalABImmune	3600			appearance/pt_special_hit_concuss.prt	
-item_tow_crystal_uber_05_01				index_color_1=16	towCrystalUberCombat	long_reuse_4	3600			appearance/pt_special_hit_concuss.prt	
+item_tow_buff_crystal_02_01				index_color_1=1	towCrystalOffenseBurst	long_reuse_3	900			appearance/pt_special_hit_concuss.prt	
+item_tow_buff_crystal_02_02				index_color_1=22	towCrystalDefenseBurst	long_reuse_3	900			appearance/pt_special_hit_concuss.prt	
+item_tow_buff_crystal_02_03				index_color_1=30	towCrystalDotImmunity	towCrystalDotImmunity	900			appearance/pt_special_hit_concuss.prt	
+item_tow_holocron_ab_immune_02_01					towCrystalABImmune	towCrystalABImmune	900			appearance/pt_special_hit_concuss.prt	
+item_tow_crystal_uber_05_01				index_color_1=16	towCrystalUberCombat	long_reuse_4	900			appearance/pt_special_hit_concuss.prt	
 item_tow_crystal_uber_05_02				index_color_1=4	towCrystalUberDs	long_reuse_4	900			appearance/pt_special_hit_concuss.prt	
 item_tow_gloves_microsensory_02_01					towGlovesHealEff						
 item_tow_schematic_reactor_02_01			string:loot_schematic.schematic=object/draft_schematic/space/reactor/mustafar_fusion_reactor.iff,int:loot_schematic.uses=25,string:loot_schematic.skill_req=class_structures_phase4_master								
@@ -2187,7 +2187,7 @@ item_content_slaver_ith_hat_04_01	agility_modified=10,precision_modified=10,stam
 item_content_slaver_twk_hat_04_01	agility_modified=10,precision_modified=10,stamina_modified=10			index_color_1=48,index_color_2=55							
 item_content_stimpack_high_04_01			int:healing.power=4500,int:healing.combat_level_required=30								
 item_content_binocs_detection_03_02					contentClickDetectionAcc2	long_reuse_4	1800				
-item_content_selonian_psg_04_01					selonianPSG	long_reuse_3	3600	40			
+item_content_selonian_psg_04_01					selonianPSG	long_reuse_3	900	40			
 item_content_selonian_necklace_04_01	stamina_modified=22										
 item_content_selonian_laser_scope_03_01					preConsumable40	short_reuse_4	60	40			
 item_restuss_schematic_saber_04_01			string:loot_schematic.schematic=object/draft_schematic/weapon/lightsaber_one_handed_gen4_restuss.iff,int:loot_schematic.uses=1,string:loot_schematic.skill_req=class_forcesensitive_phase4_05								
@@ -2563,15 +2563,15 @@ item_beast_holocron_04_03			int:loot_schematic.type=5,string:loot_schematic.beas
 item_beast_holocron_04_04			int:loot_schematic.type=5,string:loot_schematic.beast=bm_helper_monkey_structure,string:loot_schematic.skill_req=expertise_bm_incubation_base_1								
 item_beast_holocron_04_05			int:loot_schematic.type=5,string:loot_schematic.beast=bm_helper_monkey_munitions,string:loot_schematic.skill_req=expertise_bm_incubation_base_1								
 item_beast_holocron_04_06			int:loot_schematic.type=5,string:loot_schematic.beast=bm_helper_monkey_jedi,string:loot_schematic.skill_req=expertise_bm_incubation_base_1								
-item_treasure_map_bonus_buff_04_01					treasure_bonus_combat_strikethrough_chance	long_reuse_4	3600			appearance/pt_jedi_tempt_hatred.prt	
-item_treasure_map_bonus_buff_04_02					treasure_bonus_combat_critical_hit	long_reuse_4	3600			appearance/pt_atarufocus.prt	
-item_treasure_map_bonus_buff_04_03					treasure_bonus_combat_dodge	long_reuse_4	3600			appearance/pt_vaapad_focus_disc2.prt	
-item_treasure_map_bonus_buff_04_04					treasure_bonus_combat_critical_hit_reduction	long_reuse_4	3600			appearance/pt_jedi_alacrity.prt	
-item_treasure_map_bonus_buff_04_05					treasure_bonus_combat_parry	long_reuse_4	3600			appearance/pt_medic_enhanced_dodge.prt	
-item_treasure_map_bonus_buff_04_06					treasure_bonus_heal_health_action	long_reuse_4	3600			appearance/pt_heal_resuscitate.prt	
-item_treasure_map_bonus_consumable_04_01					treasure_bonus_combat_block_chance	itemBuffClick	1800			appearance/pt_heal_health_buff_2.prt	
-item_treasure_map_bonus_consumable_04_02					treasure_bonus_combat_evasion_chance	itemBuffClick	1800			appearance/pt_heal_health_buff_2.prt	
-item_treasure_map_bonus_consumable_04_03					treasure_bonus_snare_immunity	itemBuffClick	1800			appearance/pt_heal_health_buff_2.prt	
+item_treasure_map_bonus_buff_04_01					treasure_bonus_combat_strikethrough_chance	long_reuse_4	900			appearance/pt_jedi_tempt_hatred.prt	
+item_treasure_map_bonus_buff_04_02					treasure_bonus_combat_critical_hit	long_reuse_4	900			appearance/pt_atarufocus.prt	
+item_treasure_map_bonus_buff_04_03					treasure_bonus_combat_dodge	long_reuse_4	900			appearance/pt_vaapad_focus_disc2.prt	
+item_treasure_map_bonus_buff_04_04					treasure_bonus_combat_critical_hit_reduction	long_reuse_4	900			appearance/pt_jedi_alacrity.prt	
+item_treasure_map_bonus_buff_04_05					treasure_bonus_combat_parry	long_reuse_4	900			appearance/pt_medic_enhanced_dodge.prt	
+item_treasure_map_bonus_buff_04_06					treasure_bonus_heal_health_action	long_reuse_4	900			appearance/pt_heal_resuscitate.prt	
+item_treasure_map_bonus_consumable_04_01					treasure_bonus_combat_block_chance	itemBuffClick	900			appearance/pt_heal_health_buff_2.prt	
+item_treasure_map_bonus_consumable_04_02					treasure_bonus_combat_evasion_chance	itemBuffClick	900			appearance/pt_heal_health_buff_2.prt	
+item_treasure_map_bonus_consumable_04_03					treasure_bonus_snare_immunity	itemBuffClick	900			appearance/pt_heal_health_buff_2.prt	
 item_senator_robe				index_color_1=255,index_color_2=112							
 item_senator_gloves				index_color_1=255							
 item_senator_wookiee_robe				index_color_1=24							
@@ -3503,7 +3503,7 @@ col_reward_forage_worm_trophy_02_01				index_color_1=7
 item_ice_cream_buff_health_01_01					ice_cream_heal_health	food_buff	601	0	1		survey
 item_ice_cream_buff_action_01_01					ice_cream_heal_action	food_buff	601	0	1		survey
 item_ice_cream_buff_remove_debuff_01_01					ice_cream_remove_debuff	food_buff	601	0	1		survey
-item_ice_cream_buff_xp_bonus_01_01					ice_cream_xp_bonus	food_buff	3600	0	1		survey
+item_ice_cream_buff_xp_bonus_01_01					ice_cream_xp_bonus	food_buff	900	0	1		survey
 item_ice_cream_buff_remove_weakened_01_01					ice_cream_remove_weaken_state	food_buff	603	0	1		survey
 item_ice_cream_buff_forage_buff_01_01					ice_cream_forage_buff	food_buff	1500	0	1		survey
 item_ice_cream_buff_debuff_01_01					ice_cream_debuff	food_buff	90	0	1		survey
@@ -3746,10 +3746,10 @@ item_tcg_loot_reward_series2_barn			string:player_structure.deed.template=object
 item_tcg_loot_reward_series1_housecleaning_kit			int:increaseAmount=50,int:nonGenericStorageItem=1							clienteffect/tcg_add_storage_house_cleaning.cef	
 item_tcg_loot_reward_series1_beru_whitesuns_cookbook			int:increaseAmount=100,int:nonGenericStorageItem=1							clienteffect/tcg_add_storage_cookbook.cef	
 item_tcg_loot_reward_series1_organizational_datapad			int:increaseAmount=100,int:nonGenericStorageItem=1							clienteffect/tcg_add_storage_datapad.cef	
-item_tcg_loot_reward_series1_gorax_ear					tcg_series1_gorax_ear	long_reuse_4	3600			clienteffect/tcg_gorax_ear.cef	
-item_tcg_loot_reward_series1_morgukai_shadow_scroll					tcg_series1_morgukai_shadow_scroll	long_reuse_4	3600			clienteffect/tcg_shadow_scroll.cef	
-item_tcg_loot_reward_series2_sanyassan_skull					tcg_series2_sanyassan_skull	long_reuse_4	3600			clienteffect/tcg_sanyassan_skull.cef	
-item_tcg_loot_reward_series1_tusken_talisman					tcg_series1_tusken_talisman	long_reuse_4	3600			clienteffect/tcg_talisman.cef	
+item_tcg_loot_reward_series1_gorax_ear					tcg_series1_gorax_ear	long_reuse_4	900			clienteffect/tcg_gorax_ear.cef	
+item_tcg_loot_reward_series1_morgukai_shadow_scroll					tcg_series1_morgukai_shadow_scroll	long_reuse_4	900			clienteffect/tcg_shadow_scroll.cef	
+item_tcg_loot_reward_series2_sanyassan_skull					tcg_series2_sanyassan_skull	long_reuse_4	900			clienteffect/tcg_sanyassan_skull.cef	
+item_tcg_loot_reward_series1_tusken_talisman					tcg_series1_tusken_talisman	long_reuse_4	900			clienteffect/tcg_talisman.cef	
 item_tcg_loot_reward_series1_hans_hydrospanner					tcg_series1_hans_hydrospanner					clienteffect/tcg_xp.cef	
 item_tcg_loot_reward_series2_keelkana_tooth					tcg_series2_keelkana_tooth					clienteffect/tcg_xp_keelkana_tooth.cef	
 item_tcg_loot_reward_series9_lepese_dictionary					tcg_series9_lepese_dictionary					clienteffect/tcg_xp_instant.cef	
@@ -4656,7 +4656,7 @@ item_schematic_gcw2_survey_tool_all			string:loot_schematic.schematic=object/dra
 item_player_house_deed_jabbas_sail_barge											
 item_tcg_loot_reward_series8_single_pod_airspeeder			string:vehicle_attribs.object_ref=single_pod_airspeeder,float:hit_points=15000								
 item_tcg_loot_reward_series8_snow_speeder_familiar			string:creatureName=item_tcg_loot_reward_series8_snow_speeder_familiar								
-item_tcg_loot_reward_series8_wampa_arm					tcg_series8_severed_wampa_arm	long_reuse_4	3600			clienteffect/tcg_shadow_scroll.cef	
+item_tcg_loot_reward_series8_wampa_arm					tcg_series8_severed_wampa_arm	long_reuse_4	900			clienteffect/tcg_shadow_scroll.cef	
 item_tcg_loot_reward_series8_bespin_lamp_off			string:type=lamp,string:status=off,string:tcg.combineItemTemplatePattern=object/tangible/tcg/series8/combine_decorative_,string:tcg.setName=set8_cloud_house								
 item_tcg_loot_reward_series8_bespin_lamp_on			string:type=lamp,string:status=off,string:tcg.combineItemTemplatePattern=object/tangible/tcg/series8/combine_decorative_,string:tcg.setName=set8_cloud_house								
 item_tcg_loot_reward_series8_bespin_shelves			string:tcg.combineItemTemplatePattern=object/tangible/tcg/series8/combine_decorative_,string:tcg.setName=set8_cloud_house								

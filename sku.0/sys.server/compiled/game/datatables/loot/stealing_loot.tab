@@ -105,8 +105,8 @@ tatooine_opening_cultist_12	static:item_tatooine_junk_mutant_womprat_01_01	35
 	static:weapon_sword_1h_04_01	3
 	static:item_npe_backpack_reward_01_01	1
 spymaster_21	object/tangible/quest/prof_spy_21_incom_plans.iff	1
-stardust_krrsantan	object/building/player/player_house_tree_house_01.iff	50
-	object/building/player/player_house_tree_house_02.iff	50
+stardust_krrsantan	item_player_house_deed_tree_house_01	50
+	item_player_house_deed_tree_house_02	50
 stardust_darth_vader	item_color_crystal_02_00	50
 stardust_darth_sidious	object/tangible/jedi/no_drop_jedi_holocron_dark.iff	66
 stardust_darth_oblivion	item_pgc_token_03	50

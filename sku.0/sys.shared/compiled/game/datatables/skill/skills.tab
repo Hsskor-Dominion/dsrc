@@ -1588,10 +1588,10 @@ expertise_bh_intimidate_2	expertise_bh_intimidate_1																					precisio
 expertise_bh_intimidate_3	expertise_bh_intimidate_2																					precision_modified=25			0	
 expertise_bh_intimidate_4	expertise_bh_intimidate_3																					precision_modified=25			0	
 expertise_bh_dread_strike_1	expertise_sp_jagged_edge_4									expertise_sp_jagged_edge_4											bh_dread_strike_1,bh_intimidate_1	bh_dire_snare=50,bh_dire_root=50			0	
-expertise_bh_stamina_1	expertise																					foraging=5,camp=10,stamina_modified=10	craftStructureCampA		0	
-expertise_bh_stamina_2	expertise_bh_stamina_1																					foraging=5,camp=10,stamina_modified=10	craftStructureCampB		0	
-expertise_bh_stamina_3	expertise_bh_stamina_2																					foraging=5,camp=10,stamina_modified=10	craftStructureCampC		0	
-expertise_bh_stamina_4	expertise_bh_stamina_3			1																		foraging=5,camp=10,stamina_modified=10	craftStructureCampE		0	
+expertise_bh_stamina_1	expertise																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=5	craftStructureCampA		0	
+expertise_bh_stamina_2	expertise_bh_stamina_1																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=5	craftStructureCampB		0	
+expertise_bh_stamina_3	expertise_bh_stamina_2																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=5	craftStructureCampC		0	
+expertise_bh_stamina_4	expertise_bh_stamina_3			1																		foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=5	craftStructureCampE		0	
 expertise_bh_precision_1	expertise																					precision_modified=10			0	
 expertise_bh_precision_2	expertise_bh_precision_1																					precision_modified=10			0	
 expertise_bh_precision_3	expertise_bh_precision_2																					precision_modified=10			0	

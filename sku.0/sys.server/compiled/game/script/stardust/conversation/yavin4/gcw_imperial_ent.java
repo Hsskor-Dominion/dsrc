@@ -254,7 +254,7 @@ public class gcw_imperial_ent extends script.base_script
         }
         if (gcw_imperial_ent_condition_playerCompletedQuest(player, npc))
         {
-            groundquests.clearQuest(player, "gcw_imperial_ent");
+            groundquests.sendSignal(player, "gcw_ent_reward");
         }
         if (gcw_imperial_ent_condition_playerStartedQuest(player, npc))
         {

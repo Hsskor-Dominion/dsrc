@@ -533,6 +533,54 @@ public class npe extends script.base_script
         {
             warpPlayer(player, "tatooine", 3858, 0, 2350, null, 0, 0, 0, "", false);
         }
+        if (hasObjVar(player, "stardust_bestine"))
+        {
+            warpPlayer(player, "tatooine", -1350, 0, -3600, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_espa"))
+        {
+            warpPlayer(player, "tatooine", -2845, 0, 2110, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_jedi"))
+        {
+            warpPlayer(player, "yavin4", 5100, 73, 5550, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_naboo_imperial"))
+        {
+            warpPlayer(player, "Naboo", 2440, 292, -3891, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_kaadara"))
+        {
+            warpPlayer(player, "Naboo", 5143, -192, 6750, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_theed"))
+        {
+            warpPlayer(player, "Naboo", -5515, 6, 3850, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_moenia"))
+        {
+            warpPlayer(player, "Naboo", 4745, 6, -4685, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_republic_academy"))
+        {
+            warpPlayer(player, "Corellia", -6525, 398, 6040, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_coronet"))
+        {
+            warpPlayer(player, "Corellia", -147, 0, -4720, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_dathomir"))
+        {
+            warpPlayer(player, "Dathomir", -6525, 398, 6040, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_trandoshan"))
+        {
+            warpPlayer(player, "kashyyyk_main", 80, 25, 183, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_wookiee"))
+        {
+            warpPlayer(player, "kashyyyk_main", -430, 222, -123, null, 0, 0, 0, "", false);
+        }
         else
         {
             warpPlayer(player, FINISH_PLANET, FINISH_X, 0, FINISH_Z, null, 0.0f, 0.0f, 0.0f, null, false);
