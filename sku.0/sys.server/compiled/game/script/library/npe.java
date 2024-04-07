@@ -547,35 +547,39 @@ public class npe extends script.base_script
         }
         if (hasObjVar(player, "stardust_naboo_imperial"))
         {
-            warpPlayer(player, "Naboo", 2440, 292, -3891, null, 0, 0, 0, "", false);
+            warpPlayer(player, "naboo", 2440, 292, -3891, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_kaadara"))
         {
-            warpPlayer(player, "Naboo", 5143, -192, 6750, null, 0, 0, 0, "", false);
+            warpPlayer(player, "naboo", 5143, -192, 6750, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_theed"))
         {
-            warpPlayer(player, "Naboo", -5515, 6, 3850, null, 0, 0, 0, "", false);
+            warpPlayer(player, "naboo", -5515, 6, 3850, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_moenia"))
         {
-            warpPlayer(player, "Naboo", 4745, 6, -4685, null, 0, 0, 0, "", false);
+            warpPlayer(player, "naboo", 4745, 6, -4685, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_republic_academy"))
         {
-            warpPlayer(player, "Corellia", -6525, 398, 6040, null, 0, 0, 0, "", false);
+            warpPlayer(player, "corellia", -6525, 398, 6040, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_coronet"))
         {
-            warpPlayer(player, "Corellia", -147, 0, -4720, null, 0, 0, 0, "", false);
+            warpPlayer(player, "corellia", -147, 0, -4720, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_lok"))
+        {
+            warpPlayer(player, "lok", -1760, 11, -3088, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_dathomir"))
         {
-            warpPlayer(player, "Dathomir", -6525, 398, 6040, null, 0, 0, 0, "", false);
+            warpPlayer(player, "dathomir", -6525, 398, 6040, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_trandoshan"))
         {
-            warpPlayer(player, "kashyyyk_main", 80, 25, 183, null, 0, 0, 0, "", false);
+            warpPlayer(player, "kashyyyk_main", 544, 31, 486, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_wookiee"))
         {

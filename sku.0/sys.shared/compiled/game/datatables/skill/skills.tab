@@ -2024,10 +2024,10 @@ expertise_me_heal_action_3	expertise_me_heal_action_2			1																		exoti
 expertise_me_heal_action_4	expertise_me_heal_action_3			1																		exotic_heal_action_reduction=5			0	
 expertise_me_serotonin_boost_1	expertise																				me_serotonin_boost_1				0	
 expertise_me_bacta_grenade_1																					me_bacta_grenade_1				0	
-expertise_me_enhance_duration_1	expertise_sp_run_its_course_1									expertise_sp_run_its_course_1												expertise_buff_duration_line_me_enhance=300			0	
-expertise_me_enhance_duration_2	expertise_me_enhance_duration_1																					expertise_buff_duration_line_me_enhance=300			0	
-expertise_me_enhance_duration_3	expertise_me_enhance_duration_2																					expertise_buff_duration_line_me_enhance=300			0	
-expertise_me_enhance_duration_4	expertise_me_enhance_duration_3																					expertise_buff_duration_line_me_enhance=300			0	
+expertise_me_enhance_duration_1	expertise_sp_run_its_course_1									expertise_sp_run_its_course_1												expertise_buff_duration_line_me_enhance=300,expertise_agro_healing=15			0	
+expertise_me_enhance_duration_2	expertise_me_enhance_duration_1																					expertise_buff_duration_line_me_enhance=300,expertise_agro_healing=15			0	
+expertise_me_enhance_duration_3	expertise_me_enhance_duration_2																					expertise_buff_duration_line_me_enhance=300,expertise_agro_healing=15			0	
+expertise_me_enhance_duration_4	expertise_me_enhance_duration_3																					expertise_buff_duration_line_me_enhance=300,expertise_agro_healing=15			0	
 expertise_me_enhancement_specialist_1	expertise_me_enhance_duration_4									expertise_me_enhance_duration_3											me_enhance_action_1				0	
 expertise_me_reckless_stimulation_1	expertise_of_heal_cool_4			1						expertise_of_heal_cool_4											me_reckless_stimulation_1				0	
 expertise_me_stasis_1	expertise_me_reckless_stimulation_1									expertise_me_reckless_stimulation_1											me_stasis_1				0	

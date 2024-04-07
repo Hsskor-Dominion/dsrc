@@ -593,7 +593,7 @@ public class npe_force_sensitive extends script.base_script
                 }
                 utils.setScriptVar(player, "conversation.npe_force_sensitive.branchId", 19);
                 npcStartConversation(player, npc, "npe_force_sensitive", message, responses);
-                return SCRIPT_CONTINUE; // Add this line to prevent falling through
+                return SCRIPT_CONTINUE;
             }
         }
         if (npe_force_sensitive_condition__defaultCondition(player, npc))

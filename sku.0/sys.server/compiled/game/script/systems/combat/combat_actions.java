@@ -2104,45 +2104,45 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int fs_sh_0(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!healing.isDamaged(self)) {
-            sendSystemMessage(self, new string_id("healing", "no_damage_to_heal_self"));
-            return SCRIPT_OVERRIDE;
-        }
         if (!combatStandardAction("fs_sh_0", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+        }
+        if (successfulFastAttack(self, "fs_heal", "quick_heal_fly")) {
+            setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
+            return SCRIPT_CONTINUE;
         }
         return SCRIPT_CONTINUE;
     }
 
     public int fs_sh_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!healing.isDamaged(self)) {
-            sendSystemMessage(self, new string_id("healing", "no_damage_to_heal_self"));
-            return SCRIPT_OVERRIDE;
-        }
         if (!combatStandardAction("fs_sh_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+        }
+        if (successfulFastAttack(self, "fs_heal", "quick_heal_fly")) {
+            setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
+            return SCRIPT_CONTINUE;
         }
         return SCRIPT_CONTINUE;
     }
 
     public int fs_sh_2(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!healing.isDamaged(self)) {
-            sendSystemMessage(self, new string_id("healing", "no_damage_to_heal_self"));
-            return SCRIPT_OVERRIDE;
-        }
         if (!combatStandardAction("fs_sh_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+        }
+        if (successfulFastAttack(self, "fs_heal", "quick_heal_fly")) {
+            setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
+            return SCRIPT_CONTINUE;
         }
         return SCRIPT_CONTINUE;
     }
 
     public int fs_sh_3(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!healing.isDamaged(self)) {
-            sendSystemMessage(self, new string_id("healing", "no_damage_to_heal_self"));
-            return SCRIPT_OVERRIDE;
-        }
         if (!combatStandardAction("fs_sh_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+        }
+        if (successfulFastAttack(self, "fs_heal", "quick_heal_fly")) {
+            setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
+            return SCRIPT_CONTINUE;
         }
         return SCRIPT_CONTINUE;
     }

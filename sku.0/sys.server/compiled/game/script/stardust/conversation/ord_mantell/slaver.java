@@ -64,7 +64,7 @@ public class slaver extends script.base_script
         {
 
             final string_id message = new string_id(c_stringFile, "npc_explain_else");
-            final int numberOfResponses = 5;
+            final int numberOfResponses = 6;
 
             final string_id[] responses = new string_id[numberOfResponses];
             int responseIndex = 0;
@@ -72,6 +72,7 @@ public class slaver extends script.base_script
             responses[responseIndex++] = new string_id(c_stringFile, "player_accept_tatooine_pilot");
             responses[responseIndex++] = new string_id(c_stringFile, "player_accept_naboo");
             responses[responseIndex++] = new string_id(c_stringFile, "player_accept_corellia");
+            responses[responseIndex++] = new string_id(c_stringFile, "player_accept_lok");
             responses[responseIndex++] = new string_id(c_stringFile, "player_accept_dathomir");
             responses[responseIndex++] = new string_id(c_stringFile, "player_accept_kashyyyk");
 
@@ -150,8 +151,8 @@ public class slaver extends script.base_script
             final string_id[] responses = new string_id[numberOfResponses];
             int responseIndex = 0;
 
-            responses[responseIndex++] = new string_id(c_stringFile, "player_accept_naboo_ground_rsf");
             responses[responseIndex++] = new string_id(c_stringFile, "player_accept_naboo_space_rsf");
+            responses[responseIndex++] = new string_id(c_stringFile, "player_accept_naboo_ground_rsf");
             responses[responseIndex++] = new string_id(c_stringFile, "player_accept_naboo_space_imperial");
             responses[responseIndex++] = new string_id(c_stringFile, "player_accept_naboo_space_rebel");
 
@@ -181,6 +182,24 @@ public class slaver extends script.base_script
 
             return SCRIPT_CONTINUE;
         }
+        if (response.equals("player_accept_lok"))
+        {
+
+            final string_id message = new string_id(c_stringFile, "npc_offer_lok");
+            final int numberOfResponses = 1;
+
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
+
+            responses[responseIndex++] = new string_id(c_stringFile, "player_accept_lok2");
+
+            utils.setScriptVar(player, "conversation.slaver_conversation.branchId", 8);
+
+            npcSpeak(player, message);
+            npcSetConversationResponses(player, responses);
+
+            return SCRIPT_CONTINUE;
+        }
         if (response.equals("player_accept_dathomir"))
         {
 
@@ -190,7 +209,7 @@ public class slaver extends script.base_script
             final string_id[] responses = new string_id[numberOfResponses];
             int responseIndex = 0;
 
-            responses[responseIndex++] = new string_id(c_stringFile, "player_accept_dathomir");
+            responses[responseIndex++] = new string_id(c_stringFile, "player_accept_dathomir2");
 
             utils.setScriptVar(player, "conversation.slaver_conversation.branchId", 8);
 
@@ -226,7 +245,7 @@ public class slaver extends script.base_script
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_bestine");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_bestine", 1);
                 slaver_action_leaveStation1(player, npc);
 
@@ -240,7 +259,7 @@ public class slaver extends script.base_script
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_espa");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_espa", 1);
                 slaver_action_leaveStation1(player, npc);
 
@@ -258,7 +277,7 @@ public class slaver extends script.base_script
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_kaadara");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_kaadara", 1);
                 slaver_action_leaveStation1(player, npc);
 
@@ -272,7 +291,7 @@ public class slaver extends script.base_script
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_theed");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_theed", 1);
                 slaver_action_leaveStation1(player, npc);
 
@@ -286,7 +305,7 @@ public class slaver extends script.base_script
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_naboo_imperial");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_naboo_imperial", 1);
                 slaver_action_leaveStation1(player, npc);
 
@@ -300,7 +319,7 @@ public class slaver extends script.base_script
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_moenia");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_moenia", 1);
                 slaver_action_leaveStation1(player, npc);
 
@@ -318,7 +337,7 @@ public class slaver extends script.base_script
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_corellia_academy");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_republic_academy", 1);
                 slaver_action_leaveStation1(player, npc);
 
@@ -332,7 +351,7 @@ public class slaver extends script.base_script
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_coronet");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_coronet", 1);
                 slaver_action_leaveStation1(player, npc);
 
@@ -346,11 +365,11 @@ public class slaver extends script.base_script
     }
     public int slaver_handleBranch8(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        if (response.equals("player_accept_dathomir"))
+        if (response.equals("player_accept_dathomir2"))
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_dathomir");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_dathomir", 1);
                 slaver_action_leaveStation1(player, npc);
 
@@ -368,7 +387,7 @@ public class slaver extends script.base_script
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_wookiee");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_wookiee", 1);
                 slaver_action_leaveStation1(player, npc);
 
@@ -382,8 +401,26 @@ public class slaver extends script.base_script
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "travel_trandoshan");
+                final string_id message = new string_id(c_stringFile, "travel");
                 setObjVar(player, "stardust_trandoshan", 1);
+                slaver_action_leaveStation1(player, npc);
+
+                utils.removeScriptVar(player, "conversation.slaver_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+        }
+        return SCRIPT_DEFAULT;
+    }
+    public int slaver_handleBranch10(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        if (response.equals("player_accept_lok"))
+        {
+            if (slaver_condition__defaultCondition(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "travel");
+                setObjVar(player, "stardust_dathomir", 1);
                 slaver_action_leaveStation1(player, npc);
 
                 utils.removeScriptVar(player, "conversation.slaver_conversation.branchId");
@@ -498,6 +535,10 @@ public class slaver extends script.base_script
             return SCRIPT_CONTINUE;
         }
         else if (branchId == 9 && slaver_handleBranch9(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        else if (branchId == 10 && slaver_handleBranch10(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
