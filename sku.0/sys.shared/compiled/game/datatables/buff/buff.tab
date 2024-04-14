@@ -185,9 +185,9 @@ drink_flameout	food			1	buffs.foodBeverage	1200	agility_modified	80	expertise_st
 drink_mandalorian_wine	food			1	buffs.foodBeverage	1200	strength_modified	80	constitution_modified	40	droid_find_speed	10	droid_track_chance	10		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dish_thakitillo	ice_cream			1	buffs.foodMeal	1200	stamina_modified	80	expertise_parry	3		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dish_vercupti_of_agazza_boleruuee	ice_cream			1	buffs.foodMeal	1200	precision_modified	80	expertise_evasion_chance	3	combat_evasion_value	30		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-dessert_deneelian_fizz_pudding	ice_cream			1	buffs.foodDessert	1200	luck_modified	80	expertise_block_chance	3	combat_block_value	30		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-dessert_luilris_mushroom_pie	ice_cream			1	buffs.foodDessert	1200	constitution_modified	100	stamina_modified	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-drink_warrl_surprise	food			1	buffs.foodBeverage	900	agility_modified	55	strength_modified	20	constitution_modified	20		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+dessert_deneelian_fizz_pudding	ice_cream			1	buffs.foodDessert	1200	luck_modified	80	expertise_block_chance	3	combat_block_value	30	factory_speed	10		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+dessert_luilris_mushroom_pie	ice_cream			1	buffs.foodDessert	1200	constitution_modified	100	stamina_modified	100		0	xp_bonus_general	50		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+drink_warrl_surprise	food			1	buffs.foodBeverage	900	agility_modified	55	strength_modified	20	constitution_modified	20	xp_bonus_general	50		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 tasty_beverage	food			1	buffs.foodBeverage	120	constitution_modified	5	agility_modified	5	stamina_modified	5	luck_modified	5		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 shadowpaw	spice			1	buffs.spiceAction	900	agility_modified	25	stamina_modified	50	xp_bonus_general	50		0		0	STATE_NONE	handleSpiceDownerEffect			1	0		1	1	1	0	1	1	0	1	1	1
 shadowpaw_01	spice			1	buffs.spiceAction	900	agility_modified	25	stamina_modified	50		0	xp_bonus_general	50		0	STATE_NONE	handleSpiceDownerEffect			1	0		0	1	1	0	1	1	0	1	1	1
