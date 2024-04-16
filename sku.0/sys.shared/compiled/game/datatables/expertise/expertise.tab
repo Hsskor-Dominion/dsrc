@@ -205,6 +205,7 @@ expertise_fs_path_improved_force_choke_1	5	4	7	1			all
 expertise_fs_path_improved_force_choke_2	5	4	7	2			all
 expertise_fs_path_anticipate_aggression_1	5	5	3	1			all
 expertise_fs_path_anticipate_aggression_2	5	5	3	2			all
+expertise_fs_path_anticipate_aggression_2	5	5	3	3			all
 expertise_fs_path_flurry	5	5	1	1			all
 expertise_fs_path_soothing_aura_1	5	5	2	1			all
 expertise_fs_path_soothing_aura_2	5	5	2	2			all
@@ -672,10 +673,10 @@ expertise_sp_glancing_armor_1	16	4	7	1			all
 expertise_sp_glancing_armor_2	16	4	7	2			all
 expertise_sp_glancing_armor_3	16	4	7	3			all
 expertise_sp_glancing_armor_4	16	4	7	4			all
-expertise_sp_equilibrium	22	4	3	1			all
-expertise_sp_equilibrium_2	22	4	3	2			all
-expertise_sp_equilibrium_3	22	4	3	3			all
-expertise_sp_equilibrium_4	22	4	3	4			all
+expertise_sp_equilibrium	99	4	3	1			all
+expertise_sp_equilibrium_2	99	4	3	2			all
+expertise_sp_equilibrium_3	99	4	3	3			all
+expertise_sp_equilibrium_4	99	4	3	4			all
 expertise_sp_close_quarters_1	19	4	3	1			all
 expertise_sp_close_quarters_2	19	4	3	2			all
 expertise_sp_close_quarters_3	19	4	3	3			all
@@ -718,9 +719,10 @@ expertise_sp_careful_observation_2	29	3	5	2			all
 expertise_sp_careful_observation_3	29	3	5	3			all
 expertise_sp_careful_observation_4	29	3	5	4			all
 expertise_sp_smoke_mirrors	99	3	3	1			all
-expertise_sp_vibrogenerator_1	99	3	4	1			all
-expertise_sp_vibrogenerator_2	99	3	4	2			all
-expertise_sp_vibrogenerator_3	99	3	4	3			all
+expertise_sp_vibrogenerator_1	22	4	3	1			all
+expertise_sp_vibrogenerator_2	22	4	3	2			all
+expertise_sp_vibrogenerator_3	22	4	3	3			all
+expertise_sp_vibrogenerator_4	22	4	3	4			all
 expertise_sp_crippling_traps_1	99	3	5	1			all
 expertise_sp_crippling_traps_2	99	3	5	2			all
 expertise_sp_cloak_and_dagger_1	99	3	7	1			all

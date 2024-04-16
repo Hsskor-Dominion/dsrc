@@ -15,8 +15,7 @@ public class generic_broker_4 extends script.base_script
     }
     public boolean generic_broker_4_condition_isNonSmuggler(obj_id player, obj_id npc) throws InterruptedException
     {
-        if (utils.getPlayerProfession(player) != utils.SMUGGLER)
-        {
+        if (!hasSkill(player, "class_smuggler_phase1_novice")) {
             return true;
         }
         return false;

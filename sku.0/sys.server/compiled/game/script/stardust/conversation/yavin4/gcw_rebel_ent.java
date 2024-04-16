@@ -23,7 +23,7 @@ public class gcw_rebel_ent extends script.base_script
     }
     public boolean gcw_rebel_ent_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "gcw_rebel_ent", "talktogcw");
+        return groundquests.isTaskActive(player, "gcw_rebel_ent", "talktogcwreb");
     }
     public boolean gcw_rebel_ent_condition_notEntertainer(obj_id player, obj_id npc) throws InterruptedException
     {

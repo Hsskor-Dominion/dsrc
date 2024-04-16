@@ -779,9 +779,9 @@ sm_lucky_break	lucky_break			18	command.sm_path_lucky_break	10	expertise_critica
 sm_lucky_break_recourse	lucky_break			19	command.sm_lucky_break_recourse	10		0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 sm_double_hit	double_hit			26	command.sm_general_hammer_fanning	5		0		0		0		0		0	STATE_NONE	sm_double_hit_recourse			1	0		1	1	1	0	1	1	0	1	1	1
 sm_double_hit_recourse	double_hit			27	command.sm_double_hit_recourse	5		0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-sm_modify_pistol_1	modify_pistol			1	command.sm_modify_pistol	1800	expertise_damage_weapon_2	4	expertise_damage_weapon_7	4	expertise_damage_weapon_4	4	expertise_damage_weapon_5	4	expertise_damage_weapon_6	4	STATE_NONE	none	clienteffect/weapon_reload.cef		1	0		1	1	1	0	1	1	0	1	1	1
-sm_modify_pistol_2	modify_pistol			2	command.sm_modify_pistol	1800	expertise_damage_weapon_2	8	expertise_damage_weapon_7	8	expertise_damage_weapon_4	8	expertise_damage_weapon_5	8	expertise_damage_weapon_6	8	STATE_NONE	none	clienteffect/weapon_reload.cef		1	0		1	1	1	0	1	1	0	1	1	1
-sm_modify_pistol_3	modify_pistol			3	command.sm_modify_pistol	1800	expertise_damage_weapon_2	12	expertise_damage_weapon_7	12	expertise_damage_weapon_4	12	expertise_damage_weapon_5	12	expertise_damage_weapon_6	12	STATE_NONE	none	clienteffect/weapon_reload.cef		1	0		1	1	1	0	1	1	0	1	1	1
+sm_modify_pistol_1	modify_pistol			1	command.sm_modify_pistol	1800	expertise_damage_ranged	12	expertise_damage_melee	4	expertise_critical_niche_all	1	expertise_action_all	-1		0	STATE_NONE	none	clienteffect/weapon_reload.cef		1	0		1	1	1	0	1	1	0	1	1	1
+sm_modify_pistol_2	modify_pistol			2	command.sm_modify_pistol	1800	expertise_damage_ranged	12	expertise_damage_melee	8	expertise_critical_niche_all	3	expertise_action_all	-3		0	STATE_NONE	none	clienteffect/weapon_reload.cef		1	0		1	1	1	0	1	1	0	1	1	1
+sm_modify_pistol_3	modify_pistol			3	command.sm_modify_pistol	1800	expertise_damage_ranged	12	expertise_damage_melee	12	expertise_critical_niche_all	5	expertise_action_all	-5		0	STATE_NONE	none	clienteffect/weapon_reload.cef		1	0		1	1	1	0	1	1	0	1	1	1
 sm_skullduggery	skullduggery			10	command.sm_skullduggery	4	sm_skullduggery	4		0		0		0		0	STATE_NONE	none	clienteffect/sm_skullduggery.cef	head	1	1		1	1	1	0	1	1	0	1	1	1
 sm_impossible_odds	impossible_odds			10	command.sm_impossible_odds	4	sm_impossible_odds	4		0		0		0		0	STATE_NONE	none	clienteffect/sm_impossible_odds.cef	head	1	1		1	1	1	0	1	1	0	1	1	1
 sm_pistol_whip	pistol_whip			10	command.sm_pistol_whip	2	sm_pistol_whip	0		0		0		0		0	STATE_NONE	none	clienteffect/sm_pistol_whip.cef	head	1	1		1	1	1	0	1	1	0	1	1	1
@@ -812,7 +812,7 @@ co_supressing_fire_4	suppressing_fire			5	command.co_suppressing_fire	8	glancing
 co_flash_bang	flash_bang			10	command.co_path_flashbang	30	expertise_flash_bang	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 co_muscle_spasm	muscle_spasm			26	command.co_general_muscle_spasm	10	expertise_muscle_spasm	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 co_base_of_operations	base_of_operations			34	command.co_general_base_of_operations	600	group	0	expertise_innate_protection_all	1000	expertise_critical_niche_all	5		0		0	STATE_NONE	none	clienteffect/commando_base_of_operations.cef		1	0		1	1	1	0	1	0	0	1	1	1
-co_mirror_armor	mirror_armor			34	command.co_path_mirror_armor	120	radar_invis	0		0		0		0		0	STATE_NONE	none	clienteffect/commando_mirror_armor.cef		1	0		1	1	1	0	1	1	0	1	1	1
+co_mirror_armor	mirror_armor			34	command.co_path_mirror_armor	120	radar_invis	0	camouflage	75		0		0		0	STATE_NONE	none	clienteffect/commando_mirror_armor.cef		1	0		1	1	1	0	1	1	0	1	1	1
 co_riddle_armor	playerArmorReduce			50	command.co_riddle_armor	15	expertise_riddle_armor	0		0		0		0		0	STATE_NONE	none	appearance/pt_cmndo_riddle_armor.prt		1	1		1	1	1	0	1	1	0	1	1	1
 co_armor_cracker	playerArmorReduce			50	command.co_armor_cracker	15	expertise_riddle_armor	0		0		0		0		0	STATE_NONE	none	appearance/pt_cmndo_riddle_armor.prt		1	1		1	1	1	0	1	1	0	1	1	1
 co_stand_fast	co_stand_fast			100	command.co_stand_fast	12	expertise_damage_decrease_percentage	0		0		0		0		0	STATE_NONE	none	appearance/pt_co_stand_fast.prt		1	0		1	1	1	0	1	1	0	1	1	1
@@ -1183,14 +1183,14 @@ me_bacta_resistance_1	healingDebuff			21	command.me_bacta_resistance	18	expertis
 me_induce_insanity_1	medicSpecialLock			34	command.me_induce_insanity	15	weapon_lock	1		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 me_electrolyte_drain_1	snare			26	command.me_electrolyte_drain	15	movement	0		0		0		0		0	STATE_NONE	none	clienteffect/medic_electrolyte_drain.cef		1	1		1	1	1	0	1	1	0	1	1	1
 me_traumatize_1	actionDrain			1	command.me_traumatize	1	immediate_action_drain	1	expertise_action_all	-50		0		0		0	STATE_NONE	none	clienteffect/medic_traumatize.cef		1	1		1	1	1	0	1	1	0	1	1	1
-me_thyroid_rupture_1	thyroidRupture			34	command.me_thyroid_rupture	15	combat_divide_damage_dealt	25		0		0		0		0	STATE_NONE	none	clienteffect/medic_thyroid_rupture.cef		1	1		1	1	1	0	1	1	0	1	1	1
+me_thyroid_rupture_1	thyroidRupture			34	command.me_thyroid_rupture	15	combat_divide_damage_dealt	30		0		0		0		0	STATE_NONE	none	clienteffect/medic_thyroid_rupture.cef		1	1		1	1	1	0	1	1	0	1	1	1
 me_stasis_1	stasis			34	command.me_stasis	15	movement	0	damage_immune	1	dot_reduction_all	10	dot_immunity	5		0	STATE_NONE	stasis_recourse	clienteffect/medic_stasis.cef		1	0		0	1	0	0	1	1	0	1	1	1
 me_stasis_self_1	stasis			34	command.me_stasis_self	15	movement	0	damage_immune	1	dot_reduction_all	10	dot_immunity	5		0	STATE_NONE	stasis_recourse	clienteffect/medic_stasis.cef		1	0		0	1	0	0	1	1	0	1	1	1
 me_serotonin_purge_1	serotoninPurge			26	command.me_serotonin_purge	1	buff_purge	1		0		0		0		0	STATE_NONE	none	clienteffect/medic_serotonin_purge.cef		1	1		1	1	1	0	1	1	0	1	1	1
 me_burst_1	burst			34	command.me_burst	7	expertise_critical_niche_all	-3	strikethrough_vulnerable	5	critical_hit_vulnerable	5		0		0	STATE_NONE	none	clienteffect/medic_burst.cef		1	1		1	1	1	0	1	1	0	1	1	1
 me_evasion_1	evasion			34	command.me_evasion	12	expertise_dodge	35	expertise_evasion_chance	50	combat_evasion_value	50		0		0	STATE_NONE	none	clienteffect/medic_evasion.cef		1	0		1	1	1	0	1	1	0	1	1	1
 stackable_me_cranial_smash_1	cranialSmash			34	command.me_cranial_smash	1	stackable	5		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-me_cranial_smash_1	cranialSmash			34	command.me_cranial_smash	10	movement	0	combat_divide_damage_dealt	25		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+me_cranial_smash_1	cranialSmash			34	command.me_cranial_smash	10	movement	0	combat_divide_damage_dealt	30		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 fs_dot_immunity_recourse	fsCure			100	command.shock	25		0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 me_rheumatic_calamity_1	medicArthritus			34	command.me_induce_insanity	10	action_burn	65		0		0		0		0	STATE_NONE	none	clienteffect/medic_rheumatic.cef		1	1		1	1	1	0	1	1	0	1	1	1
 sp_burst_shadows	sp_burst_shadows			1	command.sp_burst_of_shadows	15	movement	0	expertise_damage_all	10	freeshot_case_crit	1	freeshot_case_strikethrough	1		0	STATE_NONE	none	appearance/pt_spy_burst_shadows.prt		1	0		0	1	1	0	1	1	0	1	1	1

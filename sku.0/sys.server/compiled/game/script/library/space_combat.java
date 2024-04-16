@@ -982,7 +982,7 @@ public class space_combat extends script.base_script
         {
             return;
         }
-        if (isIdValid(objPilot) && (utils.getPlayerProfession(objPilot) == utils.SMUGGLER))
+        if (isIdValid(objPilot) && (hasSkill(objPilot, "class_smuggler_phase1_novice")))
         {
             smuggler.spaceContrabandDropCheck(objPilot);
         }
