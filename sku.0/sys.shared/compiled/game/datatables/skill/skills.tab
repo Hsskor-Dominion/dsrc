@@ -179,7 +179,7 @@ class_spy_phase4_02	class_spy_phase4	oneByFour	0	0	0	0	100	0		class_spy_phase4_n
 class_spy_phase4_03	class_spy_phase4_02	oneByFour	0	0	0	0	100	0		class_spy_phase4_02		combat_general	1772600	2664480							sp_dm_7				1	0
 class_spy_phase4_04	class_spy_phase4_03	oneByFour	0	0	0	0	100	0		class_spy_phase4_03		combat_general	2049600	3074500							of_sh_3	expertise_movement_buff_invis_sp_buff_invis_1=-5			1	0
 class_spy_phase4_05	class_spy_phase4_04	oneByFour	0	0	0	0	100	0		class_spy_phase4_04		combat_general	2365000	3540940							sp_smoke_mirrors				1	0
-class_spy_phase4_master	class_spy_phase4	oneByFour	0	1	0	0	100	0		class_spy_phase4_05		combat_general	2723800	3540940							sp_dm_8,sp_hide_device_1,sp_neutralize_device_1,sp_preparation	cybernetic_psychosis_resistance=2,expertise_onstrikethrough_proc_sp_resonance=1,expertise_oncrit_proc_sp_savagery=1			1	0
+class_spy_phase4_master	class_spy_phase4	oneByFour	0	1	0	0	100	0		class_spy_phase4_05		combat_general	2723800	3540940							sp_dm_8,sp_hide_device_1,sp_neutralize_device_1,sp_shifty_setup	cybernetic_psychosis_resistance=2,expertise_onstrikethrough_proc_sp_resonance=1,expertise_oncrit_proc_sp_savagery=1			1	0
 class_medic_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1	cybernetic_psychosis_resistance=2,expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20,me_doom_chance=5			1	0
 class_medic_phase1_02	class_medic_phase1	oneByFour	0	0	0	0	100	0		class_medic_phase1_novice		combat_general	3700	16120							me_dm_1,me_bacta_ampule_1				1	0
@@ -1897,7 +1897,7 @@ expertise_of_scatter_2	expertise_of_scatter_1																					expertise_glan
 expertise_of_scatter_3	expertise_of_scatter_2																					expertise_glancing_blow_all=5,movement_resist_snare=5			0	
 expertise_of_scatter_4	expertise_of_scatter_3																					expertise_glancing_blow_all=5,movement_resist_snare=5			0	
 expertise_of_charge_1	expertise_of_inspiration_1			1						expertise_of_scatter_1											of_charge_1				0	
-expertise_of_last_words_1	expertise_of_scatter_4									expertise_of_scatter_4												of_inspired_action_chance=20,movement_resist_snare=10			0	
+expertise_of_last_words_1	expertise_of_scatter_4									expertise_of_scatter_4												of_inspired_action_chance=20,expertise_glancing_blow_all=10,movement_resist_snare=10			0	
 expertise_of_sup_cool_1	expertise																					expertise_cooldown_line_of_sup=3			0	
 expertise_of_sup_cool_2	expertise_of_sup_cool_1																					expertise_cooldown_line_of_sup=4			0	
 expertise_of_sup_cool_3	expertise_of_sup_cool_2																					expertise_cooldown_line_of_sup=4			0	
@@ -2204,10 +2204,10 @@ expertise_co_packed_explosives_3	expertise_co_packed_explosives_2															
 expertise_co_packed_explosives_4	expertise_co_packed_explosives_3																					expertise_damage_line_co_grenade=2			0	
 expertise_co_lethal_beam_1	expertise_co_tibanna_gas_4									expertise_co_tibanna_gas_4											co_hw_dm_crit_1				0	
 expertise_co_base_of_operations_1	expertise_co_on_target_4									expertise_co_on_target_4												expertise_co_pos_secured_line_armor=1000,expertise_co_pos_secured_line_boo_critical=5			0	
-expertise_co_blast_resistance_1	expertise_bh_armor_sprint_1									expertise_bh_armor_sprint_1												area_damage_resist_full_percentage=5			0	
-expertise_co_blast_resistance_2	expertise_co_blast_resistance_1																					area_damage_resist_full_percentage=5			0	
-expertise_co_blast_resistance_3	expertise_co_blast_resistance_2																					area_damage_resist_full_percentage=5			0	
-expertise_co_blast_resistance_4	expertise_co_blast_resistance_3																					area_damage_resist_full_percentage=5			0	
+expertise_co_blast_resistance_1	expertise_bh_armor_sprint_1									expertise_bh_armor_sprint_1												area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
+expertise_co_blast_resistance_2	expertise_co_blast_resistance_1																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
+expertise_co_blast_resistance_3	expertise_co_blast_resistance_2																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
+expertise_co_blast_resistance_4	expertise_co_blast_resistance_3																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
 expertise_co_stand_fast_1	expertise_me_agility_4			1						expertise_me_agility_4											co_stand_fast	expertise_damage_decrease_percentage=60			0	
 expertise_co_imp_stand_fast_1	expertise_co_stand_fast_1			1						expertise_co_stand_fast_1												expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_cooldown_line_co_stand_fast=120,expertise_armorset_melee_block_2=1			0	
 expertise_co_imp_stand_fast_2	expertise_co_imp_stand_fast_1			1																		expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_cooldown_line_co_stand_fast=120,expertise_armorset_melee_block_2=1			0	
@@ -2431,10 +2431,10 @@ expertise_en_allure_1	expertise_en_unhealthy_fixation_1									expertise_en_unh
 expertise_en_allure_2	expertise_en_allure_1																					expertise_buff_duration_line_en_unhealthy_fixation_debuff=1				
 expertise_en_allure_3	expertise_en_allure_2																					expertise_buff_duration_line_en_unhealthy_fixation_debuff=1				
 expertise_en_allure_4	expertise_en_allure_3																					expertise_buff_duration_line_en_unhealthy_fixation_debuff=1				
-expertise_en_spiral_kick_1	expertise_en_sweeping_pirouette_4			1						expertise_en_sweeping_pirouette_4												expertise_undiminished_critical_unarmed=2				
-expertise_en_spiral_kick_2	expertise_en_spiral_kick_1									expertise_en_spiral_kick_1												expertise_undiminished_critical_unarmed=2				
-expertise_en_spiral_kick_3	expertise_en_spiral_kick_2									expertise_en_spiral_kick_2												expertise_undiminished_critical_unarmed=2				
-expertise_en_spiral_kick_4	expertise_en_spiral_kick_3			1						expertise_en_spiral_kick_3												expertise_undiminished_critical_unarmed=2				
+expertise_en_spiral_kick_1	expertise_en_sweeping_pirouette_4			1						expertise_en_sweeping_pirouette_4												expertise_undiminished_critical_unarmed=2,expertise_damage_melee=1 				
+expertise_en_spiral_kick_2	expertise_en_spiral_kick_1									expertise_en_spiral_kick_1												expertise_undiminished_critical_unarmed=2,expertise_damage_melee=1 				
+expertise_en_spiral_kick_3	expertise_en_spiral_kick_2									expertise_en_spiral_kick_2												expertise_undiminished_critical_unarmed=2,expertise_damage_melee=1 				
+expertise_en_spiral_kick_4	expertise_en_spiral_kick_3			1						expertise_en_spiral_kick_3												expertise_undiminished_critical_unarmed=2,expertise_damage_melee=1 				
 expertise_en_uprising_1	expertise_en_spiral_kick_1									expertise_en_spiral_kick_1												expertise_critical_line_en_spiral_kick=5				
 expertise_en_uprising_2	expertise_en_uprising_1																					expertise_critical_line_en_spiral_kick=5				
 expertise_en_annulling_1	expertise_en_void_dance_1									expertise_en_void_dance_1												expertise_buff_en_void_dance_buff=5				
