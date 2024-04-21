@@ -129,7 +129,7 @@ dish_crispic	food			1	buffs.foodMeal	1200	precision_modified	20	stamina_modified
 drink_caf	food			1	buffs.foodBeverage	1200	strength_modified	10	constitution_modified	10	expertise_action_all	1		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dessert_pkneb	ice_cream			1	buffs.foodDessert	1200	strength_modified	5	precision_modified	3	expertise_en_inspire_buff_duration_increase	30		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dish_kanali_wafers	ice_cream			1	buffs.foodMeal	1200	constitution_modified	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-drink_ruby_bliel	food			1	buffs.foodBeverage	1200	agility_modified	5	stamina_modified	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+drink_ruby_bliel	food			1	buffs.foodBeverage	1200	agility_modified	5	stamina_modified	5	expertise_cooldown_line_of_heal	1		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_jawa_beer	food			1	buffs.foodBeverage	1200	agility_modified	5	luck_modified	50	expertise_reverse_engineering_bonus	2	force_repair_bonus	2		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_starshine_surprise	food			1	buffs.foodBeverage	1200	milk_quantity_modified	1	milk_exceptional_modified	5	milk_stun_modified	25		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dish_teltier_noodles	ice_cream			1	buffs.foodMeal	1200	luck_modified	15	constitution_modified	15		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
