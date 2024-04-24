@@ -20,7 +20,7 @@ public class song_book extends script.base_script
     {
         if (utils.isNestedWithin(self, player))
         {
-            if (utils.isProfession(player, utils.ENTERTAINER))
+            if (hasSkill(player, "class_entertainer_phase1_novice"))
             {
                 if (!hasCommand(player, "startMusic+dirge"))
                 {
@@ -36,7 +36,7 @@ public class song_book extends script.base_script
         {
             if (item == menu_info_types.SERVER_MENU1)
             {
-                if (utils.isProfession(player, utils.ENTERTAINER))
+                if (hasSkill(player, "class_entertainer_phase1_novice"))
                 {
                     if (getLevel(player) > 81)
                     {

@@ -3636,14 +3636,14 @@ public class mission_dynamic_base extends script.systems.missions.base.mission_b
         String strMissionType = getMissionType(objMissionData);
         if (strMissionType.equals("musician"))
         {
-            if (!utils.isProfession(objPlayer, utils.ENTERTAINER))
+            if (!hasSkill(objPlayer, "class_entertainer_phase1_novice"))
             {
                 return false;
             }
         }
         if (strMissionType.equals("dancer"))
         {
-            if (!utils.isProfession(objPlayer, utils.ENTERTAINER))
+            if (!hasSkill(objPlayer, "class_entertainer_phase1_novice"))
             {
                 return false;
             }

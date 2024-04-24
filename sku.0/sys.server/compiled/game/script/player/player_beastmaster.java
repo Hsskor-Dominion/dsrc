@@ -1234,7 +1234,7 @@ public class player_beastmaster extends script.base_script
     }
     public int bm_dancing_pet_entertainer(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
-        if (utils.isProfession(self, 9))
+        if (hasSkill(self, "class_entertainer_phase1_novice"))
         {
             if (!buff.hasBuff(self, "bm_dancing_pet_entertainer"))
             {

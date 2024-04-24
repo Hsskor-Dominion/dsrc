@@ -163,7 +163,7 @@ public class rebel_remembrance_day_captain_derlin extends script.base_script
     public boolean rebel_remembrance_day_captain_derlin_condition_isEntertainer(obj_id player, obj_id npc) throws InterruptedException
     {
         faceTo(npc, player);
-        return utils.isProfession(player, utils.ENTERTAINER);
+        return hasSkill(player, "class_entertainer_phase1_novice");
     }
     public boolean rebel_remembrance_day_captain_derlin_condition_isTraderOrEntertainer(obj_id player, obj_id npc) throws InterruptedException
     {

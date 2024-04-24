@@ -33,7 +33,10 @@ public class give_multiple_items_to_supply_npc extends script.base_script
             doAnimationAction(self, "wave_on_dismissing");
             return SCRIPT_CONTINUE;
         }
-        if (!utils.isProfession(giver, utils.TRADER))
+        if (!hasSkill(giver, "class_engineering_phase1_novice") ||
+                !hasSkill(giver, "class_munitions_phase1_novice") ||
+                !hasSkill(giver, "class_domestics_phase1_novice") ||
+                !hasSkill(giver, "class_structures_phase1_novice"))
         {
             blog("give_multiple_items_to_supply_npc.OnGiveItem: not trader");
             doAnimationAction(self, "wave_on_dismissing");

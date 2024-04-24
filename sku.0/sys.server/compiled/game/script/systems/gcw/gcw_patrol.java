@@ -118,7 +118,7 @@ public class gcw_patrol extends script.base_script
         }
         else 
         {
-            if (utils.isProfession(player, utils.ENTERTAINER))
+            if (hasSkill(player, "class_entertainer_phase1_novice"))
             {
                 LOG("gcw_patrol_point", "player is entertainer");
                 if (utils.hasScriptVar(self, "entertained") && utils.getBooleanScriptVar(self, "entertained"))
@@ -206,7 +206,7 @@ public class gcw_patrol extends script.base_script
         else 
         {
             LOG("gcw_patrol_point", "OnObjectMenuSelect - player is my faction");
-            if (utils.isProfession(player, utils.ENTERTAINER))
+            if (hasSkill(player, "class_entertainer_phase1_novice"))
             {
                 LOG("gcw_patrol_point", "is entertainer");
                 if (utils.hasScriptVar(self, "entertained") && utils.getBooleanScriptVar(self, "entertained"))

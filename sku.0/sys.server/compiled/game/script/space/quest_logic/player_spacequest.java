@@ -580,7 +580,7 @@ public class player_spacequest extends script.base_script
                         obj_id pInv = utils.getInventoryContainer(self);
                         obj_id item = static_item.createNewItemFunction("item_interdiction_crate_01_01", pInv);
                         setObjVar(item, "difficulty", difficulty);
-                        if (utils.isProfession(self, utils.SMUGGLER))
+                        if (hasSkill(self, "class_smuggler_phase1_novice"))
                         {
                             float underworldBonus = 10.0f + (difficulty * 10.0f);
                             factions.addFactionStanding(self, "underworld", underworldBonus);

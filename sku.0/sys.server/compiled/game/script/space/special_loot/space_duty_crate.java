@@ -92,7 +92,7 @@ public class space_duty_crate extends script.base_script
                 }
             }
         }
-        if (utils.isProfession(player, utils.SMUGGLER))
+        if (hasSkill(player, "class_smuggler_phase1_novice"))
         {
             int smugglerItems = rand(1, 5);
             for (int i = 0; i < smugglerItems; i++)

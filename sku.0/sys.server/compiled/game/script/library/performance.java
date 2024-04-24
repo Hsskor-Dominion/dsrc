@@ -748,7 +748,7 @@ public class performance extends script.base_script
             if (!isIdValid(member) || !exists(member)) {
                 continue;
             }
-            if (!isPlayer(member) || getDistance(who, member) > 64 || isIncapacitated(member) || isDead(member) || !utils.isProfession(member, utils.ENTERTAINER)) {
+            if (!isPlayer(member) || getDistance(who, member) > 64 || isIncapacitated(member) || isDead(member) || !hasSkill(member, "class_entertainer_phase1_novice")) {
                 continue;
             }
             utils.addElement(validatedMembers, member);
@@ -2523,7 +2523,7 @@ public class performance extends script.base_script
         }
         if (req_ability.contains("dirge"))
         {
-            if (!utils.isProfession(actor, utils.ENTERTAINER))
+            if (!hasSkill(actor, "class_entertainer_phase1_novice"))
             {
                 return false;
             }
@@ -2954,7 +2954,7 @@ public class performance extends script.base_script
         {
             return 0;
         }
-        if (!utils.isProfession(actor, utils.ENTERTAINER))
+        if (!hasSkill(actor, "class_entertainer_phase1_novice"))
         {
             return 0;
         }
@@ -3226,7 +3226,7 @@ public class performance extends script.base_script
             int pidClose = utils.getIntScriptVar(self, VAR_BUFF_SUI);
             forceCloseSUIPage(pidClose);
         }
-        if (!utils.isProfession(self, utils.ENTERTAINER))
+        if (!hasSkill(self, "class_entertainer_phase1_novice"))
         {
             return;
         }

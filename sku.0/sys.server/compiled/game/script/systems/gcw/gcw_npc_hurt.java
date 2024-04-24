@@ -65,7 +65,7 @@ public class gcw_npc_hurt extends script.base_script
         }
         else 
         {
-            if (!utils.isProfession(player, utils.MEDIC))
+            if (!hasSkill(player, "class_medic_phase1_novice"))
             {
                 return SCRIPT_CONTINUE;
             }
@@ -111,7 +111,7 @@ public class gcw_npc_hurt extends script.base_script
         }
         else 
         {
-            if (!utils.isProfession(player, utils.MEDIC))
+            if (!hasSkill(player, "class_medic_phase1_novice"))
             {
                 return SCRIPT_CONTINUE;
             }

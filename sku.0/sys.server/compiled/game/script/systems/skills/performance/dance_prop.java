@@ -40,7 +40,7 @@ public class dance_prop extends script.base_script
         String hand = dict.getString(HAND_COLUMN);
         if (!hasCommand(destContainer, command) && !performance.hasInspirationDancePropUseBuff(destContainer, command))
         {
-            if (!utils.isProfession(destContainer, utils.ENTERTAINER) && !hasObjVar(self, "allProfs"))
+            if (!hasSkill(destContainer, "class_entertainer_phase1_novice") && !hasObjVar(self, "allProfs"))
             {
                 sendSystemMessage(destContainer, SID_NO_PROP_SKILL);
                 return SCRIPT_OVERRIDE;

@@ -151,7 +151,11 @@ public class imperial_empire_day_major_tantor extends script.base_script
     public boolean imperial_empire_day_major_tantor_condition_isTrader(obj_id player, obj_id npc) throws InterruptedException
     {
         faceTo(npc, player);
-        return utils.isProfession(player, utils.TRADER);
+        return (utils.isProfession(player, utils.TRADER) ||
+                hasSkill(player, "class_engineering_phase1_novice") ||
+                hasSkill(player, "class_munitions_phase1_novice") ||
+                hasSkill(player, "class_domestics_phase1_novice") ||
+                hasSkill(player, "class_structures_phase1_novice"));
     }
     public boolean imperial_empire_day_major_tantor_condition_isEntertainer(obj_id player, obj_id npc) throws InterruptedException
     {

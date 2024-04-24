@@ -38,8 +38,7 @@ public class event_jar_jar extends script.base_script
     }
     public boolean event_jar_jar_condition_entertainer(obj_id player, obj_id npc) throws InterruptedException
     {
-        String pTemplate = getSkillTemplate(player);
-        if (pTemplate.contains("entertainer"))
+        if (hasSkill(player, "class_entertainer_phase1_novice"))
         {
             return true;
         }
@@ -267,6 +266,7 @@ public class event_jar_jar extends script.base_script
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
+        setName (self, "General Binks");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException

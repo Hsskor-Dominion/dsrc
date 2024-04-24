@@ -32,7 +32,7 @@ public class bounty_probe_droid extends script.systems.missions.base.mission_dyn
         {
             return SCRIPT_CONTINUE;
         }
-        if (!utils.isProfession(player, utils.BOUNTY_HUNTER))
+        if (!hasSkill(player, "class_bountyhunter_phase1_novice"))
         {
             string_id strResponse = new string_id("mission/mission_generic", "bounty_no_ability");
             sendSystemMessage(player, strResponse);
@@ -74,7 +74,7 @@ public class bounty_probe_droid extends script.systems.missions.base.mission_dyn
             sendSystemMessage(player, strSpam);
             return SCRIPT_CONTINUE;
         }
-        if (!utils.isProfession(player, utils.BOUNTY_HUNTER))
+        if (!hasSkill(player, "class_bountyhunter_phase1_novice"))
         {
             return SCRIPT_CONTINUE;
         }

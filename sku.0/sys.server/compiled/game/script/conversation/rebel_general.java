@@ -16,7 +16,7 @@ public class rebel_general extends script.base_script
     public boolean rebel_general_condition_isEntertainerPlayer(obj_id player, obj_id npc) throws InterruptedException
     {
         faceTo(npc, player);
-        return utils.isProfession(player, utils.ENTERTAINER);
+        return hasSkill(player, "class_entertainer_phase1_novice");
     }
     public boolean rebel_general_condition_isPlayerImperial(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -36,7 +36,10 @@ public class rebel_general extends script.base_script
     public boolean rebel_general_condition_isTraderPlayer(obj_id player, obj_id npc) throws InterruptedException
     {
         faceTo(npc, player);
-        return utils.isProfession(player, utils.TRADER);
+        return hasSkill(player, "class_engineering_phase1_novice") ||
+                hasSkill(player, "class_munitions_phase1_novice") ||
+                hasSkill(player, "class_domestics_phase1_novice") ||
+                hasSkill(player, "class_structures_phase1_novice");
     }
     public boolean rebel_general_condition_isForceSensitivePlayer(obj_id player, obj_id npc) throws InterruptedException
     {

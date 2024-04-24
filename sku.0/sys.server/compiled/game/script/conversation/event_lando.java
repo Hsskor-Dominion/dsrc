@@ -40,8 +40,7 @@ public class event_lando extends script.base_script
     }
     public boolean event_lando_condition_entertainer(obj_id player, obj_id npc) throws InterruptedException
     {
-        String pTemplate = getSkillTemplate(player);
-        if (pTemplate.contains("entertainer"))
+        if (hasSkill(player, "class_entertainer_phase1_novice"))
         {
             return true;
         }

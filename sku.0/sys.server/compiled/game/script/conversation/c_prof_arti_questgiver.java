@@ -82,7 +82,11 @@ public class c_prof_arti_questgiver extends script.base_script
     }
     public boolean c_prof_arti_questgiver_condition_playerhasArtisan(obj_id player, obj_id npc) throws InterruptedException
     {
-        if (utils.isProfession(player, utils.TRADER))
+        if (utils.isProfession(player, utils.TRADER) ||
+                hasSkill(player, "class_engineering_phase1_novice") ||
+                hasSkill(player, "class_munitions_phase1_novice") ||
+                hasSkill(player, "class_domestics_phase1_novice") ||
+                hasSkill(player, "class_structures_phase1_novice"))
         {
             return true;
         }

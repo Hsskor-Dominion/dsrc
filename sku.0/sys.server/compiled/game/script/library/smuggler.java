@@ -889,7 +889,7 @@ public class smuggler extends script.base_script
     }
     public static void checkSmugglerMissionBountyFailure(obj_id player, obj_id killer) throws InterruptedException
     {
-        if (utils.isProfession(player, utils.SMUGGLER))
+        if (hasSkill(player, "class_smuggler_phase1_novice"))
         {
             if (groundquests.isQuestActive(player, "quest/smuggle_pvp_4") || groundquests.isQuestActive(player, "quest/smuggle_pvp_5"))
             {

@@ -15,8 +15,11 @@ public class imperial_offensive_supply_terminal extends script.base_script
     }
     public boolean imperial_offensive_supply_terminal_condition_isTrader(obj_id player, obj_id npc) throws InterruptedException
     {
-        int level = utils.getLevel(player);
-        if (utils.isProfession(player, utils.TRADER) && (level > 45))
+        if (utils.isProfession(player, utils.TRADER) ||
+                hasSkill(player, "class_engineering_phase1_novice") ||
+                hasSkill(player, "class_munitions_phase1_novice") ||
+                hasSkill(player, "class_domestics_phase1_novice") ||
+                hasSkill(player, "class_structures_phase1_novice"))
         {
             return true;
         }
@@ -41,7 +44,11 @@ public class imperial_offensive_supply_terminal extends script.base_script
     public boolean imperial_offensive_supply_terminal_condition_isSliced(obj_id player, obj_id npc) throws InterruptedException
     {
         int cband = getIntObjVar(npc, "gcw.contraband");
-        if ((cband > 0) && (utils.isProfession(player, utils.TRADER)))
+        if ((cband > 0) && (utils.isProfession(player, utils.TRADER) ||
+                hasSkill(player, "class_engineering_phase1_novice") ||
+                hasSkill(player, "class_munitions_phase1_novice") ||
+                hasSkill(player, "class_domestics_phase1_novice") ||
+                hasSkill(player, "class_structures_phase1_novice")))
         {
             return true;
         }
@@ -64,7 +71,7 @@ public class imperial_offensive_supply_terminal extends script.base_script
     }
     public boolean imperial_offensive_supply_terminal_condition_isSmuggler(obj_id player, obj_id npc) throws InterruptedException
     {
-        return utils.isProfession(player, utils.SMUGGLER);
+        return hasSkill(player, "class_smuggler_phase1_novice");
     }
     public boolean imperial_offensive_supply_terminal_condition_isMaxScanLevel(obj_id player, obj_id npc) throws InterruptedException
     {

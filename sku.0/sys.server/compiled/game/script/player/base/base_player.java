@@ -1716,7 +1716,7 @@ public class base_player extends script.base_script
                 }
             }
         }
-        if (utils.isProfession(self, utils.SMUGGLER))
+        if (hasSkill(self, "class_smuggler_phase1_novice"))
         {
             messageTo(self, "applySmugglingBonuses", null, 1.0f, false);
         }
@@ -6628,7 +6628,7 @@ public class base_player extends script.base_script
         {
             expertise.cacheExpertiseProcReacList(self);
             armor.recalculateArmorForPlayer(self);
-            if (utils.isProfession(self, utils.SMUGGLER))
+            if (hasSkill(self, "class_smuggler_phase1_novice"))
             {
                 messageTo(self, "applySmugglingBonuses", null, 1.0f, false);
             }
@@ -10547,7 +10547,7 @@ public class base_player extends script.base_script
         static_item.validateWornEffects(self);
         reverse_engineering.checkPowerUpReApply(self);
         messageTo(self, "setDisplayOnlyDefensiveMods", trial.getSessionDict(self, "displayDefensiveMods"), 5, false);
-        if (utils.isProfession(self, utils.SMUGGLER))
+        if (hasSkill(self, "class_smuggler_phase1_novice"))
         {
             messageTo(self, "applySmugglingBonuses", null, 1.0f, false);
         }

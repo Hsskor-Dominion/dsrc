@@ -267,6 +267,7 @@ public class player_racing extends script.base_script
             playMusic(self, "sound/music_lando_theme.snd");
             obj_id playerInv = utils.getInventoryContainer(self);
             static_item.createNewItemFunction("item_pgc_token_01", playerInv);
+            grantExperiencePoints(self, "jedi", 100);
         }
         return SCRIPT_CONTINUE;
     }

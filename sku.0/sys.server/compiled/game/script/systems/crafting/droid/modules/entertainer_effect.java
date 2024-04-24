@@ -44,7 +44,7 @@ public class entertainer_effect extends script.base_script
         }
         if (player == master)
         {
-            if (utils.isProfession(player, utils.ENTERTAINER))
+            if (hasSkill(player, "class_entertainer_phase1_novice"))
             {
                 int mnu = mi.addRootMenu(menu_info_types.SERVER_MENU7, new string_id(STF_FILE, "toggle_effects"));
                 mi.addSubMenu(mnu, menu_info_types.SERVER_MENU8, new string_id(STF_FILE, "effects_set_up"));
@@ -75,7 +75,7 @@ public class entertainer_effect extends script.base_script
             sendSystemMessage(player, new string_id(STF_FILE, "not_enough_power"));
             return SCRIPT_CONTINUE;
         }
-        if (!utils.isProfession(player, utils.ENTERTAINER))
+        if (!hasSkill(player, "class_entertainer_phase1_novice"))
         {
             sendSystemMessage(player, new string_id(STF_FILE, "no_skill_for_effects"));
             return SCRIPT_CONTINUE;
