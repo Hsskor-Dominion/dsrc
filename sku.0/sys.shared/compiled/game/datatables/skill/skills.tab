@@ -184,7 +184,7 @@ class_medic_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1	cybernetic_psychosis_resistance=2,expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20,me_doom_chance=5			1	0
 class_medic_phase1_02	class_medic_phase1	oneByFour	0	0	0	0	100	0		class_medic_phase1_novice		combat_general	3700	16120							me_dm_1,me_bacta_ampule_1				1	0
 class_medic_phase1_03	class_medic_phase1_02	oneByFour	0	0	0	0	100	0		class_medic_phase1_02		combat_general	12400	30160							me_dm_dot_1				1	0
-class_medic_phase1_04	class_medic_phase1_03	oneByFour	0	0	0	0	100	0		class_medic_phase1_03		combat_general	23200	67730							me_ae_heal_2,me_rv_ooc,me_rv_pvp_single				1	0
+class_medic_phase1_04	class_medic_phase1_03	oneByFour	0	0	0	0	100	0		class_medic_phase1_03		combat_general	23200	67730							me_ae_heal_2,me_rv_ooc,me_rv_pvp_single,me_drag_1				1	0
 class_medic_phase1_05	class_medic_phase1_04	oneByFour	0	0	0	0	100	0		class_medic_phase1_04		combat_general	52100	105300							me_dm_2,me_bacta_ampule_2				1	0
 class_medic_phase1_master	class_medic_phase1	oneByFour	0	1	0	0	100	0		class_medic_phase1_05		combat_general	81000	151060							me_dm_3,me_bacta_ampule_3	cybernetic_psychosis_resistance=2			1	0
 class_medic_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
@@ -207,7 +207,7 @@ class_medic_phase4_02	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_ph
 class_medic_phase4_03	class_medic_phase4_02	oneByFour	0	0	0	0	100	0		class_medic_phase4_02		combat_general	1772600	2664480							me_ae_heal_5,me_dm_dot_6				1	0
 class_medic_phase4_04	class_medic_phase4_03	oneByFour	0	0	0	0	100	0		class_medic_phase4_03		combat_general	2049600	3074500							me_sh_1,me_bacta_bomb_1				1	0
 class_medic_phase4_05	class_medic_phase4_04	oneByFour	0	0	0	0	100	0		class_medic_phase4_04		combat_general	2365000	3540940							me_dm_8,me_bacta_grenade_1				1	0
-class_medic_phase4_master	class_medic_phase4	oneByFour	0	1	0	0	100	0		class_medic_phase4_05		combat_general	2723800	3540940							me_ae_heal_6,me_stasis_1,me_serotonin_boost_1	cybernetic_psychosis_resistance=2,me_doom_chance=5			1	0
+class_medic_phase4_master	class_medic_phase4	oneByFour	0	1	0	0	100	0		class_medic_phase4_05		combat_general	2723800	3540940							me_ae_heal_6,me_stasis_1	cybernetic_psychosis_resistance=2,me_doom_chance=5			1	0
 class_entertainer_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_entertainer_phase1_novice	class_entertainer_phase1	oneByFour	0	0	0	0	100	0				entertainer	100	4810							fizz,startMusic+rock,flourish+1,flourish+2,flourish+3,flourish+4,flourish+5,flourish+6,flourish+7,flourish+8,imagedesign,covercharge,inspire,registerWithLocation,musician,dancer,groupdance,of_inspiration_1,en_flush_with_success_buff_package	hair=1,face=1,instrument_customization=20,cybernetic_psychosis_resistance=2	craftDancePropA,craftInstrumentGroupA,craftInstrumentGroupB		1	0
 class_entertainer_phase1_02	class_entertainer_phase1	oneByFour	0	1	0	0	100	0		class_entertainer_phase1_novice		entertainer	3700	16120							prop_staff,colorlights,startDance+basic2	hair=1,instrument_customization=20			1	0
@@ -2023,7 +2023,7 @@ expertise_me_heal_action_1	expertise			1																		exotic_heal_action_red
 expertise_me_heal_action_2	expertise_me_heal_action_1			1																		exotic_heal_action_reduction=5			0	
 expertise_me_heal_action_3	expertise_me_heal_action_2			1																		exotic_heal_action_reduction=5			0	
 expertise_me_heal_action_4	expertise_me_heal_action_3			1																		exotic_heal_action_reduction=5			0	
-expertise_me_serotonin_boost_1	expertise																				me_serotonin_boost_1				0	
+expertise_me_serotonin_boost_1	expertise_me_serotonin_purge_1									expertise_me_serotonin_purge_1											me_serotonin_boost_1				0	
 expertise_me_bacta_grenade_1																					me_bacta_grenade_1				0	
 expertise_me_enhance_duration_1	expertise_sp_run_its_course_1									expertise_sp_run_its_course_1												expertise_buff_duration_line_me_enhance=300,expertise_agro_healing=15,expertise_dot_absorption_all=2			0	
 expertise_me_enhance_duration_2	expertise_me_enhance_duration_1																					expertise_buff_duration_line_me_enhance=300,expertise_agro_healing=15,expertise_dot_absorption_all=2			0	
@@ -2037,12 +2037,12 @@ expertise_me_vital_action_2	expertise_me_vital_action_1																					expe
 expertise_me_vital_action_3	expertise_me_vital_action_2																					expertise_action_line_me_dm=5			0	
 expertise_me_vital_action_4	expertise_me_vital_action_3																					expertise_action_line_me_dm=10			0	
 expertise_me_bacta_resistance_1	expertise_me_reckless_stimulation_1									expertise_me_reckless_stimulation_1											me_bacta_resistance_1				0	
-expertise_me_dot_damage_1	expertise_me_drag									expertise_me_drag												expertise_dot_increase=5			0	
+expertise_me_dot_damage_1	expertise_me_traumatize_1									expertise_me_traumatize_1												expertise_dot_increase=5			0	
 expertise_me_dot_damage_2	expertise_me_dot_damage_1																					expertise_dot_increase=5			0	
 expertise_me_dot_damage_3	expertise_me_dot_damage_2																					expertise_dot_increase=5			0	
 expertise_me_dot_damage_4	expertise_me_dot_damage_3																					expertise_dot_increase=5			0	
 expertise_me_serotonin_purge_1	expertise_me_bacta_resistance_1									expertise_me_bacta_resistance_1											me_serotonin_purge_1				0	
-expertise_me_induce_insanity_1	expertise_me_serotonin_purge_1									expertise_me_serotonin_purge_1											me_induce_insanity_1				0	
+expertise_me_induce_insanity_1	expertise_me_dot_duration_4									expertise_me_dot_duration_4											me_induce_insanity_1				0	
 expertise_me_vital_damage_1	expertise																					expertise_damage_line_me_dm=5			0	
 expertise_me_vital_damage_2	expertise_me_vital_damage_1																					expertise_damage_line_me_dm=5			0	
 expertise_me_vital_damage_3	expertise_me_vital_damage_2																					expertise_damage_line_me_dm=5			0	
@@ -2052,7 +2052,7 @@ expertise_me_dot_duration_1	expertise_me_dot_damage_4									expertise_me_dot_d
 expertise_me_dot_duration_2	expertise_me_dot_duration_1																					expertise_dot_duration_line_me_dot=3			0	
 expertise_me_dot_duration_3	expertise_me_dot_duration_2																					expertise_dot_duration_line_me_dot=4			0	
 expertise_me_dot_duration_4	expertise_me_dot_duration_3																					expertise_dot_duration_line_me_dot=4			0	
-expertise_me_traumatize_1	expertise_me_dot_duration_4									expertise_me_dot_duration_4											me_traumatize_1	stamina_modified=25			0	
+expertise_me_traumatize_1	expertise_me_heal_action_4									expertise_me_heal_action_4											me_traumatize_1	stamina_modified=25			0	
 expertise_me_traumatize_2	expertise_me_traumatize_1																					stamina_modified=25			0	
 expertise_me_traumatize_3	expertise_me_traumatize_2																					stamina_modified=25			0	
 expertise_me_traumatize_4	expertise_me_traumatize_3																					stamina_modified=25			0	
@@ -2651,8 +2651,8 @@ expertise_engineering_shield_expansion_1	expertise_engineering_droideka_shield_1
 expertise_engineering_shield_expansion_2	expertise_engineering_shield_expansion_1																					expertise_engineering_shield_expansion=1				
 expertise_engineering_noxious_spray_1	expertise_engineering_torturous_needle_1									expertise_engineering_torturous_needle_1												expertise_engineering_noxious_spray=1				
 expertise_engineering_noxious_spray_2	expertise_engineering_noxious_spray_1																					expertise_engineering_noxious_spray=1				
-expertise_engineering_droid_advanced_theory_1	expertise_engineering_droid_hypothesis_4									expertise_engineering_droid_hypothesis_4												droid_experimentation=10,droid_level=9	craftdroidGroupF,craftdroidgenmodGroupF,craftdroiddefmodGroupF,craftDroidRepairCompB			
-expertise_engineering_droid_schematic_1_1	expertise																				droid_flame_jet_1,droid_droideka_shield_1,droid_battery_dump_1,droid_regenerative_plating_1,droid_electrical_shock_1,droid_torturous_needle_1,droid_follow,droid_follow_other,droid_stay,droid_guard,droid_friend,droid_attack,droid_patrol,droid_patrol_point,droid_patrol_clear,droid_store,droid_transfer,droid_group,droid_trick_1,droid_trick_2,droid_trick_3,droid_trick_4	droid_level=5	craftDroidExpertiseDroids,craftDroidExpertiseModules,craftdroidGroupA,craftdroiddefmodGroupA,craftdroidgenmodGroupA,craftDroidRepairCompA,craftCyberneticGroupA,craftExpertiseElectricalShockModule,craftExpertiseTorturousNeedleModule,craftExpertiseRegenerativePlating,craftExpertiseBatteryDump,craftExpertiseDroidekaShieldModule,craftExpertiseFlameJetModule			
+expertise_engineering_droid_advanced_theory_1	expertise_engineering_droid_hypothesis_4			1						expertise_engineering_droid_hypothesis_4												droid_experimentation=10,droid_level=9	craftdroidGroupF,craftdroidgenmodGroupF,craftdroiddefmodGroupF,craftDroidRepairCompB			
+expertise_engineering_droid_schematic_1_1	expertise			1																	droid_flame_jet_1,droid_droideka_shield_1,droid_battery_dump_1,droid_regenerative_plating_1,droid_electrical_shock_1,droid_torturous_needle_1,droid_follow,droid_follow_other,droid_stay,droid_guard,droid_friend,droid_attack,droid_patrol,droid_patrol_point,droid_patrol_clear,droid_store,droid_transfer,droid_group,droid_trick_1,droid_trick_2,droid_trick_3,droid_trick_4	droid_level=5	craftDroidExpertiseDroids,craftDroidExpertiseModules,craftdroidGroupA,craftdroiddefmodGroupA,craftdroidgenmodGroupA,craftDroidRepairCompA,craftCyberneticGroupA,craftExpertiseElectricalShockModule,craftExpertiseTorturousNeedleModule,craftExpertiseRegenerativePlating,craftExpertiseBatteryDump,craftExpertiseDroidekaShieldModule,craftExpertiseFlameJetModule			
 expertise_engineering_droid_schematic_2_1	expertise																						craftDroidExpertiseModules			
 expertise_engineering_weaponsmith_attachment_upgrade_1	expertise																					expertise_attachment_upgrade=1				
 expertise_engineering_weaponsmith_socket_bonus_1	expertise																						craftExpertiseSocketRetrofitter,craftWeaponComponentRangedGroupA,craftWeaponComponentMeleeGroupA,craftWeaponCoreGroupA,craftWeaponAppearanceMeleeGroupA,craftWeaponAppearanceRangedGroupA,craftMunitionsGroupF			

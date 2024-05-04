@@ -193,7 +193,7 @@ public class slaver extends script.base_script
 
             responses[responseIndex++] = new string_id(c_stringFile, "player_accept_lok2");
 
-            utils.setScriptVar(player, "conversation.slaver_conversation.branchId", 8);
+            utils.setScriptVar(player, "conversation.slaver_conversation.branchId", 10);
 
             npcSpeak(player, message);
             npcSetConversationResponses(player, responses);
@@ -415,12 +415,12 @@ public class slaver extends script.base_script
     }
     public int slaver_handleBranch10(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        if (response.equals("player_accept_lok"))
+        if (response.equals("player_accept_lok2"))
         {
             if (slaver_condition__defaultCondition(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "travel");
-                setObjVar(player, "stardust_dathomir", 1);
+                setObjVar(player, "stardust_lok", 1);
                 slaver_action_leaveStation1(player, npc);
 
                 utils.removeScriptVar(player, "conversation.slaver_conversation.branchId");
