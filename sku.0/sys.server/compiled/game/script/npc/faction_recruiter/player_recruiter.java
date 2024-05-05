@@ -42,11 +42,11 @@ public class player_recruiter extends script.base_script
             LOG("LOG_CHANNEL", "player_recruiter::msgResignFromFaction -- Could not find " + resign_faction_id + " in the faction datatable for " + self);
             return SCRIPT_CONTINUE;
         }
-        if (hasSkill(self, "force_rank_light_novice") || hasSkill(self, "force_rank_dark_novice"))
-        {
-            sendSystemMessage(self, new string_id("faction_recruiter", "jedi_cant_resign"));
-            return SCRIPT_CONTINUE;
-        }
+//        if (hasSkill(self, "force_rank_light_novice") || hasSkill(self, "force_rank_dark_novice"))
+//        {
+//            sendSystemMessage(self, new string_id("faction_recruiter", "jedi_cant_resign"));
+//            return SCRIPT_CONTINUE;
+//        }
         int player_faction_id = pvpGetAlignedFaction(self);
         if (player_faction_id != resign_faction_id)
         {

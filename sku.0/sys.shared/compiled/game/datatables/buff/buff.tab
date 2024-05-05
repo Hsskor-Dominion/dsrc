@@ -168,7 +168,7 @@ dessert_smugglers_delight	ice_cream			1	buffs.foodDessert	1200	resistance_spice_
 drink_gralinyn_juice	food			1	buffs.foodBeverage	1200	stamina_modified	40	creature_knowledge	10	creature_hit_bonus	10		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_deuterium_pyro	food			1	buffs.foodBeverage	1200	precision_modified	30	stamina_modified	20		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_corellian_ale	food			1	buffs.foodBeverage	1200	strength_modified	30	stamina_modified	25	expertise_en_inspire_buff_duration_increase	30		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-drink_blue_milk	food			1	buffs.foodBeverage	1200	stamina_modified	10	constitution_modified	10	expertise_action_all	1		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+drink_blue_milk	food			1	buffs.foodBeverage	1200	stamina_modified	10	constitution_modified	10	expertise_action_all	1	expertise_movement_buff_fs_force_run	10	expertise_buff_duration_line_fs_force_run	2	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_durindfire	food			1	buffs.foodBeverage	1200	stamina_modified	30	constitution_modified	15		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_veronian_berry_wine	food			1	buffs.foodBeverage	180	absorption_bleeding	10	resistance_bleeding	3		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_ithorian_mist	food			1	buffs.foodBeverage	180	absorption_fire	10	resistance_fire	3		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1

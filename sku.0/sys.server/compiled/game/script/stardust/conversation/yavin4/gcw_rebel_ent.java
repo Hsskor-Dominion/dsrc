@@ -25,19 +25,13 @@ public class gcw_rebel_ent extends script.base_script
     {
         return groundquests.isTaskActive(player, "gcw_rebel_ent", "talktogcwreb");
     }
-    public boolean gcw_rebel_ent_condition_notEntertainer(obj_id player, obj_id npc) throws InterruptedException
-    {
+    public boolean gcw_rebel_ent_condition_notEntertainer(obj_id player, obj_id npc) throws InterruptedException {
         String pTemplate = getSkillTemplate(player);
-        if (pTemplate.contains("entertainer") && (factions.isRebel(player)))
-        {
+        if (hasSkill(player, "class_entertainer_phase1_novice") && factions.isRebel(player)) {
             return false;
-        }
-        else if (hasObjVar(player, "npe.finishedTemplate"))
-        {
+        } else if (hasObjVar(player, "npe.finishedTemplate")) {
             return false;
-        }
-        else 
-        {
+        } else {
             return true;
         }
     }

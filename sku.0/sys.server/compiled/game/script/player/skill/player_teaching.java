@@ -38,10 +38,19 @@ public class player_teaching extends script.base_script
     public static final float TEACHING_RANGE = 10.0f;
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
+        if (group.inSameGroup(self, player))
+        {
+            mi.addRootMenu(menu_info_types.SERVER_TEACH, SID_TEACH);
+        }
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
     {
+        if (group.inSameGroup(self, player))
+        {
+            int teachHash = getStringCrc("teach");
+            queueCommand(player, teachHash, self, "", COMMAND_PRIORITY_IMMEDIATE);
+        }
         return SCRIPT_CONTINUE;
     }
     public int OnLogin(obj_id self) throws InterruptedException
@@ -89,12 +98,14 @@ public class player_teaching extends script.base_script
         {
             LOG("LOG_CHANNEL", self + " ->You are too far away from " + student_name + " to teach.");
             prose_package pp = prose.getPackage(SID_STUDENT_TOO_FAR_TARGET, student);
+            sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
         if (utils.hasScriptVar(student, VAR_TEACHING))
         {
             LOG("LOG_CHANNEL", self + " ->" + student_name + " already has an offer to learn.");
             prose_package pp = prose.getPackage(SID_STUDENT_HAS_OFFER_TO_LEARN, student);
+            sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
         int row_selected = sui.getListboxSelectedRow(params);
@@ -106,6 +117,8 @@ public class player_teaching extends script.base_script
         if (selected_skill == null)
         {
             LOG("LOG_CHANNEL", "player_teaching::msgTeachSkillSelected -- selected skill was null for " + self);
+            sendSystemMessageTestingOnly(self, "You didn't select a valid skill.");
+            sendSystemMessageTestingOnly(student, teacher_name + " didn't select a valid skill.");
             return SCRIPT_CONTINUE;
         }
         dictionary xp_cost = getSkillPrerequisiteExperience(selected_skill);
@@ -132,6 +145,7 @@ public class player_teaching extends script.base_script
         string_id skill_id = utils.unpackString("@skl_n:" + selected_skill);
         LOG("LOG_CHANNEL", "skill_id ->" + skill_id);
         prose_package pp = prose.getPackage(SID_OFFER_GIVEN, self, student, skill_id, 0);
+        sendSystemMessageProse(self, pp);
         utils.setScriptVar(student, VAR_SKILL_TO_LEARN, selected_skill);
         utils.setScriptVar(student, VAR_TEACHER, self);
         utils.setScriptVar(student, VAR_SKILL_COST, skill_cost);
@@ -158,6 +172,7 @@ public class player_teaching extends script.base_script
             {
                 LOG("LOG_CHANNEL", teacher + " ->" + getFirstName(self) + " has refused your offer to teach.");
                 prose_package pp = prose.getPackage(SID_OFFER_REFUSED, self);
+                sendSystemMessageProse(self, pp);
             }
             return SCRIPT_CONTINUE;
         }
@@ -185,6 +200,7 @@ public class player_teaching extends script.base_script
         {
             LOG("LOG_CHANNEL", self + " ->You are too far away from " + teacher_name + " to learn.");
             prose_package pp = prose.getPackage(SID_TEACHER_TOO_FAR_TARGET, teacher);
+            sendSystemMessageProse(self, pp);
             utils.removeScriptVarTree(self, VAR_TEACHING);
             return SCRIPT_CONTINUE;
         }
@@ -196,6 +212,7 @@ public class player_teaching extends script.base_script
             LOG("LOG_CHANNEL", teacher + " ->" + student_name + " learns " + selected_skill + " from you.");
             prose_package pp = prose.getPackage(SID_STUDENT_SKILL_LEARNED, teacher, skill_id);
             pp = prose.getPackage(SID_TEACHER_SKILL_LEARNED, self, skill_id);
+            sendSystemMessageProse(self, pp);
             int exp = 0;
             if (isJedi(teacher) && isJedi(self) && skill_cost.equals("0") && selected_skill.startsWith("jedi_"))
             {
@@ -205,10 +222,14 @@ public class player_teaching extends script.base_script
             {
             }
         }
-        else 
+        else
         {
             LOG("LOG_CHANNEL", self + " -> Learning failed.");
             LOG("LOG_CHANNEL", teacher + " -> Teaching failed.");
+            prose_package pp = prose.getPackage(SID_TEACHING_FAILED, teacher);
+            sendSystemMessageProse(teacher, pp);
+            pp = prose.getPackage(SID_LEARNING_FAILED, self);
+            sendSystemMessageProse(self, pp);
         }
         return SCRIPT_CONTINUE;
     }
@@ -225,18 +246,23 @@ public class player_teaching extends script.base_script
             if (!isIdValid(target))
             {
                 LOG("LOG_CHANNEL", self + " ->Whom do you want to teach?");
+                prose_package pp = prose.getPackage(SID_NO_TARGET, self);
+                sendSystemMessageProse(self, pp);
                 return SCRIPT_CONTINUE;
             }
         }
         if (target == self)
         {
             LOG("LOG_CHANNEL", self + " ->You cannot teach yourself.");
+            prose_package pp = prose.getPackage(SID_NO_TEACH_SELF, self);
+            sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
         if (isDead(target) || isIncapacitated(target))
         {
             LOG("LOG_CHANNEL", self + " ->" + getFirstName(target) + " does not feel like being taught right now.");
             prose_package pp = prose.getPackage(SID_STUDENT_DEAD, target);
+            sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
         LOG("LOG_CHANNEL", "target ->" + target);
@@ -248,18 +274,25 @@ public class player_teaching extends script.base_script
         if (distance > TEACHING_RANGE)
         {
             LOG("LOG_CHANNEL", self + " ->You must be closer in order to teach.");
+            prose_package pp = prose.getPackage(SID_STUDENT_TOO_FAR, target);
+            sendSystemMessageProse(target, pp);
+            pp = prose.getPackage(SID_TEACHER_TOO_FAR, self);
+            sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
         if (utils.hasScriptVar(target, VAR_TEACHING))
         {
             LOG("LOG_CHANNEL", self + " ->" + target_name + " already has an offer to learn.");
             prose_package pp = prose.getPackage(SID_STUDENT_HAS_OFFER_TO_LEARN, target);
+            sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
         String[] teacher_skills = getSkillListingForPlayer(self);
         if (teacher_skills == null)
         {
             LOG("LOG_CHANNEL", self + " ->You have no skills to teach.");
+            prose_package pp = prose.getPackage(SID_NO_SKILLS, self);
+            sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
         String[] qual_skills = skill.getQualifiedTeachableSkills(target, self);
@@ -267,6 +300,7 @@ public class player_teaching extends script.base_script
         {
             LOG("LOG_CHANNEL", self + " -> You have no skills that " + target_name + " can currently learn.");
             prose_package pp = prose.getPackage(SID_NO_SKILLS_FOR_STUDENT, target);
+            sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
         Vector valid_skills = new Vector();
@@ -274,7 +308,7 @@ public class player_teaching extends script.base_script
         for (String qual_skill : qual_skills) {
             int idx = utils.getElementPositionInArray(teacher_skills, qual_skill);
             if (idx != -1) {
-                if (!qual_skill.contains("novice") && !qual_skill.contains("force_sensitive")) {
+                if (!qual_skill.contains("novice") && !qual_skill.contains("force_sensitive") && !hasSkill(target, qual_skill)) {
                     valid_skills = utils.addElement(valid_skills, qual_skill);
                 }
             }
@@ -283,12 +317,14 @@ public class player_teaching extends script.base_script
         {
             LOG("LOG_CHANNEL", self + " -> You have no skills that " + target_name + " can currently learn.");
             prose_package pp = prose.getPackage(SID_NO_SKILLS_FOR_STUDENT, target);
+            sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
         if (!group.inSameGroup(self, target))
         {
             LOG("LOG_CHANNEL", self + " ->You must be within the same group as " + target_name + " in order to teach.");
             prose_package pp = prose.getPackage(SID_NOT_IN_SAME_GROUP, target);
+            sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
         utils.setScriptVar(self, VAR_STUDENT, target);
@@ -299,6 +335,7 @@ public class player_teaching extends script.base_script
             valid_skills_id[i] = "@skl_n:" + ((String)valid_skills.get(i));
         }
         sui.listbox(self, self, "Select a skill to teach.", sui.OK_CANCEL, "Select Skill", valid_skills_id, "msgTeachSkillSelected");
+        grantExperiencePoints(self, "jedi", 100);
         return SCRIPT_CONTINUE;
     }
 }

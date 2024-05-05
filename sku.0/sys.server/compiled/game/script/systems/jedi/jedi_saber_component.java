@@ -171,14 +171,26 @@ public class jedi_saber_component extends script.base_script
                 {
                     mid.setServerNotify(true);
                 }
-                else 
+                else
                 {
                     mi.addRootMenu(menu_info_types.SERVER_PET_OPEN, new string_id("jedi_spam", "tune_crystal"));
+                }
+            }
+            else
+            {
+                // Add the "bleed" option when the crystal is already tuned
+                mi.addRootMenu(menu_info_types.SERVER_ITEM_OPTIONS, new string_id("jedi_spam", "bleed_crystal"));
+
+                // Check if the crystal has been bled and allow healing if it hasn't
+                if (hasObjVar(self, "bled"))
+                {
+                    mi.addRootMenu(menu_info_types.SERVER_ITEM_OPTIONS, new string_id("jedi_spam", "heal_crystal"));
                 }
             }
         }
         return SCRIPT_CONTINUE;
     }
+
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
     {
         if (!jedi.isForceSensitiveLevelRequired(player, jedi.MIN_CRYSTAL_TUNE_PLAYER_LEVEL))
@@ -191,8 +203,84 @@ public class jedi_saber_component extends script.base_script
             {
                 verifyTune(player);
             }
+            else if (item == menu_info_types.SERVER_ITEM_OPTIONS)
+            {
+                // Handle the "bleed" action
+                if (hasSkill(player, "force_rank_dark_novice"))
+                {
+                    bleedCrystal(self, player);
+                }
+                else
+                {
+                    sendSystemMessage(player, new string_id("jedi_spam", "cannot_bleed_no_skill"));
+                }
+            }
+            else if (item == menu_info_types.SERVER_ITEM_OPTIONS + 1) // Check if the selected item is the "heal" option
+            {
+                // Handle the "heal" action
+                if (hasSkill(player, "force_rank_light_novice"))
+                {
+                    healCrystal(self, player);
+                }
+                else
+                {
+                    sendSystemMessage(player, new string_id("jedi_spam", "cannot_heal_no_skill"));
+                }
+            }
         }
         return SCRIPT_CONTINUE;
+    }
+    private void bleedCrystal(obj_id crystal, obj_id player) throws InterruptedException {
+        // Check if the crystal has already been bled and if the player has the required skill to heal
+        if (hasObjVar(crystal, "bled") && hasSkill(player, "force_rank_light_novice")) {
+            healCrystal(crystal, player);
+            return;
+        }
+
+        // Destroy the crystal
+        destroyObject(crystal);
+
+        // Spawn a new crystal in the player's inventory
+        obj_id playerInventory = utils.getInventoryContainer(player);
+        if (playerInventory != null) {
+            obj_id newCrystal = static_item.createNewItemFunction("item_color_crystal_02_00", playerInventory); // Assign the result to newCrystal
+            if (isIdValid(newCrystal)) {
+                // Set objvar to indicate that the crystal has been bled
+                setObjVar(newCrystal, "bled", 1);
+                // You can customize the new crystal properties here if needed
+                sendSystemMessage(player, new string_id("jedi_spam", "crystal_bled"));
+            } else {
+                sendSystemMessage(player, new string_id("jedi_spam", "failed_to_spawn_crystal"));
+            }
+        } else {
+            sendSystemMessage(player, new string_id("jedi_spam", "player_inventory_not_found"));
+        }
+    }
+
+    private void healCrystal(obj_id crystal, obj_id player) throws InterruptedException
+    {
+        // Destroy the crystal
+        destroyObject(crystal);
+
+        // Spawn a new crystal in the player's inventory
+        obj_id playerInventory = utils.getInventoryContainer(player);
+        if (playerInventory != null)
+        {
+            obj_id newCrystal = static_item.createNewItemFunction("item_color_crystal_02_06", playerInventory); // Assign the result to newCrystal
+            if (isIdValid(newCrystal))
+            {
+                // You can customize the new crystal properties here if needed
+                sendSystemMessage(player, new string_id("jedi_spam", "crystal_healed"));
+            }
+            else
+            {
+                sendSystemMessage(player, new string_id("jedi_spam", "failed_to_spawn_crystal"));
+            }
+        }
+        else
+        {
+            sendSystemMessage(player, new string_id("jedi_spam", "player_inventory_not_found"));
+        }
     }
     public void verifyTune(obj_id player) throws InterruptedException
     {

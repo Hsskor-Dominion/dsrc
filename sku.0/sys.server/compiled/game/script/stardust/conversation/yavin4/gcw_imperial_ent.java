@@ -25,15 +25,11 @@ public class gcw_imperial_ent extends script.base_script
     {
         return groundquests.isTaskActive(player, "gcw_imperial_ent", "talktogcw");
     }
-    public boolean gcw_imperial_ent_condition_notEntertainer(obj_id player, obj_id npc) throws InterruptedException
-    {
+    public boolean gcw_imperial_ent_condition_notEntertainer(obj_id player, obj_id npc) throws InterruptedException {
         String pTemplate = getSkillTemplate(player);
-        if (pTemplate.contains("entertainer") && (factions.isImperial(player)))
-        {
+        if (hasSkill(player, "class_entertainer_phase1_novice") && factions.isImperial(player)) {
             return false;
-        }
-        else 
-        {
+        } else {
             return true;
         }
     }

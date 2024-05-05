@@ -405,7 +405,30 @@ public class skill extends script.base_script
     }
     public static String[] getTeachableSkills(obj_id target, obj_id teacher) throws InterruptedException
     {
-        return null;
+        return new String[]
+                {
+                        "social_language_bothan_speak",
+                        "social_language_bothan_comprehend",
+                        "social_language_moncalamari_speak",
+                        "social_language_moncalamari_comprehend",
+                        "social_language_rodian_speak",
+                        "social_language_rodian_comprehend",
+                        "social_language_trandoshan_speak",
+                        "social_language_trandoshan_comprehend",
+                        "social_language_twilek_speak",
+                        "social_language_twilek_comprehend",
+                        "social_language_wookiee_comprehend",
+                        "social_language_zabrak_speak",
+                        "social_language_zabrak_comprehend",
+                        "social_language_ithorian_speak",
+                        "social_language_ithorian_comprehend",
+                        "social_language_sullustan_speak",
+                        "social_language_sullustan_comprehend",
+                        "force_rank_dark",
+                        "force_rank_dark_novice",
+                        "force_rank_light",
+                        "force_rank_light_novice",
+                };
     }
     public static String[] getQualifiedTeachableSkills(obj_id target, obj_id teacher) throws InterruptedException
     {

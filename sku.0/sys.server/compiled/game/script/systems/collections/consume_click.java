@@ -14,8 +14,8 @@ public class consume_click extends script.base_script
     public static final String NEWBIE_COMM = "collection.newbie_comm_series";
     public static final int MAX_RANGE_TO_COLLECT = 3;
     public static final int COLLECT_TIMER_BEGIN = 0;
-    public static final int COLLECT_TIMER_END = 5;
-    public static final int COLLECT_TIMER_DELAY = COLLECT_TIMER_END + 3;
+    public static final int COLLECT_TIMER_END = 1;
+    public static final int COLLECT_TIMER_DELAY = COLLECT_TIMER_END + 1;
     public static final string_id SID_CONSUME_PROMPT = new string_id("collection", "click_item_prompt");
     public static final string_id SID_CONSUME_TITLE = new string_id("collection", "consume_item_title");
     public static final string_id SID_CONSUME_ITEM = new string_id("collection", "consume_item");
