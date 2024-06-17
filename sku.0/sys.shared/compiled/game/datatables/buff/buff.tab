@@ -1419,7 +1419,7 @@ set_bonus_hero_3	setBonusHero			1	command.powerBoost	-1	stamina_modified	150	agi
 bh_dire_root_1	dire_root	root		101	buffs.direRoot	9	movement	0		0		0		0		0	STATE_NONE	dire_root_recourse			1	1		0	1	1	0	1	1	0	1	1	1
 bh_dire_snare_1	dire_snare	snare		101	buffs.direSnare	12	movement	0		0		0		0		0	STATE_NONE	dire_snare_recourse			1	1		0	1	1	0	1	1	0	1	1	1
 lnd_dm_1	lnd_dm_1			1	command.powerBoost	-1	proc_buff	1	lnd_dm_1	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-set_bonus_jedi_robe_1	setBonusJedi			1	jedi.forceKnockdown	-1	constitution_modified	55	strength_modified	25	precision_modified	25	jedi_saber_assembly	15	jedi_saber_experimentation	5	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
+set_bonus_jedi_robe_1	setBonusJedi			1	jedi.forceKnockdown	-1	healthPercent	25	actionPercent	25	strength_modified	25	jedi_saber_assembly	15	jedi_saber_experimentation	5	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 bodyguard	bodyguard			1	command.bm_shield_master	-1	protect_master	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 me_doom	meDoom			2	command.me_serotonin_purge	10	me_doom	1		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 test_grant	test			1	command.trandoshan_ability	300	trandoshan_ability_1	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
