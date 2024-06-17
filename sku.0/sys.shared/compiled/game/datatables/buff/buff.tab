@@ -400,14 +400,14 @@ jediRegen_2	forceRegen			1	jedi.forceArmor	-1	jedi_force_power_regen	5		0		0		0	
 jediRegen_3	forceRegen			1	jedi.forceArmor	-1	jedi_force_power_regen	5		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 jediRegen_4	forceRegen			1	jedi.forceArmor	-1	jedi_force_power_regen	5		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 jediRegen_5	forceRegen			1	jedi.forceArmor	-1	jedi_force_power_regen	5		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-holocron_1	towCrystal			1	jedi.forceCloak	900	constitution_modified	150		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-holocron_2	towCrystal			2	jedi.forceCloak	900	agility_modified	150		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-holocron_3	towCrystal			3	jedi.forceCloak	900	strength_modified	150		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-holocron_4	towCrystal			4	jedi.forceCloak	900	stamina_modified	150		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-holocron_5	towCrystal			5	jedi.forceCloak	900	expertise_action_all	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-holocron_6	towCrystal			6	jedi.forceCloak	900	expertise_dodge	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-holocron_7	towCrystal			7	jedi.forceCloak	900	resistance_fire	30	absorption_fire	15		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-holocron_8	towCrystal			8	jedi.forceCloak	35	constitutionPercent	75	staminaPercent	50		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+holocron_1	towCrystal			1	jedi.forceCloak	300	constitutionPercent	75	staminaPercent	50	expertise_healing_all	10	healing_efficiency	10	expertise_damage_add_to_action	1	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+holocron_2	towCrystal			2	jedi.forceCloak	300	expertise_action_line_fs_sweep	15	expertise_cooldown_line_fs_sweep	10	expertise_parry	3		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+holocron_3	towCrystal			3	jedi.forceCloak	300	expertise_critical_hit_pvp_reduction	4	expertise_evasion_chance	3	combat_evasion_value	30	expertise_dodge	3		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+holocron_4	towCrystal			4	jedi.forceCloak	300	expertise_saber_block	10	expertise_parry	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+holocron_5	towCrystal			5	jedi.forceCloak	300	expertise_action_line_fs_dm	5	expertise_cooldown_line_fs_dm	5	expertise_undiminished_critical_melee	5	expertise_strikethrough_chance	3	combat_strikethrough_value	50	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+holocron_6	towCrystal			6	jedi.forceCloak	300	expertise_parry	3	expertise_block_chance	3	combat_block_value	30	flurry_cooldown_modifier	40	expertise_saber_block	5	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+holocron_7	towCrystal			7	jedi.forceCloak	300	expertise_action_all	5	resistance_fire	30	absorption_fire	15	expertise_saber_block	5		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+holocron_8	towCrystal			8	jedi.forceCloak	300	expertise_attacker_action_gain	1	combat_multiply_damage_taken	10	expertise_damage_all	10	fast_attack_line_fs_powers	25		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 proc_fire_attack	procBuff			5	buffs.genericBuff	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 proc_fire_attack_1	procBuff			1	buffs.genericBuff	180	proc_buff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 npeHealthBuff	doctorHealth			1	buffs.genericBuff	180	constitution_modified	5		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
