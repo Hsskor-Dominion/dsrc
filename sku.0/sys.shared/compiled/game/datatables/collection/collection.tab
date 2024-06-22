@@ -179,32 +179,32 @@ badge_book				0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0
 			bdg_kash_rebel_heavy_xwing	146	-1	-1																		NONE	gray	0	0						0	0			
 			bdg_kash_neutral_blacksun_heavy	147	-1	-1																		NONE	gray	0	0						0	0			
 			bdg_kash_wookiee_rage	148	-1	-1																		NONE	gray	0	0						0	0			
-			bdg_kash_avatar_zssik	149	-1	-1																		NONE	gray	0	0						0	0			
+			bdg_kash_avatar_zssik	149	-1	-1																		NONE	gray	0	1						0	0			
 			bdg_kash_kkorrwrot	150	-1	-1																		NONE	unknown	0	0						0	0			
 			bdg_kash_katarn	151	-1	-1																		NONE	unknown	0	0						0	0			
-			bdg_kash_hunting_excellence	152	-1	-1																		NONE	unknown	0	0						0	0			
+			bdg_kash_hunting_excellence	152	-1	-1																		NONE	unknown	0	1						0	0			
 		col_bdg_kill_01		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						1	0			
 			bdg_kill_ancient_krayt_dragon	157	-1	-1																		NONE	unknown	0	0						0	0			
 			bdg_kill_gorax	158	-1	-1																		NONE	unknown	0	0						0	0			
 			bdg_kill_axkva_min	159	-1	-1																		NONE	none	0	0						0	0			
 			bdg_kill_geonosian_acklay	160	-1	-1																		NONE	unknown	0	0						0	0			
 			bdg_kill_gaping_spider_kiin_dray	161	-1	-1																		NONE	unknown	0	0						0	0			
-			bdg_kill_deathwatch_overlord	162	-1	-1																		NONE	unknown	0	0						0	0			
+			bdg_kill_deathwatch_overlord	162	-1	-1																		NONE	unknown	0	1						0	0			
 			bdg_col_kill_rodents	267	-1	-1	collections																	sound/music_acq_miner.snd	gray	0	0						0	0			
 			bdg_col_kill_insects	268	-1	-1	collections																	sound/music_acq_miner.snd	gray	0	0						0	0			
 			bdg_col_kill_flying	269	-1	-1	collections																	sound/music_acq_miner.snd	gray	0	0						0	0			
 			bdg_col_kill_cold_blooded	2802	-1	-1	collections																	sound/music_acq_miner.snd	gray	0	0						0	0			
 			bdg_col_kill_primitive	2803	-1	-1	collections																	sound/music_acq_miner.snd	gray	0	0						0	0			
 			bdg_col_kill_ferocious	2804	-1	-1	collections																	sound/music_acq_miner.snd	gray	0	0						0	0			
-			bdg_col_jedi_npc_kill	5685	-1	-1	collections																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			bdg_col_jedi_npc_kill	5685	-1	-1	collections																	sound/music_acq_miner.snd	gray	0	1						0	0			
 		col_bdg_rsf_clearance		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						1	0			
-			bdg_content_rsf_clearance_1	164	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			bdg_content_rsf_clearance_2	165	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			bdg_content_rsf_clearance_3	166	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			bdg_content_rsf_clearance_4	167	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			bdg_content_rsf_clearance_5	168	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			bdg_content_rsf_clearance_6	169	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			bdg_content_rsf_clearance_7	170	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
+			bdg_content_rsf_clearance_1	164	-1	-1																		sound/music_acq_miner.snd	gray	0	1						0	0			
+			bdg_content_rsf_clearance_2	165	-1	-1																		sound/music_acq_miner.snd	gray	0	1						0	0			
+			bdg_content_rsf_clearance_3	166	-1	-1																		sound/music_acq_miner.snd	gray	0	1						0	0			
+			bdg_content_rsf_clearance_4	167	-1	-1																		sound/music_acq_miner.snd	gray	0	1						0	0			
+			bdg_content_rsf_clearance_5	168	-1	-1																		sound/music_acq_miner.snd	gray	0	1						0	0			
+			bdg_content_rsf_clearance_6	169	-1	-1																		sound/music_acq_miner.snd	gray	0	1						0	0			
+			bdg_content_rsf_clearance_7	170	-1	-1																		sound/music_acq_miner.snd	gray	0	1						0	0			
 		col_bdg_must_content		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						1	0			
 			bdg_must_obiwan_story_good	172	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			bdg_must_obiwan_story_bad	173	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
@@ -6251,112 +6251,112 @@ creature_index_book				0	-1	-1																		sound/music_acq_miner.snd	gray	0
 			dathomir_blackwing_rancor	22799	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			dathomir_bolma	22800	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			dathomir_brackaset	22801	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			dathomir_gaping_spider	22802	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			dathomir_kwi	22803	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			dathomir_malkloc	22804	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			dathomir_purbole	22805	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			dathomir_rancor	22806	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			dathomir_reptilian_flyer	22807	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			dathomir_shear_mite	22808	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			dathomir_spiderclan_consort	22809	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			dathomir_spiderclan_queen	22810	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			dathomir_verne	22811	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			dathomir_voritor_lizard	22812	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			dathomir_gaping_spider	22802	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			dathomir_kwi	22803	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			dathomir_malkloc	22804	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			dathomir_purbole	22805	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			dathomir_rancor	22806	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			dathomir_reptilian_flyer	22807	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			dathomir_shear_mite	22808	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			dathomir_spiderclan_consort	22809	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			dathomir_spiderclan_queen	22810	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			dathomir_verne	22811	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			dathomir_voritor_lizard	22812	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 		endor_creature_index		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	1			
 			endor_angler	22813	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			endor_barbed_quenkar	22814	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			endor_bark_mite	22815	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			endor_bearded_jax	22816	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			endor_blurrg	22817	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			endor_boar_wolf	22818	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_bolle_bol	22819	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_bordok	22820	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_borgle	22821	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_condor_dragon	22822	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_gackle_bat	22823	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_gurrck	22824	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_hanadak	22825	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_lantern_bird	22826	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_merek	22827	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_remmer	22828	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_roba	22829	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			endor_squall	22830	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			endor_boar_wolf	22818	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_bolle_bol	22819	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_bordok	22820	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_borgle	22821	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_condor_dragon	22822	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_gackle_bat	22823	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_gurrck	22824	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_hanadak	22825	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_lantern_bird	22826	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_merek	22827	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_remmer	22828	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_roba	22829	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			endor_squall	22830	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 		kashyyyk_creature_index		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	1			
 			kashyyyk_bolotaur	22831	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			kashyyyk_bantha	22832	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			kashyyyk_minstyngar	22833	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			kashyyyk_mouf	22834	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			kashyyyk_purbole	22835	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			kashyyyk_skreeg	22836	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			kashyyyk_spined_puc	22837	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			kashyyyk_uller	22838	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			kashyyyk_urnsoris	22839	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			kashyyyk_uwari_beetle	22840	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			kashyyyk_varactyl	22841	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			kashyyyk_walluga	22842	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			kashyyyk_webweaver	22843	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			kashyyyk_purbole	22835	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			kashyyyk_skreeg	22836	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			kashyyyk_spined_puc	22837	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			kashyyyk_uller	22838	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			kashyyyk_urnsoris	22839	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			kashyyyk_uwari_beetle	22840	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			kashyyyk_varactyl	22841	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			kashyyyk_walluga	22842	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			kashyyyk_webweaver	22843	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 		lok_creature_index		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	1			
 			lok_flit	22844	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			lok_gurk	22845	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			lok_gurnaset	22846	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			lok_kimogila	22847	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			lok_kusak	22848	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			lok_langlatch	22849	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			lok_pharple	22850	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			lok_salt_mynock	22851	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			lok_snorbal	22852	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			lok_spined_snake	22853	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			lok_vesp	22854	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			lok_kusak	22848	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			lok_langlatch	22849	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			lok_pharple	22850	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			lok_salt_mynock	22851	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			lok_snorbal	22852	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			lok_spined_snake	22853	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			lok_vesp	22854	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 		mustafar_creature_index		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	1			
 			mustafar_blistmok	22855	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			mustafar_jundak	22856	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			mustafar_kabaza_beetle	22857	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			mustafar_lava_flea	22858	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			mustafar_tanray	22859	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			mustafar_tulrus	22860	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			mustafar_xandank	22861	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			mustafar_tanray	22859	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			mustafar_tulrus	22860	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			mustafar_xandank	22861	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 		naboo_creature_index		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	1			
 			naboo_capper_spineflap	22862	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			naboo_chuba	22863	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			naboo_dwarf_nuna	22864	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			naboo_falumpaset	22865	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			naboo_fambaa	22866	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			naboo_fanned_rawl	22867	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			naboo_flewt	22868	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			naboo_gnort	22869	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			naboo_gualama	22870	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			naboo_hermit_spider	22871	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			naboo_horned_krevol	22872	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			naboo_ikopi	22873	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			naboo_kaadu	22874	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			naboo_fambaa	22866	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			naboo_fanned_rawl	22867	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			naboo_flewt	22868	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			naboo_gnort	22869	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			naboo_gualama	22870	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			naboo_hermit_spider	22871	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			naboo_horned_krevol	22872	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			naboo_ikopi	22873	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			naboo_kaadu	22874	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 			naboo_mott	22875	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			naboo_narglatch	22876	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			naboo_nuna	22877	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			naboo_peko_peko	22878	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			naboo_shaupaut	22879	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			naboo_tusk_cat	22880	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			naboo_veermok	22881	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			naboo_shaupaut	22879	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			naboo_tusk_cat	22880	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			naboo_veermok	22881	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 		rori_creature_index		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	1			
 			rori_bark_mite	22882	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			rori_bearded_jax	22883	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			rori_borgle	22884	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			rori_capper_spineflap	22885	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			rori_huf_dun	22886	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			rori_kai_tok	22887	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			rori_pugoriss	22888	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			rori_squall	22889	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			rori_torton	22890	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			rori_vir_vur	22891	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			rori_huf_dun	22886	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			rori_kai_tok	22887	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			rori_pugoriss	22888	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			rori_squall	22889	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			rori_torton	22890	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			rori_vir_vur	22891	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 		talus_creature_index		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	1			
 			talus_bark_mite	22892	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			talus_dalyrake	22893	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			talus_falumpaset	22894	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			talus_frynock	22895	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			talus_gaping_spider	22896	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			talus_guf_drolg	22897	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			talus_gulignaw	22898	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			talus_gurreck	22899	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			talus_horned_rasp	22900	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			talus_falumpaset	22894	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			talus_frynock	22895	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			talus_gaping_spider	22896	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			talus_guf_drolg	22897	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			talus_gulignaw	22898	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			talus_gurreck	22899	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			talus_horned_rasp	22900	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 			talus_kima	22901	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			talus_murra	22902	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 		tatooine_creature_index		0	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	1			
@@ -6364,13 +6364,13 @@ creature_index_book				0	-1	-1																		sound/music_acq_miner.snd	gray	0
 			tatooine_bocatt	22904	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			tatooine_cu_pa	22905	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			tatooine_dewback	22906	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			tatooine_dune_lizard	22907	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			tatooine_dwarf_nuna	22908	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			tatooine_eopie	22909	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			tatooine_mynock	22910	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			tatooine_rock_mite	22911	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			tatooine_ronto	22912	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			tatooine_squill	22913	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			tatooine_dune_lizard	22907	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			tatooine_dwarf_nuna	22908	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			tatooine_eopie	22909	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			tatooine_mynock	22910	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			tatooine_rock_mite	22911	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			tatooine_ronto	22912	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			tatooine_squill	22913	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 			tatooine_tanc_mite	22914	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			tatooine_womp_rat	22915	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			tatooine_worrt	22916	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
@@ -6380,13 +6380,13 @@ creature_index_book				0	-1	-1																		sound/music_acq_miner.snd	gray	0
 			yavin4_choku	22919	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			yavin4_crystal_snake	22920	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			yavin4_finned_blaggart	22921	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
-			yavin4_kliknik	22922	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			yavin4_mamien	22923	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			yavin4_mawgax	22924	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			yavin4_nexu	22925	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			yavin4_reek	22926	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			yavin4_skreeg	22927	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
-			yavin4_spined_puc	22928	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	1						0	0			
+			yavin4_kliknik	22922	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			yavin4_mamien	22923	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			yavin4_mawgax	22924	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			yavin4_nexu	22925	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			yavin4_reek	22926	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			yavin4_skreeg	22927	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
+			yavin4_spined_puc	22928	-1	-1	noScriptNotifyOnModify																	sound/music_acq_miner.snd	gray	0	0						0	0			
 			yavin4_stintaril	22929	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			yavin4_tybis	22930	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			
 			yavin4_whisper_bird	22931	-1	-1																		sound/music_acq_miner.snd	gray	0	0						0	0			

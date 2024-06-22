@@ -152,6 +152,7 @@ public class base_player extends script.base_script
     public static final string_id SID_ST_RIGHTS_REVOKED = new string_id("city/city", "st_rights_revoked");
     public static final string_id SID_ST_RIGHTS_REVOKED_OTHER = new string_id("city/city", "st_rights_revoked_other");
     public static final string_id SID_NOT_IN_CITY_LIMITS = new string_id("city/city", "not_in_city_limits");
+    public static final string_id SID_TEACH = new string_id("sui", "teach");
     public static final String NOVICE_MARKSMAN = "combat_marksman_novice";
     public static final String NOVICE_BRAWLER = "combat_brawler_novice";
     public static final String NOVICE_MEDIC = "science_medic_novice";
@@ -1243,6 +1244,10 @@ public class base_player extends script.base_script
                     mi.addRootMenu(menu_info_types.SERVER_PERFORMANCE_WATCH, performance.SID_RADIAL_PERFORMANCE_WATCH);
                 }
             }
+            if (group.inSameGroup(self, player))
+            {
+                mi.addRootMenu(menu_info_types.SERVER_TEACH, SID_TEACH);
+            }
         }
         return SCRIPT_CONTINUE;
     }
@@ -1284,6 +1289,11 @@ public class base_player extends script.base_script
             dictionary params = new dictionary();
             messageTo(player, "handleWatchRadialCmd", params, 0, false);
             sendDirtyObjectMenuNotification(self);
+        }
+        else if (item == menu_info_types.SERVER_TEACH)
+        {
+            int teachHash = getStringCrc("teach");
+            queueCommand(player, teachHash, self, "", COMMAND_PRIORITY_IMMEDIATE);
         }
         return SCRIPT_CONTINUE;
     }
@@ -3513,6 +3523,7 @@ public class base_player extends script.base_script
     if (hasSkill(self, "class_forcesensitive_phase4_master"))
         {
             setState(self, STATE_GLOWING_JEDI, true);
+            grantSkill(self, "stardust_jedi_elder");
             buff.applyBuff(self, "forceWeaken");
             revokeSkill(self, "class_forcesensitive_phase4_master");
             revokeSkill(self, "class_forcesensitive_phase4_05");

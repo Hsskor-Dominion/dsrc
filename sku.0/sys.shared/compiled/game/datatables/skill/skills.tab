@@ -79,7 +79,7 @@ class_smuggler_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_smuggler_phase2_novice	class_smuggler_phase2	oneByFour	0	0	0	0	100	0		class_smuggler_phase1_master		combat_general	116200	205140							wear_all_armor,sm_ae_dm_cc_2,sm_ae_dm_cc_melee_2,sm_skullduggery	expertise_miss_by_luck=12			1	0
 class_smuggler_phase2_02	class_smuggler_phase2	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_novice		combat_general	157800	267540							sm_del_dm_cc_1,sm_dm_3,sm_dm_melee_3	expertise_sm_rank_range_buff=1,expertise_sm_rank_damage_buff=1			1	0
 class_smuggler_phase2_03	class_smuggler_phase2_02	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_02		combat_general	205800	339690							sm_modify_pistol_1,sm_ae_dm_1,sm_ae_dm_melee_1,sm_dm_cc_3,sm_dm_cc_melee_3				1	0
-class_smuggler_phase2_04	class_smuggler_phase2_03	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_03		combat_general	261300	423410							of_sh_1,sm_ae_dm_cc_3,sm_ae_dm_cc_melee_3,sm_shoot_first_1				1	0
+class_smuggler_phase2_04	class_smuggler_phase2_03	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_03		combat_general	261300	423410							of_sh_1,sm_ae_dm_cc_3,sm_ae_dm_cc_melee_3				1	0
 class_smuggler_phase2_05	class_smuggler_phase2_04	oneByFour	0	0	0	0	100	0		class_smuggler_phase2_04		combat_general	325700	519610							sm_del_dm_cc_2,sm_dm_4,sm_dm_cc_4,sm_dm_cc_melee_4,sm_dm_melee_4				1	0
 class_smuggler_phase2_master	class_smuggler_phase2	oneByFour	0	1	0	0	100	0		class_smuggler_phase2_05		combat_general	399700	629980							sm_ae_dm_2,sm_ae_dm_melee_2,sm_dm_dot_1,sm_dm_dot_melee_1	cybernetic_psychosis_resistance=2			1	0
 class_smuggler_phase3	class	oneByFour	0	0	1	0	0	0																	1	0
@@ -1985,7 +1985,7 @@ expertise_of_heal_cool_1	expertise																					expertise_cooldown_line_o
 expertise_of_heal_cool_2	expertise_of_heal_cool_1																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20,healing_ability=10			0	
 expertise_of_heal_cool_3	expertise_of_heal_cool_2																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20,healing_ability=10			0	
 expertise_of_heal_cool_4	expertise_of_heal_cool_3																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20,healing_ability=10			0	
-sm_title_bootlegger				1		1															sm_off_the_books,sm_off_the_cuff	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
+sm_title_bootlegger				1		1															sm_off_the_books,sm_off_the_cuff,sm_shoot_first_1	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
 sm_title_pirate				1		1															sm_summon_medic,sm_end_of_the_line	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
 sm_title_master_smuggler				1		1															sm_nerf_herder	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
 bh_titleinformant				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10			0	
@@ -2209,10 +2209,10 @@ expertise_co_blast_resistance_2	expertise_co_blast_resistance_1																	
 expertise_co_blast_resistance_3	expertise_co_blast_resistance_2																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
 expertise_co_blast_resistance_4	expertise_co_blast_resistance_3																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
 expertise_co_stand_fast_1	expertise_me_agility_4			1						expertise_me_agility_4											co_stand_fast	expertise_damage_decrease_percentage=60			0	
-expertise_co_imp_stand_fast_1	expertise_co_stand_fast_1			1						expertise_co_stand_fast_1												expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_cooldown_line_co_stand_fast=120,expertise_armorset_melee_block_2=1			0	
-expertise_co_imp_stand_fast_2	expertise_co_imp_stand_fast_1			1																		expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_cooldown_line_co_stand_fast=120,expertise_armorset_melee_block_2=1			0	
-expertise_co_imp_stand_fast_3	expertise_co_imp_stand_fast_2			1																		expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_cooldown_line_co_stand_fast=120,expertise_armorset_melee_block_2=1			0	
-expertise_co_imp_stand_fast_4	expertise_co_imp_stand_fast_3			1																		expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_cooldown_line_co_stand_fast=120,expertise_armorset_melee_block_2=1			0	
+expertise_co_imp_stand_fast_1	expertise_co_stand_fast_1			1						expertise_co_stand_fast_1												expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_armorset_melee_block_2=1			0	
+expertise_co_imp_stand_fast_2	expertise_co_imp_stand_fast_1			1																		expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_armorset_melee_block_2=1			0	
+expertise_co_imp_stand_fast_3	expertise_co_imp_stand_fast_2			1																		expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_armorset_melee_block_2=1			0	
+expertise_co_imp_stand_fast_4	expertise_co_imp_stand_fast_3			1																		expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_armorset_melee_block_2=1			0	
 expertise_co_short_fuse_1	expertise_co_packed_explosives_4									expertise_co_packed_explosives_4												expertise_delay_reduce_line_co_grenade=1			0	
 expertise_co_enhanced_fuel_cans_1	expertise_co_lethal_beam_1									expertise_co_lethal_beam_1												expertise_action_weapon_12=5,expertise_action_weapon_13=5,commando_passive_dot=1			0	
 expertise_co_enhanced_fuel_cans_2	expertise_co_enhanced_fuel_cans_1																					expertise_action_weapon_12=5,expertise_action_weapon_13=5,commando_passive_dot=1			0	
@@ -2853,3 +2853,4 @@ stardust_gov				1		1																			0
 stardust_moff				1		1																			0	
 stardust_grand_moff				1		1																			0	
 stardust_sith_empress				1		1																			0	
+stardust_jedi_elder				1		1															blueGlowie				0	

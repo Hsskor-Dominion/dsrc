@@ -1701,14 +1701,21 @@ public class storyteller extends script.base_script
     {
         int cleanUpTime = DEFAULT_PROP_CLEANUP_TIME;
         int city_id = getCityAtLocation(getLocation(object), 0);
+
         if (city_id > 0)
         {
-            cleanUpTime += 57600;
-            obj_id cityHall = cityGetCityHall(city_id);
-            dictionary outparams = new dictionary();
-            outparams.put("queryObject", object);
-            messageTo(cityHall, "st_citySpecBonusCheck", outparams, 0.0f, false);
+            cleanUpTime += 2419200; // Add bonus time if within a city, 4 weeks
+
+            // Optionally, you can uncomment and adjust the following lines
+            // if you want to include city specialization checks:
+        /*
+        obj_id cityHall = cityGetCityHall(city_id);
+        dictionary outparams = new dictionary();
+        outparams.put("queryObject", object);
+        messageTo(cityHall, "st_citySpecBonusCheck", outparams, 0.0f, false);
+        */
         }
+
         setObjVar(object, "storytellerCleanUpTime", cleanUpTime);
     }
     public static void calculateNpcBonusExistTime(obj_id object) throws InterruptedException

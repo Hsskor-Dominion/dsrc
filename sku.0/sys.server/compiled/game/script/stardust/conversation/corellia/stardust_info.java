@@ -114,6 +114,7 @@ public class stardust_info extends script.base_script
             if (stardust_info_condition__defaultCondition(player, npc))
             {
                 doAnimationAction(npc, "pose_proudly");
+                modifyCollectionSlotValue(player, "burning_rock_06", 1);
                 string_id message = new string_id(c_stringFile, "debugging");
                 utils.removeScriptVar(player, "conversation.stardust_info.branchId");
                 chat.chat(npc, player, message);

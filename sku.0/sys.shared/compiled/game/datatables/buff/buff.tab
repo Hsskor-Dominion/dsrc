@@ -1262,7 +1262,7 @@ bm_wing_buffet_5	bm_wing_buffet			5	command.bm_wing_buffet	12	glancing_blow_vuln
 bm_enrage	em_enrage			1	command.bm_enrage	20	damage_dealt_mod	2		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 bm_frenzy	bm_frenzy			1	command.bm_frenzy	6	weapon_speed_mod	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 bm_pet_cure	bm_pet_cure			1	command.me_bacta_resistance	3	dot_immunity	5	debuff_purge	1		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-bm_creature_knowledge	bm_creature_knowledge			1	command.bm_creature_knowledge_command	60		0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+bm_creature_knowledge	bm_creature_knowledge			1	command.bm_creature_knowledge_command	300		0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 bm_attention_penalty_1	bm_attention_penalty			1	command.bm_beast_mastery	-1	expertise_damage_all	-5		0		0		0		0	STATE_NONE	none			1	1		0	0	1	0	1	1	0	1	1	1
 bm_attention_penalty_2	bm_attention_penalty			1	command.bm_beast_mastery	-1	expertise_damage_all	-10		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 bm_attention_penalty_3	bm_attention_penalty			1	command.bm_beast_mastery	-1	expertise_damage_all	-15		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1

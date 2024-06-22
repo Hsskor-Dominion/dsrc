@@ -13,7 +13,7 @@ clone_relics_scientist	0	0	0		clone_relics_droid	Hutt,Imperial,Rebel
 afarathu	1	1	0		corsec,survivor		
 beldonnas_league	1	1	0		followers_of_lord_nyax,lost_aqualish	corsec	
 corsec	1	1	0		afarathu,followers_of_lord_nyax,monumenter,rogue_corsec,lost_aqualish	beldonnas_league	
-followers_of_lord_nyax	1	1	0		corsec,beldonnas_league
+followers_of_lord_nyax	1	1	0		corsec,beldonnas_league		
 hidden_daggers	1	1	0		corsec,beldonnas_league,flail	rogue_corsec	
 meatlump	1	1	0		corsec,rogue_corsec,beldonnas_league		
 monumenter	1	1	0		corsec,beldonnas_league		
@@ -24,8 +24,8 @@ dantari_raiders	1	1	0		kunga_tribe,mokk_tribe,janta_tribe
 janta_tribe	1	1	0		kunga_tribe,dantari_raiders		
 kunga_tribe	1	1	0		mokk_tribe,dantari_raiders		
 mokk_tribe	1	1	0		janta_tribe,dantari_raiders		
-nightsister	1	1	0		mtn_clan,Imperial		
-mtn_clan	1	1	0		nightsister		
+nightsister	1	1	0		mtn_clan,Imperial,trade_federation		
+mtn_clan	1	1	0		nightsister,trade_federation		
 donkuwah_tribe	1	1	0		gondula_tribe,panshee_tribe		
 gorax	0	1	0		gondula_tribe,panshee_tribe		
 gondula_tribe	1	1	0		donkuwah_tribe,korga_tribe,pubam,endor_marauder	panshee_tribe	
@@ -43,7 +43,7 @@ plasma_thief	1	1	0		gungan
 swamp_rat	1	1	0		gungan		
 naboo_security_force	1	1	0		borvo,naboo_pirate,plasma_thief,swamp_rat,trade_federation		
 naboo_pirate	1	1	0		naboo_security_force		
-trade_federation	1	1	0		naboo_security_force,gungan	droid_army	
+trade_federation	1	1	0		naboo_security_force,gungan,nightsister,mtn_clan	droid_army	
 aakuans	1	1	0		fed_dub,binayre,liberation_party		
 fed_dub	1	1	0		liberation_party,binayre,lost_aqualish,drall		
 binayre	1	1	0		fed_dub,aakuans,corsec		

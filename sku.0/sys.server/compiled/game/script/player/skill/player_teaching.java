@@ -16,7 +16,6 @@ public class player_teaching extends script.base_script
     public static final String VAR_TEACHER = "teaching.teacher";
     public static final String VAR_STUDENT = "teaching.student";
     public static final String VAR_SKILL_COST = "teaching.experience";
-    public static final string_id SID_TEACH = new string_id("sui", "teach");
     public static final string_id SID_STUDENT_TOO_FAR = new string_id("teaching", "student_too_far");
     public static final string_id SID_STUDENT_TOO_FAR_TARGET = new string_id("teaching", "student_too_far_target");
     public static final string_id SID_STUDENT_HAS_OFFER_TO_LEARN = new string_id("teaching", "student_has_offer_to_learn");
@@ -36,23 +35,8 @@ public class player_teaching extends script.base_script
     public static final string_id SID_NO_SKILLS_FOR_STUDENT = new string_id("teaching", "no_skills_for_student");
     public static final string_id SID_NOT_IN_SAME_GROUP = new string_id("teaching", "not_in_same_group");
     public static final float TEACHING_RANGE = 10.0f;
-    public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
-    {
-        if (group.inSameGroup(self, player))
-        {
-            mi.addRootMenu(menu_info_types.SERVER_TEACH, SID_TEACH);
-        }
-        return SCRIPT_CONTINUE;
-    }
-    public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
-    {
-        if (group.inSameGroup(self, player))
-        {
-            int teachHash = getStringCrc("teach");
-            queueCommand(player, teachHash, self, "", COMMAND_PRIORITY_IMMEDIATE);
-        }
-        return SCRIPT_CONTINUE;
-    }
+
+
     public int OnLogin(obj_id self) throws InterruptedException
     {
         if (utils.hasScriptVar(self, VAR_TEACHING))
