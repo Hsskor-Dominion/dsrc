@@ -65,11 +65,12 @@ public class darth_talon extends script.base_script
         // Check if the player has any diplomacy quests or is on "jedi_gift_exchange"
         return (groundquests.isQuestActive(player, "stardust_sith_diplomacy1") ||
                 groundquests.isQuestActive(player, "stardust_sith_diplomacy2") ||
-                groundquests.isQuestActive(player, "stardust_sith_diplomacy3"));
+                groundquests.isQuestActive(player, "stardust_sith_diplomacy3") ||
+                groundquests.isQuestActive(player, "stardust_sith_diplomacy4"));
     }
     public void darth_talon_diplomacy_mission(obj_id player, obj_id npc) throws InterruptedException
     {
-        int diplomacy_mission = rand(1, 3);
+        int diplomacy_mission = rand(1, 4);
         String mission = "";
         switch (diplomacy_mission)
         {
@@ -81,6 +82,9 @@ public class darth_talon extends script.base_script
                 break;
             case 3:
                 mission = "stardust_sith_diplomacy3";
+                break;
+            case 4:
+                mission = "stardust_sith_diplomacy4";
                 break;
         }
         groundquests.grantQuest(player, mission);

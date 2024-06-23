@@ -3535,7 +3535,6 @@ public class base_player extends script.base_script
     else if (hasSkill(self, "class_forcesensitive_phase3_master"))
         {
             buff.applyBuff(self, "forceWeaken");
-            setState(self, STATE_GLOWING_JEDI, false);
             revokeSkill(self, "class_forcesensitive_phase4_novice");
             revokeSkill(self, "class_forcesensitive_phase3_master");
             revokeSkill(self, "class_forcesensitive_phase3_05");
