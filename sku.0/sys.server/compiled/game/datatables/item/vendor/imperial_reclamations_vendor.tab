@@ -1,4 +1,10 @@
-item	cash	token0	token1	token2	token3	token4	class	script	note
+item	cash	token0	token1	token2	token3	token16	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
 object/tangible/wearables/belt/belt_whip_s01.iff	500000								This tab is for managing broken items or new item introductions
 object/tangible/wearables/hat/hat_fedora__s01.iff	500000								
+item_treasure_map_bonus_buff_04_01						100	0		
+item_treasure_map_bonus_buff_04_02						100	0		
+item_treasure_map_bonus_buff_04_03						100	0		
+item_treasure_map_bonus_buff_04_04						100	0		
+item_treasure_map_bonus_buff_04_05						100	0		
+item_treasure_map_bonus_buff_04_06						100	0		
