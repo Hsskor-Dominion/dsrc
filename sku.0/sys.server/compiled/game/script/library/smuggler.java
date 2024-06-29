@@ -912,13 +912,7 @@ public class smuggler extends script.base_script
             if (!hasSkill(player, "sm_title_bootlegger"))
             {
                 grantSkill(player, "sm_title_bootlegger");
-            }
-        }
-        else 
-        {
-            if (hasSkill(player, "sm_title_bootlegger"))
-            {
-                revokeSkill(player, "sm_title_bootlegger");
+                revokeSkill(player, "bh_title_informant");
             }
         }
         if (value >= 2000.0f)
@@ -926,6 +920,7 @@ public class smuggler extends script.base_script
             if (!hasSkill(player, "sm_title_pirate"))
             {
                 grantSkill(player, "sm_title_pirate");
+                revokeSkill(player, "bh_title_inspector");
             }
         }
         else 
@@ -940,16 +935,9 @@ public class smuggler extends script.base_script
             if (!hasSkill(player, "sm_title_master_smuggler"))
             {
                 grantSkill(player, "sm_title_master_smuggler");
+                revokeSkill(player, "bh_title_agent");
             }
         }
-        else 
-        {
-            if (hasSkill(player, "sm_title_master_smuggler"))
-            {
-                revokeSkill(player, "sm_title_master_smuggler");
-            }
-        }
-        return;
     }
     public static void checkBountyTitleGrants(obj_id player, float value) throws InterruptedException
     {
@@ -958,6 +946,7 @@ public class smuggler extends script.base_script
             if (!hasSkill(player, "bh_title_informant"))
             {
                 grantSkill(player, "bh_title_informant");
+                revokeSkill(player, "sm_title_bootlegger");
             }
         }
         if (value <= -2000.0f)
@@ -965,6 +954,7 @@ public class smuggler extends script.base_script
             if (!hasSkill(player, "bh_title_inspector"))
             {
                 grantSkill(player, "bh_title_inspector");
+                revokeSkill(player, "sm_title_pirate");
             }
         }
         if (value <= -3000.0f)
@@ -972,9 +962,9 @@ public class smuggler extends script.base_script
             if (!hasSkill(player, "bh_title_agent"))
             {
                 grantSkill(player, "bh_title_agent");
+                revokeSkill(player, "sm_title_master_smuggler");
             }
         }
-        return;
     }
     public static void checkMandoTitleGrants(obj_id player, float value) throws InterruptedException
     {

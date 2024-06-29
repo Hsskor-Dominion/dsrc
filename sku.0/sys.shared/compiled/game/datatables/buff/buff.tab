@@ -1413,9 +1413,9 @@ set_bonus_officer_utility_a_3	setBonusUtilityA			7	command.powerBoost	-1	experti
 set_bonus_officer_utility_b_1	setBonusUtilityB			8	command.powerBoost	-1	expertise_action_line_of_group_buff	10	cooldown_percent_of_group_buff	10	expertise_cooldown_line_of_purge	10		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 set_bonus_officer_utility_b_2	setBonusUtilityB			9	command.powerBoost	-1	expertise_action_line_of_group_buff	15	cooldown_percent_of_group_buff	20	expertise_cooldown_line_of_purge	15	fast_attack_line_of_heal	5		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 set_bonus_officer_utility_b_3	setBonusUtilityB			10	command.powerBoost	-1	expertise_action_line_of_group_buff	20	cooldown_percent_of_group_buff	30	expertise_cooldown_line_of_purge	30	fast_attack_line_of_heal	15	of_inspired_action_chance	20	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
-set_bonus_hero_1	setBonusHero			1	command.powerBoost	-1	stamina_modified	60		0		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
-set_bonus_hero_2	setBonusHero			1	command.powerBoost	-1	stamina_modified	90	agility_modified	90		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
-set_bonus_hero_3	setBonusHero			1	command.powerBoost	-1	stamina_modified	150	agility_modified	150	constitution_modified	150		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
+set_bonus_hero_1	setBonusHero			1	command.powerBoost	-1	stamina_modified	10		0		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
+set_bonus_hero_2	setBonusHero			1	command.powerBoost	-1	stamina_modified	10	agility_modified	10		0		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
+set_bonus_hero_3	setBonusHero			1	command.powerBoost	-1	stamina_modified	10	agility_modified	10	constitution_modified	10		0		0	STATE_NONE	none			1	0		0	0	1	0	1	1	0	1	1	1
 bh_dire_root_1	dire_root	root		101	buffs.direRoot	9	movement	0		0		0		0		0	STATE_NONE	dire_root_recourse			1	1		0	1	1	0	1	1	0	1	1	1
 bh_dire_snare_1	dire_snare	snare		101	buffs.direSnare	12	movement	0		0		0		0		0	STATE_NONE	dire_snare_recourse			1	1		0	1	1	0	1	1	0	1	1	1
 lnd_dm_1	lnd_dm_1			1	command.powerBoost	-1	proc_buff	1	lnd_dm_1	100		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1

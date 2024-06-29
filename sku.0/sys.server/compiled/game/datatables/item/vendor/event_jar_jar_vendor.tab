@@ -37,8 +37,6 @@ object/tangible/veteran_reward/frn_vet_holo_starfighter.iff						4
 item_tcg_loot_reward_series5_signal_unit						4			
 item_tcg_loot_reward_series6_house_lamp						4			
 item_tcg_loot_reward_series7_embroidered_sash						4			
-item_cs_dna_acklay						400			
-item_cs_dna_nexu						400			
-item_cs_dna_reek						400			
+item_content_bubble_tank_02_01						1			
 item_costume_gungan	100								
 item_costume_kit	1								

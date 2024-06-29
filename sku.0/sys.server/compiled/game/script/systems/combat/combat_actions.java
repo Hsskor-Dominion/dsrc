@@ -7569,10 +7569,53 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int bh_shields_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        // Get the utility belt object in the slot
+        obj_id utilityBelt = getObjectInSlot(self, "utility_belt");
+
+        // Check if the player is wearing a valid utility belt
+        if (!isIdValid(utilityBelt)) {
+            // Send a message to the player if they are not wearing any utility belt
+            prose_package pp = new prose_package();
+            pp = prose.setStringId(pp, new string_id("spam", "psg_belt_required"));
+            sendSystemMessageProse(self, pp);
+            return SCRIPT_OVERRIDE;
+        }
+
+        // Check if the utility belt is a PSG
+        int armorType = getGameObjectType(utilityBelt);
+        if (armorType != GOT_armor_psg) {
+            // Send a message to the player if they are not wearing the correct PSG utility belt
+            prose_package pp = new prose_package();
+            pp = prose.setStringId(pp, new string_id("spam", "psg_belt_required"));
+            sendSystemMessageProse(self, pp);
+            return SCRIPT_OVERRIDE;
+        }
+
+        // Proceed with the ability if the player is wearing the correct PSG utility belt
         if (!combatStandardAction("bh_shields_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+
+        // Damage the utility belt when the ability is used
+        damageItem(utilityBelt, 100); // Adjust the damage amount as needed
+        // Send a message to the player they have successfully shielded and damaged said PSG
+        prose_package pp = new prose_package();
+        pp = prose.setStringId(pp, new string_id("spam", "psg_activated_with_decay"));
+        sendSystemMessageProse(self, pp);
+
         return SCRIPT_CONTINUE;
+    }
+
+    private void damageItem(obj_id item, int amount) throws InterruptedException {
+        int curHp = getHitpoints(item);
+        int newHp = curHp - amount;
+
+        if (newHp <= 0) {
+            // Item is destroyed
+            destroyObject(item);
+        } else {
+            setHitpoints(item, newHp);
+        }
     }
 
     public int bh_dm_crit_3(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {

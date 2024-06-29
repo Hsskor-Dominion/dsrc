@@ -1,4 +1,5 @@
 item	cash	token0	token1	token2	token3	token16	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
 item_pgc_token_03	550000								
-object/tangible/painting/painting_art_expo_01.iff						1
+object/tangible/painting/painting_art_expo_01.iff						1			
+object/tangible/painting/painting_droid_bright.iff						1			

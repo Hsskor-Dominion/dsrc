@@ -19,5 +19,13 @@ item_cs_dna_dewback_armor						1
 item_cs_dna_mutated_dewback						1			
 item_cs_dna_kashyyyk_bantha						1			
 item_cs_dna_varactyl						1			
-object/building/player/player_house_tree_house_01.iff						100			
-object/building/player/player_house_tree_house_02.iff						100			
+item_player_house_deed_tree_house_01						100			
+item_player_house_deed_tree_house_02						100			
+item_lifeday_gift_04_11						100			
+item_lifeday_gift_04_10						100			
+item_lifeday_gift_04_09						100			
+item_lifeday_gift_04_07						100			
+item_lifeday_gift_04_11						100			
+item_lifeday_gift_04_12						100			
+item_event_lifeday_proton_chair						100			
+item_ep3_rewards_prayor_mobile						100			

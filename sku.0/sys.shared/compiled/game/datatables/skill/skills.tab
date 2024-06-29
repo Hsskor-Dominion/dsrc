@@ -1988,9 +1988,9 @@ expertise_of_heal_cool_4	expertise_of_heal_cool_3																					expertise_
 sm_title_bootlegger				1		1															sm_off_the_books,sm_off_the_cuff,sm_shoot_first_1	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
 sm_title_pirate				1		1															sm_summon_medic,sm_end_of_the_line	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
 sm_title_master_smuggler				1		1															sm_nerf_herder	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
-bh_titleinformant				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10			0	
-bh_title_inspector				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10			0	
-bh_title_agent				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10			0	
+bh_title_informant				1		1															bh_flawless_strike	expertise_cooldown_line_dm=10,expertise_freeshot_dm=10,expertise_cooldown_line_bh_flawless_strike=10,flawless_bead=1,bh_flawless_strike=1			0	
+bh_title_inspector				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10,expertise_cooldown_line_bh_flawless_strike=10			0	
+bh_title_agent				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10,expertise_cooldown_line_bh_flawless_strike=10,flawless_bead=1			0	
 pvp_imperial_retaliation_ability																					command_pvp_retaliation_ability,of_reinforcements_1				0	
 pvp_imperial_adrenaline_ability																					command_pvp_adrenaline_ability,of_reinforcements_2				0	
 pvp_imperial_unstoppable_ability																					command_pvp_unstoppable_ability,of_reinforcements_3				0	
@@ -2276,10 +2276,10 @@ expertise_sp_hidden_daggers_2	expertise
 expertise_sp_improved_first_aid_1	expertise																					expertise_target_healing_bonus=10				
 expertise_sp_improved_first_aid_2	expertise_sp_improved_first_aid_1																					expertise_target_healing_bonus=10				
 expertise_sp_cloaked_recovery_1	expertise_sp_improved_first_aid_2									expertise_sp_improved_first_aid_2											sp_cloaked_recovery_0					
-expertise_sp_protective_armor_1	expertise_sp_cloaking_armor_1									expertise_sp_cloaking_armor_1												expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300				
-expertise_sp_protective_armor_2	expertise_sp_protective_armor_1																					expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300				
-expertise_sp_protective_armor_3	expertise_sp_protective_armor_2																					expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300				
-expertise_sp_protective_armor_4	expertise_sp_protective_armor_3																					expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300				
+expertise_sp_protective_armor_1	expertise_sp_cloaking_armor_1									expertise_sp_cloaking_armor_1												expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300,detect_hidden=20				
+expertise_sp_protective_armor_2	expertise_sp_protective_armor_1																					expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300,detect_hidden=20				
+expertise_sp_protective_armor_3	expertise_sp_protective_armor_2																					expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300,detect_hidden=20				
+expertise_sp_protective_armor_4	expertise_sp_protective_armor_3																					expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300,detect_hidden=20				
 expertise_sp_improved_arachnids_web_1	expertise																				sp_improved_cc_dot_0					
 expertise_sp_assassins_mark	expertise_bh_trap_duration_4									expertise_bh_trap_duration_4											sp_assassins_mark	bh_dire_snare=10,bh_dire_root=10				
 expertise_sp_run_its_course_1	expertise_me_heal_damage_4			1						expertise_me_heal_damage_4											sp_run_its_course					
@@ -2299,10 +2299,10 @@ expertise_sp_increased_agility_3	expertise_sp_increased_agility_2															
 expertise_sp_increased_agility_4	expertise_sp_increased_agility_3			1																		slope_move=10,agility_modified=10				
 expertise_sp_cloaking_armor_1	expertise_bh_stamina_4									expertise_bh_stamina_4											co_mirror_armor	structure_assembly=10,mask_scent=30	craftStructureCampA			
 expertise_sp_cloaking_armor_2	expertise_sp_cloaking_armor_1																									
-expertise_sp_glancing_armor_1	expertise									expertise_sp_protective_armor_4												expertise_dodge=5,force_vehicle_control=5,force_vehicle_speed=1				
-expertise_sp_glancing_armor_2	expertise_sp_glancing_armor_1																					expertise_dodge=5,force_vehicle_control=5,force_vehicle_speed=1				
-expertise_sp_glancing_armor_3	expertise_sp_glancing_armor_2																					expertise_dodge=5,force_vehicle_control=5,force_vehicle_speed=1				
-expertise_sp_glancing_armor_4	expertise_sp_glancing_armor_3																					expertise_dodge=5,force_vehicle_control=5,force_vehicle_speed=1				
+expertise_sp_glancing_armor_1	expertise									expertise_sp_protective_armor_4												expertise_dodge=5,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
+expertise_sp_glancing_armor_2	expertise_sp_glancing_armor_1																					expertise_dodge=5,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
+expertise_sp_glancing_armor_3	expertise_sp_glancing_armor_2																					expertise_dodge=5,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
+expertise_sp_glancing_armor_4	expertise_sp_glancing_armor_3																					expertise_dodge=5,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
 expertise_sp_deadly_pistols_1	expertise_sp_careful_observation_4			1						expertise_sp_careful_observation_4												expertise_damage_ranged=2				
 expertise_sp_deadly_pistols_2	expertise_sp_deadly_pistols_1			1																		expertise_damage_ranged=2				
 expertise_sp_deadly_pistols_3	expertise_sp_deadly_pistols_2			1																		expertise_damage_ranged=2				
@@ -2716,10 +2716,10 @@ expertise_bm_dexterity_training_1	expertise_bm_fortitude_4									expertise_bm_
 expertise_bm_dexterity_training_2	expertise_bm_dexterity_training_1																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
 expertise_bm_dexterity_training_3	expertise_bm_dexterity_training_2																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2,expertise_bm_add_pet_bar=1				
 expertise_bm_dexterity_training_4	expertise_bm_dexterity_training_3																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
-expertise_bm_exceptional_nutrition_4	expertise_bm_exceptional_nutrition_3																					expertise_bm_pet_health=25,bm_xp_mod_boost=25				
-expertise_bm_exceptional_nutrition_3	expertise_bm_exceptional_nutrition_2																					expertise_bm_pet_health=25,bm_xp_mod_boost=25				
-expertise_bm_exceptional_nutrition_2	expertise_bm_exceptional_nutrition_1																					expertise_bm_pet_health=25,bm_xp_mod_boost=25				
-expertise_bm_exceptional_nutrition_1	expertise_bm_improved_healing_4									expertise_bm_improved_healing_4												expertise_bm_pet_health=25,bm_xp_mod_boost=25				
+expertise_bm_exceptional_nutrition_4	expertise_bm_exceptional_nutrition_3																					expertise_bm_pet_health=25,expertise_bm_pet_regen=20,bm_xp_mod_boost=25				
+expertise_bm_exceptional_nutrition_3	expertise_bm_exceptional_nutrition_2																					expertise_bm_pet_health=25,expertise_bm_pet_regen=20,bm_xp_mod_boost=25				
+expertise_bm_exceptional_nutrition_2	expertise_bm_exceptional_nutrition_1																					expertise_bm_pet_health=25,expertise_bm_pet_regen=20,bm_xp_mod_boost=25				
+expertise_bm_exceptional_nutrition_1	expertise_bm_improved_healing_4									expertise_bm_improved_healing_4												expertise_bm_pet_health=25,expertise_bm_pet_regen=20,bm_xp_mod_boost=25				
 expertise_bm_pet_dodge_3	expertise_bm_pet_dodge_2																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_2	expertise_bm_pet_dodge_1																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_1	expertise_bm_evasion_3									expertise_bm_evasion_3												expertise_pet_dodge=5				
@@ -2727,8 +2727,8 @@ expertise_bm_genetic_engineering_4	expertise_bm_genetic_engineering_3			1							
 expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftArtisanChemicalGroupC,craftArtisanChemicalGroupC,craftMedicineStimpackGroupC			
 expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftMedicineStimpackGroupB,craftArtisanChemicalGroupB,craftMedicineComponentGroupB			
 expertise_bm_genetic_engineering_1	expertise			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftMedicineStimpackGroupA,craftArtisanChemicalGroupA			
-expertise_bm_add_first_pet_bar_1	expertise																					expertise_bm_add_pet_bar=1,expertise_bm_pet_health=100				
-expertise_bm_specialized_supplements_1	expertise_bm_exceptional_nutrition_4									expertise_bm_exceptional_nutrition_4												expertise_bm_pet_regen=100,expertise_bm_add_pet_bar=1,expertise_bm_incubation_time=10				
+expertise_bm_add_first_pet_bar_1	expertise																					expertise_bm_add_pet_bar=1,expertise_bm_pet_health=25,expertise_bm_pet_regen=20				
+expertise_bm_specialized_supplements_1	expertise_bm_exceptional_nutrition_4									expertise_bm_exceptional_nutrition_4												expertise_bm_pet_health=25,expertise_bm_pet_regen=20bm_xp_mod_boost=25,,expertise_bm_add_pet_bar=1,expertise_bm_incubation_time=10				
 expertise_bm_evasion_4	expertise_bm_evasion_3																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
 expertise_bm_evasion_3	expertise_bm_evasion_2																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
 expertise_bm_evasion_2	expertise_bm_evasion_1																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
@@ -2750,10 +2750,10 @@ expertise_bm_creature_knowledge_command_1	expertise																					creature
 expertise_bm_creature_knowledge_command_2	expertise_bm_creature_knowledge_command_1																					creature_harvesting=10,creature_hit_bonus=5,creature_knowledge=5,expertise_bm_enhanced_skill_acquisition=5				
 expertise_bm_creature_knowledge_command_3	expertise_bm_creature_knowledge_command_2																					creature_harvesting=10,creature_hit_bonus=5,creature_knowledge=5,expertise_bm_enhanced_skill_acquisition=5				
 expertise_bm_creature_knowledge_command_4	expertise_bm_creature_knowledge_command_3			1																		creature_harvesting=10,creature_hit_bonus=5,creature_knowledge=5,expertise_bm_enhanced_skill_acquisition=5				
-expertise_bm_improved_healing_4	expertise_bm_improved_healing_3																					expertise_bm_improved_pet_heal=20				
-expertise_bm_improved_healing_3	expertise_bm_improved_healing_2																					expertise_bm_improved_pet_heal=20				
-expertise_bm_improved_healing_2	expertise_bm_improved_healing_1																					expertise_bm_improved_pet_heal=20				
-expertise_bm_improved_healing_1	expertise_bm_incubation_base_1									expertise_bm_incubation_base_1												expertise_bm_improved_pet_heal=20				
+expertise_bm_improved_healing_4	expertise_bm_improved_healing_3																					expertise_bm_pet_health=25,expertise_bm_improved_pet_heal=20,expertise_bm_pet_revive_time=4,expertise_bm_pet_recovery=20				
+expertise_bm_improved_healing_3	expertise_bm_improved_healing_2																					expertise_bm_pet_health=25,expertise_bm_improved_pet_heal=20,expertise_bm_pet_revive_time=4,expertise_bm_pet_recovery=20				
+expertise_bm_improved_healing_2	expertise_bm_improved_healing_1																					expertise_bm_pet_health=25,expertise_bm_improved_pet_heal=20,expertise_bm_pet_revive_time=4,expertise_bm_pet_recovery=20				
+expertise_bm_improved_healing_1	expertise_bm_incubation_base_1									expertise_bm_incubation_base_1												expertise_bm_pet_health=25,expertise_bm_improved_pet_heal=20,expertise_bm_pet_revive_time=4,expertise_bm_pet_recovery=20				
 expertise_bm_pet_recovery_3	expertise_bm_pet_recovery_2																					expertise_bm_pet_revive_time=5,expertise_bm_pet_recovery=25				
 expertise_bm_pet_recovery_2	expertise_bm_pet_recovery_1																					expertise_bm_pet_revive_time=5,expertise_bm_pet_recovery=25				
 expertise_bm_pet_recovery_1	expertise_bm_soothing_comfort_1									expertise_bm_soothing_comfort_1												expertise_bm_pet_revive_time=5,expertise_bm_pet_recovery=25				
