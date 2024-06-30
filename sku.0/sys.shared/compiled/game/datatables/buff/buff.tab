@@ -46,9 +46,9 @@ diseaseInnoculation	doctorDisease			1	command.diseaseInnoculation	1200	resistanc
 diseaseInnoculation_1	doctorDisease			2	command.diseaseInnoculation	2400	resistance_disease	80	absorption_disease	25		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 paralyze	cmParalyze	mez		1	command.paralyze	7	delay_attack	0	movement	0		0		0		0	STATE_NONE	mezRecourse			1	1		1	1	1	0	1	1	0	1	1	1
 paralyze_1	cmParalyze	mez		2	command.paralyze	15	delay_attack	0	movement	0		0		0		0	STATE_NONE	mezRecourse			1	1		1	1	1	0	1	1	0	1	1	1
-rollShot	rollShot			1	command.rollShot	5	private_defense_bonus	40		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
-diveShot	diveShot			1	command.diveShot	5	private_defense_bonus	40		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
-kipUpShot	kipUpShot			1	command.kipUpShot	5	private_defense_bonus	40		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
+rollShot	rollShot			1	command.rollShot	30	expertise_glancing_blow_ranged	5	expertise_glancing_blow_melee	-5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+diveShot	diveShot			1	command.diveShot	30	expertise_glancing_blow_ranged	10	expertise_glancing_blow_melee	-10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+kipUpShot	kipUpShot			1	command.kipUpShot	30	private_defense_bonus	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 swordFlurry	swordFlurry			1	command.swordFlurry	10	private_defense_bonus	80		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
 swordFlurry_1	swordFlurry			2	command.swordFlurry	10	private_defense_bonus	120		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
 recklessShot	recklessShot			1	command.recklessShot	10	private_defense_penalty	80		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1

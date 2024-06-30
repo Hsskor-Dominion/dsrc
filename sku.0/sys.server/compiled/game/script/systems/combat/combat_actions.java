@@ -217,6 +217,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         if (!isIncapacitated(self) && !isDead(self)) {
             setPosture(self, POSTURE_UPRIGHT);
+            buff.removeBuff(self, "rollShot");
+            buff.removeBuff(self, "diveShot");
         }
         return SCRIPT_CONTINUE;
     }
@@ -233,6 +235,8 @@ public class combat_actions extends script.systems.combat.combat_base {
     public int kneel(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!isIncapacitated(self) && !isDead(self)) {
             setPosture(self, POSTURE_CROUCHED);
+            buff.applyBuff(self, "rollShot");
+            buff.removeBuff(self, "diveShot");
         }
         return SCRIPT_CONTINUE;
     }
@@ -244,6 +248,8 @@ public class combat_actions extends script.systems.combat.combat_base {
     public int prone(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!isIncapacitated(self) && !isDead(self)) {
             setPosture(self, POSTURE_PRONE);
+            buff.applyBuff(self, "diveShot");
+            buff.removeBuff(self, "rollShot");
         }
         return SCRIPT_CONTINUE;
     }
