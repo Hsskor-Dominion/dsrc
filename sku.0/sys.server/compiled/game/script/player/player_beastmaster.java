@@ -983,29 +983,7 @@ public class player_beastmaster extends script.base_script
     }
     public int bm_creature_knowledge(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
-        obj_id objTarget = getIntendedTarget(self);
-        if (!isIdValid(objTarget) || !ai_lib.isMonster(objTarget) || beast_lib.isBeast(objTarget) || pet_lib.isPet(objTarget))
-        {
-            sendSystemMessage(getSelf(), new string_id("beast", "invalid_target_for_creature_knowledge"));
-            return SCRIPT_OVERRIDE;
-        }
-        if (hasObjVar(objTarget, "bm_doNotShowExamineInfo"))
-        {
-            sendSystemMessage(getSelf(), new string_id("beast", "invalid_target_for_creature_knowledge"));
-            return SCRIPT_OVERRIDE;
-        }
-        int flags = 0;
-        flags |= sui.CD_EVENT_INCAPACITATE;
-        flags |= sui.CD_EVENT_DAMAGED;
-        int startTime = 0;
-        int endTime = 6;
-        String displayGroup = "bm_creature_knowledge";
-        string_id prompt = new string_id("beast", "ability_activate_creature_knowledge");
-        String handler = "completeTheZipTimer";
-        float maxRange = 32;
-        int pid = sui.smartCountdownTimerSUI(self, self, displayGroup, prompt, startTime, endTime, handler, maxRange, flags);
-        utils.setScriptVar(self, sui.COUNTDOWNTIMER_SUI_VAR, pid);
-        utils.setScriptVar(self, "target", objTarget);
+        buff.applyBuff(self, "bm_creature_knowledge");
         return SCRIPT_CONTINUE;
     }
     public int completeTheZipTimer(obj_id self, dictionary params) throws InterruptedException
