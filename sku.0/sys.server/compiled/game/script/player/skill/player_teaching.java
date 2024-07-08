@@ -320,6 +320,7 @@ public class player_teaching extends script.base_script
         }
         sui.listbox(self, self, "Select a skill to teach.", sui.OK_CANCEL, "Select Skill", valid_skills_id, "msgTeachSkillSelected");
         grantExperiencePoints(self, "jedi", 100);
+        grantExperiencePoints(self, "apprenticeship", 100);
         return SCRIPT_CONTINUE;
     }
 }

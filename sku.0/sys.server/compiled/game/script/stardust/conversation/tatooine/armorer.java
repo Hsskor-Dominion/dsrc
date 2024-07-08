@@ -57,7 +57,55 @@ public class armorer extends script.base_script
     public boolean armorerMandalore_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float bhFaction = factions.getFactionStanding(player, "death_watch");
-        if ((hasSkill(player,"faction_rank_mando_novice")) & (bhFaction >= 5000))
+        if ((hasSkill(player,"faction_rank_mando_4")) & (bhFaction >= 15000))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public boolean armorerRank4_condition(obj_id player, obj_id npc) throws InterruptedException
+    {
+        float bhFaction = factions.getFactionStanding(player, "death_watch");
+        if ((hasSkill(player,"faction_rank_mando_3")) & (bhFaction >= 10000))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public boolean armorerRank3_condition(obj_id player, obj_id npc) throws InterruptedException
+    {
+        float bhFaction = factions.getFactionStanding(player, "death_watch");
+        if ((hasSkill(player,"faction_rank_mando_2")) & (bhFaction >= 7500))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public boolean armorerRank2_condition(obj_id player, obj_id npc) throws InterruptedException
+    {
+        float bhFaction = factions.getFactionStanding(player, "death_watch");
+        if ((hasSkill(player,"faction_rank_mando_1")) & (bhFaction >= 5000))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public boolean armorerRank1_condition(obj_id player, obj_id npc) throws InterruptedException
+    {
+        float bhFaction = factions.getFactionStanding(player, "death_watch");
+        if ((hasSkill(player,"faction_rank_mando_novice")) & (bhFaction >= 2500))
         {
             return true;
         }
@@ -92,8 +140,42 @@ public class armorer extends script.base_script
     }
     public void armorer_action_grantQuest3(obj_id player, obj_id npc) throws InterruptedException
     {
-        int questId = questGetQuestId("quest/stardust_mando_craft");
-        groundquests.grantQuest(questId, player, npc, true);
+        int mando_mission = rand(1, 10);
+        String mission = "";
+        switch (mando_mission)
+        {
+            case 1:
+                mission = "stardust_mando_craft";
+                break;
+            case 2:
+                mission = "stardust_mando_craft";
+                break;
+            case 3:
+                mission = "stardust_mando_craft";
+                break;
+            case 4:
+                mission = "stardust_mando_craft";
+                break;
+            case 5:
+                mission = "stardust_mando_craft";
+                break;
+            case 6:
+                mission = "stardust_mando_craft";
+                break;
+            case 7:
+                mission = "stardust_mando_craft";
+                break;
+            case 8:
+                mission = "stardust_mando_craft";
+                break;
+            case 0:
+                mission = "stardust_mando_craft";
+                break;
+            case 10:
+                mission = "stardust_mando_craft";
+                break;
+        }
+        groundquests.grantQuest(player, mission);
     }
     public int armorer_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -207,6 +289,50 @@ public class armorer extends script.base_script
                 final string_id message = new string_id(c_stringFile, "for_new_mandalore");
                 sendSystemMessage(player, new string_id("stardust/mando_rank", "mando_master"));
                 grantSkill(player, "faction_rank_mando_master");
+
+                utils.removeScriptVar(player, "conversation.armorer_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (armorerRank4_condition(player, npc) && armorer_condition_playerCompletedCreed(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "for_new_mandalore");
+                sendSystemMessage(player, new string_id("stardust/mando_rank", "mando_4"));
+                grantSkill(player, "faction_rank_mando_4");
+
+                utils.removeScriptVar(player, "conversation.armorer_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (armorerRank3_condition(player, npc) && armorer_condition_playerCompletedCreed(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "for_new_mandalore");
+                sendSystemMessage(player, new string_id("stardust/mando_rank", "mando_3"));
+                grantSkill(player, "faction_rank_mando_3");
+
+                utils.removeScriptVar(player, "conversation.armorer_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (armorerRank2_condition(player, npc) && armorer_condition_playerCompletedCreed(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "for_new_mandalore");
+                sendSystemMessage(player, new string_id("stardust/mando_rank", "mando_2"));
+                grantSkill(player, "faction_rank_mando_2");
+
+                utils.removeScriptVar(player, "conversation.armorer_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (armorerRank1_condition(player, npc) && armorer_condition_playerCompletedCreed(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "for_new_mandalore");
+                sendSystemMessage(player, new string_id("stardust/mando_rank", "mando_1"));
+                grantSkill(player, "faction_rank_mando_1");
 
                 utils.removeScriptVar(player, "conversation.armorer_conversation.branchId");
                 npcEndConversationWithMessage(player, message);

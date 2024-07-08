@@ -9,7 +9,7 @@ st_pr_tiki_torch_01_01	object/tangible/storyteller/prop/pr_tiki_torch.iff	prop	1
 st_pr_tent_basic_01_01	object/tangible/storyteller/prop/pr_tent_basic.iff	prop	1000										
 st_pr_campfire_logs_smoldering_01_01	object/tangible/storyteller/prop/pr_campfire_logs_smoldering.iff	prop	1000										
 st_pr_atf_sith_altar	object/tangible/storyteller/prop/pr_atf_sith_altar.iff	prop	1000									1	
-st_pr_clone_barc_speeder	b	prop	1000										
+st_pr_clone_barc_speeder	object/tangible/storyteller/prop/pr_clone_barc_speeder.iff	prop	1000										
 st_pr_destroyed_transport_1	object/tangible/storyteller/prop/pr_destroyed_transport_1.iff	prop	1000										
 st_pr_destroyed_transport_2	object/tangible/storyteller/prop/pr_destroyed_transport_2.iff	prop	1000										
 st_pr_edb_all_meat_s01	object/tangible/storyteller/prop/pr_edb_all_meat_s01.iff	prop	1000									1	

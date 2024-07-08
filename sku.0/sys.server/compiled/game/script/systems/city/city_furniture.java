@@ -178,47 +178,61 @@ public class city_furniture extends script.base_script
         }
         return SCRIPT_CONTINUE;
     }
-    public void placeDecoration(int city_id, obj_id player, obj_id self) throws InterruptedException
-    {
+    public void placeDecoration(int city_id, obj_id player, obj_id self) throws InterruptedException {
         String command = null;
-        String[] templates = dataTableGetStringColumn(CITY_DECORATIONS, "TEMPLATE");
-        for (int i = 0; i < templates.length; i++)
-        {
-            if (templates[i].equals(getTemplateName(self)))
-            {
+
+        // Check CITY_DECORATIONS datatable
+        String[] cityTemplates = dataTableGetStringColumn(CITY_DECORATIONS, "TEMPLATE");
+        for (int i = 0; i < cityTemplates.length; i++) {
+            if (cityTemplates[i].equals(getTemplateName(self))) {
                 command = dataTableGetString(CITY_DECORATIONS, i, "COMMAND");
                 break;
             }
         }
-        if (command == null)
-        {
+
+        // If not found in CITY_DECORATIONS, check STORYTELLER_DATATABLE
+        if (command == null) {
+            String[] storytellerTemplates = dataTableGetStringColumn(storyteller.STORYTELLER_DATATABLE, "TEMPLATE");
+            for (int i = 0; i < storytellerTemplates.length; i++) {
+                if (storytellerTemplates[i].equals(getTemplateName(self))) {
+                    command = dataTableGetString(storyteller.STORYTELLER_DATATABLE, i, "COMMAND");
+                    break;
+                }
+            }
+        }
+
+        // If no command found, return
+        if (command == null) {
             return;
         }
-        if (!hasCommand(player, command))
-        {
+
+        // Check if player has the required command
+        if (!hasCommand(player, command)) {
             sendSystemMessage(player, NO_SKILL_DECO);
             return;
         }
-        location loc = getLocation(player);
+
+        // Check maximum decoration count for the city
         int maxd = city.getMaxDecorationCount(city_id);
         int curd = city.getDecorationCount(city_id);
-        if (curd + 1 > maxd)
-        {
+        if (curd + 1 > maxd) {
             sendSystemMessage(player, SID_NO_MORE_DECOS);
             return;
         }
+
+        // Check container validity (must be player or civic structure)
         obj_id structure = getTopMostContainer(player);
-        if ((!isIdValid(structure)) && (structure != player))
-        {
-            if (!player_structure.isCivic(structure))
-            {
+        if ((!isIdValid(structure)) && (structure != player)) {
+            if (!player_structure.isCivic(structure)) {
                 sendSystemMessage(player, SID_CIVIC_ONLY);
                 return;
             }
         }
+
+        // Additional check to ensure decorations are not too close to each other
+        location loc = getLocation(player);
         String name = getTemplateName(self);
-        if (!name.contains("streetlamp"))
-        {
+        if (!name.contains("streetlamp")) {
             obj_id[] structures = cityGetStructureIds(city_id);
             for (obj_id structure1 : structures) {
                 if (city.isSkillTrainer(city_id, structure1) || city.isMissionTerminal(city_id, structure1) || city.isDecoration(city_id, structure1)) {
@@ -233,8 +247,12 @@ public class city_furniture extends script.base_script
                 }
             }
         }
+
+        // Set location and orientation for the decoration
         setLocation(self, loc);
         setYaw(self, getYaw(player));
+
+        // Add the decoration to the city
         city.addDecoration(city_id, player, self);
     }
     public int OnTransferred(obj_id self, obj_id sourceContainer, obj_id destContainer, obj_id transferer) throws InterruptedException

@@ -8587,3 +8587,5 @@ item_schematic_stardestroyer	object/tangible/loot/loot_schematic/generic_limited
 item_ship_deed_stardestroyer	object/tangible/ship/crafted/chassis/stardestroyer_deed.iff							1				1	Deed for Star Destroyer Chassis	Deed for Star Destroyer Chassis earned from participating in epic Space Battles.	
 sith_holocron	object/tangible/jedi/no_drop_jedi_holocron_dark.iff							1				1		Something, something, darkside.	
 jedi_holocron	object/tangible/jedi/no_drop_jedi_holocron_light.iff							1				1		The holocrons contain the most closely guarded secrets of the Jedi Order. -Jocasta Nu	
+police_station	object/tangible/deed/player_house_deed/police_station.iff							4		item.structure_deed.player_structure_deed					
+yt_house	object/tangible/deed/player_house_deed/yt1300_house_deed.iff							4		item.structure_deed.player_structure_deed					

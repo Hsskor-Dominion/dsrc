@@ -1697,27 +1697,81 @@ public class storyteller extends script.base_script
             setObjVar(self, "storytellerCleanUpTime", cleanUpTime);
         }
     }
-    public static void calculatePropBonusExistTime(obj_id object) throws InterruptedException
-    {
-        int cleanUpTime = DEFAULT_PROP_CLEANUP_TIME;
+    public static void calculatePropBonusExistTime(obj_id object) throws InterruptedException {
         int city_id = getCityAtLocation(getLocation(object), 0);
 
-        if (city_id > 0)
-        {
-            cleanUpTime += 2419200; // Add bonus time if within a city, 4 weeks
+        if (city_id > 0) {
+            // Remove the cleanup timer if within a city
+            if (hasObjVar(object, "storytellerCleanUpTime")) {
+                removeObjVar(object, "storytellerCleanUpTime");
+            }
 
-            // Optionally, you can uncomment and adjust the following lines
-            // if you want to include city specialization checks:
-        /*
-        obj_id cityHall = cityGetCityHall(city_id);
-        dictionary outparams = new dictionary();
-        outparams.put("queryObject", object);
-        messageTo(cityHall, "st_citySpecBonusCheck", outparams, 0.0f, false);
-        */
+            // Get the player who placed the object
+            obj_id player = getObjIdObjVar(object, "storytellerid");
+
+            // Attach the city_furniture script if not already attached
+            if (!hasScript(object, "systems.city.city_furniture")) {
+                attachScript(object, "systems.city.city_furniture");
+            }
+
+            // Place the object as a city decoration (statue)
+            placeDecorationAsStatue(city_id, player, object);
+        } else {
+            // If not within a city, set the default cleanup time
+            int cleanUpTime = DEFAULT_PROP_CLEANUP_TIME;
+            setObjVar(object, "storytellerCleanUpTime", cleanUpTime);
+        }
+    }
+
+    private static void placeDecorationAsStatue(int city_id, obj_id player, obj_id self) throws InterruptedException {
+        // Check if the player has the required skill/command to place the decoration
+        String command = "place_statue"; // Assuming this is the command required for placing the decoration
+        if (!hasCommand(player, command)) {
+            sendSystemMessage(player, new string_id("storyteller", "lack_required_skill_for_city_statue_transformation"));
+            return;
         }
 
-        setObjVar(object, "storytellerCleanUpTime", cleanUpTime);
+        // Check if the city decoration limit has been reached
+        int maxd = city.getMaxDecorationCount(city_id);
+        int curd = city.getDecorationCount(city_id);
+        if (curd + 1 > maxd) {
+            sendSystemMessage(player, new string_id("storyteller", "at_deco_limit"));
+            return;
+        }
+
+        // Check if the player is in a civic zone (optional, based on your game's requirements)
+        obj_id structure = getTopMostContainer(player);
+        if ((!isIdValid(structure)) && (structure != player)) {
+            if (!player_structure.isCivic(structure)) {
+                sendSystemMessage(player, new string_id("storyteller", "only_civic_zoning"));
+                return;
+            }
+        }
+
+        // Check if the decoration is too close to other structures
+        String name = getTemplateName(self);
+        if (!name.contains("streetlamp")) {
+            location loc = getLocation(player);
+            obj_id[] structures = cityGetStructureIds(city_id);
+            for (obj_id structure1 : structures) {
+                if (city.isSkillTrainer(city_id, structure1) || city.isMissionTerminal(city_id, structure1) || city.isDecoration(city_id, structure1)) {
+                    continue;
+                }
+
+                location oloc = getLocation(structure1);
+                float dist = utils.getDistance2D(loc, oloc);
+                if ((dist < 25) && (dist > 0)) {
+                    prose_package pp = prose.getPackage(new string_id("city", "deco_too_close"), localize(getNameStringId(structure1)));
+                    sendSystemMessageProse(player, pp);
+                    return;
+                }
+            }
+        }
+
+        // Add the decoration to the city
+        city.addDecoration(city_id, player, self);
     }
+
     public static void calculateNpcBonusExistTime(obj_id object) throws InterruptedException
     {
         int cleanUpTime = DEFAULT_NPC_CLEANUP_TIME;

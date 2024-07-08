@@ -787,124 +787,102 @@ public class base_player extends script.base_script
         }
         return SCRIPT_CONTINUE;
     }
-    public int OnPvpRankingChanged(obj_id self, int oldRank, int newRank) throws InterruptedException
-    {
+    public int OnPvpRankingChanged(obj_id self, int oldRank, int newRank) throws InterruptedException {
         String faction = "";
         boolean isImperial = false;
-        if (factions.isImperial(self))
-        {
+
+        if (factions.isImperial(self)) {
             faction = "pvp_imperial_";
             isImperial = true;
-        }
-        if (factions.isRebel(self))
-        {
+
+            // Apply the 1% decay to the Mandalorian faction standing
+            float currentStanding = factions.getFactionStanding(self, "death_watch");
+            float decayAmount = currentStanding * 0.01f;
+            factions.addFactionStanding(self, "death_watch", -decayAmount);
+        } else if (factions.isRebel(self)) {
             faction = "pvp_rebel_";
+
+            // Apply the 2% decay to the Mandalorian faction standing for Rebels
+            float currentStanding = factions.getFactionStanding(self, "death_watch");
+            float decayAmount = currentStanding * 0.01f;
+            factions.addFactionStanding(self, "death_watch", -decayAmount);
         }
-        if (faction.equals(""))
-        {
+
+        if (faction.equals("") && !hasSkill(self, "faction_rank_mando_novice")) {
             factions.removeAllPvpSkills(self);
             CustomerServiceLog("pvp_rank_error", "Player %TU somehow changed PvP rank without being Rebel or Imperial, removing all PvP skills.", self);
             return SCRIPT_CONTINUE;
         }
-        if (oldRank <= 6 && newRank > 6)
-        {
+
+        if (oldRank <= 6 && newRank > 6) {
             skill.grantSkill(self, faction + PVP_SKILL_1);
-            if (isImperial)
-            {
+            if (isImperial) {
                 badge.grantBadge(self, "pvp_imperial_lieutenant");
-            }
-            else 
-            {
+            } else {
                 badge.grantBadge(self, "pvp_rebel_lieutenant");
             }
         }
-        if (oldRank <= 7 && newRank > 7)
-        {
+        if (oldRank <= 7 && newRank > 7) {
             skill.grantSkill(self, faction + PVP_SKILL_2);
-            if (isImperial)
-            {
+            if (isImperial) {
                 badge.grantBadge(self, "pvp_imperial_captain");
-            }
-            else 
-            {
+            } else {
                 badge.grantBadge(self, "pvp_rebel_captain");
             }
         }
-        if (oldRank <= 8 && newRank > 8)
-        {
+        if (oldRank <= 8 && newRank > 8) {
             skill.grantSkill(self, faction + PVP_SKILL_3);
-            if (isImperial)
-            {
+            if (isImperial) {
                 badge.grantBadge(self, "pvp_imperial_major");
-            }
-            else 
-            {
+            } else {
                 badge.grantBadge(self, "pvp_rebel_major");
             }
         }
-        if (oldRank <= 9 && newRank > 9)
-        {
+        if (oldRank <= 9 && newRank > 9) {
             skill.grantSkill(self, faction + PVP_SKILL_4);
-            if (isImperial)
-            {
+            if (isImperial) {
                 badge.grantBadge(self, "pvp_imperial_lt_colonel");
-            }
-            else 
-            {
+            } else {
                 badge.grantBadge(self, "pvp_rebel_commander");
             }
         }
-        if (oldRank <= 10 && newRank > 10)
-        {
+        if (oldRank <= 10 && newRank > 10) {
             skill.grantSkill(self, faction + PVP_SKILL_5);
-            if (isImperial)
-            {
+            if (isImperial) {
                 badge.grantBadge(self, "pvp_imperial_colonel");
-            }
-            else 
-            {
+            } else {
                 badge.grantBadge(self, "pvp_rebel_colonel");
             }
         }
-        if (oldRank <= 11 && newRank > 11)
-        {
+        if (oldRank <= 11 && newRank > 11) {
             skill.grantSkill(self, faction + PVP_SKILL_6);
-            if (isImperial)
-            {
+            if (isImperial) {
                 badge.grantBadge(self, "pvp_imperial_general");
-            }
-            else 
-            {
+            } else {
                 badge.grantBadge(self, "pvp_rebel_general");
             }
         }
-        if (oldRank == 12 && newRank <= 11)
-        {
+        if (oldRank == 12 && newRank <= 11) {
             skill.revokeSkill(self, faction + PVP_SKILL_6);
-            if (newRank == 10)
-            {
+            if (newRank == 10) {
                 skill.revokeSkill(self, faction + PVP_SKILL_5);
             }
-            if (newRank == 9)
-            {
+            if (newRank == 9) {
                 skill.revokeSkill(self, faction + PVP_SKILL_4);
                 skill.revokeSkill(self, faction + PVP_SKILL_5);
             }
-            if (newRank == 8)
-            {
+            if (newRank == 8) {
                 skill.revokeSkill(self, faction + PVP_SKILL_3);
                 skill.revokeSkill(self, faction + PVP_SKILL_4);
                 skill.revokeSkill(self, faction + PVP_SKILL_5);
             }
-            if (newRank == 7)
-            {
+            if (newRank == 7) {
                 skill.revokeSkill(self, faction + PVP_SKILL_2);
                 skill.revokeSkill(self, faction + PVP_SKILL_3);
                 skill.revokeSkill(self, faction + PVP_SKILL_4);
                 skill.revokeSkill(self, faction + PVP_SKILL_5);
             }
-            if (newRank < 7)
-            {
+            if (newRank < 7) {
                 skill.revokeSkill(self, faction + PVP_SKILL_1);
                 skill.revokeSkill(self, faction + PVP_SKILL_2);
                 skill.revokeSkill(self, faction + PVP_SKILL_3);
@@ -912,74 +890,59 @@ public class base_player extends script.base_script
                 skill.revokeSkill(self, faction + PVP_SKILL_5);
             }
         }
-        if (oldRank == 11 && newRank <= 10)
-        {
+        if (oldRank == 11 && newRank <= 10) {
             skill.revokeSkill(self, faction + PVP_SKILL_5);
-            if (newRank == 9)
-            {
+            if (newRank == 9) {
                 skill.revokeSkill(self, faction + PVP_SKILL_4);
             }
-            if (newRank == 8)
-            {
+            if (newRank == 8) {
                 skill.revokeSkill(self, faction + PVP_SKILL_3);
                 skill.revokeSkill(self, faction + PVP_SKILL_4);
             }
-            if (newRank == 7)
-            {
+            if (newRank == 7) {
                 skill.revokeSkill(self, faction + PVP_SKILL_2);
                 skill.revokeSkill(self, faction + PVP_SKILL_3);
                 skill.revokeSkill(self, faction + PVP_SKILL_4);
             }
-            if (newRank < 7)
-            {
+            if (newRank < 7) {
                 skill.revokeSkill(self, faction + PVP_SKILL_1);
                 skill.revokeSkill(self, faction + PVP_SKILL_2);
                 skill.revokeSkill(self, faction + PVP_SKILL_3);
                 skill.revokeSkill(self, faction + PVP_SKILL_4);
             }
         }
-        if (oldRank == 10 && newRank <= 9)
-        {
+        if (oldRank == 10 && newRank <= 9) {
             skill.revokeSkill(self, faction + PVP_SKILL_4);
-            if (newRank == 8)
-            {
+            if (newRank == 8) {
                 skill.revokeSkill(self, faction + PVP_SKILL_3);
             }
-            if (newRank == 7)
-            {
+            if (newRank == 7) {
                 skill.revokeSkill(self, faction + PVP_SKILL_2);
                 skill.revokeSkill(self, faction + PVP_SKILL_3);
             }
-            if (newRank < 7)
-            {
+            if (newRank < 7) {
                 skill.revokeSkill(self, faction + PVP_SKILL_1);
                 skill.revokeSkill(self, faction + PVP_SKILL_2);
                 skill.revokeSkill(self, faction + PVP_SKILL_3);
             }
         }
-        if (oldRank == 9 && newRank <= 8)
-        {
+        if (oldRank == 9 && newRank <= 8) {
             skill.revokeSkill(self, faction + PVP_SKILL_3);
-            if (newRank == 7)
-            {
+            if (newRank == 7) {
                 skill.revokeSkill(self, faction + PVP_SKILL_2);
             }
-            if (newRank < 7)
-            {
+            if (newRank < 7) {
                 skill.revokeSkill(self, faction + PVP_SKILL_1);
                 skill.revokeSkill(self, faction + PVP_SKILL_2);
             }
         }
-        if (oldRank == 8 && newRank <= 7)
-        {
+        if (oldRank == 8 && newRank <= 7) {
             skill.revokeSkill(self, faction + PVP_SKILL_2);
-            if (newRank < 7)
-            {
+            if (newRank < 7) {
                 skill.revokeSkill(self, faction + PVP_SKILL_1);
             }
         }
-        if (oldRank == 7 && newRank < 7)
-        {
+        if (oldRank == 7 && newRank < 7) {
             skill.revokeSkill(self, faction + PVP_SKILL_1);
         }
         return SCRIPT_CONTINUE;

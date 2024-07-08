@@ -62,7 +62,7 @@ public class sith_holocron3 extends script.base_script
                 explore = "bdg_kash_wookiee_rage";
                 break;
         }
-        return badge.hasBadge(player, explore) && badge.hasBadge(player, "count_50");
+        return badge.hasBadge(player, explore) && badge.hasBadge(player, "count_50") && hasSkill(player, "faction_rank_mando_master");
     }
     public void holocron_action_grantQuestRevan(obj_id player, obj_id npc) throws InterruptedException
     {

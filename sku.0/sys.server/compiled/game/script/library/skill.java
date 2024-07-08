@@ -428,6 +428,7 @@ public class skill extends script.base_script
                         "force_rank_dark_novice",
                         "force_rank_light",
                         "force_rank_light_novice",
+                        "faction_rank_mando",
                 };
     }
     public static String[] getQualifiedTeachableSkills(obj_id target, obj_id teacher) throws InterruptedException

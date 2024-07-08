@@ -975,7 +975,7 @@ public class smuggler extends script.base_script
                 revokeSkill(player, "faction_rank_mando_novice");
             }
         }
-        if (value <= -1.0f)
+        if (value <= 15000.0f)
         {
             if (hasSkill(player, "faction_rank_mando_master"))
             {
@@ -987,6 +987,62 @@ public class smuggler extends script.base_script
             if (hasSkill(player, "faction_rank_mando"))
             {
                 revokeSkill(player, "faction_rank_mando");
+            }
+        }
+        if (value <= -1.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando_1"))
+            {
+                revokeSkill(player, "faction_rank_mando_1");
+            }
+        }
+        if (value <= -1.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando_2"))
+            {
+                revokeSkill(player, "faction_rank_mando_2");
+            }
+        }
+        if (value <= -1.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando_3"))
+            {
+                revokeSkill(player, "faction_rank_mando_3");
+            }
+        }
+        if (value <= -1.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando_4"))
+            {
+                revokeSkill(player, "faction_rank_mando_4");
+            }
+        }
+        if (value >= 2500.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando_1"))
+            {
+                grantSkill(player, "faction_rank_mando_1");
+            }
+        }
+        if (value >= 5000.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando_2"))
+            {
+                grantSkill(player, "faction_rank_mando_2");
+            }
+        }
+        if (value >= 7500.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando_3"))
+            {
+                grantSkill(player, "faction_rank_mando_3");
+            }
+        }
+        if (value >= 10000.0f)
+        {
+            if (hasSkill(player, "faction_rank_mando_4"))
+            {
+                grantSkill(player, "faction_rank_mando_4");
             }
         }
         return;

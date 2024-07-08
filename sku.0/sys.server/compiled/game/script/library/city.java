@@ -1202,12 +1202,12 @@ public class city extends script.base_script
     }
     public static int getMaxCivicCount(int city_id, int rank) throws InterruptedException
     {
-        int baseCivicCount = (1 + (rank * 9));
+        int baseCivicCount = (1 + (rank * 15));//increased base count to 15 per rank from 9
         int flag = cityGetSpec(city_id);
         if (flag == SF_SPEC_DECOR_INCREASE)
         {
             LOG("sissynoid", "City Has Increased Decoration Spec!  Increasing Civic Structures by 10%");
-            baseCivicCount = (1 + (rank * 12));
+            baseCivicCount = (1 + (rank * 25));//increased to 25 from 12
             return baseCivicCount;
         }
         return baseCivicCount;

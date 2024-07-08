@@ -95,10 +95,17 @@ public class prop_controller extends script.base_script
         if (myStorytellerId == player || myStorytellerId == utils.getObjIdScriptVar(player, "storytellerAssistant") || isGod(player))
         {
             mi.addRootMenu(menu_info_types.SERVER_MENU1, new string_id("storyteller", "destroy_prop"));
-            if (hasObjVar(self, storyteller.EFFECT_ACTIVE_OBJVAR))
+
+            location here = getLocation(self);
+            int city_id = getCityAtLocation(here, 0);
+            if (city_id != 0) // If in a city
             {
-                mi.addRootMenu(menu_info_types.SERVER_MENU2, new string_id("storyteller", "remove_persisted_effect"));
+                mi.addRootMenu(menu_info_types.SERVER_MENU2, new string_id("storyteller", "remake_as_statue"));
             }
+//        if (hasObjVar(self, storyteller.EFFECT_ACTIVE_OBJVAR))
+//        {
+//            mi.addRootMenu(menu_info_types.SERVER_MENU2, new string_id("storyteller", "remake_as_statue"));
+//        }
         }
         return SCRIPT_CONTINUE;
     }
@@ -111,9 +118,11 @@ public class prop_controller extends script.base_script
             {
                 trial.cleanupObject(self);
             }
-            else if (item == menu_info_types.SERVER_MENU2)
+            else if (item == menu_info_types.SERVER_MENU2)//removed the remove persistent effects ability, for now
             {
-                storyteller.removeStorytellerPersistedEffect(self);
+                //storyteller.removeStorytellerPersistedEffect(self);
+                detachScript(self, "systems.storyteller.prop_controller");
+                attachScript(self, "systems.city.city_furniture");
             }
         }
         return SCRIPT_CONTINUE;
