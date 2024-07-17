@@ -303,6 +303,9 @@ public class lair_interactivity extends script.base_script {
             if (creatureName.contains("womprat")) {
                 creatureName = creatureName.replace("womprat", "womp_rat"); // Correct if it contains "womprat"
             }
+            if (creatureName.contains("kamurith")) {
+                creatureName = creatureName.replace("kamurith", "voritor");
+            }
 
             for (String beast : BEAST_OPTIONS_FOR_LAIRS) {
                 if (creatureName.contains(beast)) {

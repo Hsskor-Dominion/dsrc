@@ -5907,10 +5907,13 @@ public class utils extends script.base_script
                     if (novendor && hasScript(item, "terminal.vendor")) {
                         continue;
                     }
+                    if (getTemplateName(item).equals("object/tangible/terminal/terminal_player_structure.iff")) {
+                        continue;
+                    }
                     if (!canTrade(item)) {
                         return item;
                     } else if (utils.isContainer(item)) {
-                        result = findNoTradeItem(getContents(item), testPlayers);
+                        result = findNoTradeItem(getContents(item), testPlayers, novendor);
                         if (isIdValid(result)) {
                             return result;
                         }

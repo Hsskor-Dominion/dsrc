@@ -1715,15 +1715,16 @@ expertise_fs_path_ruthless_precision_3	expertise_fs_path_ruthless_precision_2			
 expertise_fs_path_ruthless_precision_4	expertise_fs_path_ruthless_precision_3			1																		expertise_focus_damage_increase=2				
 expertise_fs_path_reactive_response_1	expertise_fs_path_cautious_nature_2									expertise_fs_path_cautious_nature_2												expertise_stance_damage_add_to_action=2			0	
 expertise_fs_path_reactive_response_2	expertise_fs_path_reactive_response_1			1																		expertise_stance_damage_add_to_action=2			0	
-expertise_fs_path_riposte_1	expertise_fs_path_saber_shackle_4									expertise_fs_path_saber_shackle_2												expertise_stance_riposte=25				
-expertise_fs_path_riposte_2	expertise_fs_path_riposte_1																					expertise_stance_riposte=25				
+expertise_fs_path_riposte_1	expertise_fs_path_force_clarity_2			1						expertise_fs_path_force_clarity_2												expertise_stance_riposte=25				
+expertise_fs_path_riposte_2	expertise_fs_path_riposte_1			1																		expertise_stance_riposte=25				
 expertise_fs_path_forsake_fear_1	expertise			1																	fs_forsake_fear	jedi_force_power_max=200,jedi_force_power_regen=1			0	
 expertise_fs_path_cloud_minds_1																					fs_mind_trick_2	expertise_area_size_single_fs_mind_trick_2=4			0	
 expertise_fs_path_dark_lightning_1	expertise_fs_path_brutality_4									expertise_fs_path_brutality_4											fs_ae_dm_cc_1				0	
 expertise_fs_path_tempt_hatred_1	expertise_fs_path_remorseless_nature_2									expertise_fs_path_remorseless_nature_2												expertise_focus_damage_add_to_action=2			0	
 expertise_fs_path_tempt_hatred_2	expertise_fs_path_tempt_hatred_1			1																		expertise_focus_damage_add_to_action=2			0	
 expertise_fs_path_force_choke_1	expertise_fs_path_ruthless_precision_4			1						expertise_fs_path_ruthless_precision_4											fs_dm_cc_1				0	
-expertise_fs_path_force_clarity_1	expertise_fs_path_riposte_2									expertise_fs_path_riposte_2												expertise_stance_fs_force_clarity=5			0	
+expertise_fs_path_force_clarity_1	expertise_fs_path_flurry									expertise_fs_path_flurry												expertise_stance_fs_force_clarity=5			0	
+expertise_fs_path_force_clarity_2	expertise_fs_path_force_clarity_1																					expertise_stance_fs_force_clarity=5			0	
 expertise_fs_path_saber_reflect_1	expertise_fs_path_perceptive_sentinel_4									expertise_fs_path_perceptive_sentinel_4											fs_saber_reflect_buff					
 expertise_fs_path_hermetic_touch_1	expertise_fs_path_reactive_response_2			1						expertise_fs_path_reactive_response_2											fs_hermetic_touch				0	
 expertise_fs_path_expansive_trickery_1	expertise_fs_path_cloud_minds_1									expertise_fs_path_cloud_minds_1												expertise_area_size_single_fs_mind_trick_2=4			0	
@@ -1733,13 +1734,12 @@ expertise_fs_path_maelstrom_1	expertise_fs_path_dark_lightning_1			1						expert
 expertise_fs_path_force_drain_1	expertise_fs_path_tempt_hatred_2									expertise_fs_path_tempt_hatred_2											fs_drain_1					
 expertise_fs_path_improved_force_choke_1	expertise_fs_path_force_choke_1									expertise_fs_path_force_choke_1												expertise_damage_line_fs_dm_cc=10,expertise_dot_damage_line_fs_dm_cc=10			0	
 expertise_fs_path_improved_force_choke_2	expertise_fs_path_improved_force_choke_1			1																		expertise_damage_line_fs_dm_cc=10,expertise_dot_damage_line_fs_dm_cc=10			0	
-expertise_fs_path_anticipate_aggression_1	expertise_fs_path_improved_saber_reflect_2									expertise_fs_path_improved_saber_reflect_2												damage_decrease_percentage=4			0	
-expertise_fs_path_anticipate_aggression_2	expertise_fs_path_anticipate_aggression_1																					damage_decrease_percentage=4				
-expertise_fs_path_anticipate_aggression_3	expertise_fs_path_anticipate_aggression_2			1																		damage_decrease_percentage=4				
-expertise_fs_path_improved_saber_reflect_1	expertise_fs_path_saber_reflect_1									expertise_fs_path_saber_reflect_1												expertise_damage_line_fs_saber_reflect=50,expertise_force_alacrity=25				
-expertise_fs_path_improved_saber_reflect_2	expertise_fs_path_improved_saber_reflect_1																					expertise_damage_line_fs_saber_reflect=50,expertise_force_alacrity=25				
-expertise_fs_path_improved_saber_reflect_3																										
-expertise_fs_path_flurry	expertise_fs_path_force_clarity_1			1						expertise_fs_path_force_clarity_1											fs_flurry_1					
+expertise_fs_path_anticipate_aggression_1	expertise_fs_path_improved_saber_reflect_1									expertise_fs_path_improved_saber_reflect_1												damage_decrease_percentage=3			0	
+expertise_fs_path_anticipate_aggression_2	expertise_fs_path_anticipate_aggression_1																					damage_decrease_percentage=3				
+expertise_fs_path_anticipate_aggression_3	expertise_fs_path_anticipate_aggression_2			1																		damage_decrease_percentage=3				
+expertise_fs_path_anticipate_aggression_4	expertise_fs_path_anticipate_aggression_3			1																		damage_decrease_percentage=3				
+expertise_fs_path_improved_saber_reflect_1	expertise_fs_path_saber_reflect_1									expertise_fs_path_saber_reflect_1												expertise_damage_line_fs_saber_reflect=100,expertise_force_alacrity=50				
+expertise_fs_path_flurry	expertise_fs_path_saber_shackle_4			1						expertise_fs_path_saber_shackle_4											fs_flurry_1					
 expertise_fs_path_lasting_aura_1																									0	
 expertise_fs_path_lasting_aura_2																									0	
 expertise_fs_path_soothing_aura_1	expertise_fs_path_hermetic_touch_1									expertise_fs_path_hermetic_touch_1												expertise_stance_healing_line_fs_heal=25			0	
@@ -1754,9 +1754,10 @@ expertise_fs_path_wracking_energy_1	expertise_fs_path_maelstrom_1			1						exper
 expertise_fs_path_wracking_energy_2	expertise_fs_path_wracking_energy_1			1																		expertise_fs_dm_armor_bypass=25,expertise_buff_duration_line_fs_ae_dm_cc=2			0	
 expertise_fs_path_wracking_energy_3	expertise_fs_path_wracking_energy_2			1																		expertise_fs_dm_armor_bypass=25,expertise_buff_duration_line_fs_ae_dm_cc=2			0	
 expertise_fs_path_wracking_energy_4	expertise_fs_path_wracking_energy_3			1																		expertise_fs_dm_armor_bypass=25,expertise_buff_duration_line_fs_ae_dm_cc=2			0	
-expertise_fs_path_improved_force_drain_1	expertise_fs_path_force_drain_1									expertise_fs_path_force_drain_1												expertise_fs_imp_drain=33			0	
-expertise_fs_path_improved_force_drain_2	expertise_fs_path_improved_force_drain_1			1																		expertise_fs_imp_drain=33			0	
-expertise_fs_path_improved_force_drain_3	expertise_fs_path_improved_force_drain_2			1																		expertise_fs_imp_drain=34			0	
+expertise_fs_path_improved_force_drain_1	expertise_fs_path_force_drain_1									expertise_fs_path_force_drain_1												expertise_fs_imp_drain=25			0	
+expertise_fs_path_improved_force_drain_2	expertise_fs_path_improved_force_drain_1			1																		expertise_fs_imp_drain=25			0	
+expertise_fs_path_improved_force_drain_3	expertise_fs_path_improved_force_drain_2			1																		expertise_fs_imp_drain=25			0	
+expertise_fs_path_improved_force_drain_4	expertise_fs_path_improved_force_drain_3			1																		expertise_fs_imp_drain=25			0	
 expertise_fs_path_strangulation_1	expertise_fs_path_improved_force_choke_2			1						expertise_fs_path_improved_force_choke_2												expertise_fs_imp_choke=10			0	
 expertise_fs_path_strangulation_2	expertise_fs_path_strangulation_1			1																		expertise_fs_imp_choke=10			0	
 expertise_sm_general_enhanced_precision_1	expertise																					precision_modified=25			0	
@@ -1786,10 +1787,10 @@ expertise_sm_general_lined_pockets_1	expertise_sm_general_hidden_padding_2						
 expertise_sm_general_lined_pockets_2	expertise_sm_general_lined_pockets_1																					expertise_overridable_protection_generic=1475			0	
 expertise_sm_general_precise_bead_1	expertise_sm_general_hair_trigger_4									expertise_sm_general_hair_trigger_4												expertise_undiminished_critical_pistol=5,expertise_range_bonus_pistol=5			0	
 expertise_sm_general_precise_bead_2	expertise_sm_general_precise_bead_1																					expertise_undiminished_critical_pistol=5,expertise_range_bonus_pistol=5			0	
-expertise_sm_general_head_crack_1	expertise_co_riddle_armor_1			1						expertise_co_riddle_armor_1												expertise_sm_melee_stun_proc=5			0	
-expertise_sm_general_head_crack_2	expertise_sm_general_head_crack_1			1																		expertise_sm_melee_stun_proc=5			0	
-expertise_sm_general_head_crack_3	expertise_sm_general_head_crack_2			1																		expertise_sm_melee_stun_proc=5			0	
-expertise_sm_general_head_crack_4	expertise_sm_general_head_crack_3			1																		expertise_sm_melee_stun_proc=5			0	
+expertise_sm_general_head_crack_1	expertise_co_riddle_armor_1			1						expertise_co_riddle_armor_1												expertise_sm_melee_stun_proc=6			0	
+expertise_sm_general_head_crack_2	expertise_sm_general_head_crack_1			1																		expertise_sm_melee_stun_proc=6			0	
+expertise_sm_general_head_crack_3	expertise_sm_general_head_crack_2			1																		expertise_sm_melee_stun_proc=6			0	
+expertise_sm_general_head_crack_4	expertise_sm_general_head_crack_3			1																		expertise_sm_melee_stun_proc=6			0	
 expertise_sm_general_double_deal_1	expertise_sm_general_off_the_cuff_1									expertise_sm_general_off_the_cuff_1												expertise_double_deal_chance=10			0	
 expertise_sm_general_double_deal_2	expertise_sm_general_double_deal_1																					expertise_double_deal_chance=10			0	
 expertise_sm_general_wretched_fate_1	expertise_sm_general_meager_fortune_2									expertise_sm_general_meager_fortune_2												expertise_spot_a_sucker_glance_chance=25			0	
@@ -2008,7 +2009,7 @@ expertise_me_hot_duration_2	expertise_me_hot_duration_1																					expe
 expertise_me_hot_duration_3	expertise_me_hot_duration_2																					expertise_healing_line_me_hot=15			0	
 expertise_me_hot_duration_4	expertise_me_hot_duration_3																					expertise_healing_line_me_hot=15			0	
 expertise_me_drag	expertise_me_heal_action_4			1						expertise_me_heal_action_4											me_drag_1				0	
-expertise_me_revive_duration_1	expertise_me_enhance_duration_4									expertise_me_enhance_duration_4												expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3,expertise_dot_absorption_all=3			0	
+expertise_me_revive_duration_1	expertise_me_enhance_duration_4									expertise_me_enhance_duration_4											me_rv_ooc,me_rv_pvp_single,me_drag_1	expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3,expertise_dot_absorption_all=3			0	
 expertise_me_revive_duration_2	expertise_me_revive_duration_1																					expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3,expertise_dot_absorption_all=3			0	
 expertise_me_revive_duration_3	expertise_me_revive_duration_2																					expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3,expertise_dot_absorption_all=3			0	
 expertise_me_revive_duration_4	expertise_me_revive_duration_3																					expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3,expertise_dot_absorption_all=3			0	
@@ -2716,10 +2717,10 @@ expertise_bm_dexterity_training_1	expertise_bm_fortitude_4									expertise_bm_
 expertise_bm_dexterity_training_2	expertise_bm_dexterity_training_1																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
 expertise_bm_dexterity_training_3	expertise_bm_dexterity_training_2																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2,expertise_bm_add_pet_bar=1				
 expertise_bm_dexterity_training_4	expertise_bm_dexterity_training_3																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
-expertise_bm_exceptional_nutrition_4	expertise_bm_exceptional_nutrition_3																					expertise_bm_pet_health=25,expertise_bm_pet_regen=20,bm_xp_mod_boost=25				
-expertise_bm_exceptional_nutrition_3	expertise_bm_exceptional_nutrition_2																					expertise_bm_pet_health=25,expertise_bm_pet_regen=20,bm_xp_mod_boost=25				
-expertise_bm_exceptional_nutrition_2	expertise_bm_exceptional_nutrition_1																					expertise_bm_pet_health=25,expertise_bm_pet_regen=20,bm_xp_mod_boost=25				
-expertise_bm_exceptional_nutrition_1	expertise_bm_improved_healing_4									expertise_bm_improved_healing_4												expertise_bm_pet_health=25,expertise_bm_pet_regen=20,bm_xp_mod_boost=25				
+expertise_bm_exceptional_nutrition_4	expertise_bm_exceptional_nutrition_3																					expertise_bm_pet_health=20,expertise_bm_pet_regen=20,bm_xp_mod_boost=20				
+expertise_bm_exceptional_nutrition_3	expertise_bm_exceptional_nutrition_2																					expertise_bm_pet_health=20,expertise_bm_pet_regen=20,bm_xp_mod_boost=20				
+expertise_bm_exceptional_nutrition_2	expertise_bm_exceptional_nutrition_1																					expertise_bm_pet_health=20,expertise_bm_pet_regen=20,bm_xp_mod_boost=20				
+expertise_bm_exceptional_nutrition_1	expertise_bm_improved_healing_4									expertise_bm_improved_healing_4												expertise_bm_pet_health=20,expertise_bm_pet_regen=20,bm_xp_mod_boost=20				
 expertise_bm_pet_dodge_3	expertise_bm_pet_dodge_2																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_2	expertise_bm_pet_dodge_1																					expertise_pet_dodge=5				
 expertise_bm_pet_dodge_1	expertise_bm_evasion_3									expertise_bm_evasion_3												expertise_pet_dodge=5				
@@ -2728,7 +2729,7 @@ expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2			1							
 expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftMedicineStimpackGroupB,craftArtisanChemicalGroupB,craftMedicineComponentGroupB			
 expertise_bm_genetic_engineering_1	expertise			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftMedicineStimpackGroupA,craftArtisanChemicalGroupA			
 expertise_bm_add_first_pet_bar_1	expertise																					expertise_bm_add_pet_bar=1,expertise_bm_pet_health=25,expertise_bm_pet_regen=20				
-expertise_bm_specialized_supplements_1	expertise_bm_exceptional_nutrition_4									expertise_bm_exceptional_nutrition_4												expertise_bm_pet_health=25,expertise_bm_pet_regen=20bm_xp_mod_boost=25,,expertise_bm_add_pet_bar=1,expertise_bm_incubation_time=10				
+expertise_bm_specialized_supplements_1	expertise_bm_exceptional_nutrition_4									expertise_bm_exceptional_nutrition_4												expertise_bm_pet_health=20,expertise_bm_pet_regen=20,bm_xp_mod_boost=50,expertise_bm_add_pet_bar=1,expertise_bm_incubation_time=10				
 expertise_bm_evasion_4	expertise_bm_evasion_3																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
 expertise_bm_evasion_3	expertise_bm_evasion_2																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
 expertise_bm_evasion_2	expertise_bm_evasion_1																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
@@ -2858,3 +2859,5 @@ stardust_moff				1		1																			0
 stardust_grand_moff				1		1																			0	
 stardust_sith_empress				1		1																			0	
 stardust_jedi_elder				1		1															blueGlowie				0	
+stardust_bm_corellia				1		1																creature_knowledge=5,expertise_bm_enhanced_skill_acquisition=5,bm_xp_mod_boost=5			0	
+stardust_bm_talus				1		1																creature_knowledge=5,expertise_bm_enhanced_skill_acquisition=5,bm_xp_mod_boost=5			0	

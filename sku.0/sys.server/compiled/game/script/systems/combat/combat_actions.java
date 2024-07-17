@@ -8382,16 +8382,19 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (factionBaseCount >= 1) {
             return true;
         }
+        location here = getLocation(self);
+        obj_id[] nearbyObjects = getObjectsInRange(here, 128);
+        boolean hasShuttleBeacon = false;
 
-        // Check if the player has at least one camp; cannot get working
-//        obj_id currentCamp = getCurrentCamp(self);
-//        if (isIdValid(currentCamp)) {
-//            int campTicks = getIntObjVar(currentCamp, "camp.ticks");
-//            int campPower = getIntObjVar(currentCamp, "campPower");  // Adjust variable name if needed
-//            if (campTicks >= 1 && campPower >= 1) {
-//                return true;
-//            }
-//        }
+        for (obj_id nearbyObject : nearbyObjects)
+        {
+            String template = getTemplateName(nearbyObject);
+            if (template != null && template.equals("object/tangible/camp/camp_clone_tube.iff"))
+            {
+                hasShuttleBeacon = true;
+                break;
+            }
+        }
 
         return false;
     }

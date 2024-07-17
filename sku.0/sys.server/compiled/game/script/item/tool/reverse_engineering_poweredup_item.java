@@ -105,7 +105,7 @@ public class reverse_engineering_poweredup_item extends script.base_script
                         reverse_engineering.recalcPoolsIfNeeded(player, mod);
                         // Apply damage to the equipped item
                         damageItem(itemWithPowerUp, 10);
-                        sendSystemMessage(player, new string_id("stardust", "testing_stuff"));
+                        sendSystemMessage(player, new string_id("stardust", "weapon_damaged_due_to_powerup"));
                     }
                 }
             }

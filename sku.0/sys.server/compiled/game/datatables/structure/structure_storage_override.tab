@@ -1,3 +1,4 @@
 STRUCTURE	OVERRIDE_STORAGE_VALUE
 s	i
 object/building/player/player_house_sandcrawler.iff	350
+object/building/player/player_house_command_post.iff	100

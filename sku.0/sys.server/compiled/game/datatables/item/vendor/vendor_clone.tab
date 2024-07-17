@@ -1,0 +1,14 @@
+item	cash	token0	token1	token2	token3	token14	class	script	note
+s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
+item_pgc_token_01	500000								
+object/tangible/deed/vehicle_deed/barc_speeder_deed.iff						1			
+item_tcg_loot_reward_series3_swamp_speeder						4			
+object/tangible/veteran_reward/vehicle_walker_at_rt_camo.iff						4			
+item_deed_walker_06_02						4			
+command_post						5			
+police_station						20			
+police_station2						20			
+item_tcg_loot_reward_series2_v_wing						4			
+item_tcg_loot_reward_series7_build03_gunship_blueprint						4			
+item_tcg_loot_reward_series7_build04_broken_ball_turret						4			
+item_tcg_loot_reward_series2_arc170_flightsuit	100								

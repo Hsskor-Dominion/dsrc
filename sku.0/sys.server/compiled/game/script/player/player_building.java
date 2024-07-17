@@ -161,19 +161,19 @@ public class player_building extends script.base_script
             sendSystemMessage(player, new string_id(STF, "no_room"));
             return SCRIPT_CONTINUE;
         }
-        if (player_structure.isCivicTemplate(template) && (!template.contains("cityhall")))
-        {
-            if (!canPlaceCivic(player, deed, position, template))
-            {
-                sendSystemMessage(player, SID_CANT_PLACE_CIVIC);
-                return SCRIPT_CONTINUE;
-            }
-            if (!canPlaceUnique(player, deed, position, template))
-            {
-                sendSystemMessage(player, SID_CANT_PLACE_UNIQUE);
-                return SCRIPT_CONTINUE;
-            }
-        }
+//        if (player_structure.isCivicTemplate(template) && (!template.contains("cityhall")))
+//        {
+//            if (!canPlaceCivic(player, deed, position, template))
+//            {
+//                sendSystemMessage(player, SID_CANT_PLACE_CIVIC);
+//                return SCRIPT_CONTINUE;
+//            }
+//            if (!canPlaceUnique(player, deed, position, template))
+//            {
+//                sendSystemMessage(player, SID_CANT_PLACE_UNIQUE);
+//                return SCRIPT_CONTINUE;
+//            }
+//        }
         if (!player_structure.canPlaceStructure(self, template, position, deed))
         {
             return SCRIPT_CONTINUE;
@@ -2619,61 +2619,61 @@ public class player_building extends script.base_script
             sendSystemMessage(self, new string_id(STF, "faction_base"));
             return SCRIPT_CONTINUE;
         }
-        if (structureTemplateName.equals("object/building/player/player_house_mustafar_lg.iff"))
-        {
-            sendSystemMessage(self, new string_id(STF, "mustafar_house"));
-            return SCRIPT_CONTINUE;
-        }
-        if (structureTemplateName.equals("object/building/player/city/barn_no_planet_restriction.iff"))
-        {
-            sendSystemMessage(self, new string_id(STF, "barn_no_transfer"));
-            return SCRIPT_CONTINUE;
-        }
-        if (structureTemplateName.equals("object/building/player/city/diner_no_planet_restriction.iff"))
-        {
-            sendSystemMessage(self, new string_id(STF, "diner_no_transfer"));
-            return SCRIPT_CONTINUE;
-        }
-        if (structureTemplateName.equals("object/building/player/player_house_jedi_meditation_room.iff") || structureTemplateName.equals("object/building/player/player_house_sith_meditation_room.iff"))
-        {
-            sendSystemMessage(self, new string_id(STF, "meditation_room_no_transfer"));
-            return SCRIPT_CONTINUE;
-        }
-        if (structureTemplateName.equals("object/building/player/player_house_tcg_relaxation_pool.iff"))
-        {
-            sendSystemMessage(self, new string_id(STF, "relaxation_pool_no_transfer"));
-            return SCRIPT_CONTINUE;
-        }
-        if (structureTemplateName.equals("object/building/player/player_house_hangar.iff"))
-        {
-            sendSystemMessage(self, new string_id(STF, "hangar_no_transfer"));
-            return SCRIPT_CONTINUE;
-        }
-        if (structureTemplateName.equals("object/building/player/player_house_sandcrawler.iff"))
-        {
-            sendSystemMessage(self, new string_id(STF, "sandcrawler_house_no_transfer"));
-            return SCRIPT_CONTINUE;
-        }
-        if (structureTemplateName.equals("object/building/player/player_house_atat.iff"))
-        {
-            sendSystemMessage(self, new string_id(STF, "atat_house_no_transfer"));
-            return SCRIPT_CONTINUE;
-        }
-        if (structureTemplateName.equals("object/building/player/player_house_tcg_emperors_spire.iff"))
-        {
-            sendSystemMessage(self, new string_id(STF, "tcg_emperors_spire_house_no_transfer"));
-            return SCRIPT_CONTINUE;
-        }
-        if (structureTemplateName.equals("object/building/player/player_house_tcg_rebel_spire.iff"))
-        {
-            sendSystemMessage(self, new string_id(STF, "tcg_rebel_spire_house_no_transfer"));
-            return SCRIPT_CONTINUE;
-        }
-        if (hasObjVar(structure, "playerStructure_noTransfer"))
-        {
-            sendSystemMessage(self, new string_id(STF, "tcg_player_house_no_transfer"));
-            return SCRIPT_CONTINUE;
-        }
+//        if (structureTemplateName.equals("object/building/player/player_house_mustafar_lg.iff"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "mustafar_house"));
+//            return SCRIPT_CONTINUE;
+//        }
+//        if (structureTemplateName.equals("object/building/player/city/barn_no_planet_restriction.iff"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "barn_no_transfer"));
+//            return SCRIPT_CONTINUE;
+//        }
+//        if (structureTemplateName.equals("object/building/player/city/diner_no_planet_restriction.iff"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "diner_no_transfer"));
+//            return SCRIPT_CONTINUE;
+//        }
+//        if (structureTemplateName.equals("object/building/player/player_house_jedi_meditation_room.iff") || structureTemplateName.equals("object/building/player/player_house_sith_meditation_room.iff"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "meditation_room_no_transfer"));
+//            return SCRIPT_CONTINUE;
+//        }
+//        if (structureTemplateName.equals("object/building/player/player_house_tcg_relaxation_pool.iff"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "relaxation_pool_no_transfer"));
+//            return SCRIPT_CONTINUE;
+//        }
+//        if (structureTemplateName.equals("object/building/player/player_house_hangar.iff"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "hangar_no_transfer"));
+//            return SCRIPT_CONTINUE;
+//        }
+//        if (structureTemplateName.equals("object/building/player/player_house_sandcrawler.iff"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "sandcrawler_house_no_transfer"));
+//            return SCRIPT_CONTINUE;
+//        }
+//        if (structureTemplateName.equals("object/building/player/player_house_atat.iff"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "atat_house_no_transfer"));
+//            return SCRIPT_CONTINUE;
+//        }
+//        if (structureTemplateName.equals("object/building/player/player_house_tcg_emperors_spire.iff"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "tcg_emperors_spire_house_no_transfer"));
+//            return SCRIPT_CONTINUE;
+//        }
+//        if (structureTemplateName.equals("object/building/player/player_house_tcg_rebel_spire.iff"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "tcg_rebel_spire_house_no_transfer"));
+//            return SCRIPT_CONTINUE;
+//        }
+//        if (hasObjVar(structure, "playerStructure_noTransfer"))
+//        {
+//            sendSystemMessage(self, new string_id(STF, "tcg_player_house_no_transfer"));
+//            return SCRIPT_CONTINUE;
+//        }
         if (hasObjVar(structure, "structureChange.storageIncrease"))
         {
             sendSystemMessage(self, new string_id(STF, "storage_increase_transfer"));

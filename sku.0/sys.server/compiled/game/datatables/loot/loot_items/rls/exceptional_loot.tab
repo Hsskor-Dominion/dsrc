@@ -1,5 +1,14 @@
 strItemType	comments
 s	s
+item_costume_wampa	Wampa Costume Instructions
+item_costume_rancor	Rancor Costume Instructions
+item_costume_mynock	Mynock Costume Instructions
+item_costume_dug	Dug Costume Instructions
+item_costume_geonosian	Geonosian Costume Instructions
+item_costume_ugnaught	Ugnaught Costume Instructions
+item_target_dummy_blacksun	Black Sun Target Dummy Controller
+item_target_dummy_rebel_trooper	Rebel Target Dummy Controller
+item_target_dummy_stormtrooper	Imperial Target Dummy Controller
 item_schematic_gungan_statue_s01	Gungan Statue Style 1 Schematic
 item_schematic_gungan_statue_s02	Gungan Statue Style 2 Schematic
 item_schematic_gungan_statue_s03	Gungan Statue Style 3 Schematic
@@ -8,13 +17,8 @@ item_schematic_hide_rack_s01	Animal Hide Rack Style 1 Schematic
 item_schematic_hide_rack_s02	Animal Hide Rack Style 2 Schematic
 item_schematic_hide_rack_s03	Animal Hide Rack Style 3 Schematic
 item_schematic_hide_rack_s04	Animal Hide Rack Style 4 Schematic
-item_costume_geonosian	Geonosian Costume Instructions
 item_schematic_fruit_stand_lg	Large Fruit Stand Schematic
 item_schematic_lugjack_machine	Lugjack Machine Schematic
-item_target_dummy_blacksun	Black Sun Target Dummy Controller
-item_target_dummy_rebel_trooper	Rebel Target Dummy Controller
-item_target_dummy_stormtrooper	Imperial Target Dummy Controller
-item_costume_ugnaught	Ugnaught Costume Instructions
 item_necklace_set_hero_01_01	Heroic Jewelry 1
 item_bracelet_r_set_hero_01_01	Heroic Jewelry 2
 item_bracelet_l_set_hero_01_01	Heroic Jewelry 3

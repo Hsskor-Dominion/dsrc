@@ -165,7 +165,7 @@ dessert_cavaellin_creams	ice_cream			1	buffs.foodDessert	300	resistance_incapaci
 dessert_vagnerian_canape	ice_cream			1	buffs.foodDessert	1200	agility_modified	70	stamina_modified	15	constitution_modified	15		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dessert_sweesonberry_rolls	ice_cream			1	buffs.foodDessert	1200	luck_modified	50	constitution_modified	30		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dessert_smugglers_delight	ice_cream			1	buffs.foodDessert	1200	resistance_spice_downer	2		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-drink_gralinyn_juice	food			1	buffs.foodBeverage	1200	stamina_modified	40	creature_knowledge	10	creature_hit_bonus	10		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+drink_gralinyn_juice	food			1	buffs.foodBeverage	1200	stamina_modified	40	creature_knowledge	10	creature_hit_bonus	10	expertise_bm_enhanced_skill_acquisition	10	bm_xp_mod_boost	10	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_deuterium_pyro	food			1	buffs.foodBeverage	1200	precision_modified	30	stamina_modified	20		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_corellian_ale	food			1	buffs.foodBeverage	1200	strength_modified	30	stamina_modified	25	expertise_en_inspire_buff_duration_increase	30		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_blue_milk	food			1	buffs.foodBeverage	1200	stamina_modified	10	constitution_modified	10	expertise_action_all	1	expertise_movement_buff_fs_force_run	10	expertise_buff_duration_line_fs_force_run	2	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1

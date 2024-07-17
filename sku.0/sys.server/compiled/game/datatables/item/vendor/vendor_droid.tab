@@ -2,24 +2,15 @@ item	cash	token0	token1	token2	token3	token14	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
 item_pgc_token_01	500000								
 item_tcg_loot_reward_series3_general_grievous_gutsack	100000								
-object/tangible/deed/vehicle_deed/barc_speeder_deed.iff						1			
-item_tcg_loot_reward_series3_swamp_speeder						4			
-object/tangible/veteran_reward/vehicle_walker_at_rt_camo.iff						4			
-item_deed_walker_06_02						1000			
 item_event_lifeday_stap_speeder						4			
 item_tcg_loot_reward_series4_geonosian_speeder_02_01						4			
 item_tcg_loot_reward_series6_a1_deluxe_floater						4			
 item_tcg_loot_reward_series4_home_itv_02_01						4			
-item_tcg_loot_reward_series2_v_wing						4			
-item_tcg_loot_reward_series2_arc170_flightsuit						4			
 item_tcg_loot_reward_series3_creature_pet_deed_massiff						4			
 item_tcg_loot_reward_series6_build03_battle_droid_statuette						4			
 item_tcg_loot_reward_series3_greeter_battle_droid						4			
 item_tcg_loot_reward_series3_battle_droid_vendor						4			
-item_tcg_loot_reward_series6_house_lamp						4			
 item_tcg_loot_reward_series7_embroidered_sash						4			
-item_tcg_loot_reward_series7_build03_gunship_blueprint						4			
-item_tcg_loot_reward_series7_build04_broken_ball_turret						4			
 item_cs_dna_acklay						4			
 item_cs_dna_nexu						4			
 item_cs_dna_reek						4			

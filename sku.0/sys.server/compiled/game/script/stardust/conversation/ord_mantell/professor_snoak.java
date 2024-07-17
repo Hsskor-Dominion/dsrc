@@ -23,6 +23,17 @@ public class professor_snoak extends script.base_script
     {
         return hasObjVar(player, "npe.snoak");
     }
+    public boolean professor_snoak_condition_hasCorelliaIndex(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return hasCompletedCollection(player, "corellia_creature_index");
+    }
+    public void vendor_snoak_action_showTokenVendorUI(obj_id player, obj_id npc) throws InterruptedException
+    {
+        dictionary d = new dictionary();
+        d.put("player", player);
+        messageTo(npc, "showInventorySUI", d, 0, false);
+        return;
+    }
     public static void snoakNpcVendor(obj_id player, obj_id npc) throws InterruptedException
     {
         String[] options = new String[3];
@@ -102,7 +113,7 @@ public class professor_snoak extends script.base_script
         {
             if (professor_snoak_condition__defaultCondition(player, npc))
             {
-                professor_snoak_action_startShop(player, npc);//ideally, this would offer 3 starter creatures instead
+                professor_snoak_action_startShop(player, npc);
                 string_id message = new string_id(c_stringFile, "snoak_they_choose_you");
                 utils.removeScriptVar(player, "conversation.professor_snoak.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -115,7 +126,17 @@ public class professor_snoak extends script.base_script
     {
         if (response.equals("player_knows_its_their_destiny"))
         {
-            if (professor_snoak_condition__defaultCondition(player, npc))
+            if (professor_snoak_condition_hasCorelliaIndex(player, npc))
+            {
+                string_id message = new string_id(c_stringFile, "snoak_congratulations_completed_corellia");
+                utils.removeScriptVar(player, "conversation.professor_snoak.branchId");
+                vendor_snoak_action_showTokenVendorUI(player, npc);
+                npcEndConversationWithMessage(player, message);
+                grantSkill(player, "stardust_bm_corellia");
+                modifyCollectionSlotValue(player, "endor_bolle_bol",1);//temporary fix until beast_egg.java can properly register bolle_bol from bol
+                return SCRIPT_CONTINUE;
+            }
+            else if (professor_snoak_condition__defaultCondition(player, npc))
             {
                 professor_snoak_action_startShop(player, npc);
                 string_id message = new string_id(c_stringFile, "snoak_gotta_tame_them_all");
