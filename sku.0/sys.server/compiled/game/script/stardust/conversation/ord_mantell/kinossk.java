@@ -30,7 +30,7 @@ public class kinossk extends script.base_script
     }
     public boolean kinossk_medic_condition(obj_id npc, obj_id player)
     {
-        return hasSkill(player,"class_medic_phase1_novice");
+        return hasSkill(player,"expertise_bm_genetic_engineering_1");
     }
     public boolean kinossk_crafter_condition(obj_id npc, obj_id player)
     {
@@ -50,20 +50,10 @@ public class kinossk extends script.base_script
         d.put("player", player);
         messageTo(npc, "showInventorySUI", d, 0, false);
     }
-    public void kinossk_entertainer_quest(obj_id player, obj_id npc) throws InterruptedException
-    {
-        int questId = questGetQuestId("quest/stardust_kinossk_craft");
-        groundquests.grantQuest(questId, player, npc, true);
-    }
-    public void kinossk_medic_quest(obj_id player, obj_id npc) throws InterruptedException
-    {
-        int questId = questGetQuestId("quest/stardust_kinossk_heal");
-        groundquests.grantQuest(questId, player, npc, true);
-    }
     public void kinossk_prison_quest(obj_id player, obj_id npc) throws InterruptedException
     {
         money.requestPayment(player, npc, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
-        groundquests.requestGrantQuest(player, "quest/stardust_kinossk_prison_break", true);
+        //groundquests.requestGrantQuest(player, "quest/stardust_kinossk_prison_break", true);
         int mission_bounty = 10000;
         int current_bounty = 0;
         mission_bounty += rand(1, 2000);
@@ -76,6 +66,7 @@ public class kinossk extends script.base_script
         setObjVar(player, "smuggler.bounty", mission_bounty);
         setJediBountyValue(player, current_bounty);
         updateJediScriptData(player, "smuggler", 1);
+        warpPlayer(player, "dathomir", -6466, 112, 895, null, 0, 0, 0, "", false);
     }
     public int kinossk_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -125,7 +116,7 @@ public class kinossk extends script.base_script
         {
             if (kinossk_medic_condition(npc, player))
             {
-                groundquests.grantQuest(player, "kinossk_heal");
+                groundquests.grantQuest(player, "stardust_medic");
                 final string_id message = new string_id(c_stringFile, "kinossk_offer_contract");
 
                 utils.removeScriptVar(player, "conversation.kinossk_conversation.branchId");
@@ -149,7 +140,7 @@ public class kinossk extends script.base_script
         {
             if (kinossk_crafter_condition(npc, player))
             {
-                groundquests.grantQuest(player, "kinossk_craft");
+                groundquests.grantQuest(player, "stardust_slave");
                 final string_id message = new string_id(c_stringFile, "kinossk_requests_crafting");
 
                 utils.setScriptVar(player, "conversation.kinossk_conversation.branchId", 4);
@@ -198,6 +189,7 @@ public class kinossk extends script.base_script
         {
             if (kinossk_credits_condition(player, npc))
             {
+                setObjVar(player, "stardust_dathomir", 1);
                 kinossk_prison_quest(player, npc);
                 final string_id message = new string_id(c_stringFile, "kinossk_places_your_bounty");
 

@@ -48,7 +48,7 @@ public class pet_ping extends script.base_script
         obj_id player = getRiderId(self);
         if (!isValidId(player) && pet_lib.isMount(self))
         {
-            pet_lib.storePet(self);
+            //pet_lib.storePet(self); //I think this is the auto-store?
             return SCRIPT_CONTINUE;
         }
         final int previousMessageNumber = getIntObjVar(self, PCDPING_SEND_MESSAGE_NUMBER);

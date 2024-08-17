@@ -1,4 +1,4 @@
-item	cash	token0	token1	token2	token3	token14	class	script	note
+item	cash	token0	token1	token2	token16	token14	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
 item_pgc_token_01	500000								
 object/tangible/deed/vehicle_deed/barc_speeder_deed.iff						1			
@@ -12,3 +12,14 @@ item_tcg_loot_reward_series2_v_wing						4
 item_tcg_loot_reward_series7_build03_gunship_blueprint						4			
 item_tcg_loot_reward_series7_build04_broken_ball_turret						4			
 item_tcg_loot_reward_series2_arc170_flightsuit	100								
+item_armor_recolor_kit_schematic_01					1				
+object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_belt.iff						1			
+object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bicep_l.iff						1			
+object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bicep_r.iff						1			
+object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_boots.iff						1			
+object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bracer_l.iff						1			
+object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bracer_r.iff						1			
+object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_chest_plate.iff						1			
+object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_gloves.iff						1			
+object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_helmet.iff						1			
+object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_leggings.iff						1			

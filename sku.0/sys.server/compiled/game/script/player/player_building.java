@@ -2024,23 +2024,35 @@ public class player_building extends script.base_script
         }
         String buildingTemplateName = getTemplateName(structure);
         int sGot = getGameObjectType(structure);
+
         if (!player_structure.isAdmin(structure, self))
         {
             boolean allowContinue = false;
+
             if (sGot == GOT_building_factional || sGot == GOT_installation_turret || sGot == GOT_installation_minefield)
             {
                 int pFac = pvpGetAlignedFaction(self);
                 int sFac = pvpGetAlignedFaction(structure);
+
                 if (pFac == sFac)
                 {
                     allowContinue = true;
                 }
             }
+
             if (!allowContinue)
             {
-                LOG("LOG_CHANNEL", "You must be a building admin to do that.");
-                sendSystemMessage(self, new string_id(STF, "must_be_admin"));
-                return SCRIPT_CONTINUE;
+                // Check for "spy" skill
+                if (hasSkill(self, "class_spy_phase1_novice"))
+                {
+                    allowContinue = true;
+                }
+                else
+                {
+                    LOG("LOG_CHANNEL", "You must be a building admin to do that.");
+                    sendSystemMessage(self, new string_id(STF, "must_be_admin"));
+                    return SCRIPT_CONTINUE;
+                }
             }
         }
         if (!player_structure.isInAdminRange(structure, self))

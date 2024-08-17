@@ -64,4 +64,4 @@ walker_at_xt_player	object/intangible/vehicle/walker_at_xt_pcd.iff	object/mobile
 single_pod_airspeeder	object/intangible/vehicle/tcg_8_air_speeder_pcd.iff	object/mobile/vehicle/tcg_8_air_speeder.iff	object/tangible/tcg/series8/garage_display_vehicles/tcg_8_air_speeder.iff	15	4	1
 atst_walker	object/intangible/vehicle/walker_at_st_walker_pcd.iff	object/mobile/vehicle/walker_at_st.iff	object/tangible/tcg/series7/garage_display_vehicles/hoth_at_st.iff	20	4	1
 atxt_walker	object/intangible/vehicle/walker_at_xt_pcd.iff	object/mobile/vehicle/walker_at_xt_player.iff	object/tangible/tcg/series7/garage_display_vehicles/walker_at_xt.iff	20	4	1
-
+tie_fighter	object/intangible/vehicle/tie_fighter_pcd.iff	object/mobile/vehicle/tie_fighter.iff	object/tangible/tcg/series7/garage_display_vehicles/tcg_republic_gunship.iff	20	4	1

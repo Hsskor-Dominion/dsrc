@@ -184,7 +184,7 @@ class_medic_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1	cybernetic_psychosis_resistance=2,expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20,me_doom_chance=5			1	0
 class_medic_phase1_02	class_medic_phase1	oneByFour	0	0	0	0	100	0		class_medic_phase1_novice		combat_general	3700	16120							me_dm_1,me_bacta_ampule_1				1	0
 class_medic_phase1_03	class_medic_phase1_02	oneByFour	0	0	0	0	100	0		class_medic_phase1_02		combat_general	12400	30160							me_dm_dot_1				1	0
-class_medic_phase1_04	class_medic_phase1_03	oneByFour	0	0	0	0	100	0		class_medic_phase1_03		combat_general	23200	67730							me_ae_heal_2,me_rv_ooc,me_rv_pvp_single,me_drag_1				1	0
+class_medic_phase1_04	class_medic_phase1_03	oneByFour	0	0	0	0	100	0		class_medic_phase1_03		combat_general	23200	67730							me_ae_heal_2,me_rv_ooc,me_rv_pvp_single				1	0
 class_medic_phase1_05	class_medic_phase1_04	oneByFour	0	0	0	0	100	0		class_medic_phase1_04		combat_general	52100	105300							me_dm_2,me_bacta_ampule_2				1	0
 class_medic_phase1_master	class_medic_phase1	oneByFour	0	1	0	0	100	0		class_medic_phase1_05		combat_general	81000	151060							me_dm_3,me_bacta_ampule_3	cybernetic_psychosis_resistance=2			1	0
 class_medic_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
@@ -2009,7 +2009,7 @@ expertise_me_hot_duration_2	expertise_me_hot_duration_1																					expe
 expertise_me_hot_duration_3	expertise_me_hot_duration_2																					expertise_healing_line_me_hot=15			0	
 expertise_me_hot_duration_4	expertise_me_hot_duration_3																					expertise_healing_line_me_hot=15			0	
 expertise_me_drag	expertise_me_heal_action_4			1						expertise_me_heal_action_4											me_drag_1				0	
-expertise_me_revive_duration_1	expertise_me_enhance_duration_4									expertise_me_enhance_duration_4											me_rv_ooc,me_rv_pvp_single,me_drag_1	expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3,expertise_dot_absorption_all=3			0	
+expertise_me_revive_duration_1	expertise_me_enhance_duration_4									expertise_me_enhance_duration_4											me_rv_ooc,me_rv_pvp_single	expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3,expertise_dot_absorption_all=3			0	
 expertise_me_revive_duration_2	expertise_me_revive_duration_1																					expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3,expertise_dot_absorption_all=3			0	
 expertise_me_revive_duration_3	expertise_me_revive_duration_2																					expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3,expertise_dot_absorption_all=3			0	
 expertise_me_revive_duration_4	expertise_me_revive_duration_3																					expertise_cooldown_line_me_revive=3,expertise_cooldown_line_me_aoe_revive=3,expertise_dot_absorption_all=3			0	
@@ -2283,7 +2283,7 @@ expertise_sp_protective_armor_3	expertise_sp_protective_armor_2																	
 expertise_sp_protective_armor_4	expertise_sp_protective_armor_3																					expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300,detect_hidden=20				
 expertise_sp_improved_arachnids_web_1	expertise																				sp_improved_cc_dot_0					
 expertise_sp_assassins_mark	expertise_bh_trap_duration_4									expertise_bh_trap_duration_4											sp_assassins_mark	bh_dire_snare=10,bh_dire_root=10				
-expertise_sp_run_its_course_1	expertise_me_heal_damage_4			1						expertise_me_heal_damage_4											sp_run_its_course					
+expertise_sp_run_its_course_1	expertise_me_heal_damage_4			1						expertise_me_heal_damage_4											sp_run_its_course,me_drag_1					
 expertise_sp_noxious_traps_1	expertise																					expertise_damage_line_fldmot=15				
 expertise_sp_noxious_traps_2	expertise_sp_noxious_traps_1																					expertise_damage_line_fldmot=15				
 expertise_sp_opportunity_1	expertise																					expertise_critical_niche_all=2				

@@ -290,8 +290,8 @@ public class politician extends script.base_script
             revokeSkill(player, "faction_rank_mando_novice");
             revokeSkill(player, "stardust_admiral_imperial");
             revokeSkill(player, "stardust_admiral_republic");
-            factions.addFactionStanding(player, "underworld", 10000.0f);
-            factions.addFactionStanding(player, "underworld", -5000.0f);
+            factions.addFactionStanding(player, "underworld", 40000.0f);
+            factions.addFactionStanding(player, "underworld", -20000.0f);
 
             utils.removeScriptVar(player, "conversation.politician_conversation.branchId");
             npcEndConversationWithMessage(player, message);

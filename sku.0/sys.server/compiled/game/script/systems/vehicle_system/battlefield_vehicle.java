@@ -3,6 +3,7 @@ package script.systems.vehicle_system;
 import script.*;
 import script.library.*;
 
+
 public class battlefield_vehicle extends script.base_script
 {
     public battlefield_vehicle()
@@ -13,7 +14,7 @@ public class battlefield_vehicle extends script.base_script
     public static final boolean debug = false;
     public int OnAttach(obj_id self) throws InterruptedException
     {
-        checkForAllowedZones(self);
+        //checkForAllowedZones(self); //this should allow battlefield vehicles anywhere
         setAttributeAttained(self, attrib.VEHICLE);
         detachScript(self, "systems.vehicle_system.vehicle_base");
         detachScript(self, "systems.vehicle_system.vehicle_ping");
@@ -92,7 +93,7 @@ public class battlefield_vehicle extends script.base_script
     }
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
     {
-        checkForAllowedZones(self);
+        //checkForAllowedZones(self);
         if (isDisabled(self))
         {
             return SCRIPT_CONTINUE;
@@ -210,12 +211,12 @@ public class battlefield_vehicle extends script.base_script
     }
     public int OnLogin(obj_id self) throws InterruptedException
     {
-        checkForAllowedZones(self);
+        //checkForAllowedZones(self);
         return SCRIPT_OVERRIDE;
     }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
-        checkForAllowedZones(self);
+        //checkForAllowedZones(self);
         return SCRIPT_OVERRIDE;
     }
     public void debugMessaging(obj_id self, String message) throws InterruptedException
@@ -230,48 +231,49 @@ public class battlefield_vehicle extends script.base_script
     }
     public void checkForAllowedZones(obj_id self) throws InterruptedException
     {
-        String allowedZonesString = "all";
-        boolean allowedHere = false;
-        if (hasObjVar(self, "battlefield_vehicle.overrideAllowedZones"))
-        {
-            allowedZonesString = getStringObjVar(self, "battlefield_vehicle.overrideAllowedZones");
-        }
-        else if (utils.hasScriptVar(self, "battlefield_vehicle.allowedZones"))
-        {
-            allowedZonesString = utils.getStringScriptVar(self, "battlefield_vehicle.allowedZones");
-        }
-        else 
-        {
-            allowedZonesString = dataTableGetString(TABLE, getVehicleType(self), "allowed_zones");
-            utils.setScriptVar(self, "battlefield_vehicle.allowedZones", allowedZonesString);
-        }
-        if (allowedZonesString != null && allowedZonesString.length() > 0)
-        {
-            if (!allowedZonesString.equals("all"))
-            {
-                location here = getLocation(self);
-                String zone = here.area;
-                String[] allowedZones = split(allowedZonesString, ',');
-                for (String allowedZone : allowedZones) {
-                    if (allowedZone.equals(zone)) {
-                        allowedHere = true;
-                    }
-                }
-            }
-            else 
-            {
-                allowedHere = true;
-            }
-        }
-        else 
-        {
-            allowedHere = true;
-        }
-        if (!allowedHere)
-        {
-            removePlayersFromVehicleAndDestroySelf(self, 1.0f);
-        }
-        return;
+        decayVehicle(self);
+//        String allowedZonesString = "all";
+//        boolean allowedHere = false;
+//        if (hasObjVar(self, "battlefield_vehicle.overrideAllowedZones"))
+//        {
+//            allowedZonesString = getStringObjVar(self, "battlefield_vehicle.overrideAllowedZones");
+//        }
+//        else if (utils.hasScriptVar(self, "battlefield_vehicle.allowedZones"))
+//        {
+//            allowedZonesString = utils.getStringScriptVar(self, "battlefield_vehicle.allowedZones");
+//        }
+//        else
+//        {
+//            allowedZonesString = dataTableGetString(TABLE, getVehicleType(self), "allowed_zones");
+//            utils.setScriptVar(self, "battlefield_vehicle.allowedZones", allowedZonesString);
+//        }
+//        if (allowedZonesString != null && allowedZonesString.length() > 0)
+//        {
+//            if (!allowedZonesString.equals("all"))
+//            {
+//                location here = getLocation(self);
+//                String zone = here.area;
+//                String[] allowedZones = split(allowedZonesString, ',');
+//                for (String allowedZone : allowedZones) {
+//                    if (allowedZone.equals(zone)) {
+//                        allowedHere = true;
+//                    }
+//                }
+//            }
+//            else
+//            {
+//                allowedHere = true;
+//            }
+//        }
+//        else
+//        {
+//            allowedHere = true;
+//        }
+//        if (!allowedHere)
+//        {
+//            //removePlayersFromVehicleAndDestroySelf(self, 1.0f);
+//        }
+//        return;
     }
     public int destroyNow(obj_id self, dictionary params) throws InterruptedException
     {

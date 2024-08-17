@@ -1,0 +1,12 @@
+@base object/intangible/vehicle/shared_vehicle_pcd_base.iff
+
+@class intangible_object_template 0
+
+@class object_template 5
+
+
+objectName = "space_ship" "player_tiefighter"
+detailedDescription = "" ""
+
+appearanceFilename = "appearance/tie_fighter_model.apt"
+

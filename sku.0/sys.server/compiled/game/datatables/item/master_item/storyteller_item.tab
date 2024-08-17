@@ -4,42 +4,42 @@ st_th_flat_small_01_01	object/tangible/storyteller/theater/flat_layer_small.iff	
 st_th_flat_medium_01_01	object/tangible/storyteller/theater/flat_layer_medium.iff	theater	-1	1							25		
 st_th_flat_large_01_01	object/tangible/storyteller/theater/flat_layer_large.iff	theater	-1	1							50		
 st_ie_artillery_strike_01_01	clienteffect/restuss_event_artillery_strike.cef	immediate_effect	1000										1
-st_cn_tusken_raider_01_01	storyteller_tusken_raider	combat_npc	1000										
-st_pr_tiki_torch_01_01	object/tangible/storyteller/prop/pr_tiki_torch.iff	prop	1000									1	
-st_pr_tent_basic_01_01	object/tangible/storyteller/prop/pr_tent_basic.iff	prop	1000										
-st_pr_campfire_logs_smoldering_01_01	object/tangible/storyteller/prop/pr_campfire_logs_smoldering.iff	prop	1000										
-st_pr_atf_sith_altar	object/tangible/storyteller/prop/pr_atf_sith_altar.iff	prop	1000									1	
-st_pr_clone_barc_speeder	object/tangible/storyteller/prop/pr_clone_barc_speeder.iff	prop	1000										
-st_pr_destroyed_transport_1	object/tangible/storyteller/prop/pr_destroyed_transport_1.iff	prop	1000										
-st_pr_destroyed_transport_2	object/tangible/storyteller/prop/pr_destroyed_transport_2.iff	prop	1000										
-st_pr_edb_all_meat_s01	object/tangible/storyteller/prop/pr_edb_all_meat_s01.iff	prop	1000									1	
-st_pr_eqp_bacta_tank_lg	object/tangible/storyteller/prop/pr_eqp_bacta_tank_lg.iff	prop	1000									1	
-st_pr_eqp_bones_must_monster_jaw_large	object/tangible/storyteller/prop/pr_eqp_bones_must_monster_jaw_large.iff	prop	1000									1	
-st_pr_eqp_bones_must_monster_jaw_small	object/tangible/storyteller/prop/pr_eqp_bones_must_monster_jaw_small.iff	prop	1000									1	
-st_pr_eqp_camping_chair_s1	object/tangible/storyteller/prop/pr_eqp_camping_chair_s1.iff	prop	1000									1	
-st_pr_eqp_camping_chair_s2	object/tangible/storyteller/prop/pr_eqp_camping_chair_s2.iff	prop	1000									1	
-st_pr_flash_speeder	object/tangible/storyteller/prop/pr_flash_speeder.iff	prop	1000										
-st_pr_lambda_shuttle_static_s01	object/tangible/storyteller/prop/pr_lambda_shuttle_static_s01.iff	prop	1000										
-st_pr_poi_all_ithorian_head	object/tangible/storyteller/prop/pr_poi_all_ithorian_head.iff	prop	1000									1	
-st_pr_poi_all_xwing	object/tangible/storyteller/prop/pr_poi_all_xwing.iff	prop	1000										
-st_pr_poi_tao_podracer_sebulba_destroyed	object/tangible/storyteller/prop/pr_poi_tao_podracer_sebulba_destroyed.iff	prop	1000										
-st_pr_sandcrawler	object/tangible/storyteller/prop/pr_sandcrawler.iff	prop	1000										
-st_pr_thm_all_impl_banner_freestand_s01	object/tangible/storyteller/prop/pr_thm_all_impl_banner_freestand_s01.iff	prop	1000									1	
-st_pr_thm_all_rebl_banner_freestand_s01	object/tangible/storyteller/prop/pr_thm_all_rebl_banner_freestand_s01.iff	prop	1000									1	
-st_pr_thm_all_tato_banner_freestand_s01	object/tangible/storyteller/prop/pr_thm_all_tato_banner_freestand_s01.iff	prop	1000									1	
-st_pr_thm_corl_banner_govt_tall	object/tangible/storyteller/prop/pr_thm_corl_banner_govt_tall.iff	prop	1000										
-st_pr_tie_bomber	object/tangible/storyteller/prop/pr_tie_bomber.iff	prop	1000										
-st_pr_yt1300_ground	object/tangible/storyteller/prop/pr_yt1300_ground.iff	prop	1000										
-st_pr_yt2400_ground_r0	object/tangible/storyteller/prop/pr_yt2400_ground_r0.iff	prop	1000										
+st_cn_tusken_raider_01_01	storyteller_tusken_raider	combat_npc	1000										1
+st_pr_tiki_torch_01_01	object/tangible/storyteller/prop/pr_tiki_torch.iff	prop	1000									1	1
+st_pr_tent_basic_01_01	object/tangible/storyteller/prop/pr_tent_basic.iff	prop	1000										1
+st_pr_campfire_logs_smoldering_01_01	object/tangible/storyteller/prop/pr_campfire_logs_smoldering.iff	prop	1000										1
+st_pr_atf_sith_altar	object/tangible/storyteller/prop/pr_atf_sith_altar.iff	prop	1000									1	1
+st_pr_clone_barc_speeder	object/tangible/storyteller/prop/pr_clone_barc_speeder.iff	prop	1000										1
+st_pr_destroyed_transport_1	object/tangible/storyteller/prop/pr_destroyed_transport_1.iff	prop	1000										1
+st_pr_destroyed_transport_2	object/tangible/storyteller/prop/pr_destroyed_transport_2.iff	prop	1000										1
+st_pr_edb_all_meat_s01	object/tangible/storyteller/prop/pr_edb_all_meat_s01.iff	prop	1000									1	1
+st_pr_eqp_bacta_tank_lg	object/tangible/storyteller/prop/pr_eqp_bacta_tank_lg.iff	prop	1000									1	1
+st_pr_eqp_bones_must_monster_jaw_large	object/tangible/storyteller/prop/pr_eqp_bones_must_monster_jaw_large.iff	prop	1000									1	1
+st_pr_eqp_bones_must_monster_jaw_small	object/tangible/storyteller/prop/pr_eqp_bones_must_monster_jaw_small.iff	prop	1000									1	1
+st_pr_eqp_camping_chair_s1	object/tangible/storyteller/prop/pr_eqp_camping_chair_s1.iff	prop	1000									1	1
+st_pr_eqp_camping_chair_s2	object/tangible/storyteller/prop/pr_eqp_camping_chair_s2.iff	prop	1000									1	1
+st_pr_flash_speeder	object/tangible/storyteller/prop/pr_flash_speeder.iff	prop	1000										1
+st_pr_lambda_shuttle_static_s01	object/tangible/storyteller/prop/pr_lambda_shuttle_static_s01.iff	prop	1000										1
+st_pr_poi_all_ithorian_head	object/tangible/storyteller/prop/pr_poi_all_ithorian_head.iff	prop	1000									1	1
+st_pr_poi_all_xwing	object/tangible/storyteller/prop/pr_poi_all_xwing.iff	prop	1000										1
+st_pr_poi_tao_podracer_sebulba_destroyed	object/tangible/storyteller/prop/pr_poi_tao_podracer_sebulba_destroyed.iff	prop	1000										1
+st_pr_sandcrawler	object/tangible/storyteller/prop/pr_sandcrawler.iff	prop	1000										1
+st_pr_thm_all_impl_banner_freestand_s01	object/tangible/storyteller/prop/pr_thm_all_impl_banner_freestand_s01.iff	prop	1000									1	1
+st_pr_thm_all_rebl_banner_freestand_s01	object/tangible/storyteller/prop/pr_thm_all_rebl_banner_freestand_s01.iff	prop	1000									1	1
+st_pr_thm_all_tato_banner_freestand_s01	object/tangible/storyteller/prop/pr_thm_all_tato_banner_freestand_s01.iff	prop	1000									1	1
+st_pr_thm_corl_banner_govt_tall	object/tangible/storyteller/prop/pr_thm_corl_banner_govt_tall.iff	prop	1000										1
+st_pr_tie_bomber	object/tangible/storyteller/prop/pr_tie_bomber.iff	prop	1000										1
+st_pr_yt1300_ground	object/tangible/storyteller/prop/pr_yt1300_ground.iff	prop	1000										1
+st_pr_yt2400_ground_r0	object/tangible/storyteller/prop/pr_yt2400_ground_r0.iff	prop	1000										1
 st_cn_stormtrooper_01	storyteller_stormtrooper	combat_npc	1000									1	1
 st_cn_meatlump_01	storyteller_meatlump	combat_npc	1000									1	1
-st_pr_web	object/tangible/storyteller/prop/pr_web.iff	prop	1000									1	
-st_pr_tie_fighter	object/tangible/storyteller/prop/pr_tie_fighter.iff	prop	1000										
-st_pr_tank_farm	object/tangible/storyteller/prop/pr_tank_farm.iff	prop	1000										
-st_pr_table_modern_dining	object/tangible/storyteller/prop/pr_table_modern_dining.iff	prop	1000									1	
-st_pr_table_light_01	object/tangible/storyteller/prop/pr_table_light_01.iff	prop	1000									1	
-st_pr_table_dark_01	object/tangible/storyteller/prop/pr_table_dark_01.iff	prop	1000									1	
-st_pr_table_dark_02	object/tangible/storyteller/prop/pr_table_dark_02.iff	prop	1000									1	
+st_pr_web	object/tangible/storyteller/prop/pr_web.iff	prop	1000									1	1
+st_pr_tie_fighter	object/tangible/storyteller/prop/pr_tie_fighter.iff	prop	1000										1
+st_pr_tank_farm	object/tangible/storyteller/prop/pr_tank_farm.iff	prop	1000										1
+st_pr_table_modern_dining	object/tangible/storyteller/prop/pr_table_modern_dining.iff	prop	1000									1	1
+st_pr_table_light_01	object/tangible/storyteller/prop/pr_table_light_01.iff	prop	1000									1	1
+st_pr_table_dark_01	object/tangible/storyteller/prop/pr_table_dark_01.iff	prop	1000									1	1
+st_pr_table_dark_02	object/tangible/storyteller/prop/pr_table_dark_02.iff	prop	1000									1	1
 st_pr_streetlamp_small_01	object/tangible/storyteller/prop/pr_streetlamp_small_01.iff	prop	1000									1	
 st_pr_streetlamp_large_01	object/tangible/storyteller/prop/pr_streetlamp_large_01.iff	prop	1000										
 st_pr_rodian_shuttle	object/tangible/storyteller/prop/pr_rodian_shuttle.iff	prop	1000										
@@ -228,83 +228,83 @@ st_fn_protocol_droid_3po_gold	storyteller_protocol_droid_3po	flavor_npc	1000				
 st_fn_protocol_droid_3po_red	storyteller_protocol_droid_3po_red	flavor_npc	1000									1	1
 st_fn_protocol_droid_3po_silver	storyteller_protocol_droid_3po_silver	flavor_npc	1000									1	1
 st_fn_surgical_droid_21b	storyteller_surgical_droid_21b	flavor_npc	1000									1	1
-st_pr_21bmedical_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_21bmedical_powerdown.iff	prop	1000									1	
-st_pr_4lom_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_4lom_powerdown.iff	prop	1000									1	
-st_pr_droideka_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_droideka_powerdown.iff	prop	1000									1	
-st_pr_lemedical_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_lemedical_powerdown.iff	prop	1000									1	
-st_pr_powerdroid_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_powerdroid_powerdown.iff	prop	1000									1	
-st_pr_probedroid_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_probedroid_powerdown.iff	prop	1000									1	
-st_pr_r2_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_r2_powerdown.iff	prop	1000									1	
-st_pr_r3_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_r3_powerdown.iff	prop	1000									1	
-st_pr_r4_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_r4_powerdown.iff	prop	1000									1	
-st_pr_r5_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_r5_powerdown.iff	prop	1000									1	
-st_pr_ra7_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_ra7_powerdown.iff	prop	1000									1	
-st_pr_gate_corellia_01	object/tangible/storyteller/prop/pr_ch9_gate_corellia_01.iff	prop	1000										
-st_pr_gate_corellia_02	object/tangible/storyteller/prop/pr_ch9_gate_corellia_02.iff	prop	1000										
-st_pr_gate_naboo_01	object/tangible/storyteller/prop/pr_ch9_gate_naboo_01.iff	prop	1000										
-st_pr_gate_tatooine_01	object/tangible/storyteller/prop/pr_ch9_gate_tatooine_01.iff	prop	1000										
-st_pr_generator	object/tangible/storyteller/prop/pr_ch9_generator.iff	prop	1000										
-st_pr_guard_tower	object/tangible/storyteller/prop/pr_ch9_guard_tower.iff	prop	1000										
-st_pr_installation_creature_farm	object/tangible/storyteller/prop/pr_ch9_installation_creature_farm.iff	prop	1000										
-st_pr_installation_flora_farm	object/tangible/storyteller/prop/pr_ch9_installation_flora_farm.iff	prop	1000										
-st_pr_installation_fusion_generator	object/tangible/storyteller/prop/pr_ch9_installation_fusion_generator.iff	prop	1000										
-st_pr_installation_gas_harvester	object/tangible/storyteller/prop/pr_ch9_installation_gas_harvester.iff	prop	1000										
-st_pr_installation_liquid_harvester	object/tangible/storyteller/prop/pr_ch9_installation_liquid_harvester.iff	prop	-1										
-st_pr_installation_moisture_harvester	object/tangible/storyteller/prop/pr_ch9_installation_moisture_harvester.iff	prop	1000										
-st_pr_installation_ore_harvester_style_1	object/tangible/storyteller/prop/pr_ch9_installation_ore_harvester_style_1.iff	prop	-1										
-st_pr_installation_ore_harvester_style_2	object/tangible/storyteller/prop/pr_ch9_installation_ore_harvester_style_2.iff	prop	-1										
-st_pr_installation_solar_generator	object/tangible/storyteller/prop/pr_ch9_installation_solar_generator.iff	prop	1000										
-st_pr_installation_wind_generator	object/tangible/storyteller/prop/pr_ch9_installation_wind_generator.iff	prop	-1										
-st_pr_landspeeder_av21	object/tangible/storyteller/prop/pr_ch9_landspeeder_av21.iff	prop	1000										
-st_pr_landspeeder_xp34	object/tangible/storyteller/prop/pr_ch9_landspeeder_xp34.iff	prop	1000										
-st_pr_lava_skiff	object/tangible/storyteller/prop/pr_ch9_lava_skiff.iff	prop	1000										
-st_pr_pillar_corellia_01	object/tangible/storyteller/prop/pr_ch9_pillar_corellia_01.iff	prop	1000										
-st_pr_pillar_corellia_02	object/tangible/storyteller/prop/pr_ch9_pillar_corellia_02.iff	prop	1000										
-st_pr_pillar_military_imp_strong	object/tangible/storyteller/prop/pr_ch9_pillar_military_imp_strong.iff	prop	1000										
-st_pr_pillar_military_imp_weak	object/tangible/storyteller/prop/pr_ch9_pillar_military_imp_weak.iff	prop	1000										
-st_pr_pillar_military_reb_strong	object/tangible/storyteller/prop/pr_ch9_pillar_military_reb_strong.iff	prop	1000										
-st_pr_pillar_military_reb_weak	object/tangible/storyteller/prop/pr_ch9_pillar_military_reb_weak.iff	prop	1000										
-st_pr_pillar_naboo_01	object/tangible/storyteller/prop/pr_ch9_pillar_naboo_01.iff	prop	1000										
-st_pr_pillar_naboo_02	object/tangible/storyteller/prop/pr_ch9_pillar_naboo_02.iff	prop	1000										
-st_pr_pillar_tatooine_01	object/tangible/storyteller/prop/pr_ch9_pillar_tatooine_01.iff	prop	1000										
-st_pr_scaffolding_short	object/tangible/storyteller/prop/pr_ch9_scaffolding_short.iff	prop	1000									1	
-st_pr_scaffolding_tall	object/tangible/storyteller/prop/pr_ch9_scaffolding_tall.iff	prop	1000										
-st_pr_speeder_ab1	object/tangible/storyteller/prop/pr_ch9_speeder_ab1.iff	prop	1000										
-st_pr_speeder_bike	object/tangible/storyteller/prop/pr_ch9_speeder_bike.iff	prop	1000										
-st_pr_swoop_bike	object/tangible/storyteller/prop/pr_ch9_swoop_bike.iff	prop	1000										
-st_pr_wall_corellia_01	object/tangible/storyteller/prop/pr_ch9_wall_corellia_01.iff	prop	1000										
-st_pr_wall_corellia_02	object/tangible/storyteller/prop/pr_ch9_wall_corellia_02.iff	prop	1000										
-st_pr_wall_military_imp_strong	object/tangible/storyteller/prop/pr_ch9_wall_military_imp_strong.iff	prop	1000										
-st_pr_wall_military_imp_weak	object/tangible/storyteller/prop/pr_ch9_wall_military_imp_weak.iff	prop	1000										
-st_pr_wall_military_reb_strong	object/tangible/storyteller/prop/pr_ch9_wall_military_reb_strong.iff	prop	1000										
-st_pr_wall_military_reb_weak	object/tangible/storyteller/prop/pr_ch9_wall_military_reb_weak.iff	prop	1000										
-st_pr_wall_naboo_short	object/tangible/storyteller/prop/pr_ch9_wall_naboo_short.iff	prop	1000										
-st_pr_wall_naboo_tall	object/tangible/storyteller/prop/pr_ch9_wall_naboo_tall.iff	prop	1000										
-st_pr_wall_tatooine_01	object/tangible/storyteller/prop/pr_ch9_wall_tatooine_01.iff	prop	1000										
-st_pr_worklamp	object/tangible/storyteller/prop/pr_ch9_worklamp.iff	prop	1000									1	
-st_pr_holiday_emperors_day_statue	object/tangible/storyteller/event_props/pr_emperors_day_emperor.iff	prop	1000		-1								
-st_pr_holiday_emperors_day_fountain	object/tangible/storyteller/event_props/pr_emperors_day_yoda.iff	prop	-1		-1								
-st_pr_scarecrow_01	object/tangible/storyteller/prop/pr_scarecrow_01.iff	prop	1000		2							1	
-st_pr_scarecrow_02	object/tangible/storyteller/prop/pr_scarecrow_02.iff	prop	1000		2							1	
-st_pr_hoth_cable_box_01	object/tangible/storyteller/prop/hoth/pr_hoth_cable_box_01.iff	prop	-1									1	
-st_pr_hoth_cable_box_02	object/tangible/storyteller/prop/hoth/pr_hoth_cable_box_02.iff	prop	-1									1	
-st_pr_hoth_cable_box_03	object/tangible/storyteller/prop/hoth/pr_hoth_cable_box_03.iff	prop	-1									1	
-st_pr_hoth_crate_01	object/tangible/storyteller/prop/hoth/pr_hoth_crate_01.iff	prop	-1									1	
-st_pr_hoth_crate_02	object/tangible/storyteller/prop/hoth/pr_hoth_crate_02.iff	prop	-1									1	
-st_pr_hoth_crate_03	object/tangible/storyteller/prop/hoth/pr_hoth_crate_03.iff	prop	-1									1	
-st_pr_hoth_icicle_01	object/tangible/storyteller/prop/hoth/pr_hoth_icicle_01.iff	prop	-1									1	
-st_pr_hoth_icicle_02	object/tangible/storyteller/prop/hoth/pr_hoth_icicle_02.iff	prop	-1									1	
-st_pr_hoth_icicle_03	object/tangible/storyteller/prop/hoth/pr_hoth_icicle_03.iff	prop	-1									1	
-st_pr_hoth_light_standing	object/tangible/storyteller/prop/hoth/pr_hoth_light_standing.iff	prop	-1									1	
-st_pr_hoth_radio	object/tangible/storyteller/prop/hoth/pr_hoth_radio.iff	prop	-1									1	
-st_pr_hoth_scaffold	object/tangible/storyteller/prop/hoth/pr_hoth_scaffold.iff	prop	-1									1	
-st_pr_hoth_snow_trooper_gun	object/tangible/storyteller/prop/hoth/pr_hoth_snow_trooper_gun.iff	prop	-1									1	
-st_pr_hoth_terminal_01	object/tangible/storyteller/prop/hoth/pr_hoth_terminal_01.iff	prop	-1									1	
-st_pr_hoth_toolbox	object/tangible/storyteller/prop/hoth/pr_hoth_toolbox.iff	prop	-1									1	
-st_cn_hoth_imperial_atst	storyteller_at_st	combat_npc	1000										
+st_pr_21bmedical_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_21bmedical_powerdown.iff	prop	1000									1	1
+st_pr_4lom_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_4lom_powerdown.iff	prop	1000									1	1
+st_pr_droideka_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_droideka_powerdown.iff	prop	1000									1	1
+st_pr_lemedical_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_lemedical_powerdown.iff	prop	1000									1	1
+st_pr_powerdroid_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_powerdroid_powerdown.iff	prop	1000									1	1
+st_pr_probedroid_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_probedroid_powerdown.iff	prop	1000									1	1
+st_pr_r2_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_r2_powerdown.iff	prop	1000									1	1
+st_pr_r3_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_r3_powerdown.iff	prop	1000									1	1
+st_pr_r4_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_r4_powerdown.iff	prop	1000									1	1
+st_pr_r5_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_r5_powerdown.iff	prop	1000									1	1
+st_pr_ra7_powerdown	object/tangible/storyteller/prop/pr_ch9_droid_ra7_powerdown.iff	prop	1000									1	1
+st_pr_gate_corellia_01	object/tangible/storyteller/prop/pr_ch9_gate_corellia_01.iff	prop	1000										1
+st_pr_gate_corellia_02	object/tangible/storyteller/prop/pr_ch9_gate_corellia_02.iff	prop	1000										1
+st_pr_gate_naboo_01	object/tangible/storyteller/prop/pr_ch9_gate_naboo_01.iff	prop	1000										1
+st_pr_gate_tatooine_01	object/tangible/storyteller/prop/pr_ch9_gate_tatooine_01.iff	prop	1000										1
+st_pr_generator	object/tangible/storyteller/prop/pr_ch9_generator.iff	prop	1000										1
+st_pr_guard_tower	object/tangible/storyteller/prop/pr_ch9_guard_tower.iff	prop	1000										1
+st_pr_installation_creature_farm	object/tangible/storyteller/prop/pr_ch9_installation_creature_farm.iff	prop	1000										1
+st_pr_installation_flora_farm	object/tangible/storyteller/prop/pr_ch9_installation_flora_farm.iff	prop	1000										1
+st_pr_installation_fusion_generator	object/tangible/storyteller/prop/pr_ch9_installation_fusion_generator.iff	prop	1000										1
+st_pr_installation_gas_harvester	object/tangible/storyteller/prop/pr_ch9_installation_gas_harvester.iff	prop	1000										1
+st_pr_installation_liquid_harvester	object/tangible/storyteller/prop/pr_ch9_installation_liquid_harvester.iff	prop	-1										1
+st_pr_installation_moisture_harvester	object/tangible/storyteller/prop/pr_ch9_installation_moisture_harvester.iff	prop	1000										1
+st_pr_installation_ore_harvester_style_1	object/tangible/storyteller/prop/pr_ch9_installation_ore_harvester_style_1.iff	prop	-1										1
+st_pr_installation_ore_harvester_style_2	object/tangible/storyteller/prop/pr_ch9_installation_ore_harvester_style_2.iff	prop	-1										1
+st_pr_installation_solar_generator	object/tangible/storyteller/prop/pr_ch9_installation_solar_generator.iff	prop	1000										1
+st_pr_installation_wind_generator	object/tangible/storyteller/prop/pr_ch9_installation_wind_generator.iff	prop	-1										1
+st_pr_landspeeder_av21	object/tangible/storyteller/prop/pr_ch9_landspeeder_av21.iff	prop	1000										1
+st_pr_landspeeder_xp34	object/tangible/storyteller/prop/pr_ch9_landspeeder_xp34.iff	prop	1000										1
+st_pr_lava_skiff	object/tangible/storyteller/prop/pr_ch9_lava_skiff.iff	prop	1000										1
+st_pr_pillar_corellia_01	object/tangible/storyteller/prop/pr_ch9_pillar_corellia_01.iff	prop	1000										1
+st_pr_pillar_corellia_02	object/tangible/storyteller/prop/pr_ch9_pillar_corellia_02.iff	prop	1000										1
+st_pr_pillar_military_imp_strong	object/tangible/storyteller/prop/pr_ch9_pillar_military_imp_strong.iff	prop	1000										1
+st_pr_pillar_military_imp_weak	object/tangible/storyteller/prop/pr_ch9_pillar_military_imp_weak.iff	prop	1000										1
+st_pr_pillar_military_reb_strong	object/tangible/storyteller/prop/pr_ch9_pillar_military_reb_strong.iff	prop	1000										1
+st_pr_pillar_military_reb_weak	object/tangible/storyteller/prop/pr_ch9_pillar_military_reb_weak.iff	prop	1000										1
+st_pr_pillar_naboo_01	object/tangible/storyteller/prop/pr_ch9_pillar_naboo_01.iff	prop	1000										1
+st_pr_pillar_naboo_02	object/tangible/storyteller/prop/pr_ch9_pillar_naboo_02.iff	prop	1000										1
+st_pr_pillar_tatooine_01	object/tangible/storyteller/prop/pr_ch9_pillar_tatooine_01.iff	prop	1000										1
+st_pr_scaffolding_short	object/tangible/storyteller/prop/pr_ch9_scaffolding_short.iff	prop	1000									1	1
+st_pr_scaffolding_tall	object/tangible/storyteller/prop/pr_ch9_scaffolding_tall.iff	prop	1000										1
+st_pr_speeder_ab1	object/tangible/storyteller/prop/pr_ch9_speeder_ab1.iff	prop	1000										1
+st_pr_speeder_bike	object/tangible/storyteller/prop/pr_ch9_speeder_bike.iff	prop	1000										1
+st_pr_swoop_bike	object/tangible/storyteller/prop/pr_ch9_swoop_bike.iff	prop	1000										1
+st_pr_wall_corellia_01	object/tangible/storyteller/prop/pr_ch9_wall_corellia_01.iff	prop	1000										1
+st_pr_wall_corellia_02	object/tangible/storyteller/prop/pr_ch9_wall_corellia_02.iff	prop	1000										1
+st_pr_wall_military_imp_strong	object/tangible/storyteller/prop/pr_ch9_wall_military_imp_strong.iff	prop	1000										1
+st_pr_wall_military_imp_weak	object/tangible/storyteller/prop/pr_ch9_wall_military_imp_weak.iff	prop	1000										1
+st_pr_wall_military_reb_strong	object/tangible/storyteller/prop/pr_ch9_wall_military_reb_strong.iff	prop	1000										1
+st_pr_wall_military_reb_weak	object/tangible/storyteller/prop/pr_ch9_wall_military_reb_weak.iff	prop	1000										1
+st_pr_wall_naboo_short	object/tangible/storyteller/prop/pr_ch9_wall_naboo_short.iff	prop	1000										1
+st_pr_wall_naboo_tall	object/tangible/storyteller/prop/pr_ch9_wall_naboo_tall.iff	prop	1000										1
+st_pr_wall_tatooine_01	object/tangible/storyteller/prop/pr_ch9_wall_tatooine_01.iff	prop	1000										1
+st_pr_worklamp	object/tangible/storyteller/prop/pr_ch9_worklamp.iff	prop	1000									1	1
+st_pr_holiday_emperors_day_statue	object/tangible/storyteller/event_props/pr_emperors_day_emperor.iff	prop	1000		-1								1
+st_pr_holiday_emperors_day_fountain	object/tangible/storyteller/event_props/pr_emperors_day_yoda.iff	prop	-1		-1								1
+st_pr_scarecrow_01	object/tangible/storyteller/prop/pr_scarecrow_01.iff	prop	1000		2							1	1
+st_pr_scarecrow_02	object/tangible/storyteller/prop/pr_scarecrow_02.iff	prop	1000		2							1	1
+st_pr_hoth_cable_box_01	object/tangible/storyteller/prop/hoth/pr_hoth_cable_box_01.iff	prop	-1									1	1
+st_pr_hoth_cable_box_02	object/tangible/storyteller/prop/hoth/pr_hoth_cable_box_02.iff	prop	-1									1	1
+st_pr_hoth_cable_box_03	object/tangible/storyteller/prop/hoth/pr_hoth_cable_box_03.iff	prop	-1									1	1
+st_pr_hoth_crate_01	object/tangible/storyteller/prop/hoth/pr_hoth_crate_01.iff	prop	-1									1	1
+st_pr_hoth_crate_02	object/tangible/storyteller/prop/hoth/pr_hoth_crate_02.iff	prop	-1									1	1
+st_pr_hoth_crate_03	object/tangible/storyteller/prop/hoth/pr_hoth_crate_03.iff	prop	-1									1	1
+st_pr_hoth_icicle_01	object/tangible/storyteller/prop/hoth/pr_hoth_icicle_01.iff	prop	-1									1	1
+st_pr_hoth_icicle_02	object/tangible/storyteller/prop/hoth/pr_hoth_icicle_02.iff	prop	-1									1	1
+st_pr_hoth_icicle_03	object/tangible/storyteller/prop/hoth/pr_hoth_icicle_03.iff	prop	-1									1	1
+st_pr_hoth_light_standing	object/tangible/storyteller/prop/hoth/pr_hoth_light_standing.iff	prop	-1									1	1
+st_pr_hoth_radio	object/tangible/storyteller/prop/hoth/pr_hoth_radio.iff	prop	-1									1	1
+st_pr_hoth_scaffold	object/tangible/storyteller/prop/hoth/pr_hoth_scaffold.iff	prop	-1									1	1
+st_pr_hoth_snow_trooper_gun	object/tangible/storyteller/prop/hoth/pr_hoth_snow_trooper_gun.iff	prop	-1									1	1
+st_pr_hoth_terminal_01	object/tangible/storyteller/prop/hoth/pr_hoth_terminal_01.iff	prop	-1									1	1
+st_pr_hoth_toolbox	object/tangible/storyteller/prop/hoth/pr_hoth_toolbox.iff	prop	-1									1	1
+st_cn_hoth_imperial_atst	storyteller_at_st	combat_npc	1000										1
 st_cn_hoth_imperial_snowtrooper	storyteller_imperial_snowtrooper	combat_npc	-1									1	1
 st_cn_hoth_rebel_snow_trooper	storyteller_rebel_snow_trooper	combat_npc	-1									1	1
-st_cn_hoth_wampa	storyteller_wampa	combat_npc	1000										
+st_cn_hoth_wampa	storyteller_wampa	combat_npc	1000										1
 item_costume_jawa	none	costume	1000										
 item_costume_gungan	none	costume	1000										
 item_costume_ewok	none	costume	1000										

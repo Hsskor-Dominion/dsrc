@@ -8590,3 +8590,4 @@ jedi_holocron	object/tangible/jedi/no_drop_jedi_holocron_light.iff							1				1	
 police_station	object/tangible/deed/player_house_deed/police_station.iff							4		item.structure_deed.player_structure_deed					
 police_station2	object/tangible/deed/player_house_deed/police_station2.iff							4							
 command_post	object/tangible/deed/player_house_deed/command_post.iff							4		item.structure_deed.player_structure_deed					
+item_deed_tie_fighter	object/tangible/loot/generic_deed/vehicle_generic.iff							6		systems.vehicle_system.vehicle_deed		1		Using this deed will create a new vehicle in your datapad.	

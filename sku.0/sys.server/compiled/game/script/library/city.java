@@ -138,7 +138,7 @@ public class city extends script.base_script
             location other_loc = cityGetLocation(all_city);
             if (other_loc.area.equals(loc.area)) {
                 float dist = utils.getDistance2D(loc, other_loc);
-                if (dist < 1100) {
+                if (dist < 905) {//this change makes cities placeable nearer one another
                     return all_city;
                 }
             }

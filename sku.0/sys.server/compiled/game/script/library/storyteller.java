@@ -1778,7 +1778,7 @@ public class storyteller extends script.base_script
         int city_id = getCityAtLocation(getLocation(object), 0);
         if (city_id > 0)
         {
-            cleanUpTime += 57600;
+            cleanUpTime += 172800;
             obj_id cityHall = cityGetCityHall(city_id);
             dictionary outparams = new dictionary();
             outparams.put("queryObject", object);

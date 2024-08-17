@@ -201,10 +201,12 @@ public class customization_kit extends script.base_script
                 {
                     if (!space_utils.isShipPaintable(objShip))
                     {
-                        string_id message = new string_id(STF, "imperial");
-                        sendSystemMessage(player, message);
-                        utils.removeScriptVar(self, "paint_kit.inuse");
-                        return SCRIPT_CONTINUE;
+//                        string_id message = new string_id(STF, "imperial");
+//                        sendSystemMessage(player, message);
+//                        utils.removeScriptVar(self, "paint_kit.inuse");
+//                        return SCRIPT_CONTINUE; //attempting to allow imperial ship colorization
+                        utils.setScriptVar(player, "color.shipId", objShip);
+                        sui.colorize(self, player, objShip, index, "handleFirstColorize");
                     }
                     else
                     {
@@ -225,52 +227,26 @@ public class customization_kit extends script.base_script
             utils.removeScriptVar(self, "paint_kit.inuse");
             return SCRIPT_CONTINUE;
         }
-        else 
+        else
         {
             obj_id player = sui.getPlayerId(params);
-            if (idx == -1)
+            if (idx == -1 || !isIdValid(player))
             {
                 utils.removeScriptVar(self, "paint_kit.inuse");
                 return SCRIPT_CONTINUE;
             }
-            if (!isIdValid(player))
-            {
-                utils.removeScriptVar(self, "paint_kit.inuse");
-                return SCRIPT_CONTINUE;
-            }
+
             String index2 = "/shared_owner/index_color_2";
             obj_id[] shipControlDevices = utils.getObjIdArrayScriptVar(player, "color.scds");
             utils.removeScriptVar(player, "color.scds");
+
             if (shipControlDevices != null && shipControlDevices.length > 0)
             {
                 obj_id objShip = space_transition.getShipFromShipControlDevice(shipControlDevices[idx]);
                 if (isIdValid(objShip))
                 {
-                    String chassis = getShipChassisType(objShip);
-                    if (
-                            chassis.equals("player_basic_tiefighter") ||
-                            chassis.equals("player_decimator") ||
-                            chassis.equals("player_tieadvanced") ||
-                            chassis.equals("player_tieaggressor") ||
-                            chassis.equals("player_tiebomber") ||
-                            chassis.equals("player_tiefighter") ||
-                            chassis.equals("player_tie_in") ||
-                            chassis.equals("player_tieinterceptor") ||
-                            chassis.equals("player_tie_light_duty") ||
-                            chassis.equals("player_tieoppressor") ||
-                            chassis.equals("player_tiedefender")
-                        )
-                    {
-                        string_id message = new string_id(STF, "imperial");
-                        sendSystemMessage(player, message);
-                        utils.removeScriptVar(self, "paint_kit.inuse");
-                        return SCRIPT_CONTINUE;
-                    }
-                    else
-                    {
-                        utils.setScriptVar(player, "color.shipId", objShip);
-                        sui.colorize(self, player, objShip, index2, "handleSecondColorize");
-                    }
+                    utils.setScriptVar(player, "color.shipId", objShip);
+                    sui.colorize(self, player, objShip, index2, "handleSecondColorize");
                 }
             }
         }

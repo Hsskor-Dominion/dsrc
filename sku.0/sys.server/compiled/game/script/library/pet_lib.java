@@ -815,7 +815,7 @@ public class pet_lib extends script.base_script
         int trainingSkillMod = 100;
         if (!pet_lib.isDroidPet(pet))
         {
-            trainingSkillMod = getSkillStatisticModifier(master, "private_creature_training");
+            trainingSkillMod = getSkillStatisticModifier(master, "expertise_bm_base_mod");//early seeds for restoration of "train_mount"
         }
         Vector commandNameList = new Vector();
         commandNameList.setSize(0);
@@ -977,7 +977,7 @@ public class pet_lib extends script.base_script
         int trainingSkillMod = 100;
         if (!pet_lib.isDroidPet(pet))
         {
-            trainingSkillMod = getSkillStatisticModifier(master, "private_creature_training");
+            trainingSkillMod = getSkillStatisticModifier(master, "expertise_bm_base_mod");
         }
         if (command > menu_info_types.UNKNOWN && command < menu_info_types.MENU_LAST)
         {
@@ -4187,7 +4187,7 @@ public class pet_lib extends script.base_script
         {
             return false;
         }
-        if (!hasSkill(player, "outdoors_creaturehandler_support_04"))
+        if (!hasSkill(player, "expertise_bm_attack_1"))
         {
             return false;
         }
@@ -4811,10 +4811,10 @@ public class pet_lib extends script.base_script
                 buff.removeBuff(playerCurrentMount, vehicleHasBuff);
             }
             int petType = getPetType(playerCurrentMount);
-            if (isPetType(playerCurrentMount, PET_TYPE_MOUNT))
-            {
-                storePet(playerCurrentMount);
-            }
+//            if (isPetType(playerCurrentMount, PET_TYPE_MOUNT))
+//            {
+//                storePet(playerCurrentMount); //I think this auto-stores a mount that enters combat or something?
+//            }
         }
         else 
         {

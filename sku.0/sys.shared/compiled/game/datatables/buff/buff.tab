@@ -906,7 +906,7 @@ sp_cc_dot	snare			55	command.sp_cc_dot	10	movement	0		0		0		0		0	STATE_NONE	none
 sp_assassins_mark_reac_proc	sp_reac_proc			56	command.sp_assassins_mark	45	reac_buff	0	combat_multiply_damage_taken	10		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 me_buff_health	medicConstitution			31	command.me_buff_health	600	constitution_modified	80	stamina_modified	80	expertise_dot_absorption_all	25	dot_resist_all	25		0	STATE_NONE	none	appearance/pt_heal_2.prt		1	0		1	1	1	0	1	1	0	1	1	1
 fs_dm_cc_crit	snare			35	command.fs_dm_cc_crit	8	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-dish_rations	ice_cream			5	buffs.foodMeal	3600	agility_modified	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+dish_rations	ice_cream			5	buffs.foodMeal	3600	agility_modified	15	tcg_gcw_bonus	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 drink_jaar	food			3	buffs.foodBeverage	3600	agility_modified	5	constitution_modified	5	expertise_bm_self_debuff_reduction	5		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dish_dustcrepe	ice_cream			3	buffs.foodMeal	3600	luck_modified	15	stamina_modified	15	expertise_dot_absorption_all	3	dot_resist_all	3		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dessert_parwan_nutricake	ice_cream			15	buffs.foodDessert	3600	constitution_modified	70	expertise_healing_all	4		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1

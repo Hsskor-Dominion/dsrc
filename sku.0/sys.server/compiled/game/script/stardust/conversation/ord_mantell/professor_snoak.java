@@ -165,6 +165,7 @@ public class professor_snoak extends script.base_script
         setInvulnerable(self, true);
         setName(self, "Professor Sn'Oak (Beast Researcher)");
         attachScript(self, "npe.npc_vendor");
+        ai_lib.setDefaultCalmBehavior(self, ai_lib.BEHAVIOR_SENTINEL);
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException

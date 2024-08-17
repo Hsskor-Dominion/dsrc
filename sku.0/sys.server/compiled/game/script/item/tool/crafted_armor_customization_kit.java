@@ -75,7 +75,8 @@ public class crafted_armor_customization_kit extends script.base_script
             return false;
         }
         closeOldWindow(player);
-        blog("beginArmorColorizationh: init");
+        blog("beginArmorColorization: init");
+
         Vector items = new Vector();
         obj_id[] invItems = getInventoryAndEquipment(player);
         if (invItems == null || invItems.length < 0)
@@ -83,35 +84,21 @@ public class crafted_armor_customization_kit extends script.base_script
             return false;
         }
         blog("invItems.length: " + invItems.length);
+
         if (invItems != null && invItems.length > 0)
         {
-            for (obj_id invItem : invItems) {
-                if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/")) {
-                    if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/assault_trooper")) {
-                        continue;
-                    } else if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/rebel_")) {
-                        continue;
-                    } else if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/scout_")) {
-                        continue;
-                    } else if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/stormtrooper")) {
-                        continue;
-                    } else if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/marine")) {
-                        continue;
-                    } else if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial")) {
-                        continue;
-                    } else if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel")) {
-                        continue;
-                    } else if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_crafted_belt")) {
-                        continue;
-                    } else if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_belt")) {
-                        continue;
-                    }
+            for (obj_id invItem : invItems)
+            {
+                if ((getTemplateName(invItem)).startsWith("object/tangible/wearables/armor/"))
+                {
                     items.addElement(invItem);
                 }
             }
         }
+
         CustomerServiceLog(CUSTOMER_SVC_CATEGORY, "A player " + player + " has " + items.size() + " valid armor items for colorization using crafted armor customization kit " + self + ". [ beginArmorColorization() ]");
         blog("beginArmorColorization - player has " + items.size() + " armor items in inventory");
+
         if (items.isEmpty())
         {
             sendSystemMessage(player, NO_ARMOR);
@@ -119,17 +106,19 @@ public class crafted_armor_customization_kit extends script.base_script
             blog("beginArmorColorization - player DID NOT HAVE ANY armor items in inventory to start color session.");
             return false;
         }
+
         CustomerServiceLog(CUSTOMER_SVC_CATEGORY, "The player " + player + " has enough valid armor items for colorization using crafted armor customization kit " + self + ". [ beginArmorColorization() ]");
         blog("beginArmorColorization - player has enough armor items in inventory to start color session.");
+
         Vector armor = new Vector();
         Vector armorNames = new Vector();
         if (!items.isEmpty())
         {
-            for (Object item : items) {
+            for (Object item : items)
+            {
                 obj_id piece = (obj_id) item;
-                if (!isCrafted(piece)) {
-                    continue;
-                } else if (static_item.isStaticItem(piece)) {
+                if (static_item.isStaticItem(piece))
+                {
                     continue;
                 }
                 armor.addElement(piece);
@@ -137,6 +126,7 @@ public class crafted_armor_customization_kit extends script.base_script
                 armorNames.addElement(name);
             }
         }
+
         if (!armor.isEmpty())
         {
             CustomerServiceLog(CUSTOMER_SVC_CATEGORY, "Armor OID list is " + armor.size() + " long for player " + player + " that is using colorization using crafted armor customization kit " + self + ". [ beginArmorColorization() ]");
@@ -147,6 +137,7 @@ public class crafted_armor_customization_kit extends script.base_script
             CustomerServiceLog(CUSTOMER_SVC_CATEGORY, "Armor Name list is " + armorNames.size() + " long for player " + player + " that is using colorization using crafted armor customization kit " + self + ". [ beginArmorColorization() ]");
             blog("beginArmorColorization - Consolidating armor items.");
         }
+
         int armorListSize = armor.size();
         int nameSize = armorNames.size();
         if (!armor.isEmpty() && !armorNames.isEmpty() && armorListSize == nameSize)
@@ -165,6 +156,7 @@ public class crafted_armor_customization_kit extends script.base_script
             }
             return true;
         }
+
         CustomerServiceLog(CUSTOMER_SVC_CATEGORY, "ERROR: Armor and Name lists may not have matched in value. Armor list: " + armorListSize + " Name List: " + nameSize + " or both lists were empty for player " + player + " using colorization using crafted armor customization kit " + self + ". [ beginArmorColorization() ]");
         blog("beginArmorColorization - Error. Armor and Name lists may not have matched in value.");
         return false;

@@ -575,7 +575,7 @@ public class npe extends script.base_script
         }
         if (hasObjVar(player, "stardust_dathomir"))
         {
-            warpPlayer(player, "dathomir", -6525, 398, 6040, null, 0, 0, 0, "", false);
+            warpPlayer(player, "dathomir", -6466, 112, 895, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_trandoshan"))
         {

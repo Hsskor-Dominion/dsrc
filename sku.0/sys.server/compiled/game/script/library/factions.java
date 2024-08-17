@@ -18,7 +18,7 @@ public class factions extends script.base_script
     public static final float BOTHAN_NEGATIVE_MOD = 0.90f;
     public static final String FACTION = "faction";
     public static final float FACTION_RATING_MIN = -5000.0f;
-    public static final float FACTION_RATING_MAX = 500000.0f;
+    public static final float FACTION_RATING_MAX = 20000.0f;
     public static final float NON_ALIGNED_FACTION_MAX = 1000.0f;
     public static final float FACTION_RATING_DECLARABLE_MIN = 200.0f;
     public static final float FACTION_RATING_SYMPATHIZER_MIN = 750.0f;

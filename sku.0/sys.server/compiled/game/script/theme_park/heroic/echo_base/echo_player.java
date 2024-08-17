@@ -134,15 +134,15 @@ public class echo_player extends script.base_script
     }
     public void checkForBattlefieldVehicleAllowedZones(obj_id self) throws InterruptedException
     {
-        obj_id playerCurrentMount = getMountId(self);
-        if (isIdValid(playerCurrentMount))
-        {
-            if (vehicle.isBattlefieldVehicle(playerCurrentMount))
-            {
-                messageTo(playerCurrentMount, "handleCheckForAllowedZones", null, 0, false);
-            }
-            return;
-        }
+//        obj_id playerCurrentMount = getMountId(self);
+//        if (isIdValid(playerCurrentMount))
+//        {
+//            if (vehicle.isBattlefieldVehicle(playerCurrentMount))
+//            {
+//                messageTo(playerCurrentMount, "handleCheckForAllowedZones", null, 0, false);
+//            }
+//            return;
+//        }
     }
     public int OnDeath(obj_id self, obj_id killer, obj_id corpseId) throws InterruptedException
     {

@@ -3,14 +3,19 @@ package script.faction_perk.hq;
 import script.*;
 import script.library.*;
 
+
 import java.util.Calendar;
 import java.util.Vector;
+
+import static script.library.guild.setWindowPid;
+import static script.library.money.MT_TOTAL;
 
 public class terminal extends script.terminal.base.base_terminal
 {
     public terminal()
     {
     }
+    public static final String SCRIPT_STARDUST_SIEGE = "systems.terminal.terminal_stardust";
     private static final string_id MNU_DONATE = new string_id("hq", "mnu_donate");
     private static final string_id MNU_DONATE_MONEY = new string_id("hq", "mnu_donate_money");
     public static final string_id MNU_DONATE_RESOURCE = new string_id("hq", "mnu_donate_resource");
@@ -19,6 +24,8 @@ public class terminal extends script.terminal.base.base_terminal
     private static final string_id MNU_OVERLOAD = new string_id("hq", "mnu_overload");
     private static final string_id MNU_OVERLOAD_GOD = new string_id("hq", "mnu_overload_god_intentional_code_string");
     private static final string_id MNU_SPYNET = new string_id("stardust/gcw", "spynet_hack");
+    private static final string_id MNU_CRAFT = new string_id("stardust/gcw", "gcw_construction");
+    private static final string_id MNU_SIEGE = new string_id("stardust/gcw", "apply_combat_vehicle_100k_cost");
     private static final string_id MNU_SHUTDOWN = new string_id("hq", "mnu_shutdown");
     private static final string_id MNU_DEFENSE_STATUS = new string_id("hq", "mnu_defense_status");
     private static final string_id MNU_RESET_VULNERABILITY = new string_id("hq", "mnu_reset_vulnerability");
@@ -39,7 +46,15 @@ public class terminal extends script.terminal.base.base_terminal
     private static final string_id SID_VULNERABILITY_RESET_REQUEST_RECEIVED = new string_id("hq", "vulnerability_reset_request_received");
     private static final string_id SID_VULNERABILITY_RESET_NOT_ALIVE = new string_id("hq", "vulnerability_reset_not_alive");
     private static final String STRING_FILE_LOC = "faction/faction_hq/faction_hq_response";
+    private static final String[] GCW_MENU_OPTIONS = {
+            "Supply Requisition",
+            "GCW Construction - Structures & Starships",
+            "GCW Construction - Rations & Uniform",
+            "GCW Construction - Armor & Weapons",
+            "GCW Construction - Vehicles & Droids"
+    };
     private static final string_id SID_NO_STEALTH = new string_id("hq", "no_stealth");
+    public static final int SIEGE_VEHICLE_COST = 100000;
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         if (hasScript(self, hq.SCRIPT_TERMINAL_DISABLE))
@@ -64,9 +79,12 @@ public class terminal extends script.terminal.base.base_terminal
             mi.addRootMenu(menu_info_types.SERVER_MENU13, MNU_SPYNET);
         }
 
-        if (hasSkill(player, "pvp_rebel_airstrike_ability") || hasSkill(player, "pvp_imperial_airstrike_ability")) {
+        if (hasSkill(player, "pvp_rebel_airstrike_ability") || hasSkill(player, "pvp_imperial_airstrike_ability")) {//this needs to be replaced with a check of GOVERNOR
             mi.addRootMenu(menu_info_types.SERVER_MENU12, MNU_OVERLOAD_GOD);
         }
+
+        mi.addRootMenu(menu_info_types.SERVER_MENU14, MNU_SIEGE);
+        mi.addRootMenu(menu_info_types.SERVER_MENU15, MNU_CRAFT);
 
         int intState = getState(player, STATE_FEIGN_DEATH);
         if (isDead(player) || isIncapacitated(player) || intState > 0) {
@@ -158,10 +176,19 @@ public class terminal extends script.terminal.base.base_terminal
         {
             startCountdown(self, player);
         }
+        if (item == menu_info_types.SERVER_MENU14)
+        {
+            obj_id npc = self; // Assuming 'self' represents the terminal and is appropriate
+            gcw_hq_terminal_action_attachBattlefieldScript(player, npc);
+        }
         obj_id structure = player_structure.getStructure(player);
         if (item == menu_info_types.SERVER_MENU13)
         {
-            hq.loadHqTerminals(self);
+            queueCommand(player, (335013253), null, "", COMMAND_PRIORITY_DEFAULT);
+        }
+        if (item == menu_info_types.SERVER_MENU15)
+        {
+            showMenuOptions(player);
         }
         int intState = getState(player, STATE_FEIGN_DEATH);
         if (isDead(player) || isIncapacitated(player) || intState > 0)
@@ -358,6 +385,169 @@ public class terminal extends script.terminal.base.base_terminal
         }
         return SCRIPT_CONTINUE;
     }
+    public void gcw_hq_terminal_action_attachBattlefieldScript(obj_id player, obj_id npc) throws InterruptedException
+    {
+        // Define the range and volume
+        float range = 64.0f;
+        location loc = getLocation(player); // or getLocation(npc) if using terminal's location
+        obj_id vehicle = getFirstObjectWithScript(loc, range, "systems.vehicle_system.vehicle_base");
+
+        debugServerConsoleMsg(player, "Vehicle ID found: " + vehicle);
+
+        if (isIdValid(vehicle))
+        {
+            if (!hasScript(vehicle, "systems.vehicle_system.battlefield_vehicle"))
+            {
+                dictionary params = new dictionary();
+                params.put("player", player);
+                params.put("vehicle", vehicle);
+
+                // Request payment from player with callback to gcw_terminal_handlePaymentResult
+                if (money.requestPayment(player, npc, SIEGE_VEHICLE_COST, "gcw_terminal_handlePaymentResult", params, true))
+                {
+                    sendSystemMessage(player, new string_id(STRING_FILE_LOC, "combat_functions_processing_payment"));
+                }
+                else
+                {
+                    sendSystemMessage(player, new string_id(STRING_FILE_LOC, "combat_functions_payment_failed"));
+                }
+            }
+            else
+            {
+                sendSystemMessage(player, new string_id(STRING_FILE_LOC, "combat_functions_already_enabled"));
+            }
+        }
+        else
+        {
+            sendSystemMessage(player, new string_id(STRING_FILE_LOC, "no_vehicle_found"));
+        }
+    }
+
+    public int gcw_terminal_handlePaymentResult(obj_id self, dictionary params) throws InterruptedException
+    {
+        obj_id player = params.getObjId("player");
+        obj_id vehicle = params.getObjId("vehicle");
+
+        // Check if player has sufficient funds for the siege vehicle cost
+        if (money.hasFunds(player, MT_TOTAL, SIEGE_VEHICLE_COST))
+        {
+            // Payment was successful
+            if (isIdValid(vehicle) && !hasScript(vehicle, "systems.vehicle_system.battlefield_vehicle"))
+            {
+                attachScript(vehicle, "systems.vehicle_system.battlefield_vehicle");
+                sendSystemMessage(player, new string_id(STRING_FILE_LOC, "combat_functions_enabled"));
+                sendSystemMessage(player, new string_id(STRING_FILE_LOC, "combat_functions_do_not_persist_upon_storage"));
+            }
+        }
+        else
+        {
+            // Payment failed or player does not have enough funds
+            sendSystemMessage(player, new string_id(STRING_FILE_LOC, "combat_functions_payment_failed"));
+        }
+
+        return SCRIPT_CONTINUE;
+    }
+    private void showMenuOptions(obj_id player) throws InterruptedException {
+        String title = "GCW Construction";
+        String prompt = "Select an option:";
+
+
+        // Create a listbox with options
+        int pid = sui.listbox(getSelf(), player, prompt, sui.OK_CANCEL, title, GCW_MENU_OPTIONS, "handleMenuChoice", true, false);
+        setWindowPid(player, pid);
+    }
+    public int handleMenuChoice(obj_id self, dictionary params) throws InterruptedException {
+        if (params == null || params.isEmpty()) {
+            return SCRIPT_CONTINUE;
+        }
+
+        obj_id player = sui.getPlayerId(params);
+        int btn = sui.getIntButtonPressed(params);
+        int idx = sui.getListboxSelectedRow(params);
+
+        if (btn == sui.BP_CANCEL) {
+            return SCRIPT_CONTINUE;
+        }
+
+        if (idx < 0 || idx >= GCW_MENU_OPTIONS.length) {
+            sendSystemMessage(player, new string_id(STRING_FILE_LOC, "Invalid selection"));
+            return SCRIPT_CONTINUE;
+        }
+
+        switch (idx) {
+            case 0:
+                handleMenuChoice1(player);
+                break;
+            case 1:
+                handleMenuChoice2(player);
+                break;
+            case 2:
+                handleMenuChoice3(player);
+                break;
+            case 3:
+                handleMenuChoice4(player);
+                break;
+            case 4:
+                handleMenuChoice5(player);
+                break;
+            default:
+                sendSystemMessage(player, new string_id(STRING_FILE_LOC, "Unknown choice"));
+                break;
+        }
+
+        return SCRIPT_CONTINUE;
+    }
+
+    // Methods to handle each menu choice
+    private void handleMenuChoice1(obj_id player) throws InterruptedException
+    {
+        sendSystemMessage(player, new string_id(STRING_FILE_LOC, "supply_requisition"));
+    }
+
+    private void handleMenuChoice2(obj_id player) throws InterruptedException {
+        if (factions.isImperial(player))
+        {
+            groundquests.grantQuest(player, "stardust_gcw_construction_starship");
+        }
+        else
+        {
+            groundquests.grantQuest(player, "stardust_gcw_construction_starship_republic");
+        }
+    }
+
+    private void handleMenuChoice3(obj_id player) throws InterruptedException {
+        if (factions.isImperial(player))
+        {
+            groundquests.grantQuest(player, "stardust_gcw_construction_rations");
+        }
+        else
+        {
+            groundquests.grantQuest(player, "stardust_gcw_construction_rations_republic");
+        }
+    }
+
+    private void handleMenuChoice4(obj_id player) throws InterruptedException {
+        if (factions.isImperial(player))
+        {
+            groundquests.grantQuest(player, "stardust_gcw_construction_armor");
+        }
+        else
+        {
+            groundquests.grantQuest(player, "stardust_gcw_construction_armor_republic");
+        }
+    }
+
+    private void handleMenuChoice5(obj_id player) throws InterruptedException {
+        if (factions.isImperial(player))
+        {
+            groundquests.grantQuest(player, "stardust_gcw_construction_speeder");
+        }
+        else
+        {
+            groundquests.grantQuest(player, "stardust_gcw_construction_speeder_republic");
+        }
+    }
+
     private void shutdownFacility(obj_id self) throws InterruptedException
     {
         attachScript(self, hq.SCRIPT_TERMINAL_DISABLE);
