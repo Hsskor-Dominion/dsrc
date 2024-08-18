@@ -231,7 +231,7 @@ public class battlefield_vehicle extends script.base_script
     }
     public void checkForAllowedZones(obj_id self) throws InterruptedException
     {
-        decayVehicle(self);
+ //       decayVehicle(self);
 //        String allowedZonesString = "all";
 //        boolean allowedHere = false;
 //        if (hasObjVar(self, "battlefield_vehicle.overrideAllowedZones"))
