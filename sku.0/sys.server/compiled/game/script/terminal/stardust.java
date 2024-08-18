@@ -5,8 +5,7 @@ import script.library.ai_lib;
 import script.library.chat;
 import script.library.groundquests;
 import script.library.utils;
-import script.library.ca
-llable;
+import script.library.callable;
 
 public class stardust extends script.base_script
 {
