@@ -240,7 +240,7 @@ public class city_furniture extends script.base_script
                 }
                 location oloc = getLocation(structure1);
                 float dist = utils.getDistance2D(loc, oloc);
-                if ((dist < 25) && (dist > 0)) {
+                if ((dist < 2) && (dist > 0)) {
                     prose_package pp = prose.getPackage(SID_DECO_TOO_CLOSE, localize(getNameStringId(structure1)));
                     sendSystemMessageProse(player, pp);
                     return;

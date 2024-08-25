@@ -1205,7 +1205,7 @@ outdoors_squadleader	outdoors		1	0	1	1	0	0						0											0	0
 outdoors_squadleader_novice	outdoors_squadleader		1	1	0	1	5000	6		outdoors_scout_camp_04,combat_marksman_support_04		combat_general	42000	55000							sysgroup,calledShot,assault_move_mitigate_1,assault_accuracy_mitigate_1,assault_firerate_mitigate_1	melee_defense=10,ranged_defense=10,ranged_accuracy=10,ranged_speed=5,leadership=10			0	0
 outdoors_squadleader_master	outdoors_squadleader		1	1	0	1	10000	1		outdoors_squadleader_movement_04,outdoors_squadleader_offense_04,outdoors_squadleader_defense_04,outdoors_squadleader_support_04		combat_general	340000	900000							secondChance,assault_move_mitigate_3	melee_defense=25,ranged_defense=20,ranged_accuracy=15,ranged_speed=10,called_shot=35,leadership=35,mobility_duration=50			0	0
 outdoors_squadleader_movement_01	outdoors_squadleader		1	0	0	1	6000	5		outdoors_squadleader_novice		combat_rangedspecialize_pistol	175000	500000							rallyPoint	ranged_accuracy=5,called_shot=5,leadership=5			0	0
-outdoors_squadleader_movement_02	outdoors_squadleader_movement_01		1	0	0	1	7000	4		outdoors_squadleader_movement_01		combat_rangedspecialize_pistol	250000	700000							formup	group_burst_run=25,called_shot=5,leadership=5,slope_move=25			0	0
+outdoors_squadleader_movement_02	outdoors_squadleader_movement_01		1	0	0	1	7000	4		outdoors_squadleader_movement_01		combat_rangedspecialize_pistol	250000	700000							formup,highYield,toughen	group_burst_run=25,called_shot=5,leadership=5,slope_move=25			0	0
 outdoors_squadleader_movement_03	outdoors_squadleader_movement_02		1	0	0	1	8000	3		outdoors_squadleader_movement_02		combat_rangedspecialize_pistol	350000	900000							retreat,assault_move_mitigate_2	ranged_speed=5,called_shot=10,leadership=5,mobility_duration=25			0	0
 outdoors_squadleader_movement_04	outdoors_squadleader_movement_03		1	1	0	1	9000	2		outdoors_squadleader_movement_03		combat_rangedspecialize_pistol	450000	1200000							charge	group_burst_run=25,called_shot=15,leadership=5,mobility_duration=25			0	0
 outdoors_squadleader_offense_01	outdoors_squadleader		1	0	0	1	6000	5		outdoors_squadleader_novice		combat_rangedspecialize_pistol	175000	500000							steadyaim	melee_defense=10,ranged_defense=10,called_shot=5,leadership=5			0	0
@@ -1898,7 +1898,7 @@ expertise_of_scatter_2	expertise_of_scatter_1																					expertise_glan
 expertise_of_scatter_3	expertise_of_scatter_2																					expertise_glancing_blow_all=5,movement_resist_snare=5			0	
 expertise_of_scatter_4	expertise_of_scatter_3																					expertise_glancing_blow_all=5,movement_resist_snare=5			0	
 expertise_of_charge_1	expertise_of_inspiration_1			1						expertise_of_scatter_1											of_charge_1				0	
-expertise_of_last_words_1	expertise_of_scatter_4									expertise_of_scatter_4												of_inspired_action_chance=20,expertise_glancing_blow_all=10,movement_resist_snare=10			0	
+expertise_of_last_words_1	expertise_of_scatter_4									expertise_of_scatter_4											me_enhance_agility_1,me_enhance_strength_1	of_inspired_action_chance=20,expertise_glancing_blow_all=10,movement_resist_snare=10			0	
 expertise_of_sup_cool_1	expertise																					expertise_cooldown_line_of_sup=3			0	
 expertise_of_sup_cool_2	expertise_of_sup_cool_1																					expertise_cooldown_line_of_sup=4			0	
 expertise_of_sup_cool_3	expertise_of_sup_cool_2																					expertise_cooldown_line_of_sup=4			0	
@@ -2566,7 +2566,7 @@ expertise_structure_resource_refinement_2	expertise_structure_resource_refinemen
 expertise_structure_artisan_advanced_theory_1	expertise_structure_artisan_hypothesis_4									expertise_structure_artisan_hypothesis_4												general_experimentation=10				
 expertise_structure_shipwright_keen_understanding_1	expertise_structure_shipwright_insight_2									expertise_structure_shipwright_insight_2												expertise_complexity_decrease_shipwright=2				
 expertise_structure_shipwright_keen_understanding_2	expertise_structure_shipwright_keen_understanding_1																					expertise_complexity_decrease_shipwright=2				
-expertise_structure_architect_advanced_theory_1	expertise_structure_architect_hypothesis_4									expertise_structure_architect_hypothesis_4												structure_experimentation=10,factory_speed=10	craftStructureGroupE,craftFurnitureGroupE,craftPlayerCityE			
+expertise_structure_architect_advanced_theory_1	expertise_structure_architect_hypothesis_4									expertise_structure_architect_hypothesis_4												structure_experimentation=10,factory_speed=100	craftStructureGroupE,craftFurnitureGroupE,craftPlayerCityE			
 expertise_structure_architect_schematic_1_1	expertise																						craftArchitectExpertiseSchematics1,craftFurnitureGroupAA,craftStructureGroupAA,craftInstallationGroupAA,craftFurnitureGroupA,craftPlayerCityA,craftInstallationGroupA,craftStructureGroupA			
 expertise_structure_architect_schematic_2_1	expertise																						craftArchitectExpertiseSchematics2			
 expertise_structure_shipwright_schematic_1_1	expertise																						craftShipwrightExpertiseSchematics1,craftShipwrightNoviceGroupA,craftShipwrightEngGroupA,craftShipwrightPropulsionGroupA,craftShipwrightSystemsGroupA,craftShipwrightDefenseGroupA			
@@ -2851,6 +2851,7 @@ stardust_spy				1		1															sm_inside_information				0
 stardust_ace_of_aces				1		1															cert_starships_firespray,cert_starships_tieoppressor,cert_starships_gunship_imperial,cert_starships_decimator,cert_starships_bwing,cert_starships_gunship_rebel,cert_starships_yt1300,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral,cert_starships_ykl37r,cert_starships_z95headhunter,cert_starships_ywing,cert_starships_ywinglongprobe,cert_starships_vwing,cert_starships_xwing,cert_starships_awing,cert_starships_arc170,cert_starships_grievous,cert_starships_jedistarfighter,cert_starships_advancedxwing,cert_starships_twing, cert_starships_decimator,cert_starships_tiefighterlight,cert_starships_tiefighter,cert_starships_tiefighterin,cert_starships_tieinterceptor,cert_starships_tiebomber,cert_starships_tieadvanced,cert_starships_tieaggressor,cert_starships_tieinterceptorimperialguard,cert_starships_tiedefender,cert_starships_lighthuttfighter,cert_starships_mediumhuttfighter,cert_starships_heavyhuttfighter,cert_starships_lightblacksunfighter,cert_naboo_n1,cert_starships_mediumblacksunfighter,cert_starships_heavyblacksunfighter,cert_starships_havoc,cert_starships_blacksunvaksai,cert_starships_blacksunheavyvaksai				0	
 stardust_admiral_imperial				1		1															cert_gunship_stardestroyer				0	
 stardust_admiral_republic				1		1																			0	
+stardust_diplomat				1		1																			0	
 stardust_senator_candidate				1		1																			0	
 stardust_senator				1		1															veteranPlayerBuff				0	
 stardust_gov_candidate				1		1																			0	

@@ -358,21 +358,15 @@ public class stardust_vote extends script.terminal.base.base_terminal
         obj_id planet = getTopMostContainer(self);
         int senate_id = getSenateIdFromUniqueIdentifier(planet);
         obj_id senator = cityGetLeader(senate_id);
-//        if (city.isAsenator(player) && (player != senator))
-//        {
-//            sendSystemMessage(player, SID_ALREADY_SENATOR);
-//            return;
-//        }
-//        if (!city.isCitizenOfCity(player, senate_id))
-//        {
-//            sendSystemMessage(player, SID_REGISTER_NONCITIZEN);
-//            return;
-//        }
+
+        // Ensure the player has the right skill
         if (!hasSkill(player, "social_politician_novice"))
         {
             sendSystemMessage(player, SID_REGISTER_NONPOLITICIAN);
             return;
         }
+
+        // Check registration time
         int cityVoteInterval = getIntObjVar(planet, "cityVoteInterval");
         if (cityVoteInterval == 2)
         {
@@ -385,6 +379,8 @@ public class stardust_vote extends script.terminal.base.base_terminal
             sendSystemMessage(player, SID_REGISTER_TIMESTAMP);
             return;
         }
+
+        // Clean up candidates and check for duplicates
         cleanCandidates(self, player);
         obj_id[] candidates = getObjIdArrayObjVar(planet, "candidate_list");
         if (candidates == null)
@@ -396,6 +392,8 @@ public class stardust_vote extends script.terminal.base.base_terminal
             sendSystemMessage(player, SID_REGISTER_DUPE);
             return;
         }
+
+        // Add the new candidate
         obj_id[] new_candidates = new obj_id[candidates.length + 1];
         for (int i = 0; i < candidates.length; i++)
         {
@@ -403,26 +401,16 @@ public class stardust_vote extends script.terminal.base.base_terminal
         }
         new_candidates[new_candidates.length - 1] = player;
         setObjVar(planet, "candidate_list", new_candidates);
+
+        // Confirm registration
         city.setCitizenAllegiance(senate_id, player, player);
         sendSystemMessage(player, SID_REGISTER_CONGRATS);
         setObjVar(player, "lastCityVoteReg", getGameTime());
-        obj_id[] citizens = cityGetCitizenIds(senate_id);
-        if (citizens != null)
-        {
-            String pname = cityGetCitizenName(senate_id, player);
-            for (obj_id citizen : citizens) {
-                String cname = cityGetCitizenName(senate_id, citizen);
-                prose_package bodypp = prose.getPackage(REGISTERED_CITIZEN_EMAIL_BODY, pname, cname);
-                utils.sendMail(UNREGISTERED_CITIZEN_EMAIL_SUBJECT, bodypp, pname, "City Hall");
-                if (hasObjVar(citizen, "waypoint_registered")) {
-                    prose_package bodypp2 = prose.getPackage(REGISTERED_CITIZEN_EMAIL_BODY, pname, cname);
-                    utils.sendMail(UNREGISTERED_CITIZEN_EMAIL_SUBJECT, bodypp2, pname, "City Hall");
-                }
-            }
-        }
-        CustomerServiceLog("player_city", "Player " + player + " has registered for city office at hall " + self + ". " + " Hall: " + planet + " GM: " + player);
+
+        // Debug output
+        CustomerServiceLog("player_city", "Player " + player + " has registered for city office at hall " + self + ". Hall: " + planet + " GM: " + player);
+
         messageTo(planet, "updateRaceLeaderboard", null, 0, false);
-        return;
     }
 
     public void unregisterFromRace(obj_id self, obj_id player) throws InterruptedException

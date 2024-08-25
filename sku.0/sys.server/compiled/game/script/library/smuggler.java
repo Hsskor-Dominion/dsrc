@@ -93,6 +93,7 @@ public class smuggler extends script.base_script
     public static final int TIER_5_GENERIC_FRONT_COST = 5000;
     public static final int TIER_4_GENERIC_PVP_FRONT_COST = 13000;
     public static final int TIER_5_GENERIC_PVP_FRONT_COST = 18000;
+    public static final int TIER_6_GENERIC_PVP_FRONT_COST = 25000;
     public static final String BUYBACK_OBJ_TIMESTAMP = "buyback.timeMoved";
     public static final String BUYBACK_OBJ_CREDITS = "buyback.credits";
     public static final String BUYBACK_OBJ_SOLD = "buyback.soldAsJunk";

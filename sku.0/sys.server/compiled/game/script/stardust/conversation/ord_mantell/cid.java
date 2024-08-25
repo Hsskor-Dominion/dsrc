@@ -30,7 +30,7 @@ public class cid extends script.base_script
     }
     public boolean cid_commando_condition(obj_id npc, obj_id player)
     {
-        return hasSkill(player,"class_commando_phase1_novice");
+        return hasSkill(player,"class_smuggler_phase1_novice");
     }
     public boolean cid_bountyhunter_condition(obj_id npc, obj_id player)
     {
@@ -55,12 +55,24 @@ public class cid extends script.base_script
     }
     public void cid_commando_quest(obj_id player, obj_id npc) throws InterruptedException
     {
-        int questId = questGetQuestId("stardust_commando_batch");
-        groundquests.grantQuest(questId, player, npc, true);
+        money.requestPayment(player, npc, smuggler.TIER_6_GENERIC_PVP_FRONT_COST, "none", null, true);
+        groundquests.grantQuest(player, "smuggle_stardust");
+        int mission_bounty = 10000;
+        int current_bounty = 0;
+        mission_bounty += rand(1, 2000);
+        if (hasObjVar(player, "bounty.amount"))
+        {
+            current_bounty = getIntObjVar(player, "bounty.amount");
+        }
+        current_bounty += mission_bounty;
+        setObjVar(player, "bounty.amount", current_bounty);
+        setObjVar(player, "smuggler.bounty", mission_bounty);
+        setJediBountyValue(player, current_bounty);
+        updateJediScriptData(player, "smuggler", 1);
     }
     public void cid_sells_info(obj_id player, obj_id npc) throws InterruptedException
     {
-        money.requestPayment(player, npc, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
+        money.requestPayment(player, npc, smuggler.TIER_5_GENERIC_FRONT_COST, "none", null, true);
     }
     public void cid_entertainer_signalReward(obj_id player, obj_id npc) throws InterruptedException
     {

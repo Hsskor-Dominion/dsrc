@@ -2,8 +2,11 @@ package script.space.terminal;
 
 import script.*;
 import script.library.*;
-
+import java.util.Arrays;
 import java.util.Vector;
+
+import static script.library.gcw.*;
+import static script.library.space_transition.launch;
 
 public class terminal_space extends script.terminal.base.base_terminal
 {
@@ -15,6 +18,7 @@ public class terminal_space extends script.terminal.base.base_terminal
     public static final string_id SID_MUSTAFAR = new string_id("space/space_terminal", "mustafar_exception");
     public static final string_id SID_NOT_IN_COMBAT = new string_id("travel", "not_in_combat");
     public static final string_id SID_PVP_NOW_OVERT2 = new string_id("space/space_interaction", "pvp_now_overt2");
+    public static final int MT_TOTAL = 2;
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         requestPreloadCompleteTrigger(self);
@@ -198,67 +202,125 @@ public class terminal_space extends script.terminal.base.base_terminal
         }
         return SCRIPT_CONTINUE;
     }
-    public void doStarportToStarportLaunch(obj_id player, obj_id ship, obj_id[] membersApprovedByShipOwner, String planet, String pointName) throws InterruptedException
-        {
-            sendSystemMessage(player, new string_id("travel", "blocked_by_authorities"));
+    public void doStarportToStarportLaunch(obj_id player, obj_id ship, obj_id[] membersApprovedByShipOwner, String planet, String pointName) throws InterruptedException {
+        // Proceed with launch if the player is in control of space
+        if (inControlOfSpace(player)) {
+            performStarportLaunch(player, ship, membersApprovedByShipOwner, planet, pointName);
+        } else {
+            sendSystemMessage(player, new string_id("travel", "blocked_by_authorities_gcw"));
         }
-    public void launch(obj_id player, obj_id ship, obj_id[] membersApprovedByShipOwner, location warpLocation, location groundLoc) throws InterruptedException
-    {
-        if (callable.hasAnyCallable(player))
-        {
+    }
+
+    public void performStarportLaunch(obj_id player, obj_id ship, obj_id[] membersApprovedByShipOwner, String planet, String pointName) throws InterruptedException {
+        // Validate travel point
+        if (!getPlanetTravelPointInterplanetary(planet, pointName)) {
+            sendSystemMessage(player, new string_id("travel", "invalid_travel_point"));
+            return;
+        }
+
+        // Handle episode 3 expansion restriction
+        if (planet.equals("kashyyyk_main") && !features.hasEpisode3Expansion(player)) {
+            sendSystemMessage(player, new string_id("travel", "unauthorized_kashyyyk"));
+            return;
+        }
+
+        // Basic ship travel check
+        if (space_utils.isBasicShip(ship)) {
+            location locTest = getLocation(player);
+            if (!planet.equals(locTest.area)) {
+                sendSystemMessage(player, new string_id("space/space_interaction", "no_travel_basic"));
+                return;
+            }
+        }
+
+        // Handle callables
+        if (callable.hasAnyCallable(player)) {
             callable.storeCallables(player);
         }
-        stealth.checkForAndMakeVisible(player);
-        int shapechange = buff.getBuffOnTargetFromGroup(player, "shapechange");
-        if (shapechange != 0)
-        {
-            buff.removeBuff(player, shapechange);
-            sendSystemMessage(player, event_perk.SHAPECHANGE_SPACE);
+
+        LOG("space", "performStarportLaunch called");
+
+        // Initial charge
+        int initialPaymentAmount = 20000;
+        int additionalChargeAmount = 5000;
+        int totalChargeAmount = initialPaymentAmount + additionalChargeAmount;
+
+        // Charge the player
+        if (!money.requestPayment(player, ship, totalChargeAmount, "handlePaymentResult", null, true)) {
+            sendSystemMessage(player, new string_id("travel", "payment_failed"));
+            return;
         }
-        Vector groupMembersToWarp = utils.addElement(null, player);
-        Vector groupMemberStartIndex = utils.addElement(null, 0);
-        utils.setScriptVar(player, "strLaunchPointName", "launching");
+
+        // Send system message for payment processing
+        sendSystemMessage(player, new string_id("travel", "processing_payment"));
+
+        // Proceed with launch
+        Vector groupMembersToWarp = new Vector();
+        groupMembersToWarp.add(player);
+        Vector groupMemberStartIndex = new Vector();
+        groupMemberStartIndex.add(0);
+
         Vector shipStartLocations = space_transition.getShipStartLocations(ship);
-        space_utils.sendSystemMessage(player, SID_PVP_NOW_OVERT2);
-        if (shipStartLocations != null && shipStartLocations.size() > 0)
-        {
+
+        if (shipStartLocations != null && !shipStartLocations.isEmpty()) {
             int startIndex = 0;
             location playerLoc = getLocation(player);
-            if (isIdValid(playerLoc.cell))
-            {
-                for (obj_id obj_id : membersApprovedByShipOwner) {
-                    if (obj_id != player && exists(obj_id) && getLocation(obj_id).cell == playerLoc.cell) {
-                        if (features.isSpaceEdition(obj_id)) {
-                            startIndex = space_transition.getNextStartIndex(shipStartLocations, startIndex);
-                            if (startIndex <= shipStartLocations.size()) {
-                                groupMembersToWarp = utils.addElement(groupMembersToWarp, obj_id);
-                                groupMemberStartIndex = utils.addElement(groupMemberStartIndex, startIndex);
-                            }
-                        } else {
-                            string_id strSpam = new string_id("space/space_interaction", "no_space_expansion");
-                            sendSystemMessage(obj_id, strSpam);
+            if (isIdValid(playerLoc.cell)) {
+                for (obj_id member : membersApprovedByShipOwner) {
+                    if (member != player && exists(member) && getLocation(member).cell == playerLoc.cell) {
+                        startIndex = space_transition.getNextStartIndex(shipStartLocations, startIndex);
+                        if (startIndex < shipStartLocations.size()) {
+                            groupMembersToWarp.add(member);
+                            groupMemberStartIndex.add(startIndex);
+                        }
+                        if (callable.hasAnyCallable(member)) {
+                            callable.storeCallables(member);
                         }
                     }
                 }
             }
         }
-        for (int i = 0; i < groupMembersToWarp.size(); ++i)
-        {
-            if (callable.hasAnyCallable(((obj_id)groupMembersToWarp.get(i))))
-            {
-                callable.storeCallables(((obj_id)groupMembersToWarp.get(i)));
-            }
-            stealth.checkForAndMakeVisible(((obj_id)groupMembersToWarp.get(i)));
-            shapechange = buff.getBuffOnTargetFromGroup(((obj_id)groupMembersToWarp.get(i)), "shapechange");
-            if (shapechange != 0)
-            {
-                buff.removeBuff(((obj_id)groupMembersToWarp.get(i)), shapechange);
-                sendSystemMessage(((obj_id)groupMembersToWarp.get(i)), event_perk.SHAPECHANGE_SPACE);
-            }
-            space_transition.setLaunchInfo(((obj_id)groupMembersToWarp.get(i)), ship, (Integer) groupMemberStartIndex.get(i), groundLoc);
-            warpPlayer(((obj_id)groupMembersToWarp.get(i)), warpLocation.area, warpLocation.x, warpLocation.y, warpLocation.z, null, warpLocation.x, warpLocation.y, warpLocation.z);
+
+        // Debug statement to check the list of members to warp
+        LOG("space", "Group members to warp: " + groupMembersToWarp);
+
+        // Warp all group members to the destination
+        for (int i = 0; i < groupMembersToWarp.size(); i++) {
+            obj_id member = (obj_id)groupMembersToWarp.get(i);
+            travel.movePlayerToDestination(member, planet, pointName);
+            // Debug statement for each member being warped
+            LOG("space", "Warping player: " + member + " to planet: " + planet + " at point: " + pointName);
         }
     }
+
+    public boolean inControlOfSpace(obj_id player) throws InterruptedException {
+        // Get the current space region based on the player's location
+        String currentRegion = getCurrentSpaceRegion(player);
+
+        if (currentRegion == null || currentRegion.isEmpty()) {
+            return true; // Assume control if region information is not available
+        }
+
+        int faction = pvpGetAlignedFaction(player);
+        int gcwScore = getGcwImperialScorePercentile(currentRegion);
+
+        // Check faction control
+        if (faction == -615855020) { // Imperial faction ID
+            return gcwScore >= 70;
+        } else if (faction == 370444368) { // Rebel faction ID
+            return gcwScore <= 30;
+        } else if (hasSkill(player, "sm_title_bootlegger")) { // underworld smuggler
+            return true;
+        }
+
+        return false; // Default to no control for other factions
+    }
+
+    public String getCurrentSpaceRegion(obj_id player) throws InterruptedException {
+        // Use the existing getGcwRegion method to get the region name
+        return gcw.getGcwRegion(player);
+    }
+
     public boolean doSpacePrecheck(obj_id objPlayer) throws InterruptedException
     {
         if (isIncapacitated(objPlayer))

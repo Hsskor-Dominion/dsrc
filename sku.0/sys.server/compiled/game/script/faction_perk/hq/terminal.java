@@ -47,6 +47,7 @@ public class terminal extends script.terminal.base.base_terminal
     private static final string_id SID_VULNERABILITY_RESET_NOT_ALIVE = new string_id("hq", "vulnerability_reset_not_alive");
     private static final String STRING_FILE_LOC = "faction/faction_hq/faction_hq_response";
     private static final String[] GCW_MENU_OPTIONS = {
+            "Guard Duty",
             "Supply Requisition",
             "GCW Construction - Structures & Starships",
             "GCW Construction - Rations & Uniform",
@@ -448,7 +449,7 @@ public class terminal extends script.terminal.base.base_terminal
         return SCRIPT_CONTINUE;
     }
     private void showMenuOptions(obj_id player) throws InterruptedException {
-        String title = "GCW Construction";
+        String title = "GCW Contribution";
         String prompt = "Select an option:";
 
 
@@ -490,6 +491,9 @@ public class terminal extends script.terminal.base.base_terminal
             case 4:
                 handleMenuChoice5(player);
                 break;
+            case 5:
+                handleMenuChoice6(player);
+                break;
             default:
                 sendSystemMessage(player, new string_id(STRING_FILE_LOC, "Unknown choice"));
                 break;
@@ -499,12 +503,23 @@ public class terminal extends script.terminal.base.base_terminal
     }
 
     // Methods to handle each menu choice
-    private void handleMenuChoice1(obj_id player) throws InterruptedException
+    private void handleMenuChoice1(obj_id player) throws InterruptedException {
+        if (factions.isImperial(player))
+    {
+        groundquests.grantQuest(player, "stardust_gcw_duty");
+    }
+        else
+    {
+        groundquests.grantQuest(player, "stardust_gcw_duty_republic");
+    }
+}
+
+    private void handleMenuChoice2(obj_id player) throws InterruptedException
     {
         sendSystemMessage(player, new string_id(STRING_FILE_LOC, "supply_requisition"));
     }
 
-    private void handleMenuChoice2(obj_id player) throws InterruptedException {
+    private void handleMenuChoice3(obj_id player) throws InterruptedException {
         if (factions.isImperial(player))
         {
             groundquests.grantQuest(player, "stardust_gcw_construction_starship");
@@ -515,7 +530,7 @@ public class terminal extends script.terminal.base.base_terminal
         }
     }
 
-    private void handleMenuChoice3(obj_id player) throws InterruptedException {
+    private void handleMenuChoice4(obj_id player) throws InterruptedException {
         if (factions.isImperial(player))
         {
             groundquests.grantQuest(player, "stardust_gcw_construction_rations");
@@ -526,7 +541,7 @@ public class terminal extends script.terminal.base.base_terminal
         }
     }
 
-    private void handleMenuChoice4(obj_id player) throws InterruptedException {
+    private void handleMenuChoice5(obj_id player) throws InterruptedException {
         if (factions.isImperial(player))
         {
             groundquests.grantQuest(player, "stardust_gcw_construction_armor");
@@ -537,7 +552,7 @@ public class terminal extends script.terminal.base.base_terminal
         }
     }
 
-    private void handleMenuChoice5(obj_id player) throws InterruptedException {
+    private void handleMenuChoice6(obj_id player) throws InterruptedException {
         if (factions.isImperial(player))
         {
             groundquests.grantQuest(player, "stardust_gcw_construction_speeder");
