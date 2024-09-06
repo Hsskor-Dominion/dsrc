@@ -1164,7 +1164,42 @@ public class combat_base extends script.base_script
         }
         defenders = validateDefenders(self, target, defenders, source, MAX_TARGET_ARRAY_SIZE, validTargetType, isOffensive, fromTrap ? weaponData.id : null, combat.isHeavyWeapon(weaponData), isSpecialAttack, actionData.specialLine.equals("ignore_los") ? true : false, pvpOnly, actionData);
         utils.setScriptVar(self, combat.CHARGE_TARGET, target);
+        if (isOffensive && isPlayer(self) && isPlayer(target))
+        {
+            for (obj_id defender : defenders)
+            {
+                if (isPlayer(self))
+                {
+                    activateGroupTef(self, defender);
+                }
+            }
+        }
         return defenders;
+    }
+    public void activateGroupTef(obj_id self, obj_id target) throws InterruptedException {
+        //Check to make sure the target is grouped first.
+        if (group.isGrouped(target) && isPlayer(target) && !pvpIsDueling(target, self)) {
+            //Grab the target's group and parse through its members
+            obj_id groupObject = getGroupObject(target);
+            obj_id[] groupMembers = getGroupMemberIds(groupObject);
+
+            //Check to make sure the group is valid
+            if (groupMembers != null) {
+                for (obj_id bodyguard : groupMembers) {
+                    if (isPlayer(bodyguard) && isPlayer(self)) {
+                        //Check to make sure TEF receivers are within range, can be altered to preferred distance.
+                        float distanceFromSource = getDistance(self, bodyguard);
+                        if (distanceFromSource <= 120) {
+                            //Give TEF to guild and group members.
+                            if (!group.inSameGroup(self, bodyguard) && !guild.inSameGuild(self, bodyguard) && !pvpIsDueling(self, bodyguard)); {
+                                pvpSetPersonalEnemyFlag(self, bodyguard);
+                                pvpSetPersonalEnemyFlag(bodyguard, self);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     public hit_result[] runHitEngine(attacker_data attackerData, weapon_data weaponData, defender_data[] defenderData, attacker_results attackerResults, defender_results[] defenderResults, combat_data actionData, boolean isTangibleAttacking) throws InterruptedException
     {

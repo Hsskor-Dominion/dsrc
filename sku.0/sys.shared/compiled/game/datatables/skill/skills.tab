@@ -2128,7 +2128,7 @@ expertise_co_blow_em_away_1	expertise_co_cluster_bomb									expertise_co_clust
 expertise_co_blow_em_away_2	expertise_co_blow_em_away_1																					expertise_co_cluster_bomblet=2			0	
 expertise_co_timer_reset_1	expertise_co_flashbang_2									expertise_co_flashbang_2												expertise_delay_line_co_remote_detonator=240			0	
 expertise_co_timer_reset_2	expertise_co_timer_reset_1																					expertise_delay_line_co_remote_detonator=240			0	
-expertise_co_riddle_armor_1	expertise_sp_cheap_strikes_4			1						expertise_sp_cheap_strikes_4											co_riddle_armor				0	
+expertise_co_riddle_armor_1	expertise_sp_cheap_strikes_4			1						expertise_sp_cheap_strikes_4											co_riddle_armor,berserk				0	
 expertise_co_imp_riddle_armor_1	expertise_co_riddle_armor_1			1						expertise_co_riddle_armor_1												expertise_cooldown_line_co_riddle_armor=2			0	
 expertise_co_imp_riddle_armor_2	expertise_co_imp_riddle_armor_1																					expertise_cooldown_line_co_riddle_armor=2			0	
 expertise_co_deflective_armor_1	expertise_co_imp_stand_fast_4									expertise_co_imp_stand_fast_4												damage_decrease_percentage=2,expertise_armorset_melee_block_2=2			0	
@@ -2391,10 +2391,10 @@ expertise_en_dramatic_flair_1	expertise																					constitution_modifie
 expertise_en_dramatic_flair_2	expertise_en_dramatic_flair_1																					constitution_modified=15,strength_modified=15,stamina_modified=15				
 expertise_en_dramatic_flair_3	expertise_en_dramatic_flair_2																					constitution_modified=15,strength_modified=15,stamina_modified=15				
 expertise_en_dramatic_flair_4	expertise_en_dramatic_flair_3																					constitution_modified=15,strength_modified=15,stamina_modified=15				
-expertise_en_strike_1	expertise																					expertise_action_weapon_6=3,strength_modified=10				
-expertise_en_strike_2	expertise_en_strike_1																					expertise_action_weapon_6=3,strength_modified=10				
-expertise_en_strike_3	expertise_en_strike_2																					expertise_action_weapon_6=4,strength_modified=10				
-expertise_en_strike_4	expertise_en_strike_3			1																		expertise_action_weapon_6=5,strength_modified=10				
+expertise_en_strike_1	expertise																					expertise_action_weapon_6=3,strength_modified=10,meditate=10				
+expertise_en_strike_2	expertise_en_strike_1																					expertise_action_weapon_6=3,strength_modified=10,meditate=10				
+expertise_en_strike_3	expertise_en_strike_2																					expertise_action_weapon_6=3,strength_modified=10,meditate=10				
+expertise_en_strike_4	expertise_en_strike_3			1																		expertise_action_weapon_6=3,strength_modified=10,meditate=10				
 expertise_en_conditioned_vessel_1	expertise																					expertise_damage_weapon_6=5				
 expertise_en_conditioned_vessel_2	expertise_en_conditioned_vessel_1																					expertise_damage_weapon_6=5				
 expertise_en_conditioned_vessel_3	expertise_en_conditioned_vessel_2																					expertise_damage_weapon_6=5				
@@ -2408,7 +2408,7 @@ expertise_en_folded_inward_2	expertise_en_folded_inward_1																					ex
 expertise_en_folded_inward_3	expertise_en_folded_inward_2																					expertise_innate_protection_energy=300				
 expertise_en_folded_inward_4	expertise_en_folded_inward_3																					expertise_innate_protection_energy=300				
 expertise_en_thrill_1	expertise																				en_thrill					
-expertise_en_project_will_1	expertise_en_strike_4			1						expertise_en_strike_4											en_strike_0,en_project_will_0,meditate,en_sweeping_pirouette_0,en_spiral_kick_0	meditate=15				
+expertise_en_project_will_1	expertise_en_strike_4			1						expertise_en_strike_4											en_strike_0,en_project_will_0,meditate,en_sweeping_pirouette_0,en_spiral_kick_0	meditate=20				
 expertise_en_rising_spirit_1	expertise_en_conditioned_vessel_1									expertise_en_conditioned_vessel_4												expertise_undiminished_critical_unarmed=2				
 expertise_en_rising_spirit_2	expertise_en_rising_spirit_1																					expertise_undiminished_critical_unarmed=2				
 expertise_en_rising_spirit_3	expertise_en_rising_spirit_2																					expertise_undiminished_critical_unarmed=2				
@@ -2445,10 +2445,10 @@ expertise_trader_business_accounting_1	expertise																				access_fee	e
 expertise_trader_business_accounting_2	expertise_trader_business_accounting_1																				premium_auctions	expertise_vendor_cost_decrease=1				
 expertise_trader_business_accounting_3	expertise_trader_business_accounting_2																				ad_fees_1	manage_vendor=1,hiring=10,vendor_item_limit=100,expertise_vendor_cost_decrease=1				
 expertise_trader_business_accounting_4	expertise_trader_business_accounting_3																					manage_vendor=1,hiring=10,vendor_item_limit=150,expertise_vendor_cost_decrease=1				
-expertise_trader_sampling_collection_1	expertise																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20,expertise_resource_sampling_time_decrease=5				
-expertise_trader_sampling_collection_2	expertise_trader_sampling_collection_1																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20,expertise_resource_sampling_time_decrease=5				
-expertise_trader_sampling_collection_3	expertise_trader_sampling_collection_2																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20,expertise_resource_sampling_time_decrease=5				
-expertise_trader_sampling_collection_4	expertise_trader_sampling_collection_3																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20,expertise_resource_sampling_time_decrease=5				
+expertise_trader_sampling_collection_1	expertise																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20,expertise_resource_sampling_time_decrease=3				
+expertise_trader_sampling_collection_2	expertise_trader_sampling_collection_1																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20,expertise_resource_sampling_time_decrease=3				
+expertise_trader_sampling_collection_3	expertise_trader_sampling_collection_2																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20,expertise_resource_sampling_time_decrease=3				
+expertise_trader_sampling_collection_4	expertise_trader_sampling_collection_3																					expertise_resource_sampling_increase=25,expertise_harvester_collection_increase=10,surveying=20,expertise_resource_sampling_time_decrease=3				
 expertise_trader_warehousing_1	expertise_trader_business_accounting_4									expertise_trader_business_accounting_4												vendor_item_limit=50				
 expertise_trader_warehousing_2	expertise_trader_warehousing_1																					vendor_item_limit=50				
 expertise_trader_warehousing_3	expertise_trader_warehousing_2																					vendor_item_limit=50				

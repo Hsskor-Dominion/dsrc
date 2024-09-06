@@ -419,7 +419,7 @@ public class vehicle extends script.base_script
             decayAmt = Math.round(decay_rate / 2.0f);
         }
 
-        decayAmt = Math.max(decayAmt, 5); // Set a minimum of X damage
+        decayAmt = Math.max(decayAmt, 1); // Set a minimum of X damage
 
         int currentHP = getHitpoints(vehicle);
         currentHP -= decayAmt;

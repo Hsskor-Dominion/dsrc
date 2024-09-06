@@ -507,10 +507,12 @@ public class terminal extends script.terminal.base.base_terminal
         if (factions.isImperial(player))
     {
         groundquests.grantQuest(player, "stardust_gcw_duty");
+        factions.goOvertWithDelay(player, 0.0f);
     }
         else
     {
         groundquests.grantQuest(player, "stardust_gcw_duty_republic");
+        factions.goOvertWithDelay(player, 0.0f);
     }
 }
 

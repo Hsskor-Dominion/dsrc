@@ -1618,29 +1618,35 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
+    public int berserk(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+
+        buff.applyBuff(self, "berserk");
+        return SCRIPT_CONTINUE;
+    }
+
     public int fs_buff_ca_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        factions.goOvertWithDelay(self, 0.0f);
+        setRegenRate(self, HEALTH, 400);
+        setRegenRate(self, ACTION, 300);
         if (buff.toggleStance(self, "fs_buff_ca_1")) {
             return SCRIPT_OVERRIDE;
         }
         if (!combatStandardAction("fs_buff_ca_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
-        factions.goOvertWithDelay(self, 0.0f);
-        setRegenRate(self, HEALTH, 400);
-        setRegenRate(self, ACTION, 300);
         return SCRIPT_CONTINUE;
     }
 
     public int fs_buff_def_1_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        factions.goOvertWithDelay(self, 0.0f);
+        setRegenRate(self, HEALTH, 400);
+        setRegenRate(self, ACTION, 300);
         if (buff.toggleStance(self, "fs_buff_def_1_1")) {
             return SCRIPT_OVERRIDE;
         }
         if (!combatStandardAction("fs_buff_def_1_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
-        factions.goOvertWithDelay(self, 0.0f);
-        setRegenRate(self, HEALTH, 400);
-        setRegenRate(self, ACTION, 300);
         return SCRIPT_CONTINUE;
     }
 
@@ -11359,46 +11365,47 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int bountycheck(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (buff.hasBuff(target, "cloning_sickness")){
+        // Check for cloning sickness
+        if (buff.hasBuff(target, "cloning_sickness")) {
             sendSystemMessage(self, new string_id("stardust/mando_rank", "dishonorable"));
             return SCRIPT_OVERRIDE;
         }
-        if (hasSkill(target, "faction_rank_mando")){
+
+        // Check for various skills and set enemy flags
+        String[] skillsToCheck = {
+                "class_forcesensitive_phase2_novice",
+                "faction_rank_mando_novice",
+                "stardust_pvp",
+                "pvp_imperial_airstrike_ability",
+                "pvp_rebel_airstrike_ability",
+                "sm_title_bootlegger"
+        };
+
+        for (String skill : skillsToCheck) {
+            if (hasSkill(target, skill)) {
+                pvpSetPersonalEnemyFlag(self, target);
+                pvpSetPersonalEnemyFlag(target, self);
+            }
+        }
+
+        // Special case for faction_rank_mando
+        if (hasSkill(target, "faction_rank_mando")) {
             sendSystemMessage(self, new string_id("stardust/mando_rank", "mandalorian_challenge"));
             factions.addUnmodifiedFactionStanding(self, "death_watch", -50);
         }
-        if (hasSkill(target, "class_forcesensitive_phase2_novice")) {
-            pvpSetPersonalEnemyFlag(self, target);
-            pvpSetPersonalEnemyFlag(target, self);
-        }
-        if (hasSkill(target, "faction_rank_mando_novice")) {
-            pvpSetPersonalEnemyFlag(self, target);
-            pvpSetPersonalEnemyFlag(target, self);
-        }
-        if (hasSkill(target, "stardust_pvp")) {
-            pvpSetPersonalEnemyFlag(self, target);
-            pvpSetPersonalEnemyFlag(target, self);
-        }
-        if (hasSkill(target, "pvp_imperial_airstrike_ability")) {
-            pvpSetPersonalEnemyFlag(self, target);
-            pvpSetPersonalEnemyFlag(target, self);
-        }
-        if (hasSkill(target, "pvp_rebel_airstrike_ability")) {
-            pvpSetPersonalEnemyFlag(self, target);
-            pvpSetPersonalEnemyFlag(target, self);
-        }
-        if (hasSkill(target, "sm_title_bootlegger")) {
-            pvpSetPersonalEnemyFlag(self, target);
-            pvpSetPersonalEnemyFlag(target, self);
-        }
+
+        // Check if target is being hunted by a bounty hunter
         if (isBeingHuntedByBountyHunter(target, self)) {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
+
         sendSystemMessage(target, new string_id("stardust/mando_rank", "scanning"));
+        doAnimationAction(self, "anims.PLAYER_DRAW_DATAPAD");
         obj_id originalTarget = target;
+
+        // Check for bounty and spawn fugitive if necessary
         if (bounty_hunter.canCheckForBounty(self, target)) {
-            doAnimationAction(self, "anims.PLAYER_DRAW_DATAPAD");
             if (bounty_hunter.checkForPresenceOfBounty(self, target)) {
                 location spawnLoc = getLocation(target);
                 setHealth(target, -5000);
@@ -11411,13 +11418,13 @@ public class combat_actions extends script.systems.combat.combat_base {
         } else {
             return SCRIPT_OVERRIDE;
         }
-        if (isGod(self)) {
+
+        // Additional checks
+        if (isGod(self) || !exists(originalTarget)) {
             return SCRIPT_OVERRIDE;
         }
-        if (!exists(originalTarget)) {
-            return SCRIPT_CONTINUE;
-        }
-        return SCRIPT_OVERRIDE;
+
+        return SCRIPT_CONTINUE;
     }
 
     public int fs_drain_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {

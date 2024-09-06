@@ -158,9 +158,17 @@ public class cid extends script.base_script
             {
                 cid_commando_quest(player, npc);
                 final string_id message = new string_id(c_stringFile, "cid_offer_commando_mission");
+                final int numberOfResponses = 1;
 
-                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
-                npcEndConversationWithMessage(player, message);
+                final string_id[] responses = new string_id[numberOfResponses];
+                int responseIndex = 0;
+
+                responses[responseIndex++] = new string_id(c_stringFile, "[Shuttle]cid_gives_you_a_ride");
+
+                utils.setScriptVar(player, "conversation.cid_conversation.branchId", 5);
+
+                npcSpeak(player, message);
+                npcSetConversationResponses(player, responses);
 
                 return SCRIPT_CONTINUE;
             }
@@ -306,6 +314,31 @@ public class cid extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
+    public int cid_handleBranch5(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        if (response.equals("[shuttle]cid_gives_you_a_ride"))
+        {
+            if (cid_language_condition(npc, player))
+            {
+                final string_id message = new string_id(c_stringFile, "cid_wont_pick_you_up");
+
+                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+                warpPlayer(player, "kashyyyk_hunting", -616, 8, 889, null, 0, 0, 0, "", false);
+                return SCRIPT_CONTINUE;
+            }
+            else
+            {
+                final string_id message = new string_id(c_stringFile, "cid_increases_her_share");
+
+                utils.removeScriptVar(player, "conversation.cid_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+        }
+        return SCRIPT_DEFAULT;
+    }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
@@ -398,6 +431,10 @@ public class cid extends script.base_script
             return SCRIPT_CONTINUE;
         }
         else if (branchId == 4 && cid_handleBranch4(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        else if (branchId == 5 && cid_handleBranch5(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }

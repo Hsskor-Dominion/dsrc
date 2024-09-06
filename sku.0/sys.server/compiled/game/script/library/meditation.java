@@ -41,12 +41,13 @@ public class meditation extends script.base_script
     public static final string_id SID_STATE_PREVENTS_POWERBOOST = new string_id(STF_TERASKASI, "state_prevent_powerboost");
     public static final string_id SID_MIND_POOL_TOO_LOW = new string_id(STF_TERASKASI, "mind_pool_too_low");
     public static final string_id PROSE_CUREWOUND = new string_id(STF_TERASKASI, "prose_curewound");
-    public static final String[] MEDITATE_BUFFS = 
+    public static final String[] MEDITATE_BUFF_STANCE =
     {
-        "fs_meditate_1",
-        "fs_meditate_2",
-        "fs_meditate_3"
+            "fs_meditate_1"
     };
+    public static final String[] MEDITATE_BUFF_FOCUS = {
+            "fs_meditate_3"
+            };
     public static int getMeditationSkillMod(obj_id player) throws InterruptedException
     {
         if (!isIdValid(player))
@@ -63,7 +64,7 @@ public class meditation extends script.base_script
             return false;
         }
         setState(player, STATE_MEDITATE, true);
-        setRegenRate(player, HEALTH, 400);
+        setRegenRate(player, HEALTH, 400);//this is a band-aid for jedi regen issues
         setRegenRate(player, ACTION, 300);
         chat.setTempAnimationMood(player, "meditating");
         messageTo(player, HANDLER_MEDITATION_TICK, trial.getSessionDict(player, meditation.HANDLER_MEDITATION_TICK), TIME_TICK, false);
@@ -120,16 +121,25 @@ public class meditation extends script.base_script
             LOG("meditate", "trance: slotDot -> DOT_POISON");
             delay = slowDOT(player, modval, dot.DOT_POISON);
         }
-        if (modval > 40 && delay == 0.0f)
+        if (modval > 30 && delay == 0.0f)
         {
             LOG("meditate", "trance: slotDot -> DOT_DISEASE");
             delay = slowDOT(player, modval, dot.DOT_DISEASE);
         }
-        if (modval > 60 && delay == 0.0f)
-        {
-            LOG("meditate", "trance: cureWounds...");
-            delay = cureWounds(player, modval);
-        }
+//        if (modval > 40 && delay == 0.0f)
+//        {
+//            LOG("meditate", "trance: cureWounds...");
+//            //delay = cureWounds(player, modval);
+//            int stackSize = (int) buff.getBuffStackCount(player, "gcw_fatigue");
+//            if (stackSize <= 0) {
+//            } else if (stackSize <= 2) {
+//                buff.removeBuff(player, "gcw_fatigue");
+//            } else if (stackSize > 2) {
+//                stackSize = stackSize - 1;
+//                buff.removeBuff(player, "gcw_fatigue");
+//                buff.applyBuffWithStackCount(player, "gcw_fatigue", stackSize);
+//            }
+//        }
         LOG("meditate", "trance: pre-ret delay = " + delay);
         if (delay > 0.0f)
         {

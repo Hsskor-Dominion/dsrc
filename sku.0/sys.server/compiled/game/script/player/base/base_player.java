@@ -9,6 +9,10 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
+import static script.library.buff.hasBuff;
+import static script.library.meditation.MEDITATE_BUFF_FOCUS;
+import static script.library.meditation.MEDITATE_BUFF_STANCE;
+
 public class base_player extends script.base_script
 {
     public base_player()
@@ -549,15 +553,15 @@ public class base_player extends script.base_script
         {
             buff.removeBuff(self, vehicleBuff);
         }
-        if (buff.hasBuff(self, "forceRun"))
+        if (hasBuff(self, "forceRun"))
         {
             buff.removeBuff(self, "forceRun");
         }
-        if (buff.hasBuff(self, "forceRun_1"))
+        if (hasBuff(self, "forceRun_1"))
         {
             buff.removeBuff(self, "forceRun_1");
         }
-        if (buff.hasBuff(self, "forceRun_2"))
+        if (hasBuff(self, "forceRun_2"))
         {
             buff.removeBuff(self, "forceRun_2");
         }
@@ -594,7 +598,7 @@ public class base_player extends script.base_script
             setState(self, STATE_DISEASED, false);
             setState(self, STATE_ON_FIRE, false);
         }
-        if (buff.hasBuff(self, "healOverTime"))
+        if (hasBuff(self, "healOverTime"))
         {
             buff.removeBuff(self, "healOverTime");
         }
@@ -636,62 +640,63 @@ public class base_player extends script.base_script
         }
         utils.unequipAndNotifyUncerted(self);
         utils.checkInventoryForSnowflakeItemSwaps(self);
-        if (hasObjVar(self, "item_reimbursement_list"))
-        {
-            String[] strReimbursementList = getStringArrayObjVar(self, "item_reimbursement_list");
-            removeObjVar(self, "item_reimbursement_list");
-            for (String s1 : strReimbursementList) {
-                obj_id objTest = createObjectInInventoryAllowOverload(s1, self);
-                if (isIdValid(objTest)) {
-                    if (armor.isArmorComponent(objTest)) {
-                        if (!isGameObjectTypeOf(objTest, GOT_armor_foot) && !isGameObjectTypeOf(objTest, GOT_armor_hand)) {
-                            final String[] ARMOR_SET =
-                                    {
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_leggings.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_helmet.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_gloves.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_chest_plate.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bracer_r.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bracer_l.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_boots.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bicep_r.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bicep_l.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_belt.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_leggings.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_helmet.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_gloves.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_chest_plate.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bracer_r.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bracer_l.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_boots.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bicep_r.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bicep_l.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_belt.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_leggings.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_helmet.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_gloves.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_chest_plate.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bracer_r.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bracer_l.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_boots.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bicep_r.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bicep_l.iff",
-                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_belt.iff"
-                                    };
-                            for (String s : ARMOR_SET) {
-                                if (s1.equals(s)) {
-                                    armor.setArmorDataPercent(objTest, 2, 1, 0.94f, 0.95f);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    CustomerServiceLog("item_reimbursement", "Created item of type " + s1 + " and Id of " + objTest + " in the inventory of %TU", self);
-                } else {
-                    CustomerServiceLog("item_reimbursement", "Failed to reimburse item of type " + s1 + " in the inventory of %TU", self);
-                }
-            }
-        }
+        //below is an attempt to eliminate clone armor color changes?
+//        if (hasObjVar(self, "item_reimbursement_list"))
+//        {
+//            String[] strReimbursementList = getStringArrayObjVar(self, "item_reimbursement_list");
+//            removeObjVar(self, "item_reimbursement_list");
+//            for (String s1 : strReimbursementList) {
+//                obj_id objTest = createObjectInInventoryAllowOverload(s1, self);
+//                if (isIdValid(objTest)) {
+//                    if (armor.isArmorComponent(objTest)) {
+//                        if (!isGameObjectTypeOf(objTest, GOT_armor_foot) && !isGameObjectTypeOf(objTest, GOT_armor_hand)) {
+//                            final String[] ARMOR_SET =
+//                                    {
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_leggings.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_helmet.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_gloves.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_chest_plate.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bracer_r.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bracer_l.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_boots.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bicep_r.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bicep_l.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_belt.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_leggings.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_helmet.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_gloves.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_chest_plate.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bracer_r.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bracer_l.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_boots.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bicep_r.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bicep_l.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_belt.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_leggings.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_helmet.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_gloves.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_chest_plate.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bracer_r.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bracer_l.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_boots.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bicep_r.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bicep_l.iff",
+//                                            "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_belt.iff"
+//                                    };
+//                            for (String s : ARMOR_SET) {
+//                                if (s1.equals(s)) {
+//                                    armor.setArmorDataPercent(objTest, 2, 1, 0.94f, 0.95f);
+//                                    break;
+//                                }
+//                            }
+//                        }
+//                    }
+//                    CustomerServiceLog("item_reimbursement", "Created item of type " + s1 + " and Id of " + objTest + " in the inventory of %TU", self);
+//                } else {
+//                    CustomerServiceLog("item_reimbursement", "Failed to reimburse item of type " + s1 + " in the inventory of %TU", self);
+//                }
+//            }
+//        }
         int fatigue = getShockWound(self);
         if (fatigue > 0)
         {
@@ -998,7 +1003,7 @@ public class base_player extends script.base_script
         {
             buff.removeBuff(self, vehicleBuff);
         }
-        if (buff.hasBuff(self, "incapWeaken"))
+        if (hasBuff(self, "incapWeaken"))
         {
             pclib.killPlayer(self, killer, true);
             return SCRIPT_CONTINUE;
@@ -1662,7 +1667,7 @@ public class base_player extends script.base_script
         {
             badge.grantBadge(self, "bdg_kash_avatar_zssik");
         }
-        if (!utils.hasScriptVar(self, "performance.buildabuff.buffComponentKeys") && buff.hasBuff(self, "buildabuff_inspiration"))
+        if (!utils.hasScriptVar(self, "performance.buildabuff.buffComponentKeys") && hasBuff(self, "buildabuff_inspiration"))
         {
             buff.removeBuff(self, "buildabuff_inspiration");
         }
@@ -1945,19 +1950,19 @@ public class base_player extends script.base_script
                     {
                         removeObjVar(self, "lifeday");
                     }
-                    if (buff.hasBuff(self, "event_lifeday_imperial_competitive"))
+                    if (hasBuff(self, "event_lifeday_imperial_competitive"))
                     {
                         buff.removeBuff(self, "event_lifeday_imperial_competitive");
                     }
-                    if (buff.hasBuff(self, "event_lifeday_rebel_competitive"))
+                    if (hasBuff(self, "event_lifeday_rebel_competitive"))
                     {
                         buff.removeBuff(self, "event_lifeday_rebel_competitive");
                     }
-                    if (buff.hasBuff(self, "event_lifeday_imperial_present_counter"))
+                    if (hasBuff(self, "event_lifeday_imperial_present_counter"))
                     {
                         buff.removeBuff(self, "event_lifeday_imperial_present_counter");
                     }
-                    if (buff.hasBuff(self, "event_lifeday_rebel_tree_counter"))
+                    if (hasBuff(self, "event_lifeday_rebel_tree_counter"))
                     {
                         buff.removeBuff(self, "event_lifeday_rebel_tree_counter");
                     }
@@ -2834,7 +2839,7 @@ public class base_player extends script.base_script
         obj_id medic = params.getObjId("medic");
         if (isDead(self))
         {
-            if (buff.hasBuff(self, "healOverTime"))
+            if (hasBuff(self, "healOverTime"))
             {
                 buff.removeBuff(self, "healOverTime");
             }
@@ -2842,7 +2847,7 @@ public class base_player extends script.base_script
         }
         if (!utils.hasScriptVar(self, healing.VAR_PLAYER_HOT_ID))
         {
-            if (buff.hasBuff(self, "healOverTime"))
+            if (hasBuff(self, "healOverTime"))
             {
                 buff.removeBuff(self, "healOverTime");
             }
@@ -2879,7 +2884,7 @@ public class base_player extends script.base_script
         duration -= tick;
         if (duration <= 0.0f)
         {
-            if (buff.hasBuff(self, "healOverTime"))
+            if (hasBuff(self, "healOverTime"))
             {
                 buff.removeBuff(self, "healOverTime");
             }
@@ -9597,7 +9602,7 @@ public class base_player extends script.base_script
     }
     public int handleSpiceDownerEffect(obj_id self, dictionary params) throws InterruptedException
     {
-        if (buff.hasBuff(self, "spice_downer"))
+        if (hasBuff(self, "spice_downer"))
         {
             buff.removeBuff(self, "spice_downer");
         }
@@ -9621,7 +9626,7 @@ public class base_player extends script.base_script
     }
     public int handleGenericDownerEffect(obj_id self, dictionary params) throws InterruptedException
     {
-        if (buff.hasBuff(self, "generic_downer"))
+        if (hasBuff(self, "generic_downer"))
         {
             buff.removeBuff(self, "generic_downer");
         }
@@ -10183,7 +10188,7 @@ public class base_player extends script.base_script
                 {
                     messageTo(self, "death_troopers_apply_virus", null, 3.0f, false);
                 }
-                if (!buff.hasBuff(self, "death_troopers_no_vehicle"))
+                if (!hasBuff(self, "death_troopers_no_vehicle"))
                 {
                     buff.applyBuff(self, "death_troopers_no_vehicle");
                 }
@@ -10227,7 +10232,7 @@ public class base_player extends script.base_script
         if (regionName.startsWith(gcw.PVP_BATTLEFIELD_REGION) && !utils.hasScriptVar(self, "battlefield.kicked_out"))
         {
             sendSystemMessage(self, new string_id("gcw", "pvp_advanced_region_leaving_battlefield"));
-            if (buff.hasBuff(self, "battlefield_communication_run"))
+            if (hasBuff(self, "battlefield_communication_run"))
             {
                 return SCRIPT_OVERRIDE;
             }
@@ -12086,34 +12091,81 @@ public class base_player extends script.base_script
         sendSystemMessage(self, meditation.SID_MED_FAIL);
         return SCRIPT_CONTINUE;
     }
-    public int handleMeditationTick(obj_id self, dictionary params) throws InterruptedException
-    {
-        if (!meditation.isMeditating(self))
-        {
+    public int handleMeditationTick(obj_id self, dictionary params) throws InterruptedException {
+        if (!meditation.isMeditating(self)) {
             meditation.endMeditation(self, false);
             return SCRIPT_CONTINUE;
         }
-        if (!trial.verifySession(self, params, meditation.HANDLER_MEDITATION_TICK))
-        {
+        if (!trial.verifySession(self, params, meditation.HANDLER_MEDITATION_TICK)) {
             return SCRIPT_CONTINUE;
         }
-        if (utils.isProfession(self, utils.FORCE_SENSITIVE))
-        {
-            int value = 0;
-            if (utils.hasScriptVar(self, meditation.VAR_MEDITATION_BASE))
-            {
-                value = utils.getIntScriptVar(self, meditation.VAR_MEDITATION_BASE);
-                value++;
-                if (value >= 3)
-                {
-                    stealth.checkForAndMakeVisibleNoRecourse(self);
-                    String meditateBuff = meditation.MEDITATE_BUFFS[rand(0, meditation.MEDITATE_BUFFS.length - 1)];
-                    buff.applyBuff(self, meditateBuff);
-                    value = 0;
+        meditation.trance(self);
+        if (hasSkill(self, "expertise_en_project_will_1")) {
+            buff.applyBuff(self, "center_of_being");
+
+            int stackSize = (int) buff.getBuffStackCount(self, "gcw_fatigue");
+
+            if (stackSize > 0) {
+                stackSize--; // Reduce stack size by 1
+
+                // Remove the existing buff completely
+                buff.removeBuff(self, "gcw_fatigue");
+
+                // Reapply the buff with the reduced stack count, only if the stack count is still greater than 0
+                if (stackSize > 0) {
+                    buff.applyBuffWithStackCount(self, "gcw_fatigue", stackSize);
                 }
             }
-            utils.setScriptVar(self, meditation.VAR_MEDITATION_BASE, value);
         }
+        int roll = rand(50, 100);
+        if (buff.isInStance(self)) {
+            buff.applyBuff(self, "fs_meditate_1");
+            if (roll == 97) {
+                xp.grant(self, "jedi", 1);
+                groundquests.sendSignal(self, "vision_yoda");
+            }
+            if (roll == 98) {
+                xp.grant(self, "jedi", 1);
+                groundquests.sendSignal(self, "vision_leia");
+            }
+            if (roll == 99) {
+                xp.grant(self, "jedi", 1);
+                groundquests.sendSignal(self, "vision_obi");
+            }
+            if (roll == 100) {
+                xp.grant(self, "jedi", 1);
+                groundquests.grantQuest(self, "jedi_gifts_1");
+            }
+        } else if (buff.isInFocus(self)) {
+            buff.applyBuff(self, "fs_meditate_3");
+            if (roll == 100) {
+                xp.grant(self, "jedi", 1);
+                groundquests.sendSignal(self, "vision_vader");
+            }
+            if (roll == 99) {
+                xp.grant(self, "jedi", 1);
+                groundquests.sendSignal(self, "vision_sidious");
+            }
+            if (roll == 98) {
+                xp.grant(self, "jedi", 1);
+                groundquests.sendSignal(self, "vision_maul");
+            }
+            if (roll == 97) {
+                xp.grant(self, "jedi", 1);
+                groundquests.sendSignal(self, "vision_vader");
+            }
+        } else if (utils.isProfession(self, utils.FORCE_SENSITIVE)) {
+            buff.applyBuff(self, "fs_meditate_2");
+            if (roll == 50) {
+                xp.grant(self, "jedi", 1);
+                groundquests.grantQuest(self, "stardust_vision");
+            }
+            if (roll == 100) {
+                xp.grant(self, "jedi", 10);
+                groundquests.sendSignal(self, "stardust_vision");
+            }
+        }
+
         messageTo(self, meditation.HANDLER_MEDITATION_TICK, trial.getSessionDict(self, meditation.HANDLER_MEDITATION_TICK), 10.0f, false);
         return SCRIPT_CONTINUE;
     }
@@ -12235,7 +12287,7 @@ public class base_player extends script.base_script
     }
     public boolean needsBlackwingLightInfection(obj_id self) throws InterruptedException
     {
-        if (!buff.hasBuff(self, "death_troopers_infection_1") && !buff.hasBuff(self, "death_troopers_infection_2") && !buff.hasBuff(self, "death_troopers_infection_3") && !buff.hasBuff(self, "death_troopers_inoculation"))
+        if (!hasBuff(self, "death_troopers_infection_1") && !hasBuff(self, "death_troopers_infection_2") && !hasBuff(self, "death_troopers_infection_3") && !hasBuff(self, "death_troopers_inoculation"))
         {
             return true;
         }

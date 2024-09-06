@@ -67,7 +67,7 @@ bindingStrike_1	bindingStrike			2	command.bindingStrike	45	stamina	-250		0		0		0
 armorBreak	armorBreak			1	command.armorBreak	15	private_armor_break	42		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 armorBreak_1	armorBreak			3	command.armorBreak	20	private_armor_break	100		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 armorBreak_2	armorBreak			4	command.armorBreak	30	private_armor_break	150		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
-berserk	berserk			1	command.berserk	20	private_melee_dmg_bonus	25		0		0		0		0	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
+berserk	berserk			1	command.warcry	30	private_melee_dmg_bonus	10	combat_divide_damage_taken	-10	expertise_undiminished_critical_melee	5		0		0	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
 berserk_1	berserk			2	command.berserk	20	private_melee_dmg_bonus	50		0		0		0		0	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
 startleShot	startleShot			1	command.startleShot	5	private_posture_override	1		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 startleShot_1	startleShot			2	command.startleShot	5	private_posture_override	1		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
@@ -843,7 +843,7 @@ fs_buff_def_1_5	fsStance	fsDefStance		5	command.fs_buff_def_1	-1	expertise_stanc
 fs_buff_def_1_6	fsStance	fsDefStance		6	command.fs_buff_def_1	-1	expertise_stance	0	private_taunt_bonus	20						0	STATE_NONE	none			1	0	appearance/pt_force_resist_poison.prt	0	1	1	0	1	1	0	1	1	1
 fs_force_run	fs_force_run			1	command.forceRun	15	slope_move	5	movement	0	movement_resist_snare	100	movement_resist_root	100		0	STATE_NONE	none	clienteffect/pl_force_run.cef,appearance/pt_force_speed.prt		1	0		1	1	1	0	1	1	0	1	1	1
 fs_meditate_1	fs_meditate			1	jedi.channelForce	1800	expertise_evasion_chance	3	expertise_evasion_value	30		0		0		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1
-fs_meditate_2	fs_meditate			1	jedi.saberDervish	1800	expertise_strikethrough_chance	3	combat_strikethrough_value	50		0		0		0	STATE_NONE	none	appearance/pt_force_meditate.prt		1	0		1	1	1	0	1	1	0	1	1	1
+fs_meditate_2	fs_meditate			1	jedi.saberDervish	1800	expertise_strikethrough_chance	3	combat_strikethrough_value	50	detect_hidden	30		0		0	STATE_NONE	none	appearance/pt_force_meditate.prt		1	0		1	1	1	0	1	1	0	1	1	1
 fs_meditate_3	fs_meditate			1	jedi.avoidIncapacitation	1800	expertise_critical_niche_all	3	strength_modified	85		0		0		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1
 fs_mind_trick_1	mindTrick			25	command.fs_mind_trick	8	precision_modified	-50	strength_modified	-50		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 fs_mind_trick_2	mindTrick			50	command.fs_mind_trick	8	agility_modified	-20	stamina_modified	-10		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
@@ -984,7 +984,7 @@ detectHiddenConsumable20	towCrystal			20	command.detectHiddenBuff	900	detect_hid
 detectHiddenConsumable40	towCrystal			40	command.detectHiddenBuff	900	detect_hidden	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 detectHiddenConsumable65	towCrystal			65	command.detectHiddenBuff	900	detect_hidden	65		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 detectHiddenConsumable100	towCrystal			100	command.detectHiddenBuff	900	detect_hidden	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-invis_sm_buff_invis_1	invisibility			5	command.camouflageSelf	30	invis	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+invis_sm_buff_invis_1	invisibility			5	command.camouflageSelf	120	invis	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 pub28MeatPie	food			25	buffs.foodMeal	1200	constitution_modified	70		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 cloning_sickness	testCloneSickDoNotUse			50	command.sampledna	600	healthPercent	-75	actionPercent	-75		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 roadmapTraderClicky	genBuff_4			50	buffs.genericBuff	120	general_experimentation	25	general_assembly	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1991,3 +1991,4 @@ en_sprint	en_sprint			10	command.en_sprint	30	movement	0	movement_resist_snare	1
 event_halloween_costume_skeleton1	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	51		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 costume_hutt_female	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	3		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 gcw_rocket_turret	gcw_mini_turret			1		1	gcw_mini_turret	1		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
+center_of_being	tka_meditate			1	command.centerOfBeing	1800	private_melee_dmg_shield	10	private_taunt_bonus	10	unarmed_damage	10	expertise_dodge	5		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1
