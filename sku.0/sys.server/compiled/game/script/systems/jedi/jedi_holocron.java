@@ -176,7 +176,7 @@ public class jedi_holocron extends script.base_script {
                 grantPhase3Quest(player, self);
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
                 xp.grant(player, "jedi", 7500);
-                factions.addFactionStanding(player, "sith_shadow", 50.0f);
+                factions.addFactionStanding(player, "fs_villager", 50.0f);
                 factions.goOvertWithDelay(player, 0.0f);
                 destroyObject(self);
 

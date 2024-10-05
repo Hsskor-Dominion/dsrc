@@ -456,7 +456,8 @@ public class buff_handler extends script.base_script
                 "combat_general",
                 "entertainer",
                 "space_combat_general",
-                "chronicles"
+                "chronicles",
+                //"jedi" //flip-switch maybe?
             };
             utils.setScriptVar(self, "buff.xpBonusGeneral.types", xpArray);
             utils.setScriptVar(self, "buff.xpBonusGeneral.value", value / 100);
@@ -1889,7 +1890,8 @@ public class buff_handler extends script.base_script
                                         "crafting",
                                         "combat_general",
                                         "entertainer",
-                                        "space_combat_general"
+                                        "space_combat_general",
+                                        //"jedi" //flip-switch
                                 };
                         utils.setScriptVar(self, "buff.xpBonus.types", xpArray);
                         utils.setScriptVar(self, "buff.xpBonus.value", buffValue / 100);
@@ -1942,7 +1944,8 @@ public class buff_handler extends script.base_script
                                                 "combat_general",
                                                 "entertainer",
                                                 "space_combat_general",
-                                                "chronicles"
+                                                "chronicles",
+                                                //"jedi" //flip-switch
                                         };
                                 utils.setScriptVar(self, "buff.xpBonus.types", xpa);
                                 utils.setScriptVar(self, "buff.xpBonus.value", buffValue / 100.0f);

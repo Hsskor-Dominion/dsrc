@@ -3,6 +3,7 @@ package script.player;
 import script.library.innate;
 import script.library.prose;
 import script.*;
+import script.library.skill;
 
 public class species_innate extends script.base_script
 {
@@ -38,46 +39,41 @@ public class species_innate extends script.base_script
     }
     public int OnAttach(obj_id self) throws InterruptedException
     {
+        grantSkill(self, "social_language_basic_comprehend");
         int species = getSpecies(self);
         switch (species)
         {
             case SPECIES_BOTHAN:
             grantSkill(self, "species_bothan");
             grantSkill(self, "social_language_basic_speak");
-            grantSkill(self, "social_language_basic_comprehend");
             grantSkill(self, "social_language_bothan_speak");
             grantSkill(self, "social_language_bothan_comprehend");
             break;
             case SPECIES_HUMAN:
             grantSkill(self, "species_human");
             grantSkill(self, "social_language_basic_speak");
-            grantSkill(self, "social_language_basic_comprehend");
             break;
             case SPECIES_MON_CALAMARI:
             grantSkill(self, "species_moncal");
             grantSkill(self, "social_language_basic_speak");
-            grantSkill(self, "social_language_basic_comprehend");
             grantSkill(self, "social_language_moncalamari_speak");
             grantSkill(self, "social_language_moncalamari_comprehend");
             break;
             case SPECIES_RODIAN:
             grantSkill(self, "species_rodian");
             grantSkill(self, "social_language_basic_speak");
-            grantSkill(self, "social_language_basic_comprehend");
             grantSkill(self, "social_language_rodian_speak");
             grantSkill(self, "social_language_rodian_comprehend");
             break;
             case SPECIES_TRANDOSHAN:
             grantSkill(self, "species_trandoshan");
             grantSkill(self, "social_language_basic_speak");
-            grantSkill(self, "social_language_basic_comprehend");
             grantSkill(self, "social_language_trandoshan_speak");
             grantSkill(self, "social_language_trandoshan_comprehend");
             break;
             case SPECIES_TWILEK:
             grantSkill(self, "species_twilek");
             grantSkill(self, "social_language_basic_speak");
-            grantSkill(self, "social_language_basic_comprehend");
             grantSkill(self, "social_language_twilek_speak");
             grantSkill(self, "social_language_twilek_comprehend");
             grantSkill(self, "social_language_lekku_speak");
@@ -85,28 +81,24 @@ public class species_innate extends script.base_script
             break;
             case SPECIES_WOOKIEE:
             grantSkill(self, "species_wookiee");
-            grantSkill(self, "social_language_basic_comprehend");
             grantSkill(self, "social_language_wookiee_speak");
             grantSkill(self, "social_language_wookiee_comprehend");
             break;
             case SPECIES_ZABRAK:
             grantSkill(self, "species_zabrak");
             grantSkill(self, "social_language_basic_speak");
-            grantSkill(self, "social_language_basic_comprehend");
             grantSkill(self, "social_language_zabrak_speak");
             grantSkill(self, "social_language_zabrak_comprehend");
             break;
             case SPECIES_ITHORIAN:
             grantSkill(self, "species_ithorian");
             grantSkill(self, "social_language_basic_speak");
-            grantSkill(self, "social_language_basic_comprehend");
             grantSkill(self, "social_language_ithorian_speak");
             grantSkill(self, "social_language_ithorian_comprehend");
             break;
             case SPECIES_SULLUSTAN:
             grantSkill(self, "species_sullustan");
             grantSkill(self, "social_language_basic_speak");
-            grantSkill(self, "social_language_basic_comprehend");
             grantSkill(self, "social_language_sullustan_speak");
             grantSkill(self, "social_language_sullustan_comprehend");
             break;

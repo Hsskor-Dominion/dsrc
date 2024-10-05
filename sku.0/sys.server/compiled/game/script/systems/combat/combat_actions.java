@@ -3390,10 +3390,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_precision_1", params);
-        if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
-        }
+//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_precision_1", params);
+//        if (!performed_buff) {
+//            return SCRIPT_OVERRIDE;
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3406,10 +3406,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_precision_2", params);
-        if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
-        }
+//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_precision_2", params);
+//        if (!performed_buff) {
+//            return SCRIPT_OVERRIDE;
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3422,10 +3422,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_precision_3", params);
-        if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
-        }
+//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_precision_3", params);
+//        if (!performed_buff) {
+//            return SCRIPT_OVERRIDE;
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3438,10 +3438,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_block_1", params);
-        if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
-        }
+//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_block_1", params);
+//        if (!performed_buff) {
+//            return SCRIPT_OVERRIDE;
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -10965,7 +10965,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendSystemMessage(self, new string_id("spam", "pistol_module_missing"));
             return SCRIPT_OVERRIDE;
         }
-        if (buff.hasBuff(self, "sm_modify_pistol_1") || buff.hasBuff(self, "sm_modify_pistol_2") || buff.hasBuff(self, "sm_modify_pistol_3")) {
+        if (buff.hasBuff(target, "sm_modify_pistol_1") || buff.hasBuff(target, "sm_modify_pistol_2") || buff.hasBuff(target, "sm_modify_pistol_3")) {
             sendSystemMessage(self, new string_id("spam", "pistol_buff_exists"));
             return SCRIPT_OVERRIDE;
         }
@@ -10983,7 +10983,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendSystemMessage(self, new string_id("spam", "pistol_module_missing"));
             return SCRIPT_OVERRIDE;
         }
-        if (buff.hasBuff(self, "sm_modify_pistol_1") || buff.hasBuff(self, "sm_modify_pistol_2") || buff.hasBuff(self, "sm_modify_pistol_3")) {
+        if (buff.hasBuff(target, "sm_modify_pistol_1") || buff.hasBuff(target, "sm_modify_pistol_2") || buff.hasBuff(target, "sm_modify_pistol_3")) {
             sendSystemMessage(self, new string_id("spam", "pistol_buff_exists"));
             return SCRIPT_OVERRIDE;
         }
@@ -11001,7 +11001,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendSystemMessage(self, new string_id("spam", "pistol_module_missing"));
             return SCRIPT_OVERRIDE;
         }
-        if (buff.hasBuff(self, "sm_modify_pistol_1") || buff.hasBuff(self, "sm_modify_pistol_2") || buff.hasBuff(self, "sm_modify_pistol_3")) {
+        if (buff.hasBuff(target, "sm_modify_pistol_1") || buff.hasBuff(target, "sm_modify_pistol_2") || buff.hasBuff(target, "sm_modify_pistol_3")) {
             sendSystemMessage(self, new string_id("spam", "pistol_buff_exists"));
             return SCRIPT_OVERRIDE;
         }
@@ -11381,7 +11381,21 @@ public class combat_actions extends script.systems.combat.combat_base {
                 "sm_title_bootlegger"
         };
 
+        // Check for various skills and set enemy flags
+        String[] buffsToCheck = {
+                "fs_buff_ca_1",
+                "fs_buff_def_1_1",
+                "fs_force_run"
+        };
+
         for (String skill : skillsToCheck) {
+            if (hasSkill(target, skill)) {
+                pvpSetPersonalEnemyFlag(self, target);
+                pvpSetPersonalEnemyFlag(target, self);
+            }
+        }
+
+        for (String skill : buffsToCheck) {
             if (hasSkill(target, skill)) {
                 pvpSetPersonalEnemyFlag(self, target);
                 pvpSetPersonalEnemyFlag(target, self);

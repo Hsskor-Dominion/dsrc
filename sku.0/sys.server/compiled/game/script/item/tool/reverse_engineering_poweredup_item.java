@@ -7,6 +7,8 @@ import script.library.trial;
 import script.library.utils;
 import script.library.ai_lib;
 
+import static script.library.buff.hasBuff;
+
 public class reverse_engineering_poweredup_item extends script.base_script
 {
     public reverse_engineering_poweredup_item()
@@ -75,36 +77,61 @@ public class reverse_engineering_poweredup_item extends script.base_script
         }
         return SCRIPT_CONTINUE;
     }
-    public int OnTransferred(obj_id self, obj_id sourceContainer, obj_id destContainer, obj_id transferer) throws InterruptedException
-    {
-        if (isPlayer(destContainer))
-        {
+    public int OnTransferred(obj_id self, obj_id sourceContainer, obj_id destContainer, obj_id transferer) throws InterruptedException {
+        // Check if the destination is a player
+        if (isPlayer(destContainer)) {
             String slotName = reverse_engineering.getMyEquippedSlot(self);
-            if (slotName.equals("none"))
-            {
+
+            // If the slot is invalid, continue
+            if (slotName.equals("none")) {
                 return SCRIPT_CONTINUE;
-            }
-            else
-            {
+            } else {
+                // Retrieve reverse engineering attributes
                 int power = getIntObjVar(self, reverse_engineering.ENGINEERING_POWER);
                 String mod = getStringObjVar(self, reverse_engineering.ENGINEERING_MODIFIER);
                 int ratio = getIntObjVar(self, reverse_engineering.ENGINEERING_RATIO);
                 int finalPower = power / ratio;
-                if (finalPower < 1)
-                {
+
+                // Ensure finalPower is at least 1
+                if (finalPower < 1) {
                     finalPower = 1;
                 }
-                if (!hasSkillModModifier(transferer, slotName + "_powerup"))
-                {
+
+                // Check if the transferer has the required skill modifier
+                if (!hasSkillModModifier(transferer, slotName + "_powerup")) {
                     obj_id player = utils.getContainingPlayer(self); // Get the player object
-                    if (isIdValid(player))
-                    {
+                    if (isIdValid(player)) {
                         obj_id itemWithPowerUp = getObjectInSlot(player, slotName); // Get the equipped item
-                        reverse_engineering.applyBuffIcon(player, itemWithPowerUp); // Apply buff icon to the equipped item
-                        addSkillModModifier(player, slotName + "_powerup", mod, (int)finalPower, -1, false, false);
+
+                        // Apply the buff icon to the item
+                        reverse_engineering.applyBuffIcon(player, itemWithPowerUp);
+
+                        // Add the powerup skill modifier to the player
+                        addSkillModModifier(player, slotName + "_powerup", mod, (int) finalPower, -1, false, false);
                         reverse_engineering.recalcPoolsIfNeeded(player, mod);
+
+                        // Calculate decay amount
+                        int slicedAmount = getIntObjVar(self, "sliced_amount"); // Assuming this objVar exists
+                        int decayAmount = 10 + slicedAmount; // Base decay amount
+
+                        // Adjust decay based on buffs the player has
+                        if (hasBuff(player, "sm_modify_pistol_1")) {
+                            decayAmount -= 3;
+                        } else if (hasBuff(player, "sm_modify_pistol_2")) {
+                            decayAmount -= 6;
+                        } else if (hasBuff(player, "sm_modify_pistol_3")) {
+                            decayAmount -= 9;
+                        }
+
+                        // Ensure decayAmount doesn’t drop below a reasonable value
+                        if (decayAmount < 1) {
+                            decayAmount = 1;
+                        }
+
                         // Apply damage to the equipped item
-                        damageItem(itemWithPowerUp, 10);
+                        damageItem(itemWithPowerUp, decayAmount);
+
+                        // Send a system message to the player
                         sendSystemMessage(player, new string_id("stardust", "weapon_damaged_due_to_powerup"));
                     }
                 }

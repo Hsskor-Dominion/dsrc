@@ -782,7 +782,7 @@ sm_double_hit_recourse	double_hit			27	command.sm_double_hit_recourse	5		0		0		0
 sm_modify_pistol_1	modify_pistol			1	command.sm_modify_pistol	1800	expertise_damage_all	4	expertise_critical_niche_all	1	expertise_action_all	-1		0		0	STATE_NONE	none	clienteffect/weapon_reload.cef		1	0		1	1	1	0	1	1	0	1	1	1
 sm_modify_pistol_2	modify_pistol			2	command.sm_modify_pistol	1800	expertise_damage_all	8	expertise_critical_niche_all	3	expertise_action_all	-3		0		0	STATE_NONE	none	clienteffect/weapon_reload.cef		1	0		1	1	1	0	1	1	0	1	1	1
 sm_modify_pistol_3	modify_pistol			3	command.sm_modify_pistol	1800	expertise_damage_all	12	expertise_critical_niche_all	5	expertise_action_all	-5		0		0	STATE_NONE	none	clienteffect/weapon_reload.cef		1	0		1	1	1	0	1	1	0	1	1	1
-sm_skullduggery	skullduggery			10	command.sm_skullduggery	4	sm_skullduggery	4		0		0		0		0	STATE_NONE	none	clienteffect/sm_skullduggery.cef	head	1	1		1	1	1	0	1	1	0	1	1	1
+sm_skullduggery	skullduggery			10	command.sm_skullduggery	6	sm_skullduggery	4		0		0		0		0	STATE_NONE	none	clienteffect/sm_skullduggery.cef	head	1	1		1	1	1	0	1	1	0	1	1	1
 sm_impossible_odds	impossible_odds			10	command.sm_impossible_odds	4	sm_impossible_odds	4		0		0		0		0	STATE_NONE	none	clienteffect/sm_impossible_odds.cef	head	1	1		1	1	1	0	1	1	0	1	1	1
 sm_pistol_whip	pistol_whip			10	command.sm_pistol_whip	2	sm_pistol_whip	0		0		0		0		0	STATE_NONE	none	clienteffect/sm_pistol_whip.cef	head	1	1		1	1	1	0	1	1	0	1	1	1
 bh_dm_cc_1	snare			5	command.bh_dm_cc	8	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
@@ -1034,7 +1034,7 @@ bh_shields_charged	bh_shields_recourse			10	command.bh_deflection	15	combat_mult
 bh_dread_strike	bh_dread_strike			10	command.bh_dread_strike	15	combat_divide_damage_dealt	25	expertise_healing_reduction	50		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 bh_relentless_onslaught	bh_relentless_onslaught			10	command.bh_relentless	15	expertise_action_all	75		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 bh_take_cover	bh_take_cover	snare		10	command.bh_cover	30	expertise_glancing_blow_ranged	80	expertise_damage_all	10	radar_invis	0	expertise_strikethrough_chance	25	slope_move	-100	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-bh_power_sprint	bh_power_sprint			10	command.bh_armor_sprint	30	movement	0	movement_resist_snare	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+bh_power_sprint	bh_power_sprint			10	command.burstRun	30	movement	0	movement_resist_snare	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 bh_armor_duelist_heal_1	bh_duelist_stance			10	command.duelistStance	15	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 bh_armor_duelist_heal_2	bh_duelist_stance			20	command.duelistStance	15	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 bh_armor_duelist_heal_3	bh_duelist_stance			30	command.duelistStance	15	reac_buff	1		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
@@ -1166,12 +1166,12 @@ me_buff_health_2	medicConstitution			76	command.me_buff_health	600	constitution_
 me_buff_action_1	medicAction			18	command.me_enhance_action	600	stamina_modified	35		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_action.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_action_2	medicAction			48	command.me_enhance_action	600	stamina_modified	80		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_action.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_action_3	medicAction			76	command.me_enhance_action	600	stamina_modified	250		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_action.cef		1	0		1	1	1	0	1	1	0	1	1	1
-me_buff_strength_1	medicStrength			10	command.me_enhance_strength	600	combat_multiply_damage_dealt	5	strength_modified	30	private_taunt_bonus	50		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
-me_buff_strength_2	medicStrength			34	command.me_enhance_strength	600	strength_modified	45		0		0		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
-me_buff_strength_3	medicStrength			62	command.me_enhance_strength	600	strength_modified	80		0		0		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
-me_buff_agility_1	medicAgility			10	command.me_enhance_agility	600	private_armor_bonus	1200	agility_modified	30	private_taunt_bonus	-50		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1
-me_buff_agility_2	medicAgility			34	command.me_enhance_agility	600	agility_modified	45		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1
-me_buff_agility_3	medicAgility			62	command.me_enhance_agility	600	agility_modified	80		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1
+me_buff_strength_1	medicStrength			10	command.steadyAim	600	combat_multiply_damage_dealt	5	strength_modified	30	private_taunt_bonus	50		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
+me_buff_strength_2	medicStrength			34	command.steadyAim	600	strength_modified	45		0		0		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
+me_buff_strength_3	medicStrength			62	command.steadyAim	600	strength_modified	80		0		0		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
+me_buff_agility_1	medicAgility			10	command.bh_armor_duelist	600	private_armor_bonus	1200	agility_modified	30	private_taunt_bonus	-50		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1
+me_buff_agility_2	medicAgility			34	command.bh_armor_duelist	600	agility_modified	45		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1
+me_buff_agility_3	medicAgility			62	command.bh_armor_duelist	600	agility_modified	80		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_precision_1	medicPrecision			10	command.me_enhance_precision	600	precision_modified	15		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_precision.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_precision_2	medicPrecision			34	command.me_enhance_precision	600	precision_modified	45		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_precision.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_precision_3	medicPrecision			62	command.me_enhance_precision	600	precision_modified	80		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_precision.cef		1	0		1	1	1	0	1	1	0	1	1	1
@@ -1702,7 +1702,7 @@ foraged_vegetable_2_high	food			0	buffs.foodVegetable	300	forage_bonus_mod	5	xp_
 foraged_vegetable_3_high	food			0	buffs.foodVegetable	300	forage_bonus_mod	5	xp_bonus_general	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 foraged_vegetable_4_high	food			0	buffs.foodVegetable	300	forage_bonus_mod	5	xp_bonus_general	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 foraged_vegetable_5_high	food			0	buffs.foodVegetable	300	forage_bonus_mod	5	xp_bonus_general	5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-of_pistol_bleed_1	of_bleed			2	dot.officerBleed	7	dot_bleed	60	dot	0		0		0		0	STATE_BLEEDING	none			1	1		1	1	1	0	1	1	0	1	1	1
+of_pistol_bleed_1	of_bleed			2	dot.officerBleed	7	dot_bleed	60	dot	0		0		0		0	STATE_BLEEDING	none			1	1		1	1	1	0	5	1	0	1	1	1
 fs_hermetic_touch	fs_hermetic_touch			1	command.fs_hermetic_touch	10	dot_reduction_all	5	dot_resist_all	100		0		0		0	STATE_NONE	none	appearance/pt_heal_2.prt		1	0		0	1	1	0	1	1	0	1	1	1
 safe_puzzle_downer	safePuzzleDowner			1	buffs.meatlumpSafeDebuff	45	constitution_modified	-50	agility_modified	-50	stamina_modified	-50		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 locked_container_puzzle_downer	containerPuzzleDowner			1	buffs.meatlumpContainerDebuff	45	constitution_modified	-50	agility_modified	-50	stamina_modified	-50		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1

@@ -246,7 +246,8 @@ public class terminal_space extends script.terminal.base.base_terminal
         int totalChargeAmount = initialPaymentAmount + additionalChargeAmount;
 
         // Charge the player
-        if (!money.requestPayment(player, ship, totalChargeAmount, "handlePaymentResult", null, true)) {
+        obj_id spacePort = getContainedBy(player);
+        if (!money.requestPayment(player, spacePort, totalChargeAmount, "handlePaymentResult", null, true)) {
             sendSystemMessage(player, new string_id("travel", "payment_failed"));
             return;
         }

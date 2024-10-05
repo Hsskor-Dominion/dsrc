@@ -1,6 +1,7 @@
 package script.npe;
 
 import script.library.groundquests;
+import script.library.skill;
 import script.location;
 import script.obj_id;
 
