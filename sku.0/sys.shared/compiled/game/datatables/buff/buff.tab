@@ -1121,7 +1121,7 @@ of_deb_def_5	paintTarget			48	command.of_deb_def	20	expertise_parry	-4	expertise
 of_deb_def_6	paintTarget			62	command.of_deb_def	20	expertise_parry	-5	expertise_dodge	-5	critical_hit_vulnerable	5	critical_damage_vulnerability	5	stealth_divisor	50	STATE_NONE	none	appearance/pt_officer_paint_target.prt		1	1		1	1	1	0	1	1	0	1	1	1
 of_deb_def_7	paintTarget			76	command.of_deb_def	20	expertise_parry	-6	expertise_dodge	-6	critical_hit_vulnerable	6	critical_damage_vulnerability	6	stealth_divisor	60	STATE_NONE	none	appearance/pt_officer_paint_target.prt		1	1		1	1	1	0	1	1	0	1	1	1
 of_deb_def_8	paintTarget			90	command.of_deb_def	20	expertise_parry	-7	expertise_dodge	-7	critical_hit_vulnerable	7	critical_damage_vulnerability	7	stealth_divisor	70	STATE_NONE	none	appearance/pt_officer_paint_target.prt		1	1		1	1	1	0	1	1	0	1	1	1
-of_drillmaster_1	drillmaster	of_aura_1		34	command.of_drillmaster	40	group	0	expertise_damage_weapon_2	15	slope_move	45	movement_resist_root	45	movement_resist_snare	45	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+of_drillmaster_1	drillmaster	of_aura_1		34	command.of_drillmaster	40	group	0	expertise_damage_weapon_2	10	slope_move	45	movement_resist_root	45	movement_resist_snare	45	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 of_stimulator_1	debuff_purge			26	command.of_stimulator	3	debuff_purge	2		0		0		0		0	STATE_NONE	none	appearance/pt_heal_2.prt		1	0		1	1	1	0	1	1	0	1	1	1
 of_purge_1	environ_purge			26	command.of_purge	10	dot_divisor_all	50	dot_resist_all	100		0		0		0	STATE_NONE	none	appearance/pt_heal_2.prt		1	0		0	1	1	0	1	1	0	1	1	1
 of_vortex_root	root			90	command.of_vortex	3	movement	0		0		0		0		0	STATE_NONE	applyVortexSnare	appearance/pt_officer_crippling_vortex.prt		1	1		1	1	1	0	1	1	0	1	1	1

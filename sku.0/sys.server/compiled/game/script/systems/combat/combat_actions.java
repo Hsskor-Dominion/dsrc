@@ -3210,10 +3210,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_strength_1", params);
-        if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
-        }
+//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_strength_1", params);
+//        if (!performed_buff) {
+//            return SCRIPT_OVERRIDE;
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3226,10 +3226,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_strength_2", params);
-        if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
-        }
+//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_strength_2", params);
+//        if (!performed_buff) {
+//            return SCRIPT_OVERRIDE;
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3242,10 +3242,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_strength_3", params);
-        if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
-        }
+//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_strength_3", params);
+//        if (!performed_buff) {
+//            return SCRIPT_OVERRIDE;
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3293,10 +3293,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_agility_1", params);
-        if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
-        }
+//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_agility_1", params);
+//        if (!performed_buff) {
+//            return SCRIPT_OVERRIDE;
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3309,10 +3309,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_agility_2", params);
-        if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
-        }
+//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_agility_2", params);
+//        if (!performed_buff) {
+//            return SCRIPT_OVERRIDE;
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3325,10 +3325,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_agility_3", params);
-        if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
-        }
+//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_agility_3", params);
+//        if (!performed_buff) {
+//            return SCRIPT_OVERRIDE;
+//        }
         return SCRIPT_CONTINUE;
     }
 

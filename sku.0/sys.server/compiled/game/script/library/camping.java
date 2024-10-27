@@ -692,20 +692,27 @@ public class camping extends script.base_script
         loc.z += z;
         return loc;
     }
-    public static obj_id getCurrentAdvancedCamp(obj_id player) throws InterruptedException
-    {
+    public static obj_id getCurrentAdvancedCamp(obj_id player) throws InterruptedException {
         obj_id[] objects = getNonCreaturesInRange(player, 25.0f);
-        if (objects == null || objects.length == 0)
-        {
+
+        // Check if objects is empty
+        if (objects == null || objects.length == 0) {
             return null;
         }
+
+        // Loop through each object and check for the required conditions
         for (obj_id object : objects) {
+            String structureTemplate = getTemplateName(object);
+
             if (hasScript(object, "item.camp.camp_advanced")) {
                 if (isInTriggerVolume(object, "campsite", player)) {
                     return object;
                 }
+            } else if (structureTemplate != null && structureTemplate.contains("theater")) {
+                return object;
             }
         }
+
         return null;
     }
     public static boolean isInEntertainmentCamp(obj_id player) throws InterruptedException

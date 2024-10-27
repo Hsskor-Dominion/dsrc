@@ -116,11 +116,11 @@ public class reverse_engineering_poweredup_item extends script.base_script
 
                         // Adjust decay based on buffs the player has
                         if (hasBuff(player, "sm_modify_pistol_1")) {
-                            decayAmount -= 3;
+                            decayAmount += 3;
                         } else if (hasBuff(player, "sm_modify_pistol_2")) {
-                            decayAmount -= 6;
+                            decayAmount += 6;
                         } else if (hasBuff(player, "sm_modify_pistol_3")) {
-                            decayAmount -= 9;
+                            decayAmount += 9;
                         }
 
                         // Ensure decayAmount doesn’t drop below a reasonable value

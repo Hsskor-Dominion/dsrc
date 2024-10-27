@@ -2220,35 +2220,51 @@ public class performance extends script.base_script
         }
         return true;
     }
-    public static float inspireGetMaxDuration(obj_id actor) throws InterruptedException
-    {
+    public static float inspireGetMaxDuration(obj_id actor) throws InterruptedException {
         int can_heal = canPerformanceHeal(actor);
         float pctComplete = respec.getPercentageCompletion(actor, getSkillTemplate(actor));
-        float totInspireSkill = (pctComplete * 300.0f);
+        float totInspireSkill = pctComplete * 300.0f;
+
+        // Check if in a city with an entertainer specialization
         int city_id = city.checkCity(actor, false);
-        if (city_id > 0 && (city.cityHasSpec(city_id, city.SF_SPEC_ENTERTAINER)))
-        {
-            totInspireSkill = totInspireSkill * 2.2f;
+        if (city_id > 0 && city.cityHasSpec(city_id, city.SF_SPEC_ENTERTAINER)) {
+            totInspireSkill *= 2.2f;
         }
+
+        // Expertise modifier for buff duration increase
         float expertiseDurationIncreaseMod = getEnhancedSkillStatisticModifierUncapped(actor, "expertise_en_inspire_buff_duration_increase") * 60;
+
+        // Base max duration calculation
         float maxDuration = (12100.0f - (12100.0f * (1.0f / ((totInspireSkill + (1.0f / 0.01f)) * 0.01f)))) + 3600.0f;
+
+        // Apply expertise duration increase modifier
         maxDuration += expertiseDurationIncreaseMod;
+
+        // Apply new Outdoor Survival Expertise Bonus (modifier increases duration near a camp or theater)
+        float outdoorSurvivalBonusMod = getEnhancedSkillStatisticModifierUncapped(actor, "expertise_en_performance_increase") * 300;
+
+        // Check if in an entertainment camp and adjust duration accordingly
         obj_id camp = camping.getCurrentAdvancedCamp(actor);
-        if (isIdValid(camp))
-        {
-            if (camping.isInEntertainmentCamp(actor, camp))
-            {
+        if (isIdValid(camp)) {
+            if (camping.isInEntertainmentCamp(actor, camp)) {
                 float campEffectiveness = getFloatObjVar(camp, "modules.entertainer");
-                if (campEffectiveness < 1.0f)
-                {
-                    maxDuration = maxDuration * campEffectiveness;
+                if (campEffectiveness < 1.0f) {
+                    maxDuration *= campEffectiveness;
                 }
+            } else {
+                maxDuration += outdoorSurvivalBonusMod;  // Apply bonus for being near a theater
             }
         }
-        if (can_heal == 3)
-        {
-            maxDuration = maxDuration * 0.2f;
+
+        if (getTopMostContainer(actor) == actor) {
+            maxDuration += outdoorSurvivalBonusMod;  // Add the expertise bonus modifier; needs to be further built out with theater
         }
+
+        // Apply reduction if healing is involved
+        if (can_heal == 3) {
+            maxDuration *= 0.2f;
+        }
+
         return maxDuration;
     }
     public static boolean inspire(obj_id actor, String perf_type) throws InterruptedException

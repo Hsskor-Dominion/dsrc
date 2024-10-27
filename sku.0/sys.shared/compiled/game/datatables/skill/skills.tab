@@ -360,10 +360,10 @@ social_entertainer_music_01	social_entertainer		0	0	0	0	1000	2		social_entertain
 social_entertainer_music_02	social_entertainer_music_01		0	0	0	0	2000	3		social_entertainer_music_01		music	5000	30000							private_entertainer_music_2,startMusic+starwars2	healing_music_ability=5,healing_music_wound=5			0	0
 social_entertainer_music_03	social_entertainer_music_02		0	0	0	0	3000	4		social_entertainer_music_02		music	15000	90000							private_entertainer_music_3,startMusic+folk	healing_music_ability=5,healing_music_wound=5			0	0
 social_entertainer_music_04	social_entertainer_music_03		0	1	0	0	4000	5		social_entertainer_music_03		music	45000	150000							private_entertainer_music_4,startMusic+starwars3	healing_music_ability=10,healing_music_wound=5			0	0
-social_entertainer_dance_01	social_entertainer		0	0	0	0	1000	2		social_entertainer_novice		dance	1000	10000							private_entertainer_dance_1,startDance+basic2	healing_dance_ability=5,healing_dance_wound=5			0	0
-social_entertainer_dance_02	social_entertainer_dance_01		0	0	0	0	2000	3		social_entertainer_dance_01		dance	5000	30000							private_entertainer_dance_2,startDance+rhythmic2	healing_dance_ability=5,healing_dance_wound=5			0	0
-social_entertainer_dance_03	social_entertainer_dance_02		0	0	0	0	3000	4		social_entertainer_dance_02		dance	15000	90000							private_entertainer_dance_3,startDance+footloose	healing_dance_ability=5,healing_dance_wound=5			0	0
-social_entertainer_dance_04	social_entertainer_dance_03		0	1	0	0	4000	5		social_entertainer_dance_03		dance	45000	150000							private_entertainer_dance_4,startDance+formal	healing_dance_ability=10,healing_dance_wound=5			0	0
+social_entertainer_dance_01	social_entertainer		0	0	0	0	1000	2		social_entertainer_novice		dance	1000	10000							private_entertainer_dance_1,startDance+basic2,startDance+popular2,startDance+tumble,startDance+bunduki2	healing_dance_ability=5,healing_dance_wound=5			0	0
+social_entertainer_dance_02	social_entertainer_dance_01		0	0	0	0	2000	3		social_entertainer_dance_01		dance	5000	30000							private_entertainer_dance_2,startDance+rhythmic2,startDance+poplock2,startDance+tumble2	healing_dance_ability=5,healing_dance_wound=5			0	0
+social_entertainer_dance_03	social_entertainer_dance_02		0	0	0	0	3000	4		social_entertainer_dance_02		dance	15000	90000							private_entertainer_dance_3,startDance+footloose,startDance+lyrical,startDance+breakdance	healing_dance_ability=5,healing_dance_wound=5			0	0
+social_entertainer_dance_04	social_entertainer_dance_03		0	1	0	0	4000	5		social_entertainer_dance_03		dance	45000	150000							private_entertainer_dance_4,startDance+formal,startDance+breakdance2,startDance+exotic,startDance+exotic2,startDance+popular,startDance+poplock,startDance+bunduki	healing_dance_ability=10,healing_dance_wound=5			0	0
 social_entertainer_healing_01	social_entertainer		0	0	0	0	1000	2		social_entertainer_novice		entertainer	1000	10000							private_entertainer_healing_1,prop_staff	instrument_assembly=5,prop_assembly=5	craftDancePropA		0	0
 social_entertainer_healing_02	social_entertainer_healing_01		0	0	0	0	2000	3		social_entertainer_healing_01		entertainer	5000	30000							private_entertainer_healing_2,fizz,prop_sword	instrument_assembly=5,prop_assembly=5	craftInstrumentGroupB,craftDancePropB		0	0
 social_entertainer_healing_03	social_entertainer_healing_02		0	0	0	0	3000	4		social_entertainer_healing_02		entertainer	15000	90000							private_entertainer_healing_3,prop_sparkler	instrument_assembly=5,prop_assembly=5	craftDancePropC		0	0
@@ -1588,10 +1588,10 @@ expertise_bh_intimidate_2	expertise_bh_intimidate_1																					precisio
 expertise_bh_intimidate_3	expertise_bh_intimidate_2																					precision_modified=25			0	
 expertise_bh_intimidate_4	expertise_bh_intimidate_3																					precision_modified=25			0	
 expertise_bh_dread_strike_1	expertise_sp_jagged_edge_4									expertise_sp_jagged_edge_4											bh_dread_strike_1	bh_dire_snare=10,bh_dire_root=10			0	
-expertise_bh_stamina_1	expertise																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=5	craftStructureCampA		0	
-expertise_bh_stamina_2	expertise_bh_stamina_1																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=5	craftStructureCampB		0	
-expertise_bh_stamina_3	expertise_bh_stamina_2																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=5	craftStructureCampC		0	
-expertise_bh_stamina_4	expertise_bh_stamina_3			1																		foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=5	craftStructureCampE		0	
+expertise_bh_stamina_1	expertise																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10	craftStructureCampA		0	
+expertise_bh_stamina_2	expertise_bh_stamina_1																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10	craftStructureCampB		0	
+expertise_bh_stamina_3	expertise_bh_stamina_2																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10	craftStructureCampC		0	
+expertise_bh_stamina_4	expertise_bh_stamina_3			1																		foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10	craftStructureCampE		0	
 expertise_bh_precision_1	expertise																					precision_modified=10			0	
 expertise_bh_precision_2	expertise_bh_precision_1																					precision_modified=10			0	
 expertise_bh_precision_3	expertise_bh_precision_2																					precision_modified=10			0	
@@ -1856,7 +1856,7 @@ expertise_sm_path_off_the_books_1	expertise																				sm_off_the_books,
 expertise_sm_path_inside_information_1	expertise																				sm_inside_information				0	
 expertise_sm_path_flying_tackle_1	expertise_sm_path_pistol_whip_1									expertise_sm_path_pistol_whip_1												expertise_stun_line_sm_pistol_whip=50			0	
 expertise_sm_path_flying_tackle_2	expertise_sm_path_flying_tackle_1																					expertise_stun_line_sm_pistol_whip=50			0	
-expertise_sm_path_pistol_whip_1	expertise_of_dm_4			1						expertise_of_dm_4											sm_pistol_whip_1	expertise_stun_line_sm_pistol_whip=100,expertise_buff_duration_line_sm_pistol_whip=2			0	
+expertise_sm_path_pistol_whip_1	expertise_of_dm_4			1						expertise_of_dm_4											sm_pistol_whip_1	expertise_stun_line_sm_pistol_whip=80			0	
 expertise_sm_path_beat_down_1	expertise_sm_path_pistol_whip_1									expertise_sm_path_pistol_whip_1												expertise_buff_duration_line_sm_pistol_whip=1			0	
 expertise_sm_path_beat_down_2	expertise_sm_path_beat_down_1																					expertise_buff_duration_line_sm_pistol_whip=1			0	
 expertise_sm_path_card_up_your_sleeve_1	expertise_sm_path_lucky_break_4									expertise_sm_path_lucky_break_4												expertise_double_hit_chance=10,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
@@ -2300,10 +2300,10 @@ expertise_sp_increased_agility_3	expertise_sp_increased_agility_2															
 expertise_sp_increased_agility_4	expertise_sp_increased_agility_3			1																		slope_move=10,agility_modified=10				
 expertise_sp_cloaking_armor_1	expertise_bh_stamina_4									expertise_bh_stamina_4											co_mirror_armor	structure_assembly=10,mask_scent=30	craftStructureCampA			
 expertise_sp_cloaking_armor_2	expertise_sp_cloaking_armor_1																									
-expertise_sp_glancing_armor_1	expertise									expertise_sp_protective_armor_4												expertise_dodge=5,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
-expertise_sp_glancing_armor_2	expertise_sp_glancing_armor_1																					expertise_dodge=5,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
-expertise_sp_glancing_armor_3	expertise_sp_glancing_armor_2																					expertise_dodge=5,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
-expertise_sp_glancing_armor_4	expertise_sp_glancing_armor_3																					expertise_dodge=5,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
+expertise_sp_glancing_armor_1	expertise									expertise_sp_protective_armor_4												expertise_dodge=3,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
+expertise_sp_glancing_armor_2	expertise_sp_glancing_armor_1																					expertise_dodge=3,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
+expertise_sp_glancing_armor_3	expertise_sp_glancing_armor_2																					expertise_dodge=3,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
+expertise_sp_glancing_armor_4	expertise_sp_glancing_armor_3																					expertise_dodge=3,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
 expertise_sp_deadly_pistols_1	expertise_sp_careful_observation_4			1						expertise_sp_careful_observation_4												expertise_damage_ranged=2				
 expertise_sp_deadly_pistols_2	expertise_sp_deadly_pistols_1			1																		expertise_damage_ranged=2				
 expertise_sp_deadly_pistols_3	expertise_sp_deadly_pistols_2			1																		expertise_damage_ranged=2				
@@ -2354,10 +2354,10 @@ expertise_en_inspired_industry_1	expertise																					expertise_en_insp
 expertise_en_inspired_industry_2	expertise_en_inspired_industry_1																					expertise_en_inspire_trader_increase=25				
 expertise_en_inspired_industry_3	expertise_en_inspired_industry_2																					expertise_en_inspire_trader_increase=25				
 expertise_en_inspired_industry_4	expertise_en_inspired_industry_3																					expertise_en_inspire_trader_increase=25				
-expertise_en_creativity_1	expertise																					expertise_en_inspire_base_point_increase=3				
-expertise_en_creativity_2	expertise_en_creativity_1																					expertise_en_inspire_base_point_increase=3				
-expertise_en_creativity_3	expertise_en_creativity_2																					expertise_en_inspire_base_point_increase=3				
-expertise_en_creativity_4	expertise_en_creativity_3																					expertise_en_inspire_base_point_increase=3				
+expertise_en_creativity_1	expertise																				startDance+tumble,startDance+bunduki	expertise_en_inspire_base_point_increase=3				
+expertise_en_creativity_2	expertise_en_creativity_1																				startDance+rhythmic,startDance+poplock	expertise_en_inspire_base_point_increase=3				
+expertise_en_creativity_3	expertise_en_creativity_2																				startDance+footloose,startDance+lyrical	expertise_en_inspire_base_point_increase=3				
+expertise_en_creativity_4	expertise_en_creativity_3																				startDance+formal,startDance+exotic,startDance+popular,startDance+breakdance	expertise_en_inspire_base_point_increase=3				
 expertise_en_holism_1	expertise																				en_healer_buff_package					
 expertise_en_harvest_faire_1	expertise																				en_harvest_faire_buff_package					
 expertise_en_second_chance_1	expertise																				en_second_chance_buff_package					
@@ -2478,10 +2478,10 @@ expertise_trader_harvester_energy_1	expertise_trader_harvester_maintenance_4				
 expertise_trader_harvester_energy_2	expertise_trader_harvester_energy_1																					expertise_harvester_energy_decrease=5				
 expertise_trader_harvester_energy_3	expertise_trader_harvester_energy_2																					expertise_harvester_energy_decrease=5				
 expertise_trader_harvester_energy_4	expertise_trader_harvester_energy_3																					expertise_harvester_energy_decrease=5				
-expertise_trader_reverse_engineering_1	expertise																					expertise_reverse_engineering_bonus=3,expertise_attachment_upgrade=1 	craftExpertiseSocketRetrofitter			
-expertise_trader_reverse_engineering_2	expertise_trader_reverse_engineering_1																					expertise_reverse_engineering_bonus=3				
-expertise_trader_reverse_engineering_3	expertise_trader_reverse_engineering_2																					expertise_reverse_engineering_bonus=3				
-expertise_trader_reverse_engineering_4	expertise_trader_reverse_engineering_3																					expertise_reverse_engineering_bonus=3				
+expertise_trader_reverse_engineering_1	expertise																					expertise_reverse_engineering_bonus=3,expertise_attachment_upgrade=1 	craftExpertiseSocketRetrofitter,craftArtisanNewbieGroupA,craftArtisanNewbieGroupB,craftArtisanSurveyGroupA,craftArtisanEngineeringGroupA,craftArtisanToolGroupA,craftArtisanChemicalGroupA			
+expertise_trader_reverse_engineering_2	expertise_trader_reverse_engineering_1																					expertise_reverse_engineering_bonus=3	craftArtisanEngineeringGroupB,craftArtisanChemicalGroupB			
+expertise_trader_reverse_engineering_3	expertise_trader_reverse_engineering_2																					expertise_reverse_engineering_bonus=3	craftArtisanEngineeringGroupC,craftArtisanChemicalGroupC			
+expertise_trader_reverse_engineering_4	expertise_trader_reverse_engineering_3																					expertise_reverse_engineering_bonus=3	CraftArtisanEngineeringGroupD,craftArtisanMasterGroupA,craftArtisanVehicle,craftArtisanChemicalGroupD			
 expertise_trader_factory_production_1	expertise_trader_factory_energy_4									expertise_trader_factory_energy_4												factory_speed=5				
 expertise_trader_factory_production_2	expertise_trader_factory_production_1																					factory_speed=5				
 expertise_trader_harvester_collection_1	expertise_trader_harvester_energy_4									expertise_trader_harvester_energy_4												expertise_harvester_collection_increase=20				
@@ -2566,7 +2566,7 @@ expertise_structure_resource_refinement_2	expertise_structure_resource_refinemen
 expertise_structure_artisan_advanced_theory_1	expertise_structure_artisan_hypothesis_4									expertise_structure_artisan_hypothesis_4												general_experimentation=10				
 expertise_structure_shipwright_keen_understanding_1	expertise_structure_shipwright_insight_2									expertise_structure_shipwright_insight_2												expertise_complexity_decrease_shipwright=2				
 expertise_structure_shipwright_keen_understanding_2	expertise_structure_shipwright_keen_understanding_1																					expertise_complexity_decrease_shipwright=2				
-expertise_structure_architect_advanced_theory_1	expertise_structure_architect_hypothesis_4									expertise_structure_architect_hypothesis_4												structure_experimentation=10,factory_speed=100	craftStructureGroupE,craftFurnitureGroupE,craftPlayerCityE			
+expertise_structure_architect_advanced_theory_1	expertise_structure_architect_hypothesis_4									expertise_structure_architect_hypothesis_4												structure_experimentation=10,factory_speed=25	craftStructureGroupE,craftFurnitureGroupE,craftPlayerCityE			
 expertise_structure_architect_schematic_1_1	expertise																						craftArchitectExpertiseSchematics1,craftFurnitureGroupAA,craftStructureGroupAA,craftInstallationGroupAA,craftFurnitureGroupA,craftPlayerCityA,craftInstallationGroupA,craftStructureGroupA			
 expertise_structure_architect_schematic_2_1	expertise																						craftArchitectExpertiseSchematics2			
 expertise_structure_shipwright_schematic_1_1	expertise																						craftShipwrightExpertiseSchematics1,craftShipwrightNoviceGroupA,craftShipwrightEngGroupA,craftShipwrightPropulsionGroupA,craftShipwrightSystemsGroupA,craftShipwrightDefenseGroupA			

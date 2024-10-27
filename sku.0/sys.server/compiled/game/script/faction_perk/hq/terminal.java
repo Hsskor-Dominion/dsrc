@@ -47,7 +47,7 @@ public class terminal extends script.terminal.base.base_terminal
     private static final string_id SID_VULNERABILITY_RESET_NOT_ALIVE = new string_id("hq", "vulnerability_reset_not_alive");
     private static final String STRING_FILE_LOC = "faction/faction_hq/faction_hq_response";
     private static final String[] GCW_MENU_OPTIONS = {
-            "GCW Command Post - Guard Duty / Invasion",
+            "GCW Command Post - Guard Duty / Galactic Conquest",
             "GCW Construction - Structures & Starships",
             "GCW Construction - Rations & Uniform",
             "GCW Construction - Armor & Weapons",
