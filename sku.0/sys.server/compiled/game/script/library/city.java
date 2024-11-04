@@ -1204,7 +1204,7 @@ public class city extends script.base_script
     {
         int baseCivicCount = (1 + (rank * 15));//increased base count to 15 per rank from 9
         int flag = cityGetSpec(city_id);
-        if (flag == SF_SPEC_DECOR_INCREASE)
+        if (flag == SF_SPEC_ENTERTAINER)//consolidation effort
         {
             LOG("sissynoid", "City Has Increased Decoration Spec!  Increasing Civic Structures by 10%");
             baseCivicCount = (1 + (rank * 25));//increased to 25 from 12
@@ -1331,7 +1331,7 @@ public class city extends script.base_script
     {
         int baseDecorCount = rank * 15;
         int flag = cityGetSpec(city_id);
-        if (flag == SF_SPEC_DECOR_INCREASE)
+        if (flag == SF_SPEC_ENTERTAINER)//consolidation effort
         {
             LOG("sissynoid", "City Has Increased Decoration Spec!  Increasing Decorations by 20%");
             baseDecorCount = rank * 20;

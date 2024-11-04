@@ -2224,19 +2224,36 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int me_buff_health_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        // Validate target
         if (!isIdValid(target) || !pvpCanHelp(self, target) || vehicle.isVehicle(target) || isDead(target)) {
-            target = self;
+            target = self; // If target is invalid, default to self
         }
+
+        // Check if the buff can be applied
         if (!buff.canApplyBuff(target, "me_buff_health")) {
             sendSystemMessage(self, new string_id("spam", "buff_wont_stack"));
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
-            return SCRIPT_OVERRIDE;
+            return SCRIPT_OVERRIDE; // Exit if the buff cannot be applied
         }
+
+        // Perform the medic group buff action
         boolean performed_buff = performMedicGroupBuff(self, target, "me_buff_health_1", params);
         if (!performed_buff) {
-            return SCRIPT_OVERRIDE;
+            return SCRIPT_OVERRIDE; // Exit if the buff performance fails
         }
-        return SCRIPT_CONTINUE;
+
+        // Check the city where 'self' is located to determine buff duration
+        int city_id = city.checkCity(self, false); // Ensure city_id is defined
+        if (city_id > 0 && city.cityHasSpec(city_id, city.SF_SPEC_CLONING)) {
+            // Apply the buff with a duration of 2700 seconds (45 minutes) if the conditions are met
+            buff.applyBuff(target, "me_buff_health_0", defaultTime);
+            buff.applyBuff(target, "me_buff_action_2", defaultTime);
+        } else {
+            // Optionally apply with the default duration (if needed)
+            buff.applyBuff(target, "me_buff_health_0", defaultTime);
+        }
+
+        return SCRIPT_CONTINUE; // Continue script execution
     }
 
     public int me_dm_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {

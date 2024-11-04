@@ -631,7 +631,7 @@ public class incubator extends script.base_script
                 modifiedTime -= skillModifier * 60;
             }
             int city_id = city.checkCity(player, false);
-            if (city.cityHasSpec(city_id, city.SF_SPEC_INCUBATOR))
+            if (city.cityHasSpec(city_id, city.SF_SPEC_CLONING))//part of the consolidation effort
             {
                 modifiedTime -= (3 * 60 * 60);
             }

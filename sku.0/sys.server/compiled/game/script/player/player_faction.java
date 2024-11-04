@@ -2,6 +2,15 @@ package script.player;
 
 import script.*;
 import script.library.*;
+import script.systems.gcw.player_pvp;
+
+import java.util.Calendar;
+import java.util.Vector;
+import java.util.HashMap;
+import java.util.Map;
+
+import static script.library.guild.setWindowPid;
+import static script.library.money.MT_TOTAL;
 
 public class player_faction extends script.base_script
 {
@@ -18,66 +27,146 @@ public class player_faction extends script.base_script
     public static final string_id SID_DUNGEON_NOCHANGE = new string_id("faction_recruiter", "dungeon_nochange");
     public static final String COLOR_REBELS = "\\" + colors_hex.COLOR_REBELS;
     public static final String COLOR_IMPERIALS = "\\" + colors_hex.COLOR_IMPERIALS;
-    public int cmdPVP(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
-    {
-        if (factions.isInAdhocPvpArea(self))
-        {
+    private static final String PVP_FLASHPOINTS = "pvp_flashpoints";
+    public static final int FLASH_COST = 20000;
+    public static final float SHUTTLE_DELAY = 30.0f; // Delay in seconds before transport
+    public int cmdPVP(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+
+        // Calls the battlefield sign-up for all, to encourage
+        player_pvp playerPvpInstance = new player_pvp();
+        playerPvpInstance.battlefieldCommandSui(self);
+
+        // Call the new method to show the Yes/No menu for transport
+        showTransportPrompt(self);
+
+        if (factions.isInAdhocPvpArea(self)) {
             pvpMakeDeclared(self);
             return SCRIPT_CONTINUE;
         }
+
         String recruiter = "";
         String planet = getCurrentSceneName();
-        if ((planet == null) || (planet.equals("")))
-        {
+        if ((planet == null) || (planet.equals(""))) {
             return SCRIPT_OVERRIDE;
-        }
-        else if (planet.equals("dungeon1"))
-        {
+        } else if (planet.equals("dungeon1")) {
             sendSystemMessage(self, SID_DUNGEON_NOCHANGE);
             return SCRIPT_OVERRIDE;
         }
-        if (factions.isRebel(self))
-        {
+
+        if (factions.isRebel(self)) {
             recruiter = "object/mobile/dressed_rebel_major_human_male_01.iff";
-        }
-        else if (factions.isImperial(self))
-        {
+        } else if (factions.isImperial(self)) {
             recruiter = "object/mobile/dressed_imperial_officer_m.iff";
-        }
-        else 
-        {
+        } else {
             sendSystemMessage(self, SID_NOT_ALIGNED);
             return SCRIPT_OVERRIDE;
         }
-        if (factions.isPVPStatusChanging(self))
-        {
+
+        if (factions.isPVPStatusChanging(self)) {
             sendSystemMessage(self, SID_PVP_STATUS_CHANGING);
             return SCRIPT_OVERRIDE;
         }
-        prose_package pp = new prose_package();
-        if (factions.isOnLeave(self))
-        {
-            pp = prose.setStringId(pp, SID_ON_LEAVE_TO_COVERT);
-            commPlayer(self, self, pp, recruiter);
-            factions.goCovertWithDelay(self, 1.0f);
-            return SCRIPT_CONTINUE;
-        }
-        if (pvpGetType(self) == PVPTYPE_DECLARED)
-        {
-            pp = prose.setStringId(pp, SID_OVERT_TO_COVERT);
-            commPlayer(self, self, pp, recruiter);
-            factions.goCovertWithDelay(self, 300.0f);
-            return SCRIPT_CONTINUE;
-        }
-        if (pvpGetType(self) == PVPTYPE_COVERT)
-        {
-            pp = prose.setStringId(pp, SID_COVERT_TO_OVERT);
-            commPlayer(self, self, pp, recruiter);
-            factions.goOvertWithDelay(self, 30.0f);
-            return SCRIPT_CONTINUE;
-        }
-        return SCRIPT_OVERRIDE;
+
+        return SCRIPT_CONTINUE;
     }
+
+    // Method to display Yes/No dialog for transport
+    private void showTransportPrompt(obj_id player) throws InterruptedException {
+        String title = "PvP Zone Transport";
+        String prompt = "Would you like to be transported to the nearest invasion or PvP zone? [20,000 credits]";
+
+        // Display Yes/No dialog
+        int pid = sui.msgbox(player, player, prompt, sui.YES_NO, title, "handleTransportResponse");
+        setWindowPid(player, pid);
+    }
+
+    // Handler for the transport dialog response
+    public int handleTransportResponse(obj_id self, dictionary params) throws InterruptedException {
+        if (params == null || params.isEmpty()) {
+            return SCRIPT_CONTINUE;
+        }
+
+        obj_id player = sui.getPlayerId(params);
+        int btn = sui.getIntButtonPressed(params);
+
+        if (btn == sui.BP_CANCEL) {  // Added closing parenthesis
+            // Player selected No or canceled, do nothing
+            sendSystemMessage(player, new string_id(PVP_FLASHPOINTS, "You chose not to transport."));
+            return SCRIPT_CONTINUE;
+        }
+
+        if (btn == sui.BP_OK) {  // Added closing parenthesis
+            // Player selected Yes, call the method to transport them
+            transportToPvpZone(player);
+        }
+
+        return SCRIPT_CONTINUE;
+    }
+
+    private void transportToPvpZone(obj_id player) throws InterruptedException {
+        // Check if the player is indoors
+        if (getTopMostContainer(player) != player) {
+            sendSystemMessage(player, new string_id("pvp_flashpoints", "cant_do_indoors"));
+            return; // Exit if the player is indoors
+        }
+
+        // Define a map for planet coordinates
+        Map<String, float[]> planetCoordinates = new HashMap<>();
+        planetCoordinates.put("corellia", new float[] {4844f, 95f, -5237f});
+        planetCoordinates.put("tatooine", new float[] {-900f, 24f, -3782f});
+        planetCoordinates.put("endor", new float[] {-3017f, 199f, 5225f});
+        planetCoordinates.put("talus", new float[] {-4916f, 105f, -2993f});
+        planetCoordinates.put("naboo", new float[] {961f, 286f, -1411f});
+        planetCoordinates.put("rori", new float[] {5287f, 79f, 6095f});
+        planetCoordinates.put("lok", new float[] {482f, 34f, 4772f});
+
+        String planetName = getCurrentSceneName(); // Get the current planet name
+
+        // Check if the planet has predefined coordinates
+        if (!planetCoordinates.containsKey(planetName)) {
+            sendSystemMessage(player, new string_id("pvp_flashpoints", "planet_lacks_static_pvp_battlefield_shuttle_access"));
+            return; // Exit if the planet is not recognized
+        }
+
+        // Process payment before proceeding
+        if (!money.requestPayment(player, planetName, FLASH_COST, "gcw_terminal_handlePaymentResult", null, true)) {
+            sendSystemMessage(player, new string_id("pvp_flashpoints", "not_enough_credits"));
+            return; // Exit if payment fails
+        }
+
+        // Inform player and flag for PvP
+        sendSystemMessage(player, new string_id("pvp_flashpoints", "combat_functions_processing_payment"));
+        sendSystemMessage(player, new string_id("pvp_flashpoints", "Transporting you to the nearest PvP zone in 30 seconds..."));
+        pvpMakeDeclared(player); // Flag for PvP
+
+        // Spawn a dropship as visual feedback for the delay
+        location playerLocation = getLocation(player);
+        gcw.createLambdaDropship(playerLocation, new String[]{"pilot"}, null);
+
+        // Set up a timer to warp the player after SHUTTLE_DELAY seconds
+        float[] coords = planetCoordinates.get(planetName);
+        messageTo(player, "executeWarp", createWarpParams(planetName, coords), SHUTTLE_DELAY, false);
+    }
+
+    // Helper method to create warp parameters
+    private dictionary createWarpParams(String planetName, float[] coords) {
+        dictionary warpParams = new dictionary();
+        warpParams.put("planetName", planetName);
+        warpParams.put("x", coords[0]);
+        warpParams.put("y", coords[1]);
+        warpParams.put("z", coords[2]);
+        return warpParams;
+    }
+
+    // Message handler to perform the actual warp
+    public void executeWarp(obj_id self, dictionary params) throws InterruptedException {
+        String planetName = params.getString("planetName");
+        float x = params.getFloat("x");
+        float y = params.getFloat("y");
+        float z = params.getFloat("z");
+        warpPlayer(self, planetName, x, y, z, null, 0, 0, 0, "", false); // Transport to the battlefield
+    }
+
     public int OnPvpTypeChanged(obj_id self, int oldType, int newType) throws InterruptedException
     {
         if (newType == PVPTYPE_DECLARED)

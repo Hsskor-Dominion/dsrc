@@ -461,7 +461,7 @@ public class resource extends script.base_script
                 chance = 70;
             }
             int roll = rand(1, 100);
-            if (city_id > 0 && city.cityHasSpec(city_id, city.SF_SPEC_SAMPLE_RICH))
+            if (city_id > 0 && city.cityHasSpec(city_id, city.SF_SPEC_INDUSTRY))
             {
                 chance += 10;
             }
@@ -473,7 +473,7 @@ public class resource extends script.base_script
                 {
                     amt = 1;
                 }
-                if (city_id > 0 && city.cityHasSpec(city_id, city.SF_SPEC_SAMPLE_RICH))
+                if (city_id > 0 && city.cityHasSpec(city_id, city.SF_SPEC_INDUSTRY))
                 {
                     amt *= 1.2;
                 }

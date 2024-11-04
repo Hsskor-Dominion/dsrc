@@ -234,6 +234,7 @@ public class politician extends script.base_script
                 final string_id message = new string_id(c_stringFile, "new_gov_candidate");
                 sendSystemMessage(player, new string_id("stardust/politics_rank", "stardust_gov"));
                 grantSkill(player, "stardust_gov_candidate");
+                attachScript(player, "stardust.skywalker");
 
                 utils.removeScriptVar(player, "conversation.politician_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -292,6 +293,7 @@ public class politician extends script.base_script
             revokeSkill(player, "stardust_admiral_republic");
             factions.addFactionStanding(player, "underworld", 40000.0f);
             factions.addFactionStanding(player, "underworld", -20000.0f);
+            detachScript(player, "stardust.skywalker");
 
             utils.removeScriptVar(player, "conversation.politician_conversation.branchId");
             npcEndConversationWithMessage(player, message);
