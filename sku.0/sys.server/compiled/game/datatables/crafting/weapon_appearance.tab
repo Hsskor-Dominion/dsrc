@@ -1,5 +1,5 @@
 entry_type	type	schematic_name	schematic_description	crafting_script	items_per_container	crafting_type	slots	xp_type	volume	crafted_object_template	crafted_object_template_hash	complexity	xp	hit_points_low	hit_points_high	min_damage_low	min_damage_high	max_damage_low	max_damage_high	accuracy_low	accuracy_high	damage_type	elemental_type	elemental_value_low	elemental_value_high	attack_speed_low	attack_speed_high	wound_chance_low	wound_chance_high	special_attack_cost_low	special_attack_cost_high	min_range_distance	max_range_distance	slot_type	slot_optional	slot_name	slot_ingredient_name	slot_ingredient_count	slot_appearance	exports_to	gasQuality_min_low	gasQuality_min_high	gasQuality_max_low	gasQuality_max_high	coreLevel_min	coreLevel_max	powerBit_type_min	powerBit_type_max	powerBit_min	powerBit_max	coreQuality_min_low	coreQuality_min_high	coreQuality_max_low	coreQuality_max_high	componentBonus_min_low	componentBonus_min_high	componentBonus_max_low	componentBonus_max_high	meleeComponentQuality_min_low	meleeComponentQuality_min_high	meleeComponentQuality_max_low	meleeComponentQuality_max_high	appearanceBonus_min_low	appearanceBonus_min_high	appearanceBonus_max_low	appearanceBonus_max_high
-"e(weapon=0,slot=1)[weapon]"	"e(none=-1,rifle=1,carbine=2,pistol=3,heavy=4,melee=5,directional=6,component=7)[none]"	s	s	s	i	"e(none=-1,weapon=1)[none]"	i	"e(none=-1,crafting=0,weapon_crafting=1,melee_weapon_crafting=2,ranged_weapon_crafting=3,munition_weapon_crafting=4,jedi=5)[none]"	i[1]	s	h	i	i	i[1]	i[1]	i	i	i	i	i	i	"e(component=0,kinetic=1,energy=2)[component]"	"e(none=-1,kinetic=1,energy=2,cold=64,heat=32,acid=128,electric=256)[none]"	i	i	"e(pistol=40,carbine=60,rifle=80,heavy=100,directional=25,melee=100,component=0)[melee]"	"e(pistol=40,carbine=60,rifle=80,heavy=100,directional=25,melee=100,component=0)[melee]"	i	i	i	i	i[0]	i	"e(none=-1,resource=4,template=2,template_generic=5,schematic=6,schematic_generic=7)[none]"	b[0]	s	s	i	"e(none=0,scope=1,muzzle=2,stock=3)[none]"	s	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i
+e(weapon=0,slot=1)[weapon]	e(none=-1,rifle=1,carbine=2,pistol=3,heavy=4,melee=5,directional=6,component=7)[none]	s	s	s	i	e(none=-1,weapon=1)[none]	i	e(none=-1,crafting=0,weapon_crafting=1,melee_weapon_crafting=2,ranged_weapon_crafting=3,munition_weapon_crafting=4,jedi=5)[none]	i[1]	s	h	i	i	i[1]	i[1]	i	i	i	i	i	i	e(component=0,kinetic=1,energy=2)[component]	e(none=-1,kinetic=1,energy=2,cold=64,heat=32,acid=128,electric=256)[none]	i	i	e(pistol=40,carbine=60,rifle=80,heavy=100,directional=25,melee=100,component=0)[melee]	e(pistol=40,carbine=60,rifle=80,heavy=100,directional=25,melee=100,component=0)[melee]	i	i	i	i	i[0]	i	e(none=-1,resource=4,template=2,template_generic=5,schematic=6,schematic_generic=7)[none]	b[0]	s	s	i	e(none=0,scope=1,muzzle=2,stock=3)[none]	s	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i	i
 weapon	melee	weapon_appearance_2h_sword_scythe		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	5	weapon_crafting		object/weapon/melee/2h_sword/2h_sword_scythe.iff	object/weapon/melee/2h_sword/2h_sword_scythe.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	none	-1	-1	melee	melee	1	1	100	100		5							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	30
 slot																																		resource	0	sword_core_jacket	steel_carbonite	60																												
 slot																																		resource	0	grip	aluminum_phrik	30																												
@@ -90,7 +90,7 @@ slot																																		resource	0	sword_core_jacket	steel_carboni
 slot																																		resource	0	grip	aluminum_phrik	30																												
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_melee_base.iff	1																												
 slot																																		template	0	geonosian_sword_core	object/tangible/component/weapon/geonosian_sword_core.iff	1																												
-weapon	heavy	weapon_appearance_heavy_acid_beam		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_acid_beam.iff	object/weapon/ranged/heavy/heavy_acid_beam.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	acid	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
+weapon	heavy	weapon_appearance_heavy_acid_beam		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_acid_beam.iff	object/weapon/ranged/heavy/heavy_acid_beam.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	acid	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
 slot																																		resource	0	frame_assembly	steel	150																												
 slot																																		resource	0	receiver_assembly	iron	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -100,7 +100,7 @@ slot																																		template	0	barrel_rifle_blaster	object/tan
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_heavy_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_quest_heavy_acid_beam		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/quest_heavy_acid_beam.iff	object/weapon/ranged/heavy/quest_heavy_acid_beam.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	acid	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
+weapon	heavy	weapon_appearance_quest_heavy_acid_beam		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/quest_heavy_acid_beam.iff	object/weapon/ranged/heavy/quest_heavy_acid_beam.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	acid	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
 slot																																		resource	0	frame_assembly	steel	150																												
 slot																																		resource	0	receiver_assembly	iron	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -110,7 +110,7 @@ slot																																		template	0	barrel_rifle_blaster	object/tan
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_heavy_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_heavy_lightning_beam		systems.crafting.weapon.core.crafting_new_weapon_final	25	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_lightning_beam.iff	object/weapon/ranged/heavy/heavy_lightning_beam.iff	40	120	800	1100	0	0	0	0	0	0	energy	electric	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
+weapon	heavy	weapon_appearance_heavy_lightning_beam		systems.crafting.weapon.core.crafting_new_weapon_final	25	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_lightning_beam.iff	object/weapon/ranged/heavy/heavy_lightning_beam.iff	40	120	800	1100	0	0	0	0	0	0	energy	electric	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
 slot																																		resource	0	frame_assembly	steel	150																												
 slot																																		resource	0	receiver_assembly	iron	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -120,7 +120,7 @@ slot																																		template	0	barrel_rifle_blaster	object/tan
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_heavy_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_heavy_particle_beam		systems.crafting.weapon.core.crafting_new_weapon_final	25	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_particle_beam.iff	object/weapon/ranged/heavy/heavy_particle_beam.iff	40	120	800	1100	0	0	0	0	0	0	kinetic	energy	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
+weapon	heavy	weapon_appearance_heavy_particle_beam		systems.crafting.weapon.core.crafting_new_weapon_final	25	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_particle_beam.iff	object/weapon/ranged/heavy/heavy_particle_beam.iff	40	120	800	1100	0	0	0	0	0	0	kinetic	energy	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
 slot																																		resource	0	frame_assembly	steel	150																												
 slot																																		resource	0	receiver_assembly	iron	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -130,7 +130,7 @@ slot																																		template	0	barrel_rifle_blaster	object/tan
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_heavy_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_quest_heavy_particle_beam		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/quest_heavy_particle_beam.iff	object/weapon/ranged/heavy/quest_heavy_particle_beam.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	energy	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
+weapon	heavy	weapon_appearance_quest_heavy_particle_beam		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/quest_heavy_particle_beam.iff	object/weapon/ranged/heavy/quest_heavy_particle_beam.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	energy	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
 slot																																		resource	0	frame_assembly	steel	175																												
 slot																																		resource	0	receiver_assembly	iron	75																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	45																												
@@ -140,7 +140,7 @@ slot																																		template	0	barrel_rifle_blaster	object/tan
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_heavy_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_heavy_rocket_launcher		systems.crafting.weapon.core.crafting_new_weapon_final	25	weapon	8	weapon_crafting		object/weapon/ranged/heavy/heavy_rocket_launcher.iff	object/weapon/ranged/heavy/heavy_rocket_launcher.iff	40	120	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	50	0	25
+weapon	heavy	weapon_appearance_heavy_rocket_launcher		systems.crafting.weapon.core.crafting_new_weapon_final	25	weapon	8	weapon_crafting		object/weapon/ranged/heavy/heavy_rocket_launcher.iff	object/weapon/ranged/heavy/heavy_rocket_launcher.iff	40	120	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	50	0	25
 slot																																		resource	0	frame_assembly	steel	150																												
 slot																																		resource	0	receiver_assembly	iron	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -372,7 +372,7 @@ slot																																		template	0	power_supply	object/tangible/co
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_ranged_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_pistol_launcher		systems.crafting.weapon.core.crafting_new_weapon_final	25	weapon	7	weapon_crafting		object/weapon/ranged/pistol/pistol_launcher.iff	object/weapon/ranged/pistol/pistol_launcher.iff	40	120	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
+weapon	heavy	weapon_appearance_pistol_launcher		systems.crafting.weapon.core.crafting_new_weapon_final	25	weapon	7	weapon_crafting		object/weapon/ranged/pistol/pistol_launcher.iff	object/weapon/ranged/pistol/pistol_launcher.iff	40	120	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
 slot																																		resource	0	frame_assembly	iron	85																												
 slot																																		resource	0	receiver_assembly	metal_nonferrous	40																												
 slot																																		resource	0	grip_assembly	chemical	28																												
@@ -380,7 +380,7 @@ slot																																		template	0	barrel_pistol_projectile	object
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_heavy_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_quest_pistol_launcher		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	7	weapon_crafting		object/weapon/ranged/pistol/quest_pistol_launcher.iff	object/weapon/ranged/pistol/quest_pistol_launcher.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	none	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
+weapon	heavy	weapon_appearance_quest_pistol_launcher		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	7	weapon_crafting		object/weapon/ranged/pistol/quest_pistol_launcher.iff	object/weapon/ranged/pistol/quest_pistol_launcher.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	none	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
 slot																																		resource	0	frame_assembly	iron	85																												
 slot																																		resource	0	receiver_assembly	metal_nonferrous	40																												
 slot																																		resource	0	grip_assembly	chemical	28																												
@@ -1074,7 +1074,7 @@ slot																																		template	0	naktra_crystal1	object/tangible
 slot																																		template	0	naktra_crystal2	object/tangible/loot/quest/naktra_crystal.iff	1																												
 slot																																		template	0	naktra_crystal3	object/tangible/loot/quest/naktra_crystal.iff	1																												
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_melee_base.iff	1																												
-weapon	heavy	weapon_appearance_pistol_launcher_medium		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	7	weapon_crafting		object/weapon/ranged/pistol/pistol_launcher_medium.iff	object/weapon/ranged/pistol/pistol_launcher_medium.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
+weapon	heavy	weapon_appearance_pistol_launcher_medium		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	7	weapon_crafting		object/weapon/ranged/pistol/pistol_launcher_medium.iff	object/weapon/ranged/pistol/pistol_launcher_medium.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
 slot																																		resource	0	frame_assembly	iron	85																												
 slot																																		resource	0	receiver_assembly	metal_nonferrous	40																												
 slot																																		resource	0	grip_assembly	chemical	28																												
@@ -1082,7 +1082,7 @@ slot																																		template	0	barrel_pistol_projectile	object
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_heavy_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_pistol_launcher_elite		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	7	weapon_crafting		object/weapon/ranged/pistol/pistol_launcher_elite.iff	object/weapon/ranged/pistol/pistol_launcher_elite.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
+weapon	heavy	weapon_appearance_pistol_launcher_elite		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	7	weapon_crafting		object/weapon/ranged/pistol/pistol_launcher_elite.iff	object/weapon/ranged/pistol/pistol_launcher_elite.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
 slot																																		resource	0	frame_assembly	iron_plumbum	85																												
 slot																																		resource	0	receiver_assembly	metal_nonferrous	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	28																												
@@ -1206,7 +1206,7 @@ slot																																		template	0	barrel_pistol_blaster	object/ta
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_ranged_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_loot_corellian		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/ep3_loot_corellian.iff	object/weapon/ranged/heavy/ep3_loot_corellian.iff	40	450	800	1100	0	0	0	0	0	0	energy	electric	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	47	0	25
+weapon	heavy	weapon_appearance_loot_corellian		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/ep3_loot_corellian.iff	object/weapon/ranged/heavy/ep3_loot_corellian.iff	40	450	800	1100	0	0	0	0	0	0	energy	electric	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	47	0	25
 slot																																		resource	0	frame_assembly	steel_duralloy	150																												
 slot																																		resource	0	receiver_assembly	copper	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -1415,7 +1415,7 @@ slot																																		resource	0	staff_shaft	steel	60
 slot																																		resource	0	balance_tabs	copper_polysteel	12																												
 slot																																		resource	0	grip	petrochem_inert_polymer	30																												
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_melee_base.iff	1																												
-weapon	heavy	weapon_appearance_loot_void		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/ep3_loot_void.iff	object/weapon/ranged/heavy/ep3_loot_void.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	47	0	25
+weapon	heavy	weapon_appearance_loot_void		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/ep3_loot_void.iff	object/weapon/ranged/heavy/ep3_loot_void.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	47	0	25
 slot																																		resource	0	frame_assembly	steel	150																												
 slot																																		resource	0	receiver_assembly	copper	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -1454,7 +1454,7 @@ slot																																		template	0	barrel_rifle_blaster	object/tan
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_ranged_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_heavy_avatar_acid_beam		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_avatar_acid_beam.iff	object/weapon/ranged/heavy/heavy_avatar_acid_beam.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	acid	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	52	0	30
+weapon	heavy	weapon_appearance_heavy_avatar_acid_beam		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_avatar_acid_beam.iff	object/weapon/ranged/heavy/heavy_avatar_acid_beam.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	acid	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	52	0	30
 slot																																		resource	0	frame_assembly	steel	150																												
 slot																																		resource	0	receiver_assembly	aluminum	40																												
 slot																																		resource	0	grip_assembly	metal	20																												
@@ -1521,7 +1521,7 @@ slot																																		template	0	barrel_rifle_blaster	object/tan
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_ranged_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	rifle	weapon_appearance_rifle_lightning_heavy		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	10	weapon_crafting		object/weapon/ranged/rifle/rifle_lightning_heavy.iff	object/weapon/ranged/rifle/rifle_lightning_heavy.iff	40	450	800	1100	0	0	0	0	0	0	energy	electric	-1	-1	rifle	rifle	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
+weapon	rifle	weapon_appearance_rifle_lightning_heavy		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	10	weapon_crafting		object/weapon/ranged/rifle/rifle_lightning_heavy.iff	object/weapon/ranged/rifle/rifle_lightning_heavy.iff	40	450	800	1100	0	0	0	0	0	0	energy	electric	-1	-1	rifle	rifle	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	42	0	20
 slot																																		resource	0	frame_assembly	steel_duralloy	175																												
 slot																																		resource	0	receiver_assembly	iron_colat	70																												
 slot																																		resource	0	conduction_mass	copper	28																												
@@ -1594,7 +1594,7 @@ slot																																		resource	0	grip	copper_mythra	60
 slot																																		template	0	vibration_generator	object/tangible/component/weapon/vibro_unit_base.iff	1																												
 slot																																		template	0	advanced_core	object/tangible/component/weapon/mustafar/tulrus_lance_core.iff	1																												
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_melee_base.iff	1																												
-weapon	heavy	weapon_appearance_heavy_lava_cannon		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	10	weapon_crafting		object/weapon/ranged/heavy/som_lava_cannon.iff	object/weapon/ranged/heavy/som_lava_cannon.iff	40	450	800	1100	0	0	0	0	0	0	energy	heat	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	52	0	30
+weapon	heavy	weapon_appearance_heavy_lava_cannon		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	10	weapon_crafting		object/weapon/ranged/heavy/som_lava_cannon.iff	object/weapon/ranged/heavy/som_lava_cannon.iff	40	450	800	1100	0	0	0	0	0	0	energy	heat	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	52	0	30
 slot																																		resource	0	frame_assembly	steel_carbonite	150																												
 slot																																		resource	0	receiver_assembly	iron_kammris	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -1742,172 +1742,172 @@ slot																																		resource	0	grip_assembly	metal	20
 slot																																		resource	0	enhanced_cooling_mechanism	gemstone_crystalline	45																												
 slot																																		resource	0	thermal_control_unit	ore_carbonate	20																												
 slot																																		template	0	barrel_rifle_blaster	object/tangible/component/weapon/blaster_rifle_barrel_base.iff	1	muzzle																											
-slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_heavy_base.iff	1																
-slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope															
-slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock															
-weapon	component	weapon_core_melee_basic		systems.crafting.weapon.core.crafting_new_weapon_core_melee	50	weapon	3	weapon_crafting		object/tangible/component/weapon/core/weapon_core_melee_basic.iff	object/tangible/component/weapon/core/weapon_core_melee_basic.iff	22	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	18	40	0	0	0	0	4	10	0	10
-slot																																		resource	0	frame_assembly	chemical	15																
-slot																																		resource	0	thermal_control_unit	metal	25																
-slot																																		template	0	weapon_reinforcement	object/tangible/component/weapon/new_weapon_comp_reinforcement_core_base.iff	1																
-weapon	component	weapon_core_melee_standard		systems.crafting.weapon.core.crafting_new_weapon_core_melee	50	weapon	5	weapon_crafting		object/tangible/component/weapon/core/weapon_core_melee_standard.iff	object/tangible/component/weapon/core/weapon_core_melee_standard.iff	36	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	42	72	0	0	0	0	4	10	0	10
-slot																																		resource	0	frame_assembly	petrochem_inert	35																
-slot																																		resource	0	thermal_control_unit	metal_nonferrous	45																
-slot																																		resource	0	power_cell_brackets	metal_ferrous	65																
-slot																																		template	0	weapon_reinforcement	object/tangible/component/weapon/new_weapon_comp_reinforcement_core_base.iff	1																
-slot																																		template	1	melee_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_melee_slot_one_base.iff	1																
-weapon	component	weapon_core_melee_advanced		systems.crafting.weapon.core.crafting_new_weapon_core_melee	50	weapon	9	weapon_crafting		object/tangible/component/weapon/core/weapon_core_melee_advanced.iff	object/tangible/component/weapon/core/weapon_core_melee_advanced.iff	44	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	74	90	0	0	0	0	4	10	0	10
-slot																																		resource	0	frame_assembly	petrochem_inert_polymer	55																
-slot																																		resource	0	thermal_control_unit	copper_desh	95																
-slot																																		resource	0	power_cell_brackets	steel_duralloy	85																
-slot																																		resource	0	charge_accumulator	iron_bronzium	35																
-slot																																		template	0	weapon_reinforcement	object/tangible/component/weapon/new_weapon_comp_reinforcement_core_base.iff	1																
-slot																																		template	1	elemental_component	object/tangible/component/weapon/new_weapon/elemental_base.iff	1																
-slot																																		template	1	melee_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_melee_slot_one_base.iff	1																
-slot																																		template	1	melee_enhancement_two	object/tangible/component/weapon/new_weapon/enhancement_melee_slot_two_base.iff	1																
-slot																																		template	1	weapon_power_bit	object/tangible/component/weapon/new_weapon/power_bit.iff	1																
-weapon	component	weapon_core_ranged_basic		systems.crafting.weapon.core.crafting_new_weapon_core	50	weapon	3	weapon_crafting		object/tangible/component/weapon/core/weapon_core_ranged_basic.iff	object/tangible/component/weapon/core/weapon_core_ranged_basic.iff	22	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	18	40	0	0	0	0	4	10	0	10
-slot																																		resource	0	frame_assembly	chemical	15																
-slot																																		resource	0	thermal_control_unit	metal	25																
-slot																																		template	0	weapon_gas_cartridge	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_base.iff	1																
-weapon	component	weapon_core_ranged_standard		systems.crafting.weapon.core.crafting_new_weapon_core	50	weapon	5	weapon_crafting		object/tangible/component/weapon/core/weapon_core_ranged_standard.iff	object/tangible/component/weapon/core/weapon_core_ranged_standard.iff	36	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	42	72	0	0	0	0	4	10	0	10
-slot																																		resource	0	frame_assembly	petrochem_inert	35																
-slot																																		resource	0	thermal_control_unit	metal_nonferrous	45																
-slot																																		resource	0	pulse_insulator	metal_ferrous	75																
-slot																																		template	0	weapon_gas_cartridge	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_base.iff	1																
-slot																																		template	1	ranged_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_one_base.iff	1																
-weapon	component	weapon_core_ranged_advanced		systems.crafting.weapon.core.crafting_new_weapon_core	50	weapon	9	weapon_crafting		object/tangible/component/weapon/core/weapon_core_ranged_advanced.iff	object/tangible/component/weapon/core/weapon_core_ranged_advanced.iff	44	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	74	90	0	0	0	0	4	10	0	10
-slot																																		resource	0	frame_assembly	petrochem_inert_polymer	55																
-slot																																		resource	0	thermal_control_unit	copper_polysteel	95																
-slot																																		resource	0	pulse_insulator	steel_carbonite	85																
-slot																																		resource	0	charge_accumulator	gemstone_crystalline	12																
-slot																																		template	0	weapon_gas_cartridge	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_base.iff	1																
-slot																																		template	1	elemental_chamber	object/tangible/component/weapon/new_weapon/elemental_base.iff	1																
-slot																																		template	1	ranged_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_one_base.iff	1																
-slot																																		template	1	ranged_enhancement_two	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_two_base.iff	1																
-slot																																		template	1	weapon_power_bit	object/tangible/component/weapon/new_weapon/power_bit.iff	1																
-weapon	component	weapon_core_heavy_standard		systems.crafting.weapon.core.crafting_new_weapon_core	50	weapon	6	weapon_crafting		object/tangible/component/weapon/core/weapon_core_heavy_standard.iff	object/tangible/component/weapon/core/weapon_core_heavy_standard.iff	36	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	54	72	0	0	0	0	4	10	0	10
-slot																																		resource	0	frame_assembly	petrochem_inert	65																
-slot																																		resource	0	thermal_control_unit	metal_nonferrous	115																
-slot																																		resource	0	pulse_insulator	metal_ferrous	95																
-slot																																		template	0	weapon_gas_cartridge	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_base.iff	1																
-slot																																		template	0	elemental_chamber	object/tangible/component/weapon/new_weapon/elemental_heavy.iff	1																
-slot																																		template	1	ranged_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_one_base.iff	1																
-weapon	component	weapon_core_heavy_advanced		systems.crafting.weapon.core.crafting_new_weapon_core	50	weapon	9	weapon_crafting		object/tangible/component/weapon/core/weapon_core_heavy_advanced.iff	object/tangible/component/weapon/core/weapon_core_heavy_advanced.iff	44	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	74	90	0	0	0	0	4	10	0	10
-slot																																		resource	0	frame_assembly	petrochem_inert_polymer	85																
-slot																																		resource	0	thermal_control_unit	aluminum_linksteel	155																
-slot																																		resource	0	pulse_insulator	steel_carbonite	115																
-slot																																		resource	0	charge_accumulator	gemstone_crystalline	22																
-slot																																		template	0	weapon_gas_cartridge	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_base.iff	1																
-slot																																		template	0	elemental_chamber	object/tangible/component/weapon/new_weapon/elemental_heavy.iff	1																
-slot																																		template	1	ranged_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_one_base.iff	1																
-slot																																		template	1	ranged_enhancement_two	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_two_base.iff	1																
-slot																																		template	1	weapon_power_bit	object/tangible/component/weapon/new_weapon/power_bit.iff	1																
-weapon	component	new_weapon_comp_elemental_heat		systems.crafting.weapon.core.crafting_comp_elemental	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon/elemental_heat.iff	object/tangible/component/weapon/new_weapon/elemental_heat.iff	38	120	1	1	0	0	0	0	0	0		heat	0	1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/														
-slot																																		resource	0	module_assembly	petrochem_inert_polymer	10																
-slot																																		resource	0	circuitry_substrate	ore_carbonate_alantium	5																
-slot																																		resource	0	gas_containment_unit	aluminum_titanium	8																
-slot																																		resource	0	reactant_source	gas_reactive_skevon	16		
-weapon	component	new_weapon_comp_elemental_cold		systems.crafting.weapon.core.crafting_comp_elemental	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon/elemental_cold.iff	object/tangible/component/weapon/new_weapon/elemental_cold.iff	38	120	1	1	0	0	0	0	0	0		cold	0	1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/
-slot																																		resource	0	module_assembly	petrochem_inert_polymer	10		
-slot																																		resource	0	circuitry_substrate	ore_carbonate_ostrine	5		
-slot																																		resource	0	gas_containment_unit	aluminum_chromium	8		
-slot																																		resource	0	reactant_source	gas_reactive_eleton	16		
-weapon	component	new_weapon_comp_elemental_acid		systems.crafting.weapon.core.crafting_comp_elemental	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon/elemental_acid.iff	object/tangible/component/weapon/new_weapon/elemental_acid.iff	38	120	1	1	0	0	0	0	0	0		acid	0	1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/
-slot																																		resource	0	module_assembly	petrochem_inert_polymer	10		
-slot																																		resource	0	circuitry_substrate	ore_carbonate_varium	5		
-slot																																		resource	0	gas_containment_unit	aluminum_phrik	8		
-slot																																		resource	0	reactant_source	gas_reactive_tolium	16		
-weapon	component	new_weapon_comp_elemental_electric		systems.crafting.weapon.core.crafting_comp_elemental	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon/elemental_electric.iff	object/tangible/component/weapon/new_weapon/elemental_electric.iff	38	120	1	1	0	0	0	0	0	0		electric	0	1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/
-slot																																		resource	0	module_assembly	petrochem_inert_polymer	10		
-slot																																		resource	0	circuitry_substrate	ore_carbonate_chromite	5		
-slot																																		resource	0	gas_containment_unit	aluminum_duralumin	8		
-slot																																		resource	0	reactant_source	gas_reactive_methane	16		
-weapon	component	new_weapon_comp_elemental_heavy		systems.crafting.weapon.core.crafting_comp_elemental	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon/elemental_heavy.iff	object/tangible/component/weapon/new_weapon/elemental_heavy.iff	38	120	1	1	0	0	0	0	0	0		none	0	1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/														
-slot																																		resource	0	module_assembly	petrochem_inert_polymer	10																
-slot																																		resource	0	circuitry_substrate	ore_carbonate	5																
-slot																																		resource	0	gas_containment_unit	aluminum_linksteel	8																
-slot																																		resource	0	reactant_source	gas_reactive	16																
-weapon	component	weapon_power_bit		systems.crafting.weapon.core.crafting_comp_power_bit	0	weapon	2	weapon_crafting		object/tangible/component/weapon/new_weapon/power_bit.iff	object/tangible/component/weapon/new_weapon/power_bit.iff	21	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	0	0											sys.server/compiled/game/object/draft_schematic/weapon/component/	0	0	0	0	0	0	0	136	0	35	0	0	0	0
-slot																																		template	0	power_bit_modifier	object/tangible/component/reverse_engineering/modifier_bit.iff	1																
-slot																																		template	0	power_bit_value	object/tangible/component/reverse_engineering/base_power_bit.iff	1																
-weapon	component	new_weapon_comp_gas_cartridge		systems.crafting.weapon.core.crafting_comp_gas_cartridge	50	weapon	3	weapon_crafting		object/tangible/component/weapon/new_weapon_comp_gas_cartridge.iff	object/tangible/component/weapon/new_weapon_comp_gas_cartridge.iff	21	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/	4	10	0	15										
-slot																																		resource	0	module_assembly	petrochem_inert	25																
-slot																																		resource	0	gas_containment_unit	metal	20																
-slot																																		resource	0	reactant_source	gas_reactive	15																
-weapon	component	new_weapon_comp_gas_cartridge_advanced		systems.crafting.weapon.core.crafting_comp_gas_cartridge	50	weapon	5	weapon_crafting		object/tangible/component/weapon/new_weapon_comp_gas_cartridge_advanced.iff	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/	8	20	0	30										
-slot																																		resource	0	module_assembly	petrochem_inert_polymer	35																
-slot																																		resource	0	xciter_circuitry	copper_diatium	20																
-slot																																		resource	0	circuitry_substrate	ore_carbonate_ostrine	20																
-slot																																		resource	0	gas_containment_unit	aluminum_phrik	38																								
-slot																																		resource	0	reactant_source	gas_reactive_irolunn	30																								
-weapon	component	new_weapon_comp_scope		systems.crafting.weapon.core.crafting_comp_scope	50	weapon	5	weapon_crafting		object/tangible/component/weapon/scope_weapon_advanced.iff	object/tangible/component/weapon/scope_weapon_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															3	10	0	10				
-slot																																		resource	0	scope_shell	aluminum_chromium	18																								
-slot																																		resource	0	shock_proofing_and_gasket_seals	petrochem_inert_polymer	10																								
-slot																																		resource	0	scope_bracket	aluminum_linksteel	12																								
-slot																																		resource	0	light_accumulators	crystalline_green_diamond	8																								
-slot																																		resource	0	targeting_aid_circuitry	copper_polysteel	5																								
-weapon	component	new_weapon_comp_stock		systems.crafting.weapon.core.crafting_comp_stock	50	weapon	3	weapon_crafting		object/tangible/component/weapon/stock_advanced.iff	object/tangible/component/weapon/stock_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															3	10	0	10				
-slot																																		resource	0	lining	wood_deciduous_corellia	35																								
-slot																																		resource	0	butt_cap_and_receiver_attachment_point	aluminum_linksteel	15																								
-slot																																		resource	0	frame_attachment	steel_duralloy	15																								
-weapon	component	new_weapon_comp_reinforcement_core		systems.crafting.weapon.core.crafting_comp_reinforcement_core	50	weapon	3	weapon_crafting		object/tangible/component/weapon/new_weapon_comp_reinforcement_core.iff	object/tangible/component/weapon/new_weapon_comp_reinforcement_core.iff	21	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/																			4	10	0	15
-slot																																		resource	0	reinforcement_base	petrochem_inert	25																								
-slot																																		resource	0	reinforcement_material	metal	20																								
-slot																																		resource	0	reinforcement_attachment	gas_reactive	15																								
-weapon	component	new_weapon_comp_reinforcement_core_advanced		systems.crafting.weapon.core.crafting_comp_reinforcement_core	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon_comp_reinforcement_core_advanced.iff	object/tangible/component/weapon/new_weapon_comp_reinforcement_core_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/																			8	20	0	30
-slot																																		resource	0	reinforcement_base	petrochem_inert_polymer	35																								
-slot																																		resource	0	reinforcement_material	copper_diatium	20																								
-slot																																		resource	0	lining	ore_carbonate_ostrine	20																								
-slot																																		resource	0	reinforcement_attachment	aluminum_phrik	38																								
-weapon	component	new_weapon_comp_blade_vibro_unit		systems.crafting.weapon.core.crafting_comp_vibro_unit	50	weapon	3	weapon_crafting		object/tangible/component/weapon/vibro_unit.iff	object/tangible/component/weapon/vibro_unit.iff	21	60	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															4	10	0	10				
-slot																																		resource	0	module_housing	steel	35																								
-slot																																		resource	0	ultrasonic_vibration_generator	fuel_petrochem_solid	15																								
-slot																																		resource	0	conductive_circuits	copper	8																								
-weapon	component	new_weapon_comp_blade_vibro_unit_advanced		systems.crafting.weapon.core.crafting_comp_vibro_unit	50	weapon	3	weapon_crafting		object/tangible/component/weapon/vibro_unit_advanced.iff	object/tangible/component/weapon/vibro_unit_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															6	15	0	15				
-slot																																		resource	0	module_housing	copper_desh	40																								
-slot																																		resource	0	ultrasonic_vibration_generator	petrochem_fuel_solid_type3	25																								
-slot																																		resource	0	conductive_circuits	copper_platinite	15																								
-weapon	component	new_weapon_comp_blaster_pistol_barrel		systems.crafting.weapon.core.crafting_comp_barrel_blaster	50	weapon	5	weapon_crafting		object/tangible/component/weapon/blaster_pistol_barrel.iff	object/tangible/component/weapon/blaster_pistol_barrel.iff	21	60	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															4	10	0	10				
-slot																																		resource	0	emitter_nozzle	metal	20																								
-slot																																		resource	0	actuating_blaster_module	metal	16																								
-slot																																		resource	0	barrel_to_receiver_coupling	metal	12																				
-slot																																		resource	0	prismatic_crystal	gemstone	3																				
-slot																																		resource	0	barrel_shroud	metal	8																				
-weapon	component	new_weapon_comp_blaster_pistol_barrel_advanced		systems.crafting.weapon.core.crafting_comp_barrel_blaster	50	weapon	5	weapon_crafting		object/tangible/component/weapon/blaster_pistol_barrel_advanced.iff	object/tangible/component/weapon/blaster_pistol_barrel_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															6	15	0	15
-slot																																		resource	0	emitter_nozzle	steel_rhodium	26																				
-slot																																		resource	0	actuating_blaster_module	steel_duralloy	20																				
-slot																																		resource	0	barrel_to_receiver_coupling	metal	18																				
-slot																																		resource	0	prismatic_crystal	armophous_ryll	6																				
-slot																																		resource	0	barrel_shroud	metal	12																				
-weapon	component	new_weapon_comp_blaster_rifle_barrel		systems.crafting.weapon.core.crafting_comp_barrel_blaster	50	weapon	5	weapon_crafting		object/tangible/component/weapon/blaster_rifle_barrel.iff	object/tangible/component/weapon/blaster_rifle_barrel.iff	21	60	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															4	10	0	10
-slot																																		resource	0	emitter_nozzle	metal	25																				
-slot																																		resource	0	actuating_blaster_module	metal	18																				
-slot																																		resource	0	barrel_to_receiver_coupling	metal	20																				
-slot																																		resource	0	prismatic_crystal	gemstone_crystalline	6																				
-slot																																		resource	0	barrel_shroud	metal	12																				
-weapon	component	new_weapon_comp_blaster_rifle_barrel_advanced		systems.crafting.weapon.core.crafting_comp_barrel_blaster	50	weapon	5	weapon_crafting		object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															6	15	0	15
-slot																																		resource	0	emitter_nozzle	steel_rhodium	45																				
-slot																																		resource	0	actuating_blaster_module	steel_duralloy	36																				
-slot																																		resource	0	barrel_to_receiver_coupling	steel_duranium	34																				
-slot																																		resource	0	prismatic_crystal	armophous_ryll	12																				
-slot																																		resource	0	barrel_shroud	metal	18																				
-weapon	component	new_weapon_comp_projectile_pistol_barrel		systems.crafting.weapon.core.crafting_comp_barrel_projectile	50	weapon	3	weapon_crafting		object/tangible/component/weapon/projectile_pistol_barrel.iff	object/tangible/component/weapon/projectile_pistol_barrel.iff	21	60	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															4	10	0	10
-slot																																		resource	0	lining	steel	48																				
-slot																																		resource	0	bore	metal	21																				
-slot																																		resource	0	barrel_shroud	metal	12																				
-weapon	component	new_weapon_comp_projectile_pistol_barrel_advanced		systems.crafting.weapon.core.crafting_comp_barrel_projectile	50	weapon	3	weapon_crafting		object/tangible/component/weapon/projectile_pistol_barrel_advanced.iff	object/tangible/component/weapon/projectile_pistol_barrel_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															6	15	0	15
-slot																																		resource	0	lining	steel_duralloy	60																				
-slot																																		resource	0	bore	iron_plumbum	22																				
-slot																																		resource	0	barrel_shroud	iron_axidite	18																				
-weapon	component	new_weapon_comp_projectile_rifle_barrel		systems.crafting.weapon.core.crafting_comp_barrel_projectile	50	weapon	3	weapon_crafting		object/tangible/component/weapon/projectile_rifle_barrel.iff	object/tangible/component/weapon/projectile_rifle_barrel.iff	21	60	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															4	10	0	10
-slot																																		resource	0	lining	steel	55																				
-slot																																		resource	0	bore	metal	26																				
+slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_heavy_base.iff	1																												
+slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
+slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
+weapon	component	weapon_core_melee_basic		systems.crafting.weapon.core.crafting_new_weapon_core_melee	50	weapon	3	weapon_crafting		object/tangible/component/weapon/core/weapon_core_melee_basic.iff	object/tangible/component/weapon/core/weapon_core_melee_basic.iff	22	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	18	40	0	0	0	0	4	10	0	10												
+slot																																		resource	0	frame_assembly	chemical	15																												
+slot																																		resource	0	thermal_control_unit	metal	25																												
+slot																																		template	0	weapon_reinforcement	object/tangible/component/weapon/new_weapon_comp_reinforcement_core_base.iff	1																												
+weapon	component	weapon_core_melee_standard		systems.crafting.weapon.core.crafting_new_weapon_core_melee	50	weapon	5	weapon_crafting		object/tangible/component/weapon/core/weapon_core_melee_standard.iff	object/tangible/component/weapon/core/weapon_core_melee_standard.iff	36	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	42	72	0	0	0	0	4	10	0	10												
+slot																																		resource	0	frame_assembly	petrochem_inert	35																												
+slot																																		resource	0	thermal_control_unit	metal_nonferrous	45																												
+slot																																		resource	0	power_cell_brackets	metal_ferrous	65																												
+slot																																		template	0	weapon_reinforcement	object/tangible/component/weapon/new_weapon_comp_reinforcement_core_base.iff	1																												
+slot																																		template	1	melee_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_melee_slot_one_base.iff	1																												
+weapon	component	weapon_core_melee_advanced		systems.crafting.weapon.core.crafting_new_weapon_core_melee	50	weapon	9	weapon_crafting		object/tangible/component/weapon/core/weapon_core_melee_advanced.iff	object/tangible/component/weapon/core/weapon_core_melee_advanced.iff	44	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	74	90	0	0	0	0	4	10	0	10												
+slot																																		resource	0	frame_assembly	petrochem_inert_polymer	55																												
+slot																																		resource	0	thermal_control_unit	copper_desh	95																												
+slot																																		resource	0	power_cell_brackets	steel_duralloy	85																												
+slot																																		resource	0	charge_accumulator	iron_bronzium	35																												
+slot																																		template	0	weapon_reinforcement	object/tangible/component/weapon/new_weapon_comp_reinforcement_core_base.iff	1																												
+slot																																		template	1	elemental_component	object/tangible/component/weapon/new_weapon/elemental_base.iff	1																												
+slot																																		template	1	melee_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_melee_slot_one_base.iff	1																												
+slot																																		template	1	melee_enhancement_two	object/tangible/component/weapon/new_weapon/enhancement_melee_slot_two_base.iff	1																												
+slot																																		template	1	weapon_power_bit	object/tangible/component/weapon/new_weapon/power_bit.iff	1																												
+weapon	component	weapon_core_ranged_basic		systems.crafting.weapon.core.crafting_new_weapon_core	50	weapon	3	weapon_crafting		object/tangible/component/weapon/core/weapon_core_ranged_basic.iff	object/tangible/component/weapon/core/weapon_core_ranged_basic.iff	22	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	18	40	0	0	0	0	4	10	0	10												
+slot																																		resource	0	frame_assembly	chemical	15																												
+slot																																		resource	0	thermal_control_unit	metal	25																												
+slot																																		template	0	weapon_gas_cartridge	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_base.iff	1																												
+weapon	component	weapon_core_ranged_standard		systems.crafting.weapon.core.crafting_new_weapon_core	50	weapon	5	weapon_crafting		object/tangible/component/weapon/core/weapon_core_ranged_standard.iff	object/tangible/component/weapon/core/weapon_core_ranged_standard.iff	36	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	42	72	0	0	0	0	4	10	0	10												
+slot																																		resource	0	frame_assembly	petrochem_inert	35																												
+slot																																		resource	0	thermal_control_unit	metal_nonferrous	45																												
+slot																																		resource	0	pulse_insulator	metal_ferrous	75																												
+slot																																		template	0	weapon_gas_cartridge	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_base.iff	1																												
+slot																																		template	1	ranged_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_one_base.iff	1																												
+weapon	component	weapon_core_ranged_advanced		systems.crafting.weapon.core.crafting_new_weapon_core	50	weapon	9	weapon_crafting		object/tangible/component/weapon/core/weapon_core_ranged_advanced.iff	object/tangible/component/weapon/core/weapon_core_ranged_advanced.iff	44	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	74	90	0	0	0	0	4	10	0	10												
+slot																																		resource	0	frame_assembly	petrochem_inert_polymer	55																												
+slot																																		resource	0	thermal_control_unit	copper_polysteel	95																												
+slot																																		resource	0	pulse_insulator	steel_carbonite	85																												
+slot																																		resource	0	charge_accumulator	gemstone_crystalline	12																												
+slot																																		template	0	weapon_gas_cartridge	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_base.iff	1																												
+slot																																		template	1	elemental_chamber	object/tangible/component/weapon/new_weapon/elemental_base.iff	1																												
+slot																																		template	1	ranged_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_one_base.iff	1																												
+slot																																		template	1	ranged_enhancement_two	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_two_base.iff	1																												
+slot																																		template	1	weapon_power_bit	object/tangible/component/weapon/new_weapon/power_bit.iff	1																												
+weapon	component	weapon_core_heavy_standard		systems.crafting.weapon.core.crafting_new_weapon_core	50	weapon	6	weapon_crafting		object/tangible/component/weapon/core/weapon_core_heavy_standard.iff	object/tangible/component/weapon/core/weapon_core_heavy_standard.iff	36	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	54	72	0	0	0	0	4	10	0	10												
+slot																																		resource	0	frame_assembly	petrochem_inert	65																												
+slot																																		resource	0	thermal_control_unit	metal_nonferrous	115																												
+slot																																		resource	0	pulse_insulator	metal_ferrous	95																												
+slot																																		template	0	weapon_gas_cartridge	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_base.iff	1																												
+slot																																		template	0	elemental_chamber	object/tangible/component/weapon/new_weapon/elemental_heavy.iff	1																												
+slot																																		template	1	ranged_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_one_base.iff	1																												
+weapon	component	weapon_core_heavy_advanced		systems.crafting.weapon.core.crafting_new_weapon_core	50	weapon	9	weapon_crafting		object/tangible/component/weapon/core/weapon_core_heavy_advanced.iff	object/tangible/component/weapon/core/weapon_core_heavy_advanced.iff	44	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/core/	0	0	0	0	74	90	0	0	0	0	4	10	0	10												
+slot																																		resource	0	frame_assembly	petrochem_inert_polymer	85																												
+slot																																		resource	0	thermal_control_unit	aluminum_linksteel	155																												
+slot																																		resource	0	pulse_insulator	steel_carbonite	115																												
+slot																																		resource	0	charge_accumulator	gemstone_crystalline	22																												
+slot																																		template	0	weapon_gas_cartridge	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_base.iff	1																												
+slot																																		template	0	elemental_chamber	object/tangible/component/weapon/new_weapon/elemental_heavy.iff	1																												
+slot																																		template	1	ranged_enhancement_one	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_one_base.iff	1																												
+slot																																		template	1	ranged_enhancement_two	object/tangible/component/weapon/new_weapon/enhancement_ranged_slot_two_base.iff	1																												
+slot																																		template	1	weapon_power_bit	object/tangible/component/weapon/new_weapon/power_bit.iff	1																												
+weapon	component	new_weapon_comp_elemental_heat		systems.crafting.weapon.core.crafting_comp_elemental	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon/elemental_heat.iff	object/tangible/component/weapon/new_weapon/elemental_heat.iff	38	120	1	1	0	0	0	0	0	0		heat	0	1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/																										
+slot																																		resource	0	module_assembly	petrochem_inert_polymer	10																												
+slot																																		resource	0	circuitry_substrate	ore_carbonate_alantium	5																												
+slot																																		resource	0	gas_containment_unit	aluminum_titanium	8																												
+slot																																		resource	0	reactant_source	gas_reactive_skevon	16																												
+weapon	component	new_weapon_comp_elemental_cold		systems.crafting.weapon.core.crafting_comp_elemental	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon/elemental_cold.iff	object/tangible/component/weapon/new_weapon/elemental_cold.iff	38	120	1	1	0	0	0	0	0	0		cold	0	1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/																										
+slot																																		resource	0	module_assembly	petrochem_inert_polymer	10																												
+slot																																		resource	0	circuitry_substrate	ore_carbonate_ostrine	5																												
+slot																																		resource	0	gas_containment_unit	aluminum_chromium	8																												
+slot																																		resource	0	reactant_source	gas_reactive_eleton	16																												
+weapon	component	new_weapon_comp_elemental_acid		systems.crafting.weapon.core.crafting_comp_elemental	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon/elemental_acid.iff	object/tangible/component/weapon/new_weapon/elemental_acid.iff	38	120	1	1	0	0	0	0	0	0		acid	0	1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/																										
+slot																																		resource	0	module_assembly	petrochem_inert_polymer	10																												
+slot																																		resource	0	circuitry_substrate	ore_carbonate_varium	5																												
+slot																																		resource	0	gas_containment_unit	aluminum_phrik	8																												
+slot																																		resource	0	reactant_source	gas_reactive_tolium	16																												
+weapon	component	new_weapon_comp_elemental_electric		systems.crafting.weapon.core.crafting_comp_elemental	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon/elemental_electric.iff	object/tangible/component/weapon/new_weapon/elemental_electric.iff	38	120	1	1	0	0	0	0	0	0		electric	0	1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/																										
+slot																																		resource	0	module_assembly	petrochem_inert_polymer	10																												
+slot																																		resource	0	circuitry_substrate	ore_carbonate_chromite	5																												
+slot																																		resource	0	gas_containment_unit	aluminum_duralumin	8																												
+slot																																		resource	0	reactant_source	gas_reactive_methane	16																												
+weapon	component	new_weapon_comp_elemental_heavy		systems.crafting.weapon.core.crafting_comp_elemental	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon/elemental_heavy.iff	object/tangible/component/weapon/new_weapon/elemental_heavy.iff	38	120	1	1	0	0	0	0	0	0		none	0	1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/																										
+slot																																		resource	0	module_assembly	petrochem_inert_polymer	10																												
+slot																																		resource	0	circuitry_substrate	ore_carbonate	5																												
+slot																																		resource	0	gas_containment_unit	aluminum_linksteel	8																												
+slot																																		resource	0	reactant_source	gas_reactive	16																												
+weapon	component	weapon_power_bit		systems.crafting.weapon.core.crafting_comp_power_bit	0	weapon	2	weapon_crafting		object/tangible/component/weapon/new_weapon/power_bit.iff	object/tangible/component/weapon/new_weapon/power_bit.iff	21	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	0	0											sys.server/compiled/game/object/draft_schematic/weapon/component/	0	0	0	0	0	0	0	136	0	35	0	0	0	0												
+slot																																		template	0	power_bit_modifier	object/tangible/component/reverse_engineering/modifier_bit.iff	1																												
+slot																																		template	0	power_bit_value	object/tangible/component/reverse_engineering/base_power_bit.iff	1																												
+weapon	component	new_weapon_comp_gas_cartridge		systems.crafting.weapon.core.crafting_comp_gas_cartridge	50	weapon	3	weapon_crafting		object/tangible/component/weapon/new_weapon_comp_gas_cartridge.iff	object/tangible/component/weapon/new_weapon_comp_gas_cartridge.iff	21	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/	4	10	0	15																						
+slot																																		resource	0	module_assembly	petrochem_inert	25																												
+slot																																		resource	0	gas_containment_unit	metal	20																												
+slot																																		resource	0	reactant_source	gas_reactive	15																												
+weapon	component	new_weapon_comp_gas_cartridge_advanced		systems.crafting.weapon.core.crafting_comp_gas_cartridge	50	weapon	5	weapon_crafting		object/tangible/component/weapon/new_weapon_comp_gas_cartridge_advanced.iff	object/tangible/component/weapon/new_weapon_comp_gas_cartridge_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/	8	20	0	30																						
+slot																																		resource	0	module_assembly	petrochem_inert_polymer	35																												
+slot																																		resource	0	xciter_circuitry	copper_diatium	20																												
+slot																																		resource	0	circuitry_substrate	ore_carbonate_ostrine	20																												
+slot																																		resource	0	gas_containment_unit	aluminum_phrik	38																												
+slot																																		resource	0	reactant_source	gas_reactive_irolunn	30																												
+weapon	component	new_weapon_comp_scope		systems.crafting.weapon.core.crafting_comp_scope	50	weapon	5	weapon_crafting		object/tangible/component/weapon/scope_weapon_advanced.iff	object/tangible/component/weapon/scope_weapon_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															3	10	0	10								
+slot																																		resource	0	scope_shell	aluminum_chromium	18																												
+slot																																		resource	0	shock_proofing_and_gasket_seals	petrochem_inert_polymer	10																												
+slot																																		resource	0	scope_bracket	aluminum_linksteel	12																												
+slot																																		resource	0	light_accumulators	crystalline_green_diamond	8																												
+slot																																		resource	0	targeting_aid_circuitry	copper_polysteel	5																												
+weapon	component	new_weapon_comp_stock		systems.crafting.weapon.core.crafting_comp_stock	50	weapon	3	weapon_crafting		object/tangible/component/weapon/stock_advanced.iff	object/tangible/component/weapon/stock_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															3	10	0	10								
+slot																																		resource	0	lining	wood_deciduous_corellia	35																												
+slot																																		resource	0	butt_cap_and_receiver_attachment_point	aluminum_linksteel	15																												
+slot																																		resource	0	frame_attachment	steel_duralloy	15																												
+weapon	component	new_weapon_comp_reinforcement_core		systems.crafting.weapon.core.crafting_comp_reinforcement_core	50	weapon	3	weapon_crafting		object/tangible/component/weapon/new_weapon_comp_reinforcement_core.iff	object/tangible/component/weapon/new_weapon_comp_reinforcement_core.iff	21	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/																			4	10	0	15				
+slot																																		resource	0	reinforcement_base	petrochem_inert	25																												
+slot																																		resource	0	reinforcement_material	metal	20																												
+slot																																		resource	0	reinforcement_attachment	gas_reactive	15																												
+weapon	component	new_weapon_comp_reinforcement_core_advanced		systems.crafting.weapon.core.crafting_comp_reinforcement_core	50	weapon	4	weapon_crafting		object/tangible/component/weapon/new_weapon_comp_reinforcement_core_advanced.iff	object/tangible/component/weapon/new_weapon_comp_reinforcement_core_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/																			8	20	0	30				
+slot																																		resource	0	reinforcement_base	petrochem_inert_polymer	35																												
+slot																																		resource	0	reinforcement_material	copper_diatium	20																												
+slot																																		resource	0	lining	ore_carbonate_ostrine	20																												
+slot																																		resource	0	reinforcement_attachment	aluminum_phrik	38																												
+weapon	component	new_weapon_comp_blade_vibro_unit		systems.crafting.weapon.core.crafting_comp_vibro_unit	50	weapon	3	weapon_crafting		object/tangible/component/weapon/vibro_unit.iff	object/tangible/component/weapon/vibro_unit.iff	21	60	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															4	10	0	10								
+slot																																		resource	0	module_housing	steel	35																												
+slot																																		resource	0	ultrasonic_vibration_generator	fuel_petrochem_solid	15																												
+slot																																		resource	0	conductive_circuits	copper	8																												
+weapon	component	new_weapon_comp_blade_vibro_unit_advanced		systems.crafting.weapon.core.crafting_comp_vibro_unit	50	weapon	3	weapon_crafting		object/tangible/component/weapon/vibro_unit_advanced.iff	object/tangible/component/weapon/vibro_unit_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															6	15	0	15								
+slot																																		resource	0	module_housing	copper_desh	40																												
+slot																																		resource	0	ultrasonic_vibration_generator	petrochem_fuel_solid_type3	25																												
+slot																																		resource	0	conductive_circuits	copper_platinite	15																												
+weapon	component	new_weapon_comp_blaster_pistol_barrel		systems.crafting.weapon.core.crafting_comp_barrel_blaster	50	weapon	5	weapon_crafting		object/tangible/component/weapon/blaster_pistol_barrel.iff	object/tangible/component/weapon/blaster_pistol_barrel.iff	21	60	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															4	10	0	10								
+slot																																		resource	0	emitter_nozzle	metal	20																												
+slot																																		resource	0	actuating_blaster_module	metal	16																												
+slot																																		resource	0	barrel_to_receiver_coupling	metal	12																												
+slot																																		resource	0	prismatic_crystal	gemstone	3																												
+slot																																		resource	0	barrel_shroud	metal	8																												
+weapon	component	new_weapon_comp_blaster_pistol_barrel_advanced		systems.crafting.weapon.core.crafting_comp_barrel_blaster	50	weapon	5	weapon_crafting		object/tangible/component/weapon/blaster_pistol_barrel_advanced.iff	object/tangible/component/weapon/blaster_pistol_barrel_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															6	15	0	15								
+slot																																		resource	0	emitter_nozzle	steel_rhodium	26																												
+slot																																		resource	0	actuating_blaster_module	steel_duralloy	20																												
+slot																																		resource	0	barrel_to_receiver_coupling	metal	18																												
+slot																																		resource	0	prismatic_crystal	armophous_ryll	6																												
+slot																																		resource	0	barrel_shroud	metal	12																												
+weapon	component	new_weapon_comp_blaster_rifle_barrel		systems.crafting.weapon.core.crafting_comp_barrel_blaster	50	weapon	5	weapon_crafting		object/tangible/component/weapon/blaster_rifle_barrel.iff	object/tangible/component/weapon/blaster_rifle_barrel.iff	21	60	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															4	10	0	10								
+slot																																		resource	0	emitter_nozzle	metal	25																												
+slot																																		resource	0	actuating_blaster_module	metal	18																												
+slot																																		resource	0	barrel_to_receiver_coupling	metal	20																												
+slot																																		resource	0	prismatic_crystal	gemstone_crystalline	6																												
+slot																																		resource	0	barrel_shroud	metal	12																												
+weapon	component	new_weapon_comp_blaster_rifle_barrel_advanced		systems.crafting.weapon.core.crafting_comp_barrel_blaster	50	weapon	5	weapon_crafting		object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															6	15	0	15								
+slot																																		resource	0	emitter_nozzle	steel_rhodium	45																												
+slot																																		resource	0	actuating_blaster_module	steel_duralloy	36																												
+slot																																		resource	0	barrel_to_receiver_coupling	steel_duranium	34																												
+slot																																		resource	0	prismatic_crystal	armophous_ryll	12																												
+slot																																		resource	0	barrel_shroud	metal	18																												
+weapon	component	new_weapon_comp_projectile_pistol_barrel		systems.crafting.weapon.core.crafting_comp_barrel_projectile	50	weapon	3	weapon_crafting		object/tangible/component/weapon/projectile_pistol_barrel.iff	object/tangible/component/weapon/projectile_pistol_barrel.iff	21	60	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															4	10	0	10								
+slot																																		resource	0	lining	steel	48																												
+slot																																		resource	0	bore	metal	21																												
+slot																																		resource	0	barrel_shroud	metal	12																												
+weapon	component	new_weapon_comp_projectile_pistol_barrel_advanced		systems.crafting.weapon.core.crafting_comp_barrel_projectile	50	weapon	3	weapon_crafting		object/tangible/component/weapon/projectile_pistol_barrel_advanced.iff	object/tangible/component/weapon/projectile_pistol_barrel_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															6	15	0	15								
+slot																																		resource	0	lining	steel_duralloy	60																												
+slot																																		resource	0	bore	iron_plumbum	22																												
+slot																																		resource	0	barrel_shroud	iron_axidite	18																												
+weapon	component	new_weapon_comp_projectile_rifle_barrel		systems.crafting.weapon.core.crafting_comp_barrel_projectile	50	weapon	3	weapon_crafting		object/tangible/component/weapon/projectile_rifle_barrel.iff	object/tangible/component/weapon/projectile_rifle_barrel.iff	21	60	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															4	10	0	10								
+slot																																		resource	0	lining	steel	55																												
+slot																																		resource	0	bore	metal	26																												
 slot																																		resource	0	barrel_shroud	metal	12																												
 weapon	component	new_weapon_comp_projectile_rifle_barrel_advanced		systems.crafting.weapon.core.crafting_comp_barrel_projectile	50	weapon	3	weapon_crafting		object/tangible/component/weapon/projectile_rifle_barrel_advanced.iff	object/tangible/component/weapon/projectile_rifle_barrel_advanced.iff	42	120	1	1	0	0	0	0	0	0		none	-1	-1	component	component	1	1											sys.server/compiled/game/object/draft_schematic/weapon/component/															6	15	0	15								
 slot																																		resource	0	lining	steel_quadranium	65																												
 slot																																		resource	0	bore	iron_plumbum	32																												
 slot																																		resource	0	barrel_shroud	iron_axidite	18																												
-weapon	heavy	weapon_appearance_heavy_mandalorian		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_mandalorian.iff	object/weapon/ranged/heavy/heavy_mandalorian.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	electric	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	52	0	30
+weapon	heavy	weapon_appearance_heavy_mandalorian		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_mandalorian.iff	object/weapon/ranged/heavy/heavy_mandalorian.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	electric	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	52	0	30
 slot																																		resource	0	frame_assembly	steel_neutronium	150																												
 slot																																		resource	0	receiver_assembly	iron_axidite	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -1917,7 +1917,7 @@ slot																																		template	0	barrel_rifle_projectile	object/
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_heavy_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_heavy_shotgun		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_rebel.iff	object/weapon/ranged/heavy/heavy_rebel.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	kinetic	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	52	0	30
+weapon	heavy	weapon_appearance_heavy_shotgun		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_rebel.iff	object/weapon/ranged/heavy/heavy_rebel.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	kinetic	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	52	0	30
 slot																																		resource	0	frame_assembly	steel_duralloy	150																												
 slot																																		resource	0	receiver_assembly	iron_colat	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -2037,7 +2037,7 @@ slot																																		template	0	barrel_rifle_projectile	object/
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_ranged_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_heavy_cr1_pvp		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	8	weapon_crafting		object/weapon/ranged/heavy/heavy_cr1_blast_cannon.iff	object/weapon/ranged/heavy/heavy_cr1_blast_cannon.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	cold	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	500	0	400
+weapon	heavy	weapon_appearance_heavy_cr1_pvp		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	8	weapon_crafting		object/weapon/ranged/heavy/heavy_cr1_blast_cannon.iff	object/weapon/ranged/heavy/heavy_cr1_blast_cannon.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	cold	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	500	0	400
 slot																																		resource	0	frame_assembly	steel	150																												
 slot																																		resource	0	receiver_assembly	iron	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -2085,7 +2085,7 @@ slot																																		template	0	barrel_rifle_blaster	object/tan
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_ranged_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
-weapon	heavy	weapon_appearance_heavy_pulse_cannon		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_pulse_cannon.iff	object/weapon/ranged/heavy/heavy_pulse_cannon.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		64							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	53	0	31
+weapon	heavy	weapon_appearance_heavy_pulse_cannon		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	9	weapon_crafting		object/weapon/ranged/heavy/heavy_pulse_cannon.iff	object/weapon/ranged/heavy/heavy_pulse_cannon.iff	40	450	800	1100	0	0	0	0	0	0	kinetic	heat	-1	-1	heavy	heavy	1	1	100	100		60							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	53	0	31
 slot																																		resource	0	frame_assembly	steel	150																												
 slot																																		resource	0	receiver_assembly	iron	40																												
 slot																																		resource	0	grip_assembly	petrochem_inert_polymer	20																												
@@ -2118,7 +2118,7 @@ slot																																		resource	0	thermal_control_unit	ore_carbon
 slot																																		template	0	barrel_rifle_projectile	object/tangible/component/weapon/projectile_rifle_barrel_base.iff	1	muzzle																											
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_ranged_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
-slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock
+slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
 weapon	carbine	weapon_appearance_carbine_e5_legendary		systems.crafting.weapon.core.crafting_new_weapon_final	0	weapon	7	weapon_crafting		object/weapon/ranged/carbine/carbine_e5_legend.iff	object/weapon/ranged/carbine/carbine_e5_legend.iff	40	450	800	1100	0	0	0	0	0	0	energy	none	-1	-1	carbine	carbine	1	1	100	100		50							sys.server/compiled/game/object/draft_schematic/weapon/appearance/																							0	62	0	40
 slot																																		resource	0	frame_assembly	steel_carbonite	100																												
 slot																																		resource	0	receiver_assembly	copper_polysteel	65																												
@@ -2131,7 +2131,7 @@ weapon	pistol	weapon_appearance_pistol_fwg5_legendary		systems.crafting.weapon.c
 slot																																		resource	0	frame_assembly	steel_quadranium	100																												
 slot																																		resource	0	receiver_assembly	iron_plumbum	65																												
 slot																																		resource	0	grip_assembly	petrochem_inert	65																												
-slot																																		template	0	barrel_pistol_projectile	object/tangible/component/weapon/projectile_pistol_barrel_base.iff	1	muzzle																										
+slot																																		template	0	barrel_pistol_projectile	object/tangible/component/weapon/projectile_pistol_barrel_base.iff	1	muzzle																											
 slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_ranged_base.iff	1																												
 slot																																		template	1	scope	object/tangible/component/weapon/scope_weapon_base.iff	1	scope																											
 slot																																		template	1	stock	object/tangible/component/weapon/stock_base.iff	1	stock																											
@@ -2156,4 +2156,4 @@ slot																																		resource	0	charge_accumulator	crystalline_
 slot																																		resource	0	vibro_unit_and_power_cell_brackets	copper_polysteel	80																												
 slot																																		resource	0	grip_unit	petrochem_inert_polymer	35																												
 slot																																		template	0	vibration_generator	object/tangible/component/weapon/vibro_unit_base.iff	1																												
-slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_melee_base.iff	1																											
+slot																																		template	0	weapon_core	object/tangible/component/weapon/core/weapon_core_melee_base.iff	1																												

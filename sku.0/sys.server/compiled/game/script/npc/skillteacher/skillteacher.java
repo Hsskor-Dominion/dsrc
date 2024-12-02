@@ -188,6 +188,38 @@ public class skillteacher extends script.base_script
         removeObjVar(self, "confirmTeach." + speaker);
         return SCRIPT_CONTINUE;
     }
+    public static int getRemainingExpertisePoints(obj_id player)
+    {
+        int basePts = 45; // Starting points
+        String[] teachableExpertise = {
+                "expertise_bh_stamina_1",
+                "expertise_bh_stamina_2",
+                "expertise_bh_stamina_3",
+                "expertise_bh_stamina_4" // Continue with full list of skills. to-do list
+        };
+
+        int pointsSpent = 0;
+
+        // Loop through each skill to check if the player has it
+        for (String skill : teachableExpertise)
+        {
+            if (hasSkill(player, skill))
+            {
+                pointsSpent++; // Subtract 1 point for each skill the player has
+            }
+        }
+
+        // Remaining points is the base points minus the points spent
+        int remainingPoints = basePts - pointsSpent;
+
+        // Ensure the remaining points never go below 0
+        if (remainingPoints < 0)
+        {
+            remainingPoints = 0;
+        }
+
+        return remainingPoints;
+    }
     public int OnNpcConversationResponse(obj_id self, String convoName, obj_id speaker, string_id sid_response) throws InterruptedException
     {
         String trainerType = getStringObjVar(self, "trainer");
@@ -238,7 +270,7 @@ public class skillteacher extends script.base_script
                     if (utils.getElementPositionInArray(qualifiedSkills, response) > -1)
                     {
                         string_id sid_skillName = new string_id(SKILL_N, response);
-                        int cost = 1;
+                        int cost = 1000;//base cost?
                         float skillMod = getEnhancedSkillStatisticModifier(speaker, "force_persuade");
                         skillMod = skillMod * 0.01f;
                         float discount = cost * skillMod;
@@ -258,7 +290,7 @@ public class skillteacher extends script.base_script
                             }
                             else 
                             {
-                                int ptsLeft = 0;
+                                int ptsLeft = getRemainingExpertisePoints(speaker); // Call the function with the player object
                                 int ptsCost = 1;
                                 if (ptsLeft < ptsCost)
                                 {
@@ -284,7 +316,7 @@ public class skillteacher extends script.base_script
                         }
                         else 
                         {
-                            int ptsLeft = 0;
+                            int ptsLeft = getRemainingExpertisePoints(speaker); // Call the function with the player object
                             int ptsCost = 1;
                             if (ptsLeft < ptsCost)
                             {
@@ -547,61 +579,59 @@ public class skillteacher extends script.base_script
     {
         if (!isIdValid(trainer) || !isIdValid(player))
         {
-            return false;
+            return false; // Invalid trainer or player
         }
-        if (isJedi(player))
+
+        // Check if the player is Jedi and has the correct trainer
+        if (isJedi(player) && jedi.isJediTrainerForPlayer(player, trainer))
         {
-            if (jedi.isJediTrainerForPlayer(player, trainer))
-            {
-                return true;
-            }
+            return true;
         }
-        obj_id self = trainer;
-        obj_id speaker = player;
-        String[] pSkills = getSkillListingForPlayer(speaker);
-        String[] tSkills = skill.getTeacherSkills(trainer, speaker);
+
+        String[] pSkills = getSkillListingForPlayer(player); // Player's current skills
+        String[] tSkills = skill.getTeacherSkills(trainer, player); // Skills trainer can teach
+
+        // If trainer has no teachable skills, return false
         if (tSkills == null || tSkills.length == 0)
         {
             return false;
         }
-        String convo = CONVOFILE;
-        if (jedi.isJediTrainerForPlayer(player, trainer))
+
+        String[] lowSkills = getSkillPrerequisiteSkills(tSkills[0]); // Prerequisite skills for the first teachable skill
+
+        // Ignore expertise points check entirely
+        if (lowSkills != null && !utils.isSubset(pSkills, lowSkills))
         {
-            convo = JEDI_TRAINER;
-        }
-        String[] lowSkills = getSkillPrerequisiteSkills(tSkills[0]);
-        if (lowSkills != null && lowSkills.length > 0)
-        {
-            if (!utils.isSubset(pSkills, lowSkills))
-            {
-                string_id msg = new string_id(convo, "no_qualify");
-                chat.chat(self, speaker, msg, chat.ChatFlag_targetOnly);
-                npcEndConversation(speaker);
-                Vector entries = new Vector();
-                entries.setSize(0);
-                for (String lowSkill : lowSkills) {
-                    entries = utils.addElement(entries, "@skl_n:" + lowSkill);
-                }
-                if (entries != null && entries.size() > 0)
-                {
-                    String title = "@skill_teacher:no_qualify_title";
-                    String prompt = "@skill_teacher:no_qualify_prompt";
-                    sui.listbox(self, player, prompt, sui.OK_ONLY, title, entries, "noHandler");
-                }
-                return false;
+            // Notify player they don't qualify due to missing prerequisites
+            string_id msg = new string_id(CONVOFILE, "no_qualify");
+            chat.chat(trainer, player, msg, chat.ChatFlag_targetOnly);
+            npcEndConversation(player);
+
+            // Show list of missing skills, if any
+            Vector entries = new Vector();
+            for (String lowSkill : lowSkills) {
+                entries.add("@skl_n:" + lowSkill);
             }
-        }
-        if (utils.isSubset(pSkills, tSkills))
-        {
-            string_id msg = new string_id(convo, "topped_out");
-            chat.chat(self, speaker, msg, chat.ChatFlag_targetOnly);
-            npcEndConversation(speaker);
+            if (!entries.isEmpty())
+            {
+                String title = "@skill_teacher:no_qualify_title";
+                String prompt = "@skill_teacher:no_qualify_prompt";
+                sui.listbox(trainer, player, prompt, sui.OK_ONLY, title, entries, "noHandler");
+            }
             return false;
         }
-        string_id msg = new string_id(convo, "no_skill_pts");
-        chat.chat(self, speaker, msg, chat.ChatFlag_targetOnly);
-        npcEndConversation(speaker);
-        return false;
+
+        // If player already has the skills the trainer offers
+        if (utils.isSubset(pSkills, tSkills))
+        {
+            string_id msg = new string_id(CONVOFILE, "topped_out");
+            chat.chat(trainer, player, msg, chat.ChatFlag_targetOnly);
+            npcEndConversation(player);
+            return false;
+        }
+
+        // Skip "no_skill_pts" message entirely
+        return true;
     }
     public boolean hasSurpassedTrainer(obj_id trainer, obj_id player) throws InterruptedException
     {

@@ -32,13 +32,6 @@ public class player_faction extends script.base_script
     public static final float SHUTTLE_DELAY = 30.0f; // Delay in seconds before transport
     public int cmdPVP(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
 
-        // Calls the battlefield sign-up for all, to encourage
-        player_pvp playerPvpInstance = new player_pvp();
-        playerPvpInstance.battlefieldCommandSui(self);
-
-        // Call the new method to show the Yes/No menu for transport
-        showTransportPrompt(self);
-
         if (factions.isInAdhocPvpArea(self)) {
             pvpMakeDeclared(self);
             return SCRIPT_CONTINUE;
@@ -66,6 +59,20 @@ public class player_faction extends script.base_script
             sendSystemMessage(self, SID_PVP_STATUS_CHANGING);
             return SCRIPT_OVERRIDE;
         }
+
+        prose_package pp = new prose_package();
+        if (factions.isOnLeave(self))
+        {
+            pp = prose.setStringId(pp, SID_ON_LEAVE_TO_COVERT);
+            commPlayer(self, self, pp, recruiter);
+            factions.goCovertWithDelay(self, 30.0f);}
+
+        // Calls the battlefield sign-up for all, to encourage
+        player_pvp playerPvpInstance = new player_pvp();
+        playerPvpInstance.battlefieldCommandSui(self);
+
+        // Call the new method to show the Yes/No menu for transport
+        showTransportPrompt(self);
 
         return SCRIPT_CONTINUE;
     }

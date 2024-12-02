@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import static script.library.guild.setWindowPid;
 import static script.library.money.MT_TOTAL;
+import static script.library.player_structure.isOwner;
 
 public class terminal extends script.terminal.base.base_terminal
 {
@@ -80,7 +81,7 @@ public class terminal extends script.terminal.base.base_terminal
             mi.addRootMenu(menu_info_types.SERVER_MENU13, MNU_SPYNET);
         }
 
-        if (hasSkill(player, "pvp_rebel_airstrike_ability") || hasSkill(player, "pvp_imperial_airstrike_ability")) {//this needs to be replaced with a check of GOVERNOR
+        if (player_structure.isOwner (structure, player) && (hasSkill(player, "pvp_rebel_airstrike_ability") || hasSkill(player, "pvp_imperial_airstrike_ability"))) {
             mi.addRootMenu(menu_info_types.SERVER_MENU12, MNU_OVERLOAD_GOD);
         }
 

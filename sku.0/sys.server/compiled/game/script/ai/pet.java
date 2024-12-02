@@ -1193,20 +1193,92 @@ public class pet extends script.base_script
             }
         }
         string_id greeting = new string_id(myStringFile, "start_convo_1");
-        string_id response[] = new string_id[4];
+        string_id response[] = new string_id[5];//modify this to add remove more responses
         response[0] = new string_id(myStringFile, "command_reply_1");
         if (!group.inSameGroup(self, speaker))
         {
             response[1] = new string_id(myStringFile, "command_group_1");
         }
-        else 
+        else
         {
             response[1] = new string_id(myStringFile, "command_group_2");
         }
         response[2] = new string_id(myStringFile, "command_release");
         response[3] = new string_id(myStringFile, "command_clear_patrol_points");
+        response[4] = new string_id(myStringFile, "get_to_know");
+        //response[5] = new string_id(myStringFile, "trade");  // New "trade" response option
         npcStartConversation(speaker, self, CONVO, greeting, response);
         return SCRIPT_CONTINUE;
+    }
+    public void pet_action_get_to_know(obj_id player, obj_id pet) throws InterruptedException {
+        String template = getTemplateName(pet);
+        String pvpFaction = factions.getFaction(pet);
+        string_id response;
+
+        if (template.equals("object/mobile/stardust/stardust_mando_female_01.iff")) {
+            response = new string_id(STRING_FILE, "this_is_the_way");
+            int questId = questGetQuestId("quest/stardust_mando_crest");
+            groundquests.grantQuest(questId, player, pet, true);
+        } else if (template.contains("hk47")) {
+            // Generate a random response for HK-47
+            int randomResponse = rand(1, 4);
+            String explore;
+
+            switch (randomResponse) {
+                case 1:
+                    explore = "kill_meatbags";
+                    break;
+                case 2:
+                    explore = "master_is_getting_weak";
+                    break;
+                case 3:
+                    explore = "observation_need_to_blast_meatbags";
+                    break;
+                case 4:
+                    explore = "hk77_objection";
+                    break;
+                default:
+                    explore = "default_hk_response"; // Fallback if needed
+            }
+
+            response = new string_id(STRING_FILE, explore);
+        } else if (template.contains("hk77")) {
+            response = new string_id(STRING_FILE, "hk77_response");
+        } else if (template.contains("royal")) {
+            response = new string_id(STRING_FILE, "royal_guard_response");
+            setInvulnerable(pet, false);
+        } else if (template.contains("death_watch")) {
+            response = new string_id(STRING_FILE, "mando_response");
+        } else if (template.contains("storm")) {
+            response = new string_id(STRING_FILE, "imperial_response");
+        } else if (template.contains("scout")) {
+            response = new string_id(STRING_FILE, "imperial_response");
+            int questId = questGetQuestId("quest/stardust_gcw_duty");
+            groundquests.grantQuest(questId, player, pet, true);
+        } else if (template.contains("swamp")) {
+            response = new string_id(STRING_FILE, "imperial_response");
+        } else if (template.contains("reb")) {
+            response = new string_id(STRING_FILE, "republic_response");
+        } else if (template.contains("commando")) {
+            response = new string_id(STRING_FILE, "republic_response");
+            int questId = questGetQuestId("quest/stardust_gcw_duty_republic");
+            groundquests.grantQuest(questId, player, pet, true);
+        } else if (template.contains("tran")) {
+            response = new string_id(STRING_FILE, "trandoshan_response");
+        } else if (template.contains("wook")) {
+            response = new string_id(STRING_FILE, "wookiee_response");
+        } else {
+            response = new string_id(STRING_FILE, "default_response");
+        }
+
+        npcSpeak(player, response);
+        npcEndConversation(player);
+    }
+    public void pet_action_vendor(obj_id player, obj_id npc) throws InterruptedException
+    {
+        dictionary d = new dictionary();
+        d.put("player", player);
+        messageTo(npc, "showInventorySUI", d, 0, false);
     }
     public int OnNpcConversationResponse(obj_id self, String convo, obj_id player, string_id response) throws InterruptedException
     {
@@ -1226,6 +1298,19 @@ public class pet extends script.base_script
             {
                 myStringFile = STRING_FILE + "_" + myDiction;
             }
+        }
+        if ((response.getAsciiId()).equals("trade"))
+        {
+            string_id message = new string_id(myStringFile, "trade_offer");  // Message for trade interaction
+            npcSpeak(player, message);
+            npcEndConversation(player);
+            pet_action_vendor(player, self);
+            return SCRIPT_CONTINUE;
+        }
+        if ((response.getAsciiId()).equals("get_to_know"))
+        {
+            pet_action_get_to_know(player, self);
+            return SCRIPT_CONTINUE;
         }
         if ((response.getAsciiId()).equals("command_reply_1"))
         {
@@ -1490,7 +1575,7 @@ public class pet extends script.base_script
             }
             else 
             {
-                if (!hasSkill(player, "outdoors_creaturehandler_novice"))
+                if (!hasSkill(player, "expertise_bm_attack_1"))//NGE to Chimaera CU conversion of novice creature handler
                 {
                     return SCRIPT_CONTINUE;
                 }

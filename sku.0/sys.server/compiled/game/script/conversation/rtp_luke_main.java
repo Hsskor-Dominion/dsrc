@@ -29,6 +29,14 @@ public class rtp_luke_main extends script.base_script
     {
         return groundquests.isTaskActive(player, "rtp_luke_03", "rtp_luke_03_02") || groundquests.hasCompletedQuest(player, "rtp_luke_03");
     }
+    public boolean rtp_luke_main_condition_rtp_luke_academy_01_complete(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return groundquests.hasCompletedQuest(player, "stardust_jedi_academy_luke1");
+    }
+    public boolean rtp_luke_main_condition_rtp_luke_academy_02_complete(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return skill.hasSkill(player, "stardust_jedi_elder");
+    }
     public boolean rtp_luke_main_condition_rtp_luke_03_active(obj_id player, obj_id npc) throws InterruptedException
     {
         return groundquests.isQuestActive(player, "rtp_luke_03");
@@ -49,6 +57,11 @@ public class rtp_luke_main extends script.base_script
             return true;
         }
         return false;
+    }
+    public boolean rtp_luke_main_condition_isJedi(obj_id player, obj_id npc) throws InterruptedException
+    {
+        float jediFaction = factions.getFactionStanding(player, "fs_villager");
+        return jediFaction >= 10;
     }
     public void rtp_luke_main_action_rtp_luke_01_granted(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -73,6 +86,10 @@ public class rtp_luke_main extends script.base_script
     public void rtp_luke_main_action_rtp_luke_03_granted(obj_id player, obj_id npc) throws InterruptedException
     {
         groundquests.grantQuest(player, "rtp_luke_03");
+    }
+    public void rtp_luke_main_action_academy_luke_01_granted(obj_id player, obj_id npc) throws InterruptedException
+    {
+        groundquests.grantQuest(player, "stardust_jedi_academy_luke1");
     }
     public int rtp_luke_main_handleBranch5(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
@@ -149,6 +166,41 @@ public class rtp_luke_main extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
+    public int rtp_luke_main_handleBranch20(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        if (response.equals("luke_academy1"))
+        {
+            if (rtp_luke_main_condition_rtp_luke_academy_02_complete(player, npc))
+            {
+                string_id message = new string_id(c_stringFile, "luke_lesson3");
+                utils.removeScriptVar(player, "conversation.rtp_luke_main.branchId");
+                npcEndConversationWithMessage(player, message);
+                return SCRIPT_CONTINUE;
+            }
+        }
+        if (response.equals("luke_academy1"))
+        {
+            if (rtp_luke_main_condition_rtp_luke_academy_01_complete(player, npc))
+            {
+                string_id message = new string_id(c_stringFile, "luke_lesson2");
+                utils.removeScriptVar(player, "conversation.rtp_luke_main.branchId");
+                npcEndConversationWithMessage(player, message);
+                return SCRIPT_CONTINUE;
+            }
+        }
+        if (response.equals("luke_academy1"))
+        {
+            if (!rtp_luke_main_condition_rtp_luke_academy_01_complete(player, npc))
+            {
+                rtp_luke_main_action_academy_luke_01_granted(player, npc);
+                string_id message = new string_id(c_stringFile, "luke_lesson1");
+                utils.removeScriptVar(player, "conversation.rtp_luke_main.branchId");
+                npcEndConversationWithMessage(player, message);
+                return SCRIPT_CONTINUE;
+            }
+        }
+        return SCRIPT_DEFAULT;
+    }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         if ((!isMob(self)) || (isPlayer(self)))
@@ -202,11 +254,38 @@ public class rtp_luke_main extends script.base_script
             chat.chat(npc, player, message);
             return SCRIPT_CONTINUE;
         }
-        if (rtp_luke_main_condition_rtp_luke_03_complete(player, npc))
-        {
+        if (rtp_luke_main_condition_rtp_luke_03_complete(player, npc)) {
+            // Signal action and start a new conversation branch
             rtp_luke_main_action_rtp_luke_03_signal(player, npc);
             string_id message = new string_id(c_stringFile, "s_9");
-            chat.chat(npc, player, message);
+
+            int numberOfResponses = 0;
+            boolean hasResponse = false;
+            boolean hasResponse0 = false;
+
+            // Check for follow-up condition and response
+            if (rtp_luke_main_condition_isJedi(player, npc)) {
+                ++numberOfResponses;
+                hasResponse = true;
+                hasResponse0 = true;
+            }
+
+            if (hasResponse) {
+                int responseIndex = 0;
+                string_id[] responses = new string_id[numberOfResponses];
+
+                if (hasResponse0) {
+                    responses[responseIndex++] = new string_id(c_stringFile, "luke_academy1"); // Example follow-up response
+                }
+
+                // Set script variable for branching
+                utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 20);
+                npcStartConversation(player, npc, "rtp_luke_main", message, responses);
+            } else {
+                // If no responses, end the conversation directly
+                chat.chat(npc, player, message);
+                npcEndConversationWithMessage(player, message); // Ensure conversation ends
+            }
             return SCRIPT_CONTINUE;
         }
         if (rtp_luke_main_condition_rtp_luke_03_active(player, npc))
@@ -250,7 +329,7 @@ public class rtp_luke_main extends script.base_script
                 utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 5);
                 npcStartConversation(player, npc, "rtp_luke_main", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -297,7 +376,7 @@ public class rtp_luke_main extends script.base_script
                 utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 9);
                 npcStartConversation(player, npc, "rtp_luke_main", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -343,7 +422,7 @@ public class rtp_luke_main extends script.base_script
                 utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 13);
                 npcStartConversation(player, npc, "rtp_luke_main", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -369,6 +448,10 @@ public class rtp_luke_main extends script.base_script
             return SCRIPT_CONTINUE;
         }
         if (branchId == 13 && rtp_luke_main_handleBranch13(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        if (branchId == 20 && rtp_luke_main_handleBranch20(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }

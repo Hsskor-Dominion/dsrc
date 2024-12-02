@@ -279,11 +279,12 @@ public class combat_actions extends script.systems.combat.combat_base {
             return SCRIPT_OVERRIDE;
         }
         float detectSkill = getEnhancedSkillStatisticModifier(self, "detect_hidden");
-        float distance = stealth.BASE_DETECT_CAMOUFLAGE_DISTANCE + (detectSkill / 20);
-        float detectChance = 50.0f;
+        float distance = stealth.BASE_DETECT_CAMOUFLAGE_DISTANCE + (detectSkill / 10);
+        float detectChance = 75.0f;
         stealth.detectCamouflage(self, true, true, distance, detectChance);
         return SCRIPT_CONTINUE;
     }
+
 
     public int bh_ae_dm_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("bh_ae_dm_1", self, target, params, "", "")) {
@@ -1394,8 +1395,8 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendSystemMessage(self, new string_id("spam", "sense_danger"));
         }
         float detectSkill = getEnhancedSkillStatisticModifier(self, "detect_hidden");
-        float distance = stealth.BASE_DETECT_CAMOUFLAGE_DISTANCE + (detectSkill / 20);
-        float detectChance = 50.0f;
+        float distance = stealth.BASE_DETECT_CAMOUFLAGE_DISTANCE + (detectSkill / 10);
+        float detectChance = 75.0f;
         stealth.detectCamouflage(self, true, true, distance, detectChance);
         return SCRIPT_CONTINUE;
     }
@@ -7862,12 +7863,52 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
+//    public int bh_armor_sprint_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+//        if (!combatStandardAction("bh_armor_sprint_1", self, target, params, "", "")) {
+//            return SCRIPT_OVERRIDE;
+//        }
+//        return SCRIPT_CONTINUE;
+//    }
+
     public int bh_armor_sprint_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        // Get the boot object in the slot
+        obj_id boots = getObjectInSlot(self, "shoes");
+
+        // Check if the player is wearing any boots
+        if (!isIdValid(boots)) {
+            // Send a message to the player if they are not wearing boots
+            prose_package pp = new prose_package();
+            pp = prose.setStringId(pp, new string_id("spam", "boots_required"));
+            sendSystemMessageProse(self, pp);
+            return SCRIPT_OVERRIDE;
+        }
+
+        // Check if the boots are either armor or clothing foot type
+        int armorType = getGameObjectType(boots);
+        if (armorType != GOT_armor_foot && armorType != GOT_clothing_foot) {
+            // Send a message to the player if they are not wearing the correct boots
+            prose_package pp = new prose_package();
+            pp = prose.setStringId(pp, new string_id("spam", "boots_required"));
+            sendSystemMessageProse(self, pp);
+            return SCRIPT_OVERRIDE;
+        }
+
+        // Proceed with the ability if the player is wearing the correct boots
         if (!combatStandardAction("bh_armor_sprint_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+
+        // Damage the boots when the ability is used
+        damageItem(boots, 1); // Adjust the damage amount as needed
+
+        // Notify the player that the ability was activated and the boots were damaged
+        prose_package pp = new prose_package();
+        pp = prose.setStringId(pp, new string_id("spam", "sprint_activated_with_boot_decay"));
+        sendSystemMessageProse(self, pp);
+
         return SCRIPT_CONTINUE;
     }
+
 
     public int bh_armor_duelist_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("bh_armor_duelist_1", self, target, params, "", "")) {
@@ -8321,14 +8362,44 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendSystemMessage(self, SHAPECHANGE);
             return SCRIPT_OVERRIDE;
         }
+
         if (combat.isInCombat(self)) {
             return SCRIPT_OVERRIDE;
         }
+
         if (getState(self, STATE_GLOWING_JEDI) == 0) {
+            // Activate glowing state
             setState(self, STATE_GLOWING_JEDI, true);
+
+            // Get group details
+            obj_id groupId = getGroupObject(self);
+            obj_id[] members = null;
+
+            if (isIdValid(groupId)) {
+                members = getGroupMemberIds(groupId);
+            }
+
+            // Create the combat spam message
+            prose_package pp = new prose_package();
+            prose.setStringId(pp, new string_id("jedi", "battle_meditation"));
+            prose.setTT(pp, self);
+
+            // Handle group members
+            if (members != null && members.length > 0) {
+                for (obj_id member : members) {
+                    combat.sendCombatSpamMessageProse(member, pp);
+                    groundquests.grantQuest(member, "stardust_jedi_keeper");
+                }
+                squad_leader.sendSquadLeaderCommand(self, "Battle Meditation");
+            } else {
+                // Handle solo player
+                combat.sendCombatSpamMessage(self, new string_id("jedi", "battle_meditation"));
+            }
         } else {
+            // Deactivate glowing state
             setState(self, STATE_GLOWING_JEDI, false);
         }
+
         return SCRIPT_CONTINUE;
     }
 

@@ -34,6 +34,7 @@ public class retreatspawner extends script.base_script
         spawnEmperor(self);
         spawnDarth(self);
         spawnSith(self);
+        spawnSith2(self);
         return;
     }
     public void spawnGuards(obj_id self) throws InterruptedException
@@ -229,6 +230,17 @@ public class retreatspawner extends script.base_script
         obj_id sithHall = getCellId(self, "hall9");
         location sithLocation = new location(-8.50f, -8.9f, -40.06f, "naboo", sithHall);
         obj_id sith = create.staticObject("stardust_darth_lumiya", sithLocation);
+        int sith_yaw = 0;
+        setYaw(sith, sith_yaw);
+        setObjVar(self, "RetreatInhabitants.darth", sith);
+        setObjVar(sith, "Retreat", self);
+        return;
+    }
+    public void spawnSith2(obj_id self) throws InterruptedException
+    {
+        obj_id sithAcademy = obj_id.getObjId(1418892); // Using the direct ID
+        location sithLocation = new location(20f, 20f, 20f, "naboo", sithAcademy);
+        obj_id sith = create.staticObject("shin_hati", sithLocation);
         int sith_yaw = 0;
         setYaw(sith, sith_yaw);
         setObjVar(self, "RetreatInhabitants.darth", sith);

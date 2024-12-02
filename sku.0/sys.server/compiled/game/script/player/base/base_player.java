@@ -3474,6 +3474,10 @@ public class base_player extends script.base_script
         if (!utils.hasScriptVar(self, "no_cloning_sickness") && !instance.isInInstanceArea(self))
         {
             buff.applyBuff(self, "cloning_sickness");
+        }
+        if (!utils.hasScriptVar(self, "no_cloning_sickness") && !instance.isInInstanceArea(self) && hasSkill(self, "class_forcesensitive_phase1_master"))
+        {
+            buff.applyBuff(self, "forceWeaken");//this is SWG Chimaera function of applying forceWeaken and jedi xp penalty upon death, while not in Instance area
             xp.grant(self, "jedi", -100);
         }
         else if (utils.hasScriptVar(self, "no_cloning_sickness"))
@@ -3492,7 +3496,6 @@ public class base_player extends script.base_script
         {
             setState(self, STATE_GLOWING_JEDI, true);
             grantSkill(self, "stardust_jedi_elder");
-            buff.applyBuff(self, "forceWeaken");
             revokeSkill(self, "class_forcesensitive_phase4_master");
             revokeSkill(self, "class_forcesensitive_phase4_05");
             revokeSkill(self, "class_forcesensitive_phase4_04");
@@ -3502,7 +3505,6 @@ public class base_player extends script.base_script
         }
     else if (hasSkill(self, "class_forcesensitive_phase3_master"))
         {
-            buff.applyBuff(self, "forceWeaken");
             revokeSkill(self, "class_forcesensitive_phase4_novice");
             revokeSkill(self, "class_forcesensitive_phase3_master");
             revokeSkill(self, "class_forcesensitive_phase3_05");
@@ -3513,7 +3515,6 @@ public class base_player extends script.base_script
         }
     else if (hasSkill(self, "class_forcesensitive_phase2_master"))
         {
-            buff.applyBuff(self, "forceWeaken");
             revokeSkill(self, "class_forcesensitive_phase3_novice");
             revokeSkill(self, "class_forcesensitive_phase2_master");
             revokeSkill(self, "class_forcesensitive_phase2_05");
@@ -3524,7 +3525,6 @@ public class base_player extends script.base_script
         }
     else if (hasSkill(self, "class_forcesensitive_phase1_master"))
         {
-            buff.applyBuff(self, "forceWeaken");
             xp.grant(self, "jedi", -1000);
         }
         CustomerServiceLog("Death", "(" + self + ") " + getName(self) + " has clone respawned at " + (getLocation(self)).toString());
