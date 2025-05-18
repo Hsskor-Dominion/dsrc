@@ -781,6 +781,7 @@ public class pclib extends script.base_script
             {
                 bounty_hunter.winBountyMission(killer, player);
                 smuggler.checkSmugglerMissionBountyFailure(player, killer);
+                //Warp player to Dathomir Prison? Under what conditions?
             }
             else if (utils.isProfession(player, utils.BOUNTY_HUNTER) && isBeingHuntedByBountyHunter(killer, player))
             {

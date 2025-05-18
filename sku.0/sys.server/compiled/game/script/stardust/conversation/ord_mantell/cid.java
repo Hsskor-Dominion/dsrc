@@ -157,7 +157,8 @@ public class cid extends script.base_script
             if (cid_commando_condition(npc, player))
             {
                 cid_commando_quest(player, npc);
-                final string_id message = new string_id(c_stringFile, "cid_offer_commando_mission");
+                final string_id message = new string_id(c_stringFile, "cid_wont_pick_you_up");
+                //final string_id message = new string_id(c_stringFile, "cid_offer_commando_mission");
                 final int numberOfResponses = 1;
 
                 final string_id[] responses = new string_id[numberOfResponses];
@@ -165,10 +166,13 @@ public class cid extends script.base_script
 
                 responses[responseIndex++] = new string_id(c_stringFile, "[Shuttle]cid_gives_you_a_ride");
 
+
                 utils.setScriptVar(player, "conversation.cid_conversation.branchId", 5);
 
                 npcSpeak(player, message);
-                npcSetConversationResponses(player, responses);
+                //npcSetConversationResponses(player, responses);
+                npcEndConversationWithMessage(player, message);//temporary fix since space makes this quest busted
+                warpPlayer(player, "kashyyyk_hunting", -616, 8, 889, null, 0, 0, 0, "", false);
 
                 return SCRIPT_CONTINUE;
             }

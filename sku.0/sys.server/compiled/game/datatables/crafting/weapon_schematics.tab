@@ -1,5 +1,5 @@
 entry_type	schematic_name	schematic_description	crafting_script	items_per_container	crafting_type	slots	xp_type	volume	crafted_object_template	crafted_object_template_hash	complexity	xp	hit_points_low	hit_points_high	min_damage_low	min_damage_high	max_damage_low	max_damage_high	min_damage_low_cap	min_damage_high_cap	max_damage_low_cap	max_damage_high_cap	accuracy_low	accuracy_high	damage_type	elemental_type	elemental_value_low	elemental_value_high	attack_speed_low	attack_speed_high	tier_granted	wound_chance_low	wound_chance_high	special_attack_cost_low	special_attack_cost_high	min_range_distance	max_range_distance	slot_type	slot_optional	slot_name	slot_ingredient_name	slot_ingredient_count	slot_appearance	schematic_conversion	crc_schematic_name
-"e(weapon=0,slot=1)[weapon]"	s	s	s	i	"e(none=-1,weapon=1,lightsaber=2048)[none]"	i	"e(none=-1,crafting=0,weapon_crafting=1,melee_weapon_crafting=2,ranged_weapon_crafting=3,munition_weapon_crafting=4,jedi=5)[none]"	i[1]	s	h	i	i	i[1]	i[1]	i	i	i	i	i	i	i	i	i	i	"e(component=0,kinetic=1,energy=2)[component]"	"e(none=0,cold=64,heat=32,acid=128,electric=256)[none]"	i	i	i	i	i	i	i	i	i	i	i	"e(none=-1,resource=4,template=2,template_generic=5,schematic=6,schematic_generic=7)[none]"	b[0]	s	s	i	"e(none=0,scope=1,muzzle=2,stock=3)[none]"	s	h
+e(weapon=0,slot=1)[weapon]	s	s	s	i	e(none=-1,weapon=1,lightsaber=2048)[none]	i	e(none=-1,crafting=0,weapon_crafting=1,melee_weapon_crafting=2,ranged_weapon_crafting=3,munition_weapon_crafting=4,jedi=5)[none]	i[1]	s	h	i	i	i[1]	i[1]	i	i	i	i	i	i	i	i	i	i	e(component=0,kinetic=1,energy=2)[component]	e(none=0,cold=64,heat=32,acid=128,electric=256)[none]	i	i	i	i	i	i	i	i	i	i	i	e(none=-1,resource=4,template=2,template_generic=5,schematic=6,schematic_generic=7)[none]	b[0]	s	s	i	e(none=0,scope=1,muzzle=2,stock=3)[none]	s	h
 weapon	2h_sword_scythe		systems.crafting.weapon.crafting_melee_standard_weapon	25	weapon	3	weapon_crafting	1	object/weapon/melee/2h_sword/2h_sword_scythe.iff	object/weapon/melee/2h_sword/2h_sword_scythe.iff	34	402	800	1100	299	597	895	1193	299	597	895	1193	0	0	kinetic	acid	12	35	100	100	11	1	1	100	100	0	4								object/draft_schematic/weapon/2h_sword_scythe.iff
 slot																																						resource	0	sword_core_jacket	steel_carbonite	60			
 slot																																						resource	0	grip	aluminum_phrik	30			
@@ -72,7 +72,7 @@ weapon	executioners_hack		systems.crafting.weapon.crafting_melee_standard_weapon
 slot																																						resource	0	sword_core_jacket	steel_carbonite	60			
 slot																																						resource	0	grip	aluminum_phrik	30			
 slot																																						template	0	omnipotent_sword_core	object/tangible/component/weapon/geonosian_sword_core.iff	2			
-weapon	heavy_acid_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/heavy_acid_beam.iff	object/weapon/ranged/heavy/heavy_acid_beam.iff	32	355	800	1100	145	290	435	580	145	290	435	580	0	0	kinetic	acid	121	242	100	100	10	1	1	100	100	0	64								object/draft_schematic/weapon/heavy_acid_beam.iff
+weapon	heavy_acid_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/heavy_acid_beam.iff	object/weapon/ranged/heavy/heavy_acid_beam.iff	32	355	800	1100	145	290	435	580	145	290	435	580	0	0	kinetic	acid	121	242	100	100	10	1	1	100	100	0	50								object/draft_schematic/weapon/heavy_acid_beam.iff
 slot																																						resource	0	frame_assembly	steel	150			
 slot																																						resource	0	receiver_assembly	iron	40			
 slot																																						resource	0	grip_assembly	metal	20			
@@ -80,7 +80,7 @@ slot																																						resource	0	enhanced_cooling_mechanism	
 slot																																						template	0	powerhandler_advanced	object/tangible/component/weapon/blaster_power_handler_advanced.iff	3			
 slot																																						resource	0	thermal_control_unit	ore_carbonate	20			
 slot																																						template	0	barrel_rifle_blaster_advanced	object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	1			
-weapon	quest_heavy_acid_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/quest_heavy_acid_beam.iff	object/weapon/ranged/heavy/quest_heavy_acid_beam.iff	32	355	800	1100	145	290	435	580	145	290	435	580	0	0	kinetic	acid	121	242	100	100	10	1	1	100	100	0	64								object/draft_schematic/weapon/quest_heavy_acid_beam.iff
+weapon	quest_heavy_acid_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/quest_heavy_acid_beam.iff	object/weapon/ranged/heavy/quest_heavy_acid_beam.iff	32	355	800	1100	145	290	435	580	145	290	435	580	0	0	kinetic	acid	121	242	100	100	10	1	1	100	100	0	50								object/draft_schematic/weapon/quest_heavy_acid_beam.iff
 slot																																						resource	0	frame_assembly	steel	150			
 slot																																						resource	0	receiver_assembly	iron	40			
 slot																																						resource	0	grip_assembly	metal	20			
@@ -88,7 +88,7 @@ slot																																						resource	0	enhanced_cooling_mechanism	
 slot																																						template	0	powerhandler_advanced	object/tangible/component/weapon/blaster_power_handler_advanced.iff	3			
 slot																																						resource	0	thermal_control_unit	ore_carbonate	20			
 slot																																						template	0	barrel_rifle_blaster_advanced	object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	1			
-weapon	heavy_lightning_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/heavy_lightning_beam.iff	object/weapon/ranged/heavy/heavy_lightning_beam.iff	34	402	800	1100	178	356	534	711	178	356	534	711	0	0	energy	electric	121	242	100	100	11	1	1	100	100	0	64								object/draft_schematic/weapon/heavy_lightning_beam.iff
+weapon	heavy_lightning_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/heavy_lightning_beam.iff	object/weapon/ranged/heavy/heavy_lightning_beam.iff	34	402	800	1100	178	356	534	711	178	356	534	711	0	0	energy	electric	121	242	100	100	11	1	1	100	100	0	50								object/draft_schematic/weapon/heavy_lightning_beam.iff
 slot																																						resource	0	frame_assembly	steel	150			
 slot																																						resource	0	receiver_assembly	iron	40			
 slot																																						resource	0	grip_assembly	metal	20			
@@ -96,7 +96,7 @@ slot																																						resource	0	enhanced_cooling_mechanism	
 slot																																						template	0	powerhandler_advanced	object/tangible/component/weapon/blaster_power_handler_advanced.iff	3			
 slot																																						resource	0	thermal_control_unit	ore_carbonate	20			
 slot																																						template	0	barrel_rifle_blaster_advanced	object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	1			
-weapon	heavy_particle_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/heavy_particle_beam.iff	object/weapon/ranged/heavy/heavy_particle_beam.iff	30	308	800	1100	112	225	338	450	112	225	338	450	0	0	kinetic	heat	120	240	100	100	9	1	1	100	100	0	64								object/draft_schematic/weapon/heavy_particle_beam.iff
+weapon	heavy_particle_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/heavy_particle_beam.iff	object/weapon/ranged/heavy/heavy_particle_beam.iff	30	308	800	1100	112	225	338	450	112	225	338	450	0	0	kinetic	heat	120	240	100	100	9	1	1	100	100	0	50								object/draft_schematic/weapon/heavy_particle_beam.iff
 slot																																						resource	0	frame_assembly	steel	150			
 slot																																						resource	0	receiver_assembly	iron	40			
 slot																																						resource	0	grip_assembly	metal	20			
@@ -104,7 +104,7 @@ slot																																						resource	0	enhanced_cooling_mechanism	
 slot																																						template	0	powerhandler_advanced	object/tangible/component/weapon/blaster_power_handler_advanced.iff	3			
 slot																																						resource	0	thermal_control_unit	ore_carbonate	20			
 slot																																						template	0	barrel_rifle_blaster_advanced	object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	1			
-weapon	quest_heavy_particle_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/quest_heavy_particle_beam.iff	object/weapon/ranged/heavy/quest_heavy_particle_beam.iff	30	308	800	1100	112	225	338	450	112	225	338	450	0	0	kinetic	heat	121	242	100	100	9	1	1	100	100	0	64								object/draft_schematic/weapon/quest_heavy_particle_beam.iff
+weapon	quest_heavy_particle_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/quest_heavy_particle_beam.iff	object/weapon/ranged/heavy/quest_heavy_particle_beam.iff	30	308	800	1100	112	225	338	450	112	225	338	450	0	0	kinetic	heat	121	242	100	100	9	1	1	100	100	0	50								object/draft_schematic/weapon/quest_heavy_particle_beam.iff
 slot																																						resource	0	frame_assembly	steel	175			
 slot																																						resource	0	receiver_assembly	iron	75			
 slot																																						resource	0	grip_assembly	metal	45			
@@ -112,7 +112,7 @@ slot																																						resource	0	enhanced_cooling_mechanism	
 slot																																						template	0	powerhandler_advanced	object/tangible/component/weapon/blaster_power_handler_advanced.iff	3			
 slot																																						resource	0	thermal_control_unit	ore_carbonate	20			
 slot																																						template	0	barrel_rifle_blaster_advanced	object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	1			
-weapon	heavy_rocket_launcher		systems.crafting.weapon.crafting_heavy_weapon	8	weapon	7	weapon_crafting	4	object/weapon/ranged/heavy/heavy_rocket_launcher.iff	object/weapon/ranged/heavy/heavy_rocket_launcher.iff	28	261	800	1100	193	385	577	769	193	385	577	769	0	0	kinetic	heat	8	30	100	100	8	1	1	100	100	0	64								object/draft_schematic/weapon/heavy_rocket_launcher.iff
+weapon	heavy_rocket_launcher		systems.crafting.weapon.crafting_heavy_weapon	8	weapon	7	weapon_crafting	4	object/weapon/ranged/heavy/heavy_rocket_launcher.iff	object/weapon/ranged/heavy/heavy_rocket_launcher.iff	28	261	800	1100	193	385	577	769	193	385	577	769	0	0	kinetic	heat	8	30	100	100	8	1	1	100	100	0	50								object/draft_schematic/weapon/heavy_rocket_launcher.iff
 slot																																						resource	0	frame_assembly	iron	150			
 slot																																						resource	0	receiver_assembly	metal	40			
 slot																																						resource	0	grip_assembly	metal	25			
@@ -291,14 +291,14 @@ slot																																						resource	0	grip_assembly	aluminum_chro
 slot																																						template	0	powerhandler_advanced	object/tangible/component/weapon/blaster_power_handler_advanced.iff	2			
 slot																																						template	0	barrel_pistol_blaster_advanced	object/tangible/component/weapon/blaster_pistol_barrel_advanced.iff	1			
 slot																																						template	0	power_supply	object/tangible/component/weapon/geonosian_power_cube_base.iff	1			
-weapon	pistol_launcher		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	6	weapon_crafting	1	object/weapon/ranged/pistol/pistol_launcher.iff	object/weapon/ranged/pistol/pistol_launcher.iff	26	214	800	1100	157	313	469	625	157	313	469	625	0	0	kinetic	heat	8	30	100	100	7	1	1	100	100	0	64								object/draft_schematic/weapon/pistol_launcher.iff
+weapon	pistol_launcher		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	6	weapon_crafting	1	object/weapon/ranged/pistol/pistol_launcher.iff	object/weapon/ranged/pistol/pistol_launcher.iff	26	214	800	1100	157	313	469	625	157	313	469	625	0	0	kinetic	heat	8	30	100	100	7	1	1	100	100	0	50								object/draft_schematic/weapon/pistol_launcher.iff
 slot																																						resource	0	frame_assembly	iron	66			
 slot																																						resource	0	receiver_assembly	metal_ferrous	22			
 slot																																						resource	0	grip_assembly	metal	10			
 slot																																						template	0	cartridge_feed_unit	object/tangible/component/weapon/projectile_feed_mechanism_advanced.iff	1			
 slot																																						template	0	barrel_pistol_projectile_advanced	object/tangible/component/weapon/projectile_pistol_barrel_advanced.iff	1			
 slot																																						template	0	scope_advanced	object/tangible/component/weapon/scope_weapon_advanced.iff	1			
-weapon	quest_pistol_launcher		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	5	weapon_crafting	1	object/weapon/ranged/pistol/quest_pistol_launcher.iff	object/weapon/ranged/pistol/quest_pistol_launcher.iff	26	214	800	1100	159	319	479	638	159	319	479	638	0	0	kinetic	heat	8	30	100	100	7	1	1	100	100	0	64								object/draft_schematic/weapon/quest_pistol_launcher.iff
+weapon	quest_pistol_launcher		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	5	weapon_crafting	1	object/weapon/ranged/pistol/quest_pistol_launcher.iff	object/weapon/ranged/pistol/quest_pistol_launcher.iff	26	214	800	1100	159	319	479	638	159	319	479	638	0	0	kinetic	heat	8	30	100	100	7	1	1	100	100	0	50								object/draft_schematic/weapon/quest_pistol_launcher.iff
 slot																																						resource	0	frame_assembly	iron	75			
 slot																																						resource	0	receiver_assembly	metal_ferrous	45			
 slot																																						resource	0	grip_assembly	metal	35			
@@ -519,7 +519,7 @@ slot																																						resource	0	receiver_assembly	metal_fer
 slot																																						resource	0	grip_assembly	metal	25			
 slot																																						template	0	feed_unit_advanced	object/tangible/component/weapon/projectile_feed_mechanism_advanced.iff	3			
 slot																																						template	0	barrel_rifle_projectile_advanced	object/tangible/component/weapon/projectile_rifle_barrel_advanced.iff	1			
-weapon	quest_rifle_projectile_tusken		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	5	weapon_crafting	3	object/tangible/loot/quest/rifle_quest_tusken.iff	object/tangible/loot/quest/rifle_quest_tusken.iff	32	355	800	1100	200	400	600	800	200	400	600	800	0	0	kinetic				80	80	10	1	1	100	100	0	65								object/draft_schematic/weapon/quest_rifle_projectile_tusken.iff
+weapon	quest_rifle_projectile_tusken		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	5	weapon_crafting	3	object/tangible/loot/quest/rifle_quest_tusken.iff	object/tangible/loot/quest/rifle_quest_tusken.iff	32	355	800	1100	200	400	600	800	200	400	600	800	0	0	kinetic				80	80	10	1	1	100	100	0	64								object/draft_schematic/weapon/quest_rifle_projectile_tusken.iff
 slot																																						resource	0	frame_assembly	iron	100			
 slot																																						resource	0	receiver_assembly	metal_ferrous	40			
 slot																																						resource	0	grip_assembly	metal	40			
@@ -901,7 +901,7 @@ slot																																						resource	0	receiver_assembly	steel	8
 slot																																						resource	0	grip_assembly	metal	4			
 slot																																						template	0	powerhandler_advanced	object/tangible/component/weapon/blaster_power_handler_advanced.iff	1			
 slot																																						template	0	barrel_pistol_blaster_advanced	object/tangible/component/weapon/blaster_pistol_barrel_advanced.iff	1			
-weapon	bowcaster_assault		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	7	weapon_crafting	3	object/weapon/ranged/rifle/rifle_bowcaster_heavy.iff	object/weapon/ranged/rifle/rifle_bowcaster_heavy.iff	34	402	800	1100	225	451	677	902	225	451	677	902	0	0	kinetic				80	80	11	1	1	100	100	0	65								object/draft_schematic/weapon/bowcaster_assault.iff
+weapon	bowcaster_assault		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	7	weapon_crafting	3	object/weapon/ranged/rifle/rifle_bowcaster_heavy.iff	object/weapon/ranged/rifle/rifle_bowcaster_heavy.iff	34	402	800	1100	225	451	677	902	225	451	677	902	0	0	kinetic				80	80	11	1	1	100	100	0	64								object/draft_schematic/weapon/bowcaster_assault.iff
 slot																																						resource	0	frame_assembly	steel_ditanium	150			
 slot																																						resource	0	receiver_assembly	iron_polonium	85			
 slot																																						resource	0	grip_assembly	metal	20			
@@ -909,7 +909,7 @@ slot																																						resource	0	enhanced_cooling_mechanism	
 slot																																						template	0	powerhandler_advanced	object/tangible/component/weapon/blaster_power_handler_advanced.iff	3			
 slot																																						resource	0	thermal_control_unit	ore_carbonate_alantium	30			
 slot																																						template	0	barrel_rifle_blaster_advanced	object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	1			
-weapon	bowcaster_recon		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	5	weapon_crafting	3	object/weapon/ranged/rifle/rifle_bowcaster_medium.iff	object/weapon/ranged/rifle/rifle_bowcaster_medium.iff	21	120	800	1100	80	160	240	320	80	160	240	320	0	0	kinetic				80	80	5	1	1	100	100	0	65								object/draft_schematic/weapon/bowcaster_recon.iff
+weapon	bowcaster_recon		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	5	weapon_crafting	3	object/weapon/ranged/rifle/rifle_bowcaster_medium.iff	object/weapon/ranged/rifle/rifle_bowcaster_medium.iff	21	120	800	1100	80	160	240	320	80	160	240	320	0	0	kinetic				80	80	5	1	1	100	100	0	64								object/draft_schematic/weapon/bowcaster_recon.iff
 slot																																						resource	0	frame_assembly	copper_codoan	40			
 slot																																						resource	0	receiver_assembly	metal_nonferrous	20			
 slot																																						resource	0	grip_assembly	metal	10			
@@ -956,13 +956,13 @@ slot																																						template_generic	0	naktra_crystal2	obj
 slot																																						template_generic	0	naktra_crystal3	object/tangible/loot/quest/naktra_crystal.iff	1			
 slot																																						resource	0	grip	petrochem_inert_polymer	12			
 slot																																						template	0	jacketed_sword_core_advanced	object/tangible/component/weapon/sword_core_advanced.iff	1			
-weapon	pistol_launcher_medium		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	5	weapon_crafting	1	object/weapon/ranged/pistol/pistol_launcher_medium.iff	object/weapon/ranged/pistol/pistol_launcher.iff	30	308	800	1100	219	438	657	875	219	438	657	875	0	0	kinetic	heat	8	30	100	100	9	1	1	100	100	0	64								object/draft_schematic/weapon/pistol_launcher_medium.iff
+weapon	pistol_launcher_medium		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	5	weapon_crafting	1	object/weapon/ranged/pistol/pistol_launcher_medium.iff	object/weapon/ranged/pistol/pistol_launcher.iff	30	308	800	1100	219	438	657	875	219	438	657	875	0	0	kinetic	heat	8	30	100	100	9	1	1	100	100	0	50								object/draft_schematic/weapon/pistol_launcher_medium.iff
 slot																																						resource	0	frame_assembly	iron	66			
 slot																																						resource	0	receiver_assembly	metal_ferrous	22			
 slot																																						resource	0	grip_assembly	metal	10			
 slot																																						template	0	cartridge_feed_unit	object/tangible/component/weapon/projectile_feed_mechanism_advanced.iff	1			
 slot																																						template	0	barrel_pistol_projectile_advanced	object/tangible/component/weapon/projectile_pistol_barrel_advanced.iff	1			
-weapon	pistol_launcher_elite		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	5	weapon_crafting	1	object/weapon/ranged/pistol/pistol_launcher_elite.iff	object/weapon/ranged/pistol/pistol_launcher.iff	34	402	800	1100	281	563	845	1126	281	563	845	1126	0	0	kinetic	heat	12	35	100	100	11	1	1	100	100	0	64								object/draft_schematic/weapon/pistol_launcher_elite.iff
+weapon	pistol_launcher_elite		systems.crafting.weapon.crafting_blaster_weapon	25	weapon	5	weapon_crafting	1	object/weapon/ranged/pistol/pistol_launcher_elite.iff	object/weapon/ranged/pistol/pistol_launcher.iff	34	402	800	1100	281	563	845	1126	281	563	845	1126	0	0	kinetic	heat	12	35	100	100	11	1	1	100	100	0	50								object/draft_schematic/weapon/pistol_launcher_elite.iff
 slot																																						resource	0	frame_assembly	iron_plumbum	35			
 slot																																						resource	0	receiver_assembly	metal_ferrous	18			
 slot																																						resource	0	grip_assembly	metal	7			
@@ -1226,7 +1226,7 @@ slot																																						resource	0	staff_shaft	metal	15
 slot																																						resource	0	jacketed_sword_core_advanced	object/tangible/component/weapon/sword_core_advanced.iff	1			
 slot																																						resource	0	balance_tabs	mineral	14			
 slot																																						resource	0	impact_face	metal	3			
-weapon	loot_void		systems.crafting.weapon.crafting_blaster_weapon	0	weapon	5	weapon_crafting	3	object/weapon/ranged/heavy/ep3_loot_void.iff	object/weapon/ranged/heavy/ep3_loot_void.iff	32	355	800	1100	257	515	773	1030	257	515	773	1030	0	0	kinetic				100	100	10	1	1	100	100	0	64								object/draft_schematic/weapon/loot_void.iff
+weapon	loot_void		systems.crafting.weapon.crafting_blaster_weapon	0	weapon	5	weapon_crafting	3	object/weapon/ranged/heavy/ep3_loot_void.iff	object/weapon/ranged/heavy/ep3_loot_void.iff	32	355	800	1100	257	515	773	1030	257	515	773	1030	0	0	kinetic				100	100	10	1	1	100	100	0	50								object/draft_schematic/weapon/loot_void.iff
 slot																																						resource	0	frame_assembly	iron_kammris	50			
 slot																																						resource	0	receiver_assembly	steel	25			
 slot																																						resource	0	grip_assembly	metal	10			
@@ -1258,7 +1258,7 @@ slot																																						resource	0	receiver_assembly	metal_non
 slot																																						resource	0	grip_assembly	metal	12			
 slot																																						template	0	powerhandler_advanced	object/tangible/component/weapon/blaster_power_handler_advanced.iff	3			
 slot																																						template	0	barrel_rifle_blaster_advanced	object/tangible/component/weapon/blaster_rifle_barrel_advanced.iff	1			
-weapon	heavy_avatar_acid_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/heavy_avatar_acid_beam.iff	object/weapon/ranged/heavy/heavy_avatar_acid_beam.iff	34	402	800	1100	178	356	534	711	178	356	534	711	0	0	kinetic	acid	121	242	100	100	11	1	1	100	100	0	64								object/draft_schematic/weapon/heavy_avatar_acid_beam.iff
+weapon	heavy_avatar_acid_beam		systems.crafting.weapon.crafting_heavy_weapon	7	weapon	7	weapon_crafting	1	object/weapon/ranged/heavy/heavy_avatar_acid_beam.iff	object/weapon/ranged/heavy/heavy_avatar_acid_beam.iff	34	402	800	1100	178	356	534	711	178	356	534	711	0	0	kinetic	acid	121	242	100	100	11	1	1	100	100	0	50								object/draft_schematic/weapon/heavy_avatar_acid_beam.iff
 slot																																						resource	0	frame_assembly	steel	150			
 slot																																						resource	0	receiver_assembly	iron	40			
 slot																																						resource	0	grip_assembly	metal	20			
@@ -1370,7 +1370,7 @@ slot																																						resource	0	vibro_unit_and_power_cell_b
 slot																																						resource	0	grip	iron	12			
 slot																																						template	0	vibration_generator_advanced	object/tangible/component/weapon/vibro_unit_advanced.iff	2			
 slot																																						template	0	advanced_core	object/tangible/component/weapon/mustafar/tulrus_lance_core.iff	1			
-weapon	heavy_lava_cannon		systems.crafting.weapon.crafting_blaster_weapon	0	weapon	8	weapon_crafting	1	object/weapon/ranged/heavy/som_lava_cannon.iff	object/weapon/ranged/heavy/som_lava_cannon.iff	36	450	800	1100	321	643	965	1286	321	643	965	1286	0	0	energy	heat	14	35	100	100	12	1	1	100	100	0	64							object/draft_schematic/weapon/appearance/weapon_appearance_heavy_lava_cannon.iff	object/draft_schematic/weapon/heavy_lava_cannon.iff
+weapon	heavy_lava_cannon		systems.crafting.weapon.crafting_blaster_weapon	0	weapon	8	weapon_crafting	1	object/weapon/ranged/heavy/som_lava_cannon.iff	object/weapon/ranged/heavy/som_lava_cannon.iff	36	450	800	1100	321	643	965	1286	321	643	965	1286	0	0	energy	heat	14	35	100	100	12	1	1	100	100	0	50							object/draft_schematic/weapon/appearance/weapon_appearance_heavy_lava_cannon.iff	object/draft_schematic/weapon/heavy_lava_cannon.iff
 slot																																						resource	0	frame_assembly	steel_carbonite	150			
 slot																																						resource	0	receiver_assembly	iron_kammris	40			
 slot																																						resource	0	grip_assembly	copper_polysteel	20			

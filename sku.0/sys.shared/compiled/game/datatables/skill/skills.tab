@@ -2354,10 +2354,10 @@ expertise_en_inspired_industry_1	expertise																					expertise_en_insp
 expertise_en_inspired_industry_2	expertise_en_inspired_industry_1																					expertise_en_inspire_trader_increase=25				
 expertise_en_inspired_industry_3	expertise_en_inspired_industry_2																					expertise_en_inspire_trader_increase=25				
 expertise_en_inspired_industry_4	expertise_en_inspired_industry_3																					expertise_en_inspire_trader_increase=25				
-expertise_en_creativity_1	expertise																				startDance+tumble,startDance+bunduki	expertise_en_inspire_base_point_increase=3				
-expertise_en_creativity_2	expertise_en_creativity_1																				startDance+rhythmic,startDance+poplock	expertise_en_inspire_base_point_increase=3				
-expertise_en_creativity_3	expertise_en_creativity_2																				startDance+footloose,startDance+lyrical	expertise_en_inspire_base_point_increase=3				
-expertise_en_creativity_4	expertise_en_creativity_3																				startDance+formal,startDance+exotic,startDance+popular,startDance+breakdance	expertise_en_inspire_base_point_increase=3				
+expertise_en_creativity_1	expertise																				startDance+tumble,startDance+bunduki	expertise_en_inspire_base_point_increase=3,luck_modified=10				
+expertise_en_creativity_2	expertise_en_creativity_1																				startDance+rhythmic,startDance+poplock	expertise_en_inspire_base_point_increase=3,luck_modified=10				
+expertise_en_creativity_3	expertise_en_creativity_2																				startDance+footloose,startDance+lyrical	expertise_en_inspire_base_point_increase=3,luck_modified=10				
+expertise_en_creativity_4	expertise_en_creativity_3																				startDance+formal,startDance+exotic,startDance+popular,startDance+breakdance	expertise_en_inspire_base_point_increase=3,luck_modified=10				
 expertise_en_holism_1	expertise																				en_healer_buff_package					
 expertise_en_harvest_faire_1	expertise																				en_harvest_faire_buff_package					
 expertise_en_second_chance_1	expertise																				en_second_chance_buff_package					

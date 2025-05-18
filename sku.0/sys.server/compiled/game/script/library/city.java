@@ -1370,7 +1370,7 @@ public class city extends script.base_script
         {
             return;
         }
-        if (spec.equals("city_spec_decor_increase"))
+        if (spec.equals("city_spec_entertainer"))
         {
             int rank = getCityRank(city_id);
             int maxBaseDec = rank * 15;

@@ -3228,10 +3228,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_strength_1", params);
-//        if (!performed_buff) {
-//            return SCRIPT_OVERRIDE;
-//        }
+        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_strength_1", params);
+        if (!performed_buff) {
+            return SCRIPT_OVERRIDE;
+        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3311,10 +3311,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_agility_1", params);
-//        if (!performed_buff) {
-//            return SCRIPT_OVERRIDE;
-//        }
+        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_agility_1", params);
+        if (!performed_buff) {
+            return SCRIPT_OVERRIDE;
+        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3322,15 +3322,17 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!isIdValid(target) || !pvpCanHelp(self, target) || vehicle.isVehicle(target) || isDead(target)) {
             target = self;
         }
+
         if (!buff.canApplyBuff(target, "me_buff_agility_2")) {
             sendSystemMessage(self, new string_id("spam", "buff_wont_stack"));
             sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
             return SCRIPT_OVERRIDE;
         }
-//        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_agility_2", params);
-//        if (!performed_buff) {
-//            return SCRIPT_OVERRIDE;
-//        }
+
+        if (!combatStandardAction("me_buff_agility_2", self, target, params, "", "")) {
+            return SCRIPT_OVERRIDE;
+        }
+
         return SCRIPT_CONTINUE;
     }
 
@@ -3403,11 +3405,11 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!isIdValid(target) || !pvpCanHelp(self, target) || vehicle.isVehicle(target) || isDead(target)) {
             target = self;
         }
-        if (!buff.canApplyBuff(target, "me_buff_precision_1")) {
-            sendSystemMessage(self, new string_id("spam", "buff_wont_stack"));
-            sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
-            return SCRIPT_OVERRIDE;
-        }
+//        if (!buff.canApplyBuff(target, "me_buff_precision_1")) {
+//            sendSystemMessage(self, new string_id("spam", "buff_wont_stack"));
+//            sendCombatSpamMessage(self, new string_id("spam", "buff_wont_stack"), COMBAT_RESULT_GENERIC);
+//            return SCRIPT_OVERRIDE;
+//        }
 //        boolean performed_buff = performMedicGroupBuff(self, target, "me_enhance_precision_1", params);
 //        if (!performed_buff) {
 //            return SCRIPT_OVERRIDE;
@@ -12134,36 +12136,22 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!isIdValid(target) || !exists(target)) {
             return false;
         }
-        if (buffName == null || buffName.length() <= 0) {
+        if (buffName == null || buffName.length() == 0) {
             return false;
         }
-        if (params == null || params.length() <= 0) {
+        if (params == null || params.length() == 0) {
             return false;
         }
-        obj_id tgId = getGroupObject(target);
-        obj_id sgId = getGroupObject(medic);
+
         boolean performed_buff = false;
-        if (!isIdValid(tgId) || !isIdValid(sgId) || sgId != tgId) {
-            performed_buff |= combatStandardAction(buffName, medic, target, params, "", "");
-            obj_id beast = beast_lib.getBeastOnPlayer(target);
-            if (isIdValid(beast) && exists(beast) && !isDead(beast) && getDistance(medic, beast) < 72.0f) {
-                performed_buff |= combatStandardAction(buffName, medic, beast, params, "", "");
-            }
-            if (!performed_buff) {
-                return false;
-            }
-        } else {
-            obj_id[] members = getGroupMemberIds(sgId);
-            for (obj_id member : members) {
-                if (isIdValid(member) && exists(member) && !isDead(member) && canSee(medic, member) && getDistance(medic, member) < 72.0f) {
-                    performed_buff |= combatStandardAction(buffName, medic, member, params, "", "");
-                    obj_id beast = beast_lib.getBeastOnPlayer(member);
-                    if (isIdValid(beast) && exists(beast) && !isDead(beast) && getDistance(medic, beast) < 72.0f) {
-                        performed_buff |= combatStandardAction(buffName, medic, beast, params, "", "");
-                    }
-                }
-            }
+
+        performed_buff |= combatStandardAction(buffName, medic, target, params, "", "");
+
+        obj_id beast = beast_lib.getBeastOnPlayer(target);
+        if (isIdValid(beast) && exists(beast) && !isDead(beast) && getDistance(medic, beast) < 72.0f) {
+            performed_buff |= combatStandardAction(buffName, medic, beast, params, "", "");
         }
+
         return performed_buff;
     }
 
