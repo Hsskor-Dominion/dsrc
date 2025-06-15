@@ -1169,7 +1169,7 @@ me_buff_action_3	medicAction			76	command.me_enhance_action	600	stamina_modified
 me_buff_strength_1	medicStrength			10	command.steadyAim	600	combat_multiply_damage_dealt	5	strength_modified	30	private_taunt_bonus	50		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_strength_2	medicStrength			34	command.steadyAim	600	strength_modified	45		0		0		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_strength_3	medicStrength			62	command.steadyAim	600	strength_modified	80		0		0		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
-me_buff_agility_1	medicAgility			10	command.bh_armor_duelist	600	private_armor_bonus	1200	agility_modified	30	private_taunt_bonus	-50		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1
+me_buff_agility_1	medicAgility			10	command.bh_armor_duelist	600	combat_divide_damage_dealt	5	agility_modified	30	private_taunt_bonus	-50		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_agility_2	medicAgility			34	command.bh_armor_duelist	600	agility_modified	45		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_agility_3	medicAgility			62	command.bh_armor_duelist	600	agility_modified	80		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_precision_1	medicPrecision			10	command.me_enhance_precision	600	precision_modified	15		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_precision.cef		1	0		1	1	1	0	1	1	0	1	1	1

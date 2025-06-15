@@ -123,7 +123,7 @@ public class cantina_jar_controller extends script.base_script
     {
         if (isGod(objSpeaker))
         {
-            if (strText.equals("forcebosskevent"))
+            if (strText.equals("jar"))//attempting to streamline this to normal speech for devs
             {
                 int invasionActive = getIntObjVar(self, "bhcelebs.invasion_active");
                 if (invasionActive == 0)

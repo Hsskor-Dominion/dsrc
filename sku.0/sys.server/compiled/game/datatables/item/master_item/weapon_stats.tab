@@ -301,7 +301,7 @@ weapon_spy_fist	1	1000	750	1350	0	kinetic			100	1	100	0	5		int:wp.canBeDisMantle
 weapon_magna_guard_polearm_04_01	1	1000	700	1000	0	kinetic	electric	20	100	1	100	0	5		int:wp.canBeDisMantled=1		pvp BF reward	900	890
 weapon_westar_pistol_04_01	1	1000	215	425	0	energy	heat	20	40	1	100	0	35		int:wp.canBeDisMantled=1		pvp BF reward	900	900
 weapon_westar_rifle_04_01	1	1000	425	945	0	energy	cold	20	80	1	100	0	64		int:wp.canBeDisMantled=1		pvp BF reward	900	906
-weapon_heavy_cr1_04_01	1	1000	600	1000	0	kinetic	cold	50	100	1	100	0	64		int:wp.canBeDisMantled=1		pvp BF reward	900	900
+weapon_heavy_cr1_04_01	1	1000	600	1000	0	kinetic	cold	50	100	1	100	0	50		int:wp.canBeDisMantled=1		pvp BF reward	900	900
 weapon_knuckler_buzz_knuck	1	1000	715	1005	0	kinetic	acid	20	100	1	100	0	5		int:wp.canBeDisMantled=1		pvp BF reward	900	900
 weapon_carbine_ngant_zarvel_04_01	1	1000	350	650	0	energy	electric	20	60	1	100	0	50		int:wp.canBeDisMantled=1		pvp BF reward	900	900
 weapon_sword_1h_pvp_04_01	1	1000	715	1005	0	kinetic	cold	20	100	1	100	0	5		int:wp.canBeDisMantled=1		pvp BF reward	900	900

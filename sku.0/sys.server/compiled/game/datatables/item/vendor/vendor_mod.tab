@@ -2,6 +2,7 @@ item	cash	token0	token1	token2	token3	token16	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
 item_pgc_token_03	500000								
 item_tcg_loot_reward_series5_air2_swoop_speeder						1			
+object/tangible/deed/vehicle_deed/speederbike_flash_deed.iff						1			
 object/tangible/wearables/goggles/goggles_anniversary.iff	100								
 object/tangible/wearables/goggles/goggles_s01.iff	100								
 object/tangible/wearables/goggles/goggles_s02.iff	100								

@@ -697,9 +697,9 @@ public class gcw extends script.base_script
             "kashyyyk_hunting",
             "space_light1",
             "space_heavy1",
-            "dathomir",
-            "yavin4",
-            "endor",
+//            "dathomir",
+//            "yavin4",
+//            "endor",
             "mustafar"
         };
         for (String s : restrictedScene) {

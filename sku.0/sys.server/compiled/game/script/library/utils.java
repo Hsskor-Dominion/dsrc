@@ -5910,6 +5910,12 @@ public class utils extends script.base_script
                     if (getTemplateName(item).equals("object/tangible/terminal/terminal_player_structure.iff")) {
                         continue;
                     }
+                    if (getTemplateName(item).equals("object/tangible/terminal/terminal_elevator_up.iff")) {
+                        continue;
+                    }
+                    if (getTemplateName(item).equals("object/tangible/terminal/terminal_elevator_down.iff")) {
+                        continue;
+                    }
                     if (!canTrade(item)) {
                         return item;
                     } else if (utils.isContainer(item)) {
