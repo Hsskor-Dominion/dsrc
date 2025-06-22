@@ -12,13 +12,17 @@ public class jedi_holocron extends script.base_script {
     public jedi_holocron() {
     }
 
+    private static final int MAX_STAGE = 3;
+
     private static final String[] HOLOCRON_MENU_OPTIONS = {
-            "serenity",
-            "knowledge",
             "peace",
+            "knowledge",
+            "serenity",
+            "harmony",
             "passion",
             "strength",
-            "power"
+            "power",
+            "victory",
     };
 
     public boolean isJediReady(obj_id player, obj_id npc) throws InterruptedException {
@@ -33,91 +37,95 @@ public class jedi_holocron extends script.base_script {
         int questId = questGetQuestId("quest/stardust_jedi_kill");
         groundquests.grantQuest(questId, player, self, true);
     }
+    private boolean isJediVision(obj_id holocron) throws InterruptedException {
+        if (!hasObjVar(holocron, "vision")) {
+            return false;
+        }
+        String vision = getStringObjVar(holocron, "vision");
+        return vision.equals("serenity") || vision.equals("knowledge") || vision.equals("peace");
+    }
+
+    private boolean isSithVision(obj_id holocron) throws InterruptedException {
+        if (!hasObjVar(holocron, "vision")) {
+            return false;
+        }
+        String vision = getStringObjVar(holocron, "vision");
+        return vision.equals("passion") || vision.equals("strength") || vision.equals("power");
+    }
 
     public boolean isJediExplore(obj_id player, obj_id self) throws InterruptedException {
-        // Determine the range for exploreRequirement based on vision type
+        int stage = getIntObjVar(self, "jedi_stage");
+
+        if (stage >= MAX_STAGE) {
+            return false; // Already completed
+        }
+
+        String stageVar = "required_badge_stage" + (stage + 1);
+
         int exploreRequirement;
-        String explore = "";
+        String badgeId;
 
-        boolean isJediVision = hasObjVar(self, "vision_yoda") ||
-                hasObjVar(self, "vision_obi") ||
-                hasObjVar(self, "vision_leia");
+        // Generate badge requirement if not already stored
+        if (!hasObjVar(self, stageVar)) {
+            boolean isJediVision = isJediVision(self);
+            boolean isSithVision = isSithVision(self);
 
-        boolean isSithVision = hasObjVar(self, "vision_vader") ||
-                hasObjVar(self, "vision_maul") ||
-                hasObjVar(self, "vision_sidious");
+            if (isJediVision) {
+                exploreRequirement = rand(1, 5);
+            } else if (isSithVision) {
+                exploreRequirement = rand(11, 15);
+            } else {
+                exploreRequirement = rand(1, 15);
+            }
 
-        if (isJediVision) {
-            // Roll between 1 and 5 for Jedi vision
-            exploreRequirement = rand(1, 5);
-        } else if (isSithVision) {
-            // Roll between 11 and 15 for Sith vision
-            exploreRequirement = rand(11, 15);
-        } else {
-            // Roll between 6 and 10 for unconfigured vision
-            exploreRequirement = rand(6, 10);
+            setObjVar(self, stageVar, exploreRequirement);
         }
 
-        // Determine badge based on exploreRequirement
-        switch (exploreRequirement) {
-            case 1:
-                explore = "warren_compassion";
-                break;
-            case 2:
-                explore = "bdg_library_trivia";
-                break;
-            case 3:
-                explore = "bdg_must_obiwan_story_good";
-                break;
-            case 4:
-                explore = "inv_holocron_collection_02";
-                break;
-            case 5:
-                explore = "bdg_thm_park_rebel_badge";
-                break;
-            case 6:
-                explore = "col_bdg_hero_tatooine";
-                break;
-            case 7:
-                explore = "bdg_kash_arena_champ";
-                break;
-            case 8:
-                explore = "bdg_kash_avatar_zssik";
-                break;
-            case 9:
-                explore = "bdg_kash_grievous";
-                break;
-            case 10:
-                explore = "bdg_thm_park_jabba_badge";
-                break;
-            case 11:
-                explore = "warren_hero";
-                break;
-            case 12:
-                explore = "bdg_col_jedi_npc_kill";
-                break;
-            case 13:
-                explore = "bdg_must_obiwan_story_bad";
-                break;
-            case 14:
-                explore = "bdg_ground_dwartii_statue_crafting";
-                break;
-            case 15:
-                explore = "bdg_thm_park_imperial_badge";
-                break;
-            default:
-                return false; // Handle unexpected cases
+        // Always read stored requirement
+        exploreRequirement = getIntObjVar(self, stageVar);
+        badgeId = getBadgeIdFromNumber(exploreRequirement);
+
+        // Check badge ownership
+        boolean hasRequired = badge.hasBadge(player, badgeId) && badge.hasBadge(player, "count_50");
+
+        if (!hasRequired) {
+            // Tell player what badge is still needed
+            sendSystemMessage(player, new string_id("jedi_spam", "vision_" + exploreRequirement));
+            return false;
         }
 
-        // Check if the player has the required badges
-        boolean hasRequiredBadges = badge.hasBadge(player, explore) && badge.hasBadge(player, "count_50");
+        // Only advance if the badge is complete for this stage
+        stage++;
+        setObjVar(self, "jedi_stage", stage);
 
-        if (!hasRequiredBadges) {
-            // Send a system message if the player does not have the required badges
-            sendSystemMessage(player, new string_id("jedi_spam", "vision_" + exploreRequirement));//use the SIE tool for vision_1, etc.
+        // Optional: clear objVar so next stage generates a new badge
+        removeObjVar(self, stageVar);
+
+        sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
+        return true;
+    }
+    private String getBadgeIdFromNumber(int number) {
+        switch (number) {
+            case 1: return "warren_compassion";
+            case 2: return "bdg_library_trivia";
+            case 3: return "bdg_must_obiwan_story_good";
+            case 4: return "exp_dan_jedi_temple";
+            case 5: return "bdg_thm_park_rebel_badge";
+            case 6: return "poi_heromark";
+            case 7: return "bdg_kill_ancient_krayt_dragon";
+            case 8: return "bdg_kash_avatar_zssik";
+            case 9: return "bdg_thm_park_nym_badge";
+            case 10: return "bdg_thm_park_jabba_badge";
+            case 11: return "warren_hero";
+            case 12: return "bdg_col_jedi_npc_kill";
+            case 13: return "bdg_must_obiwan_story_bad";
+            case 14: return "bdg_kash_grievous";
+            case 15: return "bdg_thm_park_imperial_badge";
+            default: return "";
         }
-
-        return hasRequiredBadges;
+    }
+    public boolean isJediExploreUnlock(obj_id player, obj_id self) throws InterruptedException {
+        return getIntObjVar(self, "jedi_stage") >= MAX_STAGE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException {
         if (hasObjVar(self, "intUsed")) {
@@ -152,48 +160,44 @@ public class jedi_holocron extends script.base_script {
                 return SCRIPT_OVERRIDE;
             }
 
-            // Damage the holocron by a random amount between 5 and 10 hitpoints
+            // Damage the holocron
             int damageAmount = rand(5, 10);
             damageItem(self, damageAmount);
             LOG("Holocron Usage Debug", "Holocron damaged by: " + damageAmount + " hitpoints");
 
-            // Check if the player is exploring as a Jedi
-            if (!isJediExplore(player, self)) {
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
-                factions.goOvertWithDelay(player, 0.0f);
-                return SCRIPT_OVERRIDE;
-            }
-
-            // Determine the vision based on holocron configuration
-            String visionSignal = getHolocronVisionSignal(self);
-            if (visionSignal != null) {
-                LOG("Holocron Vision", "Sending signal: " + visionSignal);
-                groundquests.sendSignal(player, visionSignal);
-            }
-
-            // Check if the player is in phase 3 and handle phase 3 actions
+            // PHASE 3 CHECK
             if (phase3_condition(player, self)) {
                 grantPhase3Quest(player, self);
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
                 xp.grant(player, "jedi", 7500);
                 factions.addFactionStanding(player, "fs_villager", 50.0f);
                 factions.goOvertWithDelay(player, 0.0f);
-                destroyObject(self);
+                HandleDestroyHolocron(self, player);
 
-                int mission_bounty = 25000;
-                mission_bounty += rand(1, 2000);
+                int mission_bounty = 25000 + rand(1, 2000);
                 int current_bounty = hasObjVar(player, "bounty.amount") ? getIntObjVar(player, "bounty.amount") : 0;
                 current_bounty += mission_bounty;
+
                 setObjVar(player, "bounty.amount", current_bounty);
                 setObjVar(player, "jedi.bounty", mission_bounty);
                 setJediBountyValue(player, current_bounty);
                 updateJediScriptData(player, "jedi", 1);
+
                 return SCRIPT_OVERRIDE;
             }
 
-            // If the player is exploring as a Jedi
-            if (isJediExplore(player, self)) {
+            // Final unlock path
+            if (isJediExploreUnlock(player, self)) {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
+
+                // Send final vision signal (moved here)
+                String visionSignal = getHolocronVisionSignal(self);
+                if (visionSignal != null) {
+                    LOG("Holocron Vision", "Final stage — sending vision signal: " + visionSignal);
+                    groundquests.sendSignal(player, visionSignal);
+                }
+
+                // Grant Jedi skills
                 setSkillTemplate(player, "force_sensitive_1a");
                 grantSkill(player, "force_sensitive");
                 grantSkill(player, "class_forcesensitive_phase1");
@@ -201,24 +205,104 @@ public class jedi_holocron extends script.base_script {
                 grantSkill(player, "force_sensitive_heightened_senses_surveying_04");
                 xp.grant(player, "jedi", 5000);
                 jedi_trials.initializePadawanTrials(player);
-                destroyObject(self);
+                HandleDestroyHolocron(self, player);
 
-                int mission_bounty = 25000;
-                mission_bounty += rand(1, 2000);
+                int mission_bounty = 25000 + rand(1, 2000);
                 int current_bounty = hasObjVar(player, "bounty.amount") ? getIntObjVar(player, "bounty.amount") : 0;
                 current_bounty += mission_bounty;
+
                 setObjVar(player, "bounty.amount", current_bounty);
                 setObjVar(player, "jedi.bounty", mission_bounty);
                 setJediBountyValue(player, current_bounty);
                 updateJediScriptData(player, "jedi", 1);
+
                 return SCRIPT_OVERRIDE;
             }
-        } else if (item == menu_info_types.SERVER_MENU1) {
-            // Show the custom configuration menu
+
+            // Intermediate exploration stage
+            if (isJediExplore(player, self)) {
+                // Progressed to next stage
+                return SCRIPT_OVERRIDE;
+            }
+
+            // Failed to meet stage requirement
+            sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore"));
+            return SCRIPT_OVERRIDE;
+        }
+
+        // Holocron configuration menu
+        else if (item == menu_info_types.SERVER_MENU1) {
             showMenuOptions(player);
         }
 
         return SCRIPT_CONTINUE;
+    }
+
+    public boolean vision_active(obj_id player, obj_id item) throws InterruptedException {
+        return groundquests.isQuestActive(player, "stardust_vision");
+    }
+
+    private void HandleDestroyHolocron(obj_id item, obj_id player) throws InterruptedException {
+        if (!isIdValid(item) || !isIdValid(player)) {
+            return;
+        }
+
+        String vision = getStringObjVar(item, "vision");
+        if (vision == null || vision.equals("")) {
+            destroyObject(item);
+            return;
+        }
+
+        // Only proceed if the player is on the "stardust_vision" quest
+        if (!vision_active(player, item)) {
+            destroyObject(item);
+            return;
+        }
+
+        obj_id playerInv = utils.getInventoryContainer(player);
+        if (!isIdValid(playerInv)) {
+            destroyObject(item);
+            return;
+        }
+
+        int roll = rand(1, 1); // Toggle between garunteed success or chance
+        String rewardItem = "";
+
+        if (roll == 1) {
+            // Tier 1 drop
+            switch (vision) {
+                case "serenity":
+                    rewardItem = "item_holocron_06_01"; // Yoda Form 0
+                    break;
+                case "harmony":
+                    rewardItem = "item_holocron_06_02"; // Kit Fisto / Yoda Form 1
+                    break;
+                case "passion":
+                    rewardItem = "item_holocron_06_03"; // Maul Form 2
+                    break;
+                case "knowledge":
+                    rewardItem = "item_holocron_06_04"; // Obi-Wan Form 3
+                    break;
+                case "victory":
+                    rewardItem = "item_holocron_06_05"; // Ahsoka / Yoda Form 4
+                    break;
+                case "strength":
+                    rewardItem = "item_holocron_06_06"; // Vader Form 5
+                    break;
+                case "peace":
+                    rewardItem = "item_holocron_06_07"; // Leia Form 6
+                    break;
+                case "power":
+                    rewardItem = "item_holocron_06_08"; // Sidious Form 7
+                    break;
+            }
+        }
+
+        if (!rewardItem.equals("")) {
+            static_item.createNewItemFunction(rewardItem, playerInv);
+        }
+
+        destroyObject(item); // Always destroy the original holocron
     }
 
     // Helper method to determine the vision signal based on holocron configuration
@@ -247,6 +331,10 @@ public class jedi_holocron extends script.base_script {
                 return "vision_vader";
             case "power":
                 return "vision_sidious";
+            case "harmony":
+                return "vision_yoda";
+            case "victory":
+                return "vision_yoda";
             default:
                 // Debug message for an unrecognized vision configuration
                 LOG("Holocron Vision", "Unrecognized vision configuration: " + configuredVision);
@@ -289,8 +377,20 @@ public class jedi_holocron extends script.base_script {
     }
 
     private void handleVisionChoice(obj_id player, String vision) throws InterruptedException {
+        obj_id holocron = getSelf();
+
         // Set the vision obj var on the holocron
-        setObjVar(getSelf(), "vision", vision);
+        setObjVar(holocron, "vision", vision);
+
+        // Reset current badge requirement for this stage
+        int stage = getIntObjVar(holocron, "jedi_stage");
+        String stageVar = "required_badge_stage" + (stage + 1);
+        removeObjVar(holocron, stageVar);
+
+        // Damage the holocron to introduce risk for reconfiguring
+        int damageAmount = rand(5, 10); // damage range
+        damageItem(holocron, damageAmount);
+        LOG("Holocron Vision", "Holocron reconfigured to '" + vision + "' and damaged by " + damageAmount + " HP.");
 
         // Provide feedback to the player
         sendSystemMessage(player, new string_id("jedi_spam", "holocron_configured"));

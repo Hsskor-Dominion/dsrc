@@ -173,6 +173,7 @@ public class rtp_luke_main extends script.base_script
             if (rtp_luke_main_condition_rtp_luke_academy_02_complete(player, npc))
             {
                 string_id message = new string_id(c_stringFile, "luke_lesson3");
+                groundquests.grantQuest(player, "jedi_gifts_1");
                 utils.removeScriptVar(player, "conversation.rtp_luke_main.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;
@@ -275,7 +276,7 @@ public class rtp_luke_main extends script.base_script
                 string_id[] responses = new string_id[numberOfResponses];
 
                 if (hasResponse0) {
-                    responses[responseIndex++] = new string_id(c_stringFile, "luke_academy1"); // Example follow-up response
+                    responses[responseIndex++] = new string_id(c_stringFile, "luke_academy1"); // follow-up response
                 }
 
                 // Set script variable for branching

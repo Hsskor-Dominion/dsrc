@@ -12096,79 +12096,65 @@ public class base_player extends script.base_script
             meditation.endMeditation(self, false);
             return SCRIPT_CONTINUE;
         }
+
         if (!trial.verifySession(self, params, meditation.HANDLER_MEDITATION_TICK)) {
             return SCRIPT_CONTINUE;
         }
+
         meditation.trance(self);
+
+        // If they have Project Will, apply Center of Being and reduce GCW fatigue stack
         if (hasSkill(self, "expertise_en_project_will_1")) {
             buff.applyBuff(self, "center_of_being");
 
             int stackSize = (int) buff.getBuffStackCount(self, "gcw_fatigue");
 
             if (stackSize > 0) {
-                stackSize--; // Reduce stack size by 1
+                stackSize--; // Decrease fatigue
 
-                // Remove the existing buff completely
                 buff.removeBuff(self, "gcw_fatigue");
 
-                // Reapply the buff with the reduced stack count, only if the stack count is still greater than 0
                 if (stackSize > 0) {
                     buff.applyBuffWithStackCount(self, "gcw_fatigue", stackSize);
                 }
             }
         }
-        int roll = rand(50, 100);
-        if (buff.isInStance(self)) {
-            buff.applyBuff(self, "fs_meditate_1");
-            if (roll == 97) {
-                xp.grant(self, "jedi", 1);
-                groundquests.sendSignal(self, "vision_yoda");
-            }
-            if (roll == 98) {
-                xp.grant(self, "jedi", 1);
-                groundquests.sendSignal(self, "vision_leia");
-            }
-            if (roll == 99) {
-                xp.grant(self, "jedi", 1);
-                groundquests.sendSignal(self, "vision_obi");
-            }
+
+        // Random roll for effects
+        int roll = rand(1, 100);
+
+        // Special bonus for Chronicle Masters
+        if (hasSkill(self, "class_chronicles_master")) {
             if (roll == 100) {
-                xp.grant(self, "jedi", 1);
-                groundquests.grantQuest(self, "jedi_gifts_1");
-            }
-        } else if (buff.isInFocus(self)) {
-            buff.applyBuff(self, "fs_meditate_3");
-            if (roll == 100) {
-                xp.grant(self, "jedi", 1);
-                groundquests.sendSignal(self, "vision_vader");
-            }
-            if (roll == 99) {
-                xp.grant(self, "jedi", 1);
-                groundquests.sendSignal(self, "vision_sidious");
-            }
-            if (roll == 98) {
-                xp.grant(self, "jedi", 1);
-                groundquests.sendSignal(self, "vision_maul");
-            }
-            if (roll == 97) {
-                xp.grant(self, "jedi", 1);
-                groundquests.sendSignal(self, "vision_vader");
-            }
-        } else if (utils.isProfession(self, utils.FORCE_SENSITIVE)) {
-            buff.applyBuff(self, "fs_meditate_2");
-            if (roll == 50) {
-                xp.grant(self, "jedi", 1);
                 groundquests.grantQuest(self, "stardust_vision");
-            }
-            if (roll == 100) {
-                xp.grant(self, "jedi", 10);
-                groundquests.sendSignal(self, "stardust_vision");
             }
         }
 
+        // Apply meditation buffs depending on stance/focus/profession
+        if (buff.isInStance(self)) {
+            buff.applyBuff(self, "fs_meditate_1");
+            if (roll == 99) {
+                xp.grant(self, "jedi", 3);
+            }
+        } else if (buff.isInFocus(self)) {
+            buff.applyBuff(self, "fs_meditate_3");
+            if (roll == 99) {
+                xp.grant(self, "jedi", 3);
+            }
+        } else if (utils.isProfession(self, utils.FORCE_SENSITIVE)) {
+            buff.applyBuff(self, "fs_meditate_2");
+            if (roll == 99) {
+                xp.grant(self, "jedi", 3);
+                groundquests.grantQuest(self, "stardust_vision");
+            }
+        }
+
+        // Schedule the next meditation tick
         messageTo(self, meditation.HANDLER_MEDITATION_TICK, trial.getSessionDict(self, meditation.HANDLER_MEDITATION_TICK), 10.0f, false);
+
         return SCRIPT_CONTINUE;
     }
+
     public int msgCoupDeGraceAuthoritativeCheck(obj_id self, dictionary params) throws InterruptedException
     {
         if (!utils.hasScriptVar(self, "death.beingCoupDeGraced"))

@@ -6,4 +6,5 @@
 
 sharedTemplate = "object/tangible/wearables/robe/shared_robe_jedi_dark_s04.iff"
 
+objvars = ["jedi.skill_required"="force_title_jedi_rank_02", "jedi.robe.regen" = 10, "jedi.robe.power"=250, "noTrade"=1]
 

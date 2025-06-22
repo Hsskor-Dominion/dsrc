@@ -52,7 +52,7 @@ public class jabba_raid extends script.base_script
     }
     public void jabba_raid_action_signalReward(obj_id player, obj_id npc) throws InterruptedException
     {
-        groundquests.sendSignal(player, "fennec_reward");
+        groundquests.sendSignal(player, "returnedfennec");
     }
     public void jabba_raid_action_grantQ1(obj_id player, obj_id npc) throws InterruptedException
     {

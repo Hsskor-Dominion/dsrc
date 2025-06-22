@@ -8353,7 +8353,7 @@ public class terminal_character_builder extends script.base_script
         int powerRatioOne = dataTableGetInt(EXOTIC_SKILL_MODS, skillModOne, "ratio");
         int powerRatioTwo = dataTableGetInt(EXOTIC_SKILL_MODS, skillModTwo, "ratio");
         int powerRatioThree = dataTableGetInt(EXOTIC_SKILL_MODS, skillModThree, "ratio");
-        int power = 35;
+        int power = 25;
         int powerOne = power / powerRatioOne;
         int powerTwo = power / powerRatioTwo;
         int powerThree = power / powerRatioThree;
@@ -8584,7 +8584,7 @@ public class terminal_character_builder extends script.base_script
         String stringSkillModTwo = BASIC_MOD_STRINGS[skillModTwo];
         String stringSkillModThree = BASIC_MOD_STRINGS[skillModThree];
         int powerRatio = 1;
-        int power = 35;
+        int power = 25;
         power = power / powerRatio;
         String attachment = utils.getStringScriptVar(player, "character_builder.attachment");
         obj_id armorPower = createObject(attachment, pInv, "");
