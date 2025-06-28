@@ -33,8 +33,8 @@ public class npe extends script.base_script
     public static final float PLAYER_PLACEMENT_RANGE = 3.0f;
     public static final float SPACE_PLAYER_PLACEMENT_RANGE = 100.0f;
     public static final String FINISH_PLANET = "corellia";
-    public static final float FINISH_X = -147.0f;
-    public static final float FINISH_Z = -4720.0f;
+    public static final float FINISH_X = -48.0f;
+    public static final float FINISH_Z = -4727.0f;
     public static final int QUEST_ENUMERATION = 1;
     public static final String QUEST_REWORK_VAR = "npe.questRegrant";
     public static final String QUEST_REWORK_TABLE = "datatables/npe/reworked_quests.iff";
@@ -567,7 +567,7 @@ public class npe extends script.base_script
         }
         if (hasObjVar(player, "stardust_coronet"))
         {
-            warpPlayer(player, "corellia", -147, 0, -4720, null, 0, 0, 0, "", false);
+            warpPlayer(player, "corellia", -48, 0, -4727, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_lok"))
         {

@@ -67,8 +67,8 @@ bindingStrike_1	bindingStrike			2	command.bindingStrike	45	stamina	-250		0		0		0
 armorBreak	armorBreak			1	command.armorBreak	15	private_armor_break	42		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 armorBreak_1	armorBreak			3	command.armorBreak	20	private_armor_break	100		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 armorBreak_2	armorBreak			4	command.armorBreak	30	private_armor_break	150		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
-berserk	berserk			1	command.warcry	30	private_melee_dmg_bonus	10	combat_divide_damage_taken	-10	expertise_undiminished_critical_melee	5		0		0	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
-berserk_1	berserk			2	command.berserk	20	private_melee_dmg_bonus	50		0		0		0		0	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
+berserk	berserk			1	command.warcry	10	private_melee_dmg_bonus	20	combat_divide_damage_taken	-10	expertise_undiminished_critical_melee	20		0		0	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
+berserk_1	berserk			2	command.berserk	10	private_melee_dmg_bonus	50		0		0		0		0	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
 startleShot	startleShot			1	command.startleShot	5	private_posture_override	1		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 startleShot_1	startleShot			2	command.startleShot	5	private_posture_override	1		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 startleShot_2	startleShot	daze		3	command.startleShot	5	private_posture_override	1	delay_attack	0		0		0		0	STATE_NONE	dazeRecourse			0	1		1	1	1	0	1	1	0	1	1	1
@@ -1179,7 +1179,7 @@ me_buff_melee_gb_1	medicBlock			34	command.me_enhance_block	600	expertise_block_
 me_buff_ranged_gb_1	medicDodge			34	command.me_enhance_dodge	600	expertise_dodge	5		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_dodge.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_serotonin_boost_1	medicCancelDebuff			26	command.me_serotonin_boost	3	debuff_purge	1		0		0		0		0	STATE_NONE	none	clienteffect/medic_serotonin_boost.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_cure_affliction_1	medicCancelBuff			26	command.me_cure_affliction	6	dot_reduction_all	5	dot_resist_all	100		0		0		0	STATE_NONE	none	clienteffect/medic_cure_affliction.cef		1	0		1	1	1	0	1	1	0	1	1	1
-me_bacta_resistance_1	healingDebuff			21	command.me_bacta_resistance	18	expertise_healing_reduction	40		0		0		0		0	STATE_NONE	none	clienteffect/medic_bacta_resistance.cef		1	1		1	1	1	0	1	1	0	1	1	1
+me_bacta_resistance_1	healingDebuff			21	command.me_bacta_resistance	18	expertise_healing_reduction	50		0		0		0		0	STATE_NONE	none	clienteffect/medic_bacta_resistance.cef		1	1		1	1	1	0	1	1	0	1	1	1
 me_induce_insanity_1	medicSpecialLock			34	command.me_induce_insanity	15	weapon_lock	1		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 me_electrolyte_drain_1	snare			26	command.me_electrolyte_drain	15	movement	0		0		0		0		0	STATE_NONE	none	clienteffect/medic_electrolyte_drain.cef		1	1		1	1	1	0	1	1	0	1	1	1
 me_traumatize_1	actionDrain			1	command.me_traumatize	1	immediate_action_drain	1	expertise_action_all	-50		0		0		0	STATE_NONE	none	clienteffect/medic_traumatize.cef		1	1		1	1	1	0	1	1	0	1	1	1

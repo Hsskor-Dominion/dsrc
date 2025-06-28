@@ -188,7 +188,7 @@ class_medic_phase1_04	class_medic_phase1_03	oneByFour	0	0	0	0	100	0		class_medic
 class_medic_phase1_05	class_medic_phase1_04	oneByFour	0	0	0	0	100	0		class_medic_phase1_04		combat_general	52100	105300							me_dm_2,me_bacta_ampule_2				1	0
 class_medic_phase1_master	class_medic_phase1	oneByFour	0	1	0	0	100	0		class_medic_phase1_05		combat_general	81000	151060							me_dm_3,me_bacta_ampule_3				1	0
 class_medic_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
-class_medic_phase2_novice	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase1_master		combat_general	116200	205140							me_cure_affliction_1,me_dm_dot_2,wear_all_armor				1	0
+class_medic_phase2_novice	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase1_master		combat_general	116200	205140							me_dm_dot_2,wear_all_armor				1	0
 class_medic_phase2_02	class_medic_phase2	oneByFour	0	0	0	0	100	0		class_medic_phase2_novice		combat_general	157800	267540							me_dm_dot_3,place_hospital	private_place_hospital=100			1	0
 class_medic_phase2_03	class_medic_phase2_02	oneByFour	0	0	0	0	100	0		class_medic_phase2_02		combat_general	205800	339690							me_ae_heal_3				1	0
 class_medic_phase2_04	class_medic_phase2_03	oneByFour	0	0	0	0	100	0		class_medic_phase2_03		combat_general	261300	423410							me_hot_1				1	0
@@ -2283,7 +2283,7 @@ expertise_sp_protective_armor_3	expertise_sp_protective_armor_2																	
 expertise_sp_protective_armor_4	expertise_sp_protective_armor_3																					expertise_innate_protection_kinetic=300,expertise_innate_protection_energy=300,detect_hidden=20				
 expertise_sp_improved_arachnids_web_1	expertise																				sp_improved_cc_dot_0					
 expertise_sp_assassins_mark	expertise_bh_trap_duration_4									expertise_bh_trap_duration_4											sp_assassins_mark	bh_dire_snare=10,bh_dire_root=10				
-expertise_sp_run_its_course_1	expertise_me_heal_damage_4			1						expertise_me_heal_damage_4											sp_run_its_course,me_drag_1					
+expertise_sp_run_its_course_1	expertise_me_heal_damage_4			1						expertise_me_heal_damage_4											me_cure_affliction_1,me_drag_1					
 expertise_sp_noxious_traps_1	expertise																					expertise_damage_line_fldmot=15				
 expertise_sp_noxious_traps_2	expertise_sp_noxious_traps_1																					expertise_damage_line_fldmot=15				
 expertise_sp_opportunity_1	expertise																					expertise_critical_niche_all=2				
