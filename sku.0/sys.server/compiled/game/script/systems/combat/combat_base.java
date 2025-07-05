@@ -2382,7 +2382,7 @@ public class combat_base extends script.base_script
             if (specialLine != null && specialLine.length() > 0)
             {
                 //expertiseDotDurationBonus = getEnhancedSkillStatisticModifierUncapped(attacker, "expertise_dot_duration_line_" + specialLine);
-                expertiseDotDurationBonus = getEnhancedSkillStatisticModifierUncapped(attacker, "expertise_dot_duration_line_me_dot");//This is a SWG Chimaera attempted fix for universal DoT Duration incease expertise
+                expertiseDotDurationBonus = getEnhancedSkillStatisticModifierUncapped(attacker, "expertise_dot_duration_line_me_dot");//This is a SWG Chimaera attempted fix for universal DoT Duration increase expertise
                 expertiseDotDurationBonus += getEnhancedSkillStatisticModifierUncapped(attacker, "expertise_dot_duration_single_" + specialName);
                 expertiseDotDamageBonus += getEnhancedSkillStatisticModifierUncapped(attacker, "expertise_dot_damage_line_" + specialLine);
             }
