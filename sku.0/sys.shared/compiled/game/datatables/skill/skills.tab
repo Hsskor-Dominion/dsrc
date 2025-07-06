@@ -100,11 +100,11 @@ class_commando_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_commando_phase1_novice	class_commando_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							co_dm_1,co_empowered_attack				1	0
 class_commando_phase1_02	class_commando_phase1	oneByFour	0	0	0	0	100	0		class_commando_phase1_novice		combat_general	3700	16120							co_del_ae_cc_1_1				1	0
 class_commando_phase1_03	class_commando_phase1_02	oneByFour	0	0	0	0	100	0		class_commando_phase1_02		combat_general	12400	30160							co_ae_dm_1,of_sh_0				1	0
-class_commando_phase1_04	class_commando_phase1_03	oneByFour	0	0	0	0	100	0		class_commando_phase1_03		combat_general	23200	67730							co_dm_2,co_remote_detonator_1	expertise_co_flash_bang=100,expertise_delay_line_co_remote_detonator=480,expertise_damage_line_co_remote_detonator=300			1	0
+class_commando_phase1_04	class_commando_phase1_03	oneByFour	0	0	0	0	100	0		class_commando_phase1_03		combat_general	23200	67730							co_dm_2				1	0
 class_commando_phase1_05	class_commando_phase1_04	oneByFour	0	0	0	0	100	0		class_commando_phase1_04		combat_general	52100	105300							co_del_ae_cc_1_2				1	0
 class_commando_phase1_master	class_commando_phase1	oneByFour	0	1	0	0	100	0		class_commando_phase1_05		combat_general	81000	151060							co_ae_dm_2,co_cluster_bomb				1	0
 class_commando_phase2	class	oneByFour	0	0	1	0	0	0						0											1	0
-class_commando_phase2_novice	class_commando_phase2	oneByFour	0	0	0	0	100	0		class_commando_phase1_master		combat_general	116200	205140							co_dm_3,co_hw_dm_1,co_hw_dm_crit_1,wear_all_armor	commando_passive_dot=1			1	0
+class_commando_phase2_novice	class_commando_phase2	oneByFour	0	0	0	0	100	0		class_commando_phase1_master		combat_general	116200	205140							co_dm_3,co_hw_dm_1,wear_all_armor	commando_passive_dot=1			1	0
 class_commando_phase2_02	class_commando_phase2	oneByFour	0	0	0	0	100	0		class_commando_phase2_novice		combat_general	157800	267540							co_del_ae_cc_1_3				1	0
 class_commando_phase2_03	class_commando_phase2_02	oneByFour	0	0	0	0	100	0		class_commando_phase2_02		combat_general	205800	339690							co_ae_dm_3				1	0
 class_commando_phase2_04	class_commando_phase2_03	oneByFour	0	0	0	0	100	0		class_commando_phase2_03		combat_general	261300	423410							of_sh_1,co_first_aid_training				1	0
@@ -123,7 +123,7 @@ class_commando_phase4_02	class_commando_phase4	oneByFour	0	0	0	0	100	0		class_co
 class_commando_phase4_03	class_commando_phase4_02	oneByFour	0	0	0	0	100	0		class_commando_phase4_02		combat_general	1772600	2664480							co_dm_7				1	0
 class_commando_phase4_04	class_commando_phase4_03	oneByFour	0	0	0	0	100	0		class_commando_phase4_03		combat_general	2049600	3074500							of_sh_3				1	0
 class_commando_phase4_05	class_commando_phase4_04	oneByFour	0	0	0	0	100	0		class_commando_phase4_04		combat_general	2365000	3540940							co_del_ae_dm_3				1	0
-class_commando_phase4_master	class_commando_phase4	oneByFour	0	1	0	0	100	0		class_commando_phase4_05		combat_general	2723800	3540940							co_dm_8,co_conceal_device_1,co_kill_trap_1	expertise_co_pos_secured_line_burst_fire_proc=10,expertise_co_pos_secured_line_burst_fire_devastation_bonus=5,expertise_area_size_line_co_remote_detonator=5,expertise_co_cluster_bomblet=2,commando_passive_dot=1			1	0
+class_commando_phase4_master	class_commando_phase4	oneByFour	0	1	0	0	100	0		class_commando_phase4_05		combat_general	2723800	3540940							co_dm_8,co_conceal_device_1,co_kill_trap_1	expertise_co_pos_secured_line_burst_fire_proc=10,expertise_co_pos_secured_line_burst_fire_devastation_bonus=5,expertise_co_cluster_bomblet=2,commando_passive_dot=1			1	0
 class_officer_phase1	class	oneByFour	0	0	1	0	0	0						0							sysgroup				1	0
 class_officer_phase1_novice	class_officer_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							of_dm_1				1	0
 class_officer_phase1_02	class_officer_phase1	oneByFour	0	0	0	0	100	0		class_officer_phase1_novice		combat_general	3700	16120							of_deb_def_1				1	0
@@ -136,7 +136,7 @@ class_officer_phase2_novice	class_officer_phase2	oneByFour	0	0	0	0	100	0		class_
 class_officer_phase2_02	class_officer_phase2	oneByFour	0	0	0	0	100	0		class_officer_phase2_novice		combat_general	157800	267540							of_buff_def_3				1	0
 class_officer_phase2_03	class_officer_phase2_02	oneByFour	0	0	0	0	100	0		class_officer_phase2_02		combat_general	205800	339690							of_deb_def_3				1	0
 class_officer_phase2_04	class_officer_phase2_03	oneByFour	0	0	0	0	100	0		class_officer_phase2_03		combat_general	261300	423410							of_sh_1,of_reinforcements_1				1	0
-class_officer_phase2_05	class_officer_phase2_04	oneByFour	0	0	0	0	100	0		class_officer_phase2_04		combat_general	325700	519610							of_del_ae_dm_dot_1	expertise_critical_line_of_aoe=50,expertise_damage_line_of_aoe=100			1	0
+class_officer_phase2_05	class_officer_phase2_04	oneByFour	0	0	0	0	100	0		class_officer_phase2_04		combat_general	325700	519610							of_del_ae_dm_dot_1				1	0
 class_officer_phase2_master	class_officer_phase2	oneByFour	0	1	0	0	100	0		class_officer_phase2_05		combat_general	399700	629980							of_dm_4,of_buff_def_4,of_deb_def_4				1	0
 class_officer_phase3	class	oneByFour	0	0	1	0	0	0																	1	0
 class_officer_phase3_novice	class_officer_phase3	oneByFour	0	0	0	0	100	0		class_officer_phase2_master		combat_general	484600	756860							of_del_ae_dm_1,of_ae_dm_cc_1,of_reinforcements_2				1	0
@@ -179,7 +179,7 @@ class_spy_phase4_02	class_spy_phase4	oneByFour	0	0	0	0	100	0		class_spy_phase4_n
 class_spy_phase4_03	class_spy_phase4_02	oneByFour	0	0	0	0	100	0		class_spy_phase4_02		combat_general	1772600	2664480							sp_dm_7				1	0
 class_spy_phase4_04	class_spy_phase4_03	oneByFour	0	0	0	0	100	0		class_spy_phase4_03		combat_general	2049600	3074500							of_sh_3	expertise_movement_buff_invis_sp_buff_invis_1=-5			1	0
 class_spy_phase4_05	class_spy_phase4_04	oneByFour	0	0	0	0	100	0		class_spy_phase4_04		combat_general	2365000	3540940							sp_smoke_mirrors				1	0
-class_spy_phase4_master	class_spy_phase4	oneByFour	0	1	0	0	100	0		class_spy_phase4_05		combat_general	2723800	3540940							sp_dm_8,sp_hide_device_1,sp_neutralize_device_1,sp_shifty_setup,sp_reveal_shadows	expertise_onstrikethrough_proc_sp_resonance=1,expertise_oncrit_proc_sp_savagery=1			1	0
+class_spy_phase4_master	class_spy_phase4	oneByFour	0	1	0	0	100	0		class_spy_phase4_05		combat_general	2723800	3540940							sp_dm_8,sp_hide_device_1,sp_neutralize_device_1,sp_shifty_setup,sp_reveal_shadows	expertise_sp_reveal_shadows_distance_increase=20,expertise_sp_reveal_shadows_detect_chance_increase=12,expertise_cooldown_line_sp_reveal_shadows=30			1	0
 class_medic_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_medic_phase1_novice	class_medic_phase1	oneByFour	0	0	0	0	100	0				combat_general	100	4810							me_ae_heal_1	expertise_healing_line_me_hot=50,expertise_healing_all=20,exotic_heal_action_reduction=20,me_doom_chance=5			1	0
 class_medic_phase1_02	class_medic_phase1	oneByFour	0	0	0	0	100	0		class_medic_phase1_novice		combat_general	3700	16120							me_dm_1,me_bacta_ampule_1				1	0
@@ -207,7 +207,7 @@ class_medic_phase4_02	class_medic_phase4	oneByFour	0	0	0	0	100	0		class_medic_ph
 class_medic_phase4_03	class_medic_phase4_02	oneByFour	0	0	0	0	100	0		class_medic_phase4_02		combat_general	1772600	2664480							me_ae_heal_5,me_dm_dot_6				1	0
 class_medic_phase4_04	class_medic_phase4_03	oneByFour	0	0	0	0	100	0		class_medic_phase4_03		combat_general	2049600	3074500							me_sh_1,me_bacta_bomb_1				1	0
 class_medic_phase4_05	class_medic_phase4_04	oneByFour	0	0	0	0	100	0		class_medic_phase4_04		combat_general	2365000	3540940							me_dm_8,me_bacta_grenade_1				1	0
-class_medic_phase4_master	class_medic_phase4	oneByFour	0	1	0	0	100	0		class_medic_phase4_05		combat_general	2723800	3540940							me_ae_heal_6,me_stasis_1	me_doom_chance=5			1	0
+class_medic_phase4_master	class_medic_phase4	oneByFour	0	1	0	0	100	0		class_medic_phase4_05		combat_general	2723800	3540940							me_ae_heal_6,me_stasis_1				1	0
 class_entertainer_phase1	class	oneByFour	0	0	1	0	0	0						0											1	0
 class_entertainer_phase1_novice	class_entertainer_phase1	oneByFour	0	0	0	0	100	0				entertainer	100	4810							fizz,startMusic+rock,flourish+1,flourish+2,flourish+3,flourish+4,flourish+5,flourish+6,flourish+7,flourish+8,imagedesign,covercharge,inspire,registerWithLocation,musician,dancer,groupdance,of_inspiration_1,en_flush_with_success_buff_package	hair=1,face=1,instrument_customization=20,expertise_en_inspire_base_point_increase=12	craftDancePropA,craftInstrumentGroupA,craftInstrumentGroupB		1	0
 class_entertainer_phase1_02	class_entertainer_phase1	oneByFour	0	1	0	0	100	0		class_entertainer_phase1_novice		entertainer	3700	16120							prop_staff,colorlights,startDance+basic2	hair=1,instrument_customization=20			1	0
@@ -1579,19 +1579,19 @@ expertise_bh_trap_rng_1	expertise_sp_assassins_mark									expertise_sp_assassi
 expertise_bh_trap_rng_2	expertise_bh_trap_rng_1																					expertise_area_size_line_trap=1,expertise_damage_line_dm_cc=10,trapping=10,bh_dire_snare=10,bh_dire_root=10			0	
 expertise_bh_trap_rng_3	expertise_bh_trap_rng_2																					expertise_area_size_line_trap=0,expertise_damage_line_dm_cc=10,trapping=10,bh_dire_snare=10,bh_dire_root=10			0	
 expertise_bh_trap_rng_4	expertise_bh_trap_rng_3																					expertise_area_size_line_trap=1,expertise_damage_line_dm_cc=10,trapping=10,bh_dire_snare=10,bh_dire_root=10			0	
-expertise_bh_trap_duration_1	expertise																				bh_del_cc_1,bh_dm_cc_1	expertise_buff_duration_group_snare=1	craftScoutTrapGroupB		0	
-expertise_bh_trap_duration_2	expertise_bh_trap_duration_1																					expertise_buff_duration_group_snare=1	craftScoutTrapGroupC		0	
-expertise_bh_trap_duration_3	expertise_bh_trap_duration_2																					expertise_buff_duration_group_snare=1	craftScoutTrapGroupD		0	
-expertise_bh_trap_duration_4	expertise_bh_trap_duration_3			1																		expertise_buff_duration_group_snare=1	craftScoutTrapGroupE		0	
+expertise_bh_trap_duration_1	expertise																				bh_del_cc_1	expertise_buff_duration_group_snare=1,expertise_sp_cripple_trap_proc_increase=25	craftScoutTrapGroupB		0	
+expertise_bh_trap_duration_2	expertise_bh_trap_duration_1																					expertise_buff_duration_group_snare=1,expertise_sp_cripple_trap_proc_increase=25	craftScoutTrapGroupC		0	
+expertise_bh_trap_duration_3	expertise_bh_trap_duration_2																					expertise_buff_duration_group_snare=1,expertise_sp_cripple_trap_proc_increase=25	craftScoutTrapGroupD		0	
+expertise_bh_trap_duration_4	expertise_bh_trap_duration_3			1																		expertise_buff_duration_group_snare=1,expertise_sp_cripple_trap_proc_increase=25	craftScoutTrapGroupE		0	
 expertise_bh_intimidate_1	expertise_bh_trap_rng_4									expertise_bh_trap_rng_4												precision_modified=25			0	
 expertise_bh_intimidate_2	expertise_bh_intimidate_1																					precision_modified=25			0	
 expertise_bh_intimidate_3	expertise_bh_intimidate_2																					precision_modified=25			0	
 expertise_bh_intimidate_4	expertise_bh_intimidate_3																					precision_modified=25			0	
-expertise_bh_dread_strike_1	expertise_sp_jagged_edge_4									expertise_sp_jagged_edge_4											bh_dread_strike_1	bh_dire_snare=10,bh_dire_root=10			0	
-expertise_bh_stamina_1	expertise																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10	craftStructureCampA		0	
-expertise_bh_stamina_2	expertise_bh_stamina_1																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10	craftStructureCampB		0	
-expertise_bh_stamina_3	expertise_bh_stamina_2																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10	craftStructureCampC		0	
-expertise_bh_stamina_4	expertise_bh_stamina_3			1																		foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10	craftStructureCampE		0	
+expertise_bh_dread_strike_1	expertise_sp_jagged_edge_4									expertise_sp_jagged_edge_4											bh_dread_strike_1	bh_dire_snare=10,bh_dire_root=10,expertise_onstrikethrough_proc_sp_resonance=1,expertise_oncrit_proc_sp_savagery=1 			0	
+expertise_bh_stamina_1	expertise																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10,detect_hidden=20	craftStructureCampA		0	
+expertise_bh_stamina_2	expertise_bh_stamina_1																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10,detect_hidden=20	craftStructureCampB		0	
+expertise_bh_stamina_3	expertise_bh_stamina_2																					foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10,detect_hidden=20	craftStructureCampC		0	
+expertise_bh_stamina_4	expertise_bh_stamina_3			1																		foraging=5,camp=10,stamina_modified=10,expertise_en_performance_increase=10,detect_hidden=20	craftStructureCampE		0	
 expertise_bh_precision_1	expertise																					precision_modified=10			0	
 expertise_bh_precision_2	expertise_bh_precision_1																					precision_modified=10			0	
 expertise_bh_precision_3	expertise_bh_precision_2																					precision_modified=10			0	
@@ -1612,13 +1612,13 @@ expertise_bh_carbine_dam_1	expertise																					expertise_damage_weapon
 expertise_bh_carbine_dam_2	expertise_bh_carbine_dam_1																					expertise_damage_weapon_1=3,expertise_damage_weapon_2=3			0	
 expertise_bh_carbine_crit_1	expertise_bh_carbine_dam_2									expertise_bh_carbine_dam_2												expertise_range_bonus_carbine=10,expertise_undiminished_critical_carbine=10,expertise_undiminished_critical_pistol=10,expertise_range_bonus_pistol=5			0	
 expertise_bh_relentless_1	expertise_bh_carbine_crit_1									expertise_bh_carbine_crit_1											bh_relentless_1				0	
-expertise_bh_rifle_act_1	expertise																					expertise_action_weapon_0=3			0	
-expertise_bh_rifle_act_2	expertise_bh_rifle_act_1																					expertise_action_weapon_0=3			0	
-expertise_bh_rifle_act_3	expertise_bh_rifle_act_2																					expertise_action_weapon_0=4			0	
-expertise_bh_rifle_act_4	expertise_bh_rifle_act_3			1																		expertise_action_weapon_0=5			0	
+expertise_bh_rifle_act_1	expertise																					expertise_action_weapon_0=3,expertise_action_weapon_12=3			0	
+expertise_bh_rifle_act_2	expertise_bh_rifle_act_1																					expertise_action_weapon_0=3,expertise_action_weapon_12=3			0	
+expertise_bh_rifle_act_3	expertise_bh_rifle_act_2																					expertise_action_weapon_0=4,expertise_action_weapon_12=4			0	
+expertise_bh_rifle_act_4	expertise_bh_rifle_act_3			1																		expertise_action_weapon_0=5,expertise_action_weapon_12=5			0	
 expertise_bh_rifle_dam_1	expertise																					expertise_damage_weapon_0=2			0	
 expertise_bh_rifle_dam_2	expertise_bh_rifle_dam_1																					expertise_damage_weapon_0=3			0	
-expertise_bh_sniper_1	expertise_bh_rifle_act_4			1						expertise_bh_rifle_act_4											bh_sniper_1				0	
+expertise_bh_sniper_1	expertise_bh_rifle_act_4			1						expertise_bh_rifle_act_4											co_hw_dm_crit_1,bh_sniper_1,co_hw_dm_crit_2				0	
 expertise_bh_cover_1	expertise_sp_deadly_pistols_4			1						expertise_sp_deadly_pistols_4											bh_cover_1				0	
 expertise_bh_armor_kin_1	expertise																					expertise_innate_protection_kinetic=250			0	
 expertise_bh_armor_kin_2	expertise_bh_armor_kin_1																					expertise_innate_protection_kinetic=250			0	
@@ -1705,10 +1705,10 @@ expertise_fs_path_perceptive_sentinel_1	expertise_fs_path_cautious_nature_2					
 expertise_fs_path_perceptive_sentinel_2	expertise_fs_path_perceptive_sentinel_1																					expertise_stance_perceptive_sentinel=1,expertise_stance_perceptive_sentinel_pvp=1				
 expertise_fs_path_perceptive_sentinel_3	expertise_fs_path_perceptive_sentinel_2																					expertise_stance_perceptive_sentinel=1,expertise_stance_perceptive_sentinel_pvp=1				
 expertise_fs_path_perceptive_sentinel_4	expertise_fs_path_perceptive_sentinel_3			1																		expertise_stance_perceptive_sentinel=1,expertise_stance_perceptive_sentinel_pvp=1				
-expertise_fs_path_brutality_1	expertise_fs_path_remorseless_nature_2									expertise_fs_path_remorseless_nature_2												expertise_focus_critical_buff_line=1,camouflage=10			0	
-expertise_fs_path_brutality_2	expertise_fs_path_brutality_1																					expertise_focus_critical_buff_line=1,camouflage=10			0	
-expertise_fs_path_brutality_3	expertise_fs_path_brutality_2																					expertise_focus_critical_buff_line=1,camouflage=10			0	
-expertise_fs_path_brutality_4	expertise_fs_path_brutality_3			1																		expertise_focus_critical_buff_line=1,camouflage=10			0	
+expertise_fs_path_brutality_1	expertise_fs_path_remorseless_nature_2									expertise_fs_path_remorseless_nature_2												expertise_focus_critical_buff_line=1,expertise_critical_niche_pvp=1,expertise_critical_niche_npc=1			0	
+expertise_fs_path_brutality_2	expertise_fs_path_brutality_1																					expertise_focus_critical_buff_line=1,expertise_critical_niche_pvp=1,expertise_critical_niche_npc=1			0	
+expertise_fs_path_brutality_3	expertise_fs_path_brutality_2																					expertise_focus_critical_buff_line=1,expertise_critical_niche_pvp=1,expertise_critical_niche_npc=1			0	
+expertise_fs_path_brutality_4	expertise_fs_path_brutality_3			1																		expertise_focus_critical_buff_line=1,expertise_critical_niche_pvp=1,expertise_critical_niche_npc=1			0	
 expertise_fs_path_ruthless_precision_1	expertise_fs_path_remorseless_nature_2									expertise_fs_path_remorseless_nature_2												expertise_focus_damage_increase=2				
 expertise_fs_path_ruthless_precision_2	expertise_fs_path_ruthless_precision_1																					expertise_focus_damage_increase=2				
 expertise_fs_path_ruthless_precision_3	expertise_fs_path_ruthless_precision_2																					expertise_focus_damage_increase=2				
@@ -1893,10 +1893,10 @@ expertise_of_advanced_tactics_1	expertise_bh_stamina_4									expertise_bh_stam
 expertise_of_focus_fire_1	expertise_of_advanced_tactics_1									expertise_of_advanced_tactics_1											of_focus_fire_1,of_drillmaster_1,of_charge_1				0	
 expertise_of_drillmaster_1	expertise_of_advanced_tactics_1									expertise_of_advanced_tactics_1											of_drillmaster_1				0	
 expertise_of_inspiration_1	expertise_of_advanced_tactics_1									expertise_of_advanced_tactics_1											of_inspiration_1				0	
-expertise_of_scatter_1	expertise_co_blast_resistance_4									expertise_co_blast_resistance_4											of_scatter_1	movement_resist_snare=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
-expertise_of_scatter_2	expertise_of_scatter_1																					movement_resist_snare=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
-expertise_of_scatter_3	expertise_of_scatter_2																					movement_resist_snare=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
-expertise_of_scatter_4	expertise_of_scatter_3																					movement_resist_snare=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
+expertise_of_scatter_1	expertise_co_blast_resistance_4									expertise_co_blast_resistance_4											of_scatter_1	expertise_glancing_blow_all=2,slope_move=5			0	
+expertise_of_scatter_2	expertise_of_scatter_1																					expertise_glancing_blow_all=2,slope_move=5			0	
+expertise_of_scatter_3	expertise_of_scatter_2																					expertise_glancing_blow_all=2,slope_move=5			0	
+expertise_of_scatter_4	expertise_of_scatter_3																					expertise_glancing_blow_all=2,slope_move=5			0	
 expertise_of_charge_1	expertise_of_inspiration_1			1						expertise_of_scatter_1											of_charge_1				0	
 expertise_of_last_words_1	expertise_of_scatter_4									expertise_of_scatter_4											me_enhance_agility_1,me_enhance_strength_1	of_inspired_action_chance=20,expertise_glancing_blow_all=10,movement_resist_snare=10			0	
 expertise_of_sup_cool_1	expertise																					expertise_cooldown_line_of_sup=3			0	
@@ -1909,13 +1909,13 @@ expertise_of_reinforcements_1	expertise_of_tactical_sup_1									expertise_of_t
 expertise_of_aoe_act_1	expertise																					expertise_action_line_of_aoe=5			0	
 expertise_of_aoe_act_2	expertise_of_aoe_act_1																					expertise_action_line_of_aoe=5			0	
 expertise_of_aoe_act_3	expertise_of_aoe_act_2																					expertise_action_line_of_aoe=5			0	
-expertise_of_aoe_act_4	expertise_of_aoe_act_3																					expertise_action_line_of_aoe=10			0	
+expertise_of_aoe_act_4	expertise_of_aoe_act_3																					expertise_action_line_of_aoe=10,expertise_critical_line_of_aoe=10			0	
 expertise_of_aoe_crit_1	expertise																					expertise_critical_line_of_aoe=10			0	
 expertise_of_aoe_crit_2	expertise_of_aoe_crit_1																					expertise_critical_line_of_aoe=15			0	
 expertise_of_aoe_crit_3	expertise_of_aoe_crit_2																					expertise_critical_line_of_aoe=25,expertise_damage_line_of_aoe=10			0	
 expertise_of_aoe_dam_1	expertise																					expertise_damage_line_of_aoe=10			0	
 expertise_of_aoe_dam_2	expertise_of_aoe_dam_1																					expertise_damage_line_of_aoe=15			0	
-expertise_of_firepower_1	expertise_of_aoe_dam_2									expertise_of_aoe_dam_2											of_firepower_1				0	
+expertise_of_firepower_1	expertise_me_precision_4									expertise_me_precision_4											of_firepower_1,co_remote_detonator_1	expertise_co_flash_bang=100,expertise_delay_line_co_remote_detonator=480			0	
 expertise_of_firepower_cool_1	expertise_of_firepower_1									expertise_of_firepower_1												expertise_cooldown_line_of_firepower=3			0	
 expertise_of_firepower_cool_2	expertise_of_firepower_cool_1																					expertise_cooldown_line_of_firepower=3			0	
 expertise_of_firepower_cool_3	expertise_of_firepower_cool_2																					expertise_cooldown_line_of_firepower=4			0	
@@ -2038,10 +2038,10 @@ expertise_me_vital_action_2	expertise_me_vital_action_1																					expe
 expertise_me_vital_action_3	expertise_me_vital_action_2																					expertise_action_line_me_dm=5			0	
 expertise_me_vital_action_4	expertise_me_vital_action_3																					expertise_action_line_me_dm=10			0	
 expertise_me_bacta_resistance_1	expertise_me_reckless_stimulation_1									expertise_me_reckless_stimulation_1											me_bacta_resistance_1				0	
-expertise_me_dot_damage_1	expertise_me_traumatize_1									expertise_me_traumatize_1												expertise_dot_increase=5			0	
-expertise_me_dot_damage_2	expertise_me_dot_damage_1																					expertise_dot_increase=5			0	
-expertise_me_dot_damage_3	expertise_me_dot_damage_2																					expertise_dot_increase=5			0	
-expertise_me_dot_damage_4	expertise_me_dot_damage_3																					expertise_dot_increase=5			0	
+expertise_me_dot_damage_1	expertise_me_traumatize_1									expertise_me_traumatize_1												expertise_dot_increase=5,me_doom_chance=1			0	
+expertise_me_dot_damage_2	expertise_me_dot_damage_1																					expertise_dot_increase=5,me_doom_chance=1			0	
+expertise_me_dot_damage_3	expertise_me_dot_damage_2																					expertise_dot_increase=5,me_doom_chance=1			0	
+expertise_me_dot_damage_4	expertise_me_dot_damage_3																					expertise_dot_increase=5,me_doom_chance=1			0	
 expertise_me_serotonin_purge_1	expertise_me_bacta_resistance_1									expertise_me_bacta_resistance_1											me_serotonin_purge_1				0	
 expertise_me_induce_insanity_1	expertise_me_dot_duration_4									expertise_me_dot_duration_4											me_induce_insanity_1				0	
 expertise_me_vital_damage_1	expertise																					expertise_damage_line_me_dm=5			0	
@@ -2049,11 +2049,11 @@ expertise_me_vital_damage_2	expertise_me_vital_damage_1																					expe
 expertise_me_vital_damage_3	expertise_me_vital_damage_2																					expertise_damage_line_me_dm=5			0	
 expertise_me_vital_damage_4	expertise_me_vital_damage_3																					expertise_damage_line_me_dm=5			0	
 expertise_me_electrolyte_drain_1	expertise_me_vital_damage_4									expertise_me_vital_damage_4											me_electrolyte_drain_1				0	
-expertise_me_dot_duration_1	expertise_me_dot_damage_4									expertise_me_dot_damage_4												expertise_dot_duration_line_me_dot=3			0	
-expertise_me_dot_duration_2	expertise_me_dot_duration_1																					expertise_dot_duration_line_me_dot=3			0	
-expertise_me_dot_duration_3	expertise_me_dot_duration_2																					expertise_dot_duration_line_me_dot=4			0	
-expertise_me_dot_duration_4	expertise_me_dot_duration_3																					expertise_dot_duration_line_me_dot=4			0	
-expertise_me_traumatize_1	expertise_me_heal_action_4									expertise_me_heal_action_4											me_traumatize_1	stamina_modified=25			0	
+expertise_me_dot_duration_1	expertise_me_dot_damage_4									expertise_me_dot_damage_4												expertise_dot_duration_line_me_dot=3,me_doom_chance=1			0	
+expertise_me_dot_duration_2	expertise_me_dot_duration_1																					expertise_dot_duration_line_me_dot=3,me_doom_chance=1			0	
+expertise_me_dot_duration_3	expertise_me_dot_duration_2																					expertise_dot_duration_line_me_dot=4,me_doom_chance=1			0	
+expertise_me_dot_duration_4	expertise_me_dot_duration_3																					expertise_dot_duration_line_me_dot=4,me_doom_chance=1			0	
+expertise_me_traumatize_1	expertise_me_heal_action_4									expertise_me_heal_action_4											me_traumatize_1	expertise_poison_knuckle_proc=5			0	
 expertise_me_traumatize_2	expertise_me_traumatize_1																					stamina_modified=25			0	
 expertise_me_traumatize_3	expertise_me_traumatize_2																					stamina_modified=25			0	
 expertise_me_traumatize_4	expertise_me_traumatize_3																					stamina_modified=25			0	
@@ -2150,7 +2150,7 @@ expertise_co_improved_explosives_1	expertise_co_angled_shrapnel_2									expert
 expertise_co_improved_explosives_2	expertise_co_improved_explosives_1																					expertise_damage_line_co_remote_detonator=75			0	
 expertise_co_improved_explosives_3	expertise_co_improved_explosives_2																					expertise_damage_line_co_remote_detonator=75			0	
 expertise_co_improved_explosives_4	expertise_co_improved_explosives_3																					expertise_damage_line_co_remote_detonator=75			0	
-expertise_co_mirror_armor_1	expertise_co_diagnostic_armor_1			1						expertise_co_diagnostic_armor_1											co_mirror_armor,bh_detect_camouflage_1				0	
+expertise_co_mirror_armor_1	expertise_co_diagnostic_armor_1			1						expertise_co_diagnostic_armor_1											co_mirror_armor,bh_detect_camouflage_1,sp_hide_device_1,sp_neutralize_device_1				0	
 expertise_co_diagnostic_armor_1	expertise_co_stim_armor_1									expertise_co_stim_armor_1												expertise_dot_absorption_all=25			0	
 expertise_co_youll_regret_that_1	expertise																					kill_meter_co_youll_regret_that_reac=100,expertise_youll_regret_that=1000			0	
 expertise_co_youll_regret_that_2	expertise_co_youll_regret_that_1																					kill_meter_co_youll_regret_that_reac=0,expertise_youll_regret_that=1000			0	
@@ -2170,10 +2170,10 @@ expertise_co_imp_position_secured_2	expertise_co_imp_position_secured_1									
 expertise_co_imp_position_secured_3	expertise_co_imp_position_secured_2																					expertise_action_line_co_imp_pos_sec=10			0	
 expertise_co_hose_down_1	expertise																					expertise_action_line_co_dm=5			0	
 expertise_co_hose_down_2	expertise_co_hose_down_1																					expertise_action_line_co_dm=5			0	
-expertise_co_blast_radius_1	expertise																					expertise_area_size_line_co_grenade=1			0	
-expertise_co_blast_radius_2	expertise_co_blast_radius_1																					expertise_area_size_line_co_grenade=1			0	
-expertise_co_blast_radius_3	expertise_co_blast_radius_2																					expertise_area_size_line_co_grenade=1			0	
-expertise_co_blast_radius_4	expertise_co_blast_radius_3																					expertise_area_size_line_co_grenade=1			0	
+expertise_co_blast_radius_1	expertise_of_firepower_1									expertise_of_firepower_1												expertise_area_size_line_co_grenade=1,expertise_action_line_co_grenade=2,expertise_area_size_line_co_remote_detonator=2,expertise_action_line_of_aoe=2			0	
+expertise_co_blast_radius_2	expertise_co_blast_radius_1																					expertise_area_size_line_co_grenade=1,expertise_action_line_co_grenade=2,expertise_area_size_line_co_remote_detonator=2,expertise_action_line_of_aoe=2			0	
+expertise_co_blast_radius_3	expertise_co_blast_radius_2																					expertise_area_size_line_co_grenade=1,expertise_action_line_co_grenade=2,expertise_area_size_line_co_remote_detonator=2,expertise_action_line_of_aoe=2			0	
+expertise_co_blast_radius_4	expertise_co_blast_radius_3																					expertise_area_size_line_co_grenade=1,expertise_action_line_co_grenade=2,expertise_area_size_line_co_remote_detonator=2,expertise_action_line_of_aoe=2			0	
 expertise_co_focus_beam_1	expertise																				co_hw_dm_1				0	
 expertise_co_burst_fire_1	expertise_co_position_secured_1									expertise_co_position_secured_1												expertise_co_pos_secured_line_burst_fire_proc=10,expertise_co_pos_secured_line_burst_fire_devastation_bonus=5			0	
 expertise_co_burst_fire_2	expertise_co_burst_fire_1																					expertise_co_pos_secured_line_burst_fire_proc=10,expertise_co_pos_secured_line_burst_fire_devastation_bonus=5			0	
@@ -2199,22 +2199,22 @@ expertise_co_marksman_1	expertise_co_heavy_ammunition_4									expertise_co_hea
 expertise_co_marksman_2	expertise_co_marksman_1																					ranged_defense=10,expertise_armorset_ranged_dodge_2=1			0	
 expertise_co_marksman_3	expertise_co_marksman_2																					ranged_defense=10,expertise_armorset_ranged_dodge_2=1			0	
 expertise_co_marksman_4	expertise_co_marksman_3																					ranged_defense=10,expertise_armorset_ranged_dodge_2=1			0	
-expertise_co_packed_explosives_1	expertise_co_strong_arm_4									expertise_co_strong_arm_4												expertise_damage_line_co_grenade=2			0	
-expertise_co_packed_explosives_2	expertise_co_packed_explosives_1																					expertise_damage_line_co_grenade=2			0	
-expertise_co_packed_explosives_3	expertise_co_packed_explosives_2																					expertise_damage_line_co_grenade=2			0	
-expertise_co_packed_explosives_4	expertise_co_packed_explosives_3																					expertise_damage_line_co_grenade=2			0	
+expertise_co_packed_explosives_1	expertise_co_blast_radius_4									expertise_co_blast_radius_4												expertise_damage_line_co_grenade=2,expertise_damage_line_of_aoe=10,expertise_damage_line_co_remote_detonator=75,expertise_critical_line_of_aoe=10			0	
+expertise_co_packed_explosives_2	expertise_co_packed_explosives_1																					expertise_damage_line_co_grenade=2,expertise_damage_line_of_aoe=10,expertise_damage_line_co_remote_detonator=75,expertise_critical_line_of_aoe=10			0	
+expertise_co_packed_explosives_3	expertise_co_packed_explosives_2																					expertise_damage_line_co_grenade=2,expertise_damage_line_of_aoe=10,expertise_damage_line_co_remote_detonator=75,expertise_critical_line_of_aoe=10			0	
+expertise_co_packed_explosives_4	expertise_co_packed_explosives_3																					expertise_damage_line_co_grenade=2,expertise_damage_line_of_aoe=10,expertise_damage_line_co_remote_detonator=75,expertise_critical_line_of_aoe=10			0	
 expertise_co_lethal_beam_1	expertise_co_tibanna_gas_4									expertise_co_tibanna_gas_4											co_hw_dm_crit_1				0	
 expertise_co_base_of_operations_1	expertise_co_on_target_4									expertise_co_on_target_4												expertise_co_pos_secured_line_armor=1000,expertise_co_pos_secured_line_boo_critical=5			0	
-expertise_co_blast_resistance_1	expertise_bh_armor_sprint_1									expertise_bh_armor_sprint_1												area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
-expertise_co_blast_resistance_2	expertise_co_blast_resistance_1																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
-expertise_co_blast_resistance_3	expertise_co_blast_resistance_2																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
-expertise_co_blast_resistance_4	expertise_co_blast_resistance_3																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8			0	
+expertise_co_blast_resistance_1	expertise_bh_armor_sprint_1									expertise_bh_armor_sprint_1												expertise_glancing_blow_all=2,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1			0	
+expertise_co_blast_resistance_2	expertise_co_blast_resistance_1																					expertise_glancing_blow_all=2,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1			0	
+expertise_co_blast_resistance_3	expertise_co_blast_resistance_2																					expertise_glancing_blow_all=2,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1			0	
+expertise_co_blast_resistance_4	expertise_co_blast_resistance_3																					expertise_glancing_blow_all=2,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1			0	
 expertise_co_stand_fast_1	expertise_me_agility_4			1						expertise_me_agility_4											co_stand_fast	expertise_damage_decrease_percentage=60			0	
 expertise_co_imp_stand_fast_1	expertise_co_stand_fast_1			1						expertise_co_stand_fast_1												expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_armorset_melee_block_2=1			0	
 expertise_co_imp_stand_fast_2	expertise_co_imp_stand_fast_1			1																		expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_armorset_melee_block_2=1			0	
 expertise_co_imp_stand_fast_3	expertise_co_imp_stand_fast_2			1																		expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_armorset_melee_block_2=1			0	
 expertise_co_imp_stand_fast_4	expertise_co_imp_stand_fast_3			1																		expertise_damage_decrease_percentage=5,expertise_buff_duration_line_co_stand_fast=5,expertise_armorset_melee_block_2=1			0	
-expertise_co_short_fuse_1	expertise_co_packed_explosives_4									expertise_co_packed_explosives_4												expertise_delay_reduce_line_co_grenade=1			0	
+expertise_co_short_fuse_1	expertise_co_packed_explosives_4									expertise_co_packed_explosives_4												expertise_delay_reduce_line_co_grenade=1,expertise_area_size_line_co_remote_detonator=2			0	
 expertise_co_enhanced_fuel_cans_1	expertise_co_lethal_beam_1									expertise_co_lethal_beam_1												expertise_action_weapon_12=5,expertise_action_weapon_13=5,commando_passive_dot=1			0	
 expertise_co_enhanced_fuel_cans_2	expertise_co_enhanced_fuel_cans_1																					expertise_action_weapon_12=5,expertise_action_weapon_13=5,commando_passive_dot=1			0	
 expertise_co_enhanced_fuel_cans_3	expertise_co_enhanced_fuel_cans_2																					expertise_action_weapon_12=5,expertise_action_weapon_13=5,commando_passive_dot=1			0	
@@ -2300,14 +2300,14 @@ expertise_sp_increased_agility_3	expertise_sp_increased_agility_2															
 expertise_sp_increased_agility_4	expertise_sp_increased_agility_3			1																		slope_move=10,agility_modified=10				
 expertise_sp_cloaking_armor_1	expertise_bh_stamina_4									expertise_bh_stamina_4											co_mirror_armor	structure_assembly=10,mask_scent=30	craftStructureCampA			
 expertise_sp_cloaking_armor_2	expertise_sp_cloaking_armor_1																									
-expertise_sp_glancing_armor_1	expertise									expertise_sp_protective_armor_4												expertise_glancing_blow_all=3,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
-expertise_sp_glancing_armor_2	expertise_sp_glancing_armor_1																					expertise_glancing_blow_all=3,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
-expertise_sp_glancing_armor_3	expertise_sp_glancing_armor_2																					expertise_glancing_blow_all=3,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
-expertise_sp_glancing_armor_4	expertise_sp_glancing_armor_3																					expertise_glancing_blow_all=3,slope_move=5,force_vehicle_control=5,force_vehicle_speed=1				
-expertise_sp_deadly_pistols_1	expertise_sp_careful_observation_4			1						expertise_sp_careful_observation_4												expertise_damage_ranged=2				
-expertise_sp_deadly_pistols_2	expertise_sp_deadly_pistols_1			1																		expertise_damage_ranged=2				
-expertise_sp_deadly_pistols_3	expertise_sp_deadly_pistols_2			1																		expertise_damage_ranged=2				
-expertise_sp_deadly_pistols_4	expertise_sp_deadly_pistols_3			1																		expertise_damage_ranged=2				
+expertise_sp_glancing_armor_1	expertise									expertise_sp_protective_armor_4												area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8				
+expertise_sp_glancing_armor_2	expertise_sp_glancing_armor_1																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8				
+expertise_sp_glancing_armor_3	expertise_sp_glancing_armor_2																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8				
+expertise_sp_glancing_armor_4	expertise_sp_glancing_armor_3																					area_damage_resist_full_percentage=5,expertise_evasion_chance=2,expertise_evasion_value=8				
+expertise_sp_deadly_pistols_1	expertise_sp_careful_observation_4			1						expertise_sp_careful_observation_4												expertise_damage_ranged=2,expertise_armorset_ranged_dodge_2=1				
+expertise_sp_deadly_pistols_2	expertise_sp_deadly_pistols_1			1																		expertise_damage_ranged=2,expertise_armorset_ranged_dodge_2=1				
+expertise_sp_deadly_pistols_3	expertise_sp_deadly_pistols_2			1																		expertise_damage_ranged=2,expertise_armorset_ranged_dodge_2=1				
+expertise_sp_deadly_pistols_4	expertise_sp_deadly_pistols_3			1																		expertise_damage_ranged=2,expertise_armorset_ranged_dodge_2=1				
 expertise_sp_close_quarters_1	expertise																					expertise_damage_melee=2				
 expertise_sp_close_quarters_2	expertise_sp_close_quarters_1																					expertise_damage_melee=2				
 expertise_sp_close_quarters_3	expertise_sp_close_quarters_2																					expertise_damage_melee=2				
@@ -2321,10 +2321,10 @@ expertise_sp_cheap_strikes_1	expertise																					expertise_action_weap
 expertise_sp_cheap_strikes_2	expertise_sp_cheap_strikes_1																					expertise_action_weapon_5=3,expertise_action_weapon_10=3				
 expertise_sp_cheap_strikes_3	expertise_sp_cheap_strikes_2																					expertise_action_weapon_5=4,expertise_action_weapon_10=4				
 expertise_sp_cheap_strikes_4	expertise_sp_cheap_strikes_3			1																		expertise_action_weapon_5=5,expertise_action_weapon_10=5				
-expertise_sp_jagged_edge_1	expertise_bh_trap_rng_4									expertise_bh_trap_rng_4												expertise_critical_damage_increase=5,bh_dire_snare=10,bh_dire_root=10				
-expertise_sp_jagged_edge_2	expertise_sp_jagged_edge_1																					expertise_critical_damage_increase=5,bh_dire_snare=10,bh_dire_root=10				
-expertise_sp_jagged_edge_3	expertise_sp_jagged_edge_2																					expertise_critical_damage_increase=5,bh_dire_snare=10,bh_dire_root=10				
-expertise_sp_jagged_edge_4	expertise_sp_jagged_edge_3																					expertise_critical_damage_increase=5,bh_dire_snare=10,bh_dire_root=10				
+expertise_sp_jagged_edge_1	expertise_bh_trap_rng_4									expertise_bh_trap_rng_4												expertise_critical_damage_increase=5,bh_dire_snare=10,bh_dire_root=10,expertise_damage_line_fldmot=5				
+expertise_sp_jagged_edge_2	expertise_sp_jagged_edge_1																					expertise_critical_damage_increase=5,bh_dire_snare=10,bh_dire_root=10,expertise_damage_line_fldmot=5				
+expertise_sp_jagged_edge_3	expertise_sp_jagged_edge_2																					expertise_critical_damage_increase=5,bh_dire_snare=10,bh_dire_root=10,expertise_damage_line_fldmot=5				
+expertise_sp_jagged_edge_4	expertise_sp_jagged_edge_3																					expertise_critical_damage_increase=5,bh_dire_snare=10,bh_dire_root=10,expertise_damage_line_fldmot=5				
 expertise_sp_savagery	expertise_sp_jagged_edge_3									expertise_sp_jagged_edge_3												expertise_oncrit_proc_sp_savagery=1				
 expertise_sp_assassins_blade_1	expertise																					expertise_strikethrough_chance=2				
 expertise_sp_assassins_blade_2	expertise_sp_assassins_blade_1																					expertise_strikethrough_chance=2				
@@ -2705,17 +2705,17 @@ expertise_bm_erratic_genius_3	expertise_bm_erratic_genius_2																					
 expertise_bm_erratic_genius_2	expertise_bm_erratic_genius_1																					bm_mutation_chance_increase=2				
 expertise_bm_erratic_genius_1	expertise_bm_genetic_engineering_4									expertise_bm_genetic_engineering_4												bm_mutation_chance_increase=10				
 expertise_bm_add_third_pet_bar_1	expertise																					expertise_bm_add_pet_bar=1				
-expertise_bm_savagery_3	expertise_bm_savagery_2																					expertise_bm_pet_damage=100,expertise_bm_pet_attack_speed=100,expertise_bm_add_pet_bar=1				
+expertise_bm_savagery_3	expertise_bm_savagery_2																					expertise_bm_pet_damage=20,expertise_bm_pet_attack_speed=20,expertise_bm_add_pet_bar=1				
 expertise_bm_savagery_2	expertise_bm_savagery_1																					expertise_bm_pet_damage=25				
-expertise_bm_savagery_1	expertise_bm_evasion_4			1						expertise_bm_evasion_4												expertise_bm_pet_damage=100,expertise_bm_pet_attack_speed=100,expertise_bm_add_pet_bar=1				
-expertise_bm_fortitude_4	expertise_bm_fortitude_3			1																		expertise_bm_pet_armor=40				
-expertise_bm_fortitude_3	expertise_bm_fortitude_2			1																		expertise_bm_pet_armor=40				
-expertise_bm_fortitude_2	expertise_bm_fortitude_1			1																		expertise_bm_pet_armor=40				
-expertise_bm_fortitude_1	expertise_bm_attack_1			1						expertise_bm_attack_1												expertise_bm_pet_armor=40				
+expertise_bm_savagery_1	expertise_bm_evasion_4			1						expertise_bm_evasion_4												expertise_bm_pet_damage=20,expertise_bm_pet_attack_speed=20,expertise_bm_add_pet_bar=1,expertise_bm_self_debuff_reduction=5				
+expertise_bm_fortitude_4	expertise_bm_fortitude_3			1																		expertise_bm_pet_armor=40,expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
+expertise_bm_fortitude_3	expertise_bm_fortitude_2			1																		expertise_bm_pet_armor=40,expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
+expertise_bm_fortitude_2	expertise_bm_fortitude_1			1																		expertise_bm_pet_armor=40,expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
+expertise_bm_fortitude_1	expertise_bm_attack_1			1						expertise_bm_attack_1												expertise_bm_pet_armor=40,expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
 expertise_bm_add_second_pet_bar_1	expertise																					expertise_bm_add_pet_bar=1				
 expertise_bm_dexterity_training_1	expertise_bm_fortitude_4									expertise_bm_fortitude_4												expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
 expertise_bm_dexterity_training_2	expertise_bm_dexterity_training_1																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
-expertise_bm_dexterity_training_3	expertise_bm_dexterity_training_2																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2,expertise_bm_add_pet_bar=1				
+expertise_bm_dexterity_training_3	expertise_bm_dexterity_training_2																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
 expertise_bm_dexterity_training_4	expertise_bm_dexterity_training_3																					expertise_bm_pet_attack_speed=25,expertise_pet_dodge=2				
 expertise_bm_exceptional_nutrition_4	expertise_bm_exceptional_nutrition_3																					expertise_bm_pet_health=20,expertise_bm_pet_regen=20,bm_xp_mod_boost=20				
 expertise_bm_exceptional_nutrition_3	expertise_bm_exceptional_nutrition_2																					expertise_bm_pet_health=20,expertise_bm_pet_regen=20,bm_xp_mod_boost=20				
@@ -2729,11 +2729,11 @@ expertise_bm_genetic_engineering_3	expertise_bm_genetic_engineering_2			1							
 expertise_bm_genetic_engineering_2	expertise_bm_genetic_engineering_1			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftMedicineStimpackGroupB,craftArtisanChemicalGroupB,craftMedicineComponentGroupB			
 expertise_bm_genetic_engineering_1	expertise			1																		expertise_bm_genetic_engineering=30,medicine_assembly=30,medicine_experimentation=30,constitution_modified=10	craftMedicineStimpackGroupA,craftArtisanChemicalGroupA			
 expertise_bm_add_first_pet_bar_1	expertise																					expertise_bm_add_pet_bar=1,expertise_bm_pet_health=25,expertise_bm_pet_regen=20				
-expertise_bm_specialized_supplements_1	expertise_bm_exceptional_nutrition_4									expertise_bm_exceptional_nutrition_4												expertise_bm_pet_health=20,expertise_bm_pet_regen=20,bm_xp_mod_boost=50,expertise_bm_add_pet_bar=1,expertise_bm_incubation_time=10				
-expertise_bm_evasion_4	expertise_bm_evasion_3																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
-expertise_bm_evasion_3	expertise_bm_evasion_2																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
-expertise_bm_evasion_2	expertise_bm_evasion_1																					expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
-expertise_bm_evasion_1	expertise_bm_fortitude_4									expertise_bm_fortitude_4												expertise_bm_pet_evade_chance=5,expertise_bm_pet_evade_value=15,expertise_pet_dodge=2				
+expertise_bm_specialized_supplements_1	expertise_bm_exceptional_nutrition_4									expertise_bm_exceptional_nutrition_4												expertise_bm_pet_health=20,expertise_bm_pet_regen=20,bm_xp_mod_boost=50,expertise_bm_add_pet_bar=1,expertise_bm_incubation_time=10,bm_mutation_chance_increase=10				
+expertise_bm_evasion_4	expertise_bm_evasion_3																					expertise_bm_pet_damage=20,expertise_bm_pet_attack_speed=20,expertise_bm_pet_happiness=5				
+expertise_bm_evasion_3	expertise_bm_evasion_2																					expertise_bm_pet_damage=20,expertise_bm_pet_attack_speed=20,expertise_bm_pet_happiness=5				
+expertise_bm_evasion_2	expertise_bm_evasion_1																					expertise_bm_pet_damage=20,expertise_bm_pet_attack_speed=20,expertise_bm_pet_happiness=5				
+expertise_bm_evasion_1	expertise_bm_fortitude_4									expertise_bm_fortitude_4												expertise_bm_pet_damage=20,expertise_bm_pet_attack_speed=20,expertise_bm_pet_happiness=5				
 expertise_bm_loyalty_mod_3	expertise_bm_loyalty_mod_2																					expertise_bm_pet_happiness=5				
 expertise_bm_loyalty_mod_2	expertise_bm_loyalty_mod_1																					expertise_bm_pet_happiness=5				
 expertise_bm_loyalty_mod_1	expertise																					expertise_bm_pet_happiness=5				

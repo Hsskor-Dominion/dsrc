@@ -1,10 +1,7 @@
 package script.terminal;
 
 import script.*;
-import script.library.city;
-import script.library.prose;
-import script.library.sui;
-import script.library.utils;
+import script.library.*;
 
 import java.util.Vector;
 
@@ -39,6 +36,7 @@ public class city_vote extends script.terminal.base.base_terminal
     public static final string_id SID_ALREADY_MAYOR = new string_id("city/city", "already_mayor");
     public static final String STF_FILE = "city/city";
     public static final string_id SID_NOT_OLD_ENOUGH = new string_id("city/city", "not_old_enough");
+    public static final string_id SID_CITY_DIPLOMACY = new string_id("city/city", "city_diplomacy");
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         dictionary outparams = new dictionary();
@@ -118,6 +116,7 @@ public class city_vote extends script.terminal.base.base_terminal
         int menu = mi.addRootMenu(menu_info_types.SERVER_MENU1, SID_MAYORAL_RACE);
         mi.addSubMenu(menu, menu_info_types.SERVER_MENU2, SID_MAYORAL_STANDINGS);
         mi.addSubMenu(menu, menu_info_types.SERVER_MENU3, SID_MAYORAL_VOTE);
+        mi.addRootMenu(menu_info_types.SERVER_MENU7, SID_CITY_DIPLOMACY);
         if (!isRegisteredToRun(player, self))
         {
             mi.addSubMenu(menu, menu_info_types.SERVER_MENU4, SID_MAYORAL_REGISTER);
@@ -165,7 +164,38 @@ public class city_vote extends script.terminal.base.base_terminal
                 CustomerServiceLog("player_city", "City voting has been reset by request. Hall: " + city_hall + " GM: " + player);
             }
         }
+        else if (item == menu_info_types.SERVER_MENU7)
+        {
+            handleCityDiplomacy(self, player);
+        }
         return SCRIPT_CONTINUE;
+    }
+    public boolean onDiplomacy(obj_id player) throws InterruptedException
+    {
+        // Check if the player has any diplomacy quests
+        return (groundquests.isQuestActive(player, "stardust_political_diplomacy"));
+    }
+    public void handleCityDiplomacy(obj_id self, obj_id player) throws InterruptedException
+    {
+        obj_id city_hall = getTopMostContainer(self);
+        int city_id = findCityByCityHall(city_hall);
+        obj_id mayor = cityGetLeader(city_id);
+        if (player == mayor)
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_start"));
+            // grant mission
+        }
+        else if (onDiplomacy(player))
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_end"));
+            xp.grant(player, "political", 100);
+            // send mission signal
+        }
+        else
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_not_qualified"));
+            // send mission signal
+        }
     }
     public void showStandings(obj_id self, obj_id player) throws InterruptedException
     {

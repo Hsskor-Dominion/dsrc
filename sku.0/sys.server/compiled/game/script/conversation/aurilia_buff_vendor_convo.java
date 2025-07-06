@@ -106,7 +106,7 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setCondition(self, CONDITION_INTERESTING);
-        setName(self, "Kyle Katarn");
+        setName(self, "Paemos (Village Elder)");
 
         return SCRIPT_CONTINUE;
     }

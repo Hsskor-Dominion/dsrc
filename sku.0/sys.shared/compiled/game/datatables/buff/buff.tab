@@ -1031,7 +1031,7 @@ bh_shields_handler	bh_shields_handler			10		1	bh_shields_handler	0		0		0		0		0	S
 bh_shields	bh_shields			10	command.bh_shields	30	combat_divide_damage_taken	1	bh_shields_charged_handler	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	100	1	0	1	1	1
 bh_shields_block	bh_shields	bh_shields	bh_shields	15		5		0		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
 bh_shields_charged	bh_shields_recourse			10	command.bh_deflection	15	combat_multiply_damage_dealt	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	100	1	0	1	1	1
-bh_dread_strike	bh_dread_strike			10	command.bh_dread_strike	15	combat_divide_damage_dealt	25	expertise_healing_reduction	50		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+bh_dread_strike	bh_dread_strike			10	command.bh_dread_strike	15	combat_divide_damage_dealt	25	expertise_healing_reduction	75		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 bh_relentless_onslaught	bh_relentless_onslaught			10	command.bh_relentless	15	expertise_action_all	75		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 bh_take_cover	bh_take_cover	snare		10	command.bh_cover	30	expertise_glancing_blow_ranged	80	expertise_damage_all	10	radar_invis	0	expertise_strikethrough_chance	25	slope_move	-100	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 bh_power_sprint	bh_power_sprint			10	command.burstRun	30	movement	0	movement_resist_snare	25		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1133,7 +1133,7 @@ pvp_aura_buff_self	pvpAuraBuff			100	command.pvp_aura_buff_self	180	tcg_gcw_bonu
 pvp_aura_buff_target	pvpAuraBuff			99	command.pvp_aura_buff_self	10	tcg_gcw_bonus	10	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750		0	STATE_NONE	none	appearance/pt_aurabuff_imperial.prt		1	0		1	1	1	0	1	1	0	1	1	1
 pvp_aura_buff_rebel_self	pvpAuraBuff			100	command.pvp_aura_buff_rebel_self	180	tcg_gcw_bonus	10	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750	pvp_aura_buff_self	0	STATE_NONE	none	appearance/pt_aurabuff_rebel_caster.prt		1	0		1	1	1	0	1	1	0	1	1	1
 pvp_aura_buff_rebel_target	pvpAuraBuff			99	command.pvp_aura_buff_rebel_self	10	tcg_gcw_bonus	10	constitution_modified	120	expertise_innate_protection_kinetic	750	expertise_innate_protection_energy	750		0	STATE_NONE	none	appearance/pt_aurabuff_rebel.prt		1	0		1	1	1	0	1	1	0	1	1	1
-of_firepower	of_firepower			90	command.of_firepower	30	expertise_damage_line_of_aoe	125	expertise_critical_line_of_aoe	50		0		0		0	STATE_NONE	none	clienteffect/off_superior_firepower.cef		1	0		1	1	1	0	1	1	0	1	1	1
+of_firepower	of_firepower			90	command.of_firepower	30	expertise_damage_line_of_aoe	125	expertise_critical_line_of_aoe	50	expertise_action_line_co_grenade	5	expertise_freeshot_co_grenade	10	expertise_damage_line_co_remote_detonator	125	STATE_NONE	none	clienteffect/off_superior_firepower.cef		1	0		1	1	1	0	1	1	0	1	1	1
 of_tactical_drop_1	stimpack			26	command.powerBoost	900	expertise_action_all	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 of_tactical_drop_2	stimpack			34	command.powerBoost	900	expertise_action_all	2		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 of_tactical_drop_3	stimpack			48	command.powerBoost	900	expertise_action_all	4		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1179,7 +1179,7 @@ me_buff_melee_gb_1	medicBlock			34	command.me_enhance_block	600	expertise_block_
 me_buff_ranged_gb_1	medicDodge			34	command.me_enhance_dodge	600	expertise_dodge	5		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_dodge.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_serotonin_boost_1	medicCancelDebuff			26	command.me_serotonin_boost	3	debuff_purge	1		0		0		0		0	STATE_NONE	none	clienteffect/medic_serotonin_boost.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_cure_affliction_1	medicCancelBuff			26	command.me_cure_affliction	6	dot_reduction_all	5	dot_resist_all	100		0		0		0	STATE_NONE	none	clienteffect/medic_cure_affliction.cef		1	0		1	1	1	0	1	1	0	1	1	1
-me_bacta_resistance_1	healingDebuff			21	command.me_bacta_resistance	18	expertise_healing_reduction	50		0		0		0		0	STATE_NONE	none	clienteffect/medic_bacta_resistance.cef		1	1		1	1	1	0	1	1	0	1	1	1
+me_bacta_resistance_1	healingDebuff			21	command.me_bacta_resistance	18	expertise_healing_reduction	75		0		0		0		0	STATE_NONE	none	clienteffect/medic_bacta_resistance.cef		1	1		1	1	1	0	1	1	0	1	1	1
 me_induce_insanity_1	medicSpecialLock			34	command.me_induce_insanity	15	weapon_lock	1		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 me_electrolyte_drain_1	snare			26	command.me_electrolyte_drain	15	movement	0		0		0		0		0	STATE_NONE	none	clienteffect/medic_electrolyte_drain.cef		1	1		1	1	1	0	1	1	0	1	1	1
 me_traumatize_1	actionDrain			1	command.me_traumatize	1	immediate_action_drain	1	expertise_action_all	-50		0		0		0	STATE_NONE	none	clienteffect/medic_traumatize.cef		1	1		1	1	1	0	1	1	0	1	1	1
@@ -1201,7 +1201,7 @@ sp_decoy_debuff	criticalEffect			12	command.bm_flank	6	critical_hit_vulnerable	1
 sp_ploy_snare	sp_ploy_snare	snare		3	command.sp_crippling_traps	20	movement	60		0		0		0		0	STATE_NONE	none	appearance/pt_officer_crippling_vortex.prt		1	1		1	1	1	0	1	1	0	1	1	1
 sp_run_its_course	sp_run_its_course			6	command.sp_run_its_course	10	dot_divisor_all	100	dot_resist_all	100		0		0		0	STATE_NONE	none	appearance/pt_spy_run_course.prt		1	0		1	1	1	0	1	1	0	1	1	1
 sp_sneak_recourse	stealth_recourse			19	command.sp_expose_shadows	10		0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-sp_healing_reduction	healingDebuff			20	command.sp_cloaked_attacks	15	expertise_healing_reduction	50		0		0		0		0	STATE_NONE	none	clienteffect/medic_bacta_resistance.cef		1	1		1	1	1	0	1	1	0	1	1	1
+sp_healing_reduction	healingDebuff			20	command.sp_cloaked_attacks	15	expertise_healing_reduction	75		0		0		0		0	STATE_NONE	none	clienteffect/medic_bacta_resistance.cef		1	1		1	1	1	0	1	1	0	1	1	1
 en_void_dance_buff	en_void_dance_buff			4	command.en_void_dance	15	expertise_glancing_blow_all	60		0		0		0		0	STATE_NONE	none	appearance/pt_spy_avoid_damage.prt		1	0		0	1	1	0	1	1	0	1	1	1
 en_void_dance_buff_1	en_void_dance_buff			5	command.en_void_dance	20	expertise_glancing_blow_all	65		0		0		0		0	STATE_NONE	none	appearance/pt_spy_avoid_damage.prt		1	0		0	1	1	0	1	1	0	1	1	1
 en_void_dance_buff_2	en_void_dance_buff			6	command.en_void_dance	25	expertise_glancing_blow_all	70		0		0		0		0	STATE_NONE	none	appearance/pt_spy_avoid_damage.prt		1	0		0	1	1	0	1	1	0	1	1	1
@@ -1583,8 +1583,8 @@ mind_trick_immune	mti			1	buffs.powerUpShirt	-1	resist_mind_trick	100		0		0		0		
 call_for_pickup	invisibility_no_break			4	command.stealth	60	call_for_pickup	0		0		0		0		0	STATE_NONE	none			0	0		0	1	1	0	1	1	0	1	1	1
 conceal_trap	conceal_trap			10	command.bh_conceal	30		0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 utlra_jedi_cloak_block	utlra_jedi_cloak_block			1		600		0		0		0		0		0	STATE_NONE	none			0	0		0	0	0	0	1	1	0	1	1	1
-fs_imp_choke_1	fs_choke_debuff			1	command.fs_path_improved_force_choke	12	combat_divide_damage_dealt	10		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-fs_imp_choke_2	fs_choke_debuff			2	command.fs_path_improved_force_choke	12	combat_divide_damage_dealt	20		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+fs_imp_choke_1	fs_choke_debuff			1	command.fs_path_improved_force_choke	12	combat_divide_damage_dealt	10	expertise_healing_reduction	40		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+fs_imp_choke_2	fs_choke_debuff			2	command.fs_path_improved_force_choke	12	combat_divide_damage_dealt	20	expertise_healing_reduction	80		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 fs_choke_handler	fs_choke_handler			1	command.fs_dm_cc	3	fs_choke_handler	0		0		0		0		0	STATE_NONE	none			0	0		0	1	1	0	1	1	0	1	1	1
 fs_choke_snare	fs_choke_snare			6	command.fs_dm_cc	6	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 jedi_cloak_col_light_failed	jedi_cloak_col_light_failed			1	jedi.forceResistPoison	900		0		0		0		0		0	STATE_NONE	none			1	1		0	0	0	1	1	1	0	1	1	1

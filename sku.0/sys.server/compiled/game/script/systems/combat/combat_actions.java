@@ -2169,6 +2169,23 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_hermetic_touch", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        int currentHealth = getHealth(self);
+        int modifiedHealth = currentHealth - 5000;
+        attrib_mod[] healthMods = getHealthModifiers(self);
+        int healthModsValue = 0;
+        for (attrib_mod healthMod : healthMods) {
+            healthModsValue += healthMod.getValue();
+        }
+        if (healthModsValue < 0) {
+            sendSystemMessage(self, new string_id("spam", "not_well_enough"));
+            return SCRIPT_OVERRIDE;
+        }
+        if (modifiedHealth < 1) {
+            showFlyTextPrivate(self, self, new string_id("spam", "low_health"), 1.0f, colors.RED);
+            return SCRIPT_OVERRIDE;
+        }
+        setHealth(self, modifiedHealth);
+        buff.applyBuff(target, "fs_hermetic_touch", defaultTime);
         return SCRIPT_CONTINUE;
     }
 
@@ -3130,6 +3147,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("me_traumatize_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        doDoom(self, target);
         if (successfulFastAttack(self, "me_debuff", "fast_attack_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
         }
@@ -3147,6 +3165,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("me_traumatize_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        doDoom(self, target);
         if (successfulFastAttack(self, "me_debuff", "fast_attack_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
         }
@@ -3164,6 +3183,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("me_traumatize_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        doDoom(self, target);
         if (successfulFastAttack(self, "me_debuff", "fast_attack_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
         }
@@ -3181,6 +3201,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("me_traumatize_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        doDoom(self, target);
         if (successfulFastAttack(self, "me_debuff", "fast_attack_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
         }
@@ -6554,6 +6575,7 @@ public class combat_actions extends script.systems.combat.combat_base {
     public int sp_cc_dot(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sp_cc_dot", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+            doDoom(self, target);
         }
         return SCRIPT_CONTINUE;
     }
@@ -6561,6 +6583,7 @@ public class combat_actions extends script.systems.combat.combat_base {
     public int sp_improved_cc_dot_0(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sp_improved_cc_dot_0", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+            doDoom(self, target);
         }
         return SCRIPT_CONTINUE;
     }
@@ -6568,6 +6591,7 @@ public class combat_actions extends script.systems.combat.combat_base {
     public int sp_improved_cc_dot_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sp_improved_cc_dot_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+            doDoom(self, target);
         }
         return SCRIPT_CONTINUE;
     }
@@ -6575,6 +6599,7 @@ public class combat_actions extends script.systems.combat.combat_base {
     public int sp_improved_cc_dot_2(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sp_improved_cc_dot_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+            doDoom(self, target);
         }
         return SCRIPT_CONTINUE;
     }
@@ -6582,6 +6607,7 @@ public class combat_actions extends script.systems.combat.combat_base {
     public int sp_improved_cc_dot_3(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sp_improved_cc_dot_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+            doDoom(self, target);
         }
         return SCRIPT_CONTINUE;
     }

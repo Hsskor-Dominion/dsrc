@@ -98,11 +98,11 @@ public class terminal_city extends script.base_script
     };
     public static final int[] TAX_MAX = 
     {
-        2000,
-        50,
-        20,
-        500,
-        30
+        50000,
+        90,
+        90,
+        10000,
+        90
     };
     public static final string_id SID_CITY_ZONE = new string_id(STF, "zone");
     public static final string_id SID_CITY_UNZONE = new string_id(STF, "unzone");
