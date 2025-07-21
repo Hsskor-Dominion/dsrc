@@ -22,6 +22,10 @@ public class politician extends script.base_script
     {
         return hasSkill(player, "social_politician_master");
     }
+    public boolean politicianSenator_condition(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return hasSkill(player, "stardust_senator");
+    }
     public boolean politicianAdmiral_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         return (hasSkill(player, "pvp_imperial_airstrike_ability") || hasSkill(player, "pvp_rebel_airstrike_ability")) && hasSkill(player, "stardust_ace_of_aces");
@@ -211,6 +215,7 @@ public class politician extends script.base_script
                 final string_id message = new string_id(c_stringFile, "new_senator_candidate");
                 sendSystemMessage(player, new string_id("stardust/politics_rank", "stardust_senator_candidate"));
                 grantSkill(player, "stardust_senator_candidate");
+                attachScript(player, "stardust.skywalker");
 
                 utils.removeScriptVar(player, "conversation.politician_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -229,12 +234,11 @@ public class politician extends script.base_script
         }
         if (response.equals("become_govern"))
         {
-            if (politicianMayor_condition(player, npc))
+            if (politicianSenator_condition(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "new_gov_candidate");
                 sendSystemMessage(player, new string_id("stardust/politics_rank", "stardust_gov"));
                 grantSkill(player, "stardust_gov_candidate");
-                attachScript(player, "stardust.skywalker");
 
                 utils.removeScriptVar(player, "conversation.politician_conversation.branchId");
                 npcEndConversationWithMessage(player, message);

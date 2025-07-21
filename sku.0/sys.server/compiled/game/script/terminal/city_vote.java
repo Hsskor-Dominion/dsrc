@@ -5,6 +5,10 @@ import script.library.*;
 
 import java.util.Vector;
 
+import static script.library.city.isMilitiaOfCity;
+import static script.library.groundquests.completeTask;
+import static script.library.groundquests.getQuestIdFromString;
+
 public class city_vote extends script.terminal.base.base_terminal
 {
     public city_vote()
@@ -170,32 +174,90 @@ public class city_vote extends script.terminal.base.base_terminal
         }
         return SCRIPT_CONTINUE;
     }
+    public void diplomacy_quest(obj_id player, obj_id self) throws InterruptedException
+    {
+        String pTemplate = getSkillTemplate(player);
+        groundquests.grantQuest(player, "stardust_political_diplomacy");
+    }
+    public void diplomacy_questSignal(obj_id player, obj_id self) throws InterruptedException
+    {
+        groundquests.sendSignal(player, "stardust_political_diplomacy");
+        xp.grant(player, "political", 10);
+    }
     public boolean onDiplomacy(obj_id player) throws InterruptedException
     {
         // Check if the player has any diplomacy quests
-        return (groundquests.isQuestActive(player, "stardust_political_diplomacy"));
+        //return (groundquests.isQuestActive(player, "stardust_political_diplomacy"));
+        return (groundquests.isTaskActive(player, "stardust_political_diplomacy", "info2"));
+    }
+    public boolean townspersonEnemy(obj_id player, obj_id self) throws InterruptedException
+    {
+        float townspersonFaction = factions.getFactionStanding(player, "townsperson");
+        return townspersonFaction <= 0;
+    }
+    public void townspersonBounty(obj_id player, obj_id self) throws InterruptedException
+    {
+        money.requestPayment(player, self, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
+        int mission_bounty = 5000;
+        int current_bounty = 0;
+        mission_bounty += rand(1, 2000);
+        if (hasObjVar(player, "bounty.amount"))
+        {
+            current_bounty = getIntObjVar(player, "bounty.amount");
+        }
+        current_bounty += mission_bounty;
+        setObjVar(player, "bounty.amount", current_bounty);
+        setObjVar(player, "smuggler.bounty", mission_bounty);
+        setJediBountyValue(player, current_bounty);
+        updateJediScriptData(player, "smuggler", 1);
     }
     public void handleCityDiplomacy(obj_id self, obj_id player) throws InterruptedException
     {
         obj_id city_hall = getTopMostContainer(self);
         int city_id = findCityByCityHall(city_hall);
         obj_id mayor = cityGetLeader(city_id);
-        if (player == mayor)
+
+        boolean isEnemy = townspersonEnemy(player, self);
+        boolean isOnDiplomacy = onDiplomacy(player);
+        boolean isMayor = (mayor == player);
+        boolean isMilitia = isMilitiaOfCity(player, city_id);
+        boolean isCityLeaderOrMilitia = isMayor || isMilitia;
+
+        if (isEnemy)
         {
-            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_start"));
-            // grant mission
+            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_poor_faction_bounty_fee"));
+            townspersonBounty(player, self);
+            // grant bounty regardless of other conditions
         }
-        else if (onDiplomacy(player))
+
+        if (isOnDiplomacy)
         {
-            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_end"));
-            xp.grant(player, "political", 100);
-            // send mission signal
+            if (isCityLeaderOrMilitia)
+            {
+                sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_warning"));
+                // Player must go to a different city for diplomacy signal
+                return;
+            }
+            else
+            {
+                sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_end"));
+                diplomacy_questSignal(player, self);
+                // Signal progression for visiting another city's voting terminal
+                return;
+            }
         }
-        else
+
+        if (isCityLeaderOrMilitia)
         {
-            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_not_qualified"));
-            // send mission signal
+            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_start_pvp_risk"));
+            factions.goOvertWithDelay(player, 0.0f);
+            diplomacy_quest(player, self);
+            // Start the mission
+            return;
         }
+
+        sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_not_qualified"));
+        // Not qualified to start or progress this diplomacy quest
     }
     public void showStandings(obj_id self, obj_id player) throws InterruptedException
     {

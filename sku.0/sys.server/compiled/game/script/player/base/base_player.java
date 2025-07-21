@@ -537,7 +537,7 @@ public class base_player extends script.base_script
         skill.fixTerrainNegotiationMods(self);
         if (isIdValid(getHouseId(self)))
         {
-            skill.grantAllPoliticianSkills(self);
+            skill.grantAllPoliticianSkills(self);//fixed this on the function
         }
         else 
         {
@@ -545,7 +545,7 @@ public class base_player extends script.base_script
             obj_id currentCityMayor = cityGetLeader(currentCity);
             if (self == currentCityMayor)
             {
-                skill.grantAllPoliticianSkills(self);
+                skill.grantAllPoliticianSkills(self);//fixed this on the function
             }
         }
         int vehicleBuff = buff.getBuffOnTargetFromGroup(self, "vehicle");
@@ -4878,6 +4878,19 @@ public class base_player extends script.base_script
         if (meditation.isMeditating(self))
         {
             meditation.endMeditation(self);
+        }
+        if (hasBuff(self, "co_mirror_armor")) {
+            String[] modifiers = movement.getAllModifiers(self);
+            boolean snared = false;
+            if (modifiers != null)
+            {
+                for (String modifier : modifiers) {
+                    if (movement.getType(modifier) == movement.MT_SNARE) {
+                        snared = true;
+                    }
+                }
+            }
+            buff.applyBuff(self, "co_youll_regret_that");
         }
         if (utils.hasScriptVar(self, "surveying.takingSamples"))
         {

@@ -1141,9 +1141,17 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int co_stim_armor(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        obj_id shirt = getObjectInSlot(self, "shirt");
+
         if (!combatStandardAction("co_stim_armor", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        // Damage the shirt when the ability is used
+        damageItem(shirt, 1);
+        prose_package pp = new prose_package();
+        pp = prose.setStringId(pp, new string_id("spam", "undershirt_activated_with_decay"));
+        sendSystemMessageProse(self, pp);
+
         return SCRIPT_CONTINUE;
     }
 
@@ -1234,6 +1242,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("co_mirror_armor", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        buff.applyBuff(self, "co_youll_regret_that");
         combat.mirrorArmor(self);
         return SCRIPT_CONTINUE;
     }
@@ -2170,7 +2179,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             return SCRIPT_OVERRIDE;
         }
         int currentHealth = getHealth(self);
-        int modifiedHealth = currentHealth - 5000;
+        int modifiedHealth = currentHealth - 2500;
         attrib_mod[] healthMods = getHealthModifiers(self);
         int healthModsValue = 0;
         for (attrib_mod healthMod : healthMods) {
@@ -6575,40 +6584,40 @@ public class combat_actions extends script.systems.combat.combat_base {
     public int sp_cc_dot(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sp_cc_dot", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
-            doDoom(self, target);
         }
+        doDoom(self, target);
         return SCRIPT_CONTINUE;
     }
 
     public int sp_improved_cc_dot_0(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sp_improved_cc_dot_0", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
-            doDoom(self, target);
         }
+        doDoom(self, target);
         return SCRIPT_CONTINUE;
     }
 
     public int sp_improved_cc_dot_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sp_improved_cc_dot_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
-            doDoom(self, target);
         }
+        doDoom(self, target);
         return SCRIPT_CONTINUE;
     }
 
     public int sp_improved_cc_dot_2(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sp_improved_cc_dot_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
-            doDoom(self, target);
         }
+        doDoom(self, target);
         return SCRIPT_CONTINUE;
     }
 
     public int sp_improved_cc_dot_3(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sp_improved_cc_dot_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
-            doDoom(self, target);
         }
+        doDoom(self, target);
         return SCRIPT_CONTINUE;
     }
 
@@ -7049,6 +7058,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             if (!combatStandardAction("sp_fldmot_1_snare", self, target, params, "", "")) {
                 return SCRIPT_OVERRIDE;
             }
+            doDoom(self, target);
         } else {
             if (!combatStandardAction("sp_fldmot_1", self, target, params, "", "")) {
                 return SCRIPT_OVERRIDE;
@@ -7064,6 +7074,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             if (!combatStandardAction("sp_fldmot_2_snare", self, target, params, "", "")) {
                 return SCRIPT_OVERRIDE;
             }
+            doDoom(self, target);
         } else {
             if (!combatStandardAction("sp_fldmot_2", self, target, params, "", "")) {
                 return SCRIPT_OVERRIDE;
@@ -7079,6 +7090,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             if (!combatStandardAction("sp_fldmot_3_snare", self, target, params, "", "")) {
                 return SCRIPT_OVERRIDE;
             }
+            doDoom(self, target);
         } else {
             if (!combatStandardAction("sp_fldmot_3", self, target, params, "", "")) {
                 return SCRIPT_OVERRIDE;

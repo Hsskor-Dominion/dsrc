@@ -26,7 +26,7 @@ public class cid extends script.base_script
     public boolean cid_intimidated_condition(obj_id npc, obj_id player) throws InterruptedException
     {
         float intimidation = getEnhancedSkillStatisticModifierUncapped(player, "strength");
-        return intimidation >= 10;
+        return intimidation >= 100;
     }
     public boolean cid_commando_condition(obj_id npc, obj_id player)
     {
@@ -239,6 +239,7 @@ public class cid extends script.base_script
             {
                 setObjVar(player, DEATHSTAR_PLANS, true);
                 groundquests.sendSignal(player, "jasper_to_cid");
+                badge.grantBadge(player, "destroy_deathstar");
                 final string_id message = new string_id(c_stringFile, "cid_talks_about_deathstar_plans");
 
                 utils.removeScriptVar(player, "conversation.cid_conversation.branchId");

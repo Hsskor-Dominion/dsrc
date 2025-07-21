@@ -120,7 +120,7 @@ public class generic_gift_box_vet extends script.base_script
                 factions.addFactionStanding(player, "sith_shadow", 1000.0f);
                 factions.addFactionStanding(player, "fs_villager", 1000.0f);
                 factions.addFactionStanding(player, "death_watch", 1000.0f);
-                badge.grantBadge(player, "destroy_deathstar");
+                //badge.grantBadge(player, "destroy_deathstar");
                 destroyObject(self);
            }
            else

@@ -4068,37 +4068,35 @@ public class combat_base extends script.base_script
     }
     public void doKillMeterUpdate(obj_id attacker, obj_id defender, int damage) throws InterruptedException
     {
-        if (!utils.isProfession(attacker, utils.COMMANDO) && !utils.isProfession(defender, utils.COMMANDO) || damage < 1)
+        if (damage < 1)
         {
             return;
         }
-        if (utils.isProfession(attacker, utils.COMMANDO))
+
+        // Track damage done by attacker
+        int damageDone = utils.getIntScriptVar(attacker, "km.damage_done");
+        damageDone += damage;
+        if (damageDone >= getLevel(attacker) * (15 - Math.round(getKillMeter(attacker) / 5.0f)))
         {
-            int damageInterval = utils.getIntScriptVar(attacker, "km.damage_done");
-            damageInterval += damage;
-            if (damageInterval >= getLevel(attacker) * (15 - Math.round(getKillMeter(attacker) / 5.0f)))
-            {
-                utils.setScriptVar(attacker, "km.damage_done", 0);
-                combat.modifyKillMeter(attacker, 1);
-            }
-            else 
-            {
-                utils.setScriptVar(attacker, "km.damage_done", damageInterval);
-            }
+            utils.setScriptVar(attacker, "km.damage_done", 0);
+            combat.modifyKillMeter(attacker, 1);
         }
-        if (utils.isProfession(defender, utils.COMMANDO))
+        else
         {
-            int damageInterval = utils.getIntScriptVar(defender, "km.damage_taken");
-            damageInterval += damage;
-            if (damageInterval >= getLevel(defender) * (25 - Math.round(getKillMeter(attacker) / 5.0f)))
-            {
-                utils.setScriptVar(defender, "km.damage_taken", 0);
-                combat.modifyKillMeter(defender, 1);
-            }
-            else 
-            {
-                utils.setScriptVar(defender, "km.damage_taken", damageInterval);
-            }
+            utils.setScriptVar(attacker, "km.damage_done", damageDone);
+        }
+
+        // Track damage taken by defender
+        int damageTaken = utils.getIntScriptVar(defender, "km.damage_taken");
+        damageTaken += damage;
+        if (damageTaken >= getLevel(defender) * (25 - Math.round(getKillMeter(attacker) / 5.0f)))
+        {
+            utils.setScriptVar(defender, "km.damage_taken", 0);
+            combat.modifyKillMeter(defender, 1);
+        }
+        else
+        {
+            utils.setScriptVar(defender, "km.damage_taken", damageTaken);
         }
     }
 }

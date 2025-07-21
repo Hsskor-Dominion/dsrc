@@ -141,6 +141,11 @@ public class npe_station_han_solo2 extends script.base_script
         }
         return false;
     }
+    public void pilot_quest_neutral(obj_id player, obj_id npc) throws InterruptedException
+    {
+        String pTemplate = getSkillTemplate(player);
+        groundquests.grantQuest(player, "newbie_gendra_neutral_pilot");
+    }
     public void npe_station_han_solo2_action_giveContactPointer(obj_id player, obj_id npc) throws InterruptedException
     {
         groundquests.sendSignal(player, "found_smuggler");
@@ -1044,33 +1049,68 @@ public class npe_station_han_solo2 extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
-    public int npe_station_han_solo2_handleBranch12(obj_id player, obj_id npc, string_id response) throws InterruptedException
+//    public int npe_station_han_solo2_handleBranch12(obj_id player, obj_id npc, string_id response) throws InterruptedException
+//    {
+//        if (response.equals("s_219"))
+//        {
+//            if (npe_station_han_solo2_condition__defaultCondition(player, npc))
+//            {
+//                npe_station_han_solo2_action_leaveStation(player, npc);
+//                string_id message = new string_id(c_stringFile, "s_222");
+//                utils.removeScriptVar(player, "conversation.npe_station_han_solo2.branchId");
+//                npcEndConversationWithMessage(player, message);
+//                return SCRIPT_CONTINUE;
+//            }
+//        }
+//        if (response.equals("s_220"))
+//        {
+//            if (npe_station_han_solo2_condition__defaultCondition(player, npc))
+//            {
+//                doAnimationAction(npc, "thumb_up");
+//                npe_station_han_solo2_action_sound45(player, npc);
+//                string_id message = new string_id(c_stringFile, "s_221");
+//                utils.removeScriptVar(player, "conversation.npe_station_han_solo2.branchId");
+//                npcEndConversationWithMessage(player, message);
+//                return SCRIPT_CONTINUE;
+//            }
+//        }
+//        return SCRIPT_DEFAULT;
+//    }
+public int npe_station_han_solo2_handleBranch12(obj_id player, obj_id npc, string_id response) throws InterruptedException
+{
+    if (response.equals("s_219")) // This is the path leading to s_222
     {
-        if (response.equals("s_219"))
+        if (npe_station_han_solo2_condition__defaultCondition(player, npc))
         {
-            if (npe_station_han_solo2_condition__defaultCondition(player, npc))
-            {
-                npe_station_han_solo2_action_leaveStation(player, npc);
-                string_id message = new string_id(c_stringFile, "s_222");
-                utils.removeScriptVar(player, "conversation.npe_station_han_solo2.branchId");
-                npcEndConversationWithMessage(player, message);
-                return SCRIPT_CONTINUE;
-            }
+
+            string_id message = new string_id(c_stringFile, "s_222");
+
+            string_id[] responses = new string_id[3];
+            responses[0] = new string_id(c_stringFile, "go_corellia");
+            responses[1] = new string_id(c_stringFile, "go_tatooine");
+            responses[2] = new string_id(c_stringFile, "go_naboo");
+
+            utils.setScriptVar(player, "conversation.npe_station_han_solo2.branchId", 59);
+
+            npcSpeak(player, message);
+            npcSetConversationResponses(player, responses);
+            return SCRIPT_CONTINUE;
         }
-        if (response.equals("s_220"))
-        {
-            if (npe_station_han_solo2_condition__defaultCondition(player, npc))
-            {
-                doAnimationAction(npc, "thumb_up");
-                npe_station_han_solo2_action_sound45(player, npc);
-                string_id message = new string_id(c_stringFile, "s_221");
-                utils.removeScriptVar(player, "conversation.npe_station_han_solo2.branchId");
-                npcEndConversationWithMessage(player, message);
-                return SCRIPT_CONTINUE;
-            }
-        }
-        return SCRIPT_DEFAULT;
     }
+    if (response.equals("s_220"))
+    {
+        if (npe_station_han_solo2_condition__defaultCondition(player, npc))
+        {
+            doAnimationAction(npc, "thumb_up");
+            npe_station_han_solo2_action_sound45(player, npc);
+            string_id message = new string_id(c_stringFile, "s_221");
+            utils.removeScriptVar(player, "conversation.npe_station_han_solo2.branchId");
+            npcEndConversationWithMessage(player, message);
+            return SCRIPT_CONTINUE;
+        }
+    }
+    return SCRIPT_DEFAULT;
+}
     public int npe_station_han_solo2_handleBranch15(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("s_136"))
@@ -2442,6 +2482,37 @@ public class npe_station_han_solo2 extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
+    public int npe_station_han_solo2_handleBranch59(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        string_id message = new string_id(c_stringFile, "travel_confirm");
+
+        if (response.equals("go_corellia"))
+        {
+            setObjVar(player, "stardust_corellia", 1);
+            pilot_quest_neutral(player, npc);
+            npe_station_han_solo2_action_leaveStation(player, npc);
+        }
+        else if (response.equals("go_tatooine"))
+        {
+            setObjVar(player, "stardust_ent", 1);
+            pilot_quest_neutral(player, npc);
+            npe_station_han_solo2_action_leaveStation(player, npc);
+        }
+        else if (response.equals("go_naboo"))
+        {
+            setObjVar(player, "stardust_theed", 1);
+            pilot_quest_neutral(player, npc);
+            npe_station_han_solo2_action_leaveStation(player, npc);
+        }
+        else
+        {
+            return SCRIPT_DEFAULT;
+        }
+
+        utils.removeScriptVar(player, "conversation.npe_station_han_solo2.branchId");
+        npcEndConversationWithMessage(player, message);
+        return SCRIPT_CONTINUE;
+    }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         if ((!isMob(self)) || (isPlayer(self)))
@@ -3025,6 +3096,10 @@ public class npe_station_han_solo2 extends script.base_script
             return SCRIPT_CONTINUE;
         }
         if (branchId == 58 && npe_station_han_solo2_handleBranch58(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        if (branchId == 59 && npe_station_han_solo2_handleBranch59(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }

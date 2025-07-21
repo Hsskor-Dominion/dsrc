@@ -341,4 +341,6 @@ object/tangible/component/weapon/geonosian_power_cube_green.iff	300
 object/tangible/component/weapon/geonosian_power_cube_red.iff	500	
 object/tangible/component/weapon/geonosian_power_cube_yellow.iff	600	
 object/tangible/component/weapon/spider_spine.iff	500	
-object/tangible/jedi/jedi_holocron_generic.iff	1000	
+object/tangible/loot/beast/enzyme_1	25	
+object/tangible/loot/beast/enzyme_2	25	
+object/tangible/loot/beast/enzyme_3	25	

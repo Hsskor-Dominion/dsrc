@@ -535,7 +535,7 @@ public class npe extends script.base_script
         }
         if (hasObjVar(player, "stardust_bestine"))
         {
-            warpPlayer(player, "tatooine", -1350, 0, -3600, null, 0, 0, 0, "", false);
+            warpPlayer(player, "tatooine", -1151, 0, -3927, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_espa"))
         {
@@ -565,6 +565,10 @@ public class npe extends script.base_script
         {
             warpPlayer(player, "corellia", -6525, 398, 6040, null, 0, 0, 0, "", false);
         }
+        if (hasObjVar(player, "stardust_tyrena"))
+        {
+            warpPlayer(player, "corellia", -5074, 398, -2338, null, 0, 0, 0, "", false);
+        }
         if (hasObjVar(player, "stardust_coronet"))
         {
             warpPlayer(player, "corellia", -48, 0, -4727, null, 0, 0, 0, "", false);
@@ -584,6 +588,10 @@ public class npe extends script.base_script
         if (hasObjVar(player, "stardust_wookiee"))
         {
             warpPlayer(player, "kashyyyk_main", -430, 222, -123, null, 0, 0, 0, "", false);
+        }
+        if (hasObjVar(player, "stardust_talus_io"))
+        {
+            warpPlayer(player, "talus", -2188, 20, -2306, null, 0, 0, 0, "", false);
         }
         else
         {
