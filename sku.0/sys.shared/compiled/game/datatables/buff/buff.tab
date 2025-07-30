@@ -67,7 +67,7 @@ bindingStrike_1	bindingStrike			2	command.bindingStrike	45	stamina	-250		0		0		0
 armorBreak	armorBreak			1	command.armorBreak	15	private_armor_break	42		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 armorBreak_1	armorBreak			3	command.armorBreak	20	private_armor_break	100		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 armorBreak_2	armorBreak			4	command.armorBreak	30	private_armor_break	150		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
-berserk	berserk			1	command.warcry	10	private_melee_dmg_bonus	20	combat_divide_damage_taken	-10	expertise_undiminished_critical_melee	20		0		0	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
+berserk	berserk			1	command.warcry	10	private_melee_dmg_bonus	20	combat_divide_damage_taken	-20	expertise_undiminished_critical_melee	20	constitutionPercent	20	staminaPercent	20	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
 berserk_1	berserk			2	command.berserk	10	private_melee_dmg_bonus	50		0		0		0		0	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
 startleShot	startleShot			1	command.startleShot	5	private_posture_override	1		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 startleShot_1	startleShot			2	command.startleShot	5	private_posture_override	1		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1

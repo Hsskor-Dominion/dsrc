@@ -1955,7 +1955,7 @@ expertise_of_1h_dam_3	expertise_of_1h_dam_2																					expertise_damage
 expertise_of_1h_dam_4	expertise_of_1h_dam_3																					expertise_damage_melee=3			0	
 expertise_of_1h_crit_1	expertise																					expertise_undiminished_critical_melee=5			0	
 expertise_of_1h_crit_2	expertise_of_1h_crit_1																					expertise_undiminished_critical_melee=5			0	
-expertise_of_decapitate_1	expertise_sp_vibrogenerator_4			1						expertise_sp_vibrogenerator_4											of_decapitate_1	freeshot_case_miss=1,freeshot_case_dodge=1,freeshot_case_parry=1			0	
+expertise_of_decapitate_1	expertise_sp_vibrogenerator_4			1						expertise_sp_vibrogenerator_4											of_decapitate_1				0	
 expertise_of_vortex_1	expertise_co_deflective_armor_4			1						expertise_co_deflective_armor_4											of_vortex_1				0	
 expertise_of_pistol_act_1	expertise																					expertise_action_weapon_2=2			0	
 expertise_of_pistol_act_2	expertise_of_pistol_act_1																					expertise_action_weapon_2=3			0	
@@ -2422,7 +2422,7 @@ expertise_en_to_the_hilt_2	expertise_en_to_the_hilt_1																					expert
 expertise_en_sweeping_pirouette_1	expertise_en_project_will_1			1						expertise_en_project_will_1												expertise_overridable_protection_generic=1500				
 expertise_en_sweeping_pirouette_2	expertise_en_sweeping_pirouette_1			1						expertise_en_sweeping_pirouette_1												expertise_overridable_protection_generic=1500				
 expertise_en_sweeping_pirouette_3	expertise_en_sweeping_pirouette_2			1						expertise_en_sweeping_pirouette_2												expertise_overridable_protection_generic=1500				
-expertise_en_sweeping_pirouette_4	expertise_en_sweeping_pirouette_3			1						expertise_en_sweeping_pirouette_3												expertise_overridable_protection_generic=1500				
+expertise_en_sweeping_pirouette_4	expertise_en_sweeping_pirouette_3			1						expertise_en_sweeping_pirouette_3												expertise_overridable_protection_generic=1500,freeshot_case_miss=1,freeshot_case_dodge=1,freeshot_case_parry=1				
 expertise_en_controlled_spin_1	expertise_en_sweeping_pirouette_4									expertise_en_sweeping_pirouette_1												expertise_damage_line_en_sweeping_pirouette=10				
 expertise_en_controlled_spin_2	expertise_en_controlled_spin_1																					expertise_damage_line_en_sweeping_pirouette=10				
 expertise_en_controlled_spin_3	expertise_en_controlled_spin_2																					expertise_damage_line_en_sweeping_pirouette=10				

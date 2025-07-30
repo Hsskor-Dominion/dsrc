@@ -197,7 +197,7 @@ public class city_vote extends script.terminal.base.base_terminal
     }
     public void townspersonBounty(obj_id player, obj_id self) throws InterruptedException
     {
-        money.requestPayment(player, self, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
+        money.requestPayment(player, self, smuggler.TIER_5_GENERIC_FRONT_COST, "none", null, true);
         int mission_bounty = 5000;
         int current_bounty = 0;
         mission_bounty += rand(1, 2000);

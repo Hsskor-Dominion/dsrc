@@ -248,8 +248,8 @@ public class interplanetary_survey extends script.base_script
     }
     public int getSurveyTime() throws InterruptedException
     {
-        final int minTime = 15 * 60;
-        final int maxTime = 60 * 60;
+        final int minTime = 10;      // 10 seconds
+        final int maxTime = 20;      // 20 seconds
         obj_id self = getSelf();
         float quality = getFloatObjVar(self, craftinglib.COMPONENT_ATTRIBUTE_OBJVAR_NAME + ".mechanism_quality");
         if (quality > 100)
