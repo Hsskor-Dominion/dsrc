@@ -660,20 +660,20 @@ pilot_spacetest	pilot		1	1	0	0	0	0					0	0							droid+droidcommand_testweaponov
 social_politician	social		0	0	1	0	0	0						0											1	0
 social_politician_novice	social_politician		0	1	0	0	100	0													place_cityhall,manage_taxes,grantZoningRights	private_place_cityhall=100			1	0
 social_politician_master	social_politician_urban_04		0	1	0	0	50000	0		social_politician_urban_04		political	150000	600000											1	0
-social_politician_fiscal_01	social_politician_novice		0	1	0	0	50000	0		social_politician_novice		political	10000	200000							city_map				1	0
-social_politician_fiscal_02	social_politician_urban_01		0	1	0	0	50000	0		social_politician_urban_01		political	25000	400000							place_bank,place_shuttleport	private_place_bank=100,private_place_shuttleport=100			1	0
+social_politician_fiscal_01	social_politician_novice		0	1	0	0	50000	0		social_politician_novice		political	10000	600000							city_map				1	0
+social_politician_fiscal_02	social_politician_urban_01		0	1	0	0	50000	0		social_politician_urban_01		political	25000	600000							place_bank,place_shuttleport	private_place_bank=100,private_place_shuttleport=100			1	0
 social_politician_fiscal_03	social_politician_urban_02		0	1	0	0	50000	0		social_politician_urban_02		political	50000	600000							city_spec_industry				1	0
 social_politician_fiscal_04	social_politician_urban_03		0	1	0	0	50000	0		social_politician_urban_03		political	100000	600000							city_spec_research				1	0
-social_politician_martial_01	social_politician_fiscal_01		0	1	0	0	50000	0		social_politician_fiscal_01		political	10000	200000							manage_militia				1	0
-social_politician_martial_02	social_politician_fiscal_02		0	1	0	0	50000	0		social_politician_fiscal_02		political	25000	400000							place_cloning	private_place_cloning=100			1	0
+social_politician_martial_01	social_politician_fiscal_01		0	1	0	0	50000	0		social_politician_fiscal_01		political	10000	600000							manage_militia				1	0
+social_politician_martial_02	social_politician_fiscal_02		0	1	0	0	50000	0		social_politician_fiscal_02		political	25000	600000							place_cloning	private_place_cloning=100			1	0
 social_politician_martial_03	social_politician_fiscal_03		0	1	0	0	50000	0		social_politician_fiscal_03		political	50000	600000							city_spec_cloning				1	0
 social_politician_martial_04	social_politician_fiscal_04		0	1	0	0	50000	0		social_politician_fiscal_04		political	100000	600000							place_faction_terminal				1	0
-social_politician_civic_01	social_politician_martial_01		0	1	0	0	50000	0		social_politician_martial_01		political	10000	200000							installMissionTerminal				1	0
-social_politician_civic_02	social_politician_martial_02		0	1	0	0	50000	0		social_politician_martial_02		political	25000	400000							place_garage	private_place_garage=100			1	0
+social_politician_civic_01	social_politician_martial_01		0	1	0	0	50000	0		social_politician_martial_01		political	10000	600000							installMissionTerminal				1	0
+social_politician_civic_02	social_politician_martial_02		0	1	0	0	50000	0		social_politician_martial_02		political	25000	600000							place_garage	private_place_garage=100			1	0
 social_politician_civic_03	social_politician_martial_03		0	1	0	0	50000	0		social_politician_martial_03		political	50000	600000							city_spec_entertainer				1	0
 social_politician_civic_04	social_politician_martial_04		0	1	0	0	50000	0		social_politician_martial_04		political	100000	600000							city_spec_missions				1	0
-social_politician_urban_01	social_politician_civic_01		0	1	0	0	50000	0		social_politician_civic_01		political	10000	200000							place_streetlamp,place_statue				1	0
-social_politician_urban_02	social_politician_civic_02		0	1	0	0	50000	0		social_politician_civic_02		political	25000	400000							place_fountain				1	0
+social_politician_urban_01	social_politician_civic_01		0	1	0	0	50000	0		social_politician_civic_01		political	10000	600000							place_streetlamp,place_statue				1	0
+social_politician_urban_02	social_politician_civic_02		0	1	0	0	50000	0		social_politician_civic_02		political	25000	600000							place_fountain				1	0
 social_politician_urban_03	social_politician_civic_03		0	1	0	0	50000	0		social_politician_civic_03		political	50000	600000							place_small_garden,place_medium_garden	private_place_small_garden=100,private_place_medium_garden=100			1	0
 social_politician_urban_04	social_politician_civic_04		0	1	0	0	50000	0		social_politician_civic_04		political	100000	600000							place_large_garden,place_exotic_garden	private_place_large_garden=100,private_place_exotic_garden=100			1	0
 social_language	social		0	0	0	0		0						0											0	0

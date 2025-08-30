@@ -47,16 +47,14 @@ public class rtp_luke_main extends script.base_script
     }
     public boolean rtp_luke_main_condition_completedDodonna(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.hasCompletedQuest(player, "rtp_dodonna_03");
+        return groundquests.hasCompletedQuest(player, "rtp_dodonna_03")
+                || hasCommand(player, "blueGlowie");
     }
     public boolean rtp_luke_main_condition_notRebel(obj_id player, obj_id npc) throws InterruptedException
     {
         String playerFaction = factions.getFaction(player);
-        if (playerFaction == null || !playerFaction.equals("Rebel"))
-        {
-            return true;
-        }
-        return false;
+        // Block (return true) only if NOT Rebel and NOT blueGlowie
+        return !("Rebel".equals(playerFaction) || hasCommand(player, "blueGlowie"));
     }
     public boolean rtp_luke_main_condition_isJedi(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -243,7 +241,7 @@ public class rtp_luke_main extends script.base_script
         {
             return SCRIPT_OVERRIDE;
         }
-        if (rtp_luke_main_condition_notRebel(player, npc))
+        if (rtp_luke_main_condition_notRebel(player, npc))//an imperial player who has blueGlowie should have access here, so it's not quite full rebel
         {
             string_id message = new string_id(c_stringFile, "s_44");
             chat.chat(npc, player, message);

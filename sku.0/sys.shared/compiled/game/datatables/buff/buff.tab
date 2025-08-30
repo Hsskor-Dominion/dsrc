@@ -1148,7 +1148,7 @@ pvp_unstoppable_ability	pvp_unstoppable_ability			95	command.command_pvp_unstopp
 pvp_unstoppable_rebel_ability	pvp_unstoppable_rebel_ability			95	command.command_pvp_unstoppable_rebel_ability	120	reac_buff	1		0		0		0		0	STATE_NONE	none	appearance/pt_heal_over_time_2.prt		1	0		1	1	1	0	1	1	0	1	1	1
 pvp_last_man_ability	pvp_last_man_ability			98	command.command_pvp_last_man_ability	300	avoid_incap_heal	7500		0		0		0		0	STATE_NONE	none	appearance/pt_heal_2.prt		1	0		1	1	1	0	1	1	0	1	1	1
 pvp_last_man_rebel_ability	pvp_last_man_rebel_ability			98	command.command_pvp_last_man_rebel_ability	300	avoid_incap_heal	7500		0		0		0		0	STATE_NONE	none	appearance/pt_heal_2.prt		1	0		1	1	1	0	1	1	0	1	1	1
-vehicle_at_rt	vehicle			1	command.bh_armor_duelist	-1	expertise_glancing_blow_ranged	20		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
+vehicle_at_rt	vehicle			1	command.bh_armor_duelist	-1	expertise_glancing_blow_ranged	35		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 vehicle_pvp_barc_rebel	vehicle			1	command.bh_armor_duelist	-1	expertise_glancing_blow_ranged	35		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 vehicle_pvp_barc_imperial	vehicle			1	command.bh_armor_duelist	-1	expertise_glancing_blow_ranged	35		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 exclusive_proxy_of_last_words	deadOfficersFTW			90	command.of_last_words	1	exclusive_proxy	0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
@@ -1210,7 +1210,7 @@ en_debuff_thrill	en_thrill			50	command.en_thrill	6	critical_hit_vulnerable	2		0
 en_debuff_thrill_1	en_thrill			51	command.en_thrill	8	critical_hit_vulnerable	4		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
 en_debuff_thrill_2	en_thrill			52	command.en_thrill	10	critical_hit_vulnerable	6		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
 en_sweeping_pirouette_root	en_sweeping_pirouette_root	root		1	command.en_sweeping_pirouette	3	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-en_unhealthy_fixation_debuff	en_unhealthy_fixation_debuff			5	command.en_unhealthy_fixation	1	en_unhealthy_stun	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+en_unhealthy_fixation_debuff	en_unhealthy_fixation_debuff			5	command.en_unhealthy_fixation	1	en_unhealthy_stun	1	expertise_critical_hit_decrease	50	glancing_blow_vulnerable	50	expertise_damage_decrease_chance	50		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 en_spiral_kick_snare	en_spiral_kick_snare	snare		3	command.en_spiral_kick	5	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 buildabuff_inspiration	inspiration			1	command.inspire	0	buildabuff	1		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 recent_heal	stimpack			1	command.bandages	60		0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1

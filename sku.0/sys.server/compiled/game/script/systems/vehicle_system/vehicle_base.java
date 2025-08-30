@@ -4,6 +4,8 @@ import script.*;
 import script.library.*;
 import script.library.vehicle;
 
+import static script.library.vehicle.*;
+
 public class vehicle_base extends script.base_script
 {
     public vehicle_base()
@@ -75,7 +77,7 @@ public class vehicle_base extends script.base_script
             }
             if (oldSpeed > 0.0f)
             {
-                vehicle.setMaximumSpeed(self, oldSpeed);
+                setMaximumSpeed(self, oldSpeed);
             }
         }
         return SCRIPT_CONTINUE;
@@ -143,6 +145,14 @@ public class vehicle_base extends script.base_script
             return -1.0f;
         }
 
+        // Anti-decay mod override
+        if (hasObjVar(vehicle, "vehicle_mod.decay_reduction")) {
+            float reduction = getFloatObjVar(vehicle, "vehicle_mod.decay_reduction");
+            if (reduction >= 1.0f) {
+                return 0.0f; // fully negates decay
+            }
+        }
+
         obj_id controlDevice = callable.getCallableCD(vehicle);
         if (!isIdValid(controlDevice)) {
             return -1.0f;
@@ -153,12 +163,16 @@ public class vehicle_base extends script.base_script
             return -1.0f;
         }
 
-        return dataTableGetFloat(create.VEHICLE_TABLE, ref, "DECAY_RATE");
+        float baseDecay = dataTableGetFloat(create.VEHICLE_TABLE, ref, "DECAY_RATE");
+
+        // apply fractional reduction if present (e.g., 0.25f means 25% less decay)
+        if (hasObjVar(vehicle, "vehicle_mod.decay_reduction")) {
+            float reduction = getFloatObjVar(vehicle, "vehicle_mod.decay_reduction");
+            baseDecay = baseDecay * (1.0f - reduction);
+        }
+
+        return Math.max(baseDecay, 0.0f);
     }
-/*    public int handleVehicleDecay(obj_id self, dictionary params) throws InterruptedException
-    {
-        return SCRIPT_CONTINUE;
-    }*/
 
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
@@ -222,6 +236,12 @@ public class vehicle_base extends script.base_script
             {
                 mi.addRootMenu(menu_info_types.SERVER_MENU1, new string_id(MENU_FILE, "menu_repair_vehicle"));
             }
+        }
+        if (isOwnedByPlayer && utils.hasScriptVar(self, "inRepairZone")) {
+            int rootMenu = mi.addRootMenu(menu_info_types.SERVER_MENU2, new string_id("pet/pet_menu", "mod_vehicle"));
+            mi.addSubMenu(rootMenu, menu_info_types.SERVER_MENU13, new string_id("pet/pet_menu", "mod_anti_decay"));
+            mi.addSubMenu(rootMenu, menu_info_types.SERVER_MENU14, new string_id("pet/pet_menu", "mod_accelerant"));
+            mi.addSubMenu(rootMenu, menu_info_types.SERVER_MENU15, new string_id("pet/pet_menu", "mod_shield"));
         }
         else if (isDisabled(self) && hasBarcRepairKit(player))
         {
@@ -301,14 +321,125 @@ public class vehicle_base extends script.base_script
                 vehicle.repairVehicle(player, self);
                 sendDirtyObjectMenuNotification(self);
             }
+            if (utils.hasScriptVar(self, "inRepairZone") && (!isDisabled(self) || (vehicle.canRepairDisabledVehicle(petControlDevice) && isDisabled(self))))
+            {
+                int city_id = getCityAtLocation(getLocation(self), 0);
+                if ((city_id > 0) && city.isCityBanned(player, city_id))
+                {
+                    sendSystemMessage(player, SID_CITY_GARAGE_BANNED);
+                    return SCRIPT_CONTINUE;
+                }
+                vehicle.repairVehicle(player, self);
+                sendDirtyObjectMenuNotification(self);//this is where I need to add "mod"
+            }
             else if (isDisabled(self) && hasBarcRepairKit(player))
             {
                 vehicle.restoreVehicle(player, self);
                 sendDirtyObjectMenuNotification(self);
             }
         }
+        else if (item == menu_info_types.SERVER_MENU13) // Anti-Decay
+        {
+            if (hasBarcRepairKit(player)) {
+                vehicle.restoreVehicle(player, self);
+
+                // Apply anti-decay modifier
+                setObjVar(self, "vehicle_mod.decay_reduction", true);
+
+                sendSystemMessage(player, new string_id("vehicle_mod", "applied_antidecay"));
+            }
+            else {
+                sendSystemMessage(player, new string_id("vehicle_mod", "missing_restoration_kit"));
+            }
+        }
+        else if (item == menu_info_types.SERVER_MENU14) // Accelerant
+        {
+            if (utils.playerHasItemByTemplate(player, "object/tangible/loot/npc_loot/spice_crash_n_burn_generic.iff")
+                    || utils.playerHasItemByTemplate(player, "object/tangible/food/spice/spice_crash_n_burn.iff"))
+            {
+                boostVehicle(player, self);
+                removeObjVar(self, "vehicle_mod.decay_reduction");
+                sendSystemMessage(player, new string_id("vehicle_mod", "applied_temporary_accelerant"));
+            }
+            else
+            {
+                sendSystemMessage(player, new string_id("vehicle_mod", "missing_rhydonium_spice"));
+            }
+        }
+        else if (item == menu_info_types.SERVER_MENU15) // Shield
+        {
+            // Get the utility belt object in the slot
+            obj_id utilityBelt = getObjectInSlot(player, "utility_belt");
+
+            // Validate the belt
+            if (!isIdValid(utilityBelt) || getGameObjectType(utilityBelt) != GOT_armor_psg) {
+                // Send failure message to the player
+                prose_package pp = new prose_package();
+                pp = prose.setStringId(pp, new string_id("spam", "psg_belt_required"));
+                sendSystemMessageProse(player, pp);
+            }
+            else {
+                shieldVehicle(player, self);
+                buff.applyBuff(self, "vehicle_5");
+                //buff.applyBuff(player, "vehicle_at_rt");//former model applied buff to rider, this shakes it up a bit
+                sendSystemMessage(player, new string_id("vehicle_mod", "installed_temporary_shield"));
+            }
+        }
         return SCRIPT_CONTINUE;
     }
+    public static void boostVehicle(obj_id player, obj_id self) throws InterruptedException {
+        obj_id spice = utils.getItemPlayerHasByTemplate(player, "object/tangible/food/spice/spice_crash_n_burn.iff");
+        if (isIdValid(spice)) {
+            destroyObject(spice);
+        }
+        obj_id spice2 = utils.getItemPlayerHasByTemplate(player, "object/tangible/loot/npc_loot/spice_crash_n_burn_generic.iff");
+        if (isIdValid(spice2)) {
+            destroyObject(spice2);
+        }
+        setMaximumSpeed(self, 73.2F);
+        int currentHP = getHitpoints(self);
+        currentHP -= 100;
+        setHitpoints(self, currentHP);
+    }
+
+    public void shieldVehicle(obj_id player, obj_id self) throws InterruptedException {
+        // Get the utility belt object in the slot
+        obj_id utilityBelt = getObjectInSlot(player, "utility_belt");
+
+        // Validate the belt
+        if (!isIdValid(utilityBelt) || getGameObjectType(utilityBelt) != GOT_armor_psg) {
+            // Send failure message to the player
+            prose_package pp = new prose_package();
+            pp = prose.setStringId(pp, new string_id("spam", "psg_belt_required"));
+            sendSystemMessageProse(player, pp);
+            return; // stop execution if no valid PSG
+        }
+
+        // Damage the PSG and vehicle when used
+        damageItem(utilityBelt, 50);
+
+        int currentHP = getHitpoints(self);
+        currentHP -= 100;
+        setHitpoints(self, currentHP);
+
+        // Success message
+        prose_package pp = new prose_package();
+        pp = prose.setStringId(pp, new string_id("spam", "psg_activated_with_decay"));
+        sendSystemMessageProse(player, pp);
+    }
+
+    private void damageItem(obj_id item, int amount) throws InterruptedException {
+        int curHp = getHitpoints(item);
+        int newHp = curHp - amount;
+
+        if (newHp <= 0) {
+            // Item is destroyed
+            destroyObject(item);
+        } else {
+            setHitpoints(item, newHp);
+        }
+    }
+
     public boolean isMountedOnCreatureQueried(obj_id pet, obj_id player) throws InterruptedException
     {
         if (!isIdValid(pet))
@@ -440,6 +571,7 @@ public class vehicle_base extends script.base_script
                 }
             }
             sendSystemMessage(owner, pet_lib.SID_SYS_VEHICLE_DISABLED);
+            removeObjVar(self, "vehicle_mod.decay_reduction");
             LOG("vehicle_base", "It is destroyed");
             obj_id rider = getRiderId(self);
             if (isIdValid(rider))

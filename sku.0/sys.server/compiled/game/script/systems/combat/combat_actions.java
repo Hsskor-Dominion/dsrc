@@ -7914,41 +7914,49 @@ public class combat_actions extends script.systems.combat.combat_base {
         // Get the boot object in the slot
         obj_id boots = getObjectInSlot(self, "shoes");
 
-        // Check if the player is wearing any boots
-        if (!isIdValid(boots)) {
-            // Send a message to the player if they are not wearing boots
+        // Check if the player is a Trandoshan or Wookiee
+        boolean isBootlessSpecies = isSpecies(self, SPECIES_TRANDOSHAN) || isSpecies(self, SPECIES_WOOKIEE);
+
+        // If not bootless species, and no boots, block sprint
+        if (!isIdValid(boots) && !isBootlessSpecies) {
             prose_package pp = new prose_package();
             pp = prose.setStringId(pp, new string_id("spam", "boots_required"));
             sendSystemMessageProse(self, pp);
             return SCRIPT_OVERRIDE;
         }
 
-        // Check if the boots are either armor or clothing foot type
-        int armorType = getGameObjectType(boots);
-        if (armorType != GOT_armor_foot && armorType != GOT_clothing_foot) {
-            // Send a message to the player if they are not wearing the correct boots
-            prose_package pp = new prose_package();
-            pp = prose.setStringId(pp, new string_id("spam", "boots_required"));
-            sendSystemMessageProse(self, pp);
-            return SCRIPT_OVERRIDE;
+        // If boots exist, check their type
+        if (isIdValid(boots)) {
+            int armorType = getGameObjectType(boots);
+            if (armorType != GOT_armor_foot && armorType != GOT_clothing_foot) {
+                // Invalid boot type
+                prose_package pp = new prose_package();
+                pp = prose.setStringId(pp, new string_id("spam", "boots_required"));
+                sendSystemMessageProse(self, pp);
+                return SCRIPT_OVERRIDE;
+            }
         }
 
-        // Proceed with the ability if the player is wearing the correct boots
+        // Proceed with the ability
         if (!combatStandardAction("bh_armor_sprint_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
 
-        // Damage the boots when the ability is used
-        damageItem(boots, 1); // Adjust the damage amount as needed
-
-        // Notify the player that the ability was activated and the boots were damaged
-        prose_package pp = new prose_package();
-        pp = prose.setStringId(pp, new string_id("spam", "sprint_activated_with_boot_decay"));
-        sendSystemMessageProse(self, pp);
+        // Damage the boots if valid ones are equipped (even for Wookiees/Trandoshans)
+        if (isIdValid(boots)) {
+            damageItem(boots, 1); // Adjust the damage amount as needed
+            prose_package pp = new prose_package();
+            pp = prose.setStringId(pp, new string_id("spam", "sprint_activated_with_boot_decay"));
+            sendSystemMessageProse(self, pp);
+        } else {
+            // No boots to damage, still activate sprint
+            prose_package pp = new prose_package();
+            pp = prose.setStringId(pp, new string_id("spam", "sprint_activated"));
+            sendSystemMessageProse(self, pp);
+        }
 
         return SCRIPT_CONTINUE;
     }
-
 
     public int bh_armor_duelist_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("bh_armor_duelist_1", self, target, params, "", "")) {

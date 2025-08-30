@@ -12074,7 +12074,7 @@ public class base_player extends script.base_script
         obj_id playerCurrentMount = getMountId(self);
         if (isIdValid(playerCurrentMount))
         {
-            vehicle.applyVehicleBuffs(self, playerCurrentMount);
+            //vehicle.applyVehicleBuffs(self, playerCurrentMount);//removed for custom SWG Chimaera shield system
         }
         return SCRIPT_CONTINUE;
     }

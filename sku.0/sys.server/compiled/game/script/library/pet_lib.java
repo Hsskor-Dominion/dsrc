@@ -4808,7 +4808,7 @@ public class pet_lib extends script.base_script
             int vehicleHasBuff = buff.getBuffOnTargetFromGroup(playerCurrentMount, "vehicle");
             if (vehicleHasBuff != 0)
             {
-                buff.removeBuff(playerCurrentMount, vehicleHasBuff);
+                //buff.removeBuff(playerCurrentMount, vehicleHasBuff);
             }
             int petType = getPetType(playerCurrentMount);
 //            if (isPetType(playerCurrentMount, PET_TYPE_MOUNT))
