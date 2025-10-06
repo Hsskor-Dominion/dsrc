@@ -1,6 +1,8 @@
 item	cash	token0	token1	token2	token3	token4	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
+item_pgc_token_03		1000							2025 SWG Chimaera
 item_event_halloween_song_book		900							2008 I am using this column for notes
+item_publish_gift_update_14_comlink	5000								
 item_event_halloween_bat_pheromone_01_01	5000								2008 5000 credits
 item_event_halloween_spider_pheromone_01_01	5000								2008 5000 credits
 item_event_halloween_trick_device_02_01		200							2008

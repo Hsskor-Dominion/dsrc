@@ -354,8 +354,8 @@ public class vehicle_base extends script.base_script
         }
         else if (item == menu_info_types.SERVER_MENU14) // Accelerant
         {
-            if (utils.playerHasItemByTemplate(player, "object/tangible/loot/npc_loot/spice_crash_n_burn_generic.iff")
-                    || utils.playerHasItemByTemplate(player, "object/tangible/food/spice/spice_crash_n_burn.iff"))
+            if (utils.playerHasItemByTemplate(player, "object/tangible/food/spice/spice_thruster_head.iff")
+                    || utils.playerHasItemByTemplate(player, "object/tangible/loot/npc_loot/spice_thruster_head_generic.iff"))
             {
                 boostVehicle(player, self);
                 removeObjVar(self, "vehicle_mod.decay_reduction");
@@ -388,11 +388,11 @@ public class vehicle_base extends script.base_script
         return SCRIPT_CONTINUE;
     }
     public static void boostVehicle(obj_id player, obj_id self) throws InterruptedException {
-        obj_id spice = utils.getItemPlayerHasByTemplate(player, "object/tangible/food/spice/spice_crash_n_burn.iff");
+        obj_id spice = utils.getItemPlayerHasByTemplate(player, "object/tangible/food/spice/spice_thruster_head.iff");
         if (isIdValid(spice)) {
             destroyObject(spice);
         }
-        obj_id spice2 = utils.getItemPlayerHasByTemplate(player, "object/tangible/loot/npc_loot/spice_crash_n_burn_generic.iff");
+        obj_id spice2 = utils.getItemPlayerHasByTemplate(player, "object/tangible/loot/npc_loot/spice_thruster_head_generic.iff");
         if (isIdValid(spice2)) {
             destroyObject(spice2);
         }

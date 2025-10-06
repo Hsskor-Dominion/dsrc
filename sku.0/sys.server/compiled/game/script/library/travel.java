@@ -914,7 +914,7 @@ public class travel extends script.base_script
             sui.msgbox(player, new string_id("travel", "route_invalid"));
             return false;
         }
-        int point_cost1 = getPlanetTravelPointCost(planet1, point1);
+        int point_cost1 = getPlanetTravelPointCost(planet1, point1);//this is the root of my current issue. Endor shuttle departure locations are invalid.
         if (point_cost1 == 0)
         {
             LOG("LOG_CHANNEL", player + " ->Your departure location is not valid.");

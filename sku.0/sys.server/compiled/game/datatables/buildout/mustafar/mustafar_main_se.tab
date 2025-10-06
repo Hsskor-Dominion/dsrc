@@ -753,7 +753,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -54117330	0	object/building/mustafar/terrain/must_rock_scorched_sml.iff	0	64.9492	139.658	2211.04	1	0	0	0		$|
 -54117329	0	object/building/mustafar/structures/must_mining_cantina_marker.iff	0	965.724	225	2683.31	1	0	0	0	planet_map.map_loc	$|
 -54117328	0	object/building/mustafar/structures/must_mining_clone_marker.iff	0	968.189	225	2668.58	1	0	0	0	planet_map.map_loc	$|
-3465379	0	object/building/yavin/temple_exar_kun.iff	0	1105.91	101	3310.31	1	0	0	0	theme_park.rebel.exar_kun_temple_spawner	$|
+3465379	0	object/building/yavin/temple_exar_kun.iff	0	1105.91	101	3310.31	1	0	0	0	theme_park.rebel.vader_castle_spawner	$|
 3465380	3465379	object/cell/cell.iff	1	0	0	0	1	0	0	0		$|
 3465381	3465379	object/cell/cell.iff	2	0	0	0	1	0	0	0		$|
 3465382	3465379	object/cell/cell.iff	3	0	0	0	1	0	0	0		$|

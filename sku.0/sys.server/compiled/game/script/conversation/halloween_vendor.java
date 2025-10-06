@@ -13,6 +13,44 @@ public class halloween_vendor extends script.base_script
     {
         return true;
     }
+    public boolean halloween_sithFriend_condition(obj_id player, obj_id npc) throws InterruptedException
+    {
+        float sithFaction = factions.getFactionStanding(player, "sith_shadow");
+        return sithFaction >= 0;
+    }
+    public boolean halloween_quest_condition_on_spooky(obj_id npc, obj_id player) throws InterruptedException
+    {
+        // Check if the player has any diplomacy quests or is on "jedi_gift_exchange"
+        return (groundquests.isQuestActive(player, "gmf_vader") ||
+                groundquests.isQuestActive(player, "gmf_ren") ||
+                groundquests.isQuestActive(player, "gmf_exar_kun") ||
+                groundquests.isQuestActive(player, "gmf_nightsister") ||
+                groundquests.isQuestActive(player, "gmf_palpatine"));
+    }
+    public void halloween_spooky_mission(obj_id player, obj_id npc) throws InterruptedException
+    {
+        int gmf_mission = rand(1, 5);
+        String mission = "";
+        switch (gmf_mission)
+        {
+            case 1:
+                mission = "gmf_vader";
+                break;
+            case 2:
+                mission = "gmf_ren";
+                break;
+            case 3:
+                mission = "gmf_exar_kun";
+                break;
+            case 4:
+                mission = "gmf_nightsister";
+                break;
+            case 5:
+                mission = "gmf_palpatine";
+                break;
+        }
+        groundquests.grantQuest(player, mission);
+    }
     public boolean halloween_vendor_condition_costumeLockout(obj_id player, obj_id npc) throws InterruptedException
     {
         if (buff.hasBuff(player, "event_halloween_costume_lockout") || !buff.canApplyBuff(player, "event_halloween_costume_jawa"))
@@ -570,6 +608,34 @@ public class halloween_vendor extends script.base_script
                 return SCRIPT_CONTINUE;
             }
         }
+        if (response.equals("s_sith_shadows"))
+        {
+            // optional: debug test string
+            // final string_id message = new string_id(c_stringFile, "testing_does_this_work");
+
+            if (halloween_quest_condition_on_spooky(npc, player))
+            {
+                string_id message = new string_id(c_stringFile, "already_on_spooky_investigation");
+                utils.removeScriptVar(player, "conversation.halloween_vendor.branchId");
+                npcEndConversationWithMessage(player, message);
+                return SCRIPT_CONTINUE;
+            }
+            else if (halloween_sithFriend_condition(player, npc))
+            {
+                halloween_spooky_mission(player, npc);
+                string_id message = new string_id(c_stringFile, "npc_offer_spooky_investigation");
+                utils.removeScriptVar(player, "conversation.halloween_vendor.branchId");
+                npcEndConversationWithMessage(player, message);
+                return SCRIPT_CONTINUE;
+            }
+            else
+            {
+                string_id message = new string_id(c_stringFile, "s_not_sith_friend");
+                utils.removeScriptVar(player, "conversation.halloween_vendor.branchId");
+                npcEndConversationWithMessage(player, message);
+                return SCRIPT_CONTINUE;
+            }
+        }
         return SCRIPT_DEFAULT;
     }
     public int halloween_vendor_handleBranch8(obj_id player, obj_id npc, string_id response) throws InterruptedException
@@ -858,6 +924,13 @@ public class halloween_vendor extends script.base_script
                 hasResponse = true;
                 hasResponse9 = true;
             }
+            boolean hasResponse10 = false;
+            if (halloween_vendor_condition__defaultCondition(player, npc))
+            {
+                ++numberOfResponses;
+                hasResponse = true;
+                hasResponse10 = true;
+            }
             if (hasResponse)
             {
                 int responseIndex = 0;
@@ -901,6 +974,10 @@ public class halloween_vendor extends script.base_script
                 if (hasResponse9)
                 {
                     responses[responseIndex++] = new string_id(c_stringFile, "s_74");
+                }
+                if (hasResponse10)
+                {
+                    responses[responseIndex++] = new string_id(c_stringFile, "s_sith_shadows");
                 }
                 utils.setScriptVar(player, "conversation.halloween_vendor.branchId", 1);
                 npcStartConversation(player, npc, "halloween_vendor", message, responses);
