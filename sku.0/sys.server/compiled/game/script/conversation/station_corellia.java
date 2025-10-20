@@ -304,15 +304,51 @@ public class station_corellia extends script.base_script
     }
     public boolean station_corellia_condition_canLandAtHouse(obj_id player, obj_id npc) throws InterruptedException
     {
-        if (hasObjVar(player, "homingBeacon.planet"))
-        {
-            String homePlanet = getStringObjVar(player, "homingBeacon.planet");
-            return (homePlanet.endsWith("corellia"));
-        }
-        else 
+        // Player must have a homing beacon
+        if (!hasObjVar(player, "homingBeacon.planet"))
         {
             return false;
         }
+
+        // Get home planet name safely
+        String homePlanet = getStringObjVar(player, "homingBeacon.planet");
+        if (homePlanet == null || !homePlanet.toLowerCase().endsWith("corellia"))
+        {
+            return false;
+        }
+
+        // --- Begin inControlOfSpace logic inline ---
+        String currentRegion = gcw.getGcwRegion(player);
+
+        // If region info not available, assume permissive
+        if (currentRegion == null || currentRegion.isEmpty())
+        {
+            return true;
+        }
+
+        int faction = pvpGetAlignedFaction(player);
+        int gcwScore = getGcwImperialScorePercentile(currentRegion);
+
+        // Imperial control (70%+)
+        if (faction == -615855020)
+        {
+            return gcwScore >= 70;
+        }
+
+        // Rebel control (≤30%)
+        if (faction == 370444368)
+        {
+            return gcwScore <= 30;
+        }
+
+        // Smugglers (bootleggers) can always land
+        if (hasSkill(player, "sm_title_bootlegger"))
+        {
+            return true;
+        }
+
+        // Default: no control
+        return false;
     }
     public boolean station_corellia_condition_canAttackRebel(obj_id player, obj_id npc) throws InterruptedException
     {

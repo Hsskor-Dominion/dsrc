@@ -41,6 +41,7 @@ public class city_vote extends script.terminal.base.base_terminal
     public static final String STF_FILE = "city/city";
     public static final string_id SID_NOT_OLD_ENOUGH = new string_id("city/city", "not_old_enough");
     public static final string_id SID_CITY_DIPLOMACY = new string_id("city/city", "city_diplomacy");
+    public static final string_id SID_CITY_BOUNTY = new string_id("city/city", "city_bounty");
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         dictionary outparams = new dictionary();
@@ -121,6 +122,7 @@ public class city_vote extends script.terminal.base.base_terminal
         mi.addSubMenu(menu, menu_info_types.SERVER_MENU2, SID_MAYORAL_STANDINGS);
         mi.addSubMenu(menu, menu_info_types.SERVER_MENU3, SID_MAYORAL_VOTE);
         mi.addRootMenu(menu_info_types.SERVER_MENU7, SID_CITY_DIPLOMACY);
+        mi.addRootMenu(menu_info_types.SERVER_MENU8, SID_CITY_BOUNTY);
         if (!isRegisteredToRun(player, self))
         {
             mi.addSubMenu(menu, menu_info_types.SERVER_MENU4, SID_MAYORAL_REGISTER);
@@ -171,6 +173,10 @@ public class city_vote extends script.terminal.base.base_terminal
         else if (item == menu_info_types.SERVER_MENU7)
         {
             handleCityDiplomacy(self, player);
+        }
+        else if (item == menu_info_types.SERVER_MENU8)
+        {
+            handleCityBounty(self, player);
         }
         return SCRIPT_CONTINUE;
     }
@@ -259,6 +265,152 @@ public class city_vote extends script.terminal.base.base_terminal
         sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_not_qualified"));
         // Not qualified to start or progress this diplomacy quest
     }
+
+    public void handleCityBounty(obj_id self, obj_id player) throws InterruptedException
+    {
+        // --- City context ---
+        obj_id city_hall = getTopMostContainer(self);
+        int city_id = findCityByCityHall(city_hall);
+        obj_id mayor = cityGetLeader(city_id);
+
+        boolean isEnemy = townspersonEnemy(player, self);
+        boolean isMayor = (mayor == player);
+        boolean isMilitia = isMilitiaOfCity(player, city_id);
+        boolean isCityLeaderOrMilitia = isMayor || isMilitia;
+
+        // --- Enemy auto-bounty ---
+        if (isEnemy)
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_poor_faction_bounty_fee"));
+            townspersonBounty(player, self);
+            return;
+        }
+
+        // --- Only Mayor or Militia ---
+        if (!isCityLeaderOrMilitia)
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_bounty_signal_not_qualified"));
+            return;
+        }
+
+        sendSystemMessage(player, new string_id("city/city", "city_bounty_signal_start_pvp_risk"));
+        factions.goOvertWithDelay(player, 0.0f);
+
+        // --- Nearby players ---
+        location loc = getLocation(player);
+        obj_id[] allPlayers = getAllPlayers(loc, 10000.0f); // radius in meters
+
+        // Count valid players
+        int count = 0;
+        for (int i = 0; i < allPlayers.length; i++)
+        {
+            if (isPlayer(allPlayers[i]) && allPlayers[i] != player)
+                count++;
+        }
+
+        if (count == 0)
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_bounty_no_players_found"));
+            return;
+        }
+
+        // Build arrays
+        obj_id[] nearbyPlayers = new obj_id[count];
+        String[] playerNames = new String[count];
+        int idx = 0;
+
+        for (int i = 0; i < allPlayers.length; i++)
+        {
+            if (isPlayer(allPlayers[i]) && allPlayers[i] != player)
+            {
+                nearbyPlayers[idx] = allPlayers[i];
+                playerNames[idx] = getName(allPlayers[i]);
+                idx++;
+            }
+        }
+
+        // Store for callback
+        utils.setScriptVar(player, "city_bounty.list", nearbyPlayers);
+
+        // Show listbox UI
+        sui.listbox(
+                self,
+                player,
+                "@city/city:select_bounty_target",
+                sui.OK_CANCEL,
+                "@city/city:set_city_bounty",
+                playerNames,
+                "handleCityBountySelection",
+                true
+        );
+    }
+
+    // --- Callback for listbox ---
+    public int handleCityBountySelection(obj_id self, dictionary params) throws InterruptedException
+    {
+        obj_id player = sui.getPlayerId(params);
+        if (!isIdValid(player))
+            return SCRIPT_CONTINUE;
+
+        int selected = sui.getListboxSelectedRow(params);
+        if (selected < 0)
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_bounty_cancelled"));
+            return SCRIPT_CONTINUE;
+        }
+
+        // Retrieve saved player list
+        obj_id[] nearbyPlayers = utils.getObjIdArrayScriptVar(player, "city_bounty.list");
+        if (nearbyPlayers == null || selected >= nearbyPlayers.length)
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_bounty_invalid_selection"));
+            return SCRIPT_CONTINUE;
+        }
+
+        obj_id target = nearbyPlayers[selected];
+
+        if (target == player)
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_bounty_cannot_target_self"));
+            return SCRIPT_CONTINUE;
+        }
+
+        // --- Launch bounty input SUI ---
+        showSetBountySUIFromSelection(player, target);
+
+        // Cleanup
+        utils.removeScriptVar(player, "city_bounty.list");
+
+        return SCRIPT_CONTINUE;
+    }
+
+    // --- New SUI for bounty input ---
+    public static void showSetBountySUIFromSelection(obj_id player, obj_id target) throws InterruptedException
+    {
+        String prompt = "@bounty_hunter:setbounty_prompt1 " + getName(target) + "? @bounty_hunter:setbounty_prompt2 " + getTotalMoney(player);
+        String title = "@bounty_hunter:setbounty_title";
+
+        int pid = createSUIPage(sui.SUI_INPUTBOX, player, player, "handleSetBounty");
+        sui.setAutosaveProperty(pid, false);
+        sui.setSizeProperty(pid, 300, 325);
+        sui.setLocationProperty(pid, 400, 200);
+
+        setSUIProperty(pid, sui.INPUTBOX_PROMPT, sui.PROP_TEXT, prompt);
+        setSUIProperty(pid, sui.INPUTBOX_TITLE, sui.PROP_TEXT, title);
+
+        sui.inputboxButtonSetup(pid, sui.OK_CANCEL);
+        sui.inputboxStyleSetup(pid, sui.INPUT_NORMAL);
+        setSUIProperty(pid, sui.INPUTBOX_INPUT, "MaxLength", "20");
+        setSUIProperty(pid, sui.INPUTBOX_COMBO, "MaxLength", "20");
+
+        subscribeToSUIProperty(pid, sui.INPUTBOX_INPUT, sui.PROP_LOCALTEXT);
+        subscribeToSUIProperty(pid, sui.INPUTBOX_COMBO, sui.PROP_SELECTEDTEXT);
+
+        showSUIPage(pid);
+
+        utils.setScriptVar(player, "setbounty.selectedTarget", target);
+    }
+
     public void showStandings(obj_id self, obj_id player) throws InterruptedException
     {
         obj_id city_hall = getTopMostContainer(self);

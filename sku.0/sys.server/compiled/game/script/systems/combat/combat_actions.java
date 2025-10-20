@@ -11550,6 +11550,25 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(target, self);
         }
 
+        // --- NEW: Check for loot crate ---
+        obj_id inv = utils.getInventoryContainer(target);
+        if (isIdValid(inv)) {
+            obj_id[] contents = getContents(inv);
+            if (contents != null && contents.length > 0) {
+                for (obj_id item : contents) {
+                    if (!isIdValid(item)) continue;
+                    String template = getTemplateName(item);
+                    if (template != null && template.equals("object/tangible/container/loot/loot_crate.iff")) {
+                        // Flag target as personal enemy if they have loot crate
+                        pvpSetPersonalEnemyFlag(self, target);
+                        pvpSetPersonalEnemyFlag(target, self);
+                        sendSystemMessage(self, new string_id("stardust/mando_rank", "loot_crate_detected"));
+                        break;
+                    }
+                }
+            }
+        }
+
         sendSystemMessage(target, new string_id("stardust/mando_rank", "scanning"));
         doAnimationAction(self, "anims.PLAYER_DRAW_DATAPAD");
         obj_id originalTarget = target;

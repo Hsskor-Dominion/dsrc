@@ -1777,7 +1777,7 @@ public class stealth extends script.base_script
         {
             return cash;
         }
-        cash = rand(1, 10);
+        cash = rand(50, 100);//compensation for cooldown nerf
         cash = cash * level;
         return cash;
     }
@@ -1813,6 +1813,8 @@ public class stealth extends script.base_script
                 sendSystemMessageTestingOnly(thief, "STEALING CHECK FAILED: CAUGHT");
                 showFlyText(thief, new string_id("spam", "stealing_cought"), 1.5f, colors.TOMATO);
                 sendSystemMessage(thief, new string_id("spam", "stolen_cought"));
+                buff.applyBuff(thief, "sp_attack_invis_recourse");
+                buff.applyBuff(thief, "sm_spot_a_sucker_4_7");
                 String invis = getInvisBuff(thief);
                 if (invis != null && invis.length() > 0)
                 {
@@ -1821,6 +1823,8 @@ public class stealth extends script.base_script
                 if (isPlayer(mark))
                 {
                     prose_package pp = prose.getPackage(new string_id("spam", "almost_got_item_stolen"), thief);
+                    buff.applyBuff(mark, "sm_spot_a_sucker_4_7");
+                    bounty_hunter.showSetBountySUI(mark, thief);
                     sendSystemMessageProse(mark, pp);
                 }
                 else 
@@ -1833,10 +1837,109 @@ public class stealth extends script.base_script
         }
         showFlyTextPrivate(thief, thief, new string_id("spam", "stealin_on"), 1.5f, colors.TOMATO);
         if (!doTheftLoot(thief, mark)) {
-            sendSystemMessage(thief, new string_id("spam", "stolen_nothing"));
+            //sendSystemMessage(thief, new string_id("spam", "stolen_nothing"));
+            sendSystemMessage(thief, new string_id("spam", "stolen_something"));
+            sendSystemMessage(mark, new string_id("spam", "stolen_mark"));
+            bounty_hunter.showSetBountySUI(mark, thief);
+            pvpSetPermanentPersonalEnemyFlag(mark, thief);
+            pvpSetPermanentPersonalEnemyFlag(thief, mark);
+            money.bankTo(mark, thief, 5000); //old method
+            money.pay(mark, thief, 5000, "", null, true);
+            factions.addFactionStanding(thief, "sif", 1.0f);
+            factions.addFactionStanding(mark, "sif", -1.0f);
+            buff.applyBuff(mark, "sm_spot_a_sucker_4_7");
+            steal_pvp(mark, thief);
         }
         return true;
     }
+
+public static void steal_pvp(obj_id thief, obj_id mark) throws InterruptedException
+{
+    // Small money steal for effectivenss
+    money.requestPayment(thief, mark, smuggler.TIER_5_GENERIC_FRONT_COST, "none", null, true);
+
+    // Get target's inventory container - I don't have this part working yet
+    obj_id inv = utils.getInventoryContainer(mark);
+    if (!isIdValid(inv))
+    {
+        sendSystemMessageTestingOnly(thief, "STEAL FAILED: No inventory found.");
+        return;
+    }
+
+    obj_id[] contents = getContents(inv);
+    if (contents == null || contents.length == 0)
+    {
+        sendSystemMessageTestingOnly(thief, "STEAL FAILED: Target inventory empty.");
+        return;
+    }
+
+    boolean stolen = false;
+
+    // List of stealable templates
+    String[] stealableItems = {
+            "object/tangible/container/loot/loot_crate.iff"
+    };
+
+    for (obj_id item : contents)
+    {
+        if (!isIdValid(item))
+            continue;
+
+        String template = getTemplateName(item);
+        if (template == null)
+            continue;
+
+        // Only steal matching templates
+        for (String targetTemplate : stealableItems)
+        {
+            if (template.equals(targetTemplate))
+            {
+                obj_id thiefInv = utils.getInventoryContainer(thief);
+                if (!isIdValid(thiefInv))
+                {
+                    sendSystemMessageTestingOnly(thief, "STEAL FAILED: Thief inventory invalid.");
+                    return;
+                }
+
+                // Clone container and contents
+                obj_id stolenItem = createObject(template, thiefInv, "");
+                if (isIdValid(stolenItem))
+                {
+                        obj_id[] childItems = getContents(item);
+                        if (childItems != null)
+                        {
+                            for (obj_id child : childItems)
+                            {
+                                if (!isIdValid(child))
+                                    continue;
+                                String childTemplate = getTemplateName(child);
+                                if (childTemplate != null)
+                                {
+                                    createObject(childTemplate, stolenItem, "");
+                                }
+                            }
+                        }
+
+                    // Remove original item from victim
+                    destroyObject(item);
+
+                    sendSystemMessage(thief, new string_id("spam", "stolen_loot_crate"));
+                    sendSystemMessage(mark, new string_id("spam", "lost_loot_crate"));
+                    stolen = true;
+                    break;
+                }
+            }
+        }
+
+        if (stolen)
+            break;
+    }
+
+    if (!stolen)
+    {
+        sendSystemMessageTestingOnly(thief, "STEAL FAILED: No stealable item found.");
+    }
+}
     public static boolean isCoughtWhileStealing(obj_id thief, obj_id mark) throws InterruptedException
     {
         return passiveDetectHiddenTarget(thief, mark, PASSIVE_BREACH_NEAR);

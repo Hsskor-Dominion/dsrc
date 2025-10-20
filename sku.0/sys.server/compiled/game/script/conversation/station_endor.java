@@ -38,6 +38,58 @@ public class station_endor extends script.base_script
         }
         return false;
     }
+    public boolean station_endor_condition_canLandAtHouse(obj_id player, obj_id npc) throws InterruptedException
+    {
+        // Player must have a homing beacon
+        if (!hasObjVar(player, "homingBeacon.planet"))
+        {
+            return false;
+        }
+
+        // Get home planet name safely
+        String homePlanet = getStringObjVar(player, "homingBeacon.planet");
+        if (homePlanet == null || !homePlanet.toLowerCase().endsWith("endor"))
+        {
+            return false;
+        }
+
+        // --- Begin inControlOfSpace logic inline ---
+        String currentRegion = gcw.getGcwRegion(player);
+
+        // If region info not available, assume permissive
+        if (currentRegion == null || currentRegion.isEmpty())
+        {
+            return true;
+        }
+
+        int faction = pvpGetAlignedFaction(player);
+        int gcwScore = getGcwImperialScorePercentile(currentRegion);
+
+        // Imperial control (70%+)
+        if (faction == -615855020)
+        {
+            return gcwScore >= 70;
+        }
+
+        // Rebel control (≤30%)
+        if (faction == 370444368)
+        {
+            return gcwScore <= 30;
+        }
+
+        // Smugglers (bootleggers) can always land
+        if (hasSkill(player, "sm_title_bootlegger"))
+        {
+            return true;
+        }
+
+        // Default: no control
+        return false;
+    }
+    public void station_endor_action_landHoming(obj_id player, obj_id npc) throws InterruptedException
+    {
+        space_content.landPlayerHoming(player, npc);
+    }
     public boolean station_endor_condition_isTooFar(obj_id player, obj_id npc) throws InterruptedException
     {
         space_combat.playCombatTauntSound(player);
@@ -819,40 +871,52 @@ public class station_endor extends script.base_script
         {
             if (station_endor_condition__defaultCondition(player, npc))
             {
-                string_id message = new string_id(c_stringFile, "s_9e0cc5c");
+                string_id message = new string_id(c_stringFile, "s_9e0cc5c"); // "I guess you can land..."
+
                 int numberOfResponses = 0;
                 boolean hasResponse = false;
-                boolean hasResponse0 = false;
+
+                boolean hasResponse0 = false; // Station 2
                 if (station_endor_condition__defaultCondition(player, npc))
                 {
                     ++numberOfResponses;
                     hasResponse = true;
                     hasResponse0 = true;
                 }
-                boolean hasResponse1 = false;
+
+                boolean hasResponse1 = false; // Station 1
                 if (station_endor_condition__defaultCondition(player, npc))
                 {
                     ++numberOfResponses;
                     hasResponse = true;
                     hasResponse1 = true;
                 }
+
+                boolean hasResponse2 = false; // Homing beacon
+                if (station_endor_condition_canLandAtHouse(player, npc))
+                {
+                    ++numberOfResponses;
+                    hasResponse = true;
+                    hasResponse2 = true;
+                }
+
                 if (hasResponse)
                 {
                     int responseIndex = 0;
                     string_id responses[] = new string_id[numberOfResponses];
+
                     if (hasResponse0)
-                    {
-                        responses[responseIndex++] = new string_id(c_stringFile, "s_c6f610d3");
-                    }
+                        responses[responseIndex++] = new string_id(c_stringFile, "s_c6f610d3"); // land at starport 2
                     if (hasResponse1)
-                    {
-                        responses[responseIndex++] = new string_id(c_stringFile, "s_695e2019");
-                    }
+                        responses[responseIndex++] = new string_id(c_stringFile, "s_695e2019"); // land at starport 1
+                    if (hasResponse2)
+                        responses[responseIndex++] = new string_id(c_stringFile, "s_homingbeacon"); // land at homing beacon (new line in .stf)
+
                     utils.setScriptVar(player, "conversation.station_endor.branchId", 4);
                     npcSpeak(player, message);
                     npcSetConversationResponses(player, responses);
                 }
-                else 
+                else
                 {
                     utils.removeScriptVar(player, "conversation.station_endor.branchId");
                     npcEndConversationWithMessage(player, message);
@@ -881,6 +945,17 @@ public class station_endor extends script.base_script
             {
                 station_endor_action_landStation1(player, npc);
                 string_id message = new string_id(c_stringFile, "s_75d638d8");
+                utils.removeScriptVar(player, "conversation.station_endor.branchId");
+                npcEndConversationWithMessage(player, message);
+                return SCRIPT_CONTINUE;
+            }
+        }
+        if (response.equals("s_homingbeacon"))
+        {
+            if (station_endor_condition_canLandAtHouse(player, npc))
+            {
+                station_endor_action_landHoming(player, npc);
+                string_id message = new string_id(c_stringFile, "s_homing_landing"); // “Locking on to your homing beacon.”
                 utils.removeScriptVar(player, "conversation.station_endor.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;

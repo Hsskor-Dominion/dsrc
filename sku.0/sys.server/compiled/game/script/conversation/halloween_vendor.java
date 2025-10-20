@@ -25,11 +25,12 @@ public class halloween_vendor extends script.base_script
                 groundquests.isQuestActive(player, "gmf_ren") ||
                 groundquests.isQuestActive(player, "gmf_exar_kun") ||
                 groundquests.isQuestActive(player, "gmf_nightsister") ||
+                groundquests.isQuestActive(player, "gmf_outbreak") ||
                 groundquests.isQuestActive(player, "gmf_palpatine"));
     }
     public void halloween_spooky_mission(obj_id player, obj_id npc) throws InterruptedException
     {
-        int gmf_mission = rand(1, 5);
+        int gmf_mission = rand(1, 6);
         String mission = "";
         switch (gmf_mission)
         {
@@ -47,6 +48,9 @@ public class halloween_vendor extends script.base_script
                 break;
             case 5:
                 mission = "gmf_palpatine";
+                break;
+            case 6:
+                mission = "gmf_outbreak";
                 break;
         }
         groundquests.grantQuest(player, mission);
