@@ -1437,6 +1437,11 @@ public class base_player extends script.base_script
             revokeSkill(self, "stardust_admiral_republic");
             revokeSkill(self, "stardust_admiral_imperial");
         }
+        float spynetFaction = factions.getFactionStanding(self, "sif");
+        if (spynetFaction <= -100)
+        {
+            revokeSkill(self, "stardust_spy");
+        }
         boolean needsPrerequisites = true;
         int attempts = 0;
         while (needsPrerequisites && attempts < 100)

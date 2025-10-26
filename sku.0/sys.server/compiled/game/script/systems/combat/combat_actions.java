@@ -6338,6 +6338,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         float ratio = getLevel(self) / 90;
         int duration = (int) Math.ceil(minPower + (difference * ratio));
         buff.applyBuff(target, self, "invis_sm_buff_invis_1");
+        buff.applyBuff(self, target, "invis_sp_diversion_stealth");
         return SCRIPT_CONTINUE;
     }
 
@@ -11535,6 +11536,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             if (hasSkill(target, skill)) {
                 pvpSetPersonalEnemyFlag(self, target);
                 pvpSetPersonalEnemyFlag(target, self);
+                sendSystemMessage(self, new string_id("stardust/mando_rank", "jedi_detected"));
             }
         }
 

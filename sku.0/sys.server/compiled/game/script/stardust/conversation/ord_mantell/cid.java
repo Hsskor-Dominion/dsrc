@@ -172,7 +172,7 @@ public class cid extends script.base_script
                 npcSpeak(player, message);
                 //npcSetConversationResponses(player, responses);
                 npcEndConversationWithMessage(player, message);//temporary fix since space makes this quest busted
-                warpPlayer(player, "kashyyyk_hunting", -616, 8, 889, null, 0, 0, 0, "", false);
+                //warpPlayer(player, "kashyyyk_hunting", -616, 8, 889, null, 0, 0, 0, "", false); //I need to turn this back on, but delay the warp, as players are not getting the quest due to the quick warp.
 
                 return SCRIPT_CONTINUE;
             }

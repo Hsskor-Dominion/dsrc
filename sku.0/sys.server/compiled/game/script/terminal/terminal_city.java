@@ -7,11 +7,12 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Vector;
 
-public class terminal_city extends script.base_script
-{
-    public terminal_city()
-    {
+import static script.library.utils.isContainer;
+
+public class terminal_city extends script.base_script {
+    public terminal_city() {
     }
+
     public static final String STF = "city/city";
     public static final string_id SID_CITY_HACKS = new string_id(STF, "city_hacks");
     public static final string_id SID_CITY_FORCE_UPDATE = new string_id(STF, "force_update");
@@ -28,6 +29,7 @@ public class terminal_city extends script.base_script
     public static final string_id SID_CITY_MODIFY_STRUCTURE_LIST = new string_id(STF, "modify_structure_list");
     public static final string_id SID_CLEAR_STRUCTURE_VARS = new string_id(STF, "clear_structure_vars");
     public static final string_id SID_CITY_INFO = new string_id(STF, "city_info");
+    public static final string_id SID_CITY_SELL_DATA = new string_id(STF, "sell_locked_container_data");
     public static final string_id SID_CITY_STATUS = new string_id(STF, "city_status");
     public static final string_id SID_NON_CITIZEN_CITY_STATUS = new string_id(STF, "non_citizen_city_status");
     public static final string_id SID_CITY_CITIZENS = new string_id(STF, "city_citizens");
@@ -80,30 +82,30 @@ public class terminal_city extends script.base_script
     public static final string_id PUBLIC_ELECTION_SUBJECT = new string_id(STF, "public_election_subject");
     public static final string_id PUBLIC_ELECTION_BODY = new string_id(STF, "public_election_body");
     public static final String CITY_SPECS = "datatables/city/specializations.iff";
-    public static final String[] TAX_STRING = 
-    {
-        "income",
-        "property",
-        "sales",
-        "travel",
-        "garage"
-    };
-    public static final int[] TAX_MIN = 
-    {
-        0,
-        0,
-        0,
-        1,
-        0
-    };
-    public static final int[] TAX_MAX = 
-    {
-        50000,
-        90,
-        90,
-        10000,
-        90
-    };
+    public static final String[] TAX_STRING =
+            {
+                    "income",
+                    "property",
+                    "sales",
+                    "travel",
+                    "garage"
+            };
+    public static final int[] TAX_MIN =
+            {
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
+            };
+    public static final int[] TAX_MAX =
+            {
+                    50000,
+                    90,
+                    90,
+                    10000,
+                    90
+            };
     public static final string_id SID_CITY_ZONE = new string_id(STF, "zone");
     public static final string_id SID_CITY_UNZONE = new string_id(STF, "unzone");
     public static final string_id SID_ZONING_ENABLED = new string_id(STF, "zoning_enabled");
@@ -139,17 +141,15 @@ public class terminal_city extends script.base_script
     public static final string_id SID_BEGIN_GCW_REGION_DEFENDER = new string_id(STF, "begin_gcw_region_defender");
     public static final string_id SID_END_GCW_REGION_DEFENDER = new string_id(STF, "end_gcw_region_defender");
     public static final string_id SID_DERANK_EXEMPT = new string_id("Toggle De-Rank Exemption");
-    public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
-    {
+
+    public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException {
         obj_id structure = getTopMostContainer(self);
         int city_id = findCityByCityHall(structure);
-        if (!cityExists(city_id))
-        {
+        if (!cityExists(city_id)) {
             return SCRIPT_CONTINUE;
         }
         obj_id mayor = cityGetLeader(city_id);
-        if (!city.isCitizenOfCity(player, city_id) && (player != mayor) && !isGod(player))
-        {
+        if (!city.isCitizenOfCity(player, city_id) && (player != mayor) && !isGod(player)) {
             return SCRIPT_CONTINUE;
         }
         int menu = mi.addRootMenu(menu_info_types.ITEM_USE, SID_CITY_INFO);
@@ -159,29 +159,22 @@ public class terminal_city extends script.base_script
         mi.addSubMenu(menu, menu_info_types.CITY_RANK, SID_CITY_RANK);
         mi.addSubMenu(menu, menu_info_types.SERVER_MENU3, SID_CITY_MAINT_REPORT);
         mi.addSubMenu(menu, menu_info_types.CITY_TREASURY, SID_TREASURY_STATUS);
+        mi.addSubMenu(menu, menu_info_types.SERVER_MENU19, SID_CITY_SELL_DATA);//this is new, and broken I think
         mi.addSubMenu(menu, menu_info_types.CITY_TREASURY_DEPOSIT, SID_TREASURY_DEPOSIT);
-        if (city.isCitizenOfCity(player, city_id) && (player != mayor))
-        {
+        if (city.isCitizenOfCity(player, city_id) && (player != mayor)) {
             mi.addSubMenu(menu, menu_info_types.SERVER_MENU5, SID_CITY_REVOKE_CITIZENSHIP);
         }
-        if (player == mayor || isGod(player))
-        {
+        if (player == mayor || isGod(player)) {
             menu = mi.addRootMenu(menu_info_types.CITY_MANAGEMENT, SID_CITY_MANAGEMENT);
             mi.addSubMenu(menu, menu_info_types.CITY_NAME, SID_CITY_NAME);
-            if (!city.isCityRegistered(city_id))
-            {
+            if (!city.isCityRegistered(city_id)) {
                 mi.addSubMenu(menu, menu_info_types.CITY_REGISTER, SID_CITY_REGISTER);
-            }
-            else 
-            {
+            } else {
                 mi.addSubMenu(menu, menu_info_types.CITY_REGISTER, SID_CITY_UNREGISTER);
             }
-            if (city.isCityZoned(city_id))
-            {
+            if (city.isCityZoned(city_id)) {
                 mi.addSubMenu(menu, menu_info_types.SERVER_MENU2, SID_CITY_UNZONE);
-            }
-            else 
-            {
+            } else {
                 mi.addSubMenu(menu, menu_info_types.SERVER_MENU2, SID_CITY_ZONE);
             }
             mi.addSubMenu(menu, menu_info_types.CITY_MILITIA, SID_CITY_MILITIA);
@@ -190,33 +183,25 @@ public class terminal_city extends script.base_script
             mi.addSubMenu(menu, menu_info_types.SERVER_MENU1, SID_CITY_SPECIALIZATIONS);
             mi.addSubMenu(menu, menu_info_types.SERVER_MENU11, SID_CITY_VISITOR_MOTD);
             mi.addSubMenu(menu, menu_info_types.SERVER_MENU12, SID_CITY_CITIZEN_MOTD);
-            if (!city.isCitizenOfCity(player, city_id))
-            {
+            if (!city.isCitizenOfCity(player, city_id)) {
                 mi.addSubMenu(menu, menu_info_types.SERVER_MENU8, SID_CITY_FIX_MAYOR);
             }
             mi.addSubMenu(menu, menu_info_types.SERVER_MENU13, SID_CITY_CITIZEN_PROTECTION);
             int factionId = cityGetFaction(city_id);
-            if (((-615855020) == factionId) || ((370444368) == factionId))
-            {
+            if (((-615855020) == factionId) || ((370444368) == factionId)) {
                 mi.addSubMenu(menu, menu_info_types.SERVER_MENU16, SID_ALIGN_NEUTRAL);
-            }
-            else 
-            {
+            } else {
                 mi.addSubMenu(menu, menu_info_types.SERVER_MENU14, SID_ALIGN_IMPERIAL);
                 mi.addSubMenu(menu, menu_info_types.SERVER_MENU15, SID_ALIGN_REBEL);
             }
             final String gcwDefenderRegion = cityGetGcwDefenderRegion(city_id);
-            if ((gcwDefenderRegion == null) || (gcwDefenderRegion.length() <= 0))
-            {
+            if ((gcwDefenderRegion == null) || (gcwDefenderRegion.length() <= 0)) {
                 mi.addSubMenu(menu, menu_info_types.SERVER_MENU17, SID_BEGIN_GCW_REGION_DEFENDER);
-            }
-            else 
-            {
+            } else {
                 mi.addSubMenu(menu, menu_info_types.SERVER_MENU18, SID_END_GCW_REGION_DEFENDER);
             }
         }
-        if (isGod(player))
-        {
+        if (isGod(player)) {
             int godMenu = mi.addRootMenu(menu_info_types.ITEM_USE_SELF, SID_CITY_HACKS);
             mi.addSubMenu(godMenu, menu_info_types.SERVER_MENU4, SID_CITY_FORCE_UPDATE);
             mi.addSubMenu(godMenu, menu_info_types.SERVER_MENU6, SID_CITY_RANK_UP);
@@ -231,167 +216,173 @@ public class terminal_city extends script.base_script
         }
         return SCRIPT_CONTINUE;
     }
-    public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
-    {
+
+    public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException {
         obj_id structure = getTopMostContainer(self);
-        if (!isIdValid(structure))
-        {
+        if (!isIdValid(structure)) {
             sendSystemMessage(player, new string_id(STF, "city_network_error"));
             return SCRIPT_CONTINUE;
         }
         String template = getTemplateName(structure);
-        if (!template.contains("cityhall_"))
-        {
+        if (!template.contains("cityhall_")) {
             sendSystemMessage(player, new string_id(STF, "city_network_error"));
             return SCRIPT_CONTINUE;
         }
         int city_id = findCityByCityHall(structure);
-        if (!cityExists(city_id))
-        {
+        if (!cityExists(city_id)) {
             return SCRIPT_CONTINUE;
         }
         obj_id mayor = cityGetLeader(city_id);
-        if (item == menu_info_types.CITY_STATUS)
-        {
+        if (item == menu_info_types.CITY_STATUS) {
             showCityInfo(player, self, city_id);
         }
-        else if (item == menu_info_types.CITY_CITIZENS)
+//        if (item == menu_info_types.SERVER_MENU19)
+//        {
+//            sellData(player, self, city_id);
+//        }
+        if (item == menu_info_types.SERVER_MENU19)
         {
+            obj_id inv = utils.getInventoryContainer(player);
+            if (isIdValid(inv))
+            {
+                obj_id[] contents = getContents(inv);
+                if (contents != null && contents.length > 0)
+                {
+                    int totalCredits = 0;
+
+                    for (obj_id container : contents)
+                    {
+                        if (!isIdValid(container)) continue;
+
+                        template = getTemplateName(container); // <-- no 'String' here
+                        if (template != null && template.equals("object/tangible/container/loot/loot_crate.iff"))
+                        {
+                            // Flag player as political enemy
+                               pvpMakeDeclared(player);
+                            // sendSystemMessage(self, new string_id("stardust/mando_rank", "loot_crate_detected"));
+
+                            // Add to treasury
+                            int storedCredits = getIntObjVar(container, "slicing.storedCredits");
+                            if (storedCredits <= 0) storedCredits = 5000;
+
+                            money.requestPayment(player, structure, storedCredits, "handlePayment", null);
+                            sendSystemMessage(self, new string_id(STF, "locked_data_containers_sold"));
+                            sendSystemMessage(self, new string_id(STF, "political_experience_gained"));
+                            //we correctly deposit, now we need to reimburse the player
+                            // Generate credit chip
+                            obj_id creditChip = createObject("object/tangible/item/loot_credit_chip.iff", inv, "");
+                            if (isIdValid(creditChip))
+                            {
+                                setCount(creditChip, storedCredits);
+                                setObjVar(creditChip, "loot.intCredits", storedCredits);
+                            }
+
+                            // Award political experience
+                            int encryptionCount = getIntObjVar(container, "slicing.encryptionCount");
+                            if (encryptionCount <= 0) encryptionCount = 1; // fallback
+                            int xp = 100 * encryptionCount;
+                            grantExperiencePoints(player, "political", xp);
+
+                            // Destroy the container
+                            destroyObject(container);
+
+                            totalCredits += storedCredits;
+                        }
+                    }
+
+                    if (totalCredits <= 0)
+                    {
+                        // Nothing sold
+                    }
+                    else
+                    {
+                        // Sold containers
+                    }
+                }
+                else
+                {
+                    // Inventory empty
+                }
+            }
+        }
+        else if (item == menu_info_types.CITY_CITIZENS) {
             showCitizensList(player, self, city_id);
-        }
-        else if (item == menu_info_types.CITY_STRUCTURES)
-        {
+        } else if (item == menu_info_types.CITY_STRUCTURES) {
             showStructuresList(player, self, city_id);
-        }
-        else if (item == menu_info_types.CITY_TREASURY)
-        {
+        } else if (item == menu_info_types.CITY_TREASURY) {
             showTreasuryInfo(player, self, city_id);
-        }
-        else if (item == menu_info_types.CITY_RANK)
-        {
+        } else if (item == menu_info_types.CITY_RANK) {
             showAdvancementInfo(player, self, city_id);
-        }
-        else if (item == menu_info_types.SERVER_MENU3)
-        {
+        } else if (item == menu_info_types.SERVER_MENU3) {
             showMaintInfo(player, self, city_id);
         }
-        if (item == menu_info_types.CITY_TREASURY_DEPOSIT)
-        {
+        if (item == menu_info_types.CITY_TREASURY_DEPOSIT) {
             makeTreasuryDeposit(player, self, city_id);
         }
-        if (player == mayor || isGod(player))
-        {
-            if (item == menu_info_types.CITY_NAME)
-            {
+        if (player == mayor || isGod(player)) {
+            if (item == menu_info_types.CITY_NAME) {
                 changeCityName(player, self, city_id);
-            }
-            else if (item == menu_info_types.CITY_TAXES)
-            {
+            } else if (item == menu_info_types.CITY_TAXES) {
                 adjustTaxes(player, self, city_id);
-            }
-            else if (item == menu_info_types.CITY_MILITIA)
-            {
+            } else if (item == menu_info_types.CITY_MILITIA) {
                 modifyMilitia(player, self, city_id);
-            }
-            else if (item == menu_info_types.CITY_TREASURY_WITHDRAW)
-            {
+            } else if (item == menu_info_types.CITY_TREASURY_WITHDRAW) {
                 makeTreasuryWithdraw(player, self, city_id);
-            }
-            else if (item == menu_info_types.CITY_REGISTER)
-            {
-                if (!city.isCityRegistered(city_id))
-                {
+            } else if (item == menu_info_types.CITY_REGISTER) {
+                if (!city.isCityRegistered(city_id)) {
                     sui.msgbox(self, player, "@city/city:register_d", sui.YES_NO, "@city/city:register_t", sui.MSG_QUESTION, "handleRegisterCity");
-                }
-                else 
-                {
+                } else {
                     sui.msgbox(self, player, "@city/city:unregister_d", sui.YES_NO, "@city/city:unregister_t", sui.MSG_QUESTION, "handleUnregisterCity");
                 }
-            }
-            else if (item == menu_info_types.SERVER_MENU1)
-            {
+            } else if (item == menu_info_types.SERVER_MENU1) {
                 changeSpecialization(player, self, city_id);
-            }
-            else if (item == menu_info_types.SERVER_MENU2)
-            {
+            } else if (item == menu_info_types.SERVER_MENU2) {
                 changeZoning(player, self, city_id);
-            }
-            else if (item == menu_info_types.SERVER_MENU8)
-            {
-                if (!city.isCitizenOfCity(mayor, city_id))
-                {
+            } else if (item == menu_info_types.SERVER_MENU8) {
+                if (!city.isCitizenOfCity(mayor, city_id)) {
                     citySetCitizenInfo(city_id, mayor, getName(mayor), mayor, city.CP_CITIZEN);
                     sendSystemMessage(self, new string_id(STF, "mayor_citizen_restored"));
                 }
-            }
-            else if (item == menu_info_types.SERVER_MENU10)
-            {
+            } else if (item == menu_info_types.SERVER_MENU10) {
                 boolean trainersDestroyed = destroyCitySkillTrainers(mayor, city_id);
-                if (trainersDestroyed)
-                {
+                if (trainersDestroyed) {
                     sendSystemMessage(mayor, new string_id(STF, "old_trainers_removed"));
                 }
-            }
-            else if (item == menu_info_types.SERVER_MENU11)
-            {
+            } else if (item == menu_info_types.SERVER_MENU11) {
                 String message = "";
-                if (hasObjVar(structure, "city_visitor_message"))
-                {
+                if (hasObjVar(structure, "city_visitor_message")) {
                     message = getStringObjVar(structure, "city_visitor_message");
-                }
-                else 
-                {
+                } else {
                     message = "Enter a Message for Visitors";
                 }
                 sui.filteredInputbox(self, player, "@city/city:prompt_city_visitor_message", "@city/city:title_city_visitor_message", "handleCityVisitorMessage", message);
-            }
-            else if (item == menu_info_types.SERVER_MENU12)
-            {
+            } else if (item == menu_info_types.SERVER_MENU12) {
                 String message = "";
-                if (hasObjVar(structure, "city_citizen_message"))
-                {
+                if (hasObjVar(structure, "city_citizen_message")) {
                     message = getStringObjVar(structure, "city_citizen_message");
-                }
-                else 
-                {
+                } else {
                     message = "Enter a Message for Citizens";
                 }
                 sui.filteredInputbox(self, player, "@city/city:prompt_city_citizen_message", "@city/city:title_city_citizen_message", "handleCityCitizenMessage", message);
-            }
-            else if (item == menu_info_types.SERVER_MENU13)
-            {
+            } else if (item == menu_info_types.SERVER_MENU13) {
                 showSafeHouseCitizenList(player, self, city_id);
-            }
-            else if (item == menu_info_types.SERVER_MENU14)
-            {
+            } else if (item == menu_info_types.SERVER_MENU14) {
                 boolean allow = true;
-                if (hasObjVar(structure, "cityTimeEndRebelAlign"))
-                {
+                if (hasObjVar(structure, "cityTimeEndRebelAlign")) {
                     int cooldown = (getIntObjVar(structure, "cityTimeEndRebelAlign") + (isGod(player) ? 10 : 86400)) - getCalendarTime();
-                    if (cooldown > 0)
-                    {
+                    if (cooldown > 0) {
                         String cooldownStr = "" + cooldown + "s";
                         int[] convertedTime = player_structure.convertSecondsTime(cooldown);
-                        if ((convertedTime != null) && (convertedTime.length == 4))
-                        {
-                            if (convertedTime[0] > 0)
-                            {
+                        if ((convertedTime != null) && (convertedTime.length == 4)) {
+                            if (convertedTime[0] > 0) {
                                 cooldownStr = "" + convertedTime[0] + "d:" + convertedTime[1] + "h:" + convertedTime[2] + "m:" + convertedTime[3] + "s";
-                            }
-                            else if (convertedTime[1] > 0)
-                            {
+                            } else if (convertedTime[1] > 0) {
                                 cooldownStr = "" + convertedTime[1] + "h:" + convertedTime[2] + "m:" + convertedTime[3] + "s";
-                            }
-                            else if (convertedTime[2] > 0)
-                            {
+                            } else if (convertedTime[2] > 0) {
                                 cooldownStr = "" + convertedTime[2] + "m:" + convertedTime[3] + "s";
-                            }
-                            else if (convertedTime[3] > 0)
-                            {
+                            } else if (convertedTime[3] > 0) {
                                 cooldownStr = "" + convertedTime[3] + "s";
-                            }
-                            else 
-                            {
+                            } else {
                                 cooldownStr = "" + cooldown + "s";
                             }
                         }
@@ -399,43 +390,28 @@ public class terminal_city extends script.base_script
                         allow = false;
                     }
                 }
-                if (allow)
-                {
+                if (allow) {
                     sendSystemMessage(player, "Setting the city's factional alignment to Imperial. This may take a few seconds. You will receive mail confirmation once the change has been completed.", "");
                     setObjVar(structure, "cityFactionAlign", (-615855020));
                     citySetFaction(city_id, (-615855020), true);
                 }
-            }
-            else if (item == menu_info_types.SERVER_MENU15)
-            {
+            } else if (item == menu_info_types.SERVER_MENU15) {
                 boolean allow = true;
-                if (hasObjVar(structure, "cityTimeEndImperialAlign"))
-                {
+                if (hasObjVar(structure, "cityTimeEndImperialAlign")) {
                     int cooldown = (getIntObjVar(structure, "cityTimeEndImperialAlign") + (isGod(player) ? 10 : 86400)) - getCalendarTime();
-                    if (cooldown > 0)
-                    {
+                    if (cooldown > 0) {
                         String cooldownStr = "" + cooldown + "s";
                         int[] convertedTime = player_structure.convertSecondsTime(cooldown);
-                        if ((convertedTime != null) && (convertedTime.length == 4))
-                        {
-                            if (convertedTime[0] > 0)
-                            {
+                        if ((convertedTime != null) && (convertedTime.length == 4)) {
+                            if (convertedTime[0] > 0) {
                                 cooldownStr = "" + convertedTime[0] + "d:" + convertedTime[1] + "h:" + convertedTime[2] + "m:" + convertedTime[3] + "s";
-                            }
-                            else if (convertedTime[1] > 0)
-                            {
+                            } else if (convertedTime[1] > 0) {
                                 cooldownStr = "" + convertedTime[1] + "h:" + convertedTime[2] + "m:" + convertedTime[3] + "s";
-                            }
-                            else if (convertedTime[2] > 0)
-                            {
+                            } else if (convertedTime[2] > 0) {
                                 cooldownStr = "" + convertedTime[2] + "m:" + convertedTime[3] + "s";
-                            }
-                            else if (convertedTime[3] > 0)
-                            {
+                            } else if (convertedTime[3] > 0) {
                                 cooldownStr = "" + convertedTime[3] + "s";
-                            }
-                            else 
-                            {
+                            } else {
                                 cooldownStr = "" + cooldown + "s";
                             }
                         }
@@ -443,35 +419,24 @@ public class terminal_city extends script.base_script
                         allow = false;
                     }
                 }
-                if (allow)
-                {
+                if (allow) {
                     sendSystemMessage(player, "Setting the city's factional alignment to Rebel. This may take a few seconds. You will receive mail confirmation once the change has been completed.", "");
                     setObjVar(structure, "cityFactionAlign", (370444368));
                     citySetFaction(city_id, (370444368), true);
                 }
-            }
-            else if (item == menu_info_types.SERVER_MENU16)
-            {
+            } else if (item == menu_info_types.SERVER_MENU16) {
                 final String gcwDefenderRegion = cityGetGcwDefenderRegion(city_id);
-                if ((gcwDefenderRegion != null) && (gcwDefenderRegion.length() > 0))
-                {
+                if ((gcwDefenderRegion != null) && (gcwDefenderRegion.length() > 0)) {
                     sendSystemMessage(player, "You cannot change the city's factional alignment to Neutral while it is a GCW region defender.", "");
-                }
-                else 
-                {
+                } else {
                     int factionId = cityGetFaction(city_id);
-                    if ((-615855020) == factionId)
-                    {
+                    if ((-615855020) == factionId) {
                         setObjVar(structure, "cityTimeEndImperialAlign", getCalendarTime());
                         removeObjVar(structure, "cityTimeEndRebelAlign");
-                    }
-                    else if ((370444368) == factionId)
-                    {
+                    } else if ((370444368) == factionId) {
                         setObjVar(structure, "cityTimeEndRebelAlign", getCalendarTime());
                         removeObjVar(structure, "cityTimeEndImperialAlign");
-                    }
-                    else if (factionId != 0)
-                    {
+                    } else if (factionId != 0) {
                         removeObjVar(structure, "cityTimeEndImperialAlign");
                         removeObjVar(structure, "cityTimeEndRebelAlign");
                     }
@@ -479,65 +444,43 @@ public class terminal_city extends script.base_script
                     removeObjVar(structure, "cityFactionAlign");
                     citySetFaction(city_id, 0, true);
                 }
-            }
-            else if (item == menu_info_types.SERVER_MENU17)
-            {
+            } else if (item == menu_info_types.SERVER_MENU17) {
                 final int factionId = cityGetFaction(city_id);
-                if (factionId == 0)
-                {
+                if (factionId == 0) {
                     sendSystemMessage(player, "The city cannot become a GCW region defender until it is aligned with a faction.", "");
-                }
-                else 
-                {
+                } else {
                     final String gcwDefenderRegion = cityGetGcwDefenderRegion(city_id);
-                    if ((gcwDefenderRegion == null) || (gcwDefenderRegion.length() <= 0))
-                    {
+                    if ((gcwDefenderRegion == null) || (gcwDefenderRegion.length() <= 0)) {
                         String[] gcwDefenderRegions = getGcwDefenderRegions();
-                        if ((gcwDefenderRegions != null) && (gcwDefenderRegions.length > 0))
-                        {
+                        if ((gcwDefenderRegions != null) && (gcwDefenderRegions.length > 0)) {
                             String previousRegion = null;
                             int previousRegionTimeStartDefend = 0;
                             int previousRegionTimeEndDefend = 0;
-                            if (hasObjVar(structure, "cityGcwRegionDefender.region"))
-                            {
+                            if (hasObjVar(structure, "cityGcwRegionDefender.region")) {
                                 previousRegion = getStringObjVar(structure, "cityGcwRegionDefender.region");
                             }
-                            if (hasObjVar(structure, "cityGcwRegionDefender.timeBegin"))
-                            {
+                            if (hasObjVar(structure, "cityGcwRegionDefender.timeBegin")) {
                                 previousRegionTimeStartDefend = getIntObjVar(structure, "cityGcwRegionDefender.timeBegin");
                             }
-                            if (hasObjVar(structure, "cityGcwRegionDefender.timeEnd"))
-                            {
+                            if (hasObjVar(structure, "cityGcwRegionDefender.timeEnd")) {
                                 previousRegionTimeEndDefend = getIntObjVar(structure, "cityGcwRegionDefender.timeEnd");
                             }
                             String announcement = "Select a GCW region for your city to defend.";
-                            if ((previousRegion != null) && (previousRegion.length() > 0) && (previousRegionTimeStartDefend > 0) && (previousRegionTimeEndDefend > 0))
-                            {
+                            if ((previousRegion != null) && (previousRegion.length() > 0) && (previousRegionTimeStartDefend > 0) && (previousRegionTimeEndDefend > 0)) {
                                 final int cooldown = previousRegionTimeEndDefend + (isGod(player) ? 10 : 86400) - getCalendarTime();
-                                if (cooldown > 0)
-                                {
+                                if (cooldown > 0) {
                                     String cooldownStr = "" + cooldown + "s";
                                     int[] convertedTime = player_structure.convertSecondsTime(cooldown);
-                                    if ((convertedTime != null) && (convertedTime.length == 4))
-                                    {
-                                        if (convertedTime[0] > 0)
-                                        {
+                                    if ((convertedTime != null) && (convertedTime.length == 4)) {
+                                        if (convertedTime[0] > 0) {
                                             cooldownStr = "" + convertedTime[0] + "d:" + convertedTime[1] + "h:" + convertedTime[2] + "m:" + convertedTime[3] + "s";
-                                        }
-                                        else if (convertedTime[1] > 0)
-                                        {
+                                        } else if (convertedTime[1] > 0) {
                                             cooldownStr = "" + convertedTime[1] + "h:" + convertedTime[2] + "m:" + convertedTime[3] + "s";
-                                        }
-                                        else if (convertedTime[2] > 0)
-                                        {
+                                        } else if (convertedTime[2] > 0) {
                                             cooldownStr = "" + convertedTime[2] + "m:" + convertedTime[3] + "s";
-                                        }
-                                        else if (convertedTime[3] > 0)
-                                        {
+                                        } else if (convertedTime[3] > 0) {
                                             cooldownStr = "" + convertedTime[3] + "s";
-                                        }
-                                        else 
-                                        {
+                                        } else {
                                             cooldownStr = "" + cooldown + "s";
                                         }
                                     }
@@ -546,78 +489,54 @@ public class terminal_city extends script.base_script
                                     announcement += "You must wait " + cooldownStr + " before you can defend a different GCW region.";
                                 }
                             }
-                            final String[] columnHeader = 
-                            {
-                                "GCW Region"
-                            };
-                            final String[] columnHeaderType = 
-                            {
-                                "text"
-                            };
+                            final String[] columnHeader =
+                                    {
+                                            "GCW Region"
+                                    };
+                            final String[] columnHeaderType =
+                                    {
+                                            "text"
+                                    };
                             final String[][] columnData = new String[1][0];
                             columnData[0] = gcwDefenderRegions;
                             sui.tableColumnMajor(player, player, sui.OK_CANCEL, "@gcw:gcw_region_defender_war_terminal_menu", "handleCityGcwRegionDefenderChoice", announcement, columnHeader, columnHeaderType, columnData, false);
                         }
                     }
                 }
-            }
-            else if (item == menu_info_types.SERVER_MENU18)
-            {
+            } else if (item == menu_info_types.SERVER_MENU18) {
                 final String gcwDefenderRegion = cityGetGcwDefenderRegion(city_id);
-                if ((gcwDefenderRegion != null) && (gcwDefenderRegion.length() > 0))
-                {
+                if ((gcwDefenderRegion != null) && (gcwDefenderRegion.length() > 0)) {
                     setObjVar(structure, "cityGcwRegionDefender.timeEnd", getCalendarTime());
                     citySetGcwDefenderRegion(city_id, "", 0, true);
                     sendSystemMessage(player, "Setting the city's GCW defender region to (None). This may take a few seconds. You will receive mail confirmation once the change has been completed.", "");
                 }
             }
-        }
-        else 
-        {
-            if (item == menu_info_types.SERVER_MENU5)
-            {
-                if (city.isCitizenOfCity(player, city_id))
-                {
+        } else {
+            if (item == menu_info_types.SERVER_MENU5) {
+                if (city.isCitizenOfCity(player, city_id)) {
                     sui.msgbox(self, player, "@city/city:revoke_cit_d", sui.YES_NO, "@city/city:revoke_cit_t", sui.MSG_QUESTION, "handleRevokeCitizenship");
                 }
             }
         }
-        if (isGod(player))
-        {
-            if (item == menu_info_types.SERVER_MENU4)
-            {
+        if (isGod(player)) {
+            if (item == menu_info_types.SERVER_MENU4) {
                 forceUpdate(player, self, city_id);
-            }
-            else if (item == menu_info_types.SERVER_MENU6)
-            {
+            } else if (item == menu_info_types.SERVER_MENU6) {
                 forceRank(player, self, city_id, 1);
-            }
-            else if (item == menu_info_types.SERVER_MENU7)
-            {
+            } else if (item == menu_info_types.SERVER_MENU7) {
                 forceRank(player, self, city_id, -1);
-            }
-            else if (item == menu_info_types.SERVER_MENU9)
-            {
+            } else if (item == menu_info_types.SERVER_MENU9) {
                 makeMayor(player, self, city_id);
-            }
-            else if (item == menu_info_types.CITY_ADMIN_1)
-            {
+            } else if (item == menu_info_types.CITY_ADMIN_1) {
                 resetCloneData(player, self, city_id);
-            }
-            else if (item == menu_info_types.CITY_ADMIN_2)
-            {
+            } else if (item == menu_info_types.CITY_ADMIN_2) {
                 resetShuttleData(player, self, city_id);
-            }
-            else if (item == menu_info_types.CITY_ADMIN_3)
-            {
+            } else if (item == menu_info_types.CITY_ADMIN_3) {
                 modifyStructureList(player, self, city_id);
-            }
-            else if (item == menu_info_types.CITY_ADMIN_4)
-            {
+            } else if (item == menu_info_types.CITY_ADMIN_4) {
                 clearStructureScriptVars(player, self, city_id);
-            }
-            else if (item == menu_info_types.SERVER_MENU24) {
-                if(!hasObjVar(structure, city.OBJVAR_DERANK_EXEMPT)) {
+            } else if (item == menu_info_types.SERVER_MENU24) {
+                if (!hasObjVar(structure, city.OBJVAR_DERANK_EXEMPT)) {
                     setObjVar(structure, city.OBJVAR_DERANK_EXEMPT, true);
                     sendSystemMessageTestingOnly(player, "The city is now de-rank exempt and will not lose its rank standing during normal city reset cycles.");
                 } else {
@@ -628,6 +547,101 @@ public class terminal_city extends script.base_script
         }
         return SCRIPT_CONTINUE;
     }
+//    public void sellData(obj_id player, obj_id self, int city_id) throws InterruptedException
+//    {
+//        // Store the structure for callback
+//        utils.setScriptVar(player, "sui.sellContainers.structure", self);
+//
+//        // Open the SUI msgbox
+//        sui.msgbox(self, player,
+//                "@city/city:sell_data_locked_containers_warning",
+//                sui.YES_NO,
+//                "@city/city:sell_data_locked_containers",
+//                sui.MSG_QUESTION,
+//                "handleSellContainersSUI");
+//    }
+//    public int handleSellContainersSUI(obj_id player, dictionary params) throws InterruptedException
+//    {
+//        // Get player from callback params
+//        player = sui.getPlayerId(params);
+//        if (!isIdValid(player))
+//            return SCRIPT_CONTINUE;
+//
+//        // Only continue if YES was pressed
+//        int btn = sui.getIntButtonPressed(params);
+//        if (btn != sui.BP_OK)
+//        {
+//            utils.removeScriptVarTree(player, "sui.sellContainers");
+//            return SCRIPT_CONTINUE;
+//        }
+//
+//        // Retrieve stored structure (city hall)
+//        obj_id structure = utils.getObjIdScriptVar(player, "sui.sellContainers.structure");
+//        utils.removeScriptVarTree(player, "sui.sellContainers");
+//        if (!isIdValid(structure))
+//            return SCRIPT_CONTINUE;
+//
+//        // Get player inventory
+//        obj_id inv = utils.getInventoryContainer(player);
+//            if (isIdValid(inv))
+//            {
+//                obj_id[] contents = getContents(inv);
+//                if (contents != null && contents.length > 0)
+//                {
+//                    int totalCredits = 0;
+//                    int totalXP = 0;
+//
+//                    for (obj_id container : contents)
+//                    {
+//                        if (!isIdValid(container)) continue;
+//                        String template = getTemplateName(structure);
+//                        if (template != null && template.equals("object/tangible/container/loot/loot_crate.iff"))
+//                        {
+//                            // Flag player as political enemy
+//                               pvpMakeDeclared(player);
+//                            // sendSystemMessage(self, new string_id("stardust/mando_rank", "loot_crate_detected"));
+//
+//                            // Add to treasury
+//                            int storedCredits = getIntObjVar(container, "slicing.storedCredits");
+//                            if (storedCredits <= 0) storedCredits = 5000;
+//
+//                            money.requestPayment(player, structure, storedCredits, "handlePayment", null);
+//                            //we correctly deposit, now we need to reimburse the player
+//                            // Generate credit chip
+//                            obj_id creditChip = createObject("object/tangible/item/loot_credit_chip.iff", inv, "");
+//                            if (isIdValid(creditChip))
+//                            {
+//                                setCount(creditChip, storedCredits);
+//                                setObjVar(creditChip, "loot.intCredits", storedCredits);
+//                            }
+//
+//                            // Award political experience
+//                            grantExperiencePoints(player, "political", 500);
+//
+//                            // Destroy the container
+//                            destroyObject(container);
+//
+//                            totalCredits += storedCredits;
+//                            totalXP += 5;
+//                        }
+//                    }
+//
+//                    if (totalCredits <= 0)
+//                    {
+//                        // Nothing sold
+//                    }
+//                    else
+//                    {
+//                        // Sold containers
+//                    }
+//                }
+//                else
+//                {
+//                    // Inventory empty
+//                }
+//            }
+//        return SCRIPT_CONTINUE;
+//    }
     public void forceUpdate(obj_id player, obj_id self, int city_id) throws InterruptedException
     {
         sui.msgbox(self, player, "@city/city:force_election_only", sui.YES_NO, "@city/city:force_city_update_t", sui.MSG_QUESTION, "handleForceUpdateElection");

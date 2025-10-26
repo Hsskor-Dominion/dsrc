@@ -37,6 +37,7 @@ public class static_item_base extends script.base_script
     public int OnAboutToBeTransferred(obj_id self, obj_id destContainer, obj_id transferer) throws InterruptedException
     {
         boolean canTransfer = true;
+
         if (isPlayer(destContainer) || isAPlayerAppearanceInventoryContainer(destContainer))
         {
             dictionary itemData = static_item.getMasterItemDictionary(self);
@@ -52,13 +53,16 @@ public class static_item_base extends script.base_script
                     transferer = getContainedBy(destContainer);
                 }
             }
+
             int requiredLevel = itemData.getInt("required_level");
             String requiredSkill = itemData.getString("required_skill");
+
             if (!static_item.validateLevelRequired(transferer, requiredLevel))
             {
                 sendSystemMessage(transferer, SID_ITEM_LEVEL_TOO_LOW);
                 canTransfer = false;
             }
+
             if (requiredSkill != null && !requiredSkill.equals(""))
             {
                 String classTemplate = getSkillTemplate(transferer);
@@ -71,6 +75,7 @@ public class static_item_base extends script.base_script
                     }
                 }
             }
+
             if (hasObjVar(self, "armor.fake_armor"))
             {
                 int ohMyGOT = getGameObjectType(self);
@@ -81,9 +86,12 @@ public class static_item_base extends script.base_script
                 }
             }
         }
-        else 
+        else
         {
-            if (static_item.isUniqueStaticItem(self))
+            // Allow unique items if they have locked_slicable attached
+            boolean hasSlicableScript = hasScript(self, "item.container.locked_slicable");
+
+            if (static_item.isUniqueStaticItem(self) && !hasSlicableScript)
             {
                 obj_id owner = getOwner(self);
                 obj_id inv = utils.getInventoryContainer(owner);
@@ -95,20 +103,26 @@ public class static_item_base extends script.base_script
                 }
             }
         }
+
+        // Check if the destination already has a static item of the same type
         if (static_item.isUniqueStaticItem(self))
         {
             obj_id[] destContents = getContents(destContainer);
             if (destContents != null && destContents.length > 0)
             {
-                for (obj_id destContent : destContents) {
-                    if (static_item.isStaticItem(destContent)) {
-                        if ((getStaticItemName(destContent)).equals(getStaticItemName(self))) {
+                for (obj_id destContent : destContents)
+                {
+                    if (static_item.isStaticItem(destContent))
+                    {
+                        if ((getStaticItemName(destContent)).equals(getStaticItemName(self)))
+                        {
                             canTransfer = false;
                         }
                     }
                 }
             }
         }
+
         if (!canTransfer)
         {
             if (isGod(transferer))
@@ -118,6 +132,7 @@ public class static_item_base extends script.base_script
             }
             return SCRIPT_OVERRIDE;
         }
+
         return SCRIPT_CONTINUE;
     }
     public int OnTransferred(obj_id self, obj_id sourceContainer, obj_id destContainer, obj_id transferer) throws InterruptedException

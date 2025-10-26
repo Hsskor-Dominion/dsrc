@@ -3,7 +3,6 @@ s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[
 item_pgc_planet_hologram_yavin4	100000																	"See library.utils for the int value of the classes. 0 is ""all"" but will only show if there are no items for the opener's class."
 item_pgc_planet_hologram_yavin4_02	100000																	"So in the case of this table only traders will see the ""all"" items."
 object/tangible/veteran_reward/frn_vet_holo_deathstar.iff	100000																	
-object/tangible/tcg/series5/decorative_deathstar_hologram.iff	100000																	
 item_content_decor_hologram_disk_03_01	100000																	
 item_vet_homing_beacon_03_01		1	1	1	1	1	1	1	1	1	1	1	1	1	1			
 item_stardust_contraband_crate	100000																	

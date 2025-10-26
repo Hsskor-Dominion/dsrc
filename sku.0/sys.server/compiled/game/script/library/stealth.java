@@ -1837,63 +1837,63 @@ public class stealth extends script.base_script
         }
         showFlyTextPrivate(thief, thief, new string_id("spam", "stealin_on"), 1.5f, colors.TOMATO);
         if (!doTheftLoot(thief, mark)) {
-            //sendSystemMessage(thief, new string_id("spam", "stolen_nothing"));
             sendSystemMessage(thief, new string_id("spam", "stolen_something"));
             sendSystemMessage(mark, new string_id("spam", "stolen_mark"));
             bounty_hunter.showSetBountySUI(mark, thief);
             pvpSetPermanentPersonalEnemyFlag(mark, thief);
             pvpSetPermanentPersonalEnemyFlag(thief, mark);
-            money.bankTo(mark, thief, 5000); //old method
-            money.pay(mark, thief, 5000, "", null, true);
+
+            // ✅ Thief steals 5000 credits from the mark
+            money.pay(mark, thief, 5000, "stolen_credits", null, true);
+
             factions.addFactionStanding(thief, "sif", 1.0f);
             factions.addFactionStanding(mark, "sif", -1.0f);
             buff.applyBuff(mark, "sm_spot_a_sucker_4_7");
-            steal_pvp(mark, thief);
+            steal_pvp(thief, mark);
         }
         return true;
     }
 
-public static void steal_pvp(obj_id thief, obj_id mark) throws InterruptedException
-{
-    // Small money steal for effectivenss
-    money.requestPayment(thief, mark, smuggler.TIER_5_GENERIC_FRONT_COST, "none", null, true);
-
-    // Get target's inventory container - I don't have this part working yet
-    obj_id inv = utils.getInventoryContainer(mark);
-    if (!isIdValid(inv))
+    public static void steal_pvp(obj_id thief, obj_id mark) throws InterruptedException
     {
-        sendSystemMessageTestingOnly(thief, "STEAL FAILED: No inventory found.");
-        return;
-    }
+        // --- Small money payout for effect ---
+        money.requestPayment(mark, thief, smuggler.TIER_5_GENERIC_FRONT_COST, "none", null, true);
 
-    obj_id[] contents = getContents(inv);
-    if (contents == null || contents.length == 0)
-    {
-        sendSystemMessageTestingOnly(thief, "STEAL FAILED: Target inventory empty.");
-        return;
-    }
-
-    boolean stolen = false;
-
-    // List of stealable templates
-    String[] stealableItems = {
-            "object/tangible/container/loot/loot_crate.iff"
-    };
-
-    for (obj_id item : contents)
-    {
-        if (!isIdValid(item))
-            continue;
-
-        String template = getTemplateName(item);
-        if (template == null)
-            continue;
-
-        // Only steal matching templates
-        for (String targetTemplate : stealableItems)
+        // --- Get target inventory ---
+        obj_id inv = utils.getInventoryContainer(mark);
+        if (!isIdValid(inv))
         {
-            if (template.equals(targetTemplate))
+            sendSystemMessageTestingOnly(thief, "STEAL FAILED: No inventory found.");
+            return;
+        }
+
+        obj_id[] contents = getContents(inv);
+        if (contents == null || contents.length == 0)
+        {
+            sendSystemMessageTestingOnly(thief, "STEAL FAILED: Target inventory empty.");
+            return;
+        }
+
+        boolean stolen = false;
+
+        // --- Stealable templates ---
+        String[] stealableItems = { "object/tangible/container/loot/loot_crate.iff" };
+
+        for (obj_id item : contents)
+        {
+            if (!isIdValid(item))
+                continue;
+
+            String template = getTemplateName(item);
+            if (template == null)
+                continue;
+
+            for (String targetTemplate : stealableItems)
             {
+                if (!template.equals(targetTemplate))
+                    continue;
+
+                // --- Get thief inventory ---
                 obj_id thiefInv = utils.getInventoryContainer(thief);
                 if (!isIdValid(thiefInv))
                 {
@@ -1901,45 +1901,63 @@ public static void steal_pvp(obj_id thief, obj_id mark) throws InterruptedExcept
                     return;
                 }
 
-                // Clone container and contents
+                // --- Clone container ---
                 obj_id stolenItem = createObject(template, thiefInv, "");
-                if (isIdValid(stolenItem))
+                if (!isIdValid(stolenItem))
                 {
-                        obj_id[] childItems = getContents(item);
-                        if (childItems != null)
-                        {
-                            for (obj_id child : childItems)
-                            {
-                                if (!isIdValid(child))
-                                    continue;
-                                String childTemplate = getTemplateName(child);
-                                if (childTemplate != null)
-                                {
-                                    createObject(childTemplate, stolenItem, "");
-                                }
-                            }
-                        }
-
-                    // Remove original item from victim
-                    destroyObject(item);
-
-                    sendSystemMessage(thief, new string_id("spam", "stolen_loot_crate"));
-                    sendSystemMessage(mark, new string_id("spam", "lost_loot_crate"));
-                    stolen = true;
-                    break;
+                    sendSystemMessageTestingOnly(thief, "STEAL FAILED: Could not create cloned container.");
+                    return;
                 }
+
+                // --- Copy ObjVars ---
+                int encryptionCount = getIntObjVar(item, "slicing.encryptionCount");
+                int rolledCredits = getIntObjVar(item, "slicing.storedCredits");
+                int updatedLoot = getIntObjVar(item, "slicing.storedLoot"); // if array, adjust to getStringArrayObjVar
+
+                attachScript(stolenItem, "item.container.locked_slicable");
+
+                setObjVar(stolenItem, "slicing.encryptionCount", encryptionCount);
+                setObjVar(stolenItem, "slicing.storedCredits", rolledCredits);
+                setObjVar(stolenItem, "slicing.storedLoot", updatedLoot);
+                if (hasObjVar(item, "slicing.locked")) {
+                    setObjVar(stolenItem, "slicing.locked", 1); // mark as locked
+                }
+
+                // --- Clone child items ---
+                obj_id[] childItems = getContents(item);
+                if (childItems != null)
+                {
+                    for (obj_id child : childItems)
+                    {
+                        if (!isIdValid(child))
+                            continue;
+
+                        String childTemplate = getTemplateName(child);
+                        if (childTemplate != null)
+                        {
+                            createObject(childTemplate, stolenItem, "");
+                        }
+                    }
+                }
+
+                // --- Remove original ---
+                destroyObject(item);
+
+                // --- Feedback ---
+                sendSystemMessage(thief, new string_id("spam", "stolen_loot_crate"));
+                sendSystemMessage(mark, new string_id("spam", "lost_loot_crate"));
+
+                stolen = true;
+                break;
             }
+
+            if (stolen)
+                break;
         }
 
-        if (stolen)
-            break;
+        if (!stolen)
+            sendSystemMessageTestingOnly(thief, "STEAL FAILED: No stealable item found.");
     }
-
-    if (!stolen)
-    {
-        sendSystemMessageTestingOnly(thief, "STEAL FAILED: No stealable item found.");
-    }
-}
     public static boolean isCoughtWhileStealing(obj_id thief, obj_id mark) throws InterruptedException
     {
         return passiveDetectHiddenTarget(thief, mark, PASSIVE_BREACH_NEAR);

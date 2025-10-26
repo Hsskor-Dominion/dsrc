@@ -1,10 +1,7 @@
 package script.space.terminal;
 
 import script.dictionary;
-import script.library.space_quest;
-import script.library.space_utils;
-import script.library.sui;
-import script.library.utils;
+import script.library.*;
 import script.menu_info_types;
 import script.obj_id;
 import script.string_id;
@@ -45,6 +42,26 @@ public class offer_a_ship extends script.base_script
                 setSUIProperty(pid, sui.MSGBOX_BTN_CANCEL, sui.PROP_TEXT, CANCEL_BUTTON);
                 utils.setScriptVar(player, "offer_a_ship.openSui", pid);
                 sui.showSUIPage(pid);
+            }
+
+// Check for quest and auto-warp if active
+            String questName = "smuggle_stardust";
+            if (groundquests.isQuestActive(player, questName)) {
+                sendSystemMessage(player, new string_id("space/space_interaction", "trandoshan_trafficking"));
+
+                // Generate random number 1-100
+                int roll = rand(1, 100);
+
+                // Warp based on random roll
+                if (roll >= 1 && roll <= 20) {
+                    warpPlayer(player, "kashyyyk_hunting", -616, 8, 889, null, 0, 0, 0, "", false);
+                }
+                else if (roll >= 21 && roll <= 99) {
+                    warpPlayer(player, "kashyyyk_main", 85, 8, 162, null, 0, 0, 0, "", false);
+                }
+                else if (roll == 100) {
+                    warpPlayer(player, "dathomir", -6466, 8, 894, null, 0, 0, 0, "", false);
+                }
             }
         }
         return SCRIPT_CONTINUE;

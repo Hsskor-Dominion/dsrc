@@ -32,7 +32,7 @@ public class stardust_info extends script.base_script
     {
         return groundquests.isTaskActive(player, "stardust_info", "returntostardust");
     }
-    public boolean stardust_info_condition_isTownsperson(obj_id player, obj_id npc) throws InterruptedException
+    public boolean stardust_info_condition_isSpyMissionComplete(obj_id player, obj_id npc) throws InterruptedException
     {
         float spyFaction = factions.getFactionStanding(player, "spynet");
         if (spyFaction >= 5)
@@ -201,7 +201,7 @@ public class stardust_info extends script.base_script
         }
         if (response.equals("s_267"))
         {
-	    if (stardust_info_condition_isTownsperson(player, npc))
+	    if (stardust_info_condition_isSpyMissionComplete(player, npc))
             {
 		        stardust_info_action_vendor(player, npc);
                 doAnimationAction(npc, "thumb_up");
