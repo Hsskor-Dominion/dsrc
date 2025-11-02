@@ -1,6 +1,9 @@
 package script.conversation;
 
 import script.library.*;
+import script.library.utils;
+import script.library.npe;
+import script.dictionary;
 import script.*;
 
 public class rtp_han_solo_main extends script.base_script
@@ -112,6 +115,53 @@ public class rtp_han_solo_main extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
+    // --- Player chooses smuggle option ---
+    public int rtp_han_solo_main_handleBranch12(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        string_id smuggleChoiceSid = new string_id(c_stringFile, "s_smuggle_choice");
+
+        if (response.equals(smuggleChoiceSid))
+        {
+            final int SMUGGLE_COST = 18000;
+
+            // --- Deduct funds regardless of balance ---
+            long playerCredits = getTotalMoney(player);
+            if (playerCredits < SMUGGLE_COST)
+            {
+                sendSystemMessageTestingOnly(player, "Han Solo takes the credits anyway...");
+            }
+            money.requestPayment(player, npc, SMUGGLE_COST, null, null); // just deduct, no callback
+
+            // --- Flavor feedback ---
+            sendSystemMessageTestingOnly(player, "Han Solo winks and signals Chewie to prep the Falcon...");
+            sendSystemMessageTestingOnly(player, "You're being smuggled to Tansaari Point Station...");
+
+            // --- Warp player directly ---
+            warpPlayerToDestination(player);
+
+            // --- Clean up conversation vars ---
+            utils.removeScriptVar(player, "conversation.rtp_han_solo_main.branchId");
+
+            return SCRIPT_CONTINUE;
+        }
+
+        utils.removeScriptVar(player, "conversation.rtp_han_solo_main.branchId");
+        return SCRIPT_CONTINUE;
+    }
+
+    // --- Helper function: warp player only ---
+    public void warpPlayerToDestination(obj_id player) throws InterruptedException
+    {
+        // --- Flavor message ---
+        sendSystemMessageTestingOnly(player, "Han Solo flies the Falcon through hyperspace...");
+
+        // --- Warp player using NPE shared station function ---
+        // This function handles the cluster-wide data and warp internally
+        npe.movePlayerFromOrdMantellSpaceToSharedStation(player);
+
+        // --- Optionally, you can add a follow-up system message ---
+        sendSystemMessageTestingOnly(player, "You arrive safely at Tansarii Point Station.");
+    }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         if ((!isMob(self)) || (isPlayer(self)))
@@ -149,129 +199,108 @@ public class rtp_han_solo_main extends script.base_script
     public int OnStartNpcConversation(obj_id self, obj_id player) throws InterruptedException
     {
         obj_id npc = self;
+
         if (ai_lib.isInCombat(npc) || ai_lib.isInCombat(player))
         {
             return SCRIPT_OVERRIDE;
         }
+
+        // --- Condition: Not a Rebel
         if (rtp_han_solo_main_condition_notRebel(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_44");
-            chat.chat(npc, player, message);
+            string_id[] responses = { new string_id(c_stringFile, "s_smuggle_choice") };
+            npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
+            utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 12);
             return SCRIPT_CONTINUE;
         }
+
+        // --- Condition: Prior mission not complete
         if (!rtp_han_solo_main_condition_completedNienNunb(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_24");
-            chat.chat(npc, player, message);
+            string_id[] responses = { new string_id(c_stringFile, "s_smuggle_choice") };
+            npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
+            utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 12);
             return SCRIPT_CONTINUE;
         }
+
+        // --- Condition: On leave
         if (rtp_han_solo_main_condition_rebel_isOnLeave(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_43");
-            chat.chat(npc, player, message);
+            string_id[] responses = { new string_id(c_stringFile, "s_smuggle_choice") };
+            npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
+            utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 12);
             return SCRIPT_CONTINUE;
         }
+
+        // --- Condition: Final mission complete
         if (rtp_han_solo_main_condition_rtp_han_solo_02_completed(player, npc))
         {
             rtp_han_solo_main_action_rtp_han_solo_02_signal(player, npc);
             string_id message = new string_id(c_stringFile, "s_9");
-            chat.chat(npc, player, message);
+            string_id[] responses = { new string_id(c_stringFile, "s_smuggle_choice") };
+            npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
+            utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 12);
             return SCRIPT_CONTINUE;
         }
+
+        // --- Condition: Mission 02 active
         if (rtp_han_solo_main_condition_rtp_han_solo_02_active(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_16");
-            chat.chat(npc, player, message);
+            string_id[] responses = { new string_id(c_stringFile, "s_smuggle_choice") };
+            npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
+            utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 12);
             return SCRIPT_CONTINUE;
         }
+
+        // --- Condition: Mission 01 complete
         if (rtp_han_solo_main_condition_rtp_han_solo_01_complete(player, npc))
         {
             rtp_han_solo_main_action_rtp_han_solo_01_signal(player, npc);
             string_id message = new string_id(c_stringFile, "s_20");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-            if (rtp_han_solo_main_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            boolean hasResponse1 = false;
-            if (rtp_han_solo_main_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse1 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_22");
-                }
-                if (hasResponse1)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_26");
-                }
-                utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 6);
-                npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
-            }
-            else 
-            {
-                chat.chat(npc, player, message);
-            }
+
+            int numberOfResponses = 2;
+            string_id[] responses = new string_id[numberOfResponses];
+            responses[0] = new string_id(c_stringFile, "s_22");
+            responses[1] = new string_id(c_stringFile, "s_smuggle_choice");
+
+            npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
+            utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 6);
             return SCRIPT_CONTINUE;
         }
+
+        // --- Condition: Mission 01 active
         if (rtp_han_solo_main_condition_rtp_han_solo_01_active(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_32");
-            chat.chat(npc, player, message);
+            string_id[] responses = { new string_id(c_stringFile, "s_smuggle_choice") };
+            npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
+            utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 12);
             return SCRIPT_CONTINUE;
         }
+
+        // --- Default branch
         if (rtp_han_solo_main_condition__defaultCondition(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_34");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-            if (rtp_han_solo_main_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            boolean hasResponse1 = false;
-            if (rtp_han_solo_main_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse1 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_36");
-                }
-                if (hasResponse1)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_40");
-                }
-                utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 10);
-                npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
-            }
-            else 
-            {
-                chat.chat(npc, player, message);
-            }
+            string_id[] responses = {
+                    new string_id(c_stringFile, "s_36"),
+                    new string_id(c_stringFile, "s_smuggle_choice")
+            };
+
+            npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
+            utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 10);
             return SCRIPT_CONTINUE;
         }
-        chat.chat(npc, "Error:  All conditions for OnStartNpcConversation were false.");
+
+        // --- Fallback only if no other conditions met
+        string_id message = new string_id(c_stringFile, "s_smuggle_offer");
+        string_id[] responses = { new string_id(c_stringFile, "s_smuggle_choice") };
+        npcStartConversation(player, npc, "rtp_han_solo_main", message, responses);
+        utils.setScriptVar(player, "conversation.rtp_han_solo_main.branchId", 12);
         return SCRIPT_CONTINUE;
     }
     public int OnNpcConversationResponse(obj_id self, String conversationId, obj_id player, string_id response) throws InterruptedException
@@ -282,6 +311,7 @@ public class rtp_han_solo_main extends script.base_script
         }
         obj_id npc = self;
         int branchId = utils.getIntScriptVar(player, "conversation.rtp_han_solo_main.branchId");
+
         if (branchId == 6 && rtp_han_solo_main_handleBranch6(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
@@ -290,6 +320,11 @@ public class rtp_han_solo_main extends script.base_script
         {
             return SCRIPT_CONTINUE;
         }
+        if (branchId == 12 && rtp_han_solo_main_handleBranch12(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+
         chat.chat(npc, "Error:  Fell through all branches and responses for OnNpcConversationResponse.");
         utils.removeScriptVar(player, "conversation.rtp_han_solo_main.branchId");
         return SCRIPT_CONTINUE;

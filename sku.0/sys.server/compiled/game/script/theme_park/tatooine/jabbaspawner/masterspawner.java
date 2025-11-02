@@ -443,6 +443,7 @@ public class masterspawner extends script.base_script
         faceTo(gamGuard7, gamGuard6);
         attachScript(gamGuard7, "theme_park.tatooine.jabbaspawner.gamguard7");
         attachScript(gamGuard7, "theme_park.tatooine.jabbaspawner.palace_path");
+        attachScript(gamGuard7, "stardust.conversation.tatooine.prison_guard");//SWG Chimaera custom guard escape mini-game
         setObjVar(self, "PalaceInhabitants.gamGuard7", gamGuard7);
         setObjVar(gamGuard7, "palace", self);
         setName(gamGuard7, "Artogg");
@@ -1622,7 +1623,7 @@ public class masterspawner extends script.base_script
     }
     public int doGating(obj_id self, dictionary params) throws InterruptedException
     {
-        attachScript(getCellId(self, "hall1"), "theme_park.gating.jabba.stairs_block");
+        //attachScript(getCellId(self, "hall1"), "theme_park.gating.jabba.stairs_block");
         attachScript(getCellId(self, "garage2"), "theme_park.gating.jabba.garage_block");
         attachScript(getCellId(self, "garage1"), "theme_park.gating.jabba.garage_block");
         attachScript(getCellId(self, "throneroom"), "theme_park.gating.jabba.throne_block");

@@ -325,7 +325,7 @@ public class han_solo_experience_manager extends script.base_script
     public int conversed1(obj_id self, dictionary params) throws InterruptedException
     {
         obj_id droid = sequencer.getSequenceObject("droid");
-        detachScript(droid, "conversation.npe_tutorial_droid_1");
+        //detachScript(droid, "conversation.npe_tutorial_droid_1");//SWG Chimaera updated pathways
         messageTo(self, "continueMainTable", null, 0, false);
         return SCRIPT_CONTINUE;
     }

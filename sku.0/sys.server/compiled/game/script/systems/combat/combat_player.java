@@ -104,23 +104,57 @@ public class combat_player extends script.systems.combat.combat_base
     }
     public int OnAboutToReceiveItem(obj_id self, obj_id objContainer, obj_id objTransferer, obj_id objItem) throws InterruptedException
     {
+        if (!isIdValid(objItem))
+        {
+            return SCRIPT_CONTINUE;
+        }
+
+        // --- Only check weapons ---
         if (isWeapon(objItem))
         {
-            if (jedi.isLightsaber(getWeaponType(objItem)))
+            int weaponType = getWeaponType(objItem);
+            String template = getTemplateName(objItem).toLowerCase();
+
+            // --- Lightsabers and Darksaber-style weapons ---
+            if (jedi.isLightsaber(weaponType) || template.contains("sword_mandalorian") || template.contains("darksaber"))
             {
-                if (!utils.isProfession(self, utils.FORCE_SENSITIVE))
+                // --- Require Force Sensitive profession for all Jedi weapons (optional for Darksaber if desired) ---
+                boolean isDarksaber = (template.contains("sword_mandalorian") || template.contains("darksaber"));
+
+                if (!utils.isProfession(self, utils.FORCE_SENSITIVE) && !isDarksaber)
                 {
-                    string_id strSpam = new string_id("jedi_spam", "no_equip_lightsaber");
-                    sendSystemMessage(self, strSpam);
+                    sendSystemMessage(self, new string_id("jedi_spam", "no_equip_lightsaber"));
                     return SCRIPT_OVERRIDE;
                 }
-                else 
+
+                // --- Standard lightsaber must have a color crystal ---
+                if (jedi.isLightsaber(weaponType) && !isDarksaber)
                 {
                     if (!jedi.hasColorCrystal(objItem))
                     {
-                        string_id strSpam = new string_id("jedi_spam", "lightsaber_no_color");
-                        sendSystemMessage(self, strSpam);
+                        sendSystemMessage(self, new string_id("jedi_spam", "lightsaber_no_color"));
                         return SCRIPT_OVERRIDE;
+                    }
+                }
+
+                // --- Darksaber/Mandalorian exemption path ---
+                if (isDarksaber)
+                {
+                    {
+                        // Try to seed it if container exists
+                        obj_id inv = getObjectInSlot(objItem, "saber_inv");
+                        if (isIdValid(inv))
+                        {
+                            obj_id crystal = createObject(
+                                    "object/tangible/component/weapon/lightsaber/lightsaber_module_blackwing_crystal.iff",
+                                    inv,
+                                    ""
+                            );
+                            if (isIdValid(crystal))
+                            {
+                                debugServerConsoleMsg(self, "Auto-seeded blackwing crystal for Darksaber " + objItem);
+                            }
+                        }
                     }
                 }
             }

@@ -745,7 +745,7 @@ public class smuggler extends script.base_script
 
         obj_id lockedContainer = obj_id.NULL_ID; // <-- define here to avoid scoping issue
 
-        if (!hasSkill(player, "sm_title_bootlegger")) {
+        if (hasSkill(player, "sm_title_bootlegger")) {
             // --- LOCKED CONTAINER (bonus loot if underworld smuggler) ---
             lockedContainer = createObject("object/tangible/container/loot/loot_crate.iff", pInv, "");
 
@@ -1050,7 +1050,7 @@ public class smuggler extends script.base_script
     }
     public static void checkBountyTitleGrants(obj_id player, float value) throws InterruptedException
     {
-        if (value <= -1000.0f)
+        if (value <= -100.0f)
         {
             if (!hasSkill(player, "bh_title_informant"))
             {

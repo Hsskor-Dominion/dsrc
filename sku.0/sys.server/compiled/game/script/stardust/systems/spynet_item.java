@@ -15,6 +15,7 @@ public class spynet_item extends base_script
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
+        mi.addRootMenu(menu_info_types.ITEM_USE, new string_id("ui_radial", "decrypt_data"));//this is new
         if (hasObjVar(self, "intUsed"))
         {
             return SCRIPT_CONTINUE;
@@ -45,7 +46,7 @@ public class spynet_item extends base_script
             else
             {
                 sendSystemMessage(player, new string_id("stardust/quest", "many_bothans_died_for_this"));
-                factions.addUnmodifiedFactionStanding(player, "sif", 5);
+                factions.addUnmodifiedFactionStanding(player, "sif", 3);
                 float spynetFaction = factions.getFactionStanding(player, "sif");
                 if (spynetFaction >= 100)
                 {
@@ -58,10 +59,6 @@ public class spynet_item extends base_script
                 if (spynetFaction >= 300)
                 {
                     grantSkill(self, "stardust_spy3");
-                }
-                if (spynetFaction >= 400)
-                {
-                    grantSkill(self, "stardust_spy4");
                 }
             }
 

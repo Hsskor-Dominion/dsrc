@@ -32,8 +32,8 @@ public class han_solo_experience_player extends script.base_script
         if (strAction.equals("clientReady"))
         {
             obj_id hangar = getTopMostContainer(self);
-            newbieTutorialEnableHudElement(self, "radar", false, 0);
-            newbieTutorialEnableHudElement(self, "chatbox", false, 0);
+//            newbieTutorialEnableHudElement(self, "radar", false, 0);//removing for now
+//            newbieTutorialEnableHudElement(self, "chatbox", false, 0);
             messageTo(hangar, "doEvents", null, 1, false);
             checkJtLStatus(self);
         }

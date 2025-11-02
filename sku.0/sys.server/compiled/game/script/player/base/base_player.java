@@ -157,6 +157,7 @@ public class base_player extends script.base_script
     public static final string_id SID_ST_RIGHTS_REVOKED_OTHER = new string_id("city/city", "st_rights_revoked_other");
     public static final string_id SID_NOT_IN_CITY_LIMITS = new string_id("city/city", "not_in_city_limits");
     public static final string_id SID_TEACH = new string_id("sui", "teach");
+    public static final string_id SID_BOUNTY_ALIVE = new string_id("sui", "bounty_alive");
     public static final String NOVICE_MARKSMAN = "combat_marksman_novice";
     public static final String NOVICE_BRAWLER = "combat_brawler_novice";
     public static final String NOVICE_MEDIC = "science_medic_novice";
@@ -1156,6 +1157,7 @@ public class base_player extends script.base_script
     {
         removeObjVar(self, "noTrade");
         menu_info_data mid = mi.getMenuItemByType(menu_info_types.COMBAT_DEATH_BLOW);
+
         if (mid == null)
         {
             int myPosture = getPosture(self);
@@ -1163,7 +1165,14 @@ public class base_player extends script.base_script
             {
                 if (pvpCanAttack(player, self))
                 {
+                    // Normal deathblow option
                     mi.addRootMenu(menu_info_types.COMBAT_DEATH_BLOW, new string_id("", ""));
+
+                    // Bounty Alive only when incapacitated AND is a valid bounty target; currently not working
+                    if (isBeingHuntedByBountyHunter(self, player))//this logic always confuses me
+                    {
+                        mi.addRootMenu(menu_info_types.SERVER_MENU19, SID_BOUNTY_ALIVE);
+                    }
                 }
             }
             else if (myPosture == POSTURE_DEAD)
@@ -1185,44 +1194,44 @@ public class base_player extends script.base_script
                 }
             }
         }
-        else 
+        else
         {
             mid.setServerNotify(true);
         }
-        
+
+        //Performance and group teaching options
+        obj_id listenTarget = getPerformanceListenTarget(player);
+        if (isIdValid(listenTarget) && group.inSameGroup(listenTarget, self))
         {
-            obj_id listenTarget = getPerformanceListenTarget(player);
-            if (isIdValid(listenTarget) && group.inSameGroup(listenTarget, self))
-            {
-                mi.addRootMenu(menu_info_types.SERVER_PERFORMANCE_LISTEN_STOP, performance.SID_RADIAL_PERFORMANCE_LISTEN_STOP);
-            }
-            if (hasScript(self, performance.MUSIC_HEARTBEAT_SCRIPT) && (!isIdValid(listenTarget) || !group.inSameGroup(self, listenTarget)))
-            {
-                mi.addRootMenu(menu_info_types.SERVER_PERFORMANCE_LISTEN, performance.SID_RADIAL_PERFORMANCE_LISTEN);
-            }
-            obj_id watchTarget = getPerformanceWatchTarget(player);
-            if (watchTarget == self)
-            {
-                mi.addRootMenu(menu_info_types.SERVER_PERFORMANCE_WATCH_STOP, performance.SID_RADIAL_PERFORMANCE_WATCH_STOP);
-            }
-            else 
-            {
-                if (hasScript(self, performance.DANCE_HEARTBEAT_SCRIPT))
-                {
-                    mi.addRootMenu(menu_info_types.SERVER_PERFORMANCE_WATCH, performance.SID_RADIAL_PERFORMANCE_WATCH);
-                }
-            }
-            if (group.inSameGroup(self, player))
-            {
-                mi.addRootMenu(menu_info_types.SERVER_TEACH, SID_TEACH);
-            }
+            mi.addRootMenu(menu_info_types.SERVER_PERFORMANCE_LISTEN_STOP, performance.SID_RADIAL_PERFORMANCE_LISTEN_STOP);
         }
+        if (hasScript(self, performance.MUSIC_HEARTBEAT_SCRIPT) && (!isIdValid(listenTarget) || !group.inSameGroup(self, listenTarget)))
+        {
+            mi.addRootMenu(menu_info_types.SERVER_PERFORMANCE_LISTEN, performance.SID_RADIAL_PERFORMANCE_LISTEN);
+        }
+        obj_id watchTarget = getPerformanceWatchTarget(player);
+        if (watchTarget == self)
+        {
+            mi.addRootMenu(menu_info_types.SERVER_PERFORMANCE_WATCH_STOP, performance.SID_RADIAL_PERFORMANCE_WATCH_STOP);
+        }
+        else if (hasScript(self, performance.DANCE_HEARTBEAT_SCRIPT))
+        {
+            mi.addRootMenu(menu_info_types.SERVER_PERFORMANCE_WATCH, performance.SID_RADIAL_PERFORMANCE_WATCH);
+        }
+
+        if (group.inSameGroup(self, player))
+        {
+            mi.addRootMenu(menu_info_types.SERVER_TEACH, SID_TEACH);
+        }
+
         return SCRIPT_CONTINUE;
     }
+
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
     {
         if (item == menu_info_types.COMBAT_DEATH_BLOW)
         {
+            // Default deathblow behavior
         }
         else if (item == menu_info_types.SERVER_MENU9)
         {
@@ -1263,8 +1272,14 @@ public class base_player extends script.base_script
             int teachHash = getStringCrc("teach");
             queueCommand(player, teachHash, self, "", COMMAND_PRIORITY_IMMEDIATE);
         }
+        else if (item == menu_info_types.SERVER_MENU19)
+        {
+            //handleBountyCaptureAlive(player, self);//not working, for now
+        }
+
         return SCRIPT_CONTINUE;
     }
+
     public int OnMadeAuthoritative(obj_id self) throws InterruptedException
     {
         String flag = getConfigSetting("GameServer", "skipTutorial");

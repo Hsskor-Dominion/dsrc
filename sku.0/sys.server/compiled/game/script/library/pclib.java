@@ -766,7 +766,7 @@ public class pclib extends script.base_script
         {
             sendSystemMessage(player, SID_VICTIM_DEAD);
         }
-        else 
+        else
         {
             sendSystemMessageProse(player, prose.getPackage(PROSE_VICTIM_DEAD, killer));
         }
@@ -781,13 +781,13 @@ public class pclib extends script.base_script
             {
                 bounty_hunter.winBountyMission(killer, player);
                 smuggler.checkSmugglerMissionBountyFailure(player, killer);
-                //Warp player to Dathomir Prison? Under what conditions?
+                //we can add the proc of underwrold bounty hunter here
             }
             else if (utils.isProfession(player, utils.BOUNTY_HUNTER) && isBeingHuntedByBountyHunter(killer, player))
             {
                 bounty_hunter.loseBountyMission(player, killer);
             }
-            else 
+            else
             {
                 if ((getTotalMoney(player) >= bounty_hunter.MIN_BOUNTY_SET) && (!dueling) && (getLevel(killer) >= 20))
                 {

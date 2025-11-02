@@ -567,7 +567,7 @@ public class npe extends script.base_script
         }
         if (hasObjVar(player, "stardust_tyrena"))
         {
-            warpPlayer(player, "corellia", -5074, 398, -2338, null, 0, 0, 0, "", false);
+            warpPlayer(player, "corellia", -5074, 0, -2338, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_coronet"))
         {

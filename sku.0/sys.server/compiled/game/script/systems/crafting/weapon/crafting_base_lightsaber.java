@@ -81,7 +81,7 @@ public class crafting_base_lightsaber extends script.systems.crafting.crafting_b
         setWeaponRangeInfo(prototype, rangeData);
         setWeaponAccuracy(prototype, accuracy);
         setWeaponAttackCost(prototype, attackCost);
-        setWeaponDamageType(prototype, DAMAGE_ENERGY);
+        setWeaponDamageType(prototype, DAMAGE_ENERGY);//this should probably be heat
         setConversionId(prototype, weapons.CONVERSION_VERSION);
         weapons.setWeaponData(prototype);
         obj_id player = getOwner(prototype);

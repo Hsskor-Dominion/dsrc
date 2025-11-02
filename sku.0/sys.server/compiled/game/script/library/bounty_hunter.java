@@ -368,47 +368,154 @@ public class bounty_hunter extends script.base_script
     public static void endBountySession(obj_id hunter, obj_id target, boolean hunterWon) throws InterruptedException
     {
     }
-    public static void winBountyMission(obj_id hunter, obj_id target) throws InterruptedException
-    {
+    public static void winBountyMission(obj_id hunter, obj_id target) throws InterruptedException {
+        // --- Calculate bounty value ---
         int bountyValue = 0;
-        if (hasObjVar(target, "bounty.amount"))
-        {
+        if (hasObjVar(target, "bounty.amount")) {
             bountyValue = getIntObjVar(target, "bounty.amount");
         }
+
         dictionary d = new dictionary();
         d.put("target", target);
         d.put("bounty", bountyValue);
+
+        // --- Payout ---
         money.systemPayout(money.ACCT_BOUNTY, hunter, bountyValue, "handleAwardedPlayerBounty", d);
+
+        // --- Adjust faction ---
         float factionAdj = getBountyFactionPointAdjustment(hunter, target);
-        if (factionAdj != 0.0f)
-        {
+        if (factionAdj != 0.0f) {
             factions.addFactionStanding(hunter, factions.getFactionNameByHashCode(pvpGetAlignedFaction(hunter)), factionAdj);
         }
+
+        // --- Notify hunter and target ---
         prose_package pp = new prose_package();
         pp = prose.setStringId(pp, new string_id("bounty_hunter", "bounty_success_hunter"));
         pp = prose.setTT(pp, target);
         pp = prose.setDI(pp, bountyValue);
         sendSystemMessageProse(hunter, pp);
+
         pp = prose.setStringId(pp, new string_id("bounty_hunter", "bounty_success_target"));
         pp = prose.setTT(pp, hunter);
         sendSystemMessageProse(target, pp);
+
+        // --- Notify other hunters if applicable ---
         obj_id[] hunters = getJediBounties(target);
-        if (hunters != null && hunters.length > 0)
-        {
+        if (hunters != null && hunters.length > 0) {
             for (obj_id hunter1 : hunters) {
                 if (hunter1 != hunter) {
                     messageTo(hunter1, "handleBountyMissionIncomplete", d, 0.0f, true);
                 }
             }
         }
+
+        // --- End mission ---
         obj_id mission = getBountyMission(hunter);
-        if (isIdValid(mission))
-        {
+        if (isIdValid(mission)) {
             endMission(mission);
         }
+
         removeObjVar(target, "bounty");
         setJediBountyValue(target, 0);
         removeAllJediBounties(target);
+
+// ================================================================
+// SWG CHIMAERA TROPHY SYSTEM (Underworld BH Only)
+// ================================================================
+        if (isDead(target)) // only generate trophies if the target is actually dead
+        {
+            obj_id container = utils.getInventoryContainer(hunter);
+            if (!isIdValid(container)) {
+                container = hunter; // fallback
+            }
+
+            String skullTemplate = "object/tangible/loot/misc/loot_skull_human.iff";
+            String peltTemplate = "";
+            String braidTemplate = "";
+            boolean copiedLightsaber = false;
+
+            // --- Species variants ---
+            int species = getSpecies(target);
+            if (species == SPECIES_ITHORIAN)
+                skullTemplate = "object/tangible/loot/misc/loot_skull_ithorian.iff";
+            if (species == SPECIES_WOOKIEE)
+                peltTemplate = "object/tangible/loot/creature_loot/kashyyyk_loot/kashyyyk_bantha_pelt_01.iff";
+            if (species == SPECIES_TRANDOSHAN)
+                peltTemplate = "object/tangible/loot/creature_loot/kashyyyk_loot/kashyyyk_bantha_pelt_01.iff";
+
+            // --- Try cloning a lightsaber (for Jedi targets) ---
+            if (hasSkill(target, "class_forcesensitive_phase1_novice") ||
+                    hasSkill(target, "class_forcesensitive_phase2_novice") ||
+                    hasSkill(target, "class_forcesensitive_phase3_novice")) {
+                obj_id inv = utils.getInventoryContainer(target);
+                obj_id equipR = getObjectInSlot(target, "hold_r");
+                obj_id equipL = getObjectInSlot(target, "hold_l");
+
+                obj_id lightsaber = obj_id.NULL_ID;
+                if (isIdValid(equipR) && getTemplateName(equipR).contains("lightsaber"))
+                    lightsaber = equipR;
+                else if (isIdValid(equipL) && getTemplateName(equipL).contains("lightsaber"))
+                    lightsaber = equipL;
+                else if (isIdValid(inv)) {
+                    obj_id[] invItems = getContents(inv);
+                    if (invItems != null) {
+                        for (obj_id item : invItems) {
+                            if (isIdValid(item) && getTemplateName(item).contains("lightsaber")) {
+                                lightsaber = item;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (isIdValid(lightsaber)) {
+                    String saberTemplate = getTemplateName(lightsaber);
+                    obj_id clonedSaber = createObject(saberTemplate, container, "");
+                    if (isIdValid(clonedSaber)) {
+                        String victimName = getName(target);
+                        setName(clonedSaber, "Lightsaber of " + victimName);
+                        copiedLightsaber = true;
+
+                        if (!hasSkill(target, "class_forcesensitive_phase4_novice"))
+                            braidTemplate = "object/tangible/mission/quest_item/shared_luthik_uwyr_q3_needed.iff";
+                    }
+                }
+            }
+
+            // --- Create Skull Trophy ---
+            obj_id skull = createObject(skullTemplate, container, "");
+            if (isIdValid(skull)) {
+                String victimName = getName(target);
+                String itemType = (skullTemplate.contains("ithorian")) ? "Ithorian Skull" : "Skull";
+                String customName = itemType + " of " + victimName + " - " + bountyValue + " credits";
+                setName(skull, customName);
+            }
+
+            // --- Create Pelt ---
+            if (peltTemplate.length() > 0) {
+                obj_id pelt = createObject(peltTemplate, container, "");
+                if (isIdValid(pelt)) {
+                    String victimName = getName(target);
+                    String itemType = (species == SPECIES_WOOKIEE) ? "Wookiee Pelt" : "Trandoshan Hide";
+                    String customName = itemType + " of " + victimName + " - " + bountyValue + " credits";
+                    setName(pelt, customName);
+                }
+            }
+
+            // --- Create Braid ---
+            if (braidTemplate.length() > 0) {
+                obj_id braid = createObject(braidTemplate, container, "");
+                if (isIdValid(braid)) {
+                    String victimName = getName(target);
+                    String customName = "Padawan Braid of " + victimName + " - " + bountyValue + " credits";
+                    setName(braid, customName);
+                }
+            }
+
+            sendSystemMessage(hunter, new string_id("bounty_hunter", "trophy_created"));
+        } else {
+            sendSystemMessageTestingOnly(hunter, "Target was captured alive — no trophy generated. Underworld faction bonus");
+        }
     }
     public static void loseBountyMission(obj_id hunter, obj_id target) throws InterruptedException
     {

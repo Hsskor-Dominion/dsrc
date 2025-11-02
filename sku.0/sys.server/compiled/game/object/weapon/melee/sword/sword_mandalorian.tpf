@@ -10,3 +10,8 @@
 @class object_template 10
 
 sharedTemplate = "object/weapon/melee/sword/shared_sword_mandalorian.iff"
+
+contents = [
+[slotName = "saber_inv",
+equipObject = true,
+content = "object/tangible/inventory/shared_lightsaber_inventory_5.iff"]]

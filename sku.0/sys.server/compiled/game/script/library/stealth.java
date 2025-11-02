@@ -1806,20 +1806,25 @@ public class stealth extends script.base_script
     }
     public static boolean steal(obj_id thief, obj_id mark) throws InterruptedException
     {
+        //Initial chance check — 1% base chance
         if (!luck.isLucky(thief, 0.01f))
         {
+            // Failure branch — either caught or mark resists
             if (isCoughtWhileStealing(thief, mark) || luck.isLucky(mark, 0.01f))
             {
                 sendSystemMessageTestingOnly(thief, "STEALING CHECK FAILED: CAUGHT");
-                showFlyText(thief, new string_id("spam", "stealing_cought"), 1.5f, colors.TOMATO);
-                sendSystemMessage(thief, new string_id("spam", "stolen_cought"));
+                showFlyText(thief, new string_id("spam", "stealing_caught"), 1.5f, colors.TOMATO);
+                sendSystemMessage(thief, new string_id("spam", "stolen_caught"));
+
+                // Apply recourse / detection buffs
                 buff.applyBuff(thief, "sp_attack_invis_recourse");
                 buff.applyBuff(thief, "sm_spot_a_sucker_4_7");
+
+                // Remove invisibility if active
                 String invis = getInvisBuff(thief);
                 if (invis != null && invis.length() > 0)
-                {
                     buff.removeBuff(thief, invis);
-                }
+
                 if (isPlayer(mark))
                 {
                     prose_package pp = prose.getPackage(new string_id("spam", "almost_got_item_stolen"), thief);
@@ -1827,7 +1832,7 @@ public class stealth extends script.base_script
                     bounty_hunter.showSetBountySUI(mark, thief);
                     sendSystemMessageProse(mark, pp);
                 }
-                else 
+                else
                 {
                     startCombat(mark, thief);
                     startCombat(thief, mark);
@@ -1835,22 +1840,42 @@ public class stealth extends script.base_script
                 return false;
             }
         }
+
+        //Success branch
         showFlyTextPrivate(thief, thief, new string_id("spam", "stealin_on"), 1.5f, colors.TOMATO);
-        if (!doTheftLoot(thief, mark)) {
+
+        // Attempt theft logic
+        if (!doTheftLoot(thief, mark))
+        {
             sendSystemMessage(thief, new string_id("spam", "stolen_something"));
             sendSystemMessage(mark, new string_id("spam", "stolen_mark"));
             bounty_hunter.showSetBountySUI(mark, thief);
+
+            // Declare personal hostility (so guards / systems react)
             pvpSetPermanentPersonalEnemyFlag(mark, thief);
             pvpSetPermanentPersonalEnemyFlag(thief, mark);
 
-            // ✅ Thief steals 5000 credits from the mark
-            money.pay(mark, thief, 5000, "stolen_credits", null, true);
+            //Transfer stolen credits
+            int stolenCredits = 5000;
+            money.pay(mark, thief, stolenCredits, "stolen_credits", null, true);
 
-            factions.addFactionStanding(thief, "sif", 1.0f);
-            factions.addFactionStanding(mark, "sif", -1.0f);
+            // Apply detection buff to the victim
             buff.applyBuff(mark, "sm_spot_a_sucker_4_7");
+
+            //Trigger locked container stealing logic
             steal_pvp(thief, mark);
+
+            float spynetFaction = factions.getFactionStanding(mark, "sif");
+            if (spynetFaction > -3)
+            {
+                factions.addFactionStanding(thief, "sif", 1);
+                factions.addFactionStanding(mark, "sif", -1);
+
+                sendSystemMessage(thief, new string_id("spam", "faction_theft_success"));
+                sendSystemMessage(mark, new string_id("spam", "faction_theft_loss"));
+            }
         }
+
         return true;
     }
 

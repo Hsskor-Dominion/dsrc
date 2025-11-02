@@ -1,6 +1,6 @@
 // This file ws written by the template editor @ 11:49:56 AM -  Thu Oct 3 2002
 
-@base object/weapon/melee/sword/base/shared_sword_base.iff
+@base object/weapon/melee/sword/base/shared_crafted_lightsaber_base.iff
 
 @class weapon_object_template 4
 
@@ -19,4 +19,8 @@ appearanceFilename = "appearance/wp_mle_sword_mandalorian.apt"
 
 portalLayoutFilename = ""
 
-clientDataFile = "clientdata/weapon/client_melee_sword_basic.cdf"
+clientDataFile = "clientdata/weapon/client_melee_lightsaber_anakin.cdf"
+
+containerVolumeLimit = 65
+
+gameObjectType = GOT_weapon_melee_1h

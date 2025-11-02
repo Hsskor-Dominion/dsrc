@@ -1986,12 +1986,12 @@ expertise_of_heal_cool_1	expertise																					expertise_cooldown_line_o
 expertise_of_heal_cool_2	expertise_of_heal_cool_1																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20,healing_ability=10			0	
 expertise_of_heal_cool_3	expertise_of_heal_cool_2																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20,healing_ability=10			0	
 expertise_of_heal_cool_4	expertise_of_heal_cool_3																					expertise_cooldown_line_of_heal=1,spice_assembly=20,spice_experimentation=20,healing_ability=10			0	
-sm_title_bootlegger				1		1															sm_off_the_books,sm_shoot_first_1	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
-sm_title_pirate				1		1															sm_summon_medic,sm_off_the_cuff	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
-sm_title_master_smuggler				1		1															sm_nerf_herder	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
-bh_title_informant				1		1															bh_flawless_strike	expertise_cooldown_line_dm=10,expertise_freeshot_dm=10,expertise_cooldown_line_bh_flawless_strike=10,flawless_bead=1,bh_flawless_strike=1			0	
-bh_title_inspector				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10,expertise_cooldown_line_bh_flawless_strike=10			0	
-bh_title_agent				1		1																expertise_cooldown_line_dm=10,expertise_freeshot_dm=10,expertise_cooldown_line_bh_flawless_strike=10,flawless_bead=1			0	
+sm_title_bootlegger				1		1															sm_shoot_first_1,sm_off_the_books	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
+sm_title_pirate	sm_title_bootlegger			1		1				sm_title_bootlegger											sm_summon_medic,sm_off_the_cuff	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
+sm_title_master_smuggler	sm_title_pirate			1		1				sm_title_pirate											sm_nerf_herder	expertise_junk_dealer_cut=2,expertise_buff_duration_line_sm_skullduggery=6,expertise_miss_by_luck=6,expertise_increase_smuggler_loot=1,expertise_sm_feeling_lucky_chance_proc=1,expertise_lucky_break_chance=1,expertise_sm_card_ranged_proc=25,expertise_sm_card_melee_proc=25			0	
+bh_title_informant	stardust_pvp			1		1				stardust_pvp											bountycheck	expertise_cooldown_line_dm=10,expertise_freeshot_dm=10,expertise_cooldown_line_bh_flawless_strike=10,flawless_bead=1,bh_flawless_strike=1			0	
+bh_title_inspector	bh_title_informant			1		1				bh_title_informant											bh_flawless_strike	expertise_cooldown_line_dm=10,expertise_freeshot_dm=10,expertise_cooldown_line_bh_flawless_strike=10			0	
+bh_title_agent	bh_title_inspector			1		1				bh_title_inspector												expertise_cooldown_line_dm=10,expertise_freeshot_dm=10,expertise_cooldown_line_bh_flawless_strike=10,flawless_bead=1			0	
 pvp_imperial_retaliation_ability																					command_pvp_retaliation_ability,of_reinforcements_1				0	
 pvp_imperial_adrenaline_ability																					command_pvp_adrenaline_ability,of_reinforcements_2				0	
 pvp_imperial_unstoppable_ability																					command_pvp_unstoppable_ability,of_reinforcements_3				0	
@@ -2656,7 +2656,7 @@ expertise_engineering_droid_advanced_theory_1	expertise_engineering_droid_hypoth
 expertise_engineering_droid_schematic_1_1	expertise			1																	droid_flame_jet_1,droid_droideka_shield_1,droid_battery_dump_1,droid_regenerative_plating_1,droid_electrical_shock_1,droid_torturous_needle_1,droid_follow,droid_follow_other,droid_stay,droid_guard,droid_friend,droid_attack,droid_patrol,droid_patrol_point,droid_patrol_clear,droid_store,droid_transfer,droid_group,droid_trick_1,droid_trick_2,droid_trick_3,droid_trick_4	droid_level=5,cybernetic_psychosis_resistance=2	craftDroidExpertiseDroids,craftDroidExpertiseModules,craftdroidGroupA,craftdroiddefmodGroupA,craftdroidgenmodGroupA,craftDroidRepairCompA,craftCyberneticGroupA,craftExpertiseElectricalShockModule,craftExpertiseTorturousNeedleModule,craftExpertiseRegenerativePlating,craftExpertiseBatteryDump,craftExpertiseDroidekaShieldModule,craftExpertiseFlameJetModule			
 expertise_engineering_droid_schematic_2_1	expertise																						craftDroidExpertiseModules			
 expertise_engineering_weaponsmith_attachment_upgrade_1	expertise																					expertise_attachment_upgrade=1				
-expertise_engineering_weaponsmith_socket_bonus_1	expertise																						craftExpertiseSocketRetrofitter,craftWeaponComponentRangedGroupA,craftWeaponComponentMeleeGroupA,craftWeaponCoreGroupA,craftWeaponAppearanceMeleeGroupA,craftWeaponAppearanceRangedGroupA,craftMunitionsGroupF			
+expertise_engineering_weaponsmith_socket_bonus_1	expertise																				sm_modify_pistol_1		craftExpertiseSocketRetrofitter,craftWeaponComponentRangedGroupA,craftWeaponComponentMeleeGroupA,craftWeaponCoreGroupA,craftWeaponAppearanceMeleeGroupA,craftWeaponAppearanceRangedGroupA,craftMunitionsGroupF			
 expertise_engineering_regenerative_plating_1	expertise																						craftExpertiseRegenerativePlating			
 expertise_engineering_battery_dump_1	expertise																						craftExpertiseBatteryDump			
 expertise_engineering_weaponsmith_advanced_theory_1																										
@@ -2843,24 +2843,22 @@ faction_rank_mando_1	faction_rank_mando_novice		1	1	0	1	0	0		faction_rank_mando_
 faction_rank_mando_2	faction_rank_mando_1		1	1	0	1	0	0		faction_rank_mando_1			0	0							command_pvp_unstoppable_ability,of_reinforcements_3	armor_assembly=1,armor_experimentation=1,armor_customization=1,weapon_assembly=1,weapon_experimentation=1,weapon_customization=1			0	0
 faction_rank_mando_3	faction_rank_mando_2		1	1	0	1	0	0		faction_rank_mando_2			0	0							command_pvp_last_man_ability,of_reinforcements_4	armor_assembly=1,armor_experimentation=1,armor_customization=1,weapon_assembly=1,weapon_experimentation=1,weapon_customization=1			0	0
 faction_rank_mando_4	faction_rank_mando_3		1	1	0	1	0	0		faction_rank_mando_3			0	0							pvp_aura_buff_self,of_reinforcements_5	armor_assembly=1,armor_experimentation=1,armor_customization=1,weapon_assembly=1,weapon_experimentation=1,weapon_customization=1			0	0
-faction_rank_mando_master	faction_rank_mando_4		1	1	0	1	0	0		faction_rank_mando_4			0	0							pvp_airstrike_ability	armor_assembly=1,armor_experimentation=1,armor_customization=1,weapon_assembly=1,weapon_experimentation=1,weapon_customization=1			0	0
+faction_rank_mando_master	faction_rank_mando_4		1	1	0	0	0	0		faction_rank_mando_4			0	0							pvp_airstrike_ability,bh_prescience	armor_assembly=1,armor_experimentation=1,armor_customization=1,weapon_assembly=1,weapon_experimentation=1,weapon_customization=1			0	0
 social_language_mando_speak	social_language		0	1	0	0	0	0					0	0				bothan,human,moncalamari,rodian,trandoshan,twilek,zabrak			language+mando	language_mando_speak=100			0	0
-social_language_mando_comprehend	social_language		0	0	0	0	0	0					0	0								language_mando_comprehend=100			0	0
-stardust_pvp				1		1															bountycheck				0	
-stardust_spy				1		1															sm_inside_information				0	
-stardust_spy1	stardust_spy			1		1																expertise_cooldown_line_sp_smoke=30,expertise_cooldown_line_sp_burst_shadows=30			0	
-stardust_spy2	stardust_spy1			1		1				stardust_spy1												expertise_cooldown_line_sp_smoke=30,expertise_cooldown_line_sp_burst_shadows=30			0	
-stardust_spy3	stardust_spy2			1		1				stardust_spy2												expertise_cooldown_line_sp_smoke=30,expertise_cooldown_line_sp_burst_shadows=30			0	
-stardust_spy4	stardust_spy3			1		1				stardust_spy3												expertise_cooldown_line_sp_smoke=30,expertise_cooldown_line_sp_burst_shadows=30,expertise_covert_mastery=1			0	
-stardust_ace_of_aces				1		1															cert_starships_firespray,cert_starships_tieoppressor,cert_starships_gunship_imperial,cert_starships_decimator,cert_starships_bwing,cert_starships_gunship_rebel,cert_starships_yt1300,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral,cert_starships_ykl37r,cert_starships_z95headhunter,cert_starships_ywing,cert_starships_ywinglongprobe,cert_starships_vwing,cert_starships_xwing,cert_starships_awing,cert_starships_arc170,cert_starships_grievous,cert_starships_jedistarfighter,cert_starships_advancedxwing,cert_starships_twing, cert_starships_decimator,cert_starships_tiefighterlight,cert_starships_tiefighter,cert_starships_tiefighterin,cert_starships_tieinterceptor,cert_starships_tiebomber,cert_starships_tieadvanced,cert_starships_tieaggressor,cert_starships_tieinterceptorimperialguard,cert_starships_tiedefender,cert_starships_lighthuttfighter,cert_starships_mediumhuttfighter,cert_starships_heavyhuttfighter,cert_starships_lightblacksunfighter,cert_naboo_n1,cert_starships_mediumblacksunfighter,cert_starships_heavyblacksunfighter,cert_starships_havoc,cert_starships_blacksunvaksai,cert_starships_blacksunheavyvaksai				0	
-stardust_admiral_imperial				1		1															cert_gunship_stardestroyer				0	
-stardust_admiral_republic				1		1																			0	
-stardust_diplomat				1		1																			0	
-stardust_senator_candidate				1		1																			0	
-stardust_senator				1		1															veteranPlayerBuff				0	
-stardust_gov_candidate				1		1																			0	
-stardust_gov				1		1																			0	
-stardust_moff				1		1																			0	
+social_language_mando_comprehend	social_language		0	1	0	0	0	0					0	0								language_mando_comprehend=100			0	0
+stardust_pvp	expertise			1		0															bountycheck				0	
+stardust_spy	expertise			1		0															sm_inside_information				0	
+stardust_spy1	stardust_spy			1		0				stardust_spy												expertise_cooldown_line_sp_smoke=30,expertise_cooldown_line_sp_burst_shadows=30			0	
+stardust_spy2	stardust_spy1			1		0				stardust_spy1												expertise_cooldown_line_sp_smoke=30,expertise_cooldown_line_sp_burst_shadows=30,expertise_covert_mastery=1			0	
+stardust_ace_of_aces	expertise			1		0															cert_starships_firespray,cert_starships_tieoppressor,cert_starships_gunship_imperial,cert_starships_decimator,cert_starships_bwing,cert_starships_gunship_rebel,cert_starships_yt1300,cert_starships_hutt_turret_ship,cert_starships_gunship_neutral,cert_starships_ykl37r,cert_starships_z95headhunter,cert_starships_ywing,cert_starships_ywinglongprobe,cert_starships_vwing,cert_starships_xwing,cert_starships_awing,cert_starships_arc170,cert_starships_grievous,cert_starships_jedistarfighter,cert_starships_advancedxwing,cert_starships_twing, cert_starships_decimator,cert_starships_tiefighterlight,cert_starships_tiefighter,cert_starships_tiefighterin,cert_starships_tieinterceptor,cert_starships_tiebomber,cert_starships_tieadvanced,cert_starships_tieaggressor,cert_starships_tieinterceptorimperialguard,cert_starships_tiedefender,cert_starships_lighthuttfighter,cert_starships_mediumhuttfighter,cert_starships_heavyhuttfighter,cert_starships_lightblacksunfighter,cert_naboo_n1,cert_starships_mediumblacksunfighter,cert_starships_heavyblacksunfighter,cert_starships_havoc,cert_starships_blacksunvaksai,cert_starships_blacksunheavyvaksai				0	
+stardust_admiral_imperial	expertise			1		0															cert_gunship_stardestroyer				0	
+stardust_admiral_republic	expertise			1		0																			0	
+stardust_diplomat	expertise			1		0																			0	
+stardust_senator_candidate	expertise			1		0															sm_off_the_books				0	
+stardust_senator	stardust_diplomat			1		0				stardust_diplomat											veteranPlayerBuff				0	
+stardust_gov_candidate	expertise			1		0																			0	
+stardust_gov	stardust_senator			1		0				stardust_senator															0	
+stardust_moff	stardust_gov			1		0				stardust_gov															0	
 stardust_grand_moff				1		1																			0	
 stardust_sith_empress				1		1																			0	
 stardust_jedi_elder				1		1															blueGlowie				0	

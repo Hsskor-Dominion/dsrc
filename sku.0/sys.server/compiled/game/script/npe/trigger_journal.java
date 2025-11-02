@@ -99,7 +99,7 @@ public class trigger_journal extends script.base_script
         obj_id player = sui.getPlayerId(params);
         if (btn == sui.BP_OK)
         {
-            npe.removeAllQuests(player);
+            //npe.removeAllQuests(player);//this seems like nonsense to me now that you can get back on station
             npe.movePlayerFromSharedStationToFinishLocation(player);
         }
         return SCRIPT_CONTINUE;

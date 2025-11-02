@@ -114,7 +114,7 @@ item_npe_rang_acc_device_01_01	object/tangible/loot/generic_usable/survey_pad_ad
 item_npe_junk_power_unit_01_01	object/tangible/loot/npc_loot/elect_power_unit_generic.iff							1	32	object.autostack		1	Power Unit	This item can be sold to a junk dealer.	npe junk loot
 item_npe_junk_ampule_container_01_01	object/tangible/loot/npc_loot/bacta_ampules_generic.iff							1	34	object.autostack		1	Bacta Ampule Container	This item can be sold to a junk dealer.	npe junk loot
 item_npe_junk_wire_blue_01_01	object/tangible/loot/npc_loot/blue_wiring_generic.iff							1	37	object.autostack		1	Wiring	This item can be sold to a junk dealer.	npe junk loot
-item_npe_junk_briefcase_01_01	object/tangible/loot/npc_loot/briefcase_generic.iff							1	40	object.autostack		1	Briefcase	This item can be sold to a junk dealer.	npe junk loot
+item_npe_junk_briefcase_01_01	object/tangible/loot/npc_loot/briefcase_generic.iff							1	40	object.autostack,stardust.systems.spynet_item		1	Briefcase	This item can be sold to a junk dealer.	npe junk loot
 item_npe_junk_holo_recorder_01_01	object/tangible/loot/npc_loot/camera_generic.iff							1	45	object.autostack		1	Holorecorder	This item can be sold to a junk dealer.	npe junk loot
 item_npe_junk_newsfilter_module_01_01	object/tangible/loot/npc_loot/chassis_blueprint_device_generic.iff							1	49	object.autostack		1	Newsfilter Module	This item can be sold to a junk dealer.	npe junk loot
 item_npe_junk_chem_dispersal_01_01	object/tangible/loot/npc_loot/chem_dispersion_device_generic.iff							1	32	object.autostack		1	Chemical Dispersal Device	This item can be sold to a junk dealer.	npe junk loot
@@ -122,8 +122,8 @@ item_npe_junk_circuit_board_01_01	object/tangible/loot/npc_loot/circuit_board_ge
 item_npe_junk_dirty_cloth_01_01	object/tangible/loot/npc_loot/cloth_box_generic.iff							1	37	object.autostack		1	Cloth Swatches	This item can be sold to a junk dealer.	npe junk loot
 item_npe_junk_complex_module_01_01	object/tangible/loot/npc_loot/elect_module_complex_generic.iff							1	40	object.autostack		1	Electronics Module	This item can be sold to a junk dealer.	npe junk loot
 item_npe_junk_copper_battery_01_01	object/tangible/loot/npc_loot/copper_battery_generic.iff							1	45	object.autostack		1	Platinite Copper Battery	This item can be sold to a junk dealer.	npe junk loot
-item_npe_junk_blank_datadisk_01_01	object/tangible/loot/npc_loot/datadisk_generic.iff							1	49	object.autostack		1	Datadisk	This item can be sold to a junk dealer.	npe junk loot
-item_npe_junk_decryptor_01_01	object/tangible/loot/npc_loot/decryptor_generic.iff							1	32	object.autostack		1	Decryptor	This item can be sold to a junk dealer.	npe junk loot
+item_npe_junk_blank_datadisk_01_01	object/tangible/loot/npc_loot/datadisk_generic.iff							1	49	object.autostack,stardust.systems.spynet_item		1	Datadisk	This item can be sold to a junk dealer.	npe junk loot
+item_npe_junk_decryptor_01_01	object/tangible/loot/npc_loot/decryptor_generic.iff							1	32	object.autostack,stardust.systems.spynet_item		1	Decryptor	This item can be sold to a junk dealer.	npe junk loot
 item_npe_junk_worklight_01_01	object/tangible/loot/npc_loot/worklight_generic.iff							1	34	object.autostack		1	Worklight	This item can be sold to a junk dealer.	npe junk loot
 item_npe_junk_enigmatic_circuit_01_01	object/tangible/loot/npc_loot/engineer_analysis_board_generic.iff							1	37	object.autostack		1	Circuitry	This item can be sold to a junk dealer.	npe junk loot
 item_npe_junk_frequency_jammer_01_01	object/tangible/loot/npc_loot/frequency_jammer_wire_generic.iff							1	40	object.autostack		1	Frequency Jamming Wired	This item can be sold to a junk dealer.	npe junk loot
@@ -1294,9 +1294,9 @@ item_junk_droid_11thru15_01_04	object/tangible/loot/npc_loot/radio_generic.iff		
 item_junk_droid_11thru15_01_05	object/tangible/loot/npc_loot/chassis_blueprint_device_generic.iff							1	80	object.autostack		1	Rapid Program Module	This item can be sold to a junk dealer.	
 item_junk_droid_16thru20_01_01	object/tangible/loot/npc_loot/wiring_generic.iff							1	105	object.autostack		1	Wiring	This item can be sold to a junk dealer.	
 item_junk_droid_16thru20_01_02	object/tangible/loot/npc_loot/small_motor_generic.iff							1	105	object.autostack		1	Burnt Out Droid Motor	This item can be sold to a junk dealer.	
-item_junk_droid_16thru20_01_03	object/tangible/loot/npc_loot/datadisk_generic.iff							1	105	object.autostack		1	Demagnetized Datadisk	This item can be sold to a junk dealer.	
+item_junk_droid_16thru20_01_03	object/tangible/loot/npc_loot/datadisk_generic.iff							1	105	object.autostack,stardust.systems.spynet_item		1	Demagnetized Datadisk	This item can be sold to a junk dealer.	
 item_junk_droid_16thru20_01_04	object/tangible/loot/npc_loot/decryptor_generic.iff							1	105	object.autostack		1	Unpowered Memory Encryptor	This item can be sold to a junk dealer.	
-item_junk_droid_16thru20_01_05	object/tangible/loot/npc_loot/disk_drive_generic.iff							1	105	object.autostack		1	Data Housing	This item can be sold to a junk dealer.	
+item_junk_droid_16thru20_01_05	object/tangible/loot/npc_loot/disk_drive_generic.iff							1	105	object.autostack,stardust.systems.spynet_item		1	Data Housing	This item can be sold to a junk dealer.	
 item_junk_droid_21thru25_01_01	object/tangible/loot/npc_loot/wiring_generic.iff							1	130	object.autostack		1	Wiring	This item can be sold to a junk dealer.	
 item_junk_droid_21thru25_01_02	object/tangible/loot/npc_loot/circuit_board_generic.iff							1	130	object.autostack		1	Mark II Circuit Board	This item can be sold to a junk dealer.	
 item_junk_droid_21thru25_01_03	object/tangible/loot/npc_loot/elect_module_complex_generic.iff							1	130	object.autostack		1	Differential Regulator	This item can be sold to a junk dealer.	
@@ -1329,9 +1329,9 @@ item_junk_droid_46thru50_01_04	object/tangible/loot/npc_loot/radio_generic.iff		
 item_junk_droid_46thru50_01_05	object/tangible/loot/npc_loot/chassis_blueprint_device_generic.iff							1	280	object.autostack		1	Rapid Program Module	This item can be sold to a junk dealer.	
 item_junk_droid_51thru55_01_01	object/tangible/loot/npc_loot/wiring_generic.iff							1	315	object.autostack		1	Wiring	This item can be sold to a junk dealer.	
 item_junk_droid_51thru55_01_02	object/tangible/loot/npc_loot/canister_small_device_generic.iff							1	315	object.autostack		1	Software Module	This item can be sold to a junk dealer.	
-item_junk_droid_51thru55_01_03	object/tangible/loot/npc_loot/datadisk_generic.iff							1	315	object.autostack		1	Datadisk	This item can be sold to a junk dealer.	
+item_junk_droid_51thru55_01_03	object/tangible/loot/npc_loot/datadisk_generic.iff							1	315	object.autostack,stardust.systems.spynet_item		1	Datadisk	This item can be sold to a junk dealer.	
 item_junk_droid_51thru55_01_04	object/tangible/loot/npc_loot/decryptor_generic.iff							1	315	object.autostack		1	Memory Encryptor	This item can be sold to a junk dealer.	
-item_junk_droid_51thru55_01_05	object/tangible/loot/npc_loot/disk_drive_generic.iff							1	315	object.autostack		1	Data Housing	This item can be sold to a junk dealer.	
+item_junk_droid_51thru55_01_05	object/tangible/loot/npc_loot/disk_drive_generic.iff							1	315	object.autostack,stardust.systems.spynet_item		1	Data Housing	This item can be sold to a junk dealer.	
 item_junk_droid_56thru60_01_01	object/tangible/loot/npc_loot/wiring_generic.iff							1	350	object.autostack		1	Wiring	This item can be sold to a junk dealer.	
 item_junk_droid_56thru60_01_02	object/tangible/loot/npc_loot/small_motor_generic.iff							1	350	object.autostack		1	Droid Motor	This item can be sold to a junk dealer.	
 item_junk_droid_56thru60_01_03	object/tangible/loot/npc_loot/software_module_orange_generic.iff							1	350	object.autostack		1	Mark V Vocab Module	This item can be sold to a junk dealer.	
@@ -1349,7 +1349,7 @@ item_junk_droid_66thru70_01_04	object/tangible/loot/npc_loot/software_module_gen
 item_junk_droid_66thru70_01_05	object/tangible/loot/npc_loot/tubed_device_generic.iff							1	425	object.autostack		1	Plugged Hydraulics System	This item can be sold to a junk dealer.	
 item_junk_droid_71thru75_01_01	object/tangible/loot/npc_loot/wiring_generic.iff							1	460	object.autostack		1	Wiring	This item can be sold to a junk dealer.	
 item_junk_droid_71thru75_01_02	object/tangible/loot/npc_loot/canister_small_device_generic.iff							1	460	object.autostack		1	Software Module	This item can be sold to a junk dealer.	
-item_junk_droid_71thru75_01_03	object/tangible/loot/npc_loot/disk_drive_generic.iff							1	460	object.autostack		1	Data Housing	This item can be sold to a junk dealer.	
+item_junk_droid_71thru75_01_03	object/tangible/loot/npc_loot/disk_drive_generic.iff							1	460	object.autostack,stardust.systems.spynet_item		1	Data Housing	This item can be sold to a junk dealer.	
 item_junk_droid_71thru75_01_04	object/tangible/loot/npc_loot/elect_module_complex_generic.iff							1	460	object.autostack		1	Differential Regulator	This item can be sold to a junk dealer.	
 item_junk_droid_71thru75_01_05	object/tangible/loot/npc_loot/elect_power_unit_generic.iff							1	460	object.autostack		1	Power Converter	This item can be sold to a junk dealer.	
 item_junk_droid_76thru82_01_01	object/tangible/loot/npc_loot/wiring_generic.iff							1	500	object.autostack		1	Wiring	This item can be sold to a junk dealer.	
@@ -5855,7 +5855,7 @@ heroic_echo_at_at_junk_02_02	object/tangible/loot/creature_loot/generic/heroic_e
 heroic_echo_at_at_junk_02_03	object/tangible/loot/creature_loot/generic/heroic_echo_at_at_junk_03.iff							1	350	object.autostack		1	AT-AT movement control module	This item can be sold to a junk dealer.	
 heroic_echo_at_at_junk_02_04	object/tangible/loot/creature_loot/generic/heroic_echo_at_at_junk_04.iff							1	350	object.autostack		1	a disabled navigation module	This item can be sold to a junk dealer.	
 heroic_echo_at_at_junk_02_05	object/tangible/loot/creature_loot/generic/heroic_echo_at_at_junk_05.iff							1	350	object.autostack		1	AT-AT seam sealant	This item can be sold to a junk dealer.	
-heroic_echo_snow_speeder_junk_02_01	object/tangible/loot/creature_loot/generic/heroic_echo_snow_speeder_junk_01.iff							1	350	object.autostack		1	corrupt data disk	This item can be sold to a junk dealer.	
+heroic_echo_snow_speeder_junk_02_01	object/tangible/loot/creature_loot/generic/heroic_echo_snow_speeder_junk_01.iff							1	350	object.autostack,stardust.systems.spynet_item		1	corrupt data disk	This item can be sold to a junk dealer.	
 heroic_echo_snow_speeder_junk_02_02	object/tangible/loot/creature_loot/generic/heroic_echo_snow_speeder_junk_02.iff							1	350	object.autostack		1	a Rebel clearance badge	This item can be sold to a junk dealer.	
 heroic_echo_snow_speeder_junk_02_03	object/tangible/loot/creature_loot/generic/heroic_echo_snow_speeder_junk_03.iff							1	350	object.autostack		1	a Rebel medic kit	This item can be sold to a junk dealer.	
 heroic_echo_snow_speeder_junk_02_04	object/tangible/loot/creature_loot/generic/heroic_echo_snow_speeder_junk_04.iff							1	350	object.autostack		1	a repair kit	This item can be sold to a junk dealer.	
@@ -8592,3 +8592,4 @@ police_station	object/tangible/deed/player_house_deed/police_station.iff							4
 police_station2	object/tangible/deed/player_house_deed/police_station2.iff							4							
 command_post	object/tangible/deed/player_house_deed/command_post.iff							4		item.structure_deed.player_structure_deed					
 item_deed_tie_fighter	object/tangible/loot/generic_deed/vehicle_generic.iff							6		systems.vehicle_system.vehicle_deed		1		Using this deed will create a new vehicle in your datapad.	
+weapon_mandalorian_sword_darksaber	object/weapon/melee/sword/sword_mandalorian.iff	weapon		90				4		systems.jedi.jedi_weapon_noslice,systems.jedi.saber_base		1	"Crusader ""Templar"" Sword"	"Crusader ""Templar"" Sword"	

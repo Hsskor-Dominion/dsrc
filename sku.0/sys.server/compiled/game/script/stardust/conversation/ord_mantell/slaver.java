@@ -471,6 +471,7 @@ public class slaver extends script.base_script
         }
 
         faceTo(npc, player);
+        clearWarpFlags(player);
 
         if (slaver_condition__defaultCondition(npc, player))
         {
@@ -492,6 +493,36 @@ public class slaver extends script.base_script
 
         chat.chat(npc, "*Speaks curiously*");
         return SCRIPT_CONTINUE;
+    }
+    public void clearWarpFlags(obj_id player) throws InterruptedException
+    {
+        String[] warpFlags = {
+                "stardust_ent",
+                "stardust_farmer",
+                "stardust_bestine",
+                "stardust_espa",
+                "stardust_jedi",
+                "stardust_naboo_imperial",
+                "stardust_kaadara",
+                "stardust_theed",
+                "stardust_moenia",
+                "stardust_republic_academy",
+                "stardust_tyrena",
+                "stardust_coronet",
+                "stardust_lok",
+                "stardust_dathomir",
+                "stardust_trandoshan",
+                "stardust_wookiee",
+                "stardust_talus_io"
+        };
+
+        for (String flag : warpFlags)
+        {
+            if (hasObjVar(player, flag))
+            {
+                removeObjVar(player, flag);
+            }
+        }
     }
     public int OnNpcConversationResponse(obj_id npc, String conversationId, obj_id player, string_id response) throws InterruptedException
     {

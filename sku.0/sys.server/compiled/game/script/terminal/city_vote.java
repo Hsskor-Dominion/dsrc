@@ -219,51 +219,95 @@ public class city_vote extends script.terminal.base.base_terminal
     }
     public void handleCityDiplomacy(obj_id self, obj_id player) throws InterruptedException
     {
-        obj_id city_hall = getTopMostContainer(self);
-        int city_id = findCityByCityHall(city_hall);
-        obj_id mayor = cityGetLeader(city_id);
+        obj_id cityHall = getTopMostContainer(self);
+        int cityId = findCityByCityHall(cityHall);
+        obj_id mayor = cityGetLeader(cityId);
 
         boolean isEnemy = townspersonEnemy(player, self);
         boolean isOnDiplomacy = onDiplomacy(player);
         boolean isMayor = (mayor == player);
-        boolean isMilitia = isMilitiaOfCity(player, city_id);
+        boolean isMilitia = isMilitiaOfCity(player, cityId);
         boolean isCityLeaderOrMilitia = isMayor || isMilitia;
 
+        // === 1. Enemy check: immediate bounty ===
         if (isEnemy)
         {
             sendSystemMessage(player, new string_id("city/city", "city_diplomacy_poor_faction_bounty_fee"));
             townspersonBounty(player, self);
-            // grant bounty regardless of other conditions
+            return;
         }
 
+        // === 2. Active diplomacy case ===
         if (isOnDiplomacy)
         {
+            // Leaders cannot complete diplomacy within their own city
             if (isCityLeaderOrMilitia)
             {
                 sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_warning"));
-                // Player must go to a different city for diplomacy signal
                 return;
+            }
+
+            // Check if player has a loot crate
+            if (hasLootContainer(player))
+            {
+                sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_end"));
+                diplomacy_questSignal(player, self);
+                factions.addFactionStanding(player, "political", 490); // bonus bonus exp
+                factions.addFactionStanding(player, "underworld", 10);
+                sendSystemMessage(self, new string_id("spam", "underworld_faction_increase"));
             }
             else
             {
                 sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_end"));
                 diplomacy_questSignal(player, self);
-                // Signal progression for visiting another city's voting terminal
+                factions.addFactionStanding(player, "political", 90); // bonux exp to incentivize
+            }
+            return;
+        }
+
+        // === 3. Not currently on diplomacy: may start if city leader/militia ===
+        if (isCityLeaderOrMilitia)
+        {
+            if (hasLootContainer(player))
+            {
+                sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_start_pvp_risk"));
+                sendSystemMessage(self, new string_id("stardust/mando_rank", "loot_crate_detected"));
+                factions.goOvertWithDelay(player, 0.0f);
+                diplomacy_quest(player, self);
+                return;
+            }
+            else
+            {
+                // no special item — still allow quest start
+                sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_start_pvp_risk"));
+                sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_start"));
+                diplomacy_quest(player, self);
                 return;
             }
         }
 
-        if (isCityLeaderOrMilitia)
-        {
-            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_start_pvp_risk"));
-            factions.goOvertWithDelay(player, 0.0f);
-            diplomacy_quest(player, self);
-            // Start the mission
-            return;
-        }
-
+        // === 4. Default: player not eligible ===
         sendSystemMessage(player, new string_id("city/city", "city_diplomacy_signal_not_qualified"));
-        // Not qualified to start or progress this diplomacy quest
+    }
+
+    private boolean hasLootContainer(obj_id player) throws InterruptedException
+    {
+        obj_id inv = utils.getInventoryContainer(player);
+        if (!isIdValid(inv)) return false;
+
+        obj_id[] contents = getContents(inv);
+        if (contents == null || contents.length == 0) return false;
+
+        for (obj_id item : contents)
+        {
+            if (!isIdValid(item)) continue;
+            String template = getTemplateName(item);
+            if (template != null && template.equals("object/tangible/container/loot/loot_crate.iff"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void handleCityBounty(obj_id self, obj_id player) throws InterruptedException

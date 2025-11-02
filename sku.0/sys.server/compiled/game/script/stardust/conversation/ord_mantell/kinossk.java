@@ -26,7 +26,7 @@ public class kinossk extends script.base_script
     public boolean kinossk_trandoshanFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float hsskorFaction = factions.getFactionStanding(player, "hsskor");
-        return hsskorFaction >= 2500;
+        return hsskorFaction >= 1000;
     }
     public boolean kinossk_medic_condition(obj_id npc, obj_id player)
     {
@@ -54,6 +54,7 @@ public class kinossk extends script.base_script
     {
         money.requestPayment(player, npc, smuggler.TIER_4_GENERIC_PVP_FRONT_COST, "none", null, true);
         //groundquests.requestGrantQuest(player, "quest/stardust_kinossk_prison_break", true);
+        factions.addFactionStanding(player, "hsskor", 1000);
         int mission_bounty = 10000;
         int current_bounty = 0;
         mission_bounty += rand(1, 2000);

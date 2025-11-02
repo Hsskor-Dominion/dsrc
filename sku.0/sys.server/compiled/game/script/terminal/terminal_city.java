@@ -280,7 +280,7 @@ public class terminal_city extends script.base_script {
                             // Award political experience
                             int encryptionCount = getIntObjVar(container, "slicing.encryptionCount");
                             if (encryptionCount <= 0) encryptionCount = 1; // fallback
-                            int xp = 100 * encryptionCount;
+                            int xp = 10 * encryptionCount;//slider scale for political experience
                             grantExperiencePoints(player, "political", xp);
 
                             // Destroy the container

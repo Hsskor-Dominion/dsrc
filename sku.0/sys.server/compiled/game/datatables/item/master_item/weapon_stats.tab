@@ -325,3 +325,4 @@ weapon_rifle_legendary_t21	1	1000	425	945	0	energy	acid	30	80	1	100	0	64		int:wp
 weapon_energy_lance_legendary	1	1000	700	1000	0	energy	electric	50	100	1	100	0	5		int:wp.canBeDisMantled=1		lvl88	1100	1100
 weapon_2h_sword_maul_legendary	1	1000	730	990	0	energy	acid	20	100	1	100	0	5		int:wp.canBeDisMantled=1		lvl88	1165	1165
 weapon_stun_baton_legendary	1	1000	715	1005	0	energy	electric	75	100	1	100	0	5		int:wp.canBeDisMantled=1		lvl88	1100	1100
+weapon_mandalorian_sword_darksaber	1	1000	700	1450	0	kinetic	heat	750	100	1	100	0	5	strength_modified=10,constitution_modified=5	int:jedi.saber.base_stats.min_dmg=700,int:jedi.saber.base_stats.max_dmg=1400,float:jedi.saber.base_stats.speed=1.00,float:jedi.saber.base_stats.wound=1.0,int:jedi.saber.base_stats.attack_cost=100,float:jedi.saber.base_stats.damage=0.0		hec	1165	1165

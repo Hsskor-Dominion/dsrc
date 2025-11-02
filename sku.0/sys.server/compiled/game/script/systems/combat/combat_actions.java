@@ -6187,6 +6187,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         setMaster(buddy, self);
         utils.setScriptVar(self, "junk_dealer_smuggler", buddy);
+        grantExperiencePoints(self, "underworld", -5);
+        sendSystemMessage(self, new string_id("spam", "underworld_faction_loss"));
         return true;
     }
 
@@ -7629,15 +7631,32 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
-    public int bh_prescience(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("bh_prescience", self, target, params, "", "")) {
+    public int bh_prescience(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        // Standard combat checks first
+        if (!combatStandardAction("bh_prescience", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
+        // Check if the player has the correct weapon in hold_r
+        obj_id weapon = getObjectInSlot(self, "hold_r");
+        if (!isIdValid(weapon) || !getTemplateName(weapon).equals("object/weapon/melee/sword/sword_mandalorian.iff"))
+        {
+            sendSystemMessage(self, new string_id("stardust/gcw", "must_weild_darksaber"));
+            return SCRIPT_OVERRIDE;
+        }
+
+        // Optionally, you could check weapon data if needed
+        // weapon_data wData = getWeaponData(weapon);
+
+        // Apply the buff
         buff.applyBuff(self, target, "bh_prescience");
-        obj_id[] viewers = new obj_id[2];
-        viewers[0] = self;
-        viewers[1] = target;
+
+        // Play client effect for self and target
+        obj_id[] viewers = new obj_id[]{self, target};
         playClientEffectObj(viewers, "appearance/pt_arrow_disc_temp.prt", target, "");
+
         return SCRIPT_CONTINUE;
     }
 
@@ -11111,6 +11130,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         doAnimationAction(self, "reload");
         decrementCount(module);
+        factions.addFactionStanding(self, "underworld", 1);
+        sendSystemMessage(self, new string_id("spam", "underworld_faction_increase"));
         return SCRIPT_CONTINUE;
     }
 
@@ -11129,6 +11150,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         doAnimationAction(self, "reload");
         decrementCount(module);
+        factions.addFactionStanding(self, "underworld", 1);
+        sendSystemMessage(self, new string_id("spam", "underworld_faction_increase"));
         return SCRIPT_CONTINUE;
     }
 
@@ -11147,6 +11170,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         doAnimationAction(self, "reload");
         decrementCount(module);
+        factions.addFactionStanding(self, "underworld", 1);
+        sendSystemMessage(self, new string_id("spam", "underworld_faction_increase"));
         return SCRIPT_CONTINUE;
     }
 
@@ -11501,14 +11526,226 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
-    public int bountycheck(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        // Check for cloning sickness
-        if (buff.hasBuff(target, "cloning_sickness")) {
-            sendSystemMessage(self, new string_id("stardust/mando_rank", "dishonorable"));
+    public boolean underworld_enemy_condition(obj_id player) throws InterruptedException
+    {
+        float UnderworldFaction = factions.getFactionStanding(player, "underworld");
+        return (UnderworldFaction <= -20 || UnderworldFaction >= 20);
+    }
+
+    public boolean nightsister_enemy_condition(obj_id player) throws InterruptedException
+    {
+        float NightsisterFaction = factions.getFactionStanding(player, "nightsister");
+        return (NightsisterFaction <= -1);
+    }
+
+    public boolean fett_enemy_condition(obj_id player) throws InterruptedException
+    {
+        float FettFaction = factions.getFactionStanding(player, "Hutt");
+        return (FettFaction <= -1);
+    }
+
+    public void handleBountyCaptureAlive(obj_id player, obj_id target) throws InterruptedException
+    {
+        if (!isPlayer(target) || getPosture(target) != POSTURE_INCAPACITATED)
+            return;
+
+        float distance = getDistance(player, target);
+        if (distance > 10.0f)
+        {
+            sendSystemMessage(player, new string_id("bounty", "too_far_from_target"));
+            return;
+        }
+
+        if (!isBeingHuntedByBountyHunter(target, player))
+        {
+            sendSystemMessage(player, new string_id("bounty", "no_bounty_warrants"));
+            return;
+        }
+
+        bounty_hunter.winBountyMission(player, target);
+        factions.addFactionStanding(player, "underworld", -25);
+
+//        sendSystemMessage(player, new string_id("bounty_hunter", "target_captured_alive"));//extra unnecessary
+        sendSystemMessage(target, new string_id("bounty_hunter", "captured_and_transported"));
+
+        buff.applyBuff(target, "stasis");
+
+        dictionary params = new dictionary();
+        params.put("player", target);
+
+        if (fett_enemy_condition(target))
+        {
+            // Warp to Tatooine first, then to jail6 after 10s
+            messageTo(target, "delayedWarpToTatooinePrison", params, 10.0f, false);
+            warpPlayer(target, "tatooine", -5868f, 90f, -6202f, null, 0, 0, 0f, "", false);
+        }
+        else if (underworld_enemy_condition(target))
+        {
+            // Warp to Rori first, then to jail6 after 10s
+            messageTo(target, "delayedWarpToRoriPrison", params, 10.0f, false);
+            warpPlayer(target, "rori", 7357f, 80f, 106f, null, 0, 0, 0f, "", false);
+        }
+        else if (nightsister_enemy_condition(target))
+        {
+            // Warp to Dathomir first
+            messageTo(target, "delayedWarpToDathomirPrisonCell", params, 10.0f, false);
+            warpPlayer(target, "dathomir", -6228f, 120f, 950f, null, 0, 0, 0f, "", false);
+        }
+        else
+        {
+            // Warp to Talus first
+            messageTo(target, "delayedWarpToTalusPrisonCell", params, 10.0f, false);
+            warpPlayer(target, "talus", 4981f, 19f, -3365f, null, 0, 0, 0f, "", false);
+        }
+    }
+
+    public int delayedWarpToTatooinePrison(obj_id self, dictionary params) throws InterruptedException
+    {
+        obj_id player = params.getObjId("player");
+        if (!isIdValid(player)) return SCRIPT_CONTINUE;
+
+        obj_id palace = obj_id.getObjId(1177465L);
+        obj_id jail6 = getCellId(palace, "jail6");
+
+        if (!isIdValid(jail6))
+        {
+            sendSystemMessageTestingOnly(player, "Tatooine: Jail6 cell not found!");
+            return SCRIPT_CONTINUE;
+        }
+
+        warpPlayer(player, "tatooine", 0f, 1f, 0f, jail6, 0, 0, 0f, "", false);
+        sendSystemMessageTestingOnly(player, "Tatooine: You have been transported into Fett's Palace Jail Cell!");
+        return SCRIPT_CONTINUE;
+    }
+
+    public int delayedWarpToRoriPrisonCell(obj_id self, dictionary params) throws InterruptedException
+    {
+        obj_id player = params.getObjId("player");
+        if (!isIdValid(player)) return SCRIPT_CONTINUE;
+
+        obj_id building = obj_id.getObjId(479722L);
+        obj_id cell = obj_id.getObjId(479733L); // bossman's room
+
+        warpPlayer(player, "dathomir", 3f, 1f, 0f, cell, 0, 0, 0f, "", false);
+        sendSystemMessageTestingOnly(player, "Dathomir: You have arrived at the prison cell!");
+        return SCRIPT_CONTINUE;
+    }
+
+    public int delayedWarpToDathomirPrisonCell(obj_id self, dictionary params) throws InterruptedException
+    {
+        obj_id player = params.getObjId("player");
+        if (!isIdValid(player)) return SCRIPT_CONTINUE;
+
+        obj_id building = obj_id.getObjId(5335792L);
+        obj_id cell = obj_id.getObjId(5335798L); // cell 12
+
+        warpPlayer(player, "dathomir", 3f, 1f, 0f, cell, 0, 0, 0f, "", false);
+        sendSystemMessageTestingOnly(player, "Dathomir: You have arrived at the prison cell!");
+        return SCRIPT_CONTINUE;
+    }
+
+    public int delayedWarpToTalusPrisonCell(obj_id self, dictionary params) throws InterruptedException
+    {
+        obj_id player = params.getObjId("player");
+        if (!isIdValid(player)) return SCRIPT_CONTINUE;
+
+        obj_id building = obj_id.getObjId(9686209L);
+        obj_id cell = obj_id.getObjId(9686220L); // cell 12
+
+        warpPlayer(player, "talus", 0f, 1f, 0f, cell, 0, 0, 0f, "", false);
+        sendSystemMessageTestingOnly(player, "Talus: You have arrived at the prison cell!");
+        return SCRIPT_CONTINUE;
+    }
+
+    public int bountycheck(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        // --- CAPTURE ALIVE LOGIC ---
+        int targetPosture = getPosture(target);
+        if (targetPosture == POSTURE_INCAPACITATED)
+        {
+            // primary capture handling
+            handleBountyCaptureAlive(self, target);
+
+            // --- MANDALORIAN / DARKSABER SPECIAL CASE ---
+            if (hasSkill(self, "faction_rank_mando_novice")) // only Mandalorian hunters can claim
+            {
+                obj_id darksaber = obj_id.NULL_ID;
+                obj_id targetInv = utils.getInventoryContainer(target);
+
+                // Check equipped slots first
+                obj_id equipR = getObjectInSlot(target, "hold_r");
+                obj_id equipL = getObjectInSlot(target, "hold_l");
+                if (isIdValid(equipR) && isDarksaber(equipR))
+                    darksaber = equipR;
+                else if (isIdValid(equipL) && isDarksaber(equipL))
+                    darksaber = equipL;
+                else if (isIdValid(targetInv))
+                {
+                    obj_id[] items = getContents(targetInv);
+                    if (items != null)
+                    {
+                        for (obj_id item : items)
+                        {
+                            if (isIdValid(item) && isDarksaber(item))
+                            {
+                                darksaber = item;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (isIdValid(darksaber))
+                {
+                    String targetName = getName(target);
+
+                    // Move to inventory forcibly (even if full) before destroy
+                    if (isIdValid(targetInv))
+                        putInOverloaded(darksaber, targetInv);
+
+                    destroyObject(darksaber);
+                    debugServerConsoleMsg(self, "Destroyed original Darksaber from " + targetName);
+
+                    // Give new Darksaber to capturer
+                    obj_id capturerInv = utils.getInventoryContainer(self);
+                    if (!isIdValid(capturerInv))
+                        capturerInv = self;
+
+                    obj_id newSaber = static_item.createNewItemFunction("weapon_mandalorian_sword_darksaber", capturerInv);
+                    if (isIdValid(newSaber))
+                    {
+                        setWeaponMinDamage(newSaber, 695);
+                        setWeaponMaxDamage(newSaber, 1390);
+                        setWeaponDamageType(newSaber, DAMAGE_KINETIC);
+                        setWeaponElementalType(newSaber, DAMAGE_ELEMENTAL_HEAT);
+                        setWeaponElementalValue(newSaber, 700);
+
+                        attachScript(newSaber, "systems.jedi.darksaber_particle");
+                        playClientEffectObj(new obj_id[]{newSaber}, "sw_light_saber_white.swh", newSaber, "");
+                        playClientEffectObj(new obj_id[]{newSaber}, "pt_entertainer_glowstick.prt", newSaber, "");
+
+                        setName(newSaber, "Darksaber of Mandalore");
+                        sendSystemMessage(self, new string_id("jedi_spam", "darksaber_restored"));
+                        debugServerConsoleMsg(self, "Regenerated Darksaber created for " + getName(self) + " (from " + targetName + ")");
+                    }
+                    else
+                    {
+                        debugServerConsoleMsg(self, "Failed to create Darksaber for " + getName(self));
+                    }
+                }
+            }
             return SCRIPT_OVERRIDE;
         }
 
-        // Check for various skills and set enemy flags
+        // --- CLONING SICKNESS CHECK ---
+        if (buff.hasBuff(target, "cloning_sickness"))
+        {
+            sendSystemMessage(self, new string_id("stardust/mando_rank", "dishonorable"));
+            grantExperiencePoints(self, "death_watch", -1);
+            return SCRIPT_OVERRIDE;
+        }
+
+        // --- ENEMY FLAGGING AND DETECTION LOGIC ---
         String[] skillsToCheck = {
                 "class_forcesensitive_phase2_novice",
                 "faction_rank_mando_novice",
@@ -11518,50 +11755,64 @@ public class combat_actions extends script.systems.combat.combat_base {
                 "sm_title_bootlegger"
         };
 
-        // Check for various skills and set enemy flags
         String[] buffsToCheck = {
                 "fs_buff_ca_1",
                 "fs_buff_def_1_1",
                 "fs_force_run"
         };
 
-        for (String skill : skillsToCheck) {
-            if (hasSkill(target, skill)) {
+        for (String skill : skillsToCheck)
+        {
+            if (hasSkill(target, skill))
+            {
                 pvpSetPersonalEnemyFlag(self, target);
                 pvpSetPersonalEnemyFlag(target, self);
             }
         }
 
-        for (String skill : buffsToCheck) {
-            if (hasSkill(target, skill)) {
+        for (String buffCheck : buffsToCheck)
+        {
+            if (buff.hasBuff(target, buffCheck))
+            {
                 pvpSetPersonalEnemyFlag(self, target);
                 pvpSetPersonalEnemyFlag(target, self);
                 sendSystemMessage(self, new string_id("stardust/mando_rank", "jedi_detected"));
             }
         }
 
-        // Special case for faction_rank_mando
-        if (hasSkill(target, "faction_rank_mando")) {
+        // --- MANDALORIAN SPECIAL CASE ---
+        if (hasSkill(target, "faction_rank_mando"))
+        {
             sendSystemMessage(self, new string_id("stardust/mando_rank", "mandalorian_challenge"));
             factions.addUnmodifiedFactionStanding(self, "death_watch", -50);
         }
 
-        // Check if target is being hunted by a bounty hunter
-        if (isBeingHuntedByBountyHunter(target, self)) {
+        // --- BOUNTY / UNDERWORLD DETECTIONS ---
+        if (isBeingHuntedByBountyHunter(self, target))
+        {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);
         }
 
-        // --- NEW: Check for loot crate ---
+        if (underworld_enemy_condition(target))
+        {
+            pvpSetPersonalEnemyFlag(self, target);
+            pvpSetPersonalEnemyFlag(target, self);
+        }
+
+        // --- LOOT CRATE SCAN ---
         obj_id inv = utils.getInventoryContainer(target);
-        if (isIdValid(inv)) {
+        if (isIdValid(inv))
+        {
             obj_id[] contents = getContents(inv);
-            if (contents != null && contents.length > 0) {
-                for (obj_id item : contents) {
+            if (contents != null && contents.length > 0)
+            {
+                for (obj_id item : contents)
+                {
                     if (!isIdValid(item)) continue;
                     String template = getTemplateName(item);
-                    if (template != null && template.equals("object/tangible/container/loot/loot_crate.iff")) {
-                        // Flag target as personal enemy if they have loot crate
+                    if (template != null && template.equals("object/tangible/container/loot/loot_crate.iff"))
+                    {
                         pvpSetPersonalEnemyFlag(self, target);
                         pvpSetPersonalEnemyFlag(target, self);
                         sendSystemMessage(self, new string_id("stardust/mando_rank", "loot_crate_detected"));
@@ -11571,31 +11822,41 @@ public class combat_actions extends script.systems.combat.combat_base {
             }
         }
 
+        // --- GENERAL FEEDBACK ---
         sendSystemMessage(target, new string_id("stardust/mando_rank", "scanning"));
         doAnimationAction(self, "anims.PLAYER_DRAW_DATAPAD");
+        factions.addFactionStanding(self, "underworld", -1);
+        sendSystemMessage(self, new string_id("spam", "underworld_faction_modified"));
+
         obj_id originalTarget = target;
 
-        // Check for bounty and spawn fugitive if necessary
-        if (bounty_hunter.canCheckForBounty(self, target)) {
-            if (bounty_hunter.checkForPresenceOfBounty(self, target)) {
+        // --- BOUNTY SPAWN LOGIC ---
+        if (bounty_hunter.canCheckForBounty(self, target))
+        {
+            if (bounty_hunter.checkForPresenceOfBounty(self, target))
+            {
                 location spawnLoc = getLocation(target);
                 setHealth(target, -5000);
                 trial.cleanupObject(target);
                 bounty_hunter.spawnFugitive(self, spawnLoc);
-            } else {
+            }
+            else
+            {
                 utils.setScriptVar(target, "bountyCheck", self);
                 return SCRIPT_OVERRIDE;
             }
-        } else {
-            return SCRIPT_OVERRIDE;
-        }
-
-        // Additional checks
-        if (isGod(self) || !exists(originalTarget)) {
-            return SCRIPT_OVERRIDE;
         }
 
         return SCRIPT_CONTINUE;
+    }
+
+    // --- HELPER FUNCTION ---
+    private boolean isDarksaber(obj_id item) throws InterruptedException
+    {
+        if (!isIdValid(item))
+            return false;
+        String template = getTemplateName(item).toLowerCase();
+        return template.contains("sword_mandalorian") || template.contains("darksaber");
     }
 
     public int fs_drain_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
