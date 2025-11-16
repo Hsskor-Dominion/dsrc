@@ -20,23 +20,24 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
         return hasSkill(player, "social_language_basic_comprehend");
     }
 
-    public boolean aurilia_buff_vendor_convo_extraExperience_condition(obj_id player, obj_id npc) throws InterruptedException
-    {
-        int playerExperience = getExperiencePoints(player, "combat_general");
-        return playerExperience >= 1000000;
-    }
 
-    public int aurilia_buff_vendor_convo_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException {
+    public int aurilia_buff_vendor_convo_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
         if (response.equals("seek_trade")) {
             handleBranch(player, "npc_consider_trade", new String[] { "force_trade" }, 2);
             return SCRIPT_CONTINUE;
         }
 
         else if (response.equals("seek_jedi")) {
-            handleBranch(player, "npc_you_seek_jedi", new String[] { "seek_jedi2" }, 3);
+            // Offer both political and space options
+            handleBranch(player, "npc_you_seek_jedi",
+                    new String[] { "seek_jedi_meditation", "seek_jedi_political", "seek_jedi_space" },
+                    3
+            );
+            return SCRIPT_CONTINUE;
         }
 
-        return SCRIPT_CONTINUE;
+        return SCRIPT_DEFAULT;
     }
 
     private void handleBranch(obj_id player, String messageKey, String[] responseKeys, int branchId) throws InterruptedException {
@@ -68,29 +69,107 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
     }
     public int aurilia_buff_vendor_convo_handleBranch3(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        if (response.equals("seek_jedi2"))
+        int required = 20000;
+
+
+        // MEDITATE
+        if (response.equals("seek_jedi_meditation"))
         {
-            if (aurilia_buff_vendor_convo_extraExperience_condition(npc, player)) {
-                final string_id message = new string_id(c_stringFile, "npc_feel_the_force_experience");
+            int current = xp.getExperiencePoints(player, "jedi");
+            sendSystemMessageTestingOnly(player, "(jedi xp) = " + current);
 
-                grantExperiencePoints(player, "jedi", 1000);
-                grantExperiencePoints(player, "combat_general", -1000000);
-                skill.recalcPlayerPools(player, true);
+            final string_id message = new string_id(c_stringFile, "meditation_training_offered");
+            groundquests.grantQuest(player, "stardust_jedi_keeper");
 
-                utils.removeScriptVar(player, "conversation.aurilia_buff_vendor_convo_conversation.branchId");
-                npcEndConversationWithMessage(player, message);
-                return SCRIPT_CONTINUE;
-            }
-            else
-            {
-                final string_id message = new string_id(c_stringFile, "npc_you_are_not_ready");
+            utils.removeScriptVar(player, "conversation.aurilia_buff_vendor_convo_conversation.branchId");
+            npcEndConversationWithMessage(player, message);
 
-                utils.removeScriptVar(player, "conversation.aurilia_buff_vendor_convo_conversation.branchId");
-                npcEndConversationWithMessage(player, message);
-
-                return SCRIPT_CONTINUE;
-            }
+            return SCRIPT_CONTINUE;
         }
+
+        // POLITICAL → are you sure?
+        if (response.equals("seek_jedi_political"))
+        {
+            int current = xp.getExperiencePoints(player, "political");
+            sendSystemMessageTestingOnly(player, "(political xp) = " + current);
+
+            if (current < required)
+            {
+                npcEndConversationWithMessage(player, new string_id(c_stringFile, "npc_you_are_not_ready"));
+                utils.removeScriptVarTree(player, "conversation.aurilia_buff_vendor_convo_conversation");
+                return SCRIPT_CONTINUE;
+            }
+
+            utils.setScriptVar(player, "jedi_xp_exchange_type", "political");
+            handleBranch(player, "npc_confirm_exchange", new String[] { "confirm_yes", "confirm_no" }, 4);
+            return SCRIPT_CONTINUE;
+        }
+
+        // SPACE → are you sure?
+        if (response.equals("seek_jedi_space"))
+        {
+            int current = xp.getExperiencePoints(player, "space_xp");
+            sendSystemMessageTestingOnly(player, "(space xp) = " + current);
+
+            if (current < required)
+            {
+                npcEndConversationWithMessage(player, new string_id(c_stringFile, "npc_you_are_not_ready"));
+                utils.removeScriptVarTree(player, "conversation.aurilia_buff_vendor_convo_conversation");
+                return SCRIPT_CONTINUE;
+            }
+
+            utils.setScriptVar(player, "jedi_xp_exchange_type", "space");
+            handleBranch(player, "npc_confirm_exchange", new String[] { "confirm_yes", "confirm_no" }, 4);
+            return SCRIPT_CONTINUE;
+        }
+
+        return SCRIPT_DEFAULT;
+    }
+
+    public int aurilia_buff_vendor_convo_handleBranch4(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        String type = utils.getStringScriptVar(player, "jedi_xp_exchange_type");
+        int required = 20000;
+
+        if (response.equals("confirm_no"))
+        {
+            final string_id message = new string_id(c_stringFile, "npc_exchange_cancel");
+            utils.removeScriptVarTree(player, "conversation.aurilia_buff_vendor_convo_conversation");
+            npcEndConversationWithMessage(player, message);
+            return SCRIPT_CONTINUE;
+        }
+
+        if (response.equals("confirm_yes"))
+        {
+            if (type.equals("political"))
+            {
+                int current = getExperiencePoints(player, "political");
+                if (current >= required)
+                {
+                    grantExperiencePoints(player, "jedi", 1000);
+                    grantExperiencePoints(player, "political", -required);
+
+                    final string_id message = new string_id(c_stringFile, "npc_feel_the_force_experience_political");
+                    npcEndConversationWithMessage(player, message);
+                }
+            }
+            else if (type.equals("space"))
+            {
+                int current = getExperiencePoints(player, "space_xp");
+                if (current >= required)
+                {
+                    grantExperiencePoints(player, "jedi", 1000);
+                    grantExperiencePoints(player, "space_xp", -required);
+
+                    final string_id message = new string_id(c_stringFile, "npc_feel_the_force_experience_space");
+                    npcEndConversationWithMessage(player, message);
+                }
+            }
+
+            utils.removeScriptVarTree(player, "conversation.aurilia_buff_vendor_convo_conversation");
+            return SCRIPT_CONTINUE;
+        }
+
         return SCRIPT_DEFAULT;
     }
 
@@ -174,6 +253,10 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
             return SCRIPT_CONTINUE;
         }
         else if (branchId == 3 && aurilia_buff_vendor_convo_handleBranch3(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        else if (branchId == 4 && aurilia_buff_vendor_convo_handleBranch4(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }

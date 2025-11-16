@@ -68,18 +68,18 @@ public class saber_base extends script.base_script
                 {
                     if (saberCert.equals("cert_onehandlightsaber") || saberCert.equals("cert_twohandlightsaber") || saberCert.equals("cert_polearmlightsaber"))
                     {
-                        mi.addRootMenu(menu_info_types.SERVER_MENU1, new string_id("jedi_spam", "dismantle_saber"));
+                        mi.addRootMenu(menu_info_types.SERVER_MENU1, new string_id("jedi_spam", "dismantle_saber"));//I'd like to open this up, and remove the cert requirements
                     }
                 }
             }
-            else 
+            else
             {
                 menu_info_data mid = mi.getMenuItemByType(menu_info_types.SERVER_PET_OPEN);
                 if (mid != null)
                 {
                     mid.setServerNotify(true);
                 }
-                else 
+                else
                 {
                     mi.addRootMenu(menu_info_types.SERVER_PET_OPEN, new string_id("jedi_spam", "open_saber"));
                 }
@@ -98,9 +98,21 @@ public class saber_base extends script.base_script
             if (item == menu_info_types.SERVER_PET_OPEN)
             {
                 openSaber(player);
+                damageItem(self, 1);//new addition of condition damage upon open
             }
         }
         return SCRIPT_CONTINUE;
+    }
+    private void damageItem(obj_id item, int amount) throws InterruptedException {
+        int curHp = getHitpoints(item);
+        int newHp = curHp - amount;
+
+        if (newHp <= 0) {
+            // Item is destroyed
+            destroyObject(item);
+        } else {
+            setHitpoints(item, newHp);
+        }
     }
     public void openSaber(obj_id player) throws InterruptedException
     {

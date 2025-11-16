@@ -160,7 +160,7 @@ public class ren extends script.base_script
     {
         if (response.equals("force_trade"))
         {
-            if (ren_sithFriend_condition(npc, player))
+            if (ren_sithFriend_condition(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_trade");
 
@@ -187,10 +187,10 @@ public class ren extends script.base_script
     {
         if (response.equals("seek_balance2"))
         {
-            if (ren_phase1_condition(npc, player))
+            if (ren_sithFriend_condition(player, npc))
             {
-                groundquests.grantQuest(player, "sith_hunt_jedi");
-                final string_id message = new string_id(c_stringFile, "npc_offer_mission");
+                groundquests.grantQuest(player, "stardust_sith_meditation");
+                final string_id message = new string_id(c_stringFile, "npc_offer_sith_training");
 
                 utils.removeScriptVar(player, "conversation.ren_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -199,7 +199,7 @@ public class ren extends script.base_script
             }
             else
             {
-                final string_id message = new string_id(c_stringFile, "npc_deny_mission");
+                final string_id message = new string_id(c_stringFile, "npc_you_are_not_sith");
 
                 utils.removeScriptVar(player, "conversation.ren_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -215,7 +215,8 @@ public class ren extends script.base_script
         {
             if (ren_phase1_condition(npc, player))
             {
-                final string_id message = new string_id(c_stringFile, "npc_offer_sith_training");
+                groundquests.grantQuest(player, "sith_hunt_jedi");
+                final string_id message = new string_id(c_stringFile, "npc_offer_mission");
 
                 utils.removeScriptVar(player, "conversation.ren_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -224,7 +225,7 @@ public class ren extends script.base_script
             }
             else
             {
-                final string_id message = new string_id(c_stringFile, "npc_you_are_not_sith");
+                final string_id message = new string_id(c_stringFile, "npc_deny_mission");
 
                 utils.removeScriptVar(player, "conversation.ren_conversation.branchId");
                 npcEndConversationWithMessage(player, message);

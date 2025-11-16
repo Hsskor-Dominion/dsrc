@@ -88,7 +88,7 @@ public class cantina_jar_controller extends script.base_script
         if (isIdValid(bossk))
         {
             setInvulnerable(bossk, true);
-	    setName(bossk, "Jar Jar Binks");
+	        setName(bossk, "Jar Jar Binks");
             setObjVar(bossk, "bhcelebs.actor_role", "bossk");
             attachScript(bossk, "event.bh_event.cantina_actor_jar_jar");
             setObjVar(bossk, "bhcelebs.cantina", self);
@@ -121,9 +121,9 @@ public class cantina_jar_controller extends script.base_script
     }
     public int OnHearSpeech(obj_id self, obj_id objSpeaker, String strText) throws InterruptedException
     {
-        if (isGod(objSpeaker))
+        if (isGod(objSpeaker) || hasSkill(objSpeaker, "stardust_senator_candidate"))
         {
-            if (strText.equals("jar"))//attempting to streamline this to normal speech for devs
+            if (strText.equals("Binks"))//attempting to streamline this to normal speech for devs
             {
                 int invasionActive = getIntObjVar(self, "bhcelebs.invasion_active");
                 if (invasionActive == 0)

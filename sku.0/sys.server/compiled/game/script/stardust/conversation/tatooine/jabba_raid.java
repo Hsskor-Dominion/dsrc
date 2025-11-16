@@ -35,7 +35,7 @@ public class jabba_raid extends script.base_script
     public boolean jabba_raid_condition_isjabba(obj_id player, obj_id npc) throws InterruptedException
     {
         float jabbaFaction = factions.getFactionStanding(player, "jabba");
-        if (jabbaFaction >= 2500)
+        if (jabbaFaction >= 1000)
         {
             return true;
         }
@@ -220,6 +220,7 @@ public class jabba_raid extends script.base_script
 	    if (jabba_raid_condition__defaultCondition(player, npc))
             {
                 string_id message = new string_id(c_stringFile, "fence_fennec");
+                jabba_raid_action_vendor(player, npc);
                 utils.removeScriptVar(player, "conversation.jabba_raid.branchId");
                 chat.chat(npc, player, message);
                 npcEndConversation(player);

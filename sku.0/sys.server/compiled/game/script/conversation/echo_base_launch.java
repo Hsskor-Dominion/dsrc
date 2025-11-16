@@ -47,35 +47,35 @@ public class echo_base_launch extends script.base_script
     }
     public boolean echo_base_launch_condition_tooSmallGroup(obj_id player, obj_id npc) throws InterruptedException
     {
-        if (isGod(player) || hasObjVar(player, "testingHoth"))
-        {
-            return false;
-        }
-        if (group.isGrouped(player))
-        {
-            obj_id groupObj = getGroupObject(player);
-            if (isIdValid(groupObj))
-            {
-                int numGroupMembers = getGroupSize(groupObj);
-                if (numGroupMembers >= 4)
-                {
-                    obj_id[] groupies = getGroupMemberIds(groupObj);
-                    if (groupies != null && groupies.length > 0)
-                    {
-                        int playerCount = 0;
-                        for (obj_id groupie : groupies) {
-                            if (isPlayer(groupie)) {
-                                playerCount = playerCount + 1;
-                            }
-                        }
-                        if (playerCount >= 4)
-                        {
-                            return false;
-                        }
-                    }
-                }
-            }
-        }
+//        if (isGod(player) || hasObjVar(player, "testingHoth"))
+//        {
+//            return false;
+//        }
+//        if (group.isGrouped(player))
+//        {
+//            obj_id groupObj = getGroupObject(player);
+//            if (isIdValid(groupObj))
+//            {
+//                int numGroupMembers = getGroupSize(groupObj);
+//                if (numGroupMembers >= 4)
+//                {
+//                    obj_id[] groupies = getGroupMemberIds(groupObj);
+//                    if (groupies != null && groupies.length > 0)
+//                    {
+//                        int playerCount = 0;
+//                        for (obj_id groupie : groupies) {
+//                            if (isPlayer(groupie)) {
+//                                playerCount = playerCount + 1;
+//                            }
+//                        }
+//                        if (playerCount >= 4)
+//                        {
+//                            return false;
+//                        }
+//                    }
+//                }
+//            }
+//        }
         return false;
     }
     public boolean echo_base_launch_condition_isNotCorrectLevel(obj_id player, obj_id npc) throws InterruptedException

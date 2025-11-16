@@ -1,10 +1,7 @@
 package script.systems.missions.base;
 
 import script.*;
-import script.library.prose;
-import script.library.slicing;
-import script.library.structure;
-import script.library.utils;
+import script.library.*;
 
 public class mission_terminal extends script.base_script
 {
@@ -18,6 +15,7 @@ public class mission_terminal extends script.base_script
     public static final string_id SID_FAIL_SLICE = new string_id("slicing/slicing", "terminal_fail");
     public static final string_id SID_SUCCESS_SLICE = new string_id("slicing/slicing", "terminal_success");
     public static final string_id SID_NOT_YET = new string_id("slicing/slicing", "not_yet");
+    public static final string_id SID_PLANETARY_BOUNTY = new string_id("city/city", "planetary_bounty");
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         if (hasObjVar(self, structure.VAR_TERMINAL_HEADING))
@@ -45,6 +43,7 @@ public class mission_terminal extends script.base_script
                 mnu = mi.addRootMenu(menu_info_types.MISSION_TERMINAL_LIST, new string_id("", ""));
             }
         }
+        mi.addRootMenu(menu_info_types.SERVER_MENU8, SID_PLANETARY_BOUNTY);
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
@@ -69,12 +68,16 @@ public class mission_terminal extends script.base_script
                     sendSystemMessageProse(player, pp);
                     return SCRIPT_CONTINUE;
                 }
-                else 
+                else
                 {
                     utils.removeScriptVar(player, "slicing.terminal_time");
                 }
             }
             slicing.startSlicing(player, self, "finishSlicing", "terminal");
+        }
+        else if (item == menu_info_types.SERVER_MENU8)
+        {
+            handlePlanetaryBounty(self, player);
         }
         return SCRIPT_CONTINUE;
     }
@@ -98,5 +101,155 @@ public class mission_terminal extends script.base_script
         }
         utils.setScriptVar(player, "slicing.terminal_time", getGameTime());
         return SCRIPT_CONTINUE;
+    }
+    // ===========================
+    // PLANETARY BOUNTY INTEGRATION
+    // ===========================
+    public boolean townspersonEnemy(obj_id player, obj_id self) throws InterruptedException
+    {
+        float townspersonFaction = factions.getFactionStanding(player, "townsperson");
+        return townspersonFaction <= 0;
+    }
+    public void townspersonBounty(obj_id player, obj_id self) throws InterruptedException
+    {
+        money.requestPayment(player, self, smuggler.TIER_5_GENERIC_FRONT_COST, "none", null, true);
+        int mission_bounty = 5000;
+        int current_bounty = 0;
+        mission_bounty += rand(1, 2000);
+        if (hasObjVar(player, "bounty.amount"))
+        {
+            current_bounty = getIntObjVar(player, "bounty.amount");
+        }
+        current_bounty += mission_bounty;
+        setObjVar(player, "bounty.amount", current_bounty);
+        setObjVar(player, "smuggler.bounty", mission_bounty);
+        setJediBountyValue(player, current_bounty);
+        updateJediScriptData(player, "smuggler", 1);
+    }
+    public boolean hasDeclaredResidencyOnPlanet(obj_id player, String planetName) throws InterruptedException
+    {
+        String residencyPlanet = getStringObjVar(player, "residency_planet");
+        return (residencyPlanet != null && residencyPlanet.equals(planetName));
+    }
+
+    public void handlePlanetaryBounty(obj_id self, obj_id player) throws InterruptedException
+    {
+        String planetName = getCurrentSceneName();
+        boolean isResident = hasDeclaredResidencyOnPlanet(player, planetName);
+        boolean isEnemy = townspersonEnemy(player, self);
+
+        if (isEnemy)
+        {
+            sendSystemMessage(player, new string_id("city/city", "planetary_diplomacy_poor_townsperson_faction_bounty_fee"));
+            townspersonBounty(player, self);
+            return;
+        }
+
+        if (!isResident)
+        {
+            sendSystemMessage(player, new string_id("city/city", "planetary_bounty_signal_not_qualified"));
+            return;
+        }
+
+        sendSystemMessage(player, new string_id("city/city", "planetary_bounty_signal_start_pvp_risk"));
+        factions.goOvertWithDelay(player, 0.0f);
+
+        obj_id[] allPlayers = getAllPlayers(getLocation(player), 10000.0f);
+        int count = 0;
+        for (obj_id nearby : allPlayers)
+        {
+            if (isPlayer(nearby) && nearby != player)
+                count++;
+        }
+        if (count == 0)
+        {
+            sendSystemMessage(player, new string_id("city/city", "planetary_bounty_no_players_found"));
+            return;
+        }
+
+        obj_id[] nearbyPlayers = new obj_id[count];
+        String[] playerNames = new String[count];
+        int idx = 0;
+        for (obj_id nearby : allPlayers)
+        {
+            if (isPlayer(nearby) && nearby != player)
+            {
+                nearbyPlayers[idx] = nearby;
+                playerNames[idx] = getName(nearby);
+                idx++;
+            }
+        }
+
+        utils.setScriptVar(player, "planet_bounty.list", nearbyPlayers);
+
+        sui.listbox(
+                self,
+                player,
+                "@city/city:select_bounty_target",
+                sui.OK_CANCEL,
+                "@city/city:set_city_bounty",
+                playerNames,
+                "handlePlanetaryBountySelection",
+                true
+        );
+    }
+
+    public int handlePlanetaryBountySelection(obj_id self, dictionary params) throws InterruptedException
+    {
+        obj_id player = sui.getPlayerId(params);
+        if (!isIdValid(player))
+            return SCRIPT_CONTINUE;
+
+        int selected = sui.getListboxSelectedRow(params);
+        if (selected < 0)
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_bounty_cancelled"));
+            return SCRIPT_CONTINUE;
+        }
+
+        obj_id[] nearbyPlayers = utils.getObjIdArrayScriptVar(player, "planet_bounty.list");
+        if (nearbyPlayers == null || selected >= nearbyPlayers.length)
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_bounty_invalid_selection"));
+            return SCRIPT_CONTINUE;
+        }
+
+        obj_id target = nearbyPlayers[selected];
+        if (target == player)
+        {
+            sendSystemMessage(player, new string_id("city/city", "city_bounty_cannot_target_self"));
+            return SCRIPT_CONTINUE;
+        }
+
+        showSetBountySUIFromSelection(player, target);
+        utils.removeScriptVar(player, "planet_bounty.list");
+
+        return SCRIPT_CONTINUE;
+    }
+
+    public static void showSetBountySUIFromSelection(obj_id player, obj_id target) throws InterruptedException
+    {
+        String prompt = "@bounty_hunter:setbounty_prompt1 " + getName(target) +
+                "? @bounty_hunter:setbounty_prompt2 " + getTotalMoney(player);
+        String title = "@bounty_hunter:setbounty_title";
+
+        int pid = createSUIPage(sui.SUI_INPUTBOX, player, player, "handleSetBounty");
+        sui.setAutosaveProperty(pid, false);
+        sui.setSizeProperty(pid, 300, 325);
+        sui.setLocationProperty(pid, 400, 200);
+
+        setSUIProperty(pid, sui.INPUTBOX_PROMPT, sui.PROP_TEXT, prompt);
+        setSUIProperty(pid, sui.INPUTBOX_TITLE, sui.PROP_TEXT, title);
+
+        sui.inputboxButtonSetup(pid, sui.OK_CANCEL);
+        sui.inputboxStyleSetup(pid, sui.INPUT_NORMAL);
+        setSUIProperty(pid, sui.INPUTBOX_INPUT, "MaxLength", "20");
+        setSUIProperty(pid, sui.INPUTBOX_COMBO, "MaxLength", "20");
+
+        subscribeToSUIProperty(pid, sui.INPUTBOX_INPUT, sui.PROP_LOCALTEXT);
+        subscribeToSUIProperty(pid, sui.INPUTBOX_COMBO, sui.PROP_SELECTEDTEXT);
+
+        showSUIPage(pid);
+        utils.setScriptVar(player, "setbounty.selectedTarget", target);
     }
 }

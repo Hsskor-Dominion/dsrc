@@ -295,7 +295,7 @@ public class player_saga_quest extends script.base_script
         else 
         {
             transform offset = transform.identity.setPosition_p(0.0f, -0.2f, -0.6f);
-            playClientEffectObj(player, "appearance/pt_pgc_holocron.prt", player, "", offset);
+            playClientEffectObj(player, "appearance/pt_pgc_holocron.prt", player, "", offset);//this is the meaningful animation I think
             doAnimationAction(player, "medium");
         }
         return;

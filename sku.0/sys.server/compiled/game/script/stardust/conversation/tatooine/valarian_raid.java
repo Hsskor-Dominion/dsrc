@@ -35,7 +35,7 @@ public class valarian_raid extends script.base_script
     public boolean valarian_raid_condition_isValarian(obj_id player, obj_id npc) throws InterruptedException
     {
         float valarianFaction = factions.getFactionStanding(player, "valarian");
-        if (valarianFaction >= 2500)
+        if (valarianFaction >= 1000)
         {
             return true;
         }

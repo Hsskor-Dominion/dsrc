@@ -305,6 +305,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             return SCRIPT_OVERRIDE;
         }
         doDireAbility(self, target, 1);
+        handleBountyCaptureAlive(self, target);
         return SCRIPT_CONTINUE;
     }
 
@@ -313,6 +314,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             return SCRIPT_OVERRIDE;
         }
         doDireAbility(self, target, 1);
+        handleBountyCaptureAlive(self, target);
         return SCRIPT_CONTINUE;
     }
 
@@ -321,6 +323,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             return SCRIPT_OVERRIDE;
         }
         doDireAbility(self, target, 1);
+        handleBountyCaptureAlive(self, target);
         return SCRIPT_CONTINUE;
     }
 
@@ -1412,7 +1415,7 @@ public class combat_actions extends script.systems.combat.combat_base {
 
     public int fs_forsake_fear(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("fs_forsake_fear", self, target, params, "", "")) {
-            return SCRIPT_OVERRIDE;
+            return SCRIPT_OVERRIDE;//I want to make this ability usable in stealth
         }
         string_id promptString = new string_id("healing", "fs_forsake_fear_channel");
         int flags = sui.CD_EVENT_INCAPACITATE;
@@ -1422,6 +1425,11 @@ public class combat_actions extends script.systems.combat.combat_base {
         parms.put("player", self);
         parms.put("buffName", "fs_forsake_fear");
         messageTo(self, "checkChannelForsakeFear", parms, 1, false);
+        if (getState(self, STATE_GLOWING_JEDI) == 1) {
+            // Glowie Jedi persists stealth longer
+            setState(self, STATE_GLOWING_JEDI, true);
+            buff.applyBuff(self, self, "invis_sm_buff_invis_1");
+        }
         return SCRIPT_CONTINUE;
     }
 
@@ -1958,7 +1966,21 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_mind_trick_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+
+        // Perform the mind trick effect
         ai_lib.mindTrick(self, target);
+
+        // --- STEALTH PROC: Jedi fades from sight ---
+        if (hasCommand(self, "blueGlowie"))
+        {
+            // Blue Glowies get a longer stealth duration
+            //buff.applyBuff(self, "invis_sp_diversion_stealth"); // taken out for now; stealth mechanic on use
+            sendSystemMessageTestingOnly(self, "You vanish into the Force and Cloud Minds");
+        } else {
+            // Regular Jedi mind trick
+            sendSystemMessageTestingOnly(self, "You play a mind trick");
+        }
+
         return SCRIPT_CONTINUE;
     }
 
@@ -6388,8 +6410,13 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!stealth.canPerformForceCloak(self) || !combatStandardAction("fs_buff_invis_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
-        return SCRIPT_CONTINUE;
-    }
+        if (getState(self, STATE_GLOWING_JEDI) == 1) {
+            // Glowie Jedi persists stealth longer
+            setState(self, STATE_GLOWING_JEDI, true);
+            buff.applyBuff(self, self, "invis_sp_buff_stealth_1");
+        }
+            return SCRIPT_CONTINUE;
+        }
 
     public int steal(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!stealth.hasInvisibleBuff(self) && !buff.hasBuff(self, "sp_smoke_mirrors")) {
@@ -8454,13 +8481,23 @@ public class combat_actions extends script.systems.combat.combat_base {
 
             // Handle group members
             if (members != null && members.length > 0) {
+                boolean isDarkSide = hasSkill(self, "force_rank_dark_novice");
+
                 for (obj_id member : members) {
-                    combat.sendCombatSpamMessageProse(member, pp);
-                    groundquests.grantQuest(member, "stardust_jedi_keeper");
+                    if (isIdValid(member) && member != self) {
+                        combat.sendCombatSpamMessageProse(member, pp);
+
+                        if (isDarkSide) {
+                            groundquests.grantQuest(member, "stardust_sith_meditation");
+                        } else {
+                            groundquests.grantQuest(member, "stardust_jedi_keeper");
+                        }
+                    }
                 }
+
                 squad_leader.sendSquadLeaderCommand(self, "Battle Meditation");
             } else {
-                // Handle solo player
+                // Handle solo leader (no group)
                 combat.sendCombatSpamMessage(self, new string_id("jedi", "battle_meditation"));
             }
         } else {
@@ -11529,7 +11566,13 @@ public class combat_actions extends script.systems.combat.combat_base {
     public boolean underworld_enemy_condition(obj_id player) throws InterruptedException
     {
         float UnderworldFaction = factions.getFactionStanding(player, "underworld");
-        return (UnderworldFaction <= -20 || UnderworldFaction >= 20);
+        return (UnderworldFaction <= 0);
+    }
+
+    public boolean underworld_friend_condition(obj_id player) throws InterruptedException
+    {
+        float UnderworldFaction = factions.getFactionStanding(player, "underworld");
+        return (UnderworldFaction >= 20);
     }
 
     public boolean nightsister_enemy_condition(obj_id player) throws InterruptedException
@@ -11556,7 +11599,8 @@ public class combat_actions extends script.systems.combat.combat_base {
             return;
         }
 
-        if (!isBeingHuntedByBountyHunter(target, player))
+        // Allow bounty capture if player is the hunter OR if player is God
+        if (!isBeingHuntedByBountyHunter(target, player) && !isGod(player))
         {
             sendSystemMessage(player, new string_id("bounty", "no_bounty_warrants"));
             return;
@@ -11565,9 +11609,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         bounty_hunter.winBountyMission(player, target);
         factions.addFactionStanding(player, "underworld", -25);
 
-//        sendSystemMessage(player, new string_id("bounty_hunter", "target_captured_alive"));//extra unnecessary
         sendSystemMessage(target, new string_id("bounty_hunter", "captured_and_transported"));
-
         buff.applyBuff(target, "stasis");
 
         dictionary params = new dictionary();
@@ -11575,26 +11617,32 @@ public class combat_actions extends script.systems.combat.combat_base {
 
         if (fett_enemy_condition(target))
         {
-            // Warp to Tatooine first, then to jail6 after 10s
             messageTo(target, "delayedWarpToTatooinePrison", params, 10.0f, false);
+            groundquests.requestGrantQuest(player, "quest/smuggle_generic_1", true);
             warpPlayer(target, "tatooine", -5868f, 90f, -6202f, null, 0, 0, 0f, "", false);
         }
         else if (underworld_enemy_condition(target))
         {
-            // Warp to Rori first, then to jail6 after 10s
+            messageTo(target, "delayedWarpToTatooinePrison", params, 10.0f, false);
+            groundquests.requestGrantQuest(player, "quest/smuggle_generic_1", true);
+            warpPlayer(target, "tatooine", -5868f, 90f, -6202f, null, 0, 0, 0f, "", false);
+        }
+        else if (underworld_friend_condition(target))
+        {
             messageTo(target, "delayedWarpToRoriPrison", params, 10.0f, false);
+            groundquests.requestGrantQuest(player, "quest/smuggle_generic_3", true);
             warpPlayer(target, "rori", 7357f, 80f, 106f, null, 0, 0, 0f, "", false);
         }
         else if (nightsister_enemy_condition(target))
         {
-            // Warp to Dathomir first
             messageTo(target, "delayedWarpToDathomirPrisonCell", params, 10.0f, false);
+            groundquests.requestGrantQuest(player, "quest/smuggle_generic_5", true);
             warpPlayer(target, "dathomir", -6228f, 120f, 950f, null, 0, 0, 0f, "", false);
         }
         else
         {
-            // Warp to Talus first
             messageTo(target, "delayedWarpToTalusPrisonCell", params, 10.0f, false);
+            groundquests.requestGrantQuest(player, "quest/smuggle_generic_4", true);
             warpPlayer(target, "talus", 4981f, 19f, -3365f, null, 0, 0, 0f, "", false);
         }
     }
@@ -11794,7 +11842,7 @@ public class combat_actions extends script.systems.combat.combat_base {
             pvpSetPersonalEnemyFlag(target, self);
         }
 
-        if (underworld_enemy_condition(target))
+        if (underworld_friend_condition(target))
         {
             pvpSetPersonalEnemyFlag(self, target);
             pvpSetPersonalEnemyFlag(target, self);

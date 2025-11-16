@@ -33,8 +33,23 @@ public class old_republic_facility_launcher extends script.base_script
     {
         if (item == menu_info_types.ITEM_USE)
         {
-            doBackflagging(player);
-            instance.requestInstanceMovement(player, "old_republic_facility");
+            String planet = getCurrentSceneName();
+            if (planet != null && planet.equals("naboo"))
+            {
+                doBackflagging(player);
+                instance.requestInstanceMovement(player, "old_republic_facility");
+
+                // Mark that they should return to Naboo when exiting
+                setObjVar(player, "stardust.return_to_naboo", true);
+
+                sendSystemMessageTestingOnly(player, "You feel a strange echo... a shadow of the force.");
+            }
+            else
+            {
+                // Not on Naboo — just normal instance travel (no return flag)
+                doBackflagging(player);
+                instance.requestInstanceMovement(player, "old_republic_facility");
+            }
         }
         return SCRIPT_CONTINUE;
     }
@@ -45,6 +60,7 @@ public class old_republic_facility_launcher extends script.base_script
             return true;
         }
         boolean doFlagging = false;
+        String planet = getCurrentSceneName();
         if (groundquests.isTaskActive(player, "som_story_arc_chapter_one_03", "mustafar_uplink_two"))
         {
             doFlagging = true;
@@ -66,6 +82,10 @@ public class old_republic_facility_launcher extends script.base_script
             doFlagging = true;
         }
         if (groundquests.isQuestActive(player, "som_kenobi_reunite_shard_3"))
+        {
+            doFlagging = true;
+        }
+        if (planet != null && planet.equals("naboo"))
         {
             doFlagging = true;
         }

@@ -2856,8 +2856,8 @@ stardust_admiral_republic	expertise			1		0																			0
 stardust_diplomat	expertise			1		0																			0	
 stardust_senator_candidate	expertise			1		0															sm_off_the_books				0	
 stardust_senator	stardust_diplomat			1		0				stardust_diplomat											veteranPlayerBuff				0	
-stardust_gov_candidate	expertise			1		0																			0	
-stardust_gov	stardust_senator			1		0				stardust_senator															0	
+stardust_gov_candidate	stardust_senator			1		0				stardust_senator															0	
+stardust_gov	stardust_gov_candidate			1		0				stardust_gov_candidate															0	
 stardust_moff	stardust_gov			1		0				stardust_gov															0	
 stardust_grand_moff				1		1																			0	
 stardust_sith_empress				1		1																			0	

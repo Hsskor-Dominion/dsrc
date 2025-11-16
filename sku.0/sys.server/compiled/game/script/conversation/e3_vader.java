@@ -22,13 +22,13 @@ public class e3_vader extends script.base_script
             detachScript(self, "conversation.e3_vader");
         }
         setCondition(self, CONDITION_CONVERSABLE);
-        setName(self, "Darth Vader");
+        setName(self, "Spirit of Darth Vader");
         return SCRIPT_CONTINUE;
     }
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
-        setName(self, "Darth Vader");
+        setName(self, "Spirit of Darth Vader");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException

@@ -35,6 +35,7 @@ public class vendor_droid extends script.base_script
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setName(self, "R0-GR (Droid Trade Merchant)");
+        attachScript(self, "theme_park.dungeon.mustafar_trials.old_republic_facility.old_republic_facility_launcher");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException

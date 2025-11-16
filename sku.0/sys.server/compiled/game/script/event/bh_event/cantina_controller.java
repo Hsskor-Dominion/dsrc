@@ -120,9 +120,9 @@ public class cantina_controller extends script.base_script
     }
     public int OnHearSpeech(obj_id self, obj_id objSpeaker, String strText) throws InterruptedException
     {
-        if (isGod(objSpeaker))
+        if (isGod(objSpeaker) || hasSkill(objSpeaker, "stardust_senator_candidate"))
         {
-            if (strText.equals("forcebosskevent"))
+            if (strText.equals("Bossk"))
             {
                 int invasionActive = getIntObjVar(self, "bhcelebs.invasion_active");
                 if (invasionActive == 0)

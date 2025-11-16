@@ -743,103 +743,112 @@ public class smuggler extends script.base_script
         prose_package pp = prose.getPackage(SID_CONTRABAND_FOUND, contrabandName);
         sendSystemMessageProse(player, pp);
 
-        obj_id lockedContainer = obj_id.NULL_ID; // <-- define here to avoid scoping issue
-
+        // --- LUCK-BASED BONUS CRATE CHANCE (Bootlegger only) ---
         if (hasSkill(player, "sm_title_bootlegger")) {
-            // --- LOCKED CONTAINER (bonus loot if underworld smuggler) ---
-            lockedContainer = createObject("object/tangible/container/loot/loot_crate.iff", pInv, "");
+            int luckStat = getEnhancedSkillStatisticModifier(player, "luck"); // read player Luck
+            int luckRoll = rand(1, 1000);
+            int successThreshold = luckStat; // every point of luck adds +1 to your win threshold
 
-            if (!isIdValid(lockedContainer)) {
-                sendSystemMessageTestingOnly(player, "Failed to create contraband container.");
-                return;
-            }
+            sendSystemMessageTestingOnly(player, "Luck stat: " + luckStat + ", roll: " + luckRoll);
 
-            attachScript(lockedContainer, "item.container.locked_slicable");
+            if (luckRoll <= successThreshold) {
+                // SUCCESS: spawn locked contraband crate
+                obj_id lockedContainer = createObject("object/tangible/container/loot/loot_crate.iff", pInv, "");
 
-            // --- SLICING VARIABLES ---
-            int encryptionCount = rand(1, 3); // random encryption tier
-            int baseMin = 5000 + (encryptionCount * 2500);
-            int baseMax = 6000 + (encryptionCount * 4000);
-            int rolledCredits = rand(baseMin, baseMax);
+                if (!isIdValid(lockedContainer)) {
+                    sendSystemMessageTestingOnly(player, "Failed to create contraband container.");
+                    return;
+                }
 
-            setObjVar(lockedContainer, "slicing.locked", 1);
-            setObjVar(lockedContainer, "slicing.encryptionCount", encryptionCount);
-            setObjVar(lockedContainer, "slicing.storedCredits", rolledCredits);
-            setObjVar(lockedContainer, "slicing.slicable", true);
+                attachScript(lockedContainer, "item.container.locked_slicable");
 
-            // --- OPTIONAL BONUS LOOT ---
-            if (rand(1, 100) <= 90) {
-                String[] bonusLoot = {
-                        "object/intangible/data_item/warren_encryption_key.iff",
-                        "object/tangible/dungeon/death_watch_bunker/passkey_hall.iff",
-                        "object/tangible/dungeon/death_watch_bunker/passkey_mine.iff",
-                        "object/tangible/dungeon/death_watch_bunker/passkey_storage.iff",
-                        "object/tangible/dungeon/keypad_terminal.iff",
-                        "object/static/item/item_key_electronic.iff",
-                        "object/static/worldbuilding/terminal/wall_door_keypad_01.iff",
-                        "object/tangible/collection/reward/col_magseal_keycard_01.iff",
-                        "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_key.iff",
-                        "object/tangible/loot/dungeon/geonosian_mad_bunker/passkey.iff",
-                        "object/tangible/loot/misc/key_electronic_s01.iff",
-                        "object/tangible/loot/npc_loot/electronic_key_generic.iff",
-                        "object/tangible/tcg/series5/decorative_deathstar_hologram.iff",
-                        "object/tangible/loot/quest/nym_research_passkey.iff",
-                        "object/tangible/mission/quest_item/warren_device_encryption_key.iff",
-                        "object/tangible/mission/quest_item/warren_passkey_s01.iff",
-                        "object/tangible/mission/quest_item/warren_passkey_s02.iff",
-                        "object/tangible/mission/quest_item/warren_passkey_s03.iff",
-                        "object/tangible/mission/quest_item/warren_passkey_s04.iff",
-                        "object/tangible/collection/deathtrooper_gamma_datadisk_diary_01.iff",
-                        "object/tangible/quest/imperial/itp_emperor_datadisk.iff",
-                        "object/tangible/collection/deathtrooper_alpha_datadisk_letter_01.iff",
-                        "object/draft_schematic/item/item_shellfish_harvester.iff",
-                        "object/tangible/item/data_cube.iff",
-                        "object/tangible/item/rare_loot_chest_spice.iff",
-                        "object/tangible/item/plant/force_melon.iff",
-                        "object/tangible/encoded_disk/dead_eye_decoder.iff",
-                        "object/tangible/encoded_disk/dead_eye_disk.iff",
-                        "object/tangible/encoded_disk/encoded_disk_base.iff",
-                        "object/tangible/encoded_disk/imperial_slicer_disk.iff",
-                        "object/tangible/encoded_disk/message_fragment_base.iff",
-                        "object/tangible/encoded_disk/message_assembled_base.iff",
-                        "object/tangible/gambling/wheel/roulette.iff",
-                        "object/tangible/gambling/slot/standard.iff",
-                        "object/tangible/hologram/hologram_ff_space_battle_2010.iff",
-                        "object/tangible/loot/loot_schematic/corellian_corvette_landspeeder_av21_schematic.iff",
-                        "object/tangible/loot/loot_schematic/corellian_corvette_rifle_berserker_schematic.iff",
-                        "object/tangible/loot/loot_schematic/geonosian_sonic_blaster_schematic.iff",
-                        "object/tangible/loot/loot_schematic/yt1300_schematic.iff",
-                        "object/tangible/parrot_cage/parrot_cage.iff",
-                        "object/tangible/space/special_loot/encoded_document.iff",
-                        "object/tangible/space/special_loot/firespray_schematic_part1.iff",
-                        "object/tangible/space/special_loot/firespray_schematic_part2.iff",
-                        "object/tangible/space/special_loot/firespray_schematic_part3.iff",
-                        "object/tangible/space/special_loot/firespray_schematic_part4.iff",
-                        "object/tangible/space/special_loot/firespray_schematic_part5.iff",
-                        "object/tangible/space/special_loot/firespray_schematic_part6.iff",
-                        "object/tangible/space/special_loot/firespray_schematic_part7.iff",
-                        "object/tangible/space/special_loot/firespray_schematic_part8.iff",
-                        "object/tangible/space/special_loot/interdiction_data_disk.iff",
-                        "object/tangible/space/special_loot/piracy_crate.iff",
-                        "object/tangible/content/final_data_disk.iff",
-                        "object/tangible/content/final_data_disk_rebel.iff",
-                        "object/tangible/theme_park/alderaan/act2/decoder_comp_housing.iff",
-                        "object/tangible/theme_park/alderaan/act2/decoder_comp_power.iff",
-                        "object/tangible/theme_park/alderaan/act2/decoder_comp_processor.iff",
-                        "object/tangible/theme_park/alderaan/act2/decoder_comp_reader.iff",
-                        "object/tangible/theme_park/alderaan/act2/decoder_comp_screen.iff",
-                        "object/tangible/theme_park/alderaan/act2/decoder_comp_translation.iff",
-                        "object/tangible/theme_park/alderaan/act2/interface_override_device.iff",
-                        "object/tangible/theme_park/alderaan/act2/relay_station_terminal.iff",
-                        "object/tangible/theme_park/alderaan/act3/alderaan_flora.iff",
-                        "object/tangible/theme_park/alderaan/act3/broken_grav_unit.iff",
-                        "object/tangible/theme_park/alderaan/act3/dead_eye_prototype.iff",
-                        "object/tangible/theme_park/alderaan/act3/encoded_data_disk.iff",
-                        "object/tangible/theme_park/alderaan/act3/grav_unit_repair_kit.iff",
-                        "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff",
-                };
-                String chosenLoot = bonusLoot[rand(0, bonusLoot.length - 1)];
-                setObjVar(lockedContainer, "slicing.storedLoot", new String[]{chosenLoot});
+                // --- SLICING VARIABLES ---
+                int encryptionCount = rand(1, 3);
+                int baseMin = 5000 + (encryptionCount * 2500);
+                int baseMax = 6000 + (encryptionCount * 4000);
+                int rolledCredits = rand(baseMin, baseMax);
+
+                setObjVar(lockedContainer, "slicing.locked", 1);
+                setObjVar(lockedContainer, "slicing.encryptionCount", encryptionCount);
+                setObjVar(lockedContainer, "slicing.storedCredits", rolledCredits);
+                setObjVar(lockedContainer, "slicing.slicable", true);
+
+                // --- OPTIONAL BONUS LOOT ---
+                if (rand(1, 100) <= 90) {
+                    String[] bonusLoot = {
+                            "object/intangible/data_item/warren_encryption_key.iff",
+                            "object/tangible/dungeon/death_watch_bunker/passkey_hall.iff",
+                            "object/tangible/dungeon/death_watch_bunker/passkey_mine.iff",
+                            "object/tangible/dungeon/death_watch_bunker/passkey_storage.iff",
+                            "object/tangible/dungeon/keypad_terminal.iff",
+                            "object/static/item/item_key_electronic.iff",
+                            "object/static/worldbuilding/terminal/wall_door_keypad_01.iff",
+                            "object/tangible/collection/reward/col_magseal_keycard_01.iff",
+                            "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_key.iff",
+                            "object/tangible/loot/dungeon/geonosian_mad_bunker/passkey.iff",
+                            "object/tangible/loot/misc/key_electronic_s01.iff",
+                            "object/tangible/loot/npc_loot/electronic_key_generic.iff",
+                            "object/tangible/tcg/series5/decorative_deathstar_hologram.iff",
+                            "object/tangible/loot/quest/nym_research_passkey.iff",
+                            "object/tangible/mission/quest_item/warren_device_encryption_key.iff",
+                            "object/tangible/mission/quest_item/warren_passkey_s01.iff",
+                            "object/tangible/mission/quest_item/warren_passkey_s02.iff",
+                            "object/tangible/mission/quest_item/warren_passkey_s03.iff",
+                            "object/tangible/mission/quest_item/warren_passkey_s04.iff",
+                            "object/tangible/collection/deathtrooper_gamma_datadisk_diary_01.iff",
+                            "object/tangible/quest/imperial/itp_emperor_datadisk.iff",
+                            "object/tangible/collection/deathtrooper_alpha_datadisk_letter_01.iff",
+                            "object/draft_schematic/item/item_shellfish_harvester.iff",
+                            "object/tangible/item/data_cube.iff",
+                            "object/tangible/item/rare_loot_chest_spice.iff",
+                            "object/tangible/item/plant/force_melon.iff",
+                            "object/tangible/encoded_disk/dead_eye_decoder.iff",
+                            "object/tangible/encoded_disk/dead_eye_disk.iff",
+                            "object/tangible/encoded_disk/encoded_disk_base.iff",
+                            "object/tangible/encoded_disk/imperial_slicer_disk.iff",
+                            "object/tangible/encoded_disk/message_fragment_base.iff",
+                            "object/tangible/encoded_disk/message_assembled_base.iff",
+                            "object/tangible/gambling/wheel/roulette.iff",
+                            "object/tangible/gambling/slot/standard.iff",
+                            "object/tangible/hologram/hologram_ff_space_battle_2010.iff",
+                            "object/tangible/loot/loot_schematic/corellian_corvette_landspeeder_av21_schematic.iff",
+                            "object/tangible/loot/loot_schematic/corellian_corvette_rifle_berserker_schematic.iff",
+                            "object/tangible/loot/loot_schematic/geonosian_sonic_blaster_schematic.iff",
+                            "object/tangible/loot/loot_schematic/yt1300_schematic.iff",
+                            "object/tangible/parrot_cage/parrot_cage.iff",
+                            "object/tangible/space/special_loot/encoded_document.iff",
+                            "object/tangible/space/special_loot/firespray_schematic_part1.iff",
+                            "object/tangible/space/special_loot/firespray_schematic_part2.iff",
+                            "object/tangible/space/special_loot/firespray_schematic_part3.iff",
+                            "object/tangible/space/special_loot/firespray_schematic_part4.iff",
+                            "object/tangible/space/special_loot/firespray_schematic_part5.iff",
+                            "object/tangible/space/special_loot/firespray_schematic_part6.iff",
+                            "object/tangible/space/special_loot/firespray_schematic_part7.iff",
+                            "object/tangible/space/special_loot/firespray_schematic_part8.iff",
+                            "object/tangible/space/special_loot/interdiction_data_disk.iff",
+                            "object/tangible/space/special_loot/piracy_crate.iff",
+                            "object/tangible/content/final_data_disk.iff",
+                            "object/tangible/content/final_data_disk_rebel.iff",
+                            "object/tangible/theme_park/alderaan/act2/decoder_comp_housing.iff",
+                            "object/tangible/theme_park/alderaan/act2/decoder_comp_power.iff",
+                            "object/tangible/theme_park/alderaan/act2/decoder_comp_processor.iff",
+                            "object/tangible/theme_park/alderaan/act2/decoder_comp_reader.iff",
+                            "object/tangible/theme_park/alderaan/act2/decoder_comp_screen.iff",
+                            "object/tangible/theme_park/alderaan/act2/decoder_comp_translation.iff",
+                            "object/tangible/theme_park/alderaan/act2/interface_override_device.iff",
+                            "object/tangible/theme_park/alderaan/act2/relay_station_terminal.iff",
+                            "object/tangible/theme_park/alderaan/act3/alderaan_flora.iff",
+                            "object/tangible/theme_park/alderaan/act3/broken_grav_unit.iff",
+                            "object/tangible/theme_park/alderaan/act3/dead_eye_prototype.iff",
+                            "object/tangible/theme_park/alderaan/act3/encoded_data_disk.iff",
+                            "object/tangible/theme_park/alderaan/act3/grav_unit_repair_kit.iff",
+                            "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff",
+                            "object/tangible/jedi/no_drop_jedi_holocron_light.iff",
+                            "object/tangible/jedi/no_drop_jedi_holocron_dark.iff"
+                    };
+                    String chosenLoot = bonusLoot[rand(0, bonusLoot.length - 1)];
+                    setObjVar(lockedContainer, "slicing.storedLoot", new String[]{chosenLoot});
+                }
             }
         }
 

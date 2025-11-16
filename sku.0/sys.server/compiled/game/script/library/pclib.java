@@ -777,13 +777,13 @@ public class pclib extends script.base_script
         }
         if (isPlayer(killer) && player != killer)
         {
-            if (utils.isProfession(killer, utils.BOUNTY_HUNTER) && isBeingHuntedByBountyHunter(player, killer))
+            if (isBeingHuntedByBountyHunter(player, killer))//removed profession element
             {
                 bounty_hunter.winBountyMission(killer, player);
                 smuggler.checkSmugglerMissionBountyFailure(player, killer);
                 //we can add the proc of underwrold bounty hunter here
             }
-            else if (utils.isProfession(player, utils.BOUNTY_HUNTER) && isBeingHuntedByBountyHunter(killer, player))
+            else if (isBeingHuntedByBountyHunter(killer, player))//removed profession element
             {
                 bounty_hunter.loseBountyMission(player, killer);
             }

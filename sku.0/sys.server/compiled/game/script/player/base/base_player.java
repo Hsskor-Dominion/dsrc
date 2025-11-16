@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import static script.library.buff.hasBuff;
+import static script.library.buff.removeBuff;
 import static script.library.meditation.MEDITATE_BUFF_FOCUS;
 import static script.library.meditation.MEDITATE_BUFF_STANCE;
 
@@ -1698,18 +1699,42 @@ public class base_player extends script.base_script
                 warpPlayer(self, "tatooine", 0, 0, 0, null, 0, 0, 0, null, false);
             }
         }
-        if (utils.isProfession(self, utils.FORCE_SENSITIVE) && getLevel(self) > 3)
+        if (utils.isProfession(self, utils.FORCE_SENSITIVE))
         {
             if (!buff.isInStance(self) && !buff.isInFocus(self))
             {
                 messageTo(self, "applyJediStance", null, 1.0f, false);
-                //factions.goOvertWithDelay(self, 0.0f);
                 jedi.doJediTEF(self);
+
                 obj_id[] objPlayers = getPlayerCreaturesInRange(self, 256.0f);
+
                 if (objPlayers != null && objPlayers.length > 0)
                 {
-                    for (obj_id objPlayer : objPlayers) {
-                        sendSystemMessage(objPlayer, new string_id("jedi_spam", "disturbance"));
+                    for (obj_id other : objPlayers)
+                    {
+                        if (!isIdValid(other) || other == self)
+                        {
+                            continue;
+                        }
+
+                        // --- FORCE SENSITIVE nearby ---
+                        if (utils.isProfession(other, utils.FORCE_SENSITIVE))
+                        {
+                            sendSystemMessage(other, new string_id("jedi_spam", "disturbance"));
+                        }
+
+                        // --- SPY / BOUNTY HUNTER nearby ---
+                        else if (utils.isProfession(other, utils.BOUNTY_HUNTER) ||
+                                utils.isProfession(other, utils.SPY)) // adjust if your constant differs
+                        {
+                            sendSystemMessage(other, new string_id("jedi_spam", "spynet_jedi_warning"));
+                        }
+
+                        // --- EVERYONE ELSE ---
+                        else
+                        {
+                            sendSystemMessage(other, new string_id("jedi_spam", "bad_feeling"));
+                        }
                     }
                 }
             }
@@ -3448,6 +3473,24 @@ public class base_player extends script.base_script
         messageTo(self, pclib.HANDLER_PLAYER_DEATH, null, 0.0f, true);
         return SCRIPT_CONTINUE;
     }
+
+    private static void damageItem(obj_id item, int damageAmount, obj_id player) throws InterruptedException
+    {
+        int curHp = getHitpoints(item);
+        int newHp = curHp - damageAmount;
+
+        if (newHp <= 0)
+        {
+            // Item is destroyed
+            destroyObject(item);
+            sendSystemMessage(player, new string_id("stardust/crafting", "item_destroyed"));
+        }
+        else
+        {
+            setHitpoints(item, newHp);
+        }
+    }
+
     public int handleCloneRespawn(obj_id self, dictionary params) throws InterruptedException
     {
         utils.removeScriptVar(self, pclib.VAR_SUI_CLONE);
@@ -3486,6 +3529,13 @@ public class base_player extends script.base_script
         else 
         {
             healing.healClone(self, true);
+        }
+        //SWG Chimaera Decay
+        obj_id heldItem = getObjectInSlot(self, "hold_r");
+
+        if (isIdValid(heldItem) && exists(heldItem))
+        {
+            damageItem(heldItem, 1, self);//makes for risky lightsaber usage
         }
         setPosture(self, POSTURE_UPRIGHT);
         utils.removeScriptVar(self, "pvp_death");
@@ -12110,13 +12160,8 @@ public class base_player extends script.base_script
 //            sendSystemMessage(self, new string_id("jedi_spam", "meditate_not_sitting"));
 //            return SCRIPT_CONTINUE;
 //        }
-        stealth.checkForAndMakeVisibleNoRecourse(self);
-        if (getState(self, STATE_MEDITATE) == 1)
-        {
-            sendSystemMessage(self, new string_id("jedi_spam", "already_in_meditative_state"));
-            return SCRIPT_CONTINUE;
-        }
         meditation.startMeditation(self);
+        //buff.removeBuff(self, "incapWeaken");//removes weakened state //too powerful, so removed for now
         return SCRIPT_CONTINUE;
     }
     public int cmdMeditateFail(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
@@ -12136,55 +12181,77 @@ public class base_player extends script.base_script
 
         meditation.trance(self);
 
-        // If they have Project Will, apply Center of Being and reduce GCW fatigue stack
+        // --- PROJECT WILL (Center of Being + GCW Fatigue Reduction) ---
         if (hasSkill(self, "expertise_en_project_will_1")) {
             buff.applyBuff(self, "center_of_being");
 
             int stackSize = (int) buff.getBuffStackCount(self, "gcw_fatigue");
-
             if (stackSize > 0) {
-                stackSize--; // Decrease fatigue
-
+                stackSize--;
                 buff.removeBuff(self, "gcw_fatigue");
-
                 if (stackSize > 0) {
                     buff.applyBuffWithStackCount(self, "gcw_fatigue", stackSize);
                 }
             }
         }
 
-        // Random roll for effects
+        // --- SPECIAL CHRONICLE MASTER REWARD ---
         int roll = rand(1, 100);
-
-        // Special bonus for Chronicle Masters
-        if (hasSkill(self, "class_chronicles_master")) {
-            if (roll == 100) {
-                groundquests.grantQuest(self, "stardust_vision");
-            }
+        if (hasSkill(self, "class_chronicles_master") && roll == 100) {
+            groundquests.grantQuest(self, "stardust_vision");
+            // Get the player’s current Jedi experience, inform them
+            int jediXp = xp.getExperiencePoints(self, "jedi");
+            sendSystemMessageTestingOnly(self, "Depth of " + jediXp + " Jedi experience.");
         }
 
-        // Apply meditation buffs depending on stance/focus/profession
+        // --- GLOWING JEDI INVIS/STEALTH EFFECT ---
+        if (getState(self, STATE_GLOWING_JEDI) == 1) {
+            buff.applyBuff(self, "invis_sm_buff_invis_1");
+        }
+
+        // --- DETERMINE WHICH MEDITATION BUFF TO APPLY ---
+        String meditationBuff = null;
         if (buff.isInStance(self)) {
-            buff.applyBuff(self, "fs_meditate_1");
-            if (roll == 99) {
-                xp.grant(self, "jedi", 3);
-            }
+            meditationBuff = "fs_meditate_1";
         } else if (buff.isInFocus(self)) {
-            buff.applyBuff(self, "fs_meditate_3");
-            if (roll == 99) {
-                xp.grant(self, "jedi", 3);
-            }
+            meditationBuff = "fs_meditate_3";
         } else if (utils.isProfession(self, utils.FORCE_SENSITIVE)) {
-            buff.applyBuff(self, "fs_meditate_2");
-            if (roll == 99) {
+            meditationBuff = "fs_meditate_2";
+        }
+
+        if (meditationBuff != null) {
+            // --- APPLY BUFF TO SELF ---
+            buff.applyBuff(self, meditationBuff);
+
+            // --- BLUE GLOWIES ALSO BUFF THEIR GROUP ---
+            if (getState(self, STATE_GLOWING_JEDI) == 1 && group.isGrouped(self)) {
+                obj_id groupId = getGroupObject(self);
+                obj_id[] members = getGroupMemberIds(groupId);
+                if (members != null && members.length > 0) {
+                    for (obj_id member : members) {
+                        if (!isIdValid(member) || member == self) {
+                            continue;
+                        }
+                        // Apply only to nearby allies (within 32 meters)
+                        if (getDistance(self, member) <= 32.0f) {
+                            buff.applyBuff(member, meditationBuff);
+                            sendSystemMessageTestingOnly(member, "You feel the Force flow through you as " + getName(self) + " meditates.");
+                        }
+                    }
+                }
+            }
+
+            // --- BONUS: Jedi XP tick and quest ---
+            if (roll == 100) {
                 xp.grant(self, "jedi", 3);
-                groundquests.grantQuest(self, "stardust_vision");
+                if (meditationBuff.equals("fs_meditate_2")) {
+                    groundquests.grantQuest(self, "stardust_vision");
+                }
             }
         }
 
-        // Schedule the next meditation tick
+        // --- SCHEDULE NEXT TICK ---
         messageTo(self, meditation.HANDLER_MEDITATION_TICK, trial.getSessionDict(self, meditation.HANDLER_MEDITATION_TICK), 10.0f, false);
-
         return SCRIPT_CONTINUE;
     }
 

@@ -262,7 +262,9 @@ public class locked_slicable extends script.base_script
                     "item_battlefield_rebel_token_battlefield3",
                     "item_battlefield_imperial_token_battlefield3",
                     "item_battlefield_rebel_token_battlefield4",
-                    "item_battlefield_imperial_token_battlefield4"
+                    "item_battlefield_imperial_token_battlefield4",
+                    "object/tangible/jedi/no_drop_jedi_holocron_light.iff",
+                    "object/tangible/jedi/no_drop_jedi_holocron_dark.iff"
             };
 
             // --- Add one new random loot item ---

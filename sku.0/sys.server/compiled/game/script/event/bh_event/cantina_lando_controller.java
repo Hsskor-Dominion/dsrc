@@ -88,7 +88,7 @@ public class cantina_lando_controller extends script.base_script
         if (isIdValid(bossk))
         {
             setInvulnerable(bossk, true);
-	    setName(bossk, "Lando Calrissian");
+	        setName(bossk, "Lando Calrissian");
             setObjVar(bossk, "bhcelebs.actor_role", "bossk");
             attachScript(bossk, "event.bh_event.cantina_actor_lando");
             setObjVar(bossk, "bhcelebs.cantina", self);
@@ -121,9 +121,9 @@ public class cantina_lando_controller extends script.base_script
     }
     public int OnHearSpeech(obj_id self, obj_id objSpeaker, String strText) throws InterruptedException
     {
-        if (isGod(objSpeaker))
+        if (isGod(objSpeaker) || hasSkill(objSpeaker, "stardust_senator_candidate"))
         {
-            if (strText.equals("forcebosskevent"))
+            if (strText.equals("Lando"))
             {
                 int invasionActive = getIntObjVar(self, "bhcelebs.invasion_active");
                 if (invasionActive == 0)

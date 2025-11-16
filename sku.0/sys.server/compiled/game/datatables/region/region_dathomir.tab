@@ -81,8 +81,8 @@ dathomir_force_shrine_03	circle	3087.47	4887.14	199		normal	city	0	0	spawnFalse	
 dathomir_force_shrine_04	circle	5570.55	-1513.44	199		normal	city	0	0	spawnFalse	none	0	0	0	0	
 dathomir_force_shrine_05	circle	1654.49	-5765.23	199		normal	city	0	0	spawnFalse	none	0	0	0	0	
 @dathomir_region_names:dathomir_fs_village	circle	5306	-4145	250		normal	city	0	0	spawnFalse	none	0	0	0	0	
-dathomir_fs_village_unpassable	circle	5306	-4145	512		normal	city	0	0	spawnFalse	none	0	0	0	1	
-dathomir_fs_village_unpassable_nobuild	circle	5306	-4145	1024		normal	city	0	0	spawnFalse	none	0	0	0	0	
+dathomir_fs_village_unpassable	circle	5306	-4145	512		normal	city	0	0	spawnFalse	none	1	0	0	1	
+dathomir_fs_village_unpassable_nobuild	circle	5306	-4145	1024		normal	city	0	0	spawnFalse	none	1	0	0	0	
 dathomir_fs_combat_camp1	circle	5939	-2030	150		normal	fictional	0	0	spawnFalse	none	0	0	0	0	
 dathomir_fs_combat_camp2	circle	5313	-1145	150		normal	fictional	0	0	spawnFalse	none	0	0	0	0	
 dathomir_fs_combat_camp3	circle	4072	-1402	150		normal	fictional	0	0	spawnFalse	none	0	0	0	0	

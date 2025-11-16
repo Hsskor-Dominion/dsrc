@@ -386,6 +386,7 @@ public class bounty_hunter extends script.base_script
         float factionAdj = getBountyFactionPointAdjustment(hunter, target);
         if (factionAdj != 0.0f) {
             factions.addFactionStanding(hunter, factions.getFactionNameByHashCode(pvpGetAlignedFaction(hunter)), factionAdj);
+            factions.addFactionStanding(hunter, "underworld", -5);
         }
 
         // --- Notify hunter and target ---
@@ -422,7 +423,7 @@ public class bounty_hunter extends script.base_script
 // ================================================================
 // SWG CHIMAERA TROPHY SYSTEM (Underworld BH Only)
 // ================================================================
-        if (isDead(target)) // only generate trophies if the target is actually dead
+        if (isDead(target)) // eventually, this should include a skills check for underworld BH... it's open now for testing
         {
             obj_id container = utils.getInventoryContainer(hunter);
             if (!isIdValid(container)) {
@@ -443,7 +444,7 @@ public class bounty_hunter extends script.base_script
             if (species == SPECIES_TRANDOSHAN)
                 peltTemplate = "object/tangible/loot/creature_loot/kashyyyk_loot/kashyyyk_bantha_pelt_01.iff";
 
-            // --- Try cloning a lightsaber (for Jedi targets) ---
+            // --- cloning a lightsaber (for Jedi targets) ---
             if (hasSkill(target, "class_forcesensitive_phase1_novice") ||
                     hasSkill(target, "class_forcesensitive_phase2_novice") ||
                     hasSkill(target, "class_forcesensitive_phase3_novice")) {
@@ -474,6 +475,17 @@ public class bounty_hunter extends script.base_script
                     if (isIdValid(clonedSaber)) {
                         String victimName = getName(target);
                         setName(clonedSaber, "Lightsaber of " + victimName);
+
+                        // --- Damage or destroy cloned saber ---
+                        int maxHp = getMaxHitpoints(clonedSaber);
+                        if (maxHp > 0) {
+                            int damage = maxHp - 10; // leaves it nearly broken
+                            damageItem(clonedSaber, damage, hunter);
+                        } else {
+                            // fallback if hitpoints not initialized
+                            damageItem(clonedSaber, 980, hunter);
+                        }
+
                         copiedLightsaber = true;
 
                         if (!hasSkill(target, "class_forcesensitive_phase4_novice"))
@@ -517,6 +529,24 @@ public class bounty_hunter extends script.base_script
             sendSystemMessageTestingOnly(hunter, "Target was captured alive — no trophy generated. Underworld faction bonus");
         }
     }
+
+    private static void damageItem(obj_id item, int damageAmount, obj_id player) throws InterruptedException
+    {
+        int curHp = getHitpoints(item);
+        int newHp = curHp - damageAmount;
+
+        if (newHp <= 0)
+        {
+            // Item is destroyed
+            destroyObject(item);
+            sendSystemMessage(player, new string_id("stardust/crafting", "item_destroyed"));
+        }
+        else
+        {
+            setHitpoints(item, newHp);
+        }
+    }
+
     public static void loseBountyMission(obj_id hunter, obj_id target) throws InterruptedException
     {
         prose_package pp = new prose_package();

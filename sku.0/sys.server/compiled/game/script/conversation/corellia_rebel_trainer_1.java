@@ -157,8 +157,7 @@ public class corellia_rebel_trainer_1 extends script.base_script
     }
     public boolean corellia_rebel_trainer_1_condition_hasSpaceShip(obj_id player, obj_id npc) throws InterruptedException
     {
-        return false;
-        //return (!space_quest.canGrantNewbieShip(player));
+        return (!space_quest.canGrantNewbieShip(player));//could work this out better for new player checks
     }
     public boolean corellia_rebel_trainer_1_condition_hasSpaceExpansion(obj_id player, obj_id npc) throws InterruptedException
     {

@@ -850,7 +850,7 @@ maxCombatAbility		immediate	maxCombatAbility	failAdmin				admin																	
 maxForcePower		immediate	maxForcePower	failAdmin				admin																		1	1		1	1		0	1												1															1															none	0				0		40	csr	0										
 maxStats		immediate	maxStats	failAdmin			0	admin																					1	1		0	1												1																														optional					0		40	csr	0										
 medicalForage		normal	medicalForage	failForage			2	medicalForage	1	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0			0	0	0	0	1	0		0	0	1	1	1	0	0	0	0	0	0	0	0	0									0		0	0	0	0										none	0	2			0				0										
-meditate		normal	cmdMeditate	cmdMeditateFail			01. Mai	meditate	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	0	0	0	0	0	1	1	0		1	0	1	1	1	1	1	0	1	1	1	1	0	0	0	0		1	1	1	1	1	0	0	0	0	0	0	1									none		2		other	0				0										
+meditate		normal	cmdMeditate	cmdMeditateFail			01. Mai	meditate	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	1	0	0	0	1	1	1	0		1	0	1	1	1	1	1	0	1	1	1	1	0	0	0	0	1	1	1	1	1	1	0	0	0	0	0	0	1									none		2		other	0				0										
 money		immediate		failAdmin	console_money			admin																					1	1		0	1												1																														none					0		40	csr	0										
 mount		front	mount						1	0	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0			0	0	0	1		1		0		1	1	1	0	1	0	1	1	1	0	0	1	0	0							0		0	0	0	0								player.skill.taming		required		3				32			0										
 battlefieldMount		front	battlefieldMount						1	0	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0			0	0	0	1		1		0		1	1	1	0	1	0	1	1	1	0	0	1	0	0							0		0	0	0	0								player.skill.taming		required		0				32			0										1

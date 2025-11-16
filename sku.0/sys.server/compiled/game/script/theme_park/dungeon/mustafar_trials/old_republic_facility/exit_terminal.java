@@ -19,7 +19,18 @@ public class exit_terminal extends script.base_script
     {
         if (item == menu_info_types.ITEM_USE)
         {
-            instance.requestExitPlayer("old_republic_facility", player);
+            if (hasObjVar(player, "stardust.return_to_naboo"))
+            {
+                // Warp player to Naboo and clear the flag
+                removeObjVar(player, "stardust.return_to_naboo");
+                warpPlayer(player, "naboo", -4901f, 6f, 4216f, null, 0, 0, 0, "", true);
+                sendSystemMessageTestingOnly(player, "You return to surface level, Theed, Naboo.");
+            }
+            else
+            {
+                // Default instance exit
+                instance.requestExitPlayer("old_republic_facility", player);
+            }
         }
         return SCRIPT_CONTINUE;
     }

@@ -1,0 +1,131 @@
+package script.stardust.systems;
+
+import script.dictionary;
+import script.library.ai_lib;
+import script.library.groundquests;
+import script.library.static_item;
+import script.library.utils;
+import script.obj_id;
+
+public class maul_death extends script.base_script
+{
+    public maul_death() {}
+
+    public int aiCorpsePrepared(obj_id self, dictionary params) throws InterruptedException
+    {
+        obj_id corpseInventory = utils.getInventoryContainer(self);
+        if (corpseInventory == null)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        if (!isIdValid(self))
+        {
+            return SCRIPT_CONTINUE;
+        }
+        createMyLoot(self);
+        return SCRIPT_CONTINUE;
+    }
+
+    public void createMyLoot(obj_id self) throws InterruptedException
+    {
+        // --- get all objects within 64 meters ---
+        obj_id[] nearbyObjects = getObjectsInRange(self, 64.0f); // returns all objects
+        if (nearbyObjects != null)
+        {
+            for (obj_id obj : nearbyObjects)
+            {
+                if (isPlayer(obj))
+                {
+                    groundquests.sendSignal(obj, "confront_maul");
+                    groundquests.completeQuest(obj, "stardust_mando_crest");
+                }
+            }
+        }
+
+
+        // --- loot container ---
+        obj_id corpseInventory = utils.getInventoryContainer(self);
+        if (corpseInventory == null)
+        {
+            return;
+        }
+
+        String mobType = ai_lib.getCreatureName(self);
+        if (mobType == null)
+        {
+            return;
+        }
+
+        int x = rand(1, 100);  // random number 1–100
+
+        // --- LOOT TABLE ---
+        if (x <= 2)
+        {
+            static_item.createNewItemFunction("weapon_mandalorian_sword_darksaber", corpseInventory);
+        }
+        else if (x <= 5)
+        {
+            static_item.createNewItemFunction("sith_holocron", corpseInventory);
+        }
+        else if (x <= 10)
+        {
+            static_item.createNewItemFunction("item_collection_sith_holocron_01_01", corpseInventory);
+        }
+        else if (x <= 15)
+        {
+            static_item.createNewItemFunction("item_collection_sith_holocron_01_02", corpseInventory);
+        }
+        else if (x <= 20)
+        {
+            static_item.createNewItemFunction("item_collection_sith_holocron_01_03", corpseInventory);
+        }
+        else if (x <= 25)
+        {
+            static_item.createNewItemFunction("item_collection_sith_holocron_01_04", corpseInventory);
+        }
+        else if (x <= 30)
+        {
+            static_item.createNewItemFunction("item_collection_sith_holocron_01_05", corpseInventory);
+        }
+        else if (x <= 35)
+        {
+            static_item.createNewItemFunction("item_collection_sith_holocron_02_01", corpseInventory);
+        }
+        else if (x <= 40)
+        {
+            static_item.createNewItemFunction("item_collection_sith_holocron_02_02", corpseInventory);
+        }
+        else if (x <= 45)
+        {
+            static_item.createNewItemFunction("item_collection_sith_holocron_02_03", corpseInventory);
+        }
+        else if (x <= 50)
+        {
+            static_item.createNewItemFunction("item_collection_sith_holocron_02_04", corpseInventory);
+        }
+        else if (x <= 55)
+        {
+            static_item.createNewItemFunction("item_collection_sith_holocron_02_05", corpseInventory);
+        }
+        else if (x <= 65)
+        {
+            static_item.createNewItemFunction("sith_holocron", corpseInventory);
+        }
+        else if (x <= 70)
+        {
+            static_item.createNewItemFunction("item_tcg_loot_reward_series1_sith_speeder", corpseInventory);
+        }
+        else if (x <= 75)
+        {
+            static_item.createNewItemFunction("item_vet_reward_72month_darth_maul", corpseInventory);
+        }
+        else if (x <= 80)
+        {
+            static_item.createNewItemFunction("item_crystal_mauls_vengeance_01", corpseInventory);
+        }
+        else if (x <= 85)
+        {
+            static_item.createNewItemFunction("item_heroic_schematic_saber_03_01", corpseInventory);
+        }
+    }
+}

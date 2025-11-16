@@ -25,6 +25,13 @@ public class sith_holocron extends script.base_script {
             "victory",
     };
 
+    private static final int[] BADGES_PASSION = {1,11,12,13,14};//Add Maul stuff
+    private static final int[] BADGES_STRENGTH = {12,13,15,16,17};//add more Vader stuff
+    private static final int[] BADGES_POWER = {12,13,15,6,20};//Add Palpatine stuff
+    private static final int[] BADGES_VICTORY = {12,13,5,15,8};//add more Ashoka stuff, so, Nightsister/Aurellia?
+    private static final int[] BADGES_JEDI = {1,2,3,4,5,6,14,16,18,19,21};
+    private static final int[] BADGES_ALL = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21};
+
     public boolean isJediReady(obj_id player, obj_id npc) throws InterruptedException {
         return (getLevel(player) >= 90);
     }
@@ -37,12 +44,15 @@ public class sith_holocron extends script.base_script {
         int questId = questGetQuestId("quest/stardust_jedi_kill");
         groundquests.grantQuest(questId, player, self, true);
     }
-    private boolean isJediVision(obj_id holocron) throws InterruptedException {
+    private boolean isLightVision(obj_id holocron) throws InterruptedException {
         if (!hasObjVar(holocron, "vision")) {
             return false;
         }
         String vision = getStringObjVar(holocron, "vision");
-        return vision.equals("serenity") || vision.equals("knowledge") || vision.equals("peace");
+        return vision.equals("serenity") ||
+                vision.equals("knowledge") ||
+                vision.equals("peace") ||
+                vision.equals("harmony");
     }
 
     private boolean isSithVision(obj_id holocron) throws InterruptedException {
@@ -50,60 +60,72 @@ public class sith_holocron extends script.base_script {
             return false;
         }
         String vision = getStringObjVar(holocron, "vision");
-        return vision.equals("passion") || vision.equals("strength") || vision.equals("power");
+        return vision.equals("passion") ||
+                vision.equals("strength") ||
+                vision.equals("power") ||
+                vision.equals("victory");
     }
 
     public boolean isJediExplore(obj_id player, obj_id self) throws InterruptedException {
         int stage = getIntObjVar(self, "jedi_stage");
 
         if (stage >= MAX_STAGE) {
-            return false; // Already completed
+            return false;
         }
 
         String stageVar = "required_badge_stage" + (stage + 1);
 
-        int exploreRequirement;
-        String badgeId;
+        int requiredBadgeNumber;
 
-        // Generate badge requirement if not already stored
         if (!hasObjVar(self, stageVar)) {
-            boolean isJediVision = isJediVision(self);
-            boolean isSithVision = isSithVision(self);
 
-            if (isJediVision) {
-                exploreRequirement = rand(1, 5);
-            } else if (isSithVision) {
-                exploreRequirement = rand(11, 15);
-            } else {
-                exploreRequirement = rand(1, 15);
+            String vision = getStringObjVar(self, "vision");
+            int[] pool;
+
+            if (isLightVision(self)) {
+                switch (vision) {
+                    case "serenity":
+                        pool = BADGES_PASSION; break;
+                    case "knowledge":
+                        pool = BADGES_STRENGTH; break;
+                    case "peace":
+                        pool = BADGES_POWER; break;
+                    case "harmony":
+                        pool = BADGES_VICTORY; break;
+                    default:
+                        pool = BADGES_ALL; break; // fallback
+                }
+            }
+            else if (isSithVision(self)) {
+                pool = BADGES_JEDI;
+            }
+            else {
+                pool = BADGES_ALL; // unconfigured
             }
 
-            setObjVar(self, stageVar, exploreRequirement);
+            requiredBadgeNumber = pool[rand(0, pool.length - 1)];
+            setObjVar(self, stageVar, requiredBadgeNumber);
         }
 
-        // Always read stored requirement
-        exploreRequirement = getIntObjVar(self, stageVar);
-        badgeId = getBadgeIdFromNumber(exploreRequirement);
+        requiredBadgeNumber = getIntObjVar(self, stageVar);
+        String badgeId = getBadgeIdFromNumber(requiredBadgeNumber);
 
-        // Check badge ownership
-        boolean hasRequired = badge.hasBadge(player, badgeId) && badge.hasBadge(player, "count_50");
+        boolean hasRequired = badge.hasBadge(player, badgeId) &&
+                badge.hasBadge(player, "count_50");
 
         if (!hasRequired) {
-            // Tell player what badge is still needed
-            sendSystemMessage(player, new string_id("jedi_spam", "vision_" + exploreRequirement));
+            sendSystemMessage(player, new string_id("jedi_spam", "vision_" + requiredBadgeNumber));
             return false;
         }
 
-        // Only advance if the badge is complete for this stage
         stage++;
         setObjVar(self, "jedi_stage", stage);
-
-        // Optional: clear objVar so next stage generates a new badge
         removeObjVar(self, stageVar);
-
         sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
+
         return true;
     }
+
     private String getBadgeIdFromNumber(int number) {
         switch (number) {
             case 1: return "warren_compassion";
@@ -121,6 +143,12 @@ public class sith_holocron extends script.base_script {
             case 13: return "bdg_must_obiwan_story_bad";
             case 14: return "bdg_kash_grievous";
             case 15: return "bdg_thm_park_imperial_badge";
+            case 16: return "bdg_kill_geonosian_acklay";
+            case 17: return "bdg_racing_mos_espa";
+            case 18: return "bdg_kash_wookiee_rage";
+            case 19: return "destroy_deathstar";
+            case 20: return "bdg_corvette_imp_rescue";
+            case 21: return "bdg_corvette_reb_rescue";
             default: return "";
         }
     }
@@ -141,6 +169,7 @@ public class sith_holocron extends script.base_script {
         }
         // Adding custom menu option for configuring the holocron
         mi.addRootMenu(menu_info_types.SERVER_MENU1, new string_id("jedi_spam", "configure_holocron"));
+        mi.addRootMenu(menu_info_types.SERVER_MENU2, new string_id("jedi_spam", "converge_holocron"));
         return SCRIPT_CONTINUE;
     }
 
@@ -231,11 +260,214 @@ public class sith_holocron extends script.base_script {
         }
 
         // Holocron configuration menu
-        else if (item == menu_info_types.SERVER_MENU1) {
+        if (item == menu_info_types.SERVER_MENU1) {
             showMenuOptions(player);
         }
 
+        // Holocron configuration menu
+        else if (item == menu_info_types.SERVER_MENU2) {
+            holocronConvergence(player);
+        }
+
         return SCRIPT_CONTINUE;
+    }
+
+    public boolean master_chronicler_condition(obj_id npc, obj_id player) throws InterruptedException
+    {
+        // FIXED: skill name was slightly off; SWG uses 'class_chronicler_master'
+        return hasSkill(player, "class_chronicles_master");
+    }
+
+    private void holocronConvergence(obj_id player) throws InterruptedException
+    {
+        // --- SKILL REQUIREMENT ---
+        if (!master_chronicler_condition(null, player))
+        {
+            sendSystemMessageTestingOnly(player, "You lack the knowledge to record such a powerful convergence. (Master Chronicler required)");
+            return;
+        }
+
+        obj_id playerInv = utils.getInventoryContainer(player);
+        if (!isIdValid(playerInv))
+        {
+            sendSystemMessageTestingOnly(player, "Unable to locate your inventory.");
+            return;
+        }
+
+        obj_id[] contents = getContents(playerInv);
+        if (contents == null || contents.length == 0)
+        {
+            sendSystemMessageTestingOnly(player, "You have no holocrons to converge.");
+            return;
+        }
+
+        // Group holocrons by their vision
+        java.util.Map<String, java.util.List<obj_id>> holocronGroups = new java.util.HashMap<>();
+        for (obj_id obj : contents)
+        {
+            if (!isIdValid(obj) || !hasObjVar(obj, "vision"))
+            {
+                continue;
+            }
+
+            String vision = getStringObjVar(obj, "vision");
+            if (vision == null || vision.equals(""))
+            {
+                continue;
+            }
+
+            holocronGroups.computeIfAbsent(vision, k -> new java.util.ArrayList<>()).add(obj);
+        }
+
+        // Find any vision with at least 2 holocrons (one Jedi, one Sith)
+        String matchedVision = null;
+        obj_id holo1 = null;
+        obj_id holo2 = null;
+
+        for (String vision : holocronGroups.keySet())
+        {
+            java.util.List<obj_id> list = holocronGroups.get(vision);
+            if (list.size() < 2)
+            {
+                continue;
+            }
+
+            obj_id jediHolo = null;
+            obj_id sithHolo = null;
+
+            for (obj_id h : list)
+            {
+                String template = getTemplateName(h);
+                if (template.contains("holocron_light"))
+                {
+                    jediHolo = h;
+                }
+                else if (template.contains("holocron_dark"))
+                {
+                    sithHolo = h;
+                }
+            }
+
+            if (isIdValid(jediHolo) && isIdValid(sithHolo))
+            {
+                matchedVision = vision;
+                holo1 = jediHolo;
+                holo2 = sithHolo;
+                break;
+            }
+        }
+
+        // If no valid convergence pair found
+        if (matchedVision == null)
+        {
+            sendSystemMessageTestingOnly(player, "The holocrons hum faintly, but no convergence occurs. The holocrons are damaged in the process.");
+            if (!holocronGroups.isEmpty())
+            {
+                java.util.List<obj_id> anyList = holocronGroups.values().iterator().next();
+                if (!anyList.isEmpty())
+                {
+                    damageItem(anyList.get(0), 7);
+                }
+            }
+            return;
+        }
+
+        // --- EXPLORATION CHECK (both holocrons must pass) ---
+        boolean holo1Ready = isJediExploreUnlock(player, holo1);
+        boolean holo2Ready = isJediExploreUnlock(player, holo2);
+
+        if (!holo1Ready || !holo2Ready)
+        {
+            sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore")); // your existing message
+            sendSystemMessageTestingOnly(player, "The holocrons flicker! You have not progressed far enough in their mechanism unlocks.");
+
+            // OPTIONAL: damage holocron for failed convergence
+            damageItem(holo1, rand(3, 6));
+            damageItem(holo2, rand(3, 6));
+
+            return;
+        }
+
+        // Destroy both holocrons
+        destroyObject(holo1);
+        destroyObject(holo2);
+
+        //Animation
+        transform offset = transform.identity.setPosition_p(0.0f, -0.2f, -0.6f);
+        playClientEffectObj(player, "appearance/pt_pgc_holocron.prt", player, "", offset);//Holocron animation
+        doAnimationAction(player, "medium");
+
+        // --- Vision-specific outcomes ---
+        if (matchedVision.equals("peace"))
+        {
+            groundquests.grantQuest(player, "stardust_jedi_diplomacy1", true); // Luke pointer to Tatooine
+            playClientEffectObj(player, "clienteffect/force_heal_01.cef", player, "");
+            playMusic(player, player, "sound/mus_force_theme_lcv.snd", 0, false);
+        }
+        else if (matchedVision.equals("knowledge"))
+        {
+            // --- OBI-WAN CONVERGENCE ---
+            playClientEffectObj(player, "clienteffect/force_heal_02.cef", player, "");
+            playMusic(player, player, "sound/mus_force_theme_lcv.snd", 0, false);
+
+            // Determine safe spawn location near player
+            location spawnLoc = getLocation(player);
+            spawnLoc.x += rand(-1.5f, 1.5f);
+            spawnLoc.z += rand(-1.5f, 1.5f);
+
+            obj_id obi = create.object("som_kenobi_obi_wan_glowie", spawnLoc);
+            if (isIdValid(obi))
+            {
+                setObjVar(obi, "spawned_by_convergence", player);
+                ai_lib.setDefaultCalmBehavior(obi, ai_lib.BEHAVIOR_SENTINEL);
+                chat.chat(obi, "Hello there");
+                sendSystemMessageTestingOnly(player, "The holocrons merge and the shimmering image of Obi-Wan Kenobi appears before you.");
+            }
+            else
+            {
+                sendSystemMessageTestingOnly(player, "You feel a ripple in the Force, but Obi-Wan does not appear.");
+            }
+        }
+        else if (matchedVision.equals("serenity"))
+        {
+            groundquests.grantQuest(player, "stardust_jedi_diplomacy2", true);//yoda questline? currently luke sends to naboo
+            playClientEffectObj(player, "clienteffect/force_heal_03.cef", player, "");
+        }
+        else if (matchedVision.equals("harmony"))
+        {
+            groundquests.grantQuest(player, "stardust_jedi_diplomacy3", true);//Kit Fisto? Luke currently sends to Corellia senate
+            playClientEffectObj(player, "clienteffect/force_heal_04.cef", player, "");
+        }
+        else if (matchedVision.equals("passion"))
+        {
+            groundquests.grantQuest(player, "stardust_holocron_maul", true);//this will be replaced with "stardust_holocron_maul"
+            playClientEffectObj(player, "clienteffect/frs_dark_suffering.cef", player, "");
+            playMusic(player, player, "sound/mus_duel_of_the_fates_lcv.snd", 0, false);
+        }
+        else if (matchedVision.equals("strength"))
+        {
+            groundquests.grantQuest(player, "gmf_vader", true);//Mustafar Vader Meditation, GMF quest when not in season
+            playClientEffectObj(player, "clienteffect/frs_dark_envy.cef", player, "");
+        }
+        else if (matchedVision.equals("power"))
+        {
+            groundquests.grantQuest(player, "stardust_sith_diplomacy2", true);//Should be Palpatine questline? Tie with Sith Relic? Talon currently sends to Naboo
+            playClientEffectObj(player, "clienteffect/frs_dark_vengeance.cef", player, "");
+        }
+        else if (matchedVision.equals("victory"))
+        {
+            groundquests.grantQuest(player, "stardust_jedi_diplomacy4", true);//Should be Ashoka questline. Luke currently sends to Dathomir.
+            playClientEffectObj(player, "clienteffect/force_heal_03.cef", player, "");
+        }
+        else
+        {
+            sendSystemMessageTestingOnly(player, "The convergence produced unstable energy, but no clear path emerges.");
+            return;
+        }
+
+        // Reward and feedback
+        xp.grant(player, "jedi", 13000);
+        sendSystemMessageTestingOnly(player, "Your " + matchedVision + " holocrons resonate and merge with immense power!");
     }
 
     public boolean vision_active(obj_id player, obj_id item) throws InterruptedException {
@@ -246,6 +478,9 @@ public class sith_holocron extends script.base_script {
         if (!isIdValid(item) || !isIdValid(player)) {
             return;
         }
+
+        //Animation - would love to use a sith holocron if I could
+        playClientEffectObj(player, "clienteffect/jedi_master_cloak_evil.cef", player, "");//ideally Holocron animation
 
         String vision = getStringObjVar(item, "vision");
         if (vision == null || vision.equals("")) {

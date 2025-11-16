@@ -15,7 +15,7 @@ public class fs_experience_converter extends script.base_script
     }
     public boolean fs_experience_converter_condition_canConvertXP(obj_id player, obj_id npc) throws InterruptedException
     {
-        return fs_quests.isVillageEligible(player);
+        return township.isTownshipEligible(player);//first step in getting the converter to work, bypassing old jedi logic
     }
     public boolean fs_experience_converter_condition_isConvertEligible(obj_id player, obj_id npc) throws InterruptedException
     {

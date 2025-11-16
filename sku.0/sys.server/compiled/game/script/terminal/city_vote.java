@@ -232,7 +232,7 @@ public class city_vote extends script.terminal.base.base_terminal
         // === 1. Enemy check: immediate bounty ===
         if (isEnemy)
         {
-            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_poor_faction_bounty_fee"));
+            sendSystemMessage(player, new string_id("city/city", "city_diplomacy_poor_townsperson_faction_bounty_fee"));
             townspersonBounty(player, self);
             return;
         }

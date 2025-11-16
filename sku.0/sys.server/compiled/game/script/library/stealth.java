@@ -2743,10 +2743,10 @@ public class stealth extends script.base_script
     }
     public static void forceCloak(obj_id player) throws InterruptedException
     {
-        if (buff.hasBuff(player, "fs_force_run"))
-        {
-            buff.removeBuff(player, "fs_force_run");
-        }
+//        if (buff.hasBuff(player, "fs_force_run"))//Spys get away with it, why not Jedi?
+//        {
+//            buff.removeBuff(player, "fs_force_run");
+//        }
         _makeInvisible(player, new string_id("combat_effects", "go_cloak"), "clienteffect/combat_special_attacker_cover.cef", null, -1);
     }
     public static void hide(obj_id player) throws InterruptedException
