@@ -59,7 +59,7 @@ public class maul_death extends script.base_script
         int x = rand(1, 100);  // random number 1–100
 
         // --- LOOT TABLE ---
-        if (x <= 2)
+        if (x <= 1)
         {
             static_item.createNewItemFunction("weapon_mandalorian_sword_darksaber", corpseInventory);
         }
@@ -126,6 +126,10 @@ public class maul_death extends script.base_script
         else if (x <= 85)
         {
             static_item.createNewItemFunction("item_heroic_schematic_saber_03_01", corpseInventory);
+        }
+        else if (x <= 95)
+        {
+            static_item.createNewItemFunction("item_pgc_token_03", corpseInventory);
         }
     }
 }

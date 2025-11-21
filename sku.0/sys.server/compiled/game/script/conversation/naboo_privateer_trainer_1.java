@@ -150,8 +150,7 @@ public class naboo_privateer_trainer_1 extends script.base_script
     }
     public boolean naboo_privateer_trainer_1_condition_hasSpaceShip(obj_id player, obj_id npc) throws InterruptedException
     {
-        return true;
-        //return (!space_quest.canGrantNewbieShip(player));
+        return (!space_quest.canGrantNewbieShip(player));
     }
     public boolean naboo_privateer_trainer_1_condition_hasVeryFirstQuest(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -288,6 +287,7 @@ public class naboo_privateer_trainer_1 extends script.base_script
     public void naboo_privateer_trainer_1_action_grantSpaceShip(obj_id player, obj_id npc) throws InterruptedException
     {
         space_quest.grantNewbieShip(player, "neutral");
+        space_quest.grantBonusShipNaboo(player);
     }
     public void naboo_privateer_trainer_1_action_eraseClientPaths(obj_id player, obj_id npc) throws InterruptedException
     {

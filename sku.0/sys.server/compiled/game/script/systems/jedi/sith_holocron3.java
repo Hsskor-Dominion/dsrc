@@ -108,25 +108,25 @@ public class sith_holocron3 extends script.base_script
             if (phase3_condition(player, self))
             {
                 grantPhase3Quest(player, self);
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish_sith"));
-                xp.grant(player, "jedi", 7500);
-                factions.addFactionStanding(player, "sith_shadow", 50.0f);
-                factions.goOvertWithDelay(player, 0.0f);
-                destroyObject(self);
-
-                int mission_bounty = 25000;
-                int current_bounty = 0;
-                mission_bounty += rand(1, 2000);
-                if (hasObjVar(player, "bounty.amount"))
-                {
-                    current_bounty = getIntObjVar(player, "bounty.amount");
-                }
-                current_bounty += mission_bounty;
-                setObjVar(player, "bounty.amount", current_bounty);
-                setObjVar(player, "jedi.bounty", mission_bounty);
-                setJediBountyValue(player, current_bounty);
-                updateJediScriptData(player, "jedi", 1);
-                return SCRIPT_OVERRIDE;
+//                sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish_sith"));
+                xp.grant(player, "jedi", 2500);
+//                factions.addFactionStanding(player, "sith_shadow", 50.0f);
+//                factions.goOvertWithDelay(player, 0.0f);
+//                destroyObject(self);
+//
+//                int mission_bounty = 25000;
+//                int current_bounty = 0;
+//                mission_bounty += rand(1, 2000);
+//                if (hasObjVar(player, "bounty.amount"))
+//                {
+//                    current_bounty = getIntObjVar(player, "bounty.amount");
+//                }
+//                current_bounty += mission_bounty;
+//                setObjVar(player, "bounty.amount", current_bounty);
+//                setObjVar(player, "jedi.bounty", mission_bounty);
+//                setJediBountyValue(player, current_bounty);
+//                updateJediScriptData(player, "jedi", 1);
+//                return SCRIPT_OVERRIDE;
             }
             if (isMandoExplore(player, self))
             {

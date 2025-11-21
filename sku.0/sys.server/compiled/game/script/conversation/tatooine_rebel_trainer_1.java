@@ -141,8 +141,7 @@ public class tatooine_rebel_trainer_1 extends script.base_script
     }
     public boolean tatooine_rebel_trainer_1_condition_hasSpaceShip(obj_id player, obj_id npc) throws InterruptedException
     {
-        return true;
-        //return (!space_quest.canGrantNewbieShip(player));
+        return (!space_quest.canGrantNewbieShip(player));
     }
     public boolean tatooine_rebel_trainer_1_condition_is_GRADUATED_goto_Yavin4(obj_id player, obj_id npc) throws InterruptedException
     {

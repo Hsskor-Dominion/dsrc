@@ -26,6 +26,10 @@ public class som_kenobi_obi_wan extends script.base_script
         {
             return true;
         }
+        else if (hasSkill(player,"class_forcesensitive_phase1_novice"))
+        {
+            return true;
+        }
         else 
         {
             return false;

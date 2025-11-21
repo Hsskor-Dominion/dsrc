@@ -150,8 +150,7 @@ public class tatooine_privateer_trainer_1 extends script.base_script
     }
     public boolean tatooine_privateer_trainer_1_condition_hasSpaceShip(obj_id player, obj_id npc) throws InterruptedException
     {
-        return false;
-        //return (!space_quest.canGrantNewbieShip(player));
+        return (!space_quest.canGrantNewbieShip(player));
     }
     public boolean tatooine_privateer_trainer_1_condition_hasVeryFirstQuest(obj_id player, obj_id npc) throws InterruptedException
     {

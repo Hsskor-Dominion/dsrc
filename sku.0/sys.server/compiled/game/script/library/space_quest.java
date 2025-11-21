@@ -1139,8 +1139,10 @@ public class space_quest extends script.base_script
         {
             return;
         }
+
         String pcd = null;
         String ship = null;
+
         switch (faction) {
             case "imperial":
                 pcd = "object/intangible/ship/tiefighter_pcd.iff";
@@ -1155,17 +1157,19 @@ public class space_quest extends script.base_script
                 ship = "object/ship/player/player_prototype_hutt_light.iff";
                 break;
         }
+
         obj_id opcd = createObject(pcd, datapad, "");
         if (!isIdValid(opcd))
         {
             sendSystemMessageTestingOnly(player, "Critical failure: Could not create a pcd for the player!");
         }
-        else 
+        else
         {
             obj_id oship = createObject(ship, opcd, "");
             if (isIdValid(oship))
             {
                 setOwner(oship, player);
+
                 if (faction.equals("imperial"))
                 {
                     setShipComponentMass(oship, ship_chassis_slot_type.SCST_reactor, 1500);
@@ -1196,12 +1200,83 @@ public class space_quest extends script.base_script
                     setShipComponentMass(oship, ship_chassis_slot_type.SCST_weapon_0, 1500);
                     setShipComponentEnergyMaintenanceRequirement(oship, ship_chassis_slot_type.SCST_weapon_0, 2000);
                 }
+
+                //
+                // SWG Chimaera - Bonus Ship
+                //
+                String pcd2 = "object/intangible/ship/yt2400_pcd.iff";
+                String ship2 = "object/ship/player/player_yt2400.iff";
+
+                // IMPORTANT: create the second PCD under datapad, not under the first PCD
+                obj_id opcd2 = createObject(pcd2, datapad, "");
+                if (!isIdValid(opcd2))
+                {
+                    sendSystemMessageTestingOnly(player, "Critical failure: Could not create second PCD!");
+                }
+                else
+                {
+                    obj_id oship2 = createObject(ship2, opcd2, "");
+                    if (isIdValid(oship2))
+                    {
+                        setOwner(oship2, player);
+
+                        setShipReactorEnergyGenerationRate(oship2, 8000);
+                        setShipComponentEnergyMaintenanceRequirement(oship2, ship_chassis_slot_type.SCST_booster, 6000);
+                        setShipEngineSpeedMaximum(oship2, 60);
+                        setShipComponentEnergyMaintenanceRequirement(oship2, ship_chassis_slot_type.SCST_engine, 2000);
+                        setShipComponentEnergyMaintenanceRequirement(oship2, ship_chassis_slot_type.SCST_shield_0, 2000);
+                        setShipComponentEnergyMaintenanceRequirement(oship2, ship_chassis_slot_type.SCST_capacitor, 2000);
+                        setShipComponentEnergyMaintenanceRequirement(oship2, ship_chassis_slot_type.SCST_weapon_0, 2000);
+                        setShipComponentEnergyMaintenanceRequirement(oship2, ship_chassis_slot_type.SCST_weapon_1, 2000);
+                        setShipWeaponDamageMaximum(oship2, ship_chassis_slot_type.SCST_weapon_1, 750);
+                        setShipWeaponDamageMaximum(oship2, ship_chassis_slot_type.SCST_weapon_0, 750);
+                        setShipWeaponDamageMinimum(oship2, ship_chassis_slot_type.SCST_weapon_1, 600);
+                        setShipWeaponDamageMinimum(oship2, ship_chassis_slot_type.SCST_weapon_0, 600);
+                    }
+                    else
+                    {
+                        sendSystemMessageTestingOnly(player, "Critical failure: Could not create the second ship!");
+                    }
+                }
             }
-            else 
+            else
             {
                 sendSystemMessageTestingOnly(player, "Critical failure: Could not create a ship for the player's pcd!");
             }
         }
+    }
+    public static void grantBonusShipNaboo(obj_id player) throws InterruptedException
+    {
+        obj_id datapad = utils.getDatapad(player);
+        String pcd3 = "object/intangible/ship/naboo_n1_pcd.iff";
+        String ship3 = "object/ship/player/player_naboo_n1.iff";
+
+        obj_id opcd3 = createObject(pcd3, datapad, "");
+        if (!isIdValid(opcd3))
+        {
+            sendSystemMessageTestingOnly(player, "Critical failure: Could not create second PCD!");
+            return;
+        }
+
+        obj_id oship3 = createObject(ship3, opcd3, "");
+        if (!isIdValid(oship3))
+        {
+            sendSystemMessageTestingOnly(player, "Critical failure: Could not create the second ship!");
+            return;
+        }
+
+        setOwner(oship3, player);
+
+        setShipReactorEnergyGenerationRate(oship3, 16000);
+        setShipComponentEnergyMaintenanceRequirement(oship3, ship_chassis_slot_type.SCST_booster, 6000);
+        setShipEngineSpeedMaximum(oship3, 60);
+        setShipComponentEnergyMaintenanceRequirement(oship3, ship_chassis_slot_type.SCST_engine, 2000);
+        setShipComponentEnergyMaintenanceRequirement(oship3, ship_chassis_slot_type.SCST_shield_0, 2000);
+        setShipComponentEnergyMaintenanceRequirement(oship3, ship_chassis_slot_type.SCST_capacitor, 2000);
+        setShipComponentEnergyMaintenanceRequirement(oship3, ship_chassis_slot_type.SCST_weapon_0, 2000);
+        setShipComponentEnergyMaintenanceRequirement(oship3, ship_chassis_slot_type.SCST_weapon_1, 2000);
+        setShipWeaponDamageMaximum(oship3, ship_chassis_slot_type.SCST_weapon_1, 750);
+        setShipWeaponDamageMinimum(oship3, ship_chassis_slot_type.SCST_weapon_0, 600);
     }
     public static void _groupNotify(obj_id player, string_id mid, string_id s1) throws InterruptedException
     {

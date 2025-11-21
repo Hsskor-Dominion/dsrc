@@ -166,8 +166,7 @@ public class corellia_privateer_trainer extends script.base_script
     }
     public boolean corellia_privateer_trainer_condition_hasSpaceShip(obj_id player, obj_id npc) throws InterruptedException
     {
-        return false;
-        //return (!space_quest.canGrantNewbieShip(player));
+        return (!space_quest.canGrantNewbieShip(player));
     }
     public boolean corellia_privateer_trainer_condition_hasVeryFirstQuest(obj_id player, obj_id npc) throws InterruptedException
     {

@@ -13,6 +13,7 @@ public class jedi_holocron extends script.base_script {
     }
 
     private static final int MAX_STAGE = 3;
+    private static final int CONFIGURE_STAGE = 2;
 
     private static final String[] HOLOCRON_MENU_OPTIONS = {
             "peace",
@@ -156,6 +157,9 @@ public class jedi_holocron extends script.base_script {
     public boolean isJediExploreUnlock(obj_id player, obj_id self) throws InterruptedException {
         return getIntObjVar(self, "jedi_stage") >= MAX_STAGE;
     }
+    public boolean isJediExploreUnlockConfig(obj_id player, obj_id self) throws InterruptedException {
+        return getIntObjVar(self, "jedi_stage") >= CONFIGURE_STAGE;
+    }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException {
         if (hasObjVar(self, "intUsed")) {
             return SCRIPT_CONTINUE;
@@ -198,22 +202,22 @@ public class jedi_holocron extends script.base_script {
             // PHASE 3 CHECK
             if (phase3_condition(player, self)) {
                 grantPhase3Quest(player, self);
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
-                xp.grant(player, "jedi", 7500);
+//                sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
+                xp.grant(player, "jedi", 2500);
                 factions.addFactionStanding(player, "fs_villager", 50.0f);
                 factions.goOvertWithDelay(player, 0.0f);
-                HandleDestroyHolocron(self, player);
-
-                int mission_bounty = 25000 + rand(1, 2000);
-                int current_bounty = hasObjVar(player, "bounty.amount") ? getIntObjVar(player, "bounty.amount") : 0;
-                current_bounty += mission_bounty;
-
-                setObjVar(player, "bounty.amount", current_bounty);
-                setObjVar(player, "jedi.bounty", mission_bounty);
-                setJediBountyValue(player, current_bounty);
-                updateJediScriptData(player, "jedi", 1);
-
-                return SCRIPT_OVERRIDE;
+//                HandleDestroyHolocron(self, player);
+//
+//                int mission_bounty = 25000 + rand(1, 2000);
+//                int current_bounty = hasObjVar(player, "bounty.amount") ? getIntObjVar(player, "bounty.amount") : 0;
+//                current_bounty += mission_bounty;
+//
+//                setObjVar(player, "bounty.amount", current_bounty);
+//                setObjVar(player, "jedi.bounty", mission_bounty);
+//                setJediBountyValue(player, current_bounty);
+//                updateJediScriptData(player, "jedi", 1);
+//
+//                return SCRIPT_OVERRIDE;
             }
 
             // Final unlock path
@@ -272,17 +276,65 @@ public class jedi_holocron extends script.base_script {
         return SCRIPT_CONTINUE;
     }
 
-    public boolean master_chronicler_condition(obj_id npc, obj_id player) throws InterruptedException
+    public boolean master_jedi_condition(obj_id npc, obj_id player) throws InterruptedException
     {
-        return hasSkill(player, "class_chronicles_master");
+        return hasSkill(player, "class_forcesensitive_phase3_master");
+    }
+
+    public boolean inGroupOfTwo(obj_id player) throws InterruptedException
+    {
+        if (!isIdValid(player))
+        {
+            return false;
+        }
+
+        obj_id group = getGroupObject(player);
+        if (!isIdValid(group))
+        {
+            return false; // not in a group
+        }
+
+        obj_id[] members = getGroupMemberIds(group);
+        if (members == null || members.length != 2)
+        {
+            return false; // must be EXACTLY 2 players
+        }
+
+        return true;
+    }
+
+    public obj_id getOtherGroupMember(obj_id player) throws InterruptedException
+    {
+        obj_id group = getGroupObject(player);
+        if (!isIdValid(group))
+        {
+            return null;
+        }
+
+        obj_id[] members = getGroupMemberIds(group);
+        if (members == null || members.length != 2)
+        {
+            return null;
+        }
+
+        // Find the member that is NOT the player
+        for (obj_id m : members)
+        {
+            if (m != player)
+            {
+                return m;
+            }
+        }
+
+        return null;
     }
 
     private void holocronConvergence(obj_id player) throws InterruptedException
     {
         // --- SKILL REQUIREMENT ---
-        if (!master_chronicler_condition(null, player))
+        if (!master_jedi_condition(null, player))
         {
-            sendSystemMessageTestingOnly(player, "You lack the knowledge to record such a powerful convergence. (Master Chronicler required)");
+            sendSystemMessageTestingOnly(player, "You lack the knowledge to record such a powerful convergence. (Phase 3 Jedi required)");
             return;
         }
 
@@ -297,6 +349,13 @@ public class jedi_holocron extends script.base_script {
         if (contents == null || contents.length == 0)
         {
             sendSystemMessageTestingOnly(player, "You have no holocrons to converge.");
+            return;
+        }
+
+        // Check group size: requires exactly 2 players
+        if (!inGroupOfTwo(player))
+        {
+            sendSystemMessageTestingOnly(player, "A holocron convergence requires exactly two Force-sensitive beings working in unison.");
             return;
         }
 
@@ -372,8 +431,8 @@ public class jedi_holocron extends script.base_script {
         }
 
         // --- EXPLORATION CHECK (both holocrons must pass) ---
-        boolean holo1Ready = isJediExploreUnlock(player, holo1);
-        boolean holo2Ready = isJediExploreUnlock(player, holo2);
+        boolean holo1Ready = isJediExploreUnlockConfig(player, holo1);
+        boolean holo2Ready = isJediExploreUnlockConfig(player, holo2);
 
         if (!holo1Ready || !holo2Ready)
         {
@@ -397,9 +456,11 @@ public class jedi_holocron extends script.base_script {
         doAnimationAction(player, "medium");
 
         // --- Vision-specific outcomes ---
+        obj_id partner = getOtherGroupMember(player);
         if (matchedVision.equals("peace"))
         {
             groundquests.grantQuest(player, "stardust_jedi_diplomacy1", true); // Luke pointer to Tatooine
+            groundquests.grantQuest(partner, "stardust_jedi_diplomacy1", true); // I want the partner to get the quest too, but we need to define earlier
             playClientEffectObj(player, "clienteffect/force_heal_01.cef", player, "");
             playMusic(player, player, "sound/mus_force_theme_lcv.snd", 0, false);
         }
@@ -430,32 +491,38 @@ public class jedi_holocron extends script.base_script {
         else if (matchedVision.equals("serenity"))
         {
             groundquests.grantQuest(player, "stardust_jedi_diplomacy2", true);//yoda questline? currently luke sends to naboo
+            groundquests.grantQuest(partner, "stardust_jedi_diplomacy2", true);
             playClientEffectObj(player, "clienteffect/force_heal_03.cef", player, "");
         }
         else if (matchedVision.equals("harmony"))
         {
             groundquests.grantQuest(player, "stardust_jedi_diplomacy3", true);//Kit Fisto? Luke currently sends to Corellia senate
+            groundquests.grantQuest(player, "stardust_jedi_diplomacy3", true);
             playClientEffectObj(player, "clienteffect/force_heal_04.cef", player, "");
         }
         else if (matchedVision.equals("passion"))
         {
-            groundquests.grantQuest(player, "stardust_holocron_maul", true);//this will be replaced with "stardust_holocron_maul"
+            groundquests.grantQuest(player, "stardust_holocron_maul", true);//Maul questline
+            groundquests.grantQuest(partner, "stardust_holocron_maul", true);
             playClientEffectObj(player, "clienteffect/frs_dark_suffering.cef", player, "");
             playMusic(player, player, "sound/mus_duel_of_the_fates_lcv.snd", 0, false);
         }
         else if (matchedVision.equals("strength"))
         {
             groundquests.grantQuest(player, "gmf_vader", true);//Mustafar Vader Meditation, GMF quest when not in season
+            groundquests.grantQuest(partner, "gmf_vader", true);
             playClientEffectObj(player, "clienteffect/frs_dark_envy.cef", player, "");
         }
         else if (matchedVision.equals("power"))
         {
             groundquests.grantQuest(player, "stardust_sith_diplomacy2", true);//Should be Palpatine questline? Tie with Sith Relic? Talon currently sends to Naboo
+            groundquests.grantQuest(partner, "stardust_sith_diplomacy2", true);
             playClientEffectObj(player, "clienteffect/frs_dark_vengeance.cef", player, "");
         }
         else if (matchedVision.equals("victory"))
         {
             groundquests.grantQuest(player, "stardust_jedi_diplomacy4", true);//Should be Ashoka questline. Luke currently sends to Dathomir.
+            groundquests.grantQuest(partner, "stardust_jedi_diplomacy4", true);
             playClientEffectObj(player, "clienteffect/force_heal_03.cef", player, "");
         }
         else
@@ -465,8 +532,67 @@ public class jedi_holocron extends script.base_script {
         }
 
         // Reward and feedback
-        xp.grant(player, "jedi", 13000);
+        xp.grant(player, "jedi", 15000);//need to also grant this to the other group mate
         sendSystemMessageTestingOnly(player, "Your " + matchedVision + " holocrons resonate and merge with immense power!");
+
+        if (isIdValid(partner))
+        {
+            xp.grant(partner, "jedi", 15000);
+            sendSystemMessageTestingOnly(partner, "You feel the resonance of the holocron convergence!");
+        }
+    }
+
+    private void playVisionFor(obj_id target, String vision, obj_id spawner) throws InterruptedException
+    {
+        if (!isIdValid(target))
+        {
+            return;
+        }
+
+        switch (vision)
+        {
+            case "peace":
+                groundquests.grantQuest(target, "stardust_jedi_diplomacy1", true);
+                playClientEffectObj(target, "clienteffect/force_heal_01.cef", target, "");
+                playMusic(target, target, "sound/mus_force_theme_lcv.snd", 0, false);
+                break;
+
+            case "knowledge":
+                playClientEffectObj(target, "clienteffect/force_heal_02.cef", target, "");
+                playMusic(target, target, "sound/mus_force_theme_lcv.snd", 0, false);
+                break;
+
+            case "serenity":
+                groundquests.grantQuest(target, "stardust_jedi_diplomacy2", true);
+                playClientEffectObj(target, "clienteffect/force_heal_03.cef", target, "");
+                break;
+
+            case "harmony":
+                groundquests.grantQuest(target, "stardust_jedi_diplomacy3", true);
+                playClientEffectObj(target, "clienteffect/force_heal_04.cef", target, "");
+                break;
+
+            case "passion":
+                groundquests.grantQuest(target, "stardust_holocron_maul", true);
+                playClientEffectObj(target, "clienteffect/frs_dark_suffering.cef", target, "");
+                playMusic(target, target, "sound/mus_duel_of_the_fates_lcv.snd", 0, false);
+                break;
+
+            case "strength":
+                groundquests.grantQuest(target, "gmf_vader", true);
+                playClientEffectObj(target, "clienteffect/frs_dark_envy.cef", target, "");
+                break;
+
+            case "power":
+                groundquests.grantQuest(target, "stardust_sith_diplomacy2", true);
+                playClientEffectObj(target, "clienteffect/frs_dark_vengeance.cef", target, "");
+                break;
+
+            case "victory":
+                groundquests.grantQuest(target, "stardust_jedi_diplomacy4", true);
+                playClientEffectObj(target, "clienteffect/force_heal_03.cef", target, "");
+                break;
+        }
     }
 
     public boolean vision_active(obj_id player, obj_id item) throws InterruptedException {

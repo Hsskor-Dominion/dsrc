@@ -324,8 +324,7 @@ public class corellia_imperial_trainer_1 extends script.base_script
     }
     public boolean corellia_imperial_trainer_1_condition_hasAShip(obj_id player, obj_id npc) throws InterruptedException
     {
-        return false;
-        //return !space_quest.canGrantNewbieShip(player);
+        return !space_quest.canGrantNewbieShip(player);
     }
     public boolean corellia_imperial_trainer_1_condition_lostShip(obj_id player, obj_id npc) throws InterruptedException
     {
