@@ -27,12 +27,12 @@ public class sith_holocron3 extends script.base_script
     }
     public boolean isMandoExplore(obj_id player, obj_id npc) throws InterruptedException
     {
-        int explore_requirement = rand(1, 10);
+        int explore_requirement = rand(1,9);
         String explore = "";
         switch (explore_requirement)
         {
             case 1:
-                explore = "warren_hero";
+                explore = "exp_dan_jedi_temple";
                 break;
             case 2:
                 explore = "col_ig88_factory_01";
@@ -47,19 +47,16 @@ public class sith_holocron3 extends script.base_script
                 explore = "bdg_deathtrooper_undead_rancor";
                 break;
             case 6:
-                explore = "bdg_kash_arena_champ";
-                break;
-            case 7:
-                explore = "bdg_kash_avatar_zssik";
-                break;
-            case 8:
                 explore = "bdg_thm_park_jabba_badge";
                 break;
-            case 9:
+            case 7:
                 explore = "bdg_must_victory_army";
                 break;
-            case 10:
-                explore = "bdg_kash_wookiee_rage";
+            case 8:
+                explore = "bdg_kash_avatar_zssik";
+                break;
+            case 9:
+                explore = "bdg_kash_kkorrwrot";
                 break;
         }
         return badge.hasBadge(player, explore) && badge.hasBadge(player, "count_50") && hasSkill(player, "faction_rank_mando_master");

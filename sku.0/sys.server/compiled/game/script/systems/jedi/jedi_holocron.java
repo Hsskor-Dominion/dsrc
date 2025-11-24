@@ -24,14 +24,16 @@ public class jedi_holocron extends script.base_script {
             "strength",
             "power",
             "victory",
+            "honor",
     };
 
-    private static final int[] BADGES_SERENITY = {1,2,4,6,18};//Add Yoda stuff
-    private static final int[] BADGES_KNOWLEDGE = {2,3,7,14,16};//Add Obi-Wan stuff. Collections?
-    private static final int[] BADGES_PEACE = {5,6,7,8,21};//Add Leia stuff? Ren? Corvette?
-    private static final int[] BADGES_HARMONY = {4,5,7,10,19};//Kit Fisto stuff? lol. Luke stuff. Space stuff?
+    private static final int[] BADGES_HONOR = {8,24,25,26,27,28,29,30,32};//Revan. Mandalorian stuff
+    private static final int[] BADGES_SERENITY = {1,2,4,6,18,22,23};//Add Yoda stuff
+    private static final int[] BADGES_KNOWLEDGE = {2,3,7,14,16,26};//Add Obi-Wan stuff. Collections
+    private static final int[] BADGES_PEACE = {5,6,7,8,21};//Add Leia stuff? Ren? Corvette
+    private static final int[] BADGES_HARMONY = {4,5,7,10,19};//Kit Fisto. Luke stuff.
     private static final int[] BADGES_SITH = {10,11,12,13,14,15,16,17,20};
-    private static final int[] BADGES_ALL = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21};
+    private static final int[] BADGES_ALL = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32};
 
     public boolean isJediReady(obj_id player, obj_id npc) throws InterruptedException {
         return (getLevel(player) >= 90);
@@ -54,7 +56,8 @@ public class jedi_holocron extends script.base_script {
         return vision.equals("serenity") ||
                 vision.equals("knowledge") ||
                 vision.equals("peace") ||
-                vision.equals("harmony");
+                vision.equals("harmony") ||
+                vision.equals("honor");
     }
 
     private boolean isSithVision(obj_id holocron) throws InterruptedException {
@@ -94,6 +97,8 @@ public class jedi_holocron extends script.base_script {
                         pool = BADGES_PEACE; break;
                     case "harmony":
                         pool = BADGES_HARMONY; break;
+                    case "honor":
+                        pool = BADGES_HONOR; break;
                     default:
                         pool = BADGES_ALL; break; // fallback
                 }
@@ -151,6 +156,17 @@ public class jedi_holocron extends script.base_script {
             case 19: return "destroy_deathstar";
             case 20: return "bdg_corvette_imp_rescue";
             case 21: return "bdg_corvette_reb_rescue";
+            case 22: return "bdg_kash_arena_champ";
+            case 23: return "bdg_kash_katarn";
+            case 24: return "bdg_kill_gorax";
+            case 25: return "col_ig88_factory_01";
+            case 26: return "col_tusken_king_01";
+            case 27: return "bdg_kill_deathwatch_overlord";
+            case 28: return "bdg_deathtrooper_undead_rancor";
+            case 29: return "bdg_must_victory_army";
+            case 30: return "bdg_must_victory_volcano";
+            case 31: return "bdg_kill_axkva_min";
+            case 32: return "bdg_kash_kkorrwrot";
             default: return "";
         }
     }
@@ -200,31 +216,38 @@ public class jedi_holocron extends script.base_script {
             LOG("Holocron Usage Debug", "Holocron damaged by: " + damageAmount + " hitpoints");
 
             // PHASE 3 CHECK
-            if (phase3_condition(player, self)) {
+            if (phase3_condition(player, self) && isJediExploreUnlock(player, self))
+            {
                 grantPhase3Quest(player, self);
-//                sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
-                xp.grant(player, "jedi", 2500);
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
+                xp.grant(player, "jedi", 5000);
                 factions.addFactionStanding(player, "fs_villager", 50.0f);
                 factions.goOvertWithDelay(player, 0.0f);
-//                HandleDestroyHolocron(self, player);
-//
-//                int mission_bounty = 25000 + rand(1, 2000);
-//                int current_bounty = hasObjVar(player, "bounty.amount") ? getIntObjVar(player, "bounty.amount") : 0;
-//                current_bounty += mission_bounty;
-//
-//                setObjVar(player, "bounty.amount", current_bounty);
-//                setObjVar(player, "jedi.bounty", mission_bounty);
-//                setJediBountyValue(player, current_bounty);
-//                updateJediScriptData(player, "jedi", 1);
-//
-//                return SCRIPT_OVERRIDE;
+
+                int mission_bounty = 25000 + rand(1, 2000);
+                int current_bounty = hasObjVar(player, "bounty.amount") ? getIntObjVar(player, "bounty.amount") : 0;
+                current_bounty += mission_bounty;
+
+                setObjVar(player, "bounty.amount", current_bounty);
+                setObjVar(player, "jedi.bounty", mission_bounty);
+                setJediBountyValue(player, current_bounty);
+                updateJediScriptData(player, "jedi", 1);
+
+                // Send final vision signal
+                String visionSignal = getHolocronVisionSignal(self);
+                if (visionSignal != null) {
+                    LOG("Holocron Vision", "Final stage — sending vision signal: " + visionSignal);
+                    groundquests.sendSignal(player, visionSignal);
+                }
+
+                return SCRIPT_OVERRIDE;
             }
 
             // Final unlock path
-            if (isJediExploreUnlock(player, self)) {
+            else if (isJediExploreUnlock(player, self)) {
                 sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish"));
 
-                // Send final vision signal (moved here)
+                // Send final vision signal
                 String visionSignal = getHolocronVisionSignal(self);
                 if (visionSignal != null) {
                     LOG("Holocron Vision", "Final stage — sending vision signal: " + visionSignal);
@@ -322,10 +345,15 @@ public class jedi_holocron extends script.base_script {
         {
             if (m != player)
             {
-                return m;
+                //CHECK: Other player must be meditating
+                if (meditation.isMeditating(m))
+                {
+                    return m;
+                }
             }
         }
 
+        // No qualifying member found
         return null;
     }
 
@@ -334,7 +362,7 @@ public class jedi_holocron extends script.base_script {
         // --- SKILL REQUIREMENT ---
         if (!master_jedi_condition(null, player))
         {
-            sendSystemMessageTestingOnly(player, "You lack the knowledge to record such a powerful convergence. (Phase 3 Jedi required)");
+            sendSystemMessageTestingOnly(player, "You lack the knowledge to unlock such a powerful convergence. (Phase 4 Jedi required)");
             return;
         }
 
@@ -355,7 +383,7 @@ public class jedi_holocron extends script.base_script {
         // Check group size: requires exactly 2 players
         if (!inGroupOfTwo(player))
         {
-            sendSystemMessageTestingOnly(player, "A holocron convergence requires exactly two Force-sensitive beings working in unison.");
+            sendSystemMessageTestingOnly(player, "A holocron convergence requires exactly two Force-sensitive beings meditating in unison.");
             return;
         }
 
@@ -490,9 +518,40 @@ public class jedi_holocron extends script.base_script {
         }
         else if (matchedVision.equals("serenity"))
         {
-            groundquests.grantQuest(player, "stardust_jedi_diplomacy2", true);//yoda questline? currently luke sends to naboo
-            groundquests.grantQuest(partner, "stardust_jedi_diplomacy2", true);
+
+            // FX for both
             playClientEffectObj(player, "clienteffect/force_heal_03.cef", player, "");
+            if (isIdValid(partner))
+            {
+                playClientEffectObj(partner, "clienteffect/force_heal_03.cef", partner, "");
+            }
+
+            // Determine spawn location near player
+            location spawnLoc = getLocation(player);
+            spawnLoc.x += rand(-1.5f, 1.5f);
+            spawnLoc.z += rand(-1.5f, 1.5f);
+
+            // Spawn Yoda glowie (you must create the mobile template)
+            obj_id yoda = create.object("yoda", spawnLoc);
+
+            if (isIdValid(yoda))
+            {
+                setObjVar(yoda, "spawned_by_convergence", player);
+                chat.chat(yoda, "Clear your mind, you must...");
+
+                // Schedule Yoda removal after 60 seconds
+                messageTo(yoda, "handleDestroyTempSpawn", null, 600.0f, false);
+
+                sendSystemMessageTestingOnly(player, "The holocrons shimmer and Master Yoda appears before you.");
+                if (isIdValid(partner))
+                {
+                    sendSystemMessageTestingOnly(partner, "A vision of Master Yoda manifests from the holocron convergence!");
+                }
+            }
+            else
+            {
+                sendSystemMessageTestingOnly(player, "You feel the Force shift, but Yoda does not appear.");
+            }
         }
         else if (matchedVision.equals("harmony"))
         {
@@ -532,12 +591,12 @@ public class jedi_holocron extends script.base_script {
         }
 
         // Reward and feedback
-        xp.grant(player, "jedi", 15000);//need to also grant this to the other group mate
+        xp.grant(player, "jedi", 10000);
         sendSystemMessageTestingOnly(player, "Your " + matchedVision + " holocrons resonate and merge with immense power!");
 
         if (isIdValid(partner))
         {
-            xp.grant(partner, "jedi", 15000);
+            xp.grant(partner, "jedi", 10000);
             sendSystemMessageTestingOnly(partner, "You feel the resonance of the holocron convergence!");
         }
     }

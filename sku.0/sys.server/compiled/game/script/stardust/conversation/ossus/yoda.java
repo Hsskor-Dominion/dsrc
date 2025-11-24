@@ -116,6 +116,11 @@ public class yoda extends script.base_script
         setJediBountyValue(player, current_bounty);
         updateJediScriptData(player, "jedi", 1);
     }
+    public int handleDestroyTempSpawn(obj_id self, dictionary params) throws InterruptedException
+    {
+        destroyObject(self);
+        return SCRIPT_CONTINUE;
+    }
     public int yoda_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("seek_trade"))

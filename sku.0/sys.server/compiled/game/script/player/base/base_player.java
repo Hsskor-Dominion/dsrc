@@ -802,14 +802,14 @@ public class base_player extends script.base_script
             faction = "pvp_imperial_";
             isImperial = true;
 
-            // Apply the 1% decay to the Mandalorian faction standing
+            // Apply the 1% decay to the Mandalorian faction standing for imperials
             float currentStanding = factions.getFactionStanding(self, "death_watch");
             float decayAmount = currentStanding * 0.01f;
             factions.addFactionStanding(self, "death_watch", -decayAmount);
         } else if (factions.isRebel(self)) {
             faction = "pvp_rebel_";
 
-            // Apply the 2% decay to the Mandalorian faction standing for Rebels
+            // Apply the 2% decay to the Mandalorian faction standing for rebels
             float currentStanding = factions.getFactionStanding(self, "death_watch");
             float decayAmount = currentStanding * 0.01f;
             factions.addFactionStanding(self, "death_watch", -decayAmount);
@@ -3491,6 +3491,15 @@ public class base_player extends script.base_script
         }
     }
 
+    // --- HELPER FUNCTION ---
+    private boolean isDarksaber(obj_id item) throws InterruptedException
+    {
+        if (!isIdValid(item))
+            return false;
+        String template = getTemplateName(item).toLowerCase();
+        return template.contains("sword_mandalorian") || template.contains("darksaber");
+    }
+
     public int handleCloneRespawn(obj_id self, dictionary params) throws InterruptedException
     {
         utils.removeScriptVar(self, pclib.VAR_SUI_CLONE);
@@ -3500,6 +3509,8 @@ public class base_player extends script.base_script
         utils.removeScriptVar(self, "waitingOnCloneRespawn");
         removeObjVar(self, pclib.VAR_BEEN_COUPDEGRACED);
         pvpRemoveAllTempEnemyFlags(self);
+
+        // --- Guild war flag logic ---
         int intGuildId = getGuildId(self);
         if (intGuildId != 0)
         {
@@ -3509,8 +3520,10 @@ public class base_player extends script.base_script
                 int[] enemies_B_to_A = getGuildsAtWarWith(intGuildId);
                 if (enemies_B_to_A != null && enemies_B_to_A.length > 0)
                 {
-                    for (int i1 : enemies_A_to_B) {
-                        if (guild.findIntTableOffset(enemies_B_to_A, i1) != -1) {
+                    for (int enemy : enemies_A_to_B)
+                    {
+                        if (guild.findIntTableOffset(enemies_B_to_A, enemy) != -1)
+                        {
                             pvpSetGuildWarCoolDownPeriodEnemyFlag(self);
                             break;
                         }
@@ -3518,51 +3531,119 @@ public class base_player extends script.base_script
                 }
             }
         }
+
         pclib.checkCovertRespawn(self);
         pclib.clearEffectsForDeath(self);
         utils.removeScriptVar(self, "jedi.rankedDeath");
+
+        // --- Clone heal resolution ---
         if (hasObjVar(self, "fullHealClone"))
         {
             removeObjVar(self, "fullHealClone");
             healing.healClone(self, false);
         }
-        else 
+        else
         {
             healing.healClone(self, true);
         }
-        //SWG Chimaera Decay
-        obj_id heldItem = getObjectInSlot(self, "hold_r");
 
+        // --- SWG CHIMAERA: Decay held weapon ---
+        obj_id heldItem = getObjectInSlot(self, "hold_r");
         if (isIdValid(heldItem) && exists(heldItem))
         {
-            damageItem(heldItem, 1, self);//makes for risky lightsaber usage
+            damageItem(heldItem, 1, self);
         }
+
         setPosture(self, POSTURE_UPRIGHT);
         utils.removeScriptVar(self, "pvp_death");
+
         queueCommand(self, (-1465754503), self, "", COMMAND_PRIORITY_IMMEDIATE);
         playClientEffectObj(self, "clienteffect/player_clone_compile.cef", self, null);
-        if (!utils.hasScriptVar(self, "no_cloning_sickness") && !instance.isInInstanceArea(self))
+
+        // --- Sickness / weaken logic ---
+        boolean noSick = utils.hasScriptVar(self, "no_cloning_sickness");
+        boolean inInstance = instance.isInInstanceArea(self);
+
+        if (!noSick && !inInstance)
         {
             buff.applyBuff(self, "cloning_sickness");
         }
-        if (!utils.hasScriptVar(self, "no_cloning_sickness") && !instance.isInInstanceArea(self) && hasSkill(self, "class_forcesensitive_phase1_master"))
+
+        if (!noSick && !inInstance && hasSkill(self, "class_forcesensitive_phase1_master"))
         {
-            buff.applyBuff(self, "forceWeaken");//this is SWG Chimaera function of applying forceWeaken and jedi xp penalty upon death, while not in Instance area
+            buff.applyBuff(self, "forceWeaken");
             xp.grant(self, "jedi", -100);
         }
-        else if (utils.hasScriptVar(self, "no_cloning_sickness"))
+        else if (noSick)
         {
             utils.removeScriptVar(self, "no_cloning_sickness");
         }
-	if (0 == pvpGetAlignedFaction(self))
+
+        // --- Mercenary realignment ---
+        if (0 == pvpGetAlignedFaction(self))
         {
-            int currentMercenaryFaction = pvpNeutralGetMercenaryFaction(self);
-            if ((0 != currentMercenaryFaction) && pvpNeutralIsMercenaryDeclared(self))
+            int currentMercFaction = pvpNeutralGetMercenaryFaction(self);
+            if (currentMercFaction != 0 && pvpNeutralIsMercenaryDeclared(self))
             {
-                pvpNeutralSetMercenaryFaction(self, currentMercenaryFaction, false);
+                pvpNeutralSetMercenaryFaction(self, currentMercFaction, false);
             }
         }
-    if (hasSkill(self, "class_forcesensitive_phase4_master"))
+
+        // -------------------------------------------------------
+        //  SPECIAL CASE: REMOVE DARKSABER IF HELD OR IN INVENTORY
+        // -------------------------------------------------------
+        {
+            obj_id darksaber = obj_id.NULL_ID;
+
+            // Check equipped: right hand
+            obj_id equipR = getObjectInSlot(self, "hold_r");
+            if (isIdValid(equipR) && isDarksaber(equipR))
+            {
+                darksaber = equipR;
+            }
+
+            // Check equipped: left hand
+            if (!isIdValid(darksaber))
+            {
+                obj_id equipL = getObjectInSlot(self, "hold_l");
+                if (isIdValid(equipL) && isDarksaber(equipL))
+                {
+                    darksaber = equipL;
+                }
+            }
+
+            // Check inventory
+            if (!isIdValid(darksaber))
+            {
+                obj_id inv = utils.getInventoryContainer(self);
+                if (isIdValid(inv))
+                {
+                    obj_id[] invItems = getContents(inv);
+                    if (invItems != null)
+                    {
+                        for (obj_id item : invItems)
+                        {
+                            if (isIdValid(item) && isDarksaber(item))
+                            {
+                                darksaber = item;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Destroy darksaber
+            if (isIdValid(darksaber))
+            {
+                destroyObject(darksaber);
+            }
+        }
+
+        // -------------------------------------------------------
+        //  JEDI RANK LOSS LOGIC
+        // -------------------------------------------------------
+        if (hasSkill(self, "class_forcesensitive_phase4_master"))
         {
             setState(self, STATE_GLOWING_JEDI, true);
             grantSkill(self, "stardust_jedi_elder");
@@ -3573,7 +3654,7 @@ public class base_player extends script.base_script
             revokeSkill(self, "class_forcesensitive_phase4_02");
             xp.grant(self, "jedi", -1000000);
         }
-    else if (hasSkill(self, "class_forcesensitive_phase3_master"))
+        else if (hasSkill(self, "class_forcesensitive_phase3_master"))
         {
             revokeSkill(self, "class_forcesensitive_phase4_novice");
             revokeSkill(self, "class_forcesensitive_phase3_master");
@@ -3583,7 +3664,7 @@ public class base_player extends script.base_script
             revokeSkill(self, "class_forcesensitive_phase3_02");
             xp.grant(self, "jedi", -100000);
         }
-    else if (hasSkill(self, "class_forcesensitive_phase2_master"))
+        else if (hasSkill(self, "class_forcesensitive_phase2_master"))
         {
             revokeSkill(self, "class_forcesensitive_phase3_novice");
             revokeSkill(self, "class_forcesensitive_phase2_master");
@@ -3593,11 +3674,14 @@ public class base_player extends script.base_script
             revokeSkill(self, "class_forcesensitive_phase2_02");
             xp.grant(self, "jedi", -10000);
         }
-    else if (hasSkill(self, "class_forcesensitive_phase1_master"))
+        else if (hasSkill(self, "class_forcesensitive_phase1_master"))
         {
             xp.grant(self, "jedi", -1000);
         }
-        CustomerServiceLog("Death", "(" + self + ") " + getName(self) + " has clone respawned at " + (getLocation(self)).toString());
+
+        CustomerServiceLog("Death", "(" + self + ") " + getName(self) +
+                " has clone respawned at " + getLocation(self).toString());
+
         return SCRIPT_CONTINUE;
     }
     public int handlePlayerResuscitated(obj_id self, dictionary params) throws InterruptedException
@@ -4339,7 +4423,7 @@ public class base_player extends script.base_script
         {
             pclib.coupDeGrace(target, self);
         }
-        else 
+        else
         {
             return SCRIPT_OVERRIDE;
         }
@@ -4368,27 +4452,27 @@ public class base_player extends script.base_script
                             CustomerServiceLog("Pvp", "Player %TU received deathblow message for target %TT, and is performing the blow");
                             pclib.coupDeGrace(target, self);
                         }
-                        else 
+                        else
                         {
                             CustomerServiceLog("Pvp", "Player %TU received deathblow message for target %TT, but has moved too " + "far away (" + distance + ")", self, target);
                         }
                     }
-                    else 
+                    else
                     {
                         CustomerServiceLog("Pvp", "Player %TU received deathblow message for target %TT, but we could " + "not get the player's positions", self, target);
                     }
                 }
-                else 
+                else
                 {
                     CustomerServiceLog("Pvp", "Player %TU received deathblow message, but target %TT is no longer incapped ", self, target);
                 }
             }
-            else 
+            else
             {
                 CustomerServiceLog("Pvp", "Player %TU received deathblow message, but has invalid deathblow scriptvar " + target, self);
             }
         }
-        else 
+        else
         {
             CustomerServiceLog("Pvp", "Player %TU received deathblow message, but has no deathblow scriptvar ", self);
         }
@@ -12206,7 +12290,7 @@ public class base_player extends script.base_script
 
         // --- GLOWING JEDI INVIS/STEALTH EFFECT ---
         if (getState(self, STATE_GLOWING_JEDI) == 1) {
-            buff.applyBuff(self, "invis_sm_buff_invis_1");
+            buff.applyBuff(self, self, "invis_sp_diversion_stealth");//trying to get a cloak without smoke effect
         }
 
         // --- DETERMINE WHICH MEDITATION BUFF TO APPLY ---

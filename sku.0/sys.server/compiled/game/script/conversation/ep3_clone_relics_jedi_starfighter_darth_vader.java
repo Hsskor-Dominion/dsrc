@@ -97,6 +97,10 @@ public class ep3_clone_relics_jedi_starfighter_darth_vader extends script.base_s
     {
         space_quest.grantQuest(player, "space_battle", "ep3_clone_relics_jedi_starfighter_4");
     }
+    public void ep3_clone_relics_jedi_starfighter_darth_vader_action_grantDarksaberQuest(obj_id player, obj_id npc) throws InterruptedException
+    {
+        groundquests.grantQuest(player, "stardust_imp_darksaber", true);
+    }
     public int ep3_clone_relics_jedi_starfighter_darth_vader_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("s_716"))
@@ -378,14 +382,56 @@ public class ep3_clone_relics_jedi_starfighter_darth_vader extends script.base_s
         }
         if (ep3_clone_relics_jedi_starfighter_darth_vader_condition_finished(player, npc))
         {
-            doAnimationAction(player, "bow5");
             ep3_clone_relics_jedi_starfighter_darth_vader_action_grantLimitedPass(player, npc);
-            string_id message = new string_id(c_stringFile, "s_21");
+
+            string_id message = null;
+
+            // ---- DARKSABER CHECK (item in hold_r slot) ----
+            obj_id rightHand = getObjectInSlot(player, "hold_r");
+            boolean hasDarksaberQuestItem = (isIdValid(rightHand) && getTemplateName(rightHand).equals("object/weapon/melee/sword/sword_mandalorian.iff"));
+
+            if (hasDarksaberQuestItem && hasObjVar(player, "stardust.seek_darksaber_gideon"))
+            {
+                // Spawn Gideon near the player
+                location loc = getLocation(player);
+                loc.x += rand(-1.5f, 1.5f);
+                loc.z += rand(-1.5f, 1.5f);
+
+                obj_id gideon = create.object("stardust_gideon", loc);
+
+                // Special message
+                message = new string_id(c_stringFile, "s_seek_darksaber");
+            }
+            if (hasObjVar(player, "stardust.seek_darksaber_gideon"))
+            {
+                // Spawn Gideon near the player
+                location loc = getLocation(player);
+                loc.x += rand(-1.5f, 1.5f);
+                loc.z += rand(-1.5f, 1.5f);
+
+                obj_id gideon = create.object("stardust_gideon", loc);
+                removeObjVar(player, "stardust.seek_darksaber_gideon");
+
+                // Override the message Gigeon gives
+                message = new string_id(c_stringFile, "s_seek_darksaber");
+            }
+            else if (hasSkill(player, "stardust_pvp"))
+            {
+                message = new string_id(c_stringFile, "s_seek_darksaber");
+                ep3_clone_relics_jedi_starfighter_darth_vader_action_grantDarksaberQuest(player, npc);
+            }
+            else
+            {
+                message = new string_id(c_stringFile, "s_21");  // “I have no further use of you.”
+            }
+
+            // Send the dialogue
             prose_package pp = new prose_package();
             pp.stringId = message;
             pp.actor.set(player);
             pp.target.set(npc);
             chat.chat(npc, player, null, null, pp);
+
             return SCRIPT_CONTINUE;
         }
         if (ep3_clone_relics_jedi_starfighter_darth_vader_condition_failedSpaceMission(player, npc))
@@ -487,13 +533,56 @@ public class ep3_clone_relics_jedi_starfighter_darth_vader extends script.base_s
         }
         if (ep3_clone_relics_jedi_starfighter_darth_vader_condition__defaultCondition(player, npc))
         {
-            doAnimationAction(player, "squirm");
-            ep3_clone_relics_jedi_starfighter_darth_vader_action_performKillPlayer(player, npc);
-            string_id message = new string_id(c_stringFile, "s_749");
-            chat.chat(npc, player, message);
+            string_id message = null;
+
+            // ---- DARKSABER CHECK (item in hold_r slot) ----
+            obj_id rightHand = getObjectInSlot(player, "hold_r");
+            boolean hasDarksaberQuestItem = (isIdValid(rightHand) && getTemplateName(rightHand).equals("object/weapon/melee/sword/sword_mandalorian.iff"));
+
+            if (hasDarksaberQuestItem && hasObjVar(player, "stardust.seek_darksaber_gideon"))
+            {
+                location loc = getLocation(player);
+                loc.x += rand(-1.5f, 1.5f);
+                loc.z += rand(-1.5f, 1.5f);
+
+                obj_id gideon = create.object("stardust_gideon", loc);
+
+                message = new string_id(c_stringFile, "s_seek_darksaber");
+            }
+            if (hasObjVar(player, "stardust.seek_darksaber_gideon"))
+            {
+                location loc = getLocation(player);
+                loc.x += rand(-1.5f, 1.5f);
+                loc.z += rand(-1.5f, 1.5f);
+
+                obj_id gideon = create.object("stardust_gideon", loc);
+                removeObjVar(player, "stardust.seek_darksaber_gideon");
+
+                message = new string_id(c_stringFile, "s_seek_darksaber");
+            }
+            else
+            {
+                doAnimationAction(player, "squirm");
+                ep3_clone_relics_jedi_starfighter_darth_vader_action_performKillPlayer(player, npc);
+
+                message = new string_id(c_stringFile, "s_749");
+
+                // FIX: send simple string_id message
+                chat.chat(npc, player, message);
+                return SCRIPT_CONTINUE;
+            }
+
+            // Send message through prose package
+            prose_package pp = new prose_package();
+            pp.stringId = message;
+            pp.actor.set(player);
+            pp.target.set(npc);
+            chat.chat(npc, player, null, null, pp);
+
             return SCRIPT_CONTINUE;
         }
-        chat.chat(npc, "Error:  All conditions for OnStartNpcConversation were false.");
+
+        chat.chat(npc, "Error: All conditions for OnStartNpcConversation were false.");
         return SCRIPT_CONTINUE;
     }
     public int OnNpcConversationResponse(obj_id self, String conversationId, obj_id player, string_id response) throws InterruptedException

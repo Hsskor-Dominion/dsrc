@@ -1428,7 +1428,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (getState(self, STATE_GLOWING_JEDI) == 1) {
             // Glowie Jedi persists stealth longer
             setState(self, STATE_GLOWING_JEDI, true);
-            buff.applyBuff(self, self, "invis_sm_buff_invis_1");
+            buff.applyBuff(self, self, "invis_sp_diversion_stealth");
         }
         return SCRIPT_CONTINUE;
     }

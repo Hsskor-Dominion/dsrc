@@ -7,9 +7,9 @@ import script.library.static_item;
 import script.library.utils;
 import script.obj_id;
 
-public class maul_death extends script.base_script
+public class gideon_death extends script.base_script
 {
-    public maul_death() {}
+    public gideon_death() {}
 
     public int aiCorpsePrepared(obj_id self, dictionary params) throws InterruptedException
     {
@@ -40,7 +40,6 @@ public class maul_death extends script.base_script
                 if (isPlayer(obj))
                 {
                     // --- quest signal + completion ---
-                    groundquests.sendSignal(obj, "confront_maul");
                     groundquests.completeQuest(obj, "stardust_mando_crest");
 
                     // --- check for objVar to enable darksaber ---
@@ -131,23 +130,22 @@ public class maul_death extends script.base_script
         }
         else if (x <= 70)
         {
-            static_item.createNewItemFunction("item_tcg_loot_reward_series1_sith_speeder", corpseInventory);
+            static_item.createNewItemFunction("item_tcg_loot_reward_series1)sith_meditation_room_deed", corpseInventory);
         }
         else if (x <= 75)
         {
-            static_item.createNewItemFunction("item_vet_reward_72month_darth_maul", corpseInventory);
-        }
-        else if (x <= 80)
-        {
-            static_item.createNewItemFunction("item_crystal_mauls_vengeance_01", corpseInventory);
-        }
-        else if (x <= 85)
-        {
-            static_item.createNewItemFunction("item_heroic_schematic_saber_03_01", corpseInventory);
+            static_item.createNewItemFunction("item_publish_gift_27_04_01", corpseInventory);
         }
         else if (x <= 95)
         {
             static_item.createNewItemFunction("item_pgc_token_03", corpseInventory);
         }
+    }
+
+    public int OnAttach(obj_id self) throws InterruptedException
+    {
+        setName(self, "Gideon (Phase 4 Darktrooper clone experiment");
+
+        return SCRIPT_CONTINUE;
     }
 }

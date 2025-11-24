@@ -121,16 +121,16 @@ public class saber_base extends script.base_script
 
         String template = getTemplateName(self).toLowerCase();
 
-        // --- Attach special effects for Darksaber / Mandalorian swords ---
-        if ((template.contains("sword_mandalorian") || template.contains("darksaber")) && !hasScript(self, "systems.jedi.darksaber_particle"))
-        {
-            attachScript(self, "systems.jedi.darksaber_particle");
-            debugServerConsoleMsg(self, "Attached darksaber_particle script to " + template);
-
-            // Temporary visual flash until persistent script handles visuals
-            playClientEffectObj(new obj_id[]{self}, "sw_light_saber_white.swh", self, "");
-            playClientEffectObj(new obj_id[]{self}, "pt_entertainer_glowstick.prt", self, "");
-        }
+//        // --- Attach special effects for Darksaber / Mandalorian swords ---
+//        if ((template.contains("sword_mandalorian") || template.contains("darksaber")) && !hasScript(self, "systems.jedi.darksaber_particle"))
+//        {
+//            attachScript(self, "systems.jedi.darksaber_particle");
+//            debugServerConsoleMsg(self, "Attached darksaber_particle script to " + template);
+//
+//            // Temporary visual flash until persistent script handles visuals
+//            playClientEffectObj(new obj_id[]{self}, "sw_light_saber_white.swh", self, "");
+//            playClientEffectObj(new obj_id[]{self}, "pt_entertainer_glowstick.prt", self, "");
+//        }
 
         // --- Try existing saber inventory ---
         if (hasObjVar(self, "saber_inv"))
@@ -145,12 +145,12 @@ public class saber_base extends script.base_script
         }
 
         // --- If still invalid, regenerate Darksaber ---
-        if (!isIdValid(inv) && (template.contains("sword_mandalorian") || template.contains("darksaber")))
-        {
-            debugServerConsoleMsg(player, "Darksaber inventory missing or invalid, regenerating...");
-            regenerateDarksaber(self, player);
-            return; // new saber will be in inventory next time
-        }
+//        if (!isIdValid(inv) && (template.contains("sword_mandalorian") || template.contains("darksaber")))
+//        {
+//            debugServerConsoleMsg(player, "Darksaber inventory missing or invalid, regenerating...");
+//            regenerateDarksaber(self, player);
+//            return; // new saber will be in inventory next time
+//        }
 
         // --- Final validation ---
         if (!isIdValid(inv))
@@ -165,88 +165,88 @@ public class saber_base extends script.base_script
     }
 
     // --- Regeneration helper ---
-    private void regenerateDarksaber(obj_id saber, obj_id player) throws InterruptedException
-    {
-        String template = getTemplateName(saber).toLowerCase();
-        if (!(template.contains("sword_mandalorian") || template.contains("darksaber")))
-            return;
-
-        obj_id parentContainer = getContainedBy(saber);
-        if (!isIdValid(parentContainer))
-            parentContainer = player; // fallback to player inventory
-
-        // Remove broken saber
-        destroyObject(saber);
-
-        // --- Create new saber using the "original" Darksaber template ---
-        String darksaberTemplate = "object/weapon/melee/sword/sword_mandalorian.iff"; // <-- old template
-        obj_id newSaber = createObject(darksaberTemplate, parentContainer, "");
-        if (!isIdValid(newSaber))
-        {
-            debugServerConsoleMsg(player, "Failed to regenerate Darksaber!");
-            return;
-        }
-
-        // Set custom stats (overrides template defaults)
-        setWeaponMinDamage(newSaber, 60);
-        setWeaponMaxDamage(newSaber, 80);
-        setWeaponAttackSpeed(newSaber, 1.5f);
-        setWeaponWoundChance(newSaber, 15f);
-        setWeaponAttackCost(newSaber, 50);
-        setWeaponRangeInfo(newSaber, 0.0f, 5.0f);
-        setWeaponDamageType(newSaber, DAMAGE_ENERGY);
-
-        // Preserve objVar defaults for scripts
-        setObjVar(newSaber, jedi.VAR_SABER_DEFAULT_STATS + ".minDamage", 60);
-        setObjVar(newSaber, jedi.VAR_SABER_DEFAULT_STATS + ".maxDamage", 80);
-        setObjVar(newSaber, jedi.VAR_SABER_DEFAULT_STATS + ".speed", 1.5f);
-        setObjVar(newSaber, jedi.VAR_SABER_DEFAULT_STATS + ".woundChance", 15f);
-
-        // Attach particle effects
-        attachScript(newSaber, "systems.jedi.darksaber_particle");
-        playClientEffectObj(new obj_id[]{newSaber}, "sw_light_saber_white.swh", newSaber, "");
-        playClientEffectObj(new obj_id[]{newSaber}, "pt_entertainer_glowstick.prt", newSaber, "");
-
-        // Notify player
-        sendSystemMessage(player, new string_id("jedi_spam", "darksaber_regenerated"));
-        debugServerConsoleMsg(player, "Darksaber regenerated for " + player);
-    }
-
-    public int OnDestroy(obj_id self) throws InterruptedException
-    {
-        String myTemplate = getTemplateName(self);
-        obj_id player = utils.getTopMostContainer(self);
-
-        if (myTemplate != null && myTemplate.contains("sword_mandalorian") && isPlayer(player))
-        {
-            // Notify the player
-            sendSystemMessage(player, new string_id("jedi_spam", "darksaber_restored"));
-
-            // Regenerate the Darksaber
-            obj_id playerInv = utils.getInventoryContainer(player);
-            if (!isIdValid(playerInv))
-                playerInv = player;
-
-            obj_id newSaber = static_item.createNewItemFunction("weapon_mandalorian_sword_darksaber", playerInv);
-            if (isIdValid(newSaber))
-            {
-                setWeaponMinDamage(newSaber, 695);
-                setWeaponMaxDamage(newSaber, 1390);
-                setWeaponDamageType(newSaber, DAMAGE_KINETIC);
-                setWeaponElementalType(newSaber, DAMAGE_ELEMENTAL_HEAT);
-                setWeaponElementalValue(newSaber, 700);
-
-                attachScript(newSaber, "systems.jedi.darksaber_particle");
-                playClientEffectObj(new obj_id[]{newSaber}, "sw_light_saber_white.swh", newSaber, "");
-                playClientEffectObj(new obj_id[]{newSaber}, "pt_entertainer_glowstick.prt", newSaber, "");
-
-                setName(newSaber, "Darksaber of Mandalore");
-                debugServerConsoleMsg(player, "Darksaber regenerated for " + getName(player));
-            }
-        }
-
-        return SCRIPT_CONTINUE;
-    }
+//    private void regenerateDarksaber(obj_id saber, obj_id player) throws InterruptedException
+//    {
+//        String template = getTemplateName(saber).toLowerCase();
+//        if (!(template.contains("sword_mandalorian") || template.contains("darksaber")))
+//            return;
+//
+//        obj_id parentContainer = getContainedBy(saber);
+//        if (!isIdValid(parentContainer))
+//            parentContainer = player; // fallback to player inventory
+//
+//        // Remove broken saber
+//        destroyObject(saber);
+//
+//        // --- Create new saber using the "original" Darksaber template ---
+//        String darksaberTemplate = "object/weapon/melee/sword/sword_mandalorian.iff"; // <-- old template
+//        obj_id newSaber = createObject(darksaberTemplate, parentContainer, "");
+//        if (!isIdValid(newSaber))
+//        {
+//            debugServerConsoleMsg(player, "Failed to regenerate Darksaber!");
+//            return;
+//        }
+//
+//        // Set custom stats (overrides template defaults)
+//        setWeaponMinDamage(newSaber, 60);
+//        setWeaponMaxDamage(newSaber, 80);
+//        setWeaponAttackSpeed(newSaber, 1.5f);
+//        setWeaponWoundChance(newSaber, 15f);
+//        setWeaponAttackCost(newSaber, 50);
+//        setWeaponRangeInfo(newSaber, 0.0f, 5.0f);
+//        setWeaponDamageType(newSaber, DAMAGE_ENERGY);
+//
+//        // Preserve objVar defaults for scripts
+//        setObjVar(newSaber, jedi.VAR_SABER_DEFAULT_STATS + ".minDamage", 60);
+//        setObjVar(newSaber, jedi.VAR_SABER_DEFAULT_STATS + ".maxDamage", 80);
+//        setObjVar(newSaber, jedi.VAR_SABER_DEFAULT_STATS + ".speed", 1.5f);
+//        setObjVar(newSaber, jedi.VAR_SABER_DEFAULT_STATS + ".woundChance", 15f);
+//
+//        // Attach particle effects
+//        attachScript(newSaber, "systems.jedi.darksaber_particle");
+//        playClientEffectObj(new obj_id[]{newSaber}, "sw_light_saber_white.swh", newSaber, "");
+//        playClientEffectObj(new obj_id[]{newSaber}, "pt_entertainer_glowstick.prt", newSaber, "");
+//
+//        // Notify player
+//        sendSystemMessage(player, new string_id("jedi_spam", "darksaber_regenerated"));
+//        debugServerConsoleMsg(player, "Darksaber regenerated for " + player);
+//    }
+//
+//    public int OnDestroy(obj_id self) throws InterruptedException
+//    {
+//        String myTemplate = getTemplateName(self);
+//        obj_id player = utils.getTopMostContainer(self);
+//
+//        if (myTemplate != null && myTemplate.contains("sword_mandalorian") && isPlayer(player))
+//        {
+//            // Notify the player
+//            sendSystemMessage(player, new string_id("jedi_spam", "darksaber_restored"));
+//
+//            // Regenerate the Darksaber
+//            obj_id playerInv = utils.getInventoryContainer(player);
+//            if (!isIdValid(playerInv))
+//                playerInv = player;
+//
+//            obj_id newSaber = static_item.createNewItemFunction("weapon_mandalorian_sword_darksaber", playerInv);
+//            if (isIdValid(newSaber))
+//            {
+//                setWeaponMinDamage(newSaber, 695);
+//                setWeaponMaxDamage(newSaber, 1390);
+//                setWeaponDamageType(newSaber, DAMAGE_KINETIC);
+//                setWeaponElementalType(newSaber, DAMAGE_ELEMENTAL_HEAT);
+//                setWeaponElementalValue(newSaber, 700);
+//
+//                attachScript(newSaber, "systems.jedi.darksaber_particle");
+//                playClientEffectObj(new obj_id[]{newSaber}, "sw_light_saber_white.swh", newSaber, "");
+//                playClientEffectObj(new obj_id[]{newSaber}, "pt_entertainer_glowstick.prt", newSaber, "");
+//
+//                setName(newSaber, "Darksaber of Mandalore");
+//                debugServerConsoleMsg(player, "Darksaber regenerated for " + getName(player));
+//            }
+//        }
+//
+//        return SCRIPT_CONTINUE;
+//    }
 
     public int handleResetSaberStats(obj_id self, dictionary params) throws InterruptedException
     {

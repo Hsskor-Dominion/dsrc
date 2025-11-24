@@ -800,6 +800,89 @@ public class pclib extends script.base_script
                 guildUpdateGuildWarKillTracking(killer, player);
             }
         }
+        // ================================================================
+        //      MANDALORIAN / DARKSABER SPECIAL DEATHBLOW LOGIC
+        // ================================================================
+        if (hasSkill(killer, "faction_rank_mando_novice"))
+        {
+            obj_id darksaber = obj_id.NULL_ID;
+            obj_id targetInv = utils.getInventoryContainer(player);
+
+            // Check equipped slots first
+            obj_id equipR = getObjectInSlot(player, "hold_r");
+            obj_id equipL = getObjectInSlot(player, "hold_l");
+
+            if (isIdValid(equipR) && isDarksaber(equipR))
+            {
+                darksaber = equipR;
+            }
+            else if (isIdValid(equipL) && isDarksaber(equipL))
+            {
+                darksaber = equipL;
+            }
+            else if (isIdValid(targetInv))
+            {
+                obj_id[] items = getContents(targetInv);
+                if (items != null)
+                {
+                    for (obj_id item : items)
+                    {
+                        if (isIdValid(item) && isDarksaber(item))//cannot be reference dfrom a static context
+                        {
+                            darksaber = item;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (isIdValid(darksaber))
+            {
+                String targetName = getName(player);
+
+                // Ensure darksaber moves before destruction
+                if (isIdValid(targetInv))
+                {
+                    utils.putInOverloaded(darksaber, targetInv);
+                }
+
+                destroyObject(darksaber);
+                debugServerConsoleMsg(killer, "Destroyed original Darksaber from " + targetName);
+
+                // Give new Darksaber to capturer
+                obj_id capturerInv = utils.getInventoryContainer(killer);
+                if (!isIdValid(capturerInv))
+                    capturerInv = killer;
+
+                obj_id newSaber = static_item.createNewItemFunction("weapon_mandalorian_sword_darksaber", capturerInv);
+                if (isIdValid(newSaber))
+                {
+                    setWeaponMinDamage(newSaber, 695);
+                    setWeaponMaxDamage(newSaber, 1390);
+                    setWeaponDamageType(newSaber, DAMAGE_KINETIC);
+                    setWeaponElementalType(newSaber, DAMAGE_ELEMENTAL_HEAT);
+                    setWeaponElementalValue(newSaber, 700);
+
+                    attachScript(newSaber, "systems.jedi.darksaber_particle");
+                    playClientEffectObj(new obj_id[]{newSaber}, "sw_light_saber_white.swh", newSaber, "");
+                    playClientEffectObj(new obj_id[]{newSaber}, "pt_entertainer_glowstick.prt", newSaber, "");
+
+                    setName(newSaber, "Darksaber of Mandalore");
+
+                    sendSystemMessage(killer, new string_id("jedi_spam", "darksaber_restored"));
+                    sendSystemMessage(player, new string_id("jedi_spam", "darksaber_restored"));
+                    debugServerConsoleMsg(killer,
+                            "Regenerated Darksaber created for " + getName(killer) + " (from " + targetName + ")");
+                }
+                else
+                {
+                    debugServerConsoleMsg(killer, "Failed to create Darksaber for " + getName(killer));
+                }
+            }
+        }
+        // ================================================================
+        //      END MANDALORIAN / DARKSABER SECTION
+        // ================================================================
         factions.grantCombatFaction(killer, player, factionMod);
         dot.removeAllDots(player);
         clearAllHate(player);
@@ -814,6 +897,14 @@ public class pclib extends script.base_script
         params.put("victim", player);
         messageTo(killer, "handleKillerDeathBlow", params, 1, false);
         return true;
+    }
+    private static boolean isDarksaber(obj_id item) throws InterruptedException
+    {
+        if (!isIdValid(item))
+            return false;
+
+        String template = getTemplateName(item).toLowerCase();
+        return template.contains("sword_mandalorian") || template.contains("darksaber");
     }
     public static void clearAllHate(obj_id self) throws InterruptedException
     {

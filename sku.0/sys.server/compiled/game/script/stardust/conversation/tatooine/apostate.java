@@ -124,6 +124,10 @@ public class apostate extends script.base_script
         d.put("player", player);
         messageTo(npc, "showInventorySUI", d, 0, false);
     }
+    public void apostate_action_grantQuest(obj_id player, obj_id npc) throws InterruptedException
+    {
+        groundquests.grantQuest(player, "stardust_mando_darksaber", true);
+    }
     public void apostate_action_signalReward(obj_id player, obj_id npc) throws InterruptedException
     {
         groundquests.sendSignal(player, "apostate_reward");
@@ -246,6 +250,24 @@ public class apostate extends script.base_script
             responses[responseIndex++] = new string_id(c_stringFile, "confirm_leave_enclave");
 
             utils.setScriptVar(player, "conversation.apostate_conversation.branchId", 5);
+
+            npcSpeak(player, message);
+            npcSetConversationResponses(player, responses);
+
+            return SCRIPT_CONTINUE;
+        }
+        else if (response.equals("seek_to_unite_clans"))
+        {
+
+            final string_id message = new string_id(c_stringFile, "npc_explains_darksaber");
+            final int numberOfResponses = 1;
+
+            final string_id[] responses = new string_id[numberOfResponses];
+            int responseIndex = 0;
+
+            responses[responseIndex++] = new string_id(c_stringFile, "this_is_the_way");
+
+            utils.setScriptVar(player, "conversation.apostate_conversation.branchId", 6);
 
             npcSpeak(player, message);
             npcSetConversationResponses(player, responses);
@@ -443,6 +465,32 @@ public class apostate extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
+    public int apostate_handleBranch6(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        if (apostateMandalore_condition(player, npc) && apostate_condition_playerCompletedCreed(player, npc))
+        {
+            final string_id message = new string_id(c_stringFile, "npc_considers_heir_to_the_darksaber");
+            apostate_action_grantQuest(player, npc);
+            setObjVar(player, "stardust.seek_darksaber", true);
+            setObjVar(player, "stardust.seek_darksaber_gideon", true);
+
+            utils.removeScriptVar(player, "conversation.apostate_conversation.branchId");
+            npcEndConversationWithMessage(player, message);
+
+            return SCRIPT_CONTINUE;
+        }
+        else if (apostate_condition__defaultCondition(player, npc))
+        {
+            final string_id message = new string_id(c_stringFile, "npc_you_are_unworthy_darksaber");
+            removeObjVar(player, "stardust.seek_darksaber");
+
+            utils.removeScriptVar(player, "conversation.apostate_conversation.branchId");
+            npcEndConversationWithMessage(player, message);
+
+            return SCRIPT_CONTINUE;
+        }
+        return SCRIPT_DEFAULT;
+    }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         setCondition(self, CONDITION_CONVERSABLE);
@@ -488,7 +536,7 @@ public class apostate extends script.base_script
         if (apostate_language_condition(npc, player))
         {
             final string_id message = new string_id(c_stringFile, "npc_intro");
-            final int numberOfResponses = 5;
+            final int numberOfResponses = 6;
 
             final string_id[] responses = new string_id[numberOfResponses];
             int responseIndex = 0;
@@ -497,6 +545,7 @@ public class apostate extends script.base_script
             responses[responseIndex++] = new string_id(c_stringFile, "seek_mandalore");
             responses[responseIndex++] = new string_id(c_stringFile, "seek_the_way");
             responses[responseIndex++] = new string_id(c_stringFile, "seek_to_leave_enclave");
+            responses[responseIndex++] = new string_id(c_stringFile, "seek_to_unite_clans");
 
             utils.setScriptVar(player, "conversation.apostate_conversation.branchId", 1);
 
@@ -535,6 +584,10 @@ public class apostate extends script.base_script
             return SCRIPT_CONTINUE;
         }
         else if (branchId == 5 && apostate_handleBranch5(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        else if (branchId == 6 && apostate_handleBranch6(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }

@@ -190,6 +190,11 @@ public class som_kenobi_obi_wan extends script.base_script
     {
         groundquests.grantQuest(player, "som_kenobi_main_quest_1");
     }
+    public int handleDestroyTempSpawn(obj_id self, dictionary params) throws InterruptedException
+    {
+        destroyObject(self);
+        return SCRIPT_CONTINUE;
+    }
     public int som_kenobi_obi_wan_handleBranch2(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("s_315"))
