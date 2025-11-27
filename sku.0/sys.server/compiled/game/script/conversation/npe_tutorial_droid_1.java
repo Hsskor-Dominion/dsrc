@@ -43,6 +43,7 @@ public class npe_tutorial_droid_1 extends script.base_script
         removeObjVar(player, VAR_ORD_SCENE_NAME);
         newbieTutorialEnableHudElement(player, "radar", true, 0);
         newbieTutorialEnableHudElement(player, "chatbox", true, 0);
+        detachScript(player, "npe.han_solo_experience_player");
         attachScript(player, "npe.handoff_to_tatooine");
         setCompletedTutorial(player, true);
         setObjVar(player, "comingFromTutorial", 1);

@@ -144,7 +144,7 @@ public class gideon_death extends script.base_script
 
     public int OnAttach(obj_id self) throws InterruptedException
     {
-        setName(self, "Gideon (Phase 4 Darktrooper clone experiment");
+        setName(self, "Gideon (Phase 4 Darktrooper clone experiment)");
 
         return SCRIPT_CONTINUE;
     }

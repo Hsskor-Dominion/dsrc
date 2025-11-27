@@ -1819,7 +1819,7 @@ sp_critbuff_resonance	sp_critbuff_resonance	sp_aura_1		1	command.sp_resonance	20
 sp_critbuff_savagery	sp_critbuff_savagery	sp_aura_2		1	command.sp_savagery	20	expertise_critical_damage_increase	5	shared	0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	3	1	0	1	1	1
 sp_covert_mastery	sp_covert_mastery			1	buffs.hoth_ice_block	3	debuff_purge	100	dot_reduction_all	10	dot_immunity	5	movement_immunity	99		0	STATE_NONE	none			0	0		0	1	1	0	1	1	0	1	1	1
 costume_loveday_ewok_cupid	shapechange	costume		1	buffs.costume	28800	storyteller_costume	6		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
-bh_prescience	bh_prescience			1	command.bh_prescience	6		0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+bh_prescience	bh_prescience			1	command.bh_prescience	15		0		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 loveday_ewok_familiar	vr_familiar			4	buffs.loveday_familiar	-1	private_taunt_bonus	-2		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 costume_jawa	shapechange	costume		1	buffs.costume	28800	storyteller_costume	7		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 costume_gungan	shapechange	costume		1	buffs.costume	28800	storyteller_costume	8		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1

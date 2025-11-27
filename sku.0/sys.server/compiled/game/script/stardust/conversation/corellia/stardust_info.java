@@ -120,6 +120,7 @@ public class stardust_info extends script.base_script
                 chat.chat(npc, player, message);
                 npcEndConversation(player);
                 removeObjVar(player, "npe");
+                detachScript(player, "npe.han_solo_experience_player");
                 return SCRIPT_CONTINUE;
             }
         }

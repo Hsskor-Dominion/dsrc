@@ -56,6 +56,22 @@ public class maul extends script.base_script
     {
         return groundquests.isTaskActive(player, "stardust_maul", "talktomaul");
     }
+    public void maul_KillPlayer(obj_id player, obj_id npc) throws InterruptedException
+    {
+        attacker_results attackerResults = new attacker_results();
+        defender_results[] defenderResults = new defender_results[1];
+        attackerResults.id = npc;
+        attackerResults.weapon = null;
+        defenderResults[0] = new defender_results();
+        defenderResults[0].id = player;
+        defenderResults[0].endPosture = getPosture(player);
+        defenderResults[0].result = COMBAT_RESULT_HIT;
+        doCombatResults("force_lightning_1_particle_level_5_medium", attackerResults, defenderResults);
+        dictionary outparams = new dictionary();
+        outparams.put("player", player);
+        outparams.put("npc", npc);
+        messageTo(npc, "playerKnockedOut", outparams, 3, false);
+    }
     public void maul_sith_signalReward(obj_id player, obj_id npc) throws InterruptedException
     {
         groundquests.sendSignal(player, "stardust_entertainer_maul_reward");
@@ -95,6 +111,8 @@ public class maul extends script.base_script
         {
 
             final string_id message = new string_id(c_stringFile, "npc_aggro");
+            doAnimationAction(player, "squirm");
+            maul_KillPlayer(player, npc);
 
             utils.removeScriptVar(player, "conversation.maul_conversation.branchId");
             npcEndConversationWithMessage(player, message);

@@ -42,15 +42,22 @@ public class ep3_imperial_bunker_kashyyyk_locked extends script.base_script
         {
             return SCRIPT_CONTINUE;
         }
+        else if (hasObjVar(item, "stardust.seek_darksaber"))
+        {
+            return SCRIPT_CONTINUE;
+        }
         else if (hasObjVar(item, "gm") || isGod(item))
         {
             return SCRIPT_CONTINUE;
         }
-        else 
+        else
         {
-            string_id warning = new string_id("ep3/clone_relic_locks", "access_denied");
-            sendSystemMessage(item, warning);
-            return SCRIPT_OVERRIDE;
+            return SCRIPT_CONTINUE;
         }
+//        {
+//            string_id warning = new string_id("ep3/clone_relic_locks", "access_denied");
+//            sendSystemMessage(item, warning);
+//            return SCRIPT_OVERRIDE;
+//        }
     }
 }

@@ -1,5 +1,6 @@
 item	cash	token0	token1	token2	token3	token4	class	script	note
 s[none]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	i[0]	s	c
+item_pgc_token_03		100							
 item_event_lifeday_monkey_cage		75							class 11 is actually Rebel and class 10 is actually Imperial.
 item_event_lifeday_bandolier		75							
 item_event_lifeday_holo_table		50							This vendor table is for the IMPERIAL lifeday vendor.
@@ -14,10 +15,10 @@ item_event_lifeday_gcw_imperial_disk		50					10
 item_lifeday_09_wookiee_cookie_decorative		10							
 item_lifeday_09_hoth_chocolate_decorative		10							
 item_lifeday_09_jacket_02		75							
-item_lifeday_09_fireplace_01		60
-item_lifeday_09_fireplace_02		50
-item_lifeday_09_lamp_01		40
-item_lifeday_09_lamp_02		30
-item_lifeday_09_painting		50
-item_lifeday_costume_lifeday_monkeylizard		15
-item_costume_kit_holiday		2
+item_lifeday_09_fireplace_01		60							
+item_lifeday_09_fireplace_02		50							
+item_lifeday_09_lamp_01		40							
+item_lifeday_09_lamp_02		30							
+item_lifeday_09_painting		50							
+item_lifeday_costume_lifeday_monkeylizard		15							
+item_costume_kit_holiday		2							

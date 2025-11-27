@@ -39,6 +39,10 @@ public class sith_holocron extends script.base_script {
         return (getLevel(player) >= 90);
     }
 
+    public boolean phase1_condition(obj_id player, obj_id self) {
+        return hasSkill(player, "class_forcesensitive_phase1_novice");
+    }
+
     public boolean phase3_condition(obj_id player, obj_id self) {
         return hasSkill(player, "class_forcesensitive_phase3_novice");
     }
@@ -315,7 +319,7 @@ public class sith_holocron extends script.base_script {
         obj_id group = getGroupObject(player);
         if (!isIdValid(group))
         {
-            return false; // not in a group
+            return false;
         }
 
         obj_id[] members = getGroupMemberIds(group);
@@ -324,8 +328,18 @@ public class sith_holocron extends script.base_script {
             return false; // must be EXACTLY 2 players
         }
 
+        // --- NEW: Both players must be meditating ---
+        for (obj_id m : members)
+        {
+            if (!meditation.isMeditating(m))
+            {
+                return false; // one or both are not meditating
+            }
+        }
+
         return true;
     }
+
 
     public obj_id getOtherGroupMember(obj_id player) throws InterruptedException
     {
@@ -341,20 +355,15 @@ public class sith_holocron extends script.base_script {
             return null;
         }
 
-        // Find the member that is NOT the player
+        // --- This is now safe, because meditation was verified earlier ---
         for (obj_id m : members)
         {
             if (m != player)
             {
-                //CHECK: Other player must be meditating
-                if (meditation.isMeditating(m))
-                {
-                    return m;
-                }
+                return m; // The other meditating member
             }
         }
 
-        // No qualifying member found
         return null;
     }
 
@@ -384,7 +393,7 @@ public class sith_holocron extends script.base_script {
         // Check group size: requires exactly 2 players
         if (!inGroupOfTwo(player))
         {
-            sendSystemMessageTestingOnly(player, "A holocron convergence requires exactly two Force-sensitive beings meditating in unison.");
+            sendSystemMessageTestingOnly(player, "A holocron convergence requires a dyad of two meditating in unison.");
             return;
         }
 
@@ -583,8 +592,14 @@ public class sith_holocron extends script.base_script {
         }
         else if (matchedVision.equals("victory"))
         {
-            groundquests.grantQuest(player, "stardust_jedi_diplomacy4", true);//Should be Ashoka questline. Luke currently sends to Dathomir.
+            groundquests.grantQuest(player, "stardust_jedi_diplomacy4", true);//Luke currently sends to Dathomir. Maybe spawn Luke? Ashoka?
             groundquests.grantQuest(partner, "stardust_jedi_diplomacy4", true);
+            playClientEffectObj(player, "clienteffect/force_heal_03.cef", player, "");
+        }
+        else if (matchedVision.equals("honor"))
+        {
+            groundquests.grantQuest(player, "stardust_jedi_kill", true);//Revan? Mando
+            groundquests.grantQuest(partner, "stardust_jedi_kill", true);
             playClientEffectObj(player, "clienteffect/force_heal_03.cef", player, "");
         }
         else
@@ -799,6 +814,7 @@ public class sith_holocron extends script.base_script {
     }
 
     private void handleVisionChoice(obj_id player, String vision) throws InterruptedException {
+
         obj_id holocron = getSelf();
 
         // Set the vision obj var on the holocron

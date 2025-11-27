@@ -29,6 +29,7 @@ public class terminal_gcw_publish_gift extends script.terminal.base.base_termina
     public static final string_id SID_MENU_GCW_FACTIONAL_PRESENCE = new string_id("gcw", "gcw_factional_presence_war_terminal_menu");
     public static final string_id SID_MENU_GCW_PERSONAL_CONTRIBUTION = new string_id("gcw", "gcw_personal_contribution_war_terminal_menu");
     public static final string_id SID_MENU_GCW_REGION_DEFENDER = new string_id("gcw", "gcw_region_defender_war_terminal_menu");
+    public static final string_id SID_MENU_GCW_REGION_CHIMAERA = new string_id("gcw", "gcw_chimaera_war_terminal_menu");
     public static final String[] STAIC_BASE_PLANETS = 
     {
         "corellia",
@@ -75,7 +76,8 @@ public class terminal_gcw_publish_gift extends script.terminal.base.base_termina
             }
         }
         mi.addRootMenu(menu_info_types.SERVER_MENU1, SID_MENU_WAR_TERMINAL_BATTLEFIELD);
-        int gcwMenu = mi.addRootMenu(menu_info_types.SERVER_MENU5, SID_MENU_GCW);
+        mi.addRootMenu(menu_info_types.SERVER_MENU17, SID_MENU_GCW_REGION_CHIMAERA);
+        int gcwMenu = mi.addRootMenu(menu_info_types.SERVER_MENU7, SID_MENU_GCW);
         mi.addSubMenu(gcwMenu, menu_info_types.SERVER_MENU6, SID_MENU_GCW_REPORT);
         mi.addSubMenu(gcwMenu, menu_info_types.SERVER_MENU2, SID_MENU_GCW_FACTIONAL_PRESENCE);
         mi.addSubMenu(gcwMenu, menu_info_types.SERVER_MENU3, SID_MENU_GCW_PERSONAL_CONTRIBUTION);
@@ -355,7 +357,63 @@ public class terminal_gcw_publish_gift extends script.terminal.base.base_termina
                 }
             }
         }
+        else if (item == menu_info_types.SERVER_MENU17)
+        {
+            handleChimaeraWarzone(self, player);
+        }
         return SCRIPT_CONTINUE;
+    }
+
+    public void handleChimaeraWarzone(obj_id self, obj_id player) throws InterruptedException
+    {
+        int now = getGameTime(); // seconds since server start
+        int cooldown = 24 * 60 * 60; // 24 hours
+
+        // --- Cooldown check ---
+        if (hasObjVar(player, "chimaeraWarzoneCooldown"))
+        {
+            int lastUsed = getIntObjVar(player, "chimaeraWarzoneCooldown");
+            if (now - lastUsed < cooldown)
+            {
+                sendSystemMessage(player, "You may only access the Chimaera Warzone once every 24 hours.", "");
+                return;
+            }
+        }
+
+        // --- Grant reward item ---//maybe later I make rand 1-3 for levels?
+        obj_id reward = createObjectInInventoryAllowOverload(
+                "object/tangible/item/rare_loot_chest_3.iff",
+                player
+        );
+
+        if (!isIdValid(reward))
+        {
+            sendSystemMessage(player, "Error: Could not grant reward item.", "");
+            return;
+        }
+
+        // Attach script to reward if needed
+        attachScript(reward, "systems.loot.rare_loot_chest");
+        setName(reward, "Legendary Loot Crate");
+
+        // Save cooldown timestamp
+        setObjVar(player, "chimaeraWarzoneCooldown", now);
+
+        // Warp player (external modular function)
+        warpPlayerToWarzone(player);
+
+        sendSystemMessage(player, "You are being transported to the current Galactic Civil Warzone!", "");
+    }
+    public void warpPlayerToWarzone(obj_id player) throws InterruptedException
+    {
+        // CURRENT WARZONE - "The Battle of Yavin IV"
+        String planet = "yavin4";
+        float x = -3292.0f;
+        float y = 67.0f;
+        float z = -3075.0f;
+
+        // Actual warp
+        warpPlayer(player, planet, x, y, z, null, 0.0f, 0.0f, 0.0f);
     }
     public int OnClusterWideDataResponse(obj_id self, String strCategory, String strSubCategory, int intRequestId, String[] strElementNames, dictionary[] dctData, int intLockKey) throws InterruptedException
     {

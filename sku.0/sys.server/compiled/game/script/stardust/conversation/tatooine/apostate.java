@@ -504,6 +504,7 @@ public class apostate extends script.base_script
         setCondition(self, CONDITION_CONVERSABLE);
         setCondition(self, CONDITION_INTERESTING);
         setName(self, "a Mandalorian apostate");
+        setMaxHitpoints(self, 500000);
 
         return SCRIPT_CONTINUE;
     }

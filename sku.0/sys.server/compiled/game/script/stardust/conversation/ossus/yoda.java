@@ -118,6 +118,16 @@ public class yoda extends script.base_script
     }
     public int handleDestroyTempSpawn(obj_id self, dictionary params) throws InterruptedException
     {
+        // If this was called without a delay, schedule one
+        if (!params.containsKey("delayed"))
+        {
+            dictionary d = new dictionary();
+            d.put("delayed", 1);
+            messageTo(self, "handleDestroyTempSpawn", d, 60.0f, false);
+            return SCRIPT_CONTINUE;
+        }
+
+        // If we reach here, 30 seconds have already passed
         destroyObject(self);
         return SCRIPT_CONTINUE;
     }

@@ -1,15 +1,8 @@
 strItemType	comments
 s	s
-item_publish_gift_27_04_01	Concentrated Bacta Tank
-item_force_crystal_04_01	Biological Focus Crystal
-item_force_crystal_04_02	Synapse Focus Crystal
-object/tangible/wearables/armor/nightsister/armor_nightsister_bicep_r_s01.iff	Nightsister Melee Armguard
-object/tangible/jedi/no_drop_jedi_holocron_light.iff	Holocron
-object/tangible/jedi/no_drop_jedi_holocron_dark.iff	Sith Holocron
-item_jedi_robe_06_01	Jedi Master Cloak (Brown)
-item_jedi_robe_06_02	Jedi Master Cloak (Black)
-item_tow_decor_jedi_relic_02_03	Jedi Relic
-item_tow_decor_sith_relic_02_01	Sith Relic
-item_tow_crystal_uber_05_01	Shard of Ferocity
-item_tow_crystal_uber_05_02	Shard of Retaliation
-item_tow_schematic_jedi_statue_02_01	Schematic: Jedi Statue
+rare_loot_chest_quality_2	
+contraband_art_chest	
+contraband_spice_chest	
+contraband_spice_schematic_chest	
+item_pgc_token_03	
+item_pgc_token_03	

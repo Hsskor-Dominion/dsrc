@@ -43,7 +43,11 @@ public class mission_terminal extends script.base_script
                 mnu = mi.addRootMenu(menu_info_types.MISSION_TERMINAL_LIST, new string_id("", ""));
             }
         }
-        mi.addRootMenu(menu_info_types.SERVER_MENU8, SID_PLANETARY_BOUNTY);
+        String terminalName = getTemplateName(self);
+        if (terminalName.toLowerCase().contains("bounty"))
+        {
+            mi.addRootMenu(menu_info_types.SERVER_MENU8, SID_PLANETARY_BOUNTY);
+        }
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
@@ -108,7 +112,7 @@ public class mission_terminal extends script.base_script
     public boolean townspersonEnemy(obj_id player, obj_id self) throws InterruptedException
     {
         float townspersonFaction = factions.getFactionStanding(player, "townsperson");
-        return townspersonFaction <= 0;
+        return townspersonFaction <= -1000;
     }
     public void townspersonBounty(obj_id player, obj_id self) throws InterruptedException
     {
@@ -221,35 +225,9 @@ public class mission_terminal extends script.base_script
             return SCRIPT_CONTINUE;
         }
 
-        showSetBountySUIFromSelection(player, target);
+        bounty_hunter.showSetBountySUI(player, target);
         utils.removeScriptVar(player, "planet_bounty.list");
 
         return SCRIPT_CONTINUE;
-    }
-
-    public static void showSetBountySUIFromSelection(obj_id player, obj_id target) throws InterruptedException
-    {
-        String prompt = "@bounty_hunter:setbounty_prompt1 " + getName(target) +
-                "? @bounty_hunter:setbounty_prompt2 " + getTotalMoney(player);
-        String title = "@bounty_hunter:setbounty_title";
-
-        int pid = createSUIPage(sui.SUI_INPUTBOX, player, player, "handleSetBounty");
-        sui.setAutosaveProperty(pid, false);
-        sui.setSizeProperty(pid, 300, 325);
-        sui.setLocationProperty(pid, 400, 200);
-
-        setSUIProperty(pid, sui.INPUTBOX_PROMPT, sui.PROP_TEXT, prompt);
-        setSUIProperty(pid, sui.INPUTBOX_TITLE, sui.PROP_TEXT, title);
-
-        sui.inputboxButtonSetup(pid, sui.OK_CANCEL);
-        sui.inputboxStyleSetup(pid, sui.INPUT_NORMAL);
-        setSUIProperty(pid, sui.INPUTBOX_INPUT, "MaxLength", "20");
-        setSUIProperty(pid, sui.INPUTBOX_COMBO, "MaxLength", "20");
-
-        subscribeToSUIProperty(pid, sui.INPUTBOX_INPUT, sui.PROP_LOCALTEXT);
-        subscribeToSUIProperty(pid, sui.INPUTBOX_COMBO, sui.PROP_SELECTEDTEXT);
-
-        showSUIPage(pid);
-        utils.setScriptVar(player, "setbounty.selectedTarget", target);
     }
 }

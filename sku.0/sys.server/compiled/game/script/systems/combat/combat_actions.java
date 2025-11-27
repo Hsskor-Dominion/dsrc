@@ -7905,6 +7905,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_sniper_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        //sniperCoupHelper(self, target);
         return SCRIPT_CONTINUE;
     }
 
@@ -7912,6 +7913,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_sniper_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        //sniperCoupHelper(self, target);
         return SCRIPT_CONTINUE;
     }
 
@@ -7919,6 +7921,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_sniper_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        //sniperCoupHelper(self, target);
         return SCRIPT_CONTINUE;
     }
 
@@ -7926,6 +7929,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_sniper_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        //sniperCoupHelper(self, target);
         return SCRIPT_CONTINUE;
     }
 
@@ -7933,6 +7937,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_sniper_5", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        //sniperCoupHelper(self, target);
         return SCRIPT_CONTINUE;
     }
 
@@ -7940,6 +7945,41 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_sniper_6", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        //sniperCoupHelper(self, target);
+        return SCRIPT_CONTINUE;
+    }
+
+    // ------------------------------------------------------------
+// UNIVERSAL SNIPER COUP-DE-GRACE HELPER
+// ------------------------------------------------------------
+    private void sniperCoupHelper(obj_id self, obj_id target) throws InterruptedException
+    {
+        if (!isIdValid(target)) {
+            return;
+        }
+
+        dictionary d = new dictionary();
+        d.put("attacker", self);
+        d.put("target", target);
+        messageTo(self, "sniperDelayedDeathblow", d, 1.0f, false);
+    }
+
+    // Delayed check
+    public int sniperDelayedDeathblow(obj_id self, dictionary params) throws InterruptedException
+    {
+        obj_id attacker = params.getObjId("attacker");
+        obj_id target   = params.getObjId("target");
+
+        if (!isIdValid(attacker) || !isIdValid(target)) {
+            return SCRIPT_CONTINUE;
+        }
+
+        // If target is still incapacitated → execute deathblow
+        if (isIncapacitated(target) || getPosture(target) == POSTURE_INCAPACITATED)
+        {
+            pclib.coupDeGrace(target, attacker);
+        }
+
         return SCRIPT_CONTINUE;
     }
 

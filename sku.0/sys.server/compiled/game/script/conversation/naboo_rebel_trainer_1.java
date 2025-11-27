@@ -141,8 +141,7 @@ public class naboo_rebel_trainer_1 extends script.base_script
     }
     public boolean naboo_rebel_trainer_1_condition_hasSpaceShip(obj_id player, obj_id npc) throws InterruptedException
     {
-        return false;
-        //return (!space_quest.canGrantNewbieShip(player));
+        return (!space_quest.canGrantNewbieShip(player));
     }
     public boolean naboo_rebel_trainer_1_condition_has_GRADUATED_goto_DANTOOINE(obj_id player, obj_id npc) throws InterruptedException
     {

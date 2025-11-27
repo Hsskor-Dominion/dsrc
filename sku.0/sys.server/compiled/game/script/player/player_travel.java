@@ -162,6 +162,40 @@ public class player_travel extends script.base_script
     }
     public int OnTravelToGroupPickupPoint(obj_id self, String planetName, String travelPointName) throws InterruptedException
     {
+        // --- SIMPLE GCW LOGIC FOR GROUP PICKUP POINTS ---
+
+        if (!isIdValid(self))
+        {
+            return SCRIPT_CONTINUE;
+        }
+
+        // 1. Check if player has GCW travel perks
+        boolean hasPerk = travel.qualifiesForGcwTravelPerks(self);
+
+        // 2. If player does NOT qualify, apply flat 5000-credit surcharge
+        final int SURCHARGE = 5000;
+
+        if (!hasPerk)
+        {
+            int totalCredits = getBankBalance(self) + getCashBalance(self);
+
+            if (totalCredits < SURCHARGE)
+            {
+                sendSystemMessage(self, "You do not have enough credits for the 5,000 credit GCW travel tax.", "");
+                return SCRIPT_CONTINUE;
+            }
+
+            // Deduct from bank first just like SWG normally does
+            transferBankCreditsToNamedAccount(self, "gcw_group_travel_surcharge", SURCHARGE, null, null, null);
+
+            sendSystemMessage(self, "A 5,000 credit surcharge has been applied because you lack GCW travel privileges.", "");
+        }
+        else
+        {
+            sendSystemMessage(self, "You bypass the travel tax because you qualify as an officer in control of the sector.", "");
+        }
+
+        // 3. Perform group pickup travel
         travel.movePlayerToDestination(self, planetName, travelPointName, true);
         return SCRIPT_CONTINUE;
     }

@@ -27,7 +27,7 @@ public class apostate_death extends script.base_script
         // Schedule respawn
         dictionary d = new dictionary();
         d.put("oldMob", self);
-        messageTo(self, "handleRespawnApostate", d, 600.0f, false);
+        messageTo(self, "handleRespawnApostate", d, 120.0f, false);
 
         return SCRIPT_CONTINUE;
     }
