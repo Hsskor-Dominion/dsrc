@@ -215,7 +215,7 @@ public class npe_entertainer_jabba_questgiver extends script.base_script
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setInvulnerable(self, true);
-        setName(self, "Miss Snooty (Entertainer Gigs)");
+        setName(self, "Miss Snooty (Boonta Eve Entertainer Gigs)");
         ai_lib.setDefaultCalmBehavior(self, ai_lib.BEHAVIOR_SENTINEL);
         return SCRIPT_CONTINUE;
     }

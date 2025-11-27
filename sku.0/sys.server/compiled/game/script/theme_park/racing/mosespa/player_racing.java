@@ -235,6 +235,7 @@ public class player_racing extends script.base_script
 	        obj_id playerInv = utils.getInventoryContainer(self);
             static_item.createNewItemFunction("item_pgc_token_01", playerInv);
             grantExperiencePoints(self, "jedi", 100);
+            setObjVar(self, "completed_boonta", 1);
         }
         return SCRIPT_CONTINUE;
     }
