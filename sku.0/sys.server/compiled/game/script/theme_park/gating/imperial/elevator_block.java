@@ -9,6 +9,10 @@ public class elevator_block extends script.base_script
     public elevator_block()
     {
     }
+    public boolean sidious_quest_active(obj_id player) throws InterruptedException
+    {
+        return groundquests.isQuestActive(player, "stardust_holocron_power");
+    }
     public int OnAboutToReceiveItem(obj_id self, obj_id destinationCell, obj_id transferrer, obj_id item) throws InterruptedException
     {
         if (!isPlayer(item))
@@ -16,6 +20,10 @@ public class elevator_block extends script.base_script
             return SCRIPT_CONTINUE;
         }
         if (groundquests.hasCompletedQuest(item, "itp_veers_02") || isGod(item))
+        {
+            return SCRIPT_CONTINUE;
+        }
+        if (sidious_quest_active(item))
         {
             return SCRIPT_CONTINUE;
         }

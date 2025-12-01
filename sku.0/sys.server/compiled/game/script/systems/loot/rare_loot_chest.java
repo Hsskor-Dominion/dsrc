@@ -15,7 +15,7 @@ public class rare_loot_chest extends script.base_script {
 
     // --- CONFIG: % chance each rarity cascades to lower rarity ---
     private static final int CASCADE_CHANCE_TIER3 = 100;  // 3 → 2
-    private static final int CASCADE_CHANCE_TIER2 = 50;  // 2 → 1
+    private static final int CASCADE_CHANCE_TIER2 = 20;  // 2 → 1
     private static final int CASCADE_CHANCE_TIER1 = 0;   // 1 has no lower tier
 
 //

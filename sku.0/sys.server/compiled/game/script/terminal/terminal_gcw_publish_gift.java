@@ -1,9 +1,12 @@
 package script.terminal;
 
 import script.*;
+import script.library.factions;
 import script.library.gcw;
 import script.library.sui;
 import script.library.utils;
+
+import static script.library.factions.getFaction;
 
 public class terminal_gcw_publish_gift extends script.terminal.base.base_terminal
 {
@@ -366,8 +369,8 @@ public class terminal_gcw_publish_gift extends script.terminal.base.base_termina
 
     public void handleChimaeraWarzone(obj_id self, obj_id player) throws InterruptedException
     {
-        int now = getGameTime(); // seconds since server start
-        int cooldown = 24 * 60 * 60; // 24 hours
+        int now = getGameTime();
+        int cooldown = 20 * 60 * 60; // 20 hours
 
         // --- Cooldown check ---
         if (hasObjVar(player, "chimaeraWarzoneCooldown"))
@@ -375,12 +378,12 @@ public class terminal_gcw_publish_gift extends script.terminal.base.base_termina
             int lastUsed = getIntObjVar(player, "chimaeraWarzoneCooldown");
             if (now - lastUsed < cooldown)
             {
-                sendSystemMessage(player, "You may only access the Chimaera Warzone once every 24 hours.", "");
+                sendSystemMessage(player, "You may only access the Chimaera Warzone once every 20 hours.", "");
                 return;
             }
         }
 
-        // --- Grant reward item ---//maybe later I make rand 1-3 for levels?
+        // --- Grant reward item ---
         obj_id reward = createObjectInInventoryAllowOverload(
                 "object/tangible/item/rare_loot_chest_3.iff",
                 player
@@ -392,27 +395,41 @@ public class terminal_gcw_publish_gift extends script.terminal.base.base_termina
             return;
         }
 
-        // Attach script to reward if needed
         attachScript(reward, "systems.loot.rare_loot_chest");
         setName(reward, "Legendary Loot Crate");
 
         // Save cooldown timestamp
         setObjVar(player, "chimaeraWarzoneCooldown", now);
 
-        // Warp player (external modular function)
+        // Faction-based warp
         warpPlayerToWarzone(player);
 
-        sendSystemMessage(player, "You are being transported to the current Galactic Civil Warzone!", "");
+        sendSystemMessage(player, "You are being transported to the active Galactic Civil Warzone!", "");
     }
     public void warpPlayerToWarzone(obj_id player) throws InterruptedException
     {
-        // CURRENT WARZONE - "The Battle of Yavin IV"
         String planet = "yavin4";
-        float x = -3292.0f;
-        float y = 67.0f;
-        float z = -3075.0f;
+        float x, y, z;
 
-        // Actual warp
+        if (factions.isImperial(player))
+        {
+            // Imperial Camp Coordinates
+            x = -3184.0f;
+            y = 68.0f;
+            z = -3191.0f;
+
+            sendSystemMessage(player, "Imperial Command is deploying you to the forward base! Spoils of war granted!", "");
+        }
+        else
+        {
+            // New Republic / Neutral
+            x = -3293.0f;
+            y = 69.0f;
+            z = -2929.0f;
+
+            sendSystemMessage(player, "New Republic High Command is deploying you to the operations camp! Spoils of war granted!", "");
+        }
+
         warpPlayer(player, planet, x, y, z, null, 0.0f, 0.0f, 0.0f);
     }
     public int OnClusterWideDataResponse(obj_id self, String strCategory, String strSubCategory, int intRequestId, String[] strElementNames, dictionary[] dctData, int intLockKey) throws InterruptedException

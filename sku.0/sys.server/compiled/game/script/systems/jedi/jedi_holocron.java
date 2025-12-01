@@ -469,7 +469,6 @@ public class jedi_holocron extends script.base_script {
 
         if (!holo1Ready || !holo2Ready)
         {
-            sendSystemMessage(player, new string_id("jedi_spam", "holocron_explore")); // your existing message
             sendSystemMessageTestingOnly(player, "The holocrons flicker! You have not progressed far enough in their mechanism unlocks.");
 
             // OPTIONAL: damage holocron for failed convergence
@@ -492,8 +491,8 @@ public class jedi_holocron extends script.base_script {
         obj_id partner = getOtherGroupMember(player);
         if (matchedVision.equals("peace"))
         {
-            groundquests.grantQuest(player, "stardust_jedi_diplomacy1", true); // Luke pointer to Tatooine
-            groundquests.grantQuest(partner, "stardust_jedi_diplomacy1", true); // I want the partner to get the quest too, but we need to define earlier
+            groundquests.grantQuest(player, "stardust_jedi_diplomacy1", true); // Luke & Leia pointer to Tatooine
+            groundquests.grantQuest(partner, "stardust_jedi_diplomacy1", true);
             playClientEffectObj(player, "clienteffect/force_heal_01.cef", player, "");
             playMusic(player, player, "sound/mus_force_theme_lcv.snd", 0, false);
         }
@@ -546,7 +545,7 @@ public class jedi_holocron extends script.base_script {
                 setObjVar(yoda, "spawned_by_convergence", player);
                 chat.chat(yoda, "Clear your mind, you must...");
 
-                // Schedule Yoda removal after 60 seconds
+                // Schedule Yoda removal after X seconds
                 messageTo(yoda, "handleDestroyTempSpawn", null, 600.0f, false);
 
                 sendSystemMessageTestingOnly(player, "The holocrons shimmer and Master Yoda appears before you.");
@@ -560,10 +559,10 @@ public class jedi_holocron extends script.base_script {
                 sendSystemMessageTestingOnly(player, "You feel the Force shift, but Yoda does not appear.");
             }
         }
-        else if (matchedVision.equals("harmony"))
+        else if (matchedVision.equals("harmony"))//aka balance
         {
-            groundquests.grantQuest(player, "stardust_jedi_diplomacy3", true);//Kit Fisto? Luke currently sends to Corellia senate
-            groundquests.grantQuest(player, "stardust_jedi_diplomacy3", true);
+            groundquests.grantQuest(player, "stardust_holocron_harmony", true);//Anikin's "live... or Die", which should go to Talus eventually (similar to smuggler missions, run away from enemy vader)
+            groundquests.grantQuest(player, "stardust_holocron_harmony", true);
             playClientEffectObj(player, "clienteffect/force_heal_04.cef", player, "");
         }
         else if (matchedVision.equals("passion"))
@@ -579,19 +578,42 @@ public class jedi_holocron extends script.base_script {
             groundquests.grantQuest(partner, "gmf_vader", true);
             playClientEffectObj(player, "clienteffect/frs_dark_envy.cef", player, "");
         }
-        else if (matchedVision.equals("power"))
+        else if (matchedVision.equals("power"))//Darth Sidious
         {
-            groundquests.grantQuest(player, "stardust_sith_diplomacy2", true);//Should be Palpatine questline? Tie with Sith Relic? Talon currently sends to Naboo
-            groundquests.grantQuest(partner, "stardust_sith_diplomacy2", true);
-            playClientEffectObj(player, "clienteffect/frs_dark_vengeance.cef", player, "");
+            // REQUIREMENT: Player must have the "blueGlowie" command
+            if (!hasSkill(player, "stardust_jedi_elder"))
+            {
+                sendSystemMessage(player,
+                        "You have a brief vision of Jedi ghosts and Sith shadows... but the way is still closed to you.",
+                        "");
+                return;
+            }
+
+            // Grant quests to both players
+            groundquests.grantQuest(player, "stardust_holocron_power", true);
+
+            if (isIdValid(partner))
+            {
+                groundquests.grantQuest(partner, "stardust_holocron_power", true);
+            }
+
+            // FX
+            playClientEffectObj(
+                    player,
+                    "clienteffect/frs_dark_vengeance.cef",
+                    player,
+                    ""
+            );
+
+            return;
         }
-        else if (matchedVision.equals("victory"))
+        else if (matchedVision.equals("victory"))//Ashoka
         {
-            groundquests.grantQuest(player, "stardust_jedi_diplomacy4", true);//Should be Ashoka questline. Luke currently sends to Dathomir.
-            groundquests.grantQuest(partner, "stardust_jedi_diplomacy4", true);
+            groundquests.grantQuest(player, "stardust_holocron_aurillia", true);//Defend Aurillia
+            groundquests.grantQuest(partner, "stardust_holocron_aurillia", true);
             playClientEffectObj(player, "clienteffect/force_heal_03.cef", player, "");
         }
-        else if (matchedVision.equals("honor"))
+        else if (matchedVision.equals("honor"))//Revan
         {
             groundquests.grantQuest(player, "stardust_jedi_kill", true);//Revan? Mando
             groundquests.grantQuest(partner, "stardust_jedi_kill", true);
@@ -614,58 +636,58 @@ public class jedi_holocron extends script.base_script {
         }
     }
 
-    private void playVisionFor(obj_id target, String vision, obj_id spawner) throws InterruptedException
-    {
-        if (!isIdValid(target))
-        {
-            return;
-        }
-
-        switch (vision)
-        {
-            case "peace":
-                groundquests.grantQuest(target, "stardust_jedi_diplomacy1", true);
-                playClientEffectObj(target, "clienteffect/force_heal_01.cef", target, "");
-                playMusic(target, target, "sound/mus_force_theme_lcv.snd", 0, false);
-                break;
-
-            case "knowledge":
-                playClientEffectObj(target, "clienteffect/force_heal_02.cef", target, "");
-                playMusic(target, target, "sound/mus_force_theme_lcv.snd", 0, false);
-                break;
-
-            case "serenity":
-                groundquests.grantQuest(target, "stardust_jedi_diplomacy2", true);
-                playClientEffectObj(target, "clienteffect/force_heal_03.cef", target, "");
-                break;
-
-            case "harmony":
-                groundquests.grantQuest(target, "stardust_jedi_diplomacy3", true);
-                playClientEffectObj(target, "clienteffect/force_heal_04.cef", target, "");
-                break;
-
-            case "passion":
-                groundquests.grantQuest(target, "stardust_holocron_maul", true);
-                playClientEffectObj(target, "clienteffect/frs_dark_suffering.cef", target, "");
-                playMusic(target, target, "sound/mus_duel_of_the_fates_lcv.snd", 0, false);
-                break;
-
-            case "strength":
-                groundquests.grantQuest(target, "gmf_vader", true);
-                playClientEffectObj(target, "clienteffect/frs_dark_envy.cef", target, "");
-                break;
-
-            case "power":
-                groundquests.grantQuest(target, "stardust_sith_diplomacy2", true);
-                playClientEffectObj(target, "clienteffect/frs_dark_vengeance.cef", target, "");
-                break;
-
-            case "victory":
-                groundquests.grantQuest(target, "stardust_jedi_diplomacy4", true);
-                playClientEffectObj(target, "clienteffect/force_heal_03.cef", target, "");
-                break;
-        }
-    }
+//    private void playVisionFor(obj_id target, String vision, obj_id spawner) throws InterruptedException
+//    {
+//        if (!isIdValid(target))
+//        {
+//            return;
+//        }
+//
+//        switch (vision)
+//        {
+//            case "peace":
+//                groundquests.grantQuest(target, "stardust_jedi_diplomacy1", true);
+//                playClientEffectObj(target, "clienteffect/force_heal_01.cef", target, "");
+//                playMusic(target, target, "sound/mus_force_theme_lcv.snd", 0, false);
+//                break;
+//
+//            case "knowledge":
+//                playClientEffectObj(target, "clienteffect/force_heal_02.cef", target, "");
+//                playMusic(target, target, "sound/mus_force_theme_lcv.snd", 0, false);
+//                break;
+//
+//            case "serenity":
+//                groundquests.grantQuest(target, "stardust_jedi_diplomacy2", true);
+//                playClientEffectObj(target, "clienteffect/force_heal_03.cef", target, "");
+//                break;
+//
+//            case "harmony":
+//                groundquests.grantQuest(target, "stardust_jedi_diplomacy3", true);
+//                playClientEffectObj(target, "clienteffect/force_heal_04.cef", target, "");
+//                break;
+//
+//            case "passion":
+//                groundquests.grantQuest(target, "stardust_holocron_maul", true);
+//                playClientEffectObj(target, "clienteffect/frs_dark_suffering.cef", target, "");
+//                playMusic(target, target, "sound/mus_duel_of_the_fates_lcv.snd", 0, false);
+//                break;
+//
+//            case "strength":
+//                groundquests.grantQuest(target, "gmf_vader", true);
+//                playClientEffectObj(target, "clienteffect/frs_dark_envy.cef", target, "");
+//                break;
+//
+//            case "power":
+//                groundquests.grantQuest(target, "stardust_sith_diplomacy2", true);
+//                playClientEffectObj(target, "clienteffect/frs_dark_vengeance.cef", target, "");
+//                break;
+//
+//            case "victory":
+//                groundquests.grantQuest(target, "stardust_jedi_diplomacy4", true);
+//                playClientEffectObj(target, "clienteffect/force_heal_03.cef", target, "");
+//                break;
+//        }
+//    }
 
     public boolean vision_active(obj_id player, obj_id item) throws InterruptedException {
         return groundquests.isQuestActive(player, "stardust_vision");
@@ -708,7 +730,7 @@ public class jedi_holocron extends script.base_script {
                     rewardItem = "item_holocron_06_01"; // Yoda Form 0
                     break;
                 case "harmony":
-                    rewardItem = "item_holocron_06_02"; // Kit Fisto / Yoda Form 1
+                    rewardItem = "item_holocron_06_02"; // Kit Fisto / Yoda Form 1 (Anakin / Balance)
                     break;
                 case "passion":
                     rewardItem = "item_holocron_06_03"; // Maul Form 2
@@ -723,7 +745,7 @@ public class jedi_holocron extends script.base_script {
                     rewardItem = "item_holocron_06_06"; // Vader Form 5
                     break;
                 case "peace":
-                    rewardItem = "item_holocron_06_07"; // Leia Form 6
+                    rewardItem = "item_holocron_06_07"; // Luke & Leia Form 6
                     break;
                 case "power":
                     rewardItem = "item_holocron_06_08"; // Sidious Form 7

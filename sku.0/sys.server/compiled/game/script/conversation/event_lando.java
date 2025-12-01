@@ -224,7 +224,8 @@ public class event_lando extends script.base_script
         {
 	    if (event_lando_condition_townsPerson(player, npc))
             {
-		event_lando_action_vendor(player, npc);
+		        event_lando_action_vendor(player, npc);
+                groundquests.sendSignal(player, "sith_wayfinder");//I met a dead end on Lok
                 doAnimationAction(npc, "handshake_tandem");
                 string_id message = new string_id(c_stringFile, "fence_lando");
                 utils.removeScriptVar(player, "conversation.event_lando.branchId");

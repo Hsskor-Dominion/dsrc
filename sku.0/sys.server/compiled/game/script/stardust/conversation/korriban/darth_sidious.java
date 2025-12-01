@@ -112,8 +112,6 @@ public class darth_sidious extends script.base_script
         {
 
             final string_id message = new string_id(c_stringFile, "npc_aggro");
-            jedi.jediDeathExperienceLoss(player);
-            force_rank.removeFromForceRankSystem(player, true);
 
             utils.removeScriptVar(player, "conversation.darth_sidious_conversation.branchId");
             npcEndConversationWithMessage(player, message);

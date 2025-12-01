@@ -29,6 +29,15 @@ public class rtp_luke_main extends script.base_script
     {
         return groundquests.isTaskActive(player, "rtp_luke_03", "rtp_luke_03_02") || groundquests.hasCompletedQuest(player, "rtp_luke_03");
     }
+    public boolean rtp_luke_main_condition_gifts_complete(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return groundquests.hasCompletedQuest(player, "jedi_gifts_1")
+                || groundquests.hasCompletedQuest(player, "jedi_gifts_2");
+    }
+    public boolean rtp_luke_main_condition_holocron_power_complete(obj_id player, obj_id npc) throws InterruptedException
+    {
+        return groundquests.hasCompletedQuest(player, "stardust_holocron_power");
+    }
     public boolean rtp_luke_main_condition_rtp_luke_academy_01_complete(obj_id player, obj_id npc) throws InterruptedException
     {
         return groundquests.hasCompletedQuest(player, "stardust_jedi_academy_luke1");
@@ -48,18 +57,17 @@ public class rtp_luke_main extends script.base_script
     public boolean rtp_luke_main_condition_completedDodonna(obj_id player, obj_id npc) throws InterruptedException
     {
         return groundquests.hasCompletedQuest(player, "rtp_dodonna_03")
-                || hasCommand(player, "blueGlowie");
+                || hasSkill(player, "stardust_jedi_elder");
     }
     public boolean rtp_luke_main_condition_notRebel(obj_id player, obj_id npc) throws InterruptedException
     {
         String playerFaction = factions.getFaction(player);
         // Block (return true) only if NOT Rebel and NOT blueGlowie
-        return !("Rebel".equals(playerFaction) || hasCommand(player, "blueGlowie"));
+        return !("Rebel".equals(playerFaction) || hasSkill(player, "stardust_jedi_elder"));
     }
     public boolean rtp_luke_main_condition_isJedi(obj_id player, obj_id npc) throws InterruptedException
     {
-        float jediFaction = factions.getFactionStanding(player, "fs_villager");
-        return jediFaction >= 10;
+        return hasSkill(player,"class_forcesensitive_phase1_novice");
     }
     public void rtp_luke_main_action_rtp_luke_01_granted(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -76,6 +84,10 @@ public class rtp_luke_main extends script.base_script
     public void rtp_luke_main_action_rtp_luke_02_signal(obj_id player, obj_id npc) throws InterruptedException
     {
         groundquests.sendSignal(player, "rtp_luke_02_02");
+    }
+    public void rtp_luke_main_action_sidious_grant(obj_id player, obj_id npc) throws InterruptedException
+    {
+        groundquests.grantQuest(player, "stardust_holocron_sidious");
     }
     public void rtp_luke_main_action_rtp_luke_02_granted(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -237,198 +249,126 @@ public class rtp_luke_main extends script.base_script
     public int OnStartNpcConversation(obj_id self, obj_id player) throws InterruptedException
     {
         obj_id npc = self;
-        if (ai_lib.isInCombat(npc) || ai_lib.isInCombat(player))
-        {
+
+        // ---- SAFETY CHECK: in combat ----
+        if (ai_lib.isInCombat(npc) || ai_lib.isInCombat(player)) {
             return SCRIPT_OVERRIDE;
         }
-        if (rtp_luke_main_condition_notRebel(player, npc))//an imperial player who has blueGlowie should have access here, so it's not quite full rebel
-        {
-            string_id message = new string_id(c_stringFile, "s_44");
-            chat.chat(npc, player, message);
+
+        // ---- 1. Imperial or non-Rebel blocker ----
+        else if (rtp_luke_main_condition_notRebel(player, npc)) {
+            chat.chat(npc, player, new string_id(c_stringFile, "s_44"));
             return SCRIPT_CONTINUE;
         }
-        if (!rtp_luke_main_condition_completedDodonna(player, npc))
-        {
-            string_id message = new string_id(c_stringFile, "s_46");
-            chat.chat(npc, player, message);
+
+        // ---- 2. Must have completed Dodonna ----
+        else if (!rtp_luke_main_condition_completedDodonna(player, npc)) {
+            chat.chat(npc, player, new string_id(c_stringFile, "s_46"));
             return SCRIPT_CONTINUE;
         }
-        if (rtp_luke_main_condition_rtp_luke_03_complete(player, npc)) {
-            // Signal action and start a new conversation branch
+
+        // ---- 3. Sith Wayfinder grant path (Luke1 + Power complete) ----
+        else if (rtp_luke_main_condition_gifts_complete(player, npc)
+                && rtp_luke_main_condition_holocron_power_complete(player, npc))
+        {
+            rtp_luke_main_action_sidious_grant(player, npc);
+            chat.chat(npc, player, new string_id(c_stringFile, "s_sith_wayfinder"));
+            return SCRIPT_CONTINUE;
+        }
+
+        // ---- 4. Luke 03 complete → branching Jedi path ----
+        else if (rtp_luke_main_condition_rtp_luke_03_complete(player, npc)
+                && !rtp_luke_main_condition_gifts_complete(player, npc))
+        {
             rtp_luke_main_action_rtp_luke_03_signal(player, npc);
             string_id message = new string_id(c_stringFile, "s_9");
 
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
+            boolean isJedi = rtp_luke_main_condition_isJedi(player, npc);
 
-            // Check for follow-up condition and response
-            if (rtp_luke_main_condition_isJedi(player, npc)) {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-
-            if (hasResponse) {
-                int responseIndex = 0;
-                string_id[] responses = new string_id[numberOfResponses];
-
-                if (hasResponse0) {
-                    responses[responseIndex++] = new string_id(c_stringFile, "luke_academy1"); // follow-up response
-                }
-
-                // Set script variable for branching
+            if (isJedi) {
+                string_id[] responses = { new string_id(c_stringFile, "luke_academy1") };
                 utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 20);
                 npcStartConversation(player, npc, "rtp_luke_main", message, responses);
             } else {
-                // If no responses, end the conversation directly
                 chat.chat(npc, player, message);
-                npcEndConversationWithMessage(player, message); // Ensure conversation ends
+                npcEndConversationWithMessage(player, message);
             }
             return SCRIPT_CONTINUE;
         }
-        if (rtp_luke_main_condition_rtp_luke_03_active(player, npc))
-        {
-            string_id message = new string_id(c_stringFile, "s_29");
-            chat.chat(npc, player, message);
+
+        // ---- 5. Luke 03 active ----
+        else if (rtp_luke_main_condition_rtp_luke_03_active(player, npc)) {
+            chat.chat(npc, player, new string_id(c_stringFile, "s_29"));
             return SCRIPT_CONTINUE;
         }
-        if (rtp_luke_main_condition_rtp_luke_02_complete(player, npc))
+
+        // ---- 6. Luke 02 complete → branching ----
+        else if (rtp_luke_main_condition_rtp_luke_02_complete(player, npc)
+                && !rtp_luke_main_condition_rtp_luke_03_complete(player, npc))
         {
             rtp_luke_main_action_rtp_luke_02_signal(player, npc);
+
             string_id message = new string_id(c_stringFile, "s_28");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-            if (rtp_luke_main_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            boolean hasResponse1 = false;
-            if (rtp_luke_main_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse1 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_31");
-                }
-                if (hasResponse1)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_35");
-                }
-                utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 5);
-                npcStartConversation(player, npc, "rtp_luke_main", message, responses);
-            }
-            else
-            {
-                chat.chat(npc, player, message);
-            }
+            string_id[] responses = {
+                    new string_id(c_stringFile, "s_31"),
+                    new string_id(c_stringFile, "s_35")
+            };
+
+            utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 5);
+            npcStartConversation(player, npc, "rtp_luke_main", message, responses);
             return SCRIPT_CONTINUE;
         }
-        if (rtp_luke_main_condition_rtp_luke_02_active(player, npc))
-        {
-            string_id message = new string_id(c_stringFile, "s_16");
-            chat.chat(npc, player, message);
+
+        // ---- 7. Luke 02 active ----
+        else if (rtp_luke_main_condition_rtp_luke_02_active(player, npc)) {
+            chat.chat(npc, player, new string_id(c_stringFile, "s_16"));
             return SCRIPT_CONTINUE;
         }
-        if (rtp_luke_main_condition_rtp_luke_01_complete(player, npc))
+
+        // ---- 8. Luke 01 complete → branching ----
+        else if (rtp_luke_main_condition_rtp_luke_01_complete(player, npc)
+                && !rtp_luke_main_condition_rtp_luke_03_complete(player, npc))
         {
             rtp_luke_main_action_rtp_luke_01_signal(player, npc);
+
             string_id message = new string_id(c_stringFile, "s_20");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-            if (rtp_luke_main_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            boolean hasResponse1 = false;
-            if (rtp_luke_main_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse1 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_22");
-                }
-                if (hasResponse1)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_26");
-                }
-                utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 9);
-                npcStartConversation(player, npc, "rtp_luke_main", message, responses);
-            }
-            else
-            {
-                chat.chat(npc, player, message);
-            }
+            string_id[] responses = {
+                    new string_id(c_stringFile, "s_22"),
+                    new string_id(c_stringFile, "s_26")
+            };
+
+            utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 9);
+            npcStartConversation(player, npc, "rtp_luke_main", message, responses);
             return SCRIPT_CONTINUE;
         }
-        if (rtp_luke_main_condition_rtp_luke_01_active(player, npc))
-        {
-            string_id message = new string_id(c_stringFile, "s_32");
-            chat.chat(npc, player, message);
+
+        // ---- 9. Luke 01 active ----
+        else if (rtp_luke_main_condition_rtp_luke_01_active(player, npc)) {
+            chat.chat(npc, player, new string_id(c_stringFile, "s_32"));
             return SCRIPT_CONTINUE;
         }
-        if (rtp_luke_main_condition__defaultCondition(player, npc))
+
+        // ---- 10. Default conversation root ----
+        else if (rtp_luke_main_condition__defaultCondition(player, npc)
+                && !rtp_luke_main_condition_rtp_luke_03_complete(player, npc))
         {
+
             string_id message = new string_id(c_stringFile, "s_34");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-            if (rtp_luke_main_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            boolean hasResponse1 = false;
-            if (rtp_luke_main_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse1 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_36");
-                }
-                if (hasResponse1)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "s_41");
-                }
-                utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 13);
-                npcStartConversation(player, npc, "rtp_luke_main", message, responses);
-            }
-            else
-            {
-                chat.chat(npc, player, message);
-            }
+            string_id[] responses = {
+                    new string_id(c_stringFile, "s_36"),
+                    new string_id(c_stringFile, "s_41")
+            };
+
+            utils.setScriptVar(player, "conversation.rtp_luke_main.branchId", 13);
+            npcStartConversation(player, npc, "rtp_luke_main", message, responses);
             return SCRIPT_CONTINUE;
         }
-        chat.chat(npc, "Error:  All conditions for OnStartNpcConversation were false.");
-        return SCRIPT_CONTINUE;
+
+        // ---- 11. Fail-safe ----
+        else {
+            chat.chat(npc, "May the force be with you.");
+            return SCRIPT_CONTINUE;
+        }
     }
     public int OnNpcConversationResponse(obj_id self, String conversationId, obj_id player, string_id response) throws InterruptedException
     {

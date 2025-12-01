@@ -65,6 +65,7 @@ public class itp_emperor_main extends script.base_script
     public void itp_emperor_main_action_itp_emp_03_signal(obj_id player, obj_id npc) throws InterruptedException
     {
         groundquests.sendSignal(player, "itp_emperor_03_04");
+        groundquests.sendSignal(player, "luuke");
     }
     public void itp_emperor_main_action_itp_emp_02_signal(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -198,6 +199,7 @@ public class itp_emperor_main extends script.base_script
         if (itp_emperor_main_condition_notImperial(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_44");
+            itp_emperor_main_action_itp_emp_03_signal(player, npc);
             chat.chat(npc, player, message);
             return SCRIPT_CONTINUE;
         }

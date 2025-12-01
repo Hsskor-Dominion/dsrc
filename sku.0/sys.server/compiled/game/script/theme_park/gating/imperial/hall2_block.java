@@ -12,6 +12,10 @@ public class hall2_block extends script.base_script
     public hall2_block()
     {
     }
+    public boolean sidious_quest_active(obj_id player) throws InterruptedException
+    {
+        return groundquests.isQuestActive(player, "stardust_holocron_power");
+    }
     public int OnAboutToReceiveItem(obj_id self, obj_id destinationCell, obj_id transferrer, obj_id item) throws InterruptedException
     {
         if (!isPlayer(item))
@@ -27,7 +31,7 @@ public class hall2_block extends script.base_script
         {
             hasSpaceAccess = true;
         }
-        if (groundquests.isQuestActiveOrComplete(item, "itp_kaja_01") || hasSpaceAccess || isGod(item))
+        if (groundquests.isQuestActiveOrComplete(item, "itp_kaja_01") || hasSpaceAccess || isGod(item) || sidious_quest_active(item)))
         {
             return SCRIPT_CONTINUE;
         }

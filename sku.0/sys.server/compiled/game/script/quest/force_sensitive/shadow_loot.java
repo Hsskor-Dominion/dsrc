@@ -44,17 +44,17 @@ public class shadow_loot extends script.base_script
             return SCRIPT_CONTINUE;
         }
         int phase = getIntObjVar(self, "current_phase");
-        if (phase == 0)
-        {
-            return SCRIPT_CONTINUE;
-        }
+//        if (phase == 0)
+//        {
+//            return SCRIPT_CONTINUE;
+//        }
         int success = 75;
         if (phase == 4)
         {
             success = 10;
         }
         int chance = rand(1, 100);
-        if (chance <= success)
+        if (chance <= 50)//changed to 50% for simple loot due to lack of phases post NGE implementation
         {
             String treasure = pickLootItem();
             obj_id item = createObject(treasure, corpseInventory, "");

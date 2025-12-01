@@ -136,17 +136,9 @@ public class boonta_eve extends base_script
         if (hasObjVar(player, "completed_boonta"))
         {
             // Create the reward token
-            obj_id reward = createObjectInInventoryAllowOverload("object/tangible/item/item_pgc_token_03.iff", player);
-
-            if (isIdValid(reward))
-            {
-                sendSystemMessage(player, "You receive a Boonta Eve Champion Token!", "");
-            }
-            else
-            {
-                sendSystemMessage(player, "An error occurred while granting your reward.", "");
-            }
-
+            obj_id playerInv = utils.getInventoryContainer(player);
+            static_item.createNewItemFunction("item_pgc_token_03", playerInv);
+            sendSystemMessage(player, "You receive a Boonta Eve Champion Gold Peggat Coin!", "");
             // Remove the completion flag so they can't repeat reward infinitely
             removeObjVar(player, "completed_boonta");
         }

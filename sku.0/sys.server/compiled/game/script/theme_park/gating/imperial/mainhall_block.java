@@ -1,6 +1,7 @@
 package script.theme_park.gating.imperial;
 
 import script.library.factions;
+import script.library.groundquests;
 import script.library.space_quest;
 import script.obj_id;
 import script.string_id;
@@ -10,9 +11,17 @@ public class mainhall_block extends script.base_script
     public mainhall_block()
     {
     }
+    public boolean sidious_quest_active(obj_id player) throws InterruptedException
+    {
+        return groundquests.isQuestActive(player, "stardust_holocron_power");
+    }
     public int OnAboutToReceiveItem(obj_id self, obj_id destinationCell, obj_id transferrer, obj_id item) throws InterruptedException
     {
         if (!isPlayer(item))
+        {
+            return SCRIPT_CONTINUE;
+        }
+        if (sidious_quest_active(item))
         {
             return SCRIPT_CONTINUE;
         }

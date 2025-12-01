@@ -32,33 +32,9 @@ public class ren extends script.base_script
     {
         return hasSkill(player,"class_forcesensitive_phase1_novice");
     }
-    public boolean ren_phase2_condition(obj_id npc, obj_id player)
-    {
-        return hasSkill(player,"class_forcesensitive_phase2_novice");
-    }
-    public boolean ren_phase3_condition(obj_id npc, obj_id player)
-    {
-        return hasSkill(player,"class_forcesensitive_phase3_novice");
-    }
-    public boolean ren_phase4_condition(obj_id npc, obj_id player)
-    {
-        return hasSkill(player,"class_forcesensitive_phase4_novice");
-    }
-    public boolean ren_credits_condition(obj_id player, obj_id npc) throws InterruptedException
-    {
-        return (money.hasFunds(player, money.MT_TOTAL, smuggler.TIER_4_GENERIC_PVP_FRONT_COST));
-    }
-    public boolean ren_hasObjVar_condition(obj_id npc, obj_id player)
-    {
-        return hasObjVar(player, SITH_APPRENTICE);
-    }
     public boolean ren_sith_quest_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
     {
-        return groundquests.isTaskActive(player, "stardust_ren", "talktoren");
-    }
-    public void ren_sith_signalReward(obj_id player, obj_id npc) throws InterruptedException
-    {
-        groundquests.sendSignal(player, "stardust_entertainer_ren_reward");
+        return groundquests.hasCompletedQuest(player, "sith_hunt_jedi");
     }
     public void ren_action_vendor(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -69,7 +45,12 @@ public class ren extends script.base_script
     public void ren_sith_quest(obj_id player, obj_id npc) throws InterruptedException
     {
         String pTemplate = getSkillTemplate(player);
-        groundquests.grantQuest(player, "stardust_sith_ren");
+        groundquests.grantQuest(player, "sith_hunt_jedi");
+    }
+    public void ren_sith_quest2(obj_id player, obj_id npc) throws InterruptedException
+    {
+        String pTemplate = getSkillTemplate(player);
+        groundquests.grantQuest(player, "stardust_holocron_ren");
     }
     public void ren_bounty_quest(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -213,12 +194,31 @@ public class ren extends script.base_script
     {
         if (response.equals("seek_sith2"))
         {
-            if (ren_phase1_condition(npc, player))
+            if (ren_phase1_condition(player, npc))
             {
-                groundquests.grantQuest(player, "sith_hunt_jedi");
+                ren_sith_quest2(player, npc);
                 final string_id message = new string_id(c_stringFile, "npc_offer_mission");
 
-                utils.removeScriptVar(player, "conversation.ren_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (ren_sith_quest_condition_playerFinishedMainTask(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "npc_offer_mission");
+
+                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
+                npcEndConversationWithMessage(player, message);
+
+                return SCRIPT_CONTINUE;
+            }
+            else if (ren_sithFriend_condition(player, npc))
+            {
+                ren_sith_quest(player, npc);
+                final string_id message = new string_id(c_stringFile, "npc_offer_mission");
+
+                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
@@ -227,7 +227,7 @@ public class ren extends script.base_script
             {
                 final string_id message = new string_id(c_stringFile, "npc_deny_mission");
 
-                utils.removeScriptVar(player, "conversation.ren_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;

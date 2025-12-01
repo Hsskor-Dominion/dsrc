@@ -32,25 +32,9 @@ public class darth_lumiya extends script.base_script
     {
         return hasSkill(player,"class_forcesensitive_phase1_novice");
     }
-    public boolean darth_lumiya_phase2_condition(obj_id npc, obj_id player)
-    {
-        return hasSkill(player,"class_forcesensitive_phase2_novice");
-    }
-    public boolean darth_lumiya_phase3_condition(obj_id npc, obj_id player)
-    {
-        return hasSkill(player,"class_forcesensitive_phase3_novice");
-    }
-    public boolean darth_lumiya_phase4_condition(obj_id npc, obj_id player)
-    {
-        return hasSkill(player,"class_forcesensitive_phase4_novice");
-    }
     public boolean darth_lumiya_sith_quest_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
     {
         return groundquests.hasCompletedQuest(player, "sith_hunt_jedi");
-    }
-    public void darth_lumiya_sith_signalReward(obj_id player, obj_id npc) throws InterruptedException
-    {
-        groundquests.sendSignal(player, "darth_lumiya_reward");
     }
     public void darth_lumiya_action_vendor(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -87,7 +71,6 @@ public class darth_lumiya extends script.base_script
             if (darth_lumiya_sithFriend_condition(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "npc_aggro");
-                darth_lumiya_sith_quest(player, npc);
 
                 utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
                 npcEndConversationWithMessage(player, message);

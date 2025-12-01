@@ -18,3 +18,4 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 -51568000	0	object/building/kashyyyk/thm_kash_rodian_bannerpole_s01.iff	0	0	195	0	1	0	0	0		$|
 -78066169	0	object/tangible/collection/rare_pistol_grooved_dl44.iff	0	258.643	14.1821	358.846	0.706944	0.107878	0.103093	0.691349	systems.collections.consume_click	collection.slotName|4|col_rare_pistol_01:grooved_dl44_01|$|
 -1241749275	0	object/tangible/collection/rare_carbine_firestar_10_k.iff	0	326.886	63.8172	628.403	-0.096467	-0.479097	0.872444	0.00151589	systems.collections.consume_click	collection.slotName|4|col_rare_carbine_01:firestar_10_k_01|$|
+-1974092	0	object/ship/decimator.iff	0	352.98	44.8	112.3	1	0	0	0		

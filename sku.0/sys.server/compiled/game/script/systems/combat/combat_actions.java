@@ -2221,9 +2221,6 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int fs_set_heroic_taunt_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!buff.hasBuff(self, "set_bonus_jedi_utility_b_3")) {
-            return SCRIPT_OVERRIDE;
-        }
         if (!combatStandardAction("fs_set_heroic_taunt_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
