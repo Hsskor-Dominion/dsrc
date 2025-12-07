@@ -24,9 +24,6 @@
 
 sharedTemplate = "object/mobile/shared_luke_skywalker.iff"
 
-scripts = +[
-	"npc.celebrity.luke"]
-
 
 
 

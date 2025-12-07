@@ -28,9 +28,13 @@ public class ren extends script.base_script
         float sithFaction = factions.getFactionStanding(player, "sith_shadow");
         return sithFaction >= 1000;
     }
-    public boolean ren_phase1_condition(obj_id npc, obj_id player)
+    public boolean ren_phase1_condition(obj_id player, obj_id npc)
     {
         return hasSkill(player,"class_forcesensitive_phase1_novice");
+    }
+    public boolean ren_phase2_condition(obj_id player, obj_id npc)
+    {
+        return hasSkill(player,"class_forcesensitive_phase2_novice");
     }
     public boolean ren_sith_quest_condition_playerFinishedMainTask(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -194,42 +198,44 @@ public class ren extends script.base_script
     {
         if (response.equals("seek_sith2"))
         {
-            if (ren_phase1_condition(player, npc))
+            // PATH 1 – correct stage for SithQuest2
+            if (ren_phase2_condition(player, npc))
             {
                 ren_sith_quest2(player, npc);
-                final string_id message = new string_id(c_stringFile, "npc_offer_mission");
+                string_id message = new string_id(c_stringFile, "npc_offer_mission");
 
-                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.darth_ren_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
-
                 return SCRIPT_CONTINUE;
             }
-            else if (ren_sith_quest_condition_playerFinishedMainTask(player, npc))
+
+            // PATH 2 – player has finished main storyline task
+            if (ren_sith_quest_condition_playerFinishedMainTask(player, npc))
             {
-                final string_id message = new string_id(c_stringFile, "npc_offer_mission");
+                string_id message = new string_id(c_stringFile, "npc_offer_mission");
 
-                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.darth_ren_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
-
                 return SCRIPT_CONTINUE;
             }
-            else if (ren_sithFriend_condition(player, npc))
+
+            // PATH 3 – Sith friend fallback path → offers quest 1
+            if (ren_sithFriend_condition(player, npc))
             {
                 ren_sith_quest(player, npc);
-                final string_id message = new string_id(c_stringFile, "npc_offer_mission");
+                string_id message = new string_id(c_stringFile, "npc_offer_mission");
 
-                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.darth_ren_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
-
                 return SCRIPT_CONTINUE;
             }
-            else
+
+            // PATH 4 – denied
             {
-                final string_id message = new string_id(c_stringFile, "npc_deny_mission");
+                string_id message = new string_id(c_stringFile, "npc_deny_mission");
 
-                utils.removeScriptVar(player, "conversation.darth_lumiya_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.darth_ren_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
-
                 return SCRIPT_CONTINUE;
             }
         }

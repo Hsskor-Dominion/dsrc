@@ -29,6 +29,7 @@ public class encounter_on_creature extends script.base_script
         float distanceToPlayer = currentLocation.distance(playerLocation);
         setObjVar(self, objvarOnCreatureStartLocation, currentLocation);
         setObjVar(self, objvarOnCreatureStartDistanceToPlayer, distanceToPlayer);
+        setInvulnerable(self, false);
         dictionary params = new dictionary();
         messageTo(self, "messageEncounterTaskCheckCreatureDistance", params, 15, false);
         return SCRIPT_CONTINUE;

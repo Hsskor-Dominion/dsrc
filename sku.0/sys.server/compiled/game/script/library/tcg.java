@@ -68,7 +68,7 @@ public class tcg extends script.base_script
         "Hanse",
         "Teesquared",
         "Valara",
-        "DevH",
+        "Hsskor",//replaced duplicate DevH for funzies :P
         "Loche",
         "Millbarge",
         "Jaskell",

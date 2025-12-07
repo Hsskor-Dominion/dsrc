@@ -126,6 +126,20 @@ public class saarlac_wheel extends script.gambling.base.wheel
     private static final string_id SID_MNU_POOL_MINIMUM_JABBA = new string_id("gambling/saarlac_wheel", "menu_pool_minimum_jabba");
     private static final string_id SID_MNU_POOL_MINIMUM_OASIS = new string_id("gambling/saarlac_wheel", "menu_pool_minimum_oasis");
     private static final string_id SID_MNU_POOL_MINIMUM_SAARLAC = new string_id("gambling/saarlac_wheel", "menu_pool_minimum_saarlac");
+    public int OnAttach(obj_id self) throws InterruptedException
+    {
+        // Configure roulette table defaults
+        setObjVar(self, "gambling.table.bet.ante", 0);
+        setObjVar(self, "gambling.table.bet.max", 10000);
+        setObjVar(self, "gambling.table.bet.min", 1);
+
+        setObjVar(self, "gambling.table.playerLimit.max", 10);
+        setObjVar(self, "gambling.table.playerLimit.min", 1);
+
+        setObjVar(self, "gambling.table.type", "sarlaac_wheel");
+
+        return SCRIPT_CONTINUE;
+    }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         reseed(getGameTime());

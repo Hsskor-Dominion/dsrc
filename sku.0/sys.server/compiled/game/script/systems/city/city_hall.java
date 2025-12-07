@@ -35,7 +35,7 @@ public class city_hall extends script.base_script
         {
             city.removeTaxes(city_id);
         }
-        if ((city.getCityRank(city_id) < 3) && city.isCityRegistered(city_id))
+        if ((city.getCityRank(city_id) < 2) && city.isCityRegistered(city_id))//lowered the rank requirement from 3 to 2
         {
             city.unregisterCity(city_id);
         }

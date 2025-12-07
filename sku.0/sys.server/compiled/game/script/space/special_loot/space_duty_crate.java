@@ -1,5 +1,6 @@
 package script.space.special_loot;
 
+import script.library.factions;
 import script.library.smuggler;
 import script.library.static_item;
 import script.library.utils;
@@ -118,6 +119,25 @@ public class space_duty_crate extends script.base_script
                 }
             }
         }
+        // --- GAMING TABLE ROLL ---
+        int stardustRoll = rand(1, 100);
+
+        if (stardustRoll <= 25)
+        {
+            static_item.createNewItemFunction("stardust_gaming_table_wheel", inventory);
+        }
+        else if (stardustRoll <= 60)
+        {
+            static_item.createNewItemFunction("stardust_gaming_table_roulette", inventory);
+        }
+        else
+        {
+            static_item.createNewItemFunction("stardust_gaming_table_pazaak", inventory);
+        }
+        // Token always drops; FACTION BONUS
+        static_item.createNewItemFunction("item_pgc_token_03", inventory);
+        factions.addFactionStanding(player, "underworld", 100);
+        factions.addFactionStanding(player, "pirate", 100);
         destroyObject(self);
     }
     public String generateRegularItem(obj_id player) throws InterruptedException

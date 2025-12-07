@@ -2503,7 +2503,7 @@ public class terminal_city extends script.base_script {
             sendSystemMessage(player, SID_CANT_REGISTER);
             return SCRIPT_CONTINUE;
         }
-        if (city.getCityRank(city_id) < 3)
+        if (city.getCityRank(city_id) < 2)
         {
             sendSystemMessage(player, SID_CANT_REGISTER_RANK);
             return SCRIPT_CONTINUE;

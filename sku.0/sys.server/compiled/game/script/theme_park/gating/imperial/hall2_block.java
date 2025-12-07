@@ -31,7 +31,7 @@ public class hall2_block extends script.base_script
         {
             hasSpaceAccess = true;
         }
-        if (groundquests.isQuestActiveOrComplete(item, "itp_kaja_01") || hasSpaceAccess || isGod(item) || sidious_quest_active(item)))
+        if (groundquests.isQuestActiveOrComplete(item, "itp_kaja_01") || hasSpaceAccess || isGod(item) || sidious_quest_active(item))
         {
             return SCRIPT_CONTINUE;
         }

@@ -386,6 +386,9 @@ public class bounty_hunter extends script.base_script
         float factionAdj = getBountyFactionPointAdjustment(hunter, target);
         if (factionAdj != 0.0f) {
             factions.addFactionStanding(hunter, factions.getFactionNameByHashCode(pvpGetAlignedFaction(hunter)), factionAdj);
+        }
+        if (hasCommand(hunter, "bountycheck"));
+        {
             factions.addFactionStanding(hunter, "underworld", -5);
         }
 
@@ -477,14 +480,15 @@ public class bounty_hunter extends script.base_script
                         setName(clonedSaber, "Lightsaber of " + victimName);
 
                         // --- Damage or destroy cloned saber ---
-                        int maxHp = getMaxHitpoints(clonedSaber);
-                        if (maxHp > 0) {
-                            int damage = maxHp - 10; // leaves it nearly broken
-                            damageItem(clonedSaber, damage, hunter);
-                        } else {
-                            // fallback if hitpoints not initialized
-                            damageItem(clonedSaber, 980, hunter);
-                        }
+                        setMaxHitpoints(clonedSaber, 5);
+//                        int maxHp = getMaxHitpoints(clonedSaber);
+//                        if (maxHp > 0) {
+//                            int damage = maxHp - 10; // leaves it nearly broken
+//                            damageItem(clonedSaber, damage, hunter);
+//                        } else {
+//                            // fallback if hitpoints not initialized
+//                            damageItem(clonedSaber, 980, hunter);
+//                        }
 
                         copiedLightsaber = true;
 

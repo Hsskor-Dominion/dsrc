@@ -33,6 +33,22 @@ public class roulette extends script.gambling.base.wheel
         34,
         36
     };
+
+    public int OnAttach(obj_id self) throws InterruptedException
+    {
+        // Configure roulette table defaults
+        setObjVar(self, "gambling.table.bet.ante", 0);
+        setObjVar(self, "gambling.table.bet.max", 10000);
+        setObjVar(self, "gambling.table.bet.min", 1);
+
+        setObjVar(self, "gambling.table.playerLimit.max", 10);
+        setObjVar(self, "gambling.table.playerLimit.min", 1);
+
+        setObjVar(self, "gambling.table.type", "roulette");
+
+        return SCRIPT_CONTINUE;
+    }
+
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         cleanupWheelGame(self);
@@ -44,6 +60,7 @@ public class roulette extends script.gambling.base.wheel
         gambling.initializeTable(self, gameType);
         return super.OnInitialize(self);
     }
+
     public int handleBetPlaced(obj_id self, dictionary params) throws InterruptedException
     {
         if (params == null || params.isEmpty())

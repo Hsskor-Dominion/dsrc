@@ -273,8 +273,7 @@ public class naboo_imperial_trainer_1 extends script.base_script
     }
     public boolean naboo_imperial_trainer_1_condition_lostShip(obj_id player, obj_id npc) throws InterruptedException
     {
-        return true;
-        //return space_quest.canGrantNewbieShip(player) && hasSkill(player, "pilot_imperial_navy_novice");
+        return space_quest.canGrantNewbieShip(player) && hasSkill(player, "pilot_imperial_navy_novice");
     }
     public boolean naboo_imperial_trainer_1_condition_hasAShip(obj_id player, obj_id npc) throws InterruptedException
     {

@@ -38,15 +38,15 @@ public class pazaak extends script.gambling.base.table
     };
     public static final int[] DEFAULT_SIDE_DECK = 
     {
+        -1,
         1,
-        1,
+        -2,
         2,
-        2,
+        -3,
         3,
-        3,
+        -4,
         4,
-        4,
-        5,
+        -5,
         5
     };
     public static final String SCRIPT_VAR_HAND = "gambling.game.players.hand";
@@ -78,6 +78,20 @@ public class pazaak extends script.gambling.base.table
     public static final string_id SID_PLAYER_WIN_OTHER = new string_id("gambling/pazaak", "player_win_other");
     public static final string_id SID_PLAYER_INACTIVE_SELF = new string_id("gambling/pazaak", "player_inactive_self");
     public static final string_id SID_PLAYER_INACTIVE_OTHER = new string_id("gambling/pazaak", "player_inactive_other");
+    public int OnAttach(obj_id self) throws InterruptedException
+    {
+        // Configure roulette table defaults
+        setObjVar(self, "gambling.table.bet.ante", 0);
+        setObjVar(self, "gambling.table.bet.max", 10000);
+        setObjVar(self, "gambling.table.bet.min", 1);
+
+        setObjVar(self, "gambling.table.playerLimit.max", 10);
+        setObjVar(self, "gambling.table.playerLimit.min", 1);
+
+        setObjVar(self, "gambling.table.type", "pazaak");
+
+        return SCRIPT_CONTINUE;
+    }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
         reseed(getGameTime());

@@ -1067,7 +1067,7 @@ public class smuggler extends script.base_script
                 revokeSkill(player, "sm_title_bootlegger");
             }
         }
-        if (value <= -2000.0f)
+        if (value <= -1000.0f)//QoL lowered amount needed
         {
             if (!hasSkill(player, "bh_title_inspector"))
             {
@@ -1075,7 +1075,7 @@ public class smuggler extends script.base_script
                 revokeSkill(player, "sm_title_pirate");
             }
         }
-        if (value <= -3000.0f)
+        if (value <= -2000.0f)
         {
             if (!hasSkill(player, "bh_title_agent"))
             {

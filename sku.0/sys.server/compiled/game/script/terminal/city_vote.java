@@ -121,7 +121,7 @@ public class city_vote extends script.terminal.base.base_terminal
         int menu = mi.addRootMenu(menu_info_types.SERVER_MENU1, SID_MAYORAL_RACE);
         mi.addSubMenu(menu, menu_info_types.SERVER_MENU2, SID_MAYORAL_STANDINGS);
         mi.addSubMenu(menu, menu_info_types.SERVER_MENU3, SID_MAYORAL_VOTE);
-        mi.addRootMenu(menu_info_types.SERVER_MENU7, SID_CITY_DIPLOMACY);
+        mi.addRootMenu(menu_info_types.SERVER_MENU7, SID_CITY_DIPLOMACY);//bug fixing
         mi.addRootMenu(menu_info_types.SERVER_MENU8, SID_CITY_BOUNTY);
         if (!isRegisteredToRun(player, self))
         {

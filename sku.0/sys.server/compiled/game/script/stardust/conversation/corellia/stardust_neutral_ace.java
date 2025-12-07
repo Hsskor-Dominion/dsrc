@@ -51,6 +51,9 @@ public class stardust_neutral_ace extends script.base_script
                     && stardust_rebel_condition_ace_of_aces(player, npc))
             {
                 grantSkill(player, "stardust_ace_of_ace_of_aces");
+                grantSkill(player, "stardust_ace_of_ace_of_aces2");
+                grantSkill(player, "stardust_ace_of_ace_of_aces3");
+                badge.grantBadge(player, "acc_brave_soldier");
                 string_id message = new string_id(c_stringFile, "grant_ace_of_ace_of_aces");
                 utils.removeScriptVar(player, "conversation.stardust_neutral_ace.branchId");
                 npcEndConversationWithMessage(player, message);

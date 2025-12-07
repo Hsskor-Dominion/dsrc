@@ -206,6 +206,7 @@ public class itp_emperor_main extends script.base_script
         if (!itp_emperor_main_condition_completedVeers(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_46");
+            itp_emperor_main_action_itp_emp_03_signal(player, npc);
             chat.chat(npc, player, message);
             return SCRIPT_CONTINUE;
         }

@@ -54,7 +54,7 @@ public class shadow_loot extends script.base_script
             success = 10;
         }
         int chance = rand(1, 100);
-        if (chance <= 50)//changed to 50% for simple loot due to lack of phases post NGE implementation
+        if (chance <= 10)//changed to 0% for simple loot due to lack of phases post NGE implementation
         {
             String treasure = pickLootItem();
             obj_id item = createObject(treasure, corpseInventory, "");

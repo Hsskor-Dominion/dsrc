@@ -178,38 +178,39 @@ public class rtp_luke_main extends script.base_script
     }
     public int rtp_luke_main_handleBranch20(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        if (response.equals("luke_academy1"))
+        if (!response.equals("luke_academy1"))
+            return SCRIPT_DEFAULT;
+
+        // ---- LESSON 1 (initial academy start) ----
+        if (!rtp_luke_main_condition_rtp_luke_academy_01_complete(player, npc))
         {
-            if (rtp_luke_main_condition_rtp_luke_academy_02_complete(player, npc))
-            {
-                string_id message = new string_id(c_stringFile, "luke_lesson3");
-                groundquests.grantQuest(player, "jedi_gifts_1");
-                utils.removeScriptVar(player, "conversation.rtp_luke_main.branchId");
-                npcEndConversationWithMessage(player, message);
-                return SCRIPT_CONTINUE;
-            }
+            rtp_luke_main_action_academy_luke_01_granted(player, npc);
+            string_id message = new string_id(c_stringFile, "luke_lesson1");
+            utils.removeScriptVar(player, "conversation.rtp_luke_main.branchId");
+            npcEndConversationWithMessage(player, message);
+            return SCRIPT_CONTINUE;
         }
-        if (response.equals("luke_academy1"))
+
+        // ---- LESSON 2 ----
+        if (rtp_luke_main_condition_rtp_luke_academy_01_complete(player, npc)
+                && !rtp_luke_main_condition_rtp_luke_academy_02_complete(player, npc))
         {
-            if (rtp_luke_main_condition_rtp_luke_academy_01_complete(player, npc))
-            {
-                string_id message = new string_id(c_stringFile, "luke_lesson2");
-                utils.removeScriptVar(player, "conversation.rtp_luke_main.branchId");
-                npcEndConversationWithMessage(player, message);
-                return SCRIPT_CONTINUE;
-            }
+            string_id message = new string_id(c_stringFile, "luke_lesson2");
+            utils.removeScriptVar(player, "conversation.rtp_luke_main.branchId");
+            npcEndConversationWithMessage(player, message);
+            return SCRIPT_CONTINUE;
         }
-        if (response.equals("luke_academy1"))
+
+        // ---- LESSON 3 → GRANT GIFTS ----
+        if (rtp_luke_main_condition_rtp_luke_academy_02_complete(player, npc))
         {
-            if (!rtp_luke_main_condition_rtp_luke_academy_01_complete(player, npc))
-            {
-                rtp_luke_main_action_academy_luke_01_granted(player, npc);
-                string_id message = new string_id(c_stringFile, "luke_lesson1");
-                utils.removeScriptVar(player, "conversation.rtp_luke_main.branchId");
-                npcEndConversationWithMessage(player, message);
-                return SCRIPT_CONTINUE;
-            }
+            string_id message = new string_id(c_stringFile, "luke_lesson3");
+            groundquests.grantQuest(player, "jedi_gifts_1");
+            utils.removeScriptVar(player, "conversation.rtp_luke_main.branchId");
+            npcEndConversationWithMessage(player, message);
+            return SCRIPT_CONTINUE;
         }
+
         return SCRIPT_DEFAULT;
     }
     public int OnInitialize(obj_id self) throws InterruptedException
@@ -269,7 +270,8 @@ public class rtp_luke_main extends script.base_script
 
         // ---- 3. Sith Wayfinder grant path (Luke1 + Power complete) ----
         else if (rtp_luke_main_condition_gifts_complete(player, npc)
-                && rtp_luke_main_condition_holocron_power_complete(player, npc))
+                && rtp_luke_main_condition_holocron_power_complete(player, npc)
+                && rtp_luke_main_condition_rtp_luke_academy_01_complete(player, npc))
         {
             rtp_luke_main_action_sidious_grant(player, npc);
             chat.chat(npc, player, new string_id(c_stringFile, "s_sith_wayfinder"));

@@ -8594,3 +8594,7 @@ command_post	object/tangible/deed/player_house_deed/command_post.iff							4		it
 item_deed_tie_fighter	object/tangible/loot/generic_deed/vehicle_generic.iff							6		systems.vehicle_system.vehicle_deed		1		Using this deed will create a new vehicle in your datapad.	
 weapon_mandalorian_sword_darksaber	object/weapon/melee/sword/sword_mandalorian.iff	weapon		90	force_sensitive			4		systems.jedi.jedi_weapon_noslice,systems.jedi.saber_base		1	"Crusader ""Templar"" Sword"	"Crusader ""Templar"" Sword"	
 item_deed_hover_chair	object/tangible/loot/generic_deed/vehicle_generic.iff							4		systems.vehicle_system.vehicle_deed			Vehicle Deed: Hover Chair	A deed for a Hover Chair	
+stardust_sith_dagger	object/weapon/melee/knife/ep3/knife_trando_skinner.iff	weapon						2	250	stardust.systems.sith_dagger		1			
+stardust_gaming_table_wheel	object/tangible/event_perk/frn_all_gaming_kiosk_s01.iff							4		gambling.wheel.sarlaac_wheel		1			
+stardust_gaming_table_roulette	object/tangible/gambling/wheel/roulette.iff							4		gambling.wheel.roulette					
+stardust_gaming_table_pazaak	object/tangible/gambling/table/table_base.iff							4		gambling.wheel.pazaak					
