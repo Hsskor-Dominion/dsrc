@@ -892,7 +892,7 @@ public class travel extends script.base_script
                 return false;
             }
         }
-        else 
+        else
         {
             if (!getPlanetTravelPointInterplanetary(planet1, point1))
             {
@@ -914,7 +914,7 @@ public class travel extends script.base_script
             sui.msgbox(player, new string_id("travel", "route_invalid"));
             return false;
         }
-        int point_cost1 = getPlanetTravelPointCost(planet1, point1);//this is the root of my current issue. Endor shuttle departure locations are invalid.
+        int point_cost1 = getPlanetTravelPointCost(planet1, point1);
         if (point_cost1 == 0)
         {
             LOG("LOG_CHANNEL", player + " ->Your departure location is not valid.");
@@ -1039,7 +1039,7 @@ public class travel extends script.base_script
                             sui.showSUIPage(pid);
                             return false;
                         }
-                        else 
+                        else
                         {
                             String custLogMsg = "New Player Rewards: %TU tried to use a travel voucher but isn't the owner. Rightful owner is %TT";
                             CustomerServiceLog("NEW_PLAYER_QUESTS", custLogMsg, player, owner);
@@ -1054,7 +1054,7 @@ public class travel extends script.base_script
                         }
                     }
                 }
-                else 
+                else
                 {
                     String custLogMsg = "New Player Rewards: %TU tried to use a travel voucher but the voucher is invalid - does not have an owner.";
                     CustomerServiceLog("NEW_PLAYER_QUESTS", custLogMsg, player);
@@ -1080,7 +1080,7 @@ public class travel extends script.base_script
             utils.setScriptVar(player, VAR_PURCHASING_TICKET, 1);
             return true;
         }
-        else 
+        else
         {
             return false;
         }

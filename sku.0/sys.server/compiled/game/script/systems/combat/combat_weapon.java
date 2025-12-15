@@ -51,7 +51,7 @@ public class combat_weapon extends script.base_script
                 return SCRIPT_CONTINUE;
             }
         }
-        int management_root = item.addRootMenu(menu_info_types.SERVER_MENU5, weapons.SID_WEAPON_TO_SCHEM);
+        int management_root = item.addRootMenu(menu_info_types.SERVER_MENU5, weapons.SID_WEAPON_TO_SCHEM);//this should be a menu called modify that then dropdowns weapon_to_schem AND SLICEs
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
@@ -163,6 +163,10 @@ public class combat_weapon extends script.base_script
     }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
+        if (!hasScript(self, "item.slicing.slicing_weapon"))
+        {
+            attachScript(self, "item.slicing.slicing_weapon");//SWG Chimaera restored content
+        }
         messageTo(self, "weaponConversion", null, 5, false);
         return SCRIPT_CONTINUE;
     }

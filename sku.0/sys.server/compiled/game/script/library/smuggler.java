@@ -776,6 +776,16 @@ public class smuggler extends script.base_script
                 // --- OPTIONAL BONUS LOOT ---
                 if (rand(1, 100) <= 90) {
                     String[] bonusLoot = {
+                            "object/tangible/smuggler/delicate_trigger_assembly.iff",
+                            "object/tangible/smuggler/simple_toolkit.iff",
+                            "object/tangible/smuggler/finely_crafted_toolset.iff",
+                            "object/tangible/smuggler/illegal_core_booster.iff",
+                            "object/tangible/smuggler/mandalorian_interframe.iff",
+                            "object/tangible/smuggler/simple_toolkit.iff",
+                            "object/tangible/smuggler/shock_absorbent_padding.iff",
+                            "object/tangible/smuggler/powered_motivators.iff",
+                            "object/tangible/smuggler/reactive_micro_plating.iff",
+                            "object/tangible/smuggler/trandoshan_interframe.iff",
                             "object/intangible/data_item/warren_encryption_key.iff",
                             "object/tangible/dungeon/death_watch_bunker/passkey_hall.iff",
                             "object/tangible/dungeon/death_watch_bunker/passkey_mine.iff",

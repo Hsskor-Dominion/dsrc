@@ -1862,11 +1862,8 @@ public class stealth extends script.base_script
             // Apply detection buff to the victim
             buff.applyBuff(mark, "sm_spot_a_sucker_4_7");
 
-            //Trigger locked container stealing logic
-            steal_pvp(thief, mark);
-
             float spynetFaction = factions.getFactionStanding(mark, "sif");
-            if (spynetFaction > -3)
+            if (spynetFaction > 0)
             {
                 factions.addFactionStanding(thief, "sif", 1);
                 factions.addFactionStanding(mark, "sif", -1);
@@ -1874,6 +1871,10 @@ public class stealth extends script.base_script
                 sendSystemMessage(thief, new string_id("spam", "faction_theft_success"));
                 sendSystemMessage(mark, new string_id("spam", "faction_theft_loss"));
             }
+        }
+        if (isPlayer(mark))
+        {
+            steal_pvp(thief, mark);
         }
 
         return true;

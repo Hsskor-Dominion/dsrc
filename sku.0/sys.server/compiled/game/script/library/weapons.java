@@ -115,6 +115,7 @@ public class weapons extends script.base_script
     public static final String WEAPON_APP_MAX_RANGE = "max_range_distance";
     public static final String WEAPON_APP_MIN_RANGE = "min_range_distance";
     public static final int NUM_DAMAGE_TYPES = 13;
+    public static final string_id SID_MOD = new string_id("weapon/weapon", "modify");
     public static final string_id SID_WEAPON_TO_SCHEM = new string_id("spam", "weapon_to_schem");
     public static final string_id SID_CONVERT_PROMPT = new string_id("spam", "weapon_to_schem_prompt");
     public static final string_id SID_CONVERT_TITLE = new string_id("spam", "weapon_to_schem_title");

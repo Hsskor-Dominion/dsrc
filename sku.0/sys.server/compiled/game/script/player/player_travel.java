@@ -58,6 +58,7 @@ public class player_travel extends script.base_script
     public int OnPurchaseTicket(obj_id self, obj_id player, String departPlanetName, String departTravelPointName, String arrivePlanetName, String arriveTravelPointName, boolean roundTrip) throws InterruptedException
     {
         LOG("LOG_CHANNEL", "player_travel::OnPurchaseTicket");
+
         obj_id terminal = utils.getObjIdScriptVar(player, travel.SCRIPT_VAR_TERMINAL);
         if (isIdValid(terminal))
         {
@@ -69,7 +70,10 @@ public class player_travel extends script.base_script
                 return SCRIPT_CONTINUE;
             }
         }
+
         obj_id starport = travel.getStarportFromTerminal(terminal);
+
+        // GCW static base restrictions
         if (arriveTravelPointName.contains("gcwstaticbase"))
         {
             if ((arriveTravelPointName.contains("rebel")) && !factions.isRebel(self))
@@ -83,12 +87,16 @@ public class player_travel extends script.base_script
                 return SCRIPT_CONTINUE;
             }
         }
+
+        // Check if player is banned from city
         int city_id = getCityAtLocation(getLocation(starport), 0);
         if (city.isCityBanned(self, city_id))
         {
             sendSystemMessage(self, SID_CANT_BUY_TICKET);
             return SCRIPT_CONTINUE;
         }
+
+        // GCW travel restrictions
         if (!departPlanetName.equals(arrivePlanetName))
         {
             final String departPlanetAvailableStarport = travel.getGcwTravelRestrictionsAvailableStarport(self, departPlanetName);
@@ -97,6 +105,7 @@ public class player_travel extends script.base_script
                 sendSystemMessage(self, "Because you are a GCW officer and the opposing faction currently controls the departure planet, the only starport currently available for interplanetary travel on the departure planet is " + departPlanetAvailableStarport + ".", "");
                 return SCRIPT_CONTINUE;
             }
+
             final String arrivePlanetAvailableStarport = travel.getGcwTravelRestrictionsAvailableStarport(self, arrivePlanetName);
             if ((arrivePlanetAvailableStarport != null) && (arrivePlanetAvailableStarport.length() > 0) && (!arrivePlanetAvailableStarport.equals(arriveTravelPointName)))
             {
@@ -104,7 +113,83 @@ public class player_travel extends script.base_script
                 return SCRIPT_CONTINUE;
             }
         }
+        // --- CITY TRAVEL FEE PROMPT ---
+        if (city_id != 0)
+        {
+            obj_id city_hall = cityGetCityHall(city_id);
+            if (isIdValid(city_hall) && hasObjVar(city_hall, "city.travel_tax"))
+            {
+                int city_travel_fee = getIntObjVar(city_hall, "city.travel_tax");
+                if (city_travel_fee > 0)
+                {
+                    if (getTotalMoney(self) < city_travel_fee)
+                    {
+                        sendSystemMessage(self, "You do not have enough credits to pay the city travel fee of " + city_travel_fee + ".", "");
+                        return SCRIPT_CONTINUE;
+                    }
+
+                    // Store relevant data for callback
+                    utils.setScriptVar(self, "travel.city_travel_fee", city_travel_fee);
+                    utils.setScriptVar(self, "travel.departPlanetName", departPlanetName);
+                    utils.setScriptVar(self, "travel.departTravelPointName", departTravelPointName);
+                    utils.setScriptVar(self, "travel.arrivePlanetName", arrivePlanetName);
+                    utils.setScriptVar(self, "travel.arriveTravelPointName", arriveTravelPointName);
+                    utils.setScriptVar(self, "travel.roundTrip", roundTrip);
+                    utils.setScriptVar(self, "travel.starport", starport);
+
+                    // Show SUI prompt
+                    String msg = "A city travel fee of " + city_travel_fee + " credits applies to this ticket purchase. Do you want to pay and continue?";
+                    int pid = sui.msgbox(self, self, msg, sui.YES_NO, "City Travel Fee", sui.MSG_QUESTION, "handleCityTravelFeePrompt");
+                    showSUIPage(pid);
+
+                    // Stop here until player responds
+                    return SCRIPT_CONTINUE;
+                }
+            }
+        }
+        // Purchase the ticket first
         travel.purchaseTicket(self, departPlanetName, departTravelPointName, arrivePlanetName, arriveTravelPointName, roundTrip, starport);
+
+        return SCRIPT_CONTINUE;
+    }
+    public int handleCityTravelFeePrompt(obj_id self, dictionary params) throws InterruptedException
+    {
+        int button = sui.getIntButtonPressed(params);
+
+        if (button == sui.BP_CANCEL)
+        {
+            sendSystemMessage(self, "Ticket purchase canceled because you declined the city travel fee.", "");
+            return SCRIPT_CONTINUE;
+        }
+
+        // Player accepted the fee
+        int city_travel_fee = utils.getIntScriptVar(self, "travel.city_travel_fee");
+        obj_id starport = utils.getObjIdScriptVar(self, "travel.starport");
+        String departPlanetName = utils.getStringScriptVar(self, "travel.departPlanetName");
+        String departTravelPointName = utils.getStringScriptVar(self, "travel.departTravelPointName");
+        String arrivePlanetName = utils.getStringScriptVar(self, "travel.arrivePlanetName");
+        String arriveTravelPointName = utils.getStringScriptVar(self, "travel.arriveTravelPointName");
+        boolean roundTrip = utils.getBooleanScriptVar(self, "travel.roundTrip");
+
+        // Deduct the city fee
+        if (getTotalMoney(self) >= city_travel_fee)
+        {
+            money.pay(self, city.getCityHall(starport), city_travel_fee, null, null, true);
+            sendSystemMessage(self, "City travel fee of " + city_travel_fee + " credits paid successfully.", "");
+        }
+
+        // Now purchase the ticket
+        travel.purchaseTicket(self, departPlanetName, departTravelPointName, arrivePlanetName, arriveTravelPointName, roundTrip, starport);
+
+        // Clean up
+        utils.removeScriptVar(self, "travel.city_travel_fee");
+        utils.removeScriptVar(self, "travel.departPlanetName");
+        utils.removeScriptVar(self, "travel.departTravelPointName");
+        utils.removeScriptVar(self, "travel.arrivePlanetName");
+        utils.removeScriptVar(self, "travel.arriveTravelPointName");
+        utils.removeScriptVar(self, "travel.roundTrip");
+        utils.removeScriptVar(self, "travel.starport");
+
         return SCRIPT_CONTINUE;
     }
     public int OnPurchaseTicketInstantTravel(obj_id self, obj_id player, String departPlanetName, String departTravelPointName, String arrivePlanetName, String arriveTravelPointName, boolean roundTrip) throws InterruptedException
@@ -462,13 +547,13 @@ public class player_travel extends script.base_script
                     final String departPlanetAvailableStarport = travel.getGcwTravelRestrictionsAvailableStarport(self, depart_planet);
                     if ((departPlanetAvailableStarport != null) && (departPlanetAvailableStarport.length() > 0) && (!departPlanetAvailableStarport.equals(depart_point)))
                     {
-                        sendSystemMessage(self, "Because you are a GCW officer and the opposing faction currently controls the departure planet, the only starport currently available for interplanetary travel on the departure planet is " + departPlanetAvailableStarport + ".", "");
+                        sendSystemMessage(self, "Because you lack GCW officer credentials and/or opposing faction currently controls the departure planet, the only starport currently available for interplanetary travel on the departure planet is " + departPlanetAvailableStarport + ".", "");
                         return SCRIPT_CONTINUE;
                     }
                     final String arrivePlanetAvailableStarport = travel.getGcwTravelRestrictionsAvailableStarport(self, arrival_planet);
                     if ((arrivePlanetAvailableStarport != null) && (arrivePlanetAvailableStarport.length() > 0) && (!arrivePlanetAvailableStarport.equals(arrival_point)))
                     {
-                        sendSystemMessage(self, "Because you are a GCW officer and the opposing faction currently controls the arrival planet, the only starport currently available for interplanetary travel on the arrival planet is " + arrivePlanetAvailableStarport + ".", "");
+                        sendSystemMessage(self, "Because you lack GCW officer credentials and/or opposing faction currently controls the arrival planet, the only starport currently available for interplanetary travel on the arrival planet is " + arrivePlanetAvailableStarport + ".", "");
                         return SCRIPT_CONTINUE;
                     }
                 }
@@ -488,7 +573,7 @@ public class player_travel extends script.base_script
                             forceCloseSUIPage(pid);
                         }
                         final int timeUntilCurrentShuttleDeparts = timeUntilMessageTo(shuttle, "msgShuttleTakeOff");
-                        String announcement = "You must wait for the next shuttle because you are a GCW officer and the opposing faction currently controls the planet.\n\nOr you can pay a surcharge of 50000 credits to avoid the wait.\n\nWhat do you want to do?";
+                        String announcement = "You must wait for the next shuttle because you lack GCW officer credentials and/or the opposing faction currently controls the planet.\n\nOr you can pay a surcharge of 50000 credits to avoid the wait.\n\nWhat do you want to do?";
                         if (timeUntilCurrentShuttleDeparts >= 0)
                         {
                             announcement += "\n\n(The current shuttle will depart in " + (timeUntilCurrentShuttleDeparts / 60) + "m:" + (timeUntilCurrentShuttleDeparts % 60) + "s.)";
@@ -512,7 +597,7 @@ public class player_travel extends script.base_script
                         utils.removeScriptVar(self, SCRIPTVAR_ACCEPT_GCW_SURCHARGE_SUI_ID);
                         forceCloseSUIPage(pid);
                     }
-                    final int pid = sui.msgbox(self, self, "You must pay a surcharge of " + gcwTravelRestrictionsSurcharge + " credits because you are a GCW officer and the opposing faction currently controls either the departure or the arrival planet.\n\nDo you accept the surcharge?", sui.YES_NO, "GCW Travel Surcharge", sui.MSG_QUESTION, "handleConfirmGcwTravelSurcharge");
+                    final int pid = sui.msgbox(self, self, "You must pay an additional New Republic surcharge of " + gcwTravelRestrictionsSurcharge + " credits because you lack GCW officer and control conditions for either the departure or the arrival location.\n\nDo you accept the surcharge?", sui.YES_NO, "GCW Travel Surcharge", sui.MSG_QUESTION, "handleConfirmGcwTravelSurcharge");
                     utils.setScriptVar(self, SCRIPTVAR_ACCEPT_GCW_SURCHARGE_SUI_ID, pid);
                     utils.setScriptVar(self, SCRIPTVAR_ACCEPT_GCW_SURCHARGE_TICKET_ID, ticket);
                     utils.setScriptVar(self, SCRIPTVAR_ACCEPT_GCW_SURCHARGE_SHUTTLE_ID, shuttle);
@@ -948,13 +1033,13 @@ public class player_travel extends script.base_script
                 final String departPlanetAvailableStarport = travel.getGcwTravelRestrictionsAvailableStarport(self, planet);
                 if ((departPlanetAvailableStarport != null) && (departPlanetAvailableStarport.length() > 0) && (!departPlanetAvailableStarport.equals(depart_point)))
                 {
-                    sendSystemMessage(self, "Because you are a GCW officer and the opposing faction currently controls the departure planet, the only starport currently available for interplanetary travel on the departure planet is " + departPlanetAvailableStarport + ".", "");
+                    sendSystemMessage(self, "Because you lack GCW officer credentials and/or the opposing faction currently controls the departure planet, the only starport currently available for interplanetary travel on the departure planet is " + departPlanetAvailableStarport + ".", "");
                     return SCRIPT_CONTINUE;
                 }
                 final String arrivePlanetAvailableStarport = travel.getGcwTravelRestrictionsAvailableStarport(self, arrival_planet);
                 if ((arrivePlanetAvailableStarport != null) && (arrivePlanetAvailableStarport.length() > 0) && (!arrivePlanetAvailableStarport.equals(arrival_point)))
                 {
-                    sendSystemMessage(self, "Because you are a GCW officer and the opposing faction currently controls the arrival planet, the only starport currently available for interplanetary travel on the arrival planet is " + arrivePlanetAvailableStarport + ".", "");
+                    sendSystemMessage(self, "Because you lack GCW officer credentials and/or the opposin faction currently controls the arrival planet, the only starport currently available for interplanetary travel on the arrival planet is " + arrivePlanetAvailableStarport + ".", "");
                     return SCRIPT_CONTINUE;
                 }
             }

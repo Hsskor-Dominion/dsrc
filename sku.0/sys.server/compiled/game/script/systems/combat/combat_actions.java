@@ -11204,8 +11204,10 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         doAnimationAction(self, "reload");
         decrementCount(module);
+        obj_id weapon = getObjectInSlot(self, "hold_r");
+        damageItem(weapon, 1);
         factions.addFactionStanding(self, "underworld", 1);
-        sendSystemMessage(self, new string_id("spam", "underworld_faction_increase"));
+        sendSystemMessage(self, new string_id("spam", "underworld_faction_increase_weapon_overcharge_decay"));
         return SCRIPT_CONTINUE;
     }
 
@@ -11224,8 +11226,10 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         doAnimationAction(self, "reload");
         decrementCount(module);
+        obj_id weapon = getObjectInSlot(self, "hold_r");
+        damageItem(weapon, 1);
         factions.addFactionStanding(self, "underworld", 1);
-        sendSystemMessage(self, new string_id("spam", "underworld_faction_increase"));
+        sendSystemMessage(self, new string_id("spam", "underworld_faction_increase_weapon_overcharge_decay"));
         return SCRIPT_CONTINUE;
     }
 
@@ -11244,8 +11248,10 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         doAnimationAction(self, "reload");
         decrementCount(module);
+        obj_id weapon = getObjectInSlot(self, "hold_r");
+        damageItem(weapon, 1);
         factions.addFactionStanding(self, "underworld", 1);
-        sendSystemMessage(self, new string_id("spam", "underworld_faction_increase"));
+        sendSystemMessage(self, new string_id("spam", "underworld_faction_increase_weapon_overcharge_decay"));
         return SCRIPT_CONTINUE;
     }
 

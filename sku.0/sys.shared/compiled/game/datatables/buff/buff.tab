@@ -224,7 +224,7 @@ kwi_boost_01	spice			4	buffs.spicePill	900	constitution_modified	50	agility_modi
 kliknik_boost	spice			4	buffs.spicePill	900	constitution_modified	10	agility_modified	20	stamina_modified	20	xp_bonus_general	50		0	STATE_NONE	handleSpiceDownerEffect			1	0		1	1	1	0	1	1	0	1	1	1
 kliknik_boost_01	spice			4	buffs.spicePill	900	constitution_modified	10	agility_modified	20	stamina_modified	20	xp_bonus_general	50		0	STATE_NONE	handleSpiceDownerEffect			1	0		0	1	1	0	1	1	0	1	1	1
 spice_downer	spiceDowner			1	buffs.spiceDowner	60	constitution_modified	-100	agility_modified	-100	stamina_modified	-100	luck_modified	-100		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
-forceWeaken	forceWeaken	snare		1	jedi.forceWeaken	3600	movement	0	healthPercent	-75	actionPercent	-75	luck_modified	-50		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+forceWeaken	forceWeaken	snare		1	jedi.forceWeaken	3600	movement	0	healthPercent	-75	actionPercent	-75	luck_modified	-75	expertise_damage_all	-75	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 forceWeaken_1	forceWeaken	snare		2	jedi.forceWeaken	20	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 saberArmorBreak	armorBreak			2	jedi.saberArmorBreak	20	private_armor_break	80		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 saberArmorBreak_1	armorBreak			5	jedi.saberArmorBreak	30	private_armor_break	185		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1166,7 +1166,7 @@ me_buff_health_2	medicConstitution			76	command.me_buff_health	600	constitution_
 me_buff_action_1	medicAction			18	command.me_enhance_action	600	stamina_modified	35		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_action.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_action_2	medicAction			48	command.me_enhance_action	1800	expertise_buff_duration_line_me_enhance	1200	expertise_healing_all	5		0		0		3	STATE_NONE	none	clienteffect/medic_enhance_action.cef		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_action_3	medicAction			76	command.me_enhance_action	600	stamina_modified	250		0		0		0		0	STATE_NONE	none	clienteffect/medic_enhance_action.cef		1	0		1	1	1	0	1	1	0	1	1	1
-me_buff_strength_1	medicStrength			10	command.steadyAim	600	combat_multiply_damage_dealt	5	strength_modified	30	private_taunt_bonus	50		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
+me_buff_strength_1	medicStrength			10	command.steadyAim	600	combat_divide_damage_taken	5	strength_modified	30	private_taunt_bonus	50		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_strength_2	medicStrength			34	command.steadyAim	600	strength_modified	45		0		0		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_strength_3	medicStrength			62	command.steadyAim	600	strength_modified	80		0		0		0		0	STATE_NONE	none	appearance/pt_medic_enhance_strength.prt		1	0		1	1	1	0	1	1	0	1	1	1
 me_buff_agility_1	medicAgility			10	command.bh_armor_duelist	600	combat_divide_damage_dealt	5	agility_modified	30	private_taunt_bonus	-50		0		0	STATE_NONE	none	clienteffect/medic_enhance_agility.cef		1	0		1	1	1	0	1	1	0	1	1	1

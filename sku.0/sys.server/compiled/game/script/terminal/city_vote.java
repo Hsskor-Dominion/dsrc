@@ -199,7 +199,7 @@ public class city_vote extends script.terminal.base.base_terminal
     public boolean townspersonEnemy(obj_id player, obj_id self) throws InterruptedException
     {
         float townspersonFaction = factions.getFactionStanding(player, "townsperson");
-        return townspersonFaction <= 0;
+        return townspersonFaction <= -5000;
     }
     public void townspersonBounty(obj_id player, obj_id self) throws InterruptedException
     {

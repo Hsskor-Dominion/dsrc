@@ -32,17 +32,41 @@ public class starport_city extends script.structure.municipal.starport
     public int setupStartport(obj_id self, dictionary params) throws InterruptedException
     {
         int city_id = getCityAtLocation(getLocation(self), 0);
-        obj_id mayor = cityGetLeader(city_id);
-        int cost = cityGetTravelCost(city_id);
-        if (cost > 0)
+        if (city_id == 0)
         {
-            destroyObject(self);
+            // City not ready yet
+            messageTo(self, "setupStartport", null, 5.0f, false);
             return SCRIPT_CONTINUE;
         }
+
+        int cityCost = cityGetTravelCost(city_id);
+//        if (cityCost > 0)
+//        {
+//            destroyObject(self);//this keeps destroying itself, proving to me there is a problem with city travel cost
+//            return SCRIPT_CONTINUE;
+//        }
+
         String cityName = cityGetName(city_id);
-        String travel_point = cityName;
         int travel_cost = 100;
-        travel.initializeStarport(self, travel_point, travel_cost, true);
+
+        // Force shuttle behavior
+        setObjVar(self, travel.VAR_IS_SHUTTLEPORT, 1);
+
+        // Initialize physical starport + city registry
+        travel.initializeStarport(self, cityName, travel_cost, true);
+
+        // Register with planet travel tables so terminals can see it
+        location arrival = travel.getArrivalLocation(self);
+
+        addPlanetTravelPoint(
+                getCurrentSceneName(),
+                cityName,
+                arrival,
+                travel_cost,
+                false, // shuttle, not interplanetary
+                travel.TPT_NPC_Shuttleport // reuse existing type
+        );
+
         return SCRIPT_CONTINUE;
     }
     public int OnDestroy(obj_id self) throws InterruptedException

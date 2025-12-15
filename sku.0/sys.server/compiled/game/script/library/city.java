@@ -815,16 +815,38 @@ public class city extends script.base_script
         CustomerServiceLog("player_city", "Changed sales tax.  City: " + city_name + " (" + city_id + "/" + city_hall + ")" + " Value: " + new_tax);
         citySetSalesTax(city_id, new_tax);
     }
-    public static void setTravelFee(int city_id, int new_fee) throws InterruptedException
+//    public static void setTravelFee(int city_id, int new_fee) throws InterruptedException
+//    {
+//        location cityTravelLoc = cityGetTravelLocation(city_id);
+//        int cityTravelCost = new_fee;
+//        boolean cityTravelIntp = cityGetTravelInterplanetary(city_id);
+//        String city_name = cityGetName(city_id);
+//        obj_id city_hall = cityGetCityHall(city_id);
+//        CustomerServiceLog("player_city", "Changed travel fee.  City: " + city_name + " (" + city_id + "/" + city_hall + ")" + " Value: " + new_fee);
+//        citySetTravelInfo(city_id, cityTravelLoc, cityTravelCost, cityTravelIntp);
+//    }
+public static void setTravelFee(int city_id, int new_fee) throws InterruptedException
+{
+    location cityTravelLoc = cityGetTravelLocation(city_id);
+    int cityTravelCost = cityGetTravelCost(city_id); // base cost
+    boolean cityTravelIntp = cityGetTravelInterplanetary(city_id);
+    String city_name = cityGetName(city_id);
+    obj_id city_hall = cityGetCityHall(city_id); //city hall object ID
+
+    CustomerServiceLog(
+            "player_city",
+            "Changed travel tax. City: " + city_name + " (" + city_id + "/" + city_hall + ") Tax: " + new_fee
+    );
+
+    // Keep existing city travel info intact
+    citySetTravelInfo(city_id, cityTravelLoc, cityTravelCost, cityTravelIntp);
+
+    // Store tax on the city hall object
+    if (isIdValid(city_hall))
     {
-        location cityTravelLoc = cityGetTravelLocation(city_id);
-        int cityTravelCost = new_fee;
-        boolean cityTravelIntp = cityGetTravelInterplanetary(city_id);
-        String city_name = cityGetName(city_id);
-        obj_id city_hall = cityGetCityHall(city_id);
-        CustomerServiceLog("player_city", "Changed travel fee.  City: " + city_name + " (" + city_id + "/" + city_hall + ")" + " Value: " + new_fee);
-        citySetTravelInfo(city_id, cityTravelLoc, cityTravelCost, cityTravelIntp);
+        setObjVar(city_hall, "city.travel_tax", new_fee);
     }
+}
     public static void setGarageFee(int city_id, int new_fee) throws InterruptedException
     {
         int garageUseCost = new_fee;
