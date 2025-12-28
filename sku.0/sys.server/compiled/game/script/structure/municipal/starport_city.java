@@ -18,6 +18,7 @@ public class starport_city extends script.structure.municipal.starport
     }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
+        messageTo(self, "setupStartport", null, 1.0f, false);
         String planet = getCurrentSceneName();
         String travel_point = travel.getTravelPointName(self);
         location arrival_loc = travel.getArrivalLocation(self);

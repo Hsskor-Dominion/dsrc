@@ -3567,6 +3567,7 @@ public class base_player extends script.base_script
         if (!noSick && !inInstance)
         {
             buff.applyBuff(self, "cloning_sickness");
+            buff.applyBuffWithStackCount(self, "gcw_fatigue", 1);//this would be better suited if a PvP death
         }
 
         if (!noSick && !inInstance && hasSkill(self, "class_forcesensitive_phase1_master"))
@@ -12278,6 +12279,7 @@ public class base_player extends script.base_script
                 }
             }
         }
+
 
         // --- SPECIAL CHRONICLE MASTER REWARD ---
         int roll = rand(1, 100);

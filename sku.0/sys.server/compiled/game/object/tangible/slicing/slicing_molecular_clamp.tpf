@@ -13,4 +13,5 @@ complexity = 0
 tintIndex = 0
 invulnerable = true
 
+scripts = [ "item.slicing.slicing_molecular_clamp" ]
 objvars = [ "slicing.clamp" = "3" ]

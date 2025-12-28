@@ -6514,10 +6514,48 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
-    public int sp_avoid_damage(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("sp_avoid_damage", self, target, params, "", "")) {
+    public int sp_avoid_damage(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        // Apply to self (normal ability execution)
+        if (!combatStandardAction("sp_avoid_damage", self, self, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
+        // Get group
+        obj_id groupId = getGroupObject(self);
+        if (!isIdValid(groupId))
+        {
+            return SCRIPT_CONTINUE; // solo handled by action
+        }
+
+        obj_id[] members = getGroupMemberIds(groupId);
+        if (members == null || members.length == 0)
+        {
+            return SCRIPT_CONTINUE;
+        }
+
+        for (obj_id member : members)
+        {
+            if (!isIdValid(member) || member == self)
+            {
+                continue;
+            }
+
+            // Range gate
+            if (getDistance(self, member) > 64.0f)
+            {
+                continue;
+            }
+
+            // Apply to group member
+            buff.applyBuff(member, "sp_avoid_damage");
+
+            // ---- Apply to pet (beast or droid) ----
+            obj_id pet = beast_lib.getBeastOnPlayer(self);
+            buff.applyBuff(pet, "sp_avoid_damage");
+        }
+
         return SCRIPT_CONTINUE;
     }
 
@@ -11653,7 +11691,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         factions.addFactionStanding(player, "underworld", -25);
 
         sendSystemMessage(target, new string_id("bounty_hunter", "captured_and_transported"));
-        buff.applyBuff(target, "stasis");
+        buff.applyBuff(target, "me_stasis_self_1");
 
         dictionary params = new dictionary();
         params.put("player", target);
@@ -11661,31 +11699,31 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (fett_enemy_condition(target))
         {
             messageTo(target, "delayedWarpToTatooinePrison", params, 10.0f, false);
-            groundquests.requestGrantQuest(player, "quest/smuggle_generic_1", true);
+            groundquests.requestGrantQuest(target, "quest/smuggle_generic_1", true);
             warpPlayer(target, "tatooine", -5868f, 90f, -6202f, null, 0, 0, 0f, "", false);
         }
         else if (underworld_enemy_condition(target))
         {
             messageTo(target, "delayedWarpToTatooinePrison", params, 10.0f, false);
-            groundquests.requestGrantQuest(player, "quest/smuggle_generic_1", true);
+            groundquests.requestGrantQuest(target, "quest/smuggle_generic_1", true);
             warpPlayer(target, "tatooine", -5868f, 90f, -6202f, null, 0, 0, 0f, "", false);
         }
         else if (underworld_friend_condition(target))
         {
             messageTo(target, "delayedWarpToRoriPrison", params, 10.0f, false);
-            groundquests.requestGrantQuest(player, "quest/smuggle_generic_3", true);
+            groundquests.requestGrantQuest(target, "quest/smuggle_generic_3", true);
             warpPlayer(target, "rori", 7357f, 80f, 106f, null, 0, 0, 0f, "", false);
         }
         else if (nightsister_enemy_condition(target))
         {
             messageTo(target, "delayedWarpToDathomirPrisonCell", params, 10.0f, false);
-            groundquests.requestGrantQuest(player, "quest/smuggle_generic_5", true);
+            groundquests.requestGrantQuest(target, "quest/smuggle_generic_5", true);
             warpPlayer(target, "dathomir", -6228f, 120f, 950f, null, 0, 0, 0f, "", false);
         }
         else
         {
             messageTo(target, "delayedWarpToTalusPrisonCell", params, 10.0f, false);
-            groundquests.requestGrantQuest(player, "quest/smuggle_generic_4", true);
+            groundquests.requestGrantQuest(target, "quest/smuggle_generic_4", true);
             warpPlayer(target, "talus", 4981f, 19f, -3365f, null, 0, 0, 0f, "", false);
         }
     }

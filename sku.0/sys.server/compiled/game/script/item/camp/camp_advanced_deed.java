@@ -255,8 +255,57 @@ public class camp_advanced_deed extends script.base_script
         }
         return SCRIPT_CONTINUE;
     }
+    private int getInstalledModuleCount(obj_id deed) throws InterruptedException
+    {
+        String[] modules = {
+                "modules.shuttle_beacon",
+                "modules.cloning_tube",
+                "modules.entertainer",
+                "modules.junk_dealer",
+                "modules.clothing_station",
+                "modules.food_station",
+                "modules.ship_station",
+                "modules.structure_station",
+                "modules.weapon_station",
+                "modules.imperial",
+                "modules.rebel",
+                "modules.extra_life"
+        };
+
+        int count = 0;
+
+        for (int i = 0; i < modules.length; i++)
+        {
+            if (hasObjVar(deed, modules[i]) && getFloatObjVar(deed, modules[i]) > 0.0f)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+    private int getRequiredCampStat(int moduleCount)
+    {
+        if (moduleCount <= 0)
+        {
+            return 0; // base camp, no requirement
+        }
+
+        // 10 camp per module
+        return moduleCount * 10;
+    }
     public void deployCamp(obj_id self, obj_id player) throws InterruptedException
     {
+        int moduleCount = getInstalledModuleCount(self);
+        int requiredCamp = getRequiredCampStat(moduleCount);
+
+        int playerCamp = getEnhancedSkillStatisticModifierUncapped(player, "camp");
+
+        if (playerCamp < requiredCamp)
+        {
+            sendSystemMessage(player, SID_SYS_NSF_SKILL);
+            return;
+        }
         if (!utils.isNestedWithin(self, player))
         {
             sendSystemMessage(player, SID_SYS_NOT_IN_INV);

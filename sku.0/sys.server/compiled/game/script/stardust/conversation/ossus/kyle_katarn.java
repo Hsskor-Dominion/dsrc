@@ -140,7 +140,7 @@ public class kyle_katarn extends base_script
 
         // Check if player already has a pet out
         if (callable.hasAnyCallable(player)) {
-            final string_id petActiveMessage = new string_id(c_stringFile, "pet_already_active");
+            final string_id petActiveMessage = new string_id(c_stringFile, "pet_vehicle_already_active");
             utils.removeScriptVar(player, "conversation.kyle_katarn_conversation.branchId");
             npcEndConversationWithMessage(player, petActiveMessage);
             return SCRIPT_CONTINUE;

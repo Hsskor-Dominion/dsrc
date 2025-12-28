@@ -2173,7 +2173,6 @@ public class performance extends script.base_script
                 audienceMod++;
             }
             if (buff.hasBuff(obj_id1, "gcw_fatigue")) {
-                if (groundquests.isQuestActive(actor, "gcw_entertain_fatigue") && factions.isSameFactionorFactionHelper(actor, obj_id1)) {
                     pt.stringId = new string_id("spam", "cured_fatigue");
                     pa.stringId = new string_id("spam", "cured_fatigued_actor");
                     int stackSize = (int) buff.getBuffStackCount(obj_id1, "gcw_fatigue");
@@ -2182,7 +2181,7 @@ public class performance extends script.base_script
                     } else if (stackSize <= 5) {
                         buff.removeBuff(obj_id1, "gcw_fatigue");
                     } else if (stackSize > 5) {
-                        stackSize = stackSize - 5;
+                        stackSize = stackSize - 1;
                         buff.removeBuff(obj_id1, "gcw_fatigue");
                         buff.applyBuffWithStackCount(obj_id1, "gcw_fatigue", stackSize);
                     }
@@ -2210,7 +2209,6 @@ public class performance extends script.base_script
                     pa.target.set(obj_id1);
                     sendSystemMessageProse(actor, pa);
                     audienceMod++;
-                }
             }
         }
         int experience = (CURE_CLONING_SICKNESS_XP * audienceMod);

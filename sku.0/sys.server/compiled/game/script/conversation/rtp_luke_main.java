@@ -57,13 +57,13 @@ public class rtp_luke_main extends script.base_script
     public boolean rtp_luke_main_condition_completedDodonna(obj_id player, obj_id npc) throws InterruptedException
     {
         return groundquests.hasCompletedQuest(player, "rtp_dodonna_03")
-                || hasSkill(player, "stardust_jedi_elder");
+                || hasSkill(player, "class_forcesensitive_phase1_novice");
     }
     public boolean rtp_luke_main_condition_notRebel(obj_id player, obj_id npc) throws InterruptedException
     {
         String playerFaction = factions.getFaction(player);
         // Block (return true) only if NOT Rebel and NOT blueGlowie
-        return !("Rebel".equals(playerFaction) || hasSkill(player, "stardust_jedi_elder"));
+        return !("Rebel".equals(playerFaction) || hasSkill(player, "class_forcesensitive_phase1_novice"));
     }
     public boolean rtp_luke_main_condition_isJedi(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -202,7 +202,8 @@ public class rtp_luke_main extends script.base_script
         }
 
         // ---- LESSON 3 → GRANT GIFTS ----
-        if (rtp_luke_main_condition_rtp_luke_academy_02_complete(player, npc))
+        if (rtp_luke_main_condition_rtp_luke_academy_01_complete(player, npc)
+              && rtp_luke_main_condition_rtp_luke_academy_02_complete(player, npc))
         {
             string_id message = new string_id(c_stringFile, "luke_lesson3");
             groundquests.grantQuest(player, "jedi_gifts_1");
@@ -271,7 +272,7 @@ public class rtp_luke_main extends script.base_script
         // ---- 3. Sith Wayfinder grant path (Luke1 + Power complete) ----
         else if (rtp_luke_main_condition_gifts_complete(player, npc)
                 && rtp_luke_main_condition_holocron_power_complete(player, npc)
-                && rtp_luke_main_condition_rtp_luke_academy_01_complete(player, npc))
+                && rtp_luke_main_condition_rtp_luke_academy_02_complete(player, npc))
         {
             rtp_luke_main_action_sidious_grant(player, npc);
             chat.chat(npc, player, new string_id(c_stringFile, "s_sith_wayfinder"));
@@ -279,8 +280,7 @@ public class rtp_luke_main extends script.base_script
         }
 
         // ---- 4. Luke 03 complete → branching Jedi path ----
-        else if (rtp_luke_main_condition_rtp_luke_03_complete(player, npc)
-                && !rtp_luke_main_condition_gifts_complete(player, npc))
+        else if (rtp_luke_main_condition_rtp_luke_03_complete(player, npc))
         {
             rtp_luke_main_action_rtp_luke_03_signal(player, npc);
             string_id message = new string_id(c_stringFile, "s_9");
@@ -301,6 +301,7 @@ public class rtp_luke_main extends script.base_script
         // ---- 5. Luke 03 active ----
         else if (rtp_luke_main_condition_rtp_luke_03_active(player, npc)) {
             chat.chat(npc, player, new string_id(c_stringFile, "s_29"));
+            rtp_luke_main_action_rtp_luke_03_signal(player, npc);
             return SCRIPT_CONTINUE;
         }
 

@@ -487,7 +487,7 @@ public class beast_egg extends script.base_script
         creatureCollectionMap.put("tybis", "yavin4_tybis");
         creatureCollectionMap.put("whisper_bird", "yavin4_whisper_bird");
         creatureCollectionMap.put("woolamander", "yavin4_woolamander");
-        // Yavin4
+        // Hoth
         creatureCollectionMap.put("taun", "hoth_tauntaun");
         creatureCollectionMap.put("wampa", "hoth_wampa");
         // Mutated

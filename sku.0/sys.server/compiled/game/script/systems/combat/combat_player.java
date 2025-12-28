@@ -48,7 +48,7 @@ public class combat_player extends script.systems.combat.combat_base
         }
         if (getState(self, STATE_GLOWING_JEDI) > 0)
         {
-            setState(self, STATE_GLOWING_JEDI, false);
+            setState(self, STATE_GLOWING_JEDI, false);//this is also interesting... wondering if it will break the game if turned off?
         }
         combat.doCombatDebuffs(self);
         if (vehicle.isRidingVehicle(self))
@@ -60,7 +60,7 @@ public class combat_player extends script.systems.combat.combat_base
         if (isIdValid(objL) && (getGameObjectType(objL) == GOT_misc_instrument))
         {
             obj_id inv = utils.getInventoryContainer(self);
-            putInOverloaded(objL, inv);
+            putInOverloaded(objL, inv);//this is interesting? Might be worth looking into for dual-wielding
         }
         if (isIdValid(objR) && (getGameObjectType(objR) == GOT_misc_instrument))
         {

@@ -70,8 +70,8 @@ public class locked_slicable extends script.base_script
                 return SCRIPT_CONTINUE;
             }
 
-            // Deduct faction
-            factions.addFactionStanding(player, "underworld", -100);
+            // Add faction
+            factions.addFactionStanding(player, "underworld", 5);
 
             // --- Retrieve stored credits and loot ---
             int storedCredits = getIntObjVar(self, "slicing.storedCredits");
@@ -244,6 +244,7 @@ public class locked_slicable extends script.base_script
                     "object/tangible/theme_park/alderaan/act3/dead_eye_prototype.iff",
                     "object/tangible/theme_park/alderaan/act3/encoded_data_disk.iff",
                     "object/tangible/theme_park/alderaan/act3/grav_unit_repair_kit.iff",
+                    "object/tangible/slicing/slicing_laser_knife.iff",
                     "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff",
                     "item_pgc_token_03", // static/datatable item
                     "rare_loot_chest_quality_1", // static/datatable item

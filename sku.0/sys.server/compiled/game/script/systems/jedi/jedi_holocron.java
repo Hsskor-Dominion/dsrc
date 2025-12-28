@@ -561,7 +561,7 @@ public class jedi_holocron extends script.base_script {
         }
         else if (matchedVision.equals("harmony"))//aka balance
         {
-            groundquests.grantQuest(player, "stardust_holocron_harmony", true);//Anikin's "live... or Die", which should go to Talus eventually (similar to smuggler missions, run away from enemy vader)
+            groundquests.grantQuest(player, "stardust_holocron_harmony", true);//Anakin's "live... or Die", which should go to Talus eventually (similar to smuggler missions, run away from enemy vader)
             groundquests.grantQuest(player, "stardust_holocron_harmony", true);
             playClientEffectObj(player, "clienteffect/force_heal_04.cef", player, "");
         }

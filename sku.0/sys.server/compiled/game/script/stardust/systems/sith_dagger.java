@@ -295,7 +295,7 @@ public class sith_dagger extends base_script {
                     for (obj_id npc : nearbyStuff)
                     {
                         String template = getTemplateName(npc);
-                        if ("object/mobile/palpatine_eow.iff".contains(template))
+                        if ("object/building/mustafar/structures/must_crashed_republic_ship_hull.iff".contains(template))
                         {
                             foundEmperor = true;
                             break;
@@ -310,7 +310,7 @@ public class sith_dagger extends base_script {
                 else
                 {
                     sendSystemMessage(player, new string_id("jedi_spam", "vision_emperor_resonates"));
-                    groundquests.sendSignal(player, "sith_dagger");//procs when sued in right spot
+                    groundquests.sendSignal(player, "sith_dagger");//procs when used in right spot
                     activated = true;
                 }
                 break;
@@ -327,9 +327,10 @@ public class sith_dagger extends base_script {
                 break;
 
             case "chimaera":
-                if ("naboo".equals(scene))
+                if ("dathomir".equals(scene))
                 {
                     sendSystemMessage(player, new string_id("jedi_spam", "vision_chimaera_echo"));
+                    groundquests.sendSignal(player, "thrawn_deathtrooper");
                 }
                 else
                 {

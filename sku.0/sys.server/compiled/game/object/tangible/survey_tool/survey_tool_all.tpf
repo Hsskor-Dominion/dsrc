@@ -7,4 +7,4 @@
 
 sharedTemplate = "object/tangible/survey_tool/shared_survey_tool_all.iff"
 
-objvars = +["survey" = ["resource_class" = "resource"]]
+objvars = +["survey" = ["resource_class" = "inorganic"]]

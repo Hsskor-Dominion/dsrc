@@ -64,6 +64,18 @@ public class resource extends script.base_script
         "energy_renewable_unlimited_wind",
         "energy_renewable_unlimited_solar"
     };
+    public static final String[] CLASS_NAME2 =
+            {
+                    "resource",
+                    "inorganic",
+                    "mineral",
+                    "water",
+                    "chemical",
+                    "gas",
+                    "energy",
+                    "energy_renewable_unlimited_wind",
+                    "energy_renewable_unlimited_solar"
+            };
     public static final String RT_ORGANIC = "organic";
     public static final String RT_INORGANIC = "inorganic";
     public static final String RT_MINERAL = "mineral";

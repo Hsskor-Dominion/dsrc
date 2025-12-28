@@ -36,7 +36,7 @@ public class slicing_weapon extends script.base_script
         }
 
         // Legacy behavior preserved
-        detachScript(self, "item.slicing.slicing_weapon");
+        attachScript(self, "item.slicing.slicing_weapon");
         return SCRIPT_CONTINUE;
     }
 
@@ -50,7 +50,9 @@ public class slicing_weapon extends script.base_script
             return SCRIPT_CONTINUE;
         }
 
-        if (!hasSkill(player, "class_smuggler_phase1_novice"))
+        // FAIL only if the player has NEITHER skill
+        if (!hasSkill(player, "class_smuggler_phase1_novice") &&
+                !hasSkill(player, "expertise_engineering_weaponsmith_socket_bonus_1"))
         {
             return SCRIPT_CONTINUE;
         }
@@ -71,9 +73,10 @@ public class slicing_weapon extends script.base_script
             return SCRIPT_CONTINUE;
         }
 
-        if (!hasCommand(player, "sm_modify_pistol_1"))
+        // FAIL only if the player has NEITHER skill
+        if (!hasSkill(player, "class_smuggler_phase1_novice") &&
+                !hasSkill(player, "expertise_engineering_weaponsmith_socket_bonus_1"))
         {
-            sendSystemMessage(player, SID_NOT_SMUGGLER);
             return SCRIPT_CONTINUE;
         }
 
@@ -130,7 +133,7 @@ public class slicing_weapon extends script.base_script
         }
 
         // ---- Require slicing module (player inventory!) ----
-        obj_id module = utils.getStaticItemInInventory(player, "item_reward_modify_pistol_01_01");
+        obj_id module = utils.getStaticItemInInventory(player, "item_reward_modify_pistol_01_01"); //can we make this or object/tangible/slicing/slicing_laser_knife.iff? take from either stack?
         if (!isIdValid(module) || getCount(module) <= 0)
         {
             sendSystemMessage(player, new string_id("spam", "pistol_module_missing"));
@@ -146,7 +149,7 @@ public class slicing_weapon extends script.base_script
         int baseFailChance = 30;
 
 // Luck scaling: luck / 1000 = % reduction
-        int luck = getSkillStatMod(player, "luck");
+        int luck = getEnhancedSkillStatisticModifierUncapped(player, "luck_modified");
         float luckReduction = luck / 1000.0f;
 
 // Convert to percentage points

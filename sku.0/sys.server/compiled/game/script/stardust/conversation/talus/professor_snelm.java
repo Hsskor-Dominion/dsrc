@@ -13,9 +13,19 @@ public class professor_snelm extends base_script
     {
         return true;
     }
-    public boolean professor_snelm_condition_hasTalusIndex(obj_id player, obj_id npc) throws InterruptedException
+    public boolean professor_snelm_condition_hasGalacticIndex(obj_id player, obj_id npc) throws InterruptedException
     {
-        return hasCompletedCollection(player, "talus_creature_index");
+        return hasCompletedCollection(player, "corellia_creature_index")
+                && hasCompletedCollection(player, "dantooine_creature_index")
+                && hasCompletedCollection(player, "dathomir_creature_index")
+                && hasCompletedCollection(player, "endor_creature_index")
+                && hasCompletedCollection(player, "lok_creature_index")
+                && hasCompletedCollection(player, "naboo_creature_index")
+                && hasCompletedCollection(player, "rori_creature_index")
+                && hasCompletedCollection(player, "talus_creature_index")
+                && hasCompletedCollection(player, "yavin4_creature_index")
+                && hasCompletedCollection(player, "mustafar_creature_index")
+                && hasCompletedCollection(player, "tatooine_creature_index");
     }
 
     public void professor_snelm_action_vendor(obj_id player, obj_id npc) throws InterruptedException
@@ -91,7 +101,7 @@ public class professor_snelm extends base_script
     {
         if (response.equals("trade"))
         {
-            if (professor_snelm_condition_hasTalusIndex (player, npc))
+            if (professor_snelm_condition_hasGalacticIndex (player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "fence");
                 professor_snelm_action_vendor(player, npc);
@@ -117,7 +127,7 @@ public class professor_snelm extends base_script
     {
         if (response.equals("creature_battle"))
         {
-            if (professor_snelm_condition_hasTalusIndex (player, npc))
+            if (professor_snelm_condition_hasGalacticIndex (player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "lets_battle");
                 //professor_snelm_action_grantQuest(player, npc);
@@ -143,7 +153,7 @@ public class professor_snelm extends base_script
     {
         if (response.equals("creature_index"))
         {
-            if (professor_snelm_condition_hasTalusIndex (player, npc))
+            if (professor_snelm_condition_hasGalacticIndex (player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "congratulations_completed_talus_index");
                 grantSkill(player, "stardust_bm_talus");

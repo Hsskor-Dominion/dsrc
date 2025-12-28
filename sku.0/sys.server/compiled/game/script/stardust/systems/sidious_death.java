@@ -107,6 +107,18 @@ public class sidious_death extends script.base_script
         {
             static_item.createNewItemFunction("object/tangible/quest/quest_start/profession_force_sensitive_30.iff", corpseInventory);
         }
+        else if (x <= 70)
+        {
+            static_item.createNewItemFunction("item_jedi_robe_dark_04_04", corpseInventory);
+        }
+        else if (x <= 75)
+        {
+            static_item.createNewItemFunction("item_jedi_robe_dark_04_05", corpseInventory);
+        }
+        else if (x <= 80)
+        {
+            static_item.createNewItemFunction("item_jedi_robe_dark_03_03", corpseInventory);
+        }
         else if (x <= 95)
         {
             static_item.createNewItemFunction("item_pgc_token_03", corpseInventory);

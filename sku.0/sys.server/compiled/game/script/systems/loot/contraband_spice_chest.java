@@ -1,9 +1,6 @@
 package script.systems.loot;
 
-import script.library.collection;
-import script.library.loot;
-import script.library.static_item;
-import script.library.utils;
+import script.library.*;
 import script.menu_info;
 import script.menu_info_types;
 import script.obj_id;
@@ -30,6 +27,7 @@ public class contraband_spice_chest extends script.base_script {
     }
     public void stealSpice(obj_id self, obj_id player) throws InterruptedException
     {
+        factions.addFactionStanding(player, "underworld", 5);
         int which_one = rand(1, 30);
         String poster = "";
         switch (which_one)
@@ -124,6 +122,9 @@ public class contraband_spice_chest extends script.base_script {
             case 30:
             poster = "item_schematic_spice_booster_blue";
             break;
+            case 31:
+            poster = "item_schematic_spice_booster_blue";
+            break;
         }
         obj_id item = static_item.createNewItemFunction(poster, player);
         if (isIdValid(item))
@@ -132,3 +133,4 @@ public class contraband_spice_chest extends script.base_script {
         }
     }
 }
+"object/tangible/slicing/slicing_laser_knife.iff"

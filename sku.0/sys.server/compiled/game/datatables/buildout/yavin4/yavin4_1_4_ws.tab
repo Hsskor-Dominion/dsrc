@@ -68,9 +68,9 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 8495353	0	object/static/structure/general/debris_deathstar_tractorbeam.iff	0	1305.41	119.158	1638.38	0.862738	-0.114238	-0.224894	-0.438241		$|
 8495368	0	object/static/structure/general/banner_imperial_style_01.iff	0	1253.95	195.893	1944.01	0.675013	0.725482	-0.0201344	-0.132772		$|
 8495480	0	object/static/structure/tatooine/beam_tatooine_overhead_style_01.iff	0	1897.88	26.0509	543.72	0.707107	0	0	0.707106		$|
-8495482	0	object/static/structure/tatooine/beam_tatooine_overhead_style_01.iff	0	1888.08	26.0545	543.746	-4.52566e-008	0.707107	0.707107	-2.98023e-008		$|
+8495482	0	object/static/structure/tatooine/beam_tatooine_overhead_style_01.iff	0	1888.08	26.0545	543.746	-4.52566E-08	0.707107	0.707107	-2.98023E-08		$|
 8495483	0	object/static/structure/naboo/gungan_relic_s01.iff	0	1823.06	66.232	1385.12	1	0	0	0		$|
-8495484	0	object/static/structure/general/streetlamp_small_green_style_01.iff	0	1822.19	72.958	1385.38	-3.20013e-008	1	0	0		$|
+8495484	0	object/static/structure/general/streetlamp_small_green_style_01.iff	0	1822.19	72.958	1385.38	-3.20013E-08	1	0	0		$|
 8695466	0	object/building/military/military_outpost_guard_tower_1.iff	0	1256.21	195.952	1937.48	-0.293321	0	0.956014	0		$|
 8695490	0	object/static/structure/general/prp_junk_s1.iff	0	1893.83	21.9669	543.765	0.714421	0	0.699716	0		$|
 8695491	0	object/static/structure/general/prp_junk_s1.iff	0	1892.16	21.9646	543.811	-0.699716	0	0.714421	0		$|
@@ -94,3 +94,4 @@ i	i	h	i	f	f	f	f	f	f	f	s	p
 3666189	0	object/tangible/ground_spawning/mob_spawner.iff	0	1894	25	543	1	0	0	0		$|
 3666190	0	object/tangible/ground_spawning/mob_spawner.iff	0	1894	25	543	1	0	0	0		$|
 3666191	0	object/tangible/ground_spawning/mob_spawner.iff	0	1894	25	543	1	0	0	0		$|
+-3666192	0	object/tangible/ground_spawning/area_spawner.iff	0	1708	84	1607	1	0	0	0	systems.spawning.spawner_area	fltMaxSpawnTime|2|0.000000|fltMinSpawnTime|2|1.000000|fltRadius|2|0.000000|intDefaultBehavior|0|1|intGoodLocationSpawner|0|0|intSpawnCount|0|1|intSpawnSystem|0|1|registerWithController|0|1|strName|4|professor_geo|strSpawnerType|4|area|strSpawns|4|professor_geo|$|

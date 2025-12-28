@@ -271,7 +271,7 @@ public class personel_mando extends base_script
         // Check if player already has a pet out
         if (callable.hasAnyCallable(player))
         {
-            final string_id petActiveMessage = new string_id(c_stringFile, "pet_already_active");
+            final string_id petActiveMessage = new string_id(c_stringFile, "pet_vehicle_already_active");
             utils.removeScriptVar(player, "conversation.personel_mando_conversation.branchId");
             npcEndConversationWithMessage(player, petActiveMessage);
             return SCRIPT_CONTINUE;

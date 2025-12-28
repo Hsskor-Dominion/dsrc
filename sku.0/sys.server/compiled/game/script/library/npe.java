@@ -591,7 +591,7 @@ public class npe extends script.base_script
         }
         if (hasObjVar(player, "stardust_talus_io"))
         {
-            warpPlayer(player, "talus", -2188, 20, -2306, null, 0, 0, 0, "", false);
+            warpPlayer(player, "talus", -2188, 20, 2306, null, 0, 0, 0, "", false);
         }
         else
         {

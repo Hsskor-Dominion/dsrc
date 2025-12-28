@@ -826,6 +826,7 @@ public class smuggler extends script.base_script
                             "object/tangible/loot/loot_schematic/geonosian_sonic_blaster_schematic.iff",
                             "object/tangible/loot/loot_schematic/yt1300_schematic.iff",
                             "object/tangible/parrot_cage/parrot_cage.iff",
+                            "object/tangible/slicing/slicing_laser_knife.iff",
                             "object/tangible/space/special_loot/encoded_document.iff",
                             "object/tangible/space/special_loot/firespray_schematic_part1.iff",
                             "object/tangible/space/special_loot/firespray_schematic_part2.iff",

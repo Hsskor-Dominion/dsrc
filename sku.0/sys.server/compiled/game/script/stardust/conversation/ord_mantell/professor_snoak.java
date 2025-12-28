@@ -71,80 +71,85 @@ public class professor_snoak extends script.base_script
     }
     public int professor_snoak_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        if (response.equals("player_want_to_be_very_best"))
+        if (!response.equals("player_want_to_be_very_best"))
         {
-            if (professor_snoak_condition__defaultCondition(player, npc))
-            {
-                string_id message = new string_id(c_stringFile, "snoak_like_no_one_ever_was");
-                int numberOfResponses = 0;
-                boolean hasResponse = false;
-                boolean hasResponse0 = false;
-                if (professor_snoak_condition__defaultCondition(player, npc))
-                {
-                    ++numberOfResponses;
-                    hasResponse = true;
-                    hasResponse0 = true;
-                }
-                if (hasResponse)
-                {
-                    int responseIndex = 0;
-                    string_id responses[] = new string_id[numberOfResponses];
-                    if (hasResponse0)
-                    {
-                        responses[responseIndex++] = new string_id(c_stringFile, "player_choose_to_tame_creatures_as_their_cause");
-                    }
-                    utils.setScriptVar(player, "conversation.professor_snoak.branchId", 2);
-                    npcSpeak(player, message);
-                    npcSetConversationResponses(player, responses);
-                }
-                else 
-                {
-                    utils.removeScriptVar(player, "conversation.professor_snoak.branchId");
-                    npcEndConversationWithMessage(player, message);
-                }
-                return SCRIPT_CONTINUE;
-            }
+            return SCRIPT_DEFAULT;
         }
-        return SCRIPT_DEFAULT;
+
+        string_id message = new string_id(c_stringFile, "snoak_like_no_one_ever_was");
+
+        // Two clear choices
+        string_id[] responses = new string_id[]
+                {
+                        new string_id(c_stringFile, "player_choose_to_tame_creatures_as_their_cause"),
+                        new string_id(c_stringFile, "player_choose_to_combat")
+                };
+
+        utils.setScriptVar(player, "conversation.professor_snoak.branchId", 2);
+        npcSpeak(player, message);
+        npcSetConversationResponses(player, responses);
+
+        return SCRIPT_CONTINUE;
     }
     public int professor_snoak_handleBranch2(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
+        // Creature taming path
         if (response.equals("player_choose_to_tame_creatures_as_their_cause"))
         {
-            if (professor_snoak_condition__defaultCondition(player, npc))
-            {
-                professor_snoak_action_startShop(player, npc);
-                string_id message = new string_id(c_stringFile, "snoak_they_choose_you");
-                utils.removeScriptVar(player, "conversation.professor_snoak.branchId");
-                npcEndConversationWithMessage(player, message);
-                return SCRIPT_CONTINUE;
-            }
+            professor_snoak_action_startShop(player, npc);
+
+            string_id message = new string_id(c_stringFile, "snoak_they_choose_you");
+            utils.removeScriptVar(player, "conversation.professor_snoak.branchId");
+            npcEndConversationWithMessage(player, message);
+            return SCRIPT_CONTINUE;
         }
+
+        // Combat path
+        if (response.equals("player_choose_to_combat"))
+        {
+            string_id message = new string_id(c_stringFile, "snoak_go_see_gary");
+            utils.removeScriptVar(player, "conversation.professor_snoak.branchId");
+            npcEndConversationWithMessage(player, message);
+            return SCRIPT_CONTINUE;
+        }
+
         return SCRIPT_DEFAULT;
     }
     public int professor_snoak_handleBranch4(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
+        // Destiny / creature mastery path
         if (response.equals("player_knows_its_their_destiny"))
         {
             if (professor_snoak_condition_hasCorelliaIndex(player, npc))
             {
                 string_id message = new string_id(c_stringFile, "snoak_congratulations_completed_corellia");
-                utils.removeScriptVar(player, "conversation.professor_snoak.branchId");
+
                 vendor_snoak_action_showTokenVendorUI(player, npc);
-                npcEndConversationWithMessage(player, message);
                 grantSkill(player, "stardust_bm_corellia");
-                modifyCollectionSlotValue(player, "endor_bolle_bol",1);//temporary fix until beast_egg.java can properly register bolle_bol from bol
-                return SCRIPT_CONTINUE;
-            }
-            else if (professor_snoak_condition__defaultCondition(player, npc))
-            {
-                professor_snoak_action_startShop(player, npc);
-                string_id message = new string_id(c_stringFile, "snoak_gotta_tame_them_all");
+                modifyCollectionSlotValue(player, "endor_bolle_bol", 1);
+
                 utils.removeScriptVar(player, "conversation.professor_snoak.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;
             }
+
+            // Still progressing
+            professor_snoak_action_startShop(player, npc);
+            string_id message = new string_id(c_stringFile, "snoak_gotta_tame_them_all");
+            utils.removeScriptVar(player, "conversation.professor_snoak.branchId");
+            npcEndConversationWithMessage(player, message);
+            return SCRIPT_CONTINUE;
         }
+
+        // Explicit combat inquiry
+        if (response.equals("player_seeks_combat"))
+        {
+            string_id message = new string_id(c_stringFile, "snoak_go_to_gary");
+            utils.removeScriptVar(player, "conversation.professor_snoak.branchId");
+            npcEndConversationWithMessage(player, message);
+            return SCRIPT_CONTINUE;
+        }
+
         return SCRIPT_DEFAULT;
     }
     public int OnInitialize(obj_id self) throws InterruptedException
@@ -191,85 +196,60 @@ public class professor_snoak extends script.base_script
     public int OnStartNpcConversation(obj_id self, obj_id player) throws InterruptedException
     {
         obj_id npc = self;
+
         if (ai_lib.isInCombat(npc) || ai_lib.isInCombat(player))
         {
             return SCRIPT_OVERRIDE;
         }
+
+        professor_snoak_action_facePlayer(player, npc);
+
+        // -------------------------------
+        // FIRST TIME TALKING TO SNOAK
+        // -------------------------------
         if (!professor_snoak_condition_hasBeenBefore(player, npc))
         {
-            professor_snoak_action_facePlayer(player, npc);
             string_id message = new string_id(c_stringFile, "snoak_seeks_creature_trainers_and_researchers");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-            if (professor_snoak_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "player_want_to_be_very_best");
-                }
-                utils.setScriptVar(player, "conversation.professor_snoak.branchId", 1);
-                npcStartConversation(player, npc, "professor_snoak", message, responses);
-            }
-            else 
-            {
-                chat.chat(npc, player, message);
-            }
+
+            string_id[] responses = new string_id[]
+                    {
+                            new string_id(c_stringFile, "player_want_to_be_very_best")
+                    };
+
+            utils.setScriptVar(player, "conversation.professor_snoak.branchId", 1);
+            npcStartConversation(player, npc, "professor_snoak", message, responses);
             return SCRIPT_CONTINUE;
         }
+
+        // -------------------------------
+        // RETURNING PLAYER
+        // -------------------------------
         if (professor_snoak_condition_hasBeenBefore(player, npc))
         {
-            professor_snoak_action_facePlayer(player, npc);
             string_id message = new string_id(c_stringFile, "snoak_talks_creature_index");
-            int numberOfResponses = 0;
-            boolean hasResponse = false;
-            boolean hasResponse0 = false;
-            if (professor_snoak_condition__defaultCondition(player, npc))
-            {
-                ++numberOfResponses;
-                hasResponse = true;
-                hasResponse0 = true;
-            }
-            if (hasResponse)
-            {
-                int responseIndex = 0;
-                string_id responses[] = new string_id[numberOfResponses];
-                if (hasResponse0)
-                {
-                    responses[responseIndex++] = new string_id(c_stringFile, "player_knows_its_their_destiny");
-                }
-                utils.setScriptVar(player, "conversation.professor_snoak.branchId", 4);
-                prose_package pp = new prose_package();
-                pp.stringId = message;
-                pp.actor.set(player);
-                pp.target.set(npc);
-                npcStartConversation(player, npc, "professor_snoak", null, pp, responses);
-            }
-            else 
-            {
-                prose_package pp = new prose_package();
-                pp.stringId = message;
-                pp.actor.set(player);
-                pp.target.set(npc);
-                chat.chat(npc, player, null, null, pp);
-            }
+
+            string_id[] responses = new string_id[]
+                    {
+                            new string_id(c_stringFile, "player_knows_its_their_destiny"),
+                            new string_id(c_stringFile, "player_seeks_combat")
+                    };
+
+            utils.setScriptVar(player, "conversation.professor_snoak.branchId", 4);
+
+            prose_package pp = new prose_package();
+            pp.stringId = message;
+            pp.actor.set(player);
+            pp.target.set(npc);
+
+            npcStartConversation(player, npc, "professor_snoak", null, pp, responses);
             return SCRIPT_CONTINUE;
         }
-        if (professor_snoak_condition__defaultCondition(player, npc))
-        {
-            string_id message = new string_id(c_stringFile, "snoak_seeks_research_assistant");
-            chat.chat(npc, player, message);
-            return SCRIPT_CONTINUE;
-        }
-        chat.chat(npc, "Error:  All conditions for OnStartNpcConversation were false.");
+
+        // -------------------------------
+        // FALLBACK
+        // -------------------------------
+        string_id message = new string_id(c_stringFile, "snoak_seeks_research_assistant");
+        chat.chat(npc, player, message);
         return SCRIPT_CONTINUE;
     }
     public int OnNpcConversationResponse(obj_id self, String conversationId, obj_id player, string_id response) throws InterruptedException
