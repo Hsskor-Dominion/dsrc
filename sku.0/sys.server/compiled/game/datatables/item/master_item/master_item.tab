@@ -8597,4 +8597,4 @@ item_deed_hover_chair	object/tangible/loot/generic_deed/vehicle_generic.iff					
 stardust_sith_dagger	object/weapon/melee/knife/ep3/knife_trando_skinner.iff	weapon						2	250	stardust.systems.sith_dagger		1			
 stardust_gaming_table_wheel	object/tangible/event_perk/frn_all_gaming_kiosk_s01.iff							4		gambling.wheel.sarlaac_wheel		1			
 stardust_gaming_table_roulette	object/tangible/gambling/wheel/roulette.iff							4		gambling.wheel.roulette					
-stardust_gaming_table_pazaak	object/tangible/gambling/table/table_base.iff							4		gambling.wheel.pazaak					
+stardust_gaming_table_pazaak	object/tangible/gambling/table/table_base.iff							4		gambling.table.pazaak

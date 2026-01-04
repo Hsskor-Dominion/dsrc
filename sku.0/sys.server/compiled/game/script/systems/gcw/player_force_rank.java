@@ -908,7 +908,7 @@ public class player_force_rank extends script.base_script
         }
         if (status != 3)
         {
-            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "acceptance_not_open"));
+            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "acceptance_not_open"));//this always happens? they are never open? Status and time issue?
             return SCRIPT_CONTINUE;
         }
         if (force_rank.isVoteTimeExpired(enclave, row_selected + 1))
@@ -1676,6 +1676,7 @@ public class player_force_rank extends script.base_script
     }
     public int cmdShowCouncilRank(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
+        //we need to add a pop-up box that shows you your current jedi experience and rank
         return SCRIPT_CONTINUE;
     }
 }

@@ -961,7 +961,7 @@ public class treasure_map extends script.base_script
         {
             return "none";
         }
-        if (groupModifier < 8)
+        if (groupModifier < 4)//lowered from 8 for SWG Chimarea
         {
             return "none";
         }

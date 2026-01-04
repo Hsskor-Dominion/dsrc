@@ -721,8 +721,12 @@ public class combat extends script.base_script
     }
     public static boolean isCommandoBonus(obj_id self, weapon_data weaponData, int commandType) throws InterruptedException
     {
-        return isPlayer(self) && utils.isProfession(self, utils.COMMANDO) && isHeavyWeapon(weaponData) && (commandType == LEFT_CLICK_DEFAULT);
-    }
+        return isPlayer(self)
+                && (hasSkill(self, "class_commando_phase2_novice")
+                || hasSkill(self, "expertise_co_short_fuse_1"))
+                && isHeavyWeapon(weaponData)
+                && (commandType == LEFT_CLICK_DEFAULT);
+    }//SWG Chimaera attempt to separate commando skill check into 2 options
     public static int[] getActionCost(obj_id self, weapon_data weaponData, dictionary actionData) throws InterruptedException
     {
         int[] cost = new int[3];

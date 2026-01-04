@@ -232,7 +232,7 @@ forceWave	forceWave	snare		2	jedi.forceWave	20	movement	0		0		0		0		0	STATE_NONE
 forceWave_1	forceWave	snare		3	jedi.forceWave	20	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 forceSuppression	forceSuppression	root		2	jedi.forceSuppression	15	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 forceSuppression_1	forceSuppression	root		3	jedi.forceSuppression	20	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-stasis	stasis	mez		3	jedi.stasis	600	delay_attack	0	movement	0		0		0		0	STATE_NONE	mezRecourse			1	1		1	1	1	0	1	1	0	1	1	1
+stasis	stasis	mez		3	jedi.stasis	600	delay_attack	0		0		0		0		0	STATE_NONE	mezRecourse			1	1		1	1	1	0	1	1	0	1	1	1
 avoidIncapacitation	avoidIncapacitation			1	jedi.avoidIncapacitation	30	avoid_incap	1	movement	0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 avoidIncapacitation_1	avoidIncapacitation_1			1	jedi.avoidIncapacitation	30	avoid_incap	1	movement	0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 avoidIncapacitation_2	avoidIncapacitation_2			1	jedi.avoidIncapacitation	30	avoid_incap	1	movement	0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -852,8 +852,8 @@ fs_sh_1	fsCure			20	command.fs_sh	10	expertise_dot_immunity	5		0		0		0		0	STATE_
 fs_sh_2	fsCure			30	command.fs_sh	12	expertise_dot_immunity	5		0		0		0		0	STATE_NONE	fs_dot_immunity_recourse			1	0		1	1	1	0	1	1	0	1	1	1
 fs_sh_3	fsCure			40	command.fs_sh	14	expertise_dot_immunity	5		0		0		0		0	STATE_NONE	fs_dot_immunity_recourse			1	0		1	1	1	0	1	1	0	1	1	1
 invis_fs_buff_invis_1	invisibility			4	command.fs_buff_invis	30	invis	0	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
-saberBlock	saberBlock			1	command.saberBlock	20	expertise_saber_block	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-fs_saber_reflect	fs_saber_reflect			1	command.fs_saber_reflect_buff	30	expertise_saber_block	15		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+saberBlock	saberBlock			1	command.saberBlock	20	expertise_saber_block	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+fs_saber_reflect	fs_saber_reflect			1	command.fs_saber_reflect_buff	10	expertise_saber_block	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 fs_soothing_aura_1	fs_soothing_aura			1	command.fs_path_soothing_aura	-1	expertise_healing_line_fs_heal	25		0		0		0		0	STATE_NONE	none			0	0		0	1	0	0	1	1	0	1	1	1
 fs_soothing_aura_2	fs_soothing_aura			1	command.fs_path_soothing_aura	-1	expertise_healing_line_fs_heal	50		0		0		0		0	STATE_NONE	none			0	0		0	1	0	0	1	1	0	1	1	1
 fs_soothing_aura_3	fs_soothing_aura			1	command.fs_path_soothing_aura	-1	expertise_healing_line_fs_heal	75		0		0		0		0	STATE_NONE	none			0	0		0	1	0	0	1	1	0	1	1	1
@@ -978,7 +978,7 @@ conConsumable45	stimpack			10	command.regeneration	300	constitution_modified	45	
 strConsumable45	stimpack			10	command.powerBoost	300	strength_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 preConsumable45	stimpack			10	command.aim	300	precision_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 lckConsumable45	stimpack			10	command.stabilizers	300	luck_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-incapWeaken	incapWeaken			1	command.deathBlow	60		0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
+incapWeaken	incapWeaken			1	command.deathBlow	60		0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	3	1	0	1	1	1
 agroEffect	agroEffect			100	command.petIntimidateAttack	600		0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 detectHiddenConsumable20	towCrystal			20	command.detectHiddenBuff	900	detect_hidden	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 detectHiddenConsumable40	towCrystal			40	command.detectHiddenBuff	900	detect_hidden	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1887,7 +1887,7 @@ costume_lifeday_monkey_lizard	shapechange	costume		1	buffs.costume	28800	storyte
 gcw_spy_destroy_patrol_explosive_stack	gcw_spy			1	buffs.gcw_spy_explosives_stack	3600		0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	5	1	0	1	1	1
 gcw_general_resistance_stack_imperial	gcw_general			1	buffs.gcw_general_resistance_stack_imperial	-1	expertise_damage_all	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	100	1	0	1	0	1
 gcw_general_resistance_stack_rebel	gcw_general			1	buffs.gcw_general_resistance_stack_rebel	-1	expertise_damage_all	10		0		0		0		0	STATE_NONE	none			1	0		0	1	1	1	100	1	0	1	0	1
-gcw_fatigue	gcw_fatigue			1	command.gcw_fatigue	-1		0		0		0		0		0	STATE_NONE	none			1	1		0	0	0	0	1000	1	0	1	1	1
+gcw_fatigue	gcw_fatigue			1	command.gcw_fatigue	-1	expertise_healing_all	-1		0		0		0		0	STATE_NONE	none			1	1		0	0	0	0	1000	1	0	1	1	1
 tower_defender	tower_defender			1	command.gcw_tower_defense	10	expertise_damage_npc	200		0		0		0		0	STATE_NONE	none			1	0		0	1	0	0	1	1	0	1	1	1
 gcw_entertained_patrol_npc	gcw_general			1	command.gcw_npc_entertained	-1	expertise_innate_protection_all	1000	combat_divide_damage_taken	5		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	0	1
 gcw_stim_detect_hidden_01	towCrystal			100	command.detectHiddenBuff	60	detect_hidden	100		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1

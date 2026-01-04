@@ -129,7 +129,7 @@ public class force_rank extends script.base_script
         }
         else
         {
-            //setJediState(player, JEDI_STATE_FORCE_RANKED_DARK);
+            //setJediState(player, JEDI_STATE_FORCE_RANKED_DARK);// think it breaks a character, mind
             pvpSetAlignedFaction(player, getFactionId("Imperial"));
         }
         pvpMakeDeclared(player);
@@ -2661,6 +2661,7 @@ public class force_rank extends script.base_script
     }
     public static boolean grantRankItems(obj_id player, boolean retroactive) throws InterruptedException
     {
+        //should replace this with something meaningful... not sure what though.
         return false;
     }
     public static boolean grantRankItems(obj_id player) throws InterruptedException

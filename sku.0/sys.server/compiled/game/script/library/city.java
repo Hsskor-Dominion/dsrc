@@ -131,6 +131,7 @@ public class city extends script.base_script
     public static final String OBJVAR_DERANK_EXEMPT = "city.derank_exempt";
     public static final String CITIZEN_LIST_QUERIED = "cityhall.citizen_list_queried";
     public static final String CITIZEN_LIST_DATA = "cityhall.citizen_list_data";
+    public static final int MAX_CITY_TRAINERS = 50;
     public static int canBuildCityHere(obj_id player, location loc) throws InterruptedException
     {
         int[] all_cities = getAllCityIds();
@@ -1298,11 +1299,13 @@ public static void setTravelFee(int city_id, int new_fee) throws InterruptedExce
     }
     public static int getMaxTrainerCount(int city_id) throws InterruptedException
     {
-        return getMaxTrainerCount(city_id, getCityRank(city_id));
+        //return getMaxTrainerCount(city_id, getCityRank(city_id));
+        return MAX_CITY_TRAINERS;
     }
     public static int getMaxTrainerCount(int city_id, int rank) throws InterruptedException
     {
-        return 0;
+        //return 0;//this was 0, presumed turned off?
+        return MAX_CITY_TRAINERS;
     }
     public static void addSkillTrainer(int city_id, obj_id player, String template) throws InterruptedException
     {

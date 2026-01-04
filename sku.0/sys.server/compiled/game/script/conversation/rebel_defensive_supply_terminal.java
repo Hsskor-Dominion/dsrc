@@ -15,8 +15,11 @@ public class rebel_defensive_supply_terminal extends script.base_script
     }
     public boolean rebel_defensive_supply_terminal_condition_isTrader(obj_id player, obj_id npc) throws InterruptedException
     {
-        int level = utils.getLevel(player);
-        if (utils.isProfession(player, utils.TRADER) && (level > 45))
+        if (utils.isProfession(player, utils.TRADER) ||
+                hasSkill(player, "class_engineering_phase1_novice") ||
+                hasSkill(player, "class_munitions_phase1_novice") ||
+                hasSkill(player, "class_domestics_phase1_novice") ||
+                hasSkill(player, "class_structures_phase1_novice"))
         {
             return true;
         }

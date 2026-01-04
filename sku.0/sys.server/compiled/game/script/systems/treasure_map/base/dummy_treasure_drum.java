@@ -239,7 +239,7 @@ public class dummy_treasure_drum extends script.base_script
     {
         loot.makeLootInContainer(treasureChest, loot_table, TREASURE_LOOT_ITEMS, treasureLevel);
         CustomerServiceLog("treasureMap", "Player: " + player + " " + getName(player) + " has spawned a treasure chest: " + treasureChest + " with loot of level: " + treasureLevel + " using loot table: " + loot_table + ". This function gives the chest 6 items. [ fillTreasureChestWithLoot() ]");
-        if (groupModifier < 4)
+        if (groupModifier < 2)
         {
             return true;
         }
@@ -247,13 +247,13 @@ public class dummy_treasure_drum extends script.base_script
         {
             return true;
         }
-        if (groupModifier >= 4 && groupModifier < 8)
+        if (groupModifier >= 2 && groupModifier < 4)//lowered this amount for SWG Chimaera
         {
             int bonus = rand(1, 100);
             boolean bonusReceived = fourParticipantBonusLootItem(treasureChest, treasureLevel, bonus);
             CustomerServiceLog("treasureMap", "Player: " + player + " " + getName(player) + " has received a bonus treasure item in: " + treasureChest + " because the player was in a group of 4 or more (but less than 8 total)" + ". This function gives the chest 1 item and the chest should now have 7 items total. [ fillTreasureChestWithLoot() ]");
         }
-        else if (groupModifier >= 8)
+        else if (groupModifier >= 4)
         {
             int firstBonus = rand(1, 100);
             int secondBonus = rand(1, 100);

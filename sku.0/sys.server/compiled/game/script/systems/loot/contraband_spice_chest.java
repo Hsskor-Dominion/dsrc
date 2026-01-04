@@ -28,7 +28,7 @@ public class contraband_spice_chest extends script.base_script {
     public void stealSpice(obj_id self, obj_id player) throws InterruptedException
     {
         factions.addFactionStanding(player, "underworld", 5);
-        int which_one = rand(1, 30);
+        int which_one = rand(1, 31);
         String poster = "";
         switch (which_one)
         {
@@ -123,7 +123,7 @@ public class contraband_spice_chest extends script.base_script {
             poster = "item_schematic_spice_booster_blue";
             break;
             case 31:
-            poster = "item_schematic_spice_booster_blue";
+            poster = "object/tangible/slicing/slicing_laser_knife.iff";
             break;
         }
         obj_id item = static_item.createNewItemFunction(poster, player);
@@ -133,4 +133,3 @@ public class contraband_spice_chest extends script.base_script {
         }
     }
 }
-"object/tangible/slicing/slicing_laser_knife.iff"

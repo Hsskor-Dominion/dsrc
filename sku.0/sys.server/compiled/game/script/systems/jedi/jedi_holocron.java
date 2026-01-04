@@ -31,7 +31,7 @@ public class jedi_holocron extends script.base_script {
     private static final int[] BADGES_SERENITY = {1,2,4,6,18,22,23};//Add Yoda stuff
     private static final int[] BADGES_KNOWLEDGE = {2,3,7,14,16,26};//Add Obi-Wan stuff. Collections
     private static final int[] BADGES_PEACE = {5,6,7,8,21};//Add Leia stuff? Ren? Corvette
-    private static final int[] BADGES_HARMONY = {4,5,7,10,19};//Kit Fisto. Luke stuff.
+    private static final int[] BADGES_HARMONY = {4,5,7,10,19};//Kit Fisto. Luke stuff. Anakin?
     private static final int[] BADGES_SITH = {10,11,12,13,14,15,16,17,20};
     private static final int[] BADGES_ALL = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32};
 

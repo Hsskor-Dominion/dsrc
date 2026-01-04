@@ -19,8 +19,8 @@ public class beach_party extends base_script
     }
     public boolean beach_partyFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
-        float fettFaction = factions.getFactionStanding(player, "townsperson");
-        if (fettFaction >= 0)
+        float townFaction = factions.getFactionStanding(player, "townsperson");
+        if (townFaction >= -5000)
         {
             return true;
         }
@@ -64,16 +64,16 @@ public class beach_party extends base_script
 
             return SCRIPT_CONTINUE;
         }
-        else if (response.equals("seek_race"))
+        else if (response.equals("seek_party"))
         {
 
-            final string_id message = new string_id(c_stringFile, "npc_consider_race");
+            final string_id message = new string_id(c_stringFile, "npc_consider_party");
             final int numberOfResponses = 1;
 
             final string_id[] responses = new string_id[numberOfResponses];
             int responseIndex = 0;
 
-            responses[responseIndex++] = new string_id(c_stringFile, "become_beach_party");
+            responses[responseIndex++] = new string_id(c_stringFile, "become_party");
 
             utils.setScriptVar(player, "conversation.beach_party_conversation.branchId", 3);
 
@@ -112,7 +112,7 @@ public class beach_party extends base_script
     }
     public int beach_party_handleBranch3(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        if (response.equals("become_beach_party"))
+        if (response.equals("become_party"))
         {
             // Default condition always true, keeping your structure
             if (beach_party_condition__defaultCondition(player, npc))
@@ -120,7 +120,7 @@ public class beach_party extends base_script
                 // Attempt to reward the player if they earned it
                 beach_party_action_rewardPlayer(player, npc);
 
-                final string_id message = new string_id(c_stringFile, "get_it_done");
+                final string_id message = new string_id(c_stringFile, "lets_party");
 
                 utils.removeScriptVar(player, "conversation.beach_party_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -132,56 +132,58 @@ public class beach_party extends base_script
     }
     public void beach_party_action_rewardPlayer(obj_id self, obj_id player) throws InterruptedException
     {
-        int now = getGameTime(); // seconds since server start
-        int cooldown = 24 * 60 * 60; // 24 hours
-
-        // --- Cooldown check ---
-        if (hasObjVar(player, "chimaeraPartyzoneCooldown"))
-        {
-            int lastUsed = getIntObjVar(player, "chimaeraPartyzoneCooldown");
-            if (now - lastUsed < cooldown)
-            {
-                sendSystemMessage(player, "You may only access the Chimaera Partyzone once every 24 hours.", "");
-                beach_party_action_signalReward(player, self);
-                beach_party_action_grantQuest(player, self);
-                return;
-            }
-        }
-
-        // --- Grant reward item ---//maybe later I make rand 1-3 for levels?
-        obj_id reward = createObjectInInventoryAllowOverload(
-                "object/tangible/item/rare_loot_chest_3.iff",
-                player
-        );
-
-        if (!isIdValid(reward))
-        {
-            sendSystemMessage(player, "Error: Could not grant reward item.", "");
-            return;
-        }
-
-        // Attach script to reward if needed
-        attachScript(reward, "systems.loot.rare_loot_chest");
-        setName(reward, "Legendary Loot Crate");
-
-        // Save cooldown timestamp
-        setObjVar(player, "chimaeraPartyzoneCooldown", now);
-
-        // Warp player (external modular function)
-        warpPlayerToPartyzone(player);
-
-        sendSystemMessage(player, "You are being transported to the current Galactic Partyzone!", "");
-    }
-    public void warpPlayerToPartyzone(obj_id player) throws InterruptedException
-    {
-        // CURRENT PARTY - "Boonta Eve Classic"
-        String planet = "tatooine";
-        float x = 3467.0f;
-        float y = 2.0f;
-        float z = 5076.0f;
-
-        // Actual warp
-        warpPlayer(player, planet, x, y, z, null, 0.0f, 0.0f, 0.0f);
+        doAnimationAction(self, "celebrate");
+        doAnimationAction(player, "celebrate");
+//        int now = getGameTime(); // seconds since server start
+//        int cooldown = 24 * 60 * 60; // 24 hours
+//
+//        // --- Cooldown check ---
+//        if (hasObjVar(player, "chimaeraPartyzoneCooldown"))
+//        {
+//            int lastUsed = getIntObjVar(player, "chimaeraPartyzoneCooldown");
+//            if (now - lastUsed < cooldown)
+//            {
+//                sendSystemMessage(player, "You may only access the Chimaera Partyzone once every 24 hours.", "");
+//                beach_party_action_signalReward(player, self);
+//                beach_party_action_grantQuest(player, self);
+//                return;
+//            }
+//        }
+//
+//        // --- Grant reward item ---//maybe later I make rand 1-3 for levels?
+//        obj_id reward = createObjectInInventoryAllowOverload(
+//                "object/tangible/item/rare_loot_chest_3.iff",
+//                player
+//        );
+//
+//        if (!isIdValid(reward))
+//        {
+//            sendSystemMessage(player, "Error: Could not grant reward item.", "");
+//            return;
+//        }
+//
+//        // Attach script to reward if needed
+//        attachScript(reward, "systems.loot.rare_loot_chest");
+//        setName(reward, "Legendary Loot Crate");
+//
+//        // Save cooldown timestamp
+//        setObjVar(player, "chimaeraPartyzoneCooldown", now);
+//
+//        // Warp player (external modular function)
+//        warpPlayerToPartyzone(player);
+//
+//        sendSystemMessage(player, "You are being transported to the current Galactic Partyzone!", "");
+//    }
+//    public void warpPlayerToPartyzone(obj_id player) throws InterruptedException
+//    {
+//        // CURRENT PARTY - "Boonta Eve Classic"
+//        String planet = "tatooine";
+//        float x = 3467.0f;
+//        float y = 2.0f;
+//        float z = 5076.0f;
+//
+//        // Actual warp
+//        warpPlayer(player, planet, x, y, z, null, 0.0f, 0.0f, 0.0f);
     }
     public int OnInitialize(obj_id self) throws InterruptedException
     {
@@ -195,7 +197,8 @@ public class beach_party extends base_script
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setCondition(self, CONDITION_INTERESTING);
-        setName(self, "Zed (Party Organizer - Entertainer Gigs)");
+        ai_lib.setDefaultCalmBehavior(self, ai_lib.BEHAVIOR_SENTINEL);
+        setName(self, "Zed (Party Organizer)");
 
         return SCRIPT_CONTINUE;
     }
@@ -233,7 +236,7 @@ public class beach_party extends base_script
             int responseIndex = 0;
 
             responses[responseIndex++] = new string_id(c_stringFile, "seek_trade");
-            responses[responseIndex++] = new string_id(c_stringFile, "seek_race");
+            responses[responseIndex++] = new string_id(c_stringFile, "seek_party");
 
             utils.setScriptVar(player, "conversation.beach_party_conversation.branchId", 1);
 

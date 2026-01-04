@@ -6522,6 +6522,10 @@ public class combat_actions extends script.systems.combat.combat_base {
             return SCRIPT_OVERRIDE;
         }
 
+        // ---- Apply to pet (beast or droid) ----
+        obj_id pet = beast_lib.getBeastOnPlayer(self);
+        buff.applyBuff(pet, "sp_avoid_damage");
+
         // Get group
         obj_id groupId = getGroupObject(self);
         if (!isIdValid(groupId))
@@ -6550,10 +6554,6 @@ public class combat_actions extends script.systems.combat.combat_base {
 
             // Apply to group member
             buff.applyBuff(member, "sp_avoid_damage");
-
-            // ---- Apply to pet (beast or droid) ----
-            obj_id pet = beast_lib.getBeastOnPlayer(self);
-            buff.applyBuff(pet, "sp_avoid_damage");
         }
 
         return SCRIPT_CONTINUE;

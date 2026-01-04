@@ -1258,7 +1258,7 @@ public class combat_base extends script.base_script
             actionData.increaseStrikethrough -= 100;
         }
         utils.removeScriptVar(attackerData.id, PROGRESSIVE_DAMAGE_COUNTER);
-        if (combat.isCommandoBonus(attackerData.id, weaponData, actionData.commandType))
+        if (combat.isCommandoBonus(attackerData.id, weaponData, actionData.commandType))//trying to get all players devastation bonus
         {
             float devastationBonus = combat.getDevastationChance(attackerData.id);
             if (rand(0.0f, 99.0f) < devastationBonus)
@@ -1446,7 +1446,7 @@ public class combat_base extends script.base_script
                     prose_package ppc = new prose_package();
                     ppc = prose.setStringId(ppc, critSpam);
                     showFlyTextPrivateProseWithFlags(defenderData[i].id, defenderData[i].id, ppc, 1.5f, colors.LIMEGREEN, FLY_TEXT_FLAG_IS_GLANCING_BLOW);
-                    hasSkill(defenderData[i].id, "expertise_fs_general_alacrity_1");
+                    hasSkill(defenderData[i].id, "expertise_fs_general_alacrity_1");//what does this even do? -Hsskor
                     playClientEffectObj(defenderData[i].id, "appearance/pt_jedi_alacrity.prt", defenderData[i].id, "");
                 }
                 if (hitData[i].critical)

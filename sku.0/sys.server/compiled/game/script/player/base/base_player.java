@@ -992,27 +992,28 @@ public class base_player extends script.base_script
                 messageTo(killer, "smugglerKilled", null, 1.0f, false);
             }
         }
-        if (callable.hasAnyCallable(self))
-        {
-            obj_id objCallable = callable.getCallable(self, callable.CALLABLE_TYPE_RIDEABLE);
-            if (exists(objCallable) && isIdValid(objCallable))
-            {
-                callable.storeCallable(self, objCallable);
-            }
-        }
+//        if (callable.hasAnyCallable(self))//not sure why this is necessary?
+//        {
+//            obj_id objCallable = callable.getCallable(self, callable.CALLABLE_TYPE_RIDEABLE);
+//            if (exists(objCallable) && isIdValid(objCallable))
+//            {
+//                callable.storeCallable(self, objCallable);
+//            }
+//        }
         int vehicleBuff = buff.getBuffOnTargetFromGroup(self, "vehicle");
         if (vehicleBuff != 0)
         {
             buff.removeBuff(self, vehicleBuff);
         }
-        if (hasBuff(self, "incapWeaken"))
+        int incapStackSize = (int) buff.getBuffStackCount(self, "incapWeaken");
+        if (incapStackSize > 1)
         {
             pclib.killPlayer(self, killer, true);
             return SCRIPT_CONTINUE;
         }
         else 
         {
-            buff.applyBuff(self, "incapWeaken");
+            buff.applyBuffWithStackCount(self, "incapWeaken", 1);
         }
         int recapacitateTimer = 10;
         float recapacitateModified = getEnhancedSkillStatisticModifierUncapped(self, "resistance_incapacitation");

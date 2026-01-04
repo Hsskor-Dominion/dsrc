@@ -3,6 +3,8 @@ package script.systems.storyteller;
 import script.*;
 import script.library.*;
 
+import static script.library.city.*;
+
 public class npc_controller extends script.base_script
 {
     public npc_controller()
@@ -18,6 +20,7 @@ public class npc_controller extends script.base_script
     public static final int REMOVE_EFFECT_MENU = menu_info_types.SERVER_MENU6;
     public static final int NPC_OPTIONS_ROOT_MENU = menu_info_types.SERVER_MENU7;
     public static final int EQUIP_UNEQUIP_WEAPON_MENU = menu_info_types.SERVER_MENU8;
+    public static final int MAKE_CITY_STAFF_MENU = menu_info_types.SERVER_MENU9;
     public int OnAttach(obj_id self) throws InterruptedException
     {
         setObjVar(self, "storytellerCreationTime", getGameTime());
@@ -72,6 +75,11 @@ public class npc_controller extends script.base_script
                     mi.addSubMenu(menuNpcOptions, OPEN_NPC_MENU, new string_id("storyteller", "open_npc"));
                     mi.addSubMenu(menuNpcOptions, SET_NPC_LEVEL_MENU, new string_id("storyteller", "set_npc_level"));
                     mi.addSubMenu(menuNpcOptions, SET_NPC_TO_FLAVOR_MENU, new string_id("storyteller", "set_npc_flavor_npc"));
+                }
+                if (!hasObjVar(self, "city_id"))
+                {
+                    mi.addSubMenu(menuNpcOptions, MAKE_CITY_STAFF_MENU,
+                            new string_id("storyteller", "make_city_staff"));
                 }
                 String defaultBehavaviorMenu = "set_npc_sentinel";
                 int defaultBehavior = ai_lib.getDefaultCalmBehavior(self);
@@ -167,8 +175,56 @@ public class npc_controller extends script.base_script
             {
                 storyteller.removeStorytellerPersistedEffect(self);
             }
+            else if (item == MAKE_CITY_STAFF_MENU)
+            {
+                makeCityStaff(self, player);
+            }
         }
         return SCRIPT_CONTINUE;
+    }
+    public void makeCityStaff(obj_id self, obj_id player) throws InterruptedException
+    {
+        int city_id = city.checkCity(player, false);
+        if (!city.cityExists(city_id))
+        {
+            sendSystemMessage(player, new string_id("city", "not_in_city"));
+            return;
+        }
+        boolean isMayor = city.isTheCityMayor(player, city_id);
+
+        if (!isMayor)
+        {
+            sendSystemMessage(player, new string_id("city", "not_mayor"));
+            return;
+        }
+
+        int trainerCount = city.getTrainerCount(city_id);
+        int maxTrainers = city.getMaxTrainerCount(city_id);
+
+        if (trainerCount >= maxTrainers)
+        {
+            sendSystemMessage(player, new string_id("city", "max_trainers"));
+            return;
+        }
+
+        if (!cityExists(city_id))
+        {
+            return;
+        }
+        float yaw = getYaw(player);
+        setObjVar(self, "creator", player);
+        int flags = SF_COST_CITY_LOW | SF_SKILL_TRAINER;
+        citySetStructureInfo(city_id, self, flags, true);
+        setObjVar(self, "city_id", city_id);
+        obj_id city_hall = cityGetCityHall(city_id);
+        String city_name = cityGetName(city_id);
+        CustomerServiceLog("player_city", "Adding skill trainer.  City: " + city_name + " (" + city_id + "/" + city_hall + ")" + " Object: " + self);
+        sendSystemMessage(player, new string_id("city", "staff_added"));
+
+        // STOP STORYTELLER CLEANUP
+        setObjVar(self, "eventTeamCleaupOverride", true);
+        setObjVar(self, "storytellerCleanUpTime", -1);
+        attachScript(self, "systems.city.city_furniture");
     }
     public int handleRemoveStorytellerPersistedEffect(obj_id self, dictionary params) throws InterruptedException
     {

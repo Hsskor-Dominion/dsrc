@@ -318,6 +318,9 @@ public class lair_interactivity extends script.base_script {
             if (creatureName.contains("arachne")) {
                 creatureName = creatureName.replace("arachne", "hermit_spider");
             }
+            if (creatureName.contains("rockmite")) {
+                creatureName = creatureName.replace("rockmite", "rock_mite");
+            }
 
             for (String beast : BEAST_OPTIONS_FOR_LAIRS) {
                 if (creatureName.contains(beast)) {
