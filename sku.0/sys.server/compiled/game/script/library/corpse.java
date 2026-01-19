@@ -681,6 +681,31 @@ public class corpse extends script.base_script
         }
         return (hasResource(ai_lib.getCreatureName(corpse)) != null);
     }
+    public static void grantHarvestXp(obj_id player, int totalHarvested) throws InterruptedException
+    {
+        if (!isIdValid(player) || !isPlayer(player) || totalHarvested <= 0)
+        {
+            return;
+        }
+
+        final int BASE_XP_PER_UNIT = 1;//SWG Chimaera experience slider
+        int xpToGrant = totalHarvested * BASE_XP_PER_UNIT;
+
+        if (xpToGrant <= 0)
+        {
+            return;
+        }
+
+        xp.grantUnmodifiedExperience(
+                player,
+                xp.SCOUT,
+                xpToGrant,
+                true,   // verbose → system XP message
+                null,
+                null,
+                null
+        );
+    }
     public static boolean harvestCreatureCorpse(obj_id player, obj_id corpse, String restype) throws InterruptedException
     {
         obj_id pInv = utils.getInventoryContainer(player);
@@ -731,12 +756,13 @@ public class corpse extends script.base_script
         float bonusHarvest = sklMod / 100.0f;
         float skillEfficiency = ((sklMod * 10.0f) + 500.0f) / 2000.0f;
         boolean litmus = true;
-        int harvestXP = 0;
+        int harvestXP = 0;//we need to reactivate this
         int successCount = 0;
         java.util.Enumeration keys = params.keys();
         int amt = 0;
         String type = null;
         int actualAmount = 0;
+        int totalHarvested = actualAmount;
         while (keys.hasMoreElements())
         {
             String resourceType = (String)(keys.nextElement());
@@ -794,6 +820,8 @@ public class corpse extends script.base_script
                 {
                     params.put(resourceType, actualAmount);
                     successCount++;
+                    totalHarvested += actualAmount;
+                    grantHarvestXp(player, totalHarvested);
                     if (hasScript(player, "theme_park.new_player.new_player"))
                     {
                         dictionary webster = new dictionary();
@@ -816,21 +844,26 @@ public class corpse extends script.base_script
         if (litmus && actualAmount > 0)
         {
             type = resource.getResourceName(type);
-            prose_package pp = null;
-            pp = prose.getPackage(new string_id("skl_use", "harvest_success"), null, type, null, null, null, null, null, null, null, actualAmount, 0.0f);
+
+            prose_package pp = prose.getPackage(
+                    new string_id("skl_use", "harvest_success"),
+                    null, type, null, null, null, null, null, null, null,
+                    actualAmount, 0.0f
+            );
             sendSystemMessageProse(player, pp);
             if (inGroupBonusMultiplier == GROUP_BONUS_MASTERSCOUT)
             {
                 sendSystemMessage(player, SID_GROUP_HARVEST_BONUS_MASTERSCOUT);
             }
-            if (inGroupBonusMultiplier == GROUP_BONUS_SCOUT)
+            else if (inGroupBonusMultiplier == GROUP_BONUS_SCOUT)
             {
                 sendSystemMessage(player, SID_GROUP_HARVEST_BONUS_SCOUT);
             }
-            if (inGroupBonusMultiplier == GROUP_BONUS)
+            else if (inGroupBonusMultiplier == GROUP_BONUS)
             {
                 sendSystemMessage(player, SID_GROUP_HARVEST_BONUS);
             }
+
             if (isIdValid(groupId))
             {
                 group.notifyHarvest(groupId, player, corpse, type, actualAmount);
@@ -955,6 +988,8 @@ public class corpse extends script.base_script
         obj_id[] crates = resource.createRandom(resourceClass, amt, loc, cInv, playerId, min);
         obj_id player = utils.getContainingPlayer(pInv);
         collection.collectionResource(player, resourceClass);
+        collection.collectionResource(player, resourceClass);
+
         if ((crates == null) || (crates.length == 0))
         {
             LOG("harvestCorpse", "ERROR: extractCorpseResource -> unable to create random resources!!   " + resourceClass);

@@ -2214,7 +2214,8 @@ public class performance extends script.base_script
         int experience = (CURE_CLONING_SICKNESS_XP * audienceMod);
         obj_id[] band = getBandMembers(actor);
         for (obj_id obj_id : band) {
-            xp.grantSocialStyleXp(obj_id, xp.ENTERTAINER, experience);
+            xp.grantSocialStyleXp(obj_id, xp.ENTERTAINER_HEAL, experience);
+            xp.displayXpMsg(obj_id, xp.ENTERTAINER_HEAL, experience);
         }
         return true;
     }
@@ -2345,7 +2346,8 @@ public class performance extends script.base_script
         int experience = (PERFORM_XP_INSPIRATION * audienceMod);
         obj_id[] band = getBandMembers(actor);
         for (obj_id obj_id : band) {
-            xp.grantSocialStyleXp(obj_id, xp.ENTERTAINER, experience);
+            xp.grantSocialStyleXp(obj_id, xp.ENTERTAINER_HEAL, experience);
+            xp.displayXpMsg(obj_id, xp.ENTERTAINER_HEAL, experience);
         }
         return true;
     }

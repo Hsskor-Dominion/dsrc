@@ -35,7 +35,7 @@ public class bothan_spy extends script.base_script
     }
     public boolean bothan_spy_hunter_condition(obj_id npc, obj_id player)
     {
-        return hasSkill(player,"class_bountyhunter_phase1_novice");
+        return hasSkill(player,"class_bountyhunter_phase1_novice") || hasSkill(player,"combat_bountyhunter_novice");
     }
     public boolean bothan_spy_smuggler_condition(obj_id npc, obj_id player)
     {

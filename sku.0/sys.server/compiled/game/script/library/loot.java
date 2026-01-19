@@ -2213,6 +2213,7 @@ public class loot extends script.base_script
         }
         CustomerServiceLog("foraging", "Player: " + getName(player) + " OID: " + player + " should have received a reward object. The forage location will be stored and the forage session will be completed.");
         saveForageLocationOnPlayer(player, newListOfLocs, curLoc);
+        camping.grantCampXp(player, 1);
         return true;
     }
     public static int getRandomRareForagedLoot(obj_id self, int enzymeChance, int wormChance, int treasureMapChance, int componentChance) throws InterruptedException

@@ -298,6 +298,8 @@ cyborgBurstRun	cyborgBurstRun	escape		2	command.cyborgBurstRun	60	movement	0		0	
 rally	slRally			1	state.rallied	30	private_defense_bonus	80	ranged_accuracy	40	melee_accuracy	40		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 steadyAim	slSteadyAim			1	command.steadyAim	20	script_var	120		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 powerBoost	tkaPowerBoost			1	command.powerBoost	300	health	500		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+PowerBoost_1	tkaPowerBoost			1	command.powerBoost	300	health	1000		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+PowerBoost_2	tkaPowerBoost			1	command.powerBoost	300	health	1200		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 mask_scent	stealthBonus			1	command.maskScent	-1		0		0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 fs_carbine_acc	fsCarbine			1	buffs.spiceMind	300	carbine_accuracy	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 fs_carbine_spd	fsCarbine			1	buffs.spiceAction	300	carbine_speed	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -853,7 +855,7 @@ fs_sh_2	fsCure			30	command.fs_sh	12	expertise_dot_immunity	5		0		0		0		0	STATE_
 fs_sh_3	fsCure			40	command.fs_sh	14	expertise_dot_immunity	5		0		0		0		0	STATE_NONE	fs_dot_immunity_recourse			1	0		1	1	1	0	1	1	0	1	1	1
 invis_fs_buff_invis_1	invisibility			4	command.fs_buff_invis	30	invis	0	movement	0		0		0		0	STATE_NONE	none			1	0		0	1	1	0	1	1	0	1	1	1
 saberBlock	saberBlock			1	command.saberBlock	20	expertise_saber_block	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-fs_saber_reflect	fs_saber_reflect			1	command.fs_saber_reflect_buff	10	expertise_saber_block	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+fs_saber_reflect	fs_saber_reflect			1	command.fs_saber_reflect_buff	15	expertise_saber_block	20		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 fs_soothing_aura_1	fs_soothing_aura			1	command.fs_path_soothing_aura	-1	expertise_healing_line_fs_heal	25		0		0		0		0	STATE_NONE	none			0	0		0	1	0	0	1	1	0	1	1	1
 fs_soothing_aura_2	fs_soothing_aura			1	command.fs_path_soothing_aura	-1	expertise_healing_line_fs_heal	50		0		0		0		0	STATE_NONE	none			0	0		0	1	0	0	1	1	0	1	1	1
 fs_soothing_aura_3	fs_soothing_aura			1	command.fs_path_soothing_aura	-1	expertise_healing_line_fs_heal	75		0		0		0		0	STATE_NONE	none			0	0		0	1	0	0	1	1	0	1	1	1
@@ -1992,4 +1994,6 @@ en_sprint	en_sprint			10	command.en_sprint	30	movement	0	movement_resist_snare	1
 event_halloween_costume_skeleton1	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	51		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 costume_hutt_female	shapechange	halloween_shapechange		1	buffs.costume	28800	movement	0	event_halloween_costume	3		0		0		0	STATE_NONE	none			1	0		0	1	1	1	1	1	0	1	1	1
 gcw_rocket_turret	gcw_mini_turret			1		1	gcw_mini_turret	1		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
-center_of_being	tka_meditate			1	command.centerOfBeing	1800	private_melee_dmg_shield	10	private_taunt_bonus	10	unarmed_damage	10	expertise_dodge	5		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1
+center_of_being	tka_meditate			1	command.centerOfBeing	1800	private_melee_dmg_shield	8	private_taunt_bonus	8	unarmed_damage	6	expertise_dodge	1		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1
+center_of_being_1	tka_meditate			1	command.centerOfBeing	1800	private_melee_dmg_shield	6	private_taunt_bonus	6	unarmed_damage	8	expertise_dodge	3		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1
+center_of_being_2	tka_meditate			1	command.centerOfBeing	1800	private_melee_dmg_shield	10	private_taunt_bonus	10	unarmed_damage	10	expertise_dodge	5		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1

@@ -133,6 +133,7 @@ public class resource extends script.base_script
     public static final string_id SID_WRONG_TOOL = new string_id(STF_SURVEY, "wrong_tool");
     public static final string_id SID_NSF_SKILL = new string_id("error_message", "prose_nsf_skill");
     public static final string_id SID_NSF_SKILL_PLURAL = new string_id("error_message", "prose_nsf_skill_plural");
+    public static final string_id SID_SAMPLE_EXP = new string_id(STF_SURVEY, "sample_experience");
     public static final string_id SID_SAMPLE_LOCATED = new string_id(STF_SURVEY, "sample_located");
     public static final string_id SID_SAMPLE_FAILED = new string_id(STF_SURVEY, "sample_failed");
     public static final string_id SID_DENSITY_BELOW_THESHOLD = new string_id(STF_SURVEY, "density_below_threshold");
@@ -628,6 +629,12 @@ public class resource extends script.base_script
                                 messageTo(user, "forceSensitiveQuestInfo", merriam, 1, false);
                             }
                             sendSystemMessageProse(user, prose.getPackage(SID_SAMPLE_LOCATED, type, amt));
+                            // calculate XP based on amt
+//                            int xpAmount = 40 + amt; // 40 base + amt
+//                            xp.grant(user, "resource_harvesting_inorganic", xpAmount);
+
+                            // notify player of XP gain
+//                            sendSystemMessageProse(user, prose.getPackage(SID_SAMPLE_EXP, type, xpAmount));
                             if (isResourceDerivedFrom(typeId, "radioactive"))
                         {
                             int pe = resource.getResourceAttribute(typeId, "res_potential_energy");

@@ -4266,7 +4266,7 @@ costume_spider_droid					costume_spider_droid
 item_prolog_content_decorative_science_datapad											
 item_mini_vehicle_terminal_barc			string:template=object/mobile/barc_mini.iff								
 item_mini_vehicle_terminal_awing			string:template=object/mobile/awing_mini.iff								
-item_auto_level_50_buddy_conversion			int:autoLevelTo=50								
+item_auto_level_50_buddy_conversion			int:autoLevelTo=90
 item_mini_vehicle_terminal_basilisk			string:template=object/mobile/basilisk_mini.iff								
 item_deed_pod_racer_06_03			string:vehicle_attribs.object_ref=lb_pod_racer_one,float:hit_points=1500								
 item_tcg_loot_reward_series5_xj6_air_speeder			string:vehicle_attribs.object_ref=xj6_air_speeder,float:hit_points=15000								

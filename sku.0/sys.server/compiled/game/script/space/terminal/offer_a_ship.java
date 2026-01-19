@@ -44,7 +44,7 @@ public class offer_a_ship extends script.base_script
                 sui.showSUIPage(pid);
             }
 
-// Check for quest and auto-warp if active
+            // Check for quest and auto-warp if active
             String questName = "smuggle_stardust";
             if (groundquests.isQuestActive(player, questName)) {
                 sendSystemMessage(player, new string_id("space/space_interaction", "trandoshan_trafficking"));
@@ -81,7 +81,7 @@ public class offer_a_ship extends script.base_script
         switch (bp)
         {
             case sui.BP_OK:
-            space_quest.grantNewbieShip(player, "neutral");
+            space_quest.grantNewbieShipNPE(player, "neutral");
             break;
             case sui.BP_CANCEL:
             break;

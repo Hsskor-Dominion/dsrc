@@ -219,6 +219,7 @@ public class slicing_weapon extends script.base_script
                 new string_id("slicing/slicing_weapon", slice_name)
         );
         sendSystemMessageProse(player, pp);
+        xp.grant(player, "slicing", 100);
 
         setObjVar(self, "slicing.new_hacked", 1);
         sendDirtyAttributesNotification(self);

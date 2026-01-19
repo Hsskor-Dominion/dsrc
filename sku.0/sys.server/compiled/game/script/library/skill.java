@@ -40,7 +40,7 @@ public class skill extends script.base_script
     public static final int ACTION_POINTS_PER_STAMINA = 8;
     public static final int ACTION_POINTS_PER_CONSTITUTION = 2;
     public static final int NUM_STATS = 6;
-    public static final String[] WEAPON_TYPES = 
+    public static final String[] WEAPON_TYPES =
     {
         "unarmed",
         "polearm",
@@ -50,7 +50,7 @@ public class skill extends script.base_script
         "carbine",
         "pistol"
     };
-    public static final String[] MOD_TYPES = 
+    public static final String[] MOD_TYPES =
     {
         "accuracy",
         "speed",
@@ -118,7 +118,7 @@ public class skill extends script.base_script
                 {
                     soundFile = "sound/music_acq_academic.snd";
                 }
-                else 
+                else
                 {
                     soundFile = DEFAULT_SKILL_GRANT_SOUND;
                 }
@@ -137,7 +137,7 @@ public class skill extends script.base_script
                 {
                     soundFile = "sound/music_themequest_acc_criminal.snd";
                 }
-                else 
+                else
                 {
                     soundFile = "sound/music_themequest_acc_general.snd";
                 }
@@ -154,7 +154,7 @@ public class skill extends script.base_script
             {
                 playMusic(player, DEFAULT_SKILL_GRANT_SOUND);
             }
-            else 
+            else
             {
                 playMusic(player, soundFile);
             }
@@ -178,7 +178,7 @@ public class skill extends script.base_script
             {
                 skillGrantSuccessful = noisyGrantSkill(player, skillName);
             }
-            else 
+            else
             {
                 skillGrantSuccessful = grantSkillToPlayer(player, skillName);
             }
@@ -191,7 +191,7 @@ public class skill extends script.base_script
                     messageTo(player, "handleHolocronEvent", holocronParams, 0, false);
                     return true;
                 }
-                else 
+                else
                 {
                     revokeSkill(player, skillName);
                     CustomerServiceLog("Skill", "skill.purchaseSkill(): (" + player + ") " + getName(player) + " was unable to pay xp costs and had skill '" + skillName + "' revoked during purchase");
@@ -259,7 +259,7 @@ public class skill extends script.base_script
                 {
                     qualifies = false;
                 }
-                else 
+                else
                 {
                     qualifies &= (grantExperiencePoints(player, xpType, -xpCost) != XP_ERROR);
                 }
@@ -403,8 +403,26 @@ public class skill extends script.base_script
             }
         }
     }
-    public static String[] getTeachableSkills(obj_id target, obj_id teacher) throws InterruptedException
+    public static int getSkillPointsForPlayer(obj_id player) throws InterruptedException
     {
+        String[] skills = getSkillListingForPlayer(player);
+        if (skills == null || skills.length == 0) return 0;
+
+        int total = 0;
+        for (String skill : skills)
+        {
+            total += dataTableGetInt(TBL_SKILL, skill, "POINTS_REQUIRED");
+        }
+        return total;
+    }
+    public static String[] getTeachableSkills(obj_id target, obj_id teacher) throws InterruptedException {
+        // ----------------------------------------
+        // NPC trainer logic
+        // ----------------------------------------
+        if (!isPlayer(teacher)) {
+            return skill.getTeacherSkills(teacher, target);//somehow, we need to differentiate this between players and npcs, and they only offer novice?
+        }
+
         return new String[]
                 {
                         "social_language_bothan_speak",
@@ -430,92 +448,663 @@ public class skill extends script.base_script
                         "force_rank_light_novice",
                         "faction_rank_mando",
                         "stardust_diplomat",
+                        "social_politician_master",
+                        "social_politician_fiscal_01",
+                        "social_politician_fiscal_02",
+                        "social_politician_fiscal_03",
+                        "social_politician_fiscal_04",
+                        "social_politician_martial_01",
+                        "social_politician_martial_02",
+                        "social_politician_martial_03",
+                        "social_politician_martial_04",
+                        "social_politician_civic_01",
+                        "social_politician_civic_02",
+                        "social_politician_civic_03",
+                        "social_politician_civic_04",
+                        "social_politician_urban_01",
+                        "social_politician_urban_02",
+                        "social_politician_urban_03",
+                        "social_politician_urban_04",
+                        "outdoors_scout_master",
+                        "outdoors_scout_movement_01",
+                        "outdoors_scout_movement_02",
+                        "outdoors_scout_movement_03",
+                        "outdoors_scout_movement_04",
+                        "outdoors_scout_tools_01",
+                        "outdoors_scout_tools_02",
+                        "outdoors_scout_tools_03",
+                        "outdoors_scout_tools_04",
+                        "outdoors_scout_harvest_01",
+                        "outdoors_scout_harvest_02",
+                        "outdoors_scout_harvest_03",
+                        "outdoors_scout_harvest_04",
+                        "outdoors_scout_camp_01",
+                        "outdoors_scout_camp_02",
+                        "outdoors_scout_camp_03",
+                        "outdoors_scout_camp_04",
+                        "science_medic_master",
+                        "science_medic_injury_01",
+                        "science_medic_injury_02",
+                        "science_medic_injury_03",
+                        "science_medic_injury_04",
+                        "science_medic_injury_speed_01",
+                        "science_medic_injury_speed_02",
+                        "science_medic_injury_speed_03",
+                        "science_medic_injury_speed_04",
+                        "science_medic_ability_01",
+                        "science_medic_ability_02",
+                        "science_medic_ability_03",
+                        "science_medic_ability_04",
+                        "science_medic_crafting_01",
+                        "science_medic_crafting_02",
+                        "science_medic_crafting_03",
+                        "science_medic_crafting_04",
+                        "combat_brawler_master",
+                        "combat_brawler_unarmed_01",
+                        "combat_brawler_unarmed_02",
+                        "combat_brawler_unarmed_03",
+                        "combat_brawler_unarmed_04",
+                        "combat_brawler_1handmelee_01",
+                        "combat_brawler_1handmelee_02",
+                        "combat_brawler_1handmelee_03",
+                        "combat_brawler_1handmelee_04",
+                        "combat_brawler_2handmelee_01",
+                        "combat_brawler_2handmelee_02",
+                        "combat_brawler_2handmelee_03",
+                        "combat_brawler_2handmelee_04",
+                        "combat_brawler_polearm_01",
+                        "combat_brawler_polearm_02",
+                        "combat_brawler_polearm_03",
+                        "combat_brawler_polearm_04",
+                        "combat_marksman_master",
+                        "combat_marksman_rifle_01",
+                        "combat_marksman_rifle_02",
+                        "combat_marksman_rifle_03",
+                        "combat_marksman_rifle_04",
+                        "combat_marksman_pistol_01",
+                        "combat_marksman_pistol_02",
+                        "combat_marksman_pistol_03",
+                        "combat_marksman_pistol_04",
+                        "combat_marksman_carbine_01",
+                        "combat_marksman_carbine_02",
+                        "combat_marksman_carbine_03",
+                        "combat_marksman_carbine_04",
+                        "combat_marksman_support_01",
+                        "combat_marksman_support_02",
+                        "combat_marksman_support_03",
+                        "combat_marksman_support_04",
+                        "combat_rifleman_master",
+                        "combat_rifleman_accuracy_01",
+                        "combat_rifleman_accuracy_02",
+                        "combat_rifleman_accuracy_03",
+                        "combat_rifleman_accuracy_04",
+                        "combat_rifleman_speed_01",
+                        "combat_rifleman_speed_02",
+                        "combat_rifleman_speed_03",
+                        "combat_rifleman_speed_04",
+                        "combat_rifleman_ability_01",
+                        "combat_rifleman_ability_02",
+                        "combat_rifleman_ability_03",
+                        "combat_rifleman_ability_04",
+                        "combat_rifleman_support_01",
+                        "combat_rifleman_support_02",
+                        "combat_rifleman_support_03",
+                        "combat_rifleman_support_04",
+                        "combat_pistol_master",
+                        "combat_pistol_accuracy_01",
+                        "combat_pistol_accuracy_02",
+                        "combat_pistol_accuracy_03",
+                        "combat_pistol_accuracy_04",
+                        "combat_pistol_speed_01",
+                        "combat_pistol_speed_02",
+                        "combat_pistol_speed_03",
+                        "combat_pistol_speed_04",
+                        "combat_pistol_ability_01",
+                        "combat_pistol_ability_02",
+                        "combat_pistol_ability_03",
+                        "combat_pistol_ability_04",
+                        "combat_pistol_support_01",
+                        "combat_pistol_support_02",
+                        "combat_pistol_support_03",
+                        "combat_pistol_support_04",
+                        "combat_carbine_master",
+                        "combat_carbine_accuracy_01",
+                        "combat_carbine_accuracy_02",
+                        "combat_carbine_accuracy_03",
+                        "combat_carbine_accuracy_04",
+                        "combat_carbine_speed_01",
+                        "combat_carbine_speed_02",
+                        "combat_carbine_speed_03",
+                        "combat_carbine_speed_04",
+                        "combat_carbine_ability_01",
+                        "combat_carbine_ability_02",
+                        "combat_carbine_ability_03",
+                        "combat_carbine_ability_04",
+                        "combat_carbine_support_01",
+                        "combat_carbine_support_02",
+                        "combat_carbine_support_03",
+                        "combat_carbine_support_04",
+                        "combat_unarmed_master",
+                        "combat_unarmed_accuracy_01",
+                        "combat_unarmed_accuracy_02",
+                        "combat_unarmed_accuracy_03",
+                        "combat_unarmed_accuracy_04",
+                        "combat_unarmed_speed_01",
+                        "combat_unarmed_speed_02",
+                        "combat_unarmed_speed_03",
+                        "combat_unarmed_speed_04",
+                        "combat_unarmed_ability_01",
+                        "combat_unarmed_ability_02",
+                        "combat_unarmed_ability_03",
+                        "combat_unarmed_ability_04",
+                        "combat_unarmed_support_01",
+                        "combat_unarmed_support_02",
+                        "combat_unarmed_support_03",
+                        "combat_unarmed_support_04",
+                        "combat_1hsword_master",
+                        "combat_1hsword_accuracy_01",
+                        "combat_1hsword_accuracy_02",
+                        "combat_1hsword_accuracy_03",
+                        "combat_1hsword_accuracy_04",
+                        "combat_1hsword_speed_01",
+                        "combat_1hsword_speed_02",
+                        "combat_1hsword_speed_03",
+                        "combat_1hsword_speed_04",
+                        "combat_1hsword_ability_01",
+                        "combat_1hsword_ability_02",
+                        "combat_1hsword_ability_03",
+                        "combat_1hsword_ability_04",
+                        "combat_1hsword_support_01",
+                        "combat_1hsword_support_02",
+                        "combat_1hsword_support_03",
+                        "combat_1hsword_support_04",
+                        "combat_2hsword_master",
+                        "combat_2hsword_accuracy_01",
+                        "combat_2hsword_accuracy_02",
+                        "combat_2hsword_accuracy_03",
+                        "combat_2hsword_accuracy_04",
+                        "combat_2hsword_speed_01",
+                        "combat_2hsword_speed_02",
+                        "combat_2hsword_speed_03",
+                        "combat_2hsword_speed_04",
+                        "combat_2hsword_ability_01",
+                        "combat_2hsword_ability_02",
+                        "combat_2hsword_ability_03",
+                        "combat_2hsword_ability_04",
+                        "combat_2hsword_support_01",
+                        "combat_2hsword_support_02",
+                        "combat_2hsword_support_03",
+                        "combat_2hsword_support_04",
+                        "combat_polearm_master",
+                        "combat_polearm_accuracy_01",
+                        "combat_polearm_accuracy_02",
+                        "combat_polearm_accuracy_03",
+                        "combat_polearm_accuracy_04",
+                        "combat_polearm_speed_01",
+                        "combat_polearm_speed_02",
+                        "combat_polearm_speed_03",
+                        "combat_polearm_speed_04",
+                        "combat_polearm_ability_01",
+                        "combat_polearm_ability_02",
+                        "combat_polearm_ability_03",
+                        "combat_polearm_ability_04",
+                        "combat_polearm_support_01",
+                        "combat_polearm_support_02",
+                        "combat_polearm_support_03",
+                        "combat_polearm_support_04",
+                        "science_doctor_master",
+                        "science_doctor_wound_speed_01",
+                        "science_doctor_wound_speed_02",
+                        "science_doctor_wound_speed_03",
+                        "science_doctor_wound_speed_04",
+                        "science_doctor_wound_01",
+                        "science_doctor_wound_02",
+                        "science_doctor_wound_03",
+                        "science_doctor_wound_04",
+                        "science_doctor_ability_01",
+                        "science_doctor_ability_02",
+                        "science_doctor_ability_03",
+                        "science_doctor_ability_04",
+                        "science_doctor_support_01",
+                        "science_doctor_support_02",
+                        "science_doctor_support_03",
+                        "science_doctor_support_04",
+                        "outdoors_ranger_master",
+                        "outdoors_ranger_movement_01",
+                        "outdoors_ranger_movement_02",
+                        "outdoors_ranger_movement_03",
+                        "outdoors_ranger_movement_04",
+                        "outdoors_ranger_tracking_01",
+                        "outdoors_ranger_tracking_02",
+                        "outdoors_ranger_tracking_03",
+                        "outdoors_ranger_tracking_04",
+                        "outdoors_ranger_harvest_01",
+                        "outdoors_ranger_harvest_02",
+                        "outdoors_ranger_harvest_03",
+                        "outdoors_ranger_harvest_04",
+                        "outdoors_ranger_support_01",
+                        "outdoors_ranger_support_02",
+                        "outdoors_ranger_support_03",
+                        "outdoors_ranger_support_04",
+                        "outdoors_creaturehandler_master",
+                        "outdoors_creaturehandler_taming_01",
+                        "outdoors_creaturehandler_taming_02",
+                        "outdoors_creaturehandler_taming_03",
+                        "outdoors_creaturehandler_taming_04",
+                        "outdoors_creaturehandler_training_01",
+                        "outdoors_creaturehandler_training_02",
+                        "outdoors_creaturehandler_training_03",
+                        "outdoors_creaturehandler_training_04",
+                        "outdoors_creaturehandler_healing_01",
+                        "outdoors_creaturehandler_healing_02",
+                        "outdoors_creaturehandler_healing_03",
+                        "outdoors_creaturehandler_healing_04",
+                        "outdoors_creaturehandler_support_01",
+                        "outdoors_creaturehandler_support_02",
+                        "outdoors_creaturehandler_support_03",
+                        "outdoors_creaturehandler_support_04",
+                        "outdoors_bio_engineer_master",
+                        "outdoors_bio_engineer_creature_01",
+                        "outdoors_bio_engineer_creature_02",
+                        "outdoors_bio_engineer_creature_03",
+                        "outdoors_bio_engineer_creature_04",
+                        "outdoors_bio_engineer_tissue_01",
+                        "outdoors_bio_engineer_tissue_02",
+                        "outdoors_bio_engineer_tissue_03",
+                        "outdoors_bio_engineer_tissue_04",
+                        "outdoors_bio_engineer_dna_harvesting_01",
+                        "outdoors_bio_engineer_dna_harvesting_02",
+                        "outdoors_bio_engineer_dna_harvesting_03",
+                        "outdoors_bio_engineer_dna_harvesting_04",
+                        "outdoors_bio_engineer_production_01",
+                        "outdoors_bio_engineer_production_02",
+                        "outdoors_bio_engineer_production_03",
+                        "outdoors_bio_engineer_production_04",
+                        "combat_smuggler_master",
+                        "combat_smuggler_underworld_01",
+                        "combat_smuggler_underworld_02",
+                        "combat_smuggler_underworld_03",
+                        "combat_smuggler_underworld_04",
+                        "combat_smuggler_slicing_01",
+                        "combat_smuggler_slicing_02",
+                        "combat_smuggler_slicing_03",
+                        "combat_smuggler_slicing_04",
+                        "combat_smuggler_combat_01",
+                        "combat_smuggler_combat_02",
+                        "combat_smuggler_combat_03",
+                        "combat_smuggler_combat_04",
+                        "combat_smuggler_spice_01",
+                        "combat_smuggler_spice_02",
+                        "combat_smuggler_spice_03",
+                        "combat_smuggler_spice_04",
+                        "combat_bountyhunter_master",
+                        "combat_bountyhunter_investigation_01",
+                        "combat_bountyhunter_investigation_02",
+                        "combat_bountyhunter_investigation_03",
+                        "combat_bountyhunter_investigation_04",
+                        "combat_bountyhunter_droidcontrol_01",
+                        "combat_bountyhunter_droidcontrol_02",
+                        "combat_bountyhunter_droidcontrol_03",
+                        "combat_bountyhunter_droidcontrol_04",
+                        "combat_bountyhunter_droidresponse_01",
+                        "combat_bountyhunter_droidresponse_02",
+                        "combat_bountyhunter_droidresponse_03",
+                        "combat_bountyhunter_droidresponse_04",
+                        "combat_bountyhunter_support_01",
+                        "combat_bountyhunter_support_02",
+                        "combat_bountyhunter_support_03",
+                        "combat_bountyhunter_support_04",
+                        "combat_commando_master",
+                        "combat_commando_heavyweapon_accuracy_01",
+                        "combat_commando_heavyweapon_accuracy_02",
+                        "combat_commando_heavyweapon_accuracy_03",
+                        "combat_commando_heavyweapon_accuracy_04",
+                        "combat_commando_heavyweapon_speed_01",
+                        "combat_commando_heavyweapon_speed_02",
+                        "combat_commando_heavyweapon_speed_03",
+                        "combat_commando_heavyweapon_speed_04",
+                        "combat_commando_thrownweapon_01",
+                        "combat_commando_thrownweapon_02",
+                        "combat_commando_thrownweapon_03",
+                        "combat_commando_thrownweapon_04",
+                        "combat_commando_support_01",
+                        "combat_commando_support_02",
+                        "combat_commando_support_03",
+                        "combat_commando_support_04",
+                        "science_combatmedic_master",
+                        "science_combatmedic_healing_range_01",
+                        "science_combatmedic_healing_range_02",
+                        "science_combatmedic_healing_range_03",
+                        "science_combatmedic_healing_range_04",
+                        "science_combatmedic_healing_range_speed_01",
+                        "science_combatmedic_healing_range_speed_02",
+                        "science_combatmedic_healing_range_speed_03",
+                        "science_combatmedic_healing_range_speed_04",
+                        "science_combatmedic_medicine_01",
+                        "science_combatmedic_medicine_02",
+                        "science_combatmedic_medicine_03",
+                        "science_combatmedic_medicine_04",
+                        "science_combatmedic_support_01",
+                        "science_combatmedic_support_02",
+                        "science_combatmedic_support_03",
+                        "science_combatmedic_support_04",
+                        "outdoors_squadleader_master",
+                        "outdoors_squadleader_movement_01",
+                        "outdoors_squadleader_movement_02",
+                        "outdoors_squadleader_movement_03",
+                        "outdoors_squadleader_movement_04",
+                        "outdoors_squadleader_offense_01",
+                        "outdoors_squadleader_offense_02",
+                        "outdoors_squadleader_offense_03",
+                        "outdoors_squadleader_offense_04",
+                        "outdoors_squadleader_defense_01",
+                        "outdoors_squadleader_defense_02",
+                        "outdoors_squadleader_defense_03",
+                        "outdoors_squadleader_defense_04",
+                        "outdoors_squadleader_support_01",
+                        "outdoors_squadleader_support_02",
+                        "outdoors_squadleader_support_03",
+                        "outdoors_squadleader_support_04"
                 };
     }
+//    public static String[] getQualifiedTeachableSkills(obj_id target, obj_id teacher) throws InterruptedException
+//    {
+//        if (!isIdValid(target) || (!isMob(target)) || (isIdNull(teacher)) || (!isMob(teacher)))
+//        {
+//            return null;
+//        }
+//        String[] teachableSkills = getTeachableSkills(target, teacher);
+//        if (teachableSkills == null)
+//        {
+//            return null;
+//        }
+//        Vector qualifiedSkills = new Vector();
+//        qualifiedSkills.setSize(0);
+//        dictionary d;
+//        Object o;
+//        String xpType;
+//        Enumeration species_keys;
+//        String key;
+//        String trainer_type;
+//        String branch;
+//        String skillName;
+//
+//        for (String teachableSkill : teachableSkills) {
+//            boolean qualifies = true;
+//            d = getSkillPrerequisiteExperience(teachableSkill);
+//            if (d != null && !d.isEmpty()) {
+//                Enumeration keys = d.keys();
+//                while (keys.hasMoreElements()) {
+//                    o = keys.nextElement();
+//                    if (o instanceof String) {
+//                        xpType = (String) o;
+//                        int xpCost = d.getInt(xpType);
+//                        int playerXP = getExperiencePoints(target, xpType);
+//                        if (playerXP < xpCost) {
+//                            qualifies = false;
+//                        }
+//                    } else {
+//                        return null;
+//                    }
+//                }
+//            }
+//            dictionary species = getSkillPrerequisiteSpecies(teachableSkill);
+//            assert d != null;
+//            if (species != null && !d.isEmpty()) {
+//                species_keys = species.keys();
+//                while (species_keys.hasMoreElements()) {
+//                    o = species_keys.nextElement();
+//                    if (o instanceof String) {
+//                        key = (String) o;
+//                        if (species.getBoolean(key)) {
+//                            qualifies = false;
+//                        }
+//                    }
+//                }
+//            }
+//            trainer_type = getStringObjVar(teacher, "trainer");
+//            if (trainer_type != null && trainer_type.equals("trainer_fs")) {
+//                if (qualifies) {
+//                    if (fs_quests.isVillageEligible(target)) {
+//                        branch = fs_quests.getBranchFromSkill(teachableSkill);
+//                        if (!fs_quests.hasUnlockedBranch(target, branch)) {
+//                            qualifies = false;
+//                        }
+//                    } else {
+//                        qualifies = false;
+//                    }
+//                }
+//            }
+//            if (hasObjVar(target, "newbie.hasSkill") && !hasObjVar(target, "newbie.trained")) {
+//                skillName = getStringObjVar(target, "newbie.hasSkill");
+//                if (skillName.equals(teachableSkill)) {
+//                    qualifies = true;
+//                }
+//            }
+//            if (qualifies) {
+//                qualifiedSkills = utils.addElement(qualifiedSkills, teachableSkill);
+//            }
+//        }
+//        if ((qualifiedSkills != null) && (qualifiedSkills.size() > 0))
+//        {
+//            String[] _qualifiedSkills = new String[qualifiedSkills.size()];
+//            qualifiedSkills.toArray(_qualifiedSkills);
+//            return _qualifiedSkills;
+//        }
+//        return null;
+//    }
     public static String[] getQualifiedTeachableSkills(obj_id target, obj_id teacher) throws InterruptedException
     {
-        if (!isIdValid(target) || (!isMob(target)) || (isIdNull(teacher)) || (!isMob(teacher)))
+        if (!isIdValid(target) || !isMob(target) || !isIdValid(teacher) || !isMob(teacher))
         {
             return null;
         }
+
+        // Get all skills the teacher can offer
+        String[] teachableSkills = getTeacherSkills(teacher, target);
+        if (teachableSkills == null || teachableSkills.length == 0)
+        {
+            return null;
+        }
+
+        Vector qualifiedSkills = new Vector();
+        int currentPoints = getSkillPointsForPlayer(target);
+
+        for (String skill : teachableSkills)
+        {
+
+            if (hasSkill(target, skill))
+                continue;
+
+            boolean qualifies = true;
+
+            // -----------------------------
+            // Check prerequisite skills // //ok so when I turn this off, it allows me to jump ahead and learn master marksman... meaning exp checks are working? but not when this is on?
+            // -----------------------------
+            String[] prereqSkills = getSkillPrerequisiteSkills(skill);
+            if (prereqSkills != null && prereqSkills.length > 0)
+            {
+                String[] playerSkills = getSkillListingForPlayer(target);
+                if (playerSkills == null || !utils.isSubset(playerSkills, prereqSkills))
+                {
+                    qualifies = false;
+                }
+            }
+
+            //  Check experience requirements   // //when I turn this on I lose sight of nearly all skills I should be able to learn... but when I turn off I can learn them all! no middle ground
+            dictionary xpReq = getSkillPrerequisiteExperience(skill);//
+            if (xpReq != null && !xpReq.isEmpty())
+            {
+                Enumeration keys = xpReq.keys();
+                while (keys.hasMoreElements())
+                {
+                    Object o = keys.nextElement();
+                    if (o instanceof String)
+                    {
+                        String xpType = (String) o;
+                        int xpCost = xpReq.getInt(xpType);
+                        int playerXP = getExperiencePoints(target, xpType);
+                        if (playerXP < xpCost)
+                        {
+                            qualifies = false;
+                        }
+                    }
+                }
+            }
+
+            // -----------------------------
+            // Check newbie override
+            // -----------------------------
+            if (hasObjVar(target, "newbie.hasSkill") && !hasObjVar(target, "newbie.trained"))
+            {
+                String newbieSkill = getStringObjVar(target, "newbie.hasSkill");
+                if (newbieSkill.equals(skill))
+                {
+                    qualifies = true;
+                }
+            }
+
+            // -----------------------------
+            // Check POINTS_REQUIRED cap
+            // -----------------------------
+            int pointsRequired = dataTableGetInt(TBL_SKILL, skill, "POINTS_REQUIRED");
+            if ((currentPoints + pointsRequired) > 250)
+            {
+                qualifies = false;
+            }
+
+            if (qualifies)
+            {
+                qualifiedSkills = utils.addElement(qualifiedSkills, skill);
+            }
+        }
+
+        if (qualifiedSkills.size() == 0)
+            return null;
+
+        String[] result = new String[qualifiedSkills.size()];
+        qualifiedSkills.toArray(result);
+        return result;
+    }
+    public static String[] getQualifiedTeachableSkillsPlayer(obj_id target, obj_id teacher) throws InterruptedException
+    {
+        //this works for players, so I separated it out for now
         String[] teachableSkills = getTeachableSkills(target, teacher);
-        if (teachableSkills == null)
+        if (teachableSkills == null || teachableSkills.length == 0)
         {
             return null;
         }
+
         Vector qualifiedSkills = new Vector();
         qualifiedSkills.setSize(0);
-        dictionary d;
-        Object o;
-        String xpType;
-        Enumeration species_keys;
-        String key;
-        String trainer_type;
-        String branch;
-        String skillName;
 
-        for (String teachableSkill : teachableSkills) {
+        int currentPoints = getSkillPointsForPlayer(target); // sum of POINTS_REQUIRED for all skills player has
+
+        for (String skill : teachableSkills)
+        {
             boolean qualifies = true;
-            d = getSkillPrerequisiteExperience(teachableSkill);
-            if (d != null && !d.isEmpty()) {
-                Enumeration keys = d.keys();
-                while (keys.hasMoreElements()) {
-                    o = keys.nextElement();
-                    if (o instanceof String) {
-                        xpType = (String) o;
-                        int xpCost = d.getInt(xpType);
+
+            // Check prerequisites
+            String[] prereqSkills = getSkillPrerequisiteSkills(skill);
+            if (prereqSkills != null && prereqSkills.length > 0)
+            {
+                if (!utils.isSubset(getSkillListingForPlayer(target), prereqSkills))
+                {
+                    qualifies = false;
+                }
+            }
+
+            //  Check experience requirements
+            dictionary xpReq = getSkillPrerequisiteExperience(skill);//
+            if (xpReq != null && !xpReq.isEmpty())
+            {
+                Enumeration keys = xpReq.keys();
+                while (keys.hasMoreElements())
+                {
+                    Object o = keys.nextElement();
+                    if (o instanceof String)
+                    {
+                        String xpType = (String) o;
+                        int xpCost = xpReq.getInt(xpType);
                         int playerXP = getExperiencePoints(target, xpType);
-                        if (playerXP < xpCost) {
-                            qualifies = false;
-                        }
-                    } else {
-                        return null;
-                    }
-                }
-            }
-            dictionary species = getSkillPrerequisiteSpecies(teachableSkill);
-            assert d != null;
-            if (species != null && !d.isEmpty()) {
-                species_keys = species.keys();
-                while (species_keys.hasMoreElements()) {
-                    o = species_keys.nextElement();
-                    if (o instanceof String) {
-                        key = (String) o;
-                        if (species.getBoolean(key)) {
+                        if (playerXP < xpCost)
+                        {
                             qualifies = false;
                         }
                     }
                 }
             }
-            trainer_type = getStringObjVar(teacher, "trainer");
-            if (trainer_type != null && trainer_type.equals("trainer_fs")) {
-                if (qualifies) {
-                    if (fs_quests.isVillageEligible(target)) {
-                        branch = fs_quests.getBranchFromSkill(teachableSkill);
-                        if (!fs_quests.hasUnlockedBranch(target, branch)) {
+
+            // Check species requirements
+            dictionary species = getSkillPrerequisiteSpecies(skill);
+            if (species != null && !species.isEmpty())
+            {
+                Enumeration speciesKeys = species.keys();
+                while (speciesKeys.hasMoreElements())
+                {
+                    Object o = speciesKeys.nextElement();
+                    if (o instanceof String)
+                    {
+                        String key = (String) o;
+                        if (species.getBoolean(key))
+                        {
                             qualifies = false;
                         }
-                    } else {
+                    }
+                }
+            }
+
+            // Check FS trainer branch unlocks
+            String trainerType = getStringObjVar(teacher, "trainer");
+            if ("trainer_fs".equals(trainerType))
+            {
+                if (qualifies)
+                {
+                    if (fs_quests.isVillageEligible(target))
+                    {
+                        String branch = fs_quests.getBranchFromSkill(skill);
+                        if (!fs_quests.hasUnlockedBranch(target, branch))
+                        {
+                            qualifies = false;
+                        }
+                    }
+                    else
+                    {
                         qualifies = false;
                     }
                 }
             }
-            if (hasObjVar(target, "newbie.hasSkill") && !hasObjVar(target, "newbie.trained")) {
-                skillName = getStringObjVar(target, "newbie.hasSkill");
-                if (skillName.equals(teachableSkill)) {
+
+            // Check newbie override
+            if (hasObjVar(target, "newbie.hasSkill") && !hasObjVar(target, "newbie.trained"))
+            {
+                String newbieSkill = getStringObjVar(target, "newbie.hasSkill");
+                if (newbieSkill.equals(skill))
+                {
                     qualifies = true;
                 }
             }
-            if (qualifies) {
-                qualifiedSkills = utils.addElement(qualifiedSkills, teachableSkill);
+
+            //  **Check POINTS_REQUIRED cap (max 250 points)**
+            int pointsRequired = dataTableGetInt(TBL_SKILL, skill, "POINTS_REQUIRED");
+            if ((currentPoints + pointsRequired) > 250)
+            {
+                qualifies = false;
+            }
+
+            if (qualifies && !hasSkill(target, skill))
+            {
+                qualifiedSkills = utils.addElement(qualifiedSkills, skill);
             }
         }
-        if ((qualifiedSkills != null) && (qualifiedSkills.size() > 0))
+
+        if (qualifiedSkills != null && qualifiedSkills.size() > 0)
         {
             String[] _qualifiedSkills = new String[qualifiedSkills.size()];
             qualifiedSkills.toArray(_qualifiedSkills);
             return _qualifiedSkills;
         }
+
         return null;
     }
     public static String[] deltaTeacherSkills(obj_id target, obj_id teacher) throws InterruptedException
@@ -823,7 +1412,7 @@ public class skill extends script.base_script
             LOG("skill.scriptlib", "getPlayerStatForLevel BAD level");
             return;
         }
-        String strProfession = getProfessionName(getSkillTemplate(objPlayer));
+        String strProfession = getProfessionName(getSkillTemplate(objPlayer));//this might be the jedi stat bug location?
         player_levels.level_data stats = player_levels.getPlayerLevelData(strProfession, intLevel);
         if (stats == null)
         {

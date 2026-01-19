@@ -6,4 +6,4 @@
 sharedTemplate = "object/tangible/scout/trap/shared_trap_ap_hx2mine.iff"
 volume = 1
 scripts = +["systems.skills.stealth.trap"]
-objvars = +["trap.trapType" = 3, "concealable" = 1, "trap.classRequired" = "1", "trap.levelRequired" = 85]
+objvars = +["trap.trapType" = 3, "concealable" = 1, "trap.levelRequired" = 85]

@@ -34,7 +34,8 @@ public class bhguild_leader extends script.base_script
     }
     public boolean bhguild_leader_condition_isBHprof(obj_id player, obj_id npc) throws InterruptedException
     {
-        return hasSkill(player,"class_bountyhunter_phase1_novice");
+        return hasSkill(player,"class_bountyhunter_phase1_novice") || hasSkill(player,"combat_bountyhunter_novice");
+
     }
     public boolean bhguild_leader_condition_isBHguild(obj_id player, obj_id npc) throws InterruptedException
     {

@@ -182,6 +182,7 @@ public class active_music extends script.base_script
                         entXpAmt = (int)(xpAmt * 0.5f);
                     }
                     xp.grantSocialStyleXp(self, xp.MUSIC, xpAmt);
+                    xp.displayXpMsg(self, xp.MUSIC, xpAmt);
                 }
                 else 
                 {

@@ -13,6 +13,7 @@ import static script.library.buff.hasBuff;
 import static script.library.buff.removeBuff;
 import static script.library.meditation.MEDITATE_BUFF_FOCUS;
 import static script.library.meditation.MEDITATE_BUFF_STANCE;
+import static script.library.utils.hasScriptVar;
 
 public class base_player extends script.base_script
 {
@@ -1530,12 +1531,12 @@ public class base_player extends script.base_script
                 space_dungeon.validateInstanceControllerId(self);
             }
         }
-        int campXp = getExperiencePoints(self, "camp");
-        if (campXp > 0)
-        {
-            grantExperiencePoints(self, "scout", campXp);
-            grantExperiencePoints(self, "camp", 0 - campXp);
-        }
+//        int campXp = getExperiencePoints(self, "camp");//this turns off camp exp?
+//        if (campXp > 0)
+//        {
+//            grantExperiencePoints(self, "scout", campXp);
+//            grantExperiencePoints(self, "camp", 0 - campXp);
+//        }
 // Skill-granting logic based on political experience
         int politicalXp = getExperiencePoints(self, "political");
 
@@ -5035,7 +5036,8 @@ public class base_player extends script.base_script
         {
             meditation.endMeditation(self);
         }
-        if (hasBuff(self, "co_mirror_armor")) {
+        if (hasSkill(self, "expertise_sp_protective_armor_1") || hasSkill(self, "outdoors_scout_master"))
+        {
             String[] modifiers = movement.getAllModifiers(self);
             boolean snared = false;
             if (modifiers != null)
@@ -6387,7 +6389,7 @@ public class base_player extends script.base_script
         int curmt = city.getMTCount(city_id);
         if (curmt + 1 > maxmt)
         {
-            sendSystemMessage(self, SID_NO_MORE_MT);
+            sendSystemMessage(self, SID_NO_MORE_MT);//I'm getting this message when I try and recruitskilltrainer, even tho I'm not at max?
             return SCRIPT_CONTINUE;
         }
         int factional = dataTableGetInt(CITY_MISSION_TERMINALS, idx - 1, "FACTION");
@@ -6428,6 +6430,73 @@ public class base_player extends script.base_script
         sendSystemMessageProse(self, pp);
         return SCRIPT_CONTINUE;
     }
+    public int cmdRecruitSkillTrainer(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        int city_id = city.checkMayorCity(self, true);
+        if (city_id == 0)
+        {
+            return SCRIPT_CONTINUE;
+        }
+
+        String[] rawTrainerTypes = dataTableGetStringColumn(CITY_SKILL_TRAINERS, "STRING");
+        if (rawTrainerTypes == null || rawTrainerTypes.length == 0)
+        {
+            return SCRIPT_CONTINUE;
+        }
+
+        String[] trainerOptions = new String[rawTrainerTypes.length + 1];
+        trainerOptions[0] = "@city/city:current_trainers " + city.getTrainerCount(city_id) + "/" + city.getMaxTrainerCount(city_id);
+        for (int i = 0; i < rawTrainerTypes.length; i++)
+        {
+            trainerOptions[i + 1] = rawTrainerTypes[i];
+        }
+
+        sui.listbox(self, self, "@city/city:job_d", sui.OK_CANCEL, "@city/city:job_n", trainerOptions, "handleRecruitSkillTrainer");
+        return SCRIPT_CONTINUE;
+    }
+    public int handleRecruitSkillTrainer(obj_id self, dictionary params) throws InterruptedException
+    {
+        int idx = sui.getListboxSelectedRow(params);
+        if (idx < 0)
+        {
+            idx = 0;
+        }
+
+        int btn = sui.getIntButtonPressed(params);
+        if (btn == sui.BP_CANCEL)
+        {
+            return SCRIPT_CONTINUE;
+        }
+
+        if (idx == 0)
+        {
+            return SCRIPT_CONTINUE;
+        }
+
+        int city_id = city.checkMayorCity(self, true);
+        if (city_id == 0)
+        {
+            return SCRIPT_CONTINUE;
+        }
+
+        int maxTrainers = city.getMaxTrainerCount(city_id);
+        int curTrainers = city.getTrainerCount(city_id);
+
+        if (curTrainers + 1 > maxTrainers)
+        {
+            sendSystemMessage(self, SID_NO_MORE_TRAINERS);
+            return SCRIPT_CONTINUE;
+        }
+        int cost = 1000; // adjust as needed
+        dictionary payparams = new dictionary();
+        payparams.put("city_id", city_id);
+        payparams.put("idx", idx);
+        payparams.put("cost", cost);
+
+        transferBankCreditsToNamedAccount(cityGetCityHall(city_id), money.ACCT_CITY, cost, "handleSTFeeSuccess", "handleSTFeeFail", payparams);
+
+        return SCRIPT_CONTINUE;
+    }
     public int handleSTFeeSuccess(obj_id self, dictionary params) throws InterruptedException
     {
         int city_id = params.getInt("city_id");
@@ -6436,6 +6505,7 @@ public class base_player extends script.base_script
         city.addSkillTrainer(city_id, self, trainerTemplates[idx - 1]);
         return SCRIPT_CONTINUE;
     }
+
     public int handleSTFeeFail(obj_id self, dictionary params) throws InterruptedException
     {
         int cost = params.getInt("cost");
@@ -6459,7 +6529,12 @@ public class base_player extends script.base_script
             "naboo",
             "rori",
             "talus",
-            "tatooine"
+            "tatooine",
+            "endor",
+            "dathomir",
+            "yavin4",
+            "kashyyyk",
+
         };
         java.util.Map counts = new java.util.HashMap();
         String[] cityPlanet = new String[cities.length];
@@ -6509,13 +6584,17 @@ public class base_player extends script.base_script
         }
         String[] planets = 
         {
-            "corellia",
-            "dantooine",
-            "lok",
-            "naboo",
-            "rori",
-            "talus",
-            "tatooine"
+                "corellia",
+                "dantooine",
+                "lok",
+                "naboo",
+                "rori",
+                "talus",
+                "tatooine",
+                "endor",
+                "dathomir",
+                "yavin4",
+                "kashyyyk",
         };
         String planet = planets[idx];
         int[] cities = getAllCityIds();
@@ -9769,6 +9848,14 @@ public class base_player extends script.base_script
         utils.removeScriptVarTree(self, "food." + type);
         return SCRIPT_CONTINUE;
     }
+    public int clearTrapCooldown(obj_id self, dictionary params) throws InterruptedException
+    {
+        if (hasScriptVar(self, "trap.cooldown"))
+        {
+            utils.removeScriptVar(self, "trap.cooldown");
+        }
+        return SCRIPT_CONTINUE;
+    }
     public int handleSpiceDownerEffect(obj_id self, dictionary params) throws InterruptedException
     {
         if (hasBuff(self, "spice_downer"))
@@ -9814,7 +9901,7 @@ public class base_player extends script.base_script
     }
     public int grantUnmodifiedExperienceOnSelf(obj_id self, dictionary params) throws InterruptedException
     {
-        if (npe.hasReachedMaxTutorialLevel(self))
+        if (npe.hasReachedMaxTutorialLevel(self))//this is silly and we should just remove it - Hsskor
         {
             int hadNotif = utils.getIntScriptVar(self, "npe.level_capped");
             if (hadNotif == 0)
@@ -10194,6 +10281,13 @@ public class base_player extends script.base_script
     }
     public int OnEnterRegion(obj_id self, String planetName, String regionName) throws InterruptedException
     {
+        int currentMercenaryFaction = factions.pvpNeutralGetMercenaryFaction(self);
+        boolean isMercenary =
+                currentMercenaryFaction == -615855020 || // Rebel merc
+                        currentMercenaryFaction == 370444368;    // Imperial merc
+        boolean isValidGcwParticipant =
+                (factions.isImperial(self) || factions.isRebel(self) || isMercenary)
+                        && factions.isCovert(self);
         obj_id pvpRegionController = gcw.getPvpRegionControllerIdByName(self, regionName);
         if (isIdValid(pvpRegionController) && exists(pvpRegionController))
         {
@@ -10201,7 +10295,7 @@ public class base_player extends script.base_script
         }
         if (regionName.equals(restuss_event.PVP_REGION_NAME))
         {
-            if ((!factions.isImperial(self) && !factions.isRebel(self)) || !factions.isCovert(self) || getLevel(self) < 75)
+            if (!isValidGcwParticipant || getLevel(self) < 75)
             {
                 if (getLevel(self) < 75)
                 {
@@ -10265,7 +10359,7 @@ public class base_player extends script.base_script
         }
         else if (regionName.startsWith(gcw.PVP_PUSHBACK_REGION))
         {
-            if (((!factions.isImperial(self) && !factions.isRebel(self)) || getLevel(self) < 75) && !isGod(self))
+            if ((!isValidGcwParticipant || getLevel(self) < 75) && !isGod(self))
             {
                 if (getLevel(self) < 75)
                 {
@@ -10273,7 +10367,7 @@ public class base_player extends script.base_script
                 }
                 else 
                 {
-                    sendSystemMessage(self, new string_id("gcw", "pvp_advanced_region_not_allowed"));
+                    sendSystemMessage(self, new string_id("gcw", "pvp_advanced_region_not_allowed"));//same issue with not allowing mercs
                 }
                 String enterAttempt = "enterBattlefieldAttempt";
                 int attempts = utils.getIntScriptVar(self, enterAttempt);
@@ -10379,7 +10473,7 @@ public class base_player extends script.base_script
             region enteredRegion = getRegion(planetName, regionName);
             if (enteredRegion != null && enteredRegion.getPvPType() == regions.PVP_REGION_TYPE_ADVANCED)
             {
-                if ((!factions.isImperial(self) && !factions.isRebel(self)) || !factions.isCovert(self))
+                if (!isValidGcwParticipant)
                 {
                     sendSystemMessage(self, new string_id("gcw", "pvp_advanced_region_not_allowed"));
                     return SCRIPT_OVERRIDE;
@@ -12267,16 +12361,43 @@ public class base_player extends script.base_script
 
         meditation.trance(self);
 
-        // --- PROJECT WILL (Center of Being + GCW Fatigue Reduction) ---
-        if (hasSkill(self, "expertise_en_project_will_1")) {
-            buff.applyBuff(self, "center_of_being");
+// =======================
+// Power Boost (skill-based)
+// =======================
+        if (hasSkill(self, "combat_unarmed_master"))
+        {
+            buff.applyBuff(self, "power_boost_2");
+        }
+        else if (hasSkill(self, "combat_unarmed_accuracy_04"))
+        {
+            buff.applyBuff(self, "power_boost_1");
+        }
+        else if (hasSkill(self, "combat_unarmed_accuracy_02"))
+        {
+            buff.applyBuff(self, "power_boost");
+        }
 
-            int stackSize = (int) buff.getBuffStackCount(self, "gcw_fatigue");
-            if (stackSize > 0) {
-                stackSize--;
+// ==================================
+// GCW Fatigue Reduction (meditation)
+// ==================================
+        int meditationMod = meditation.getMeditationSkillMod(self);
+
+// Each 5 meditation removes 1 fatigue stack
+        int fatigueToHeal = meditationMod / 5;
+
+        if (fatigueToHeal > 0)
+        {
+            long stackSize = buff.getBuffStackCount(self, "gcw_fatigue");
+
+            if (stackSize > 0)
+            {
+                long newStackSize = stackSize - fatigueToHeal;
+
                 buff.removeBuff(self, "gcw_fatigue");
-                if (stackSize > 0) {
-                    buff.applyBuffWithStackCount(self, "gcw_fatigue", stackSize);
+
+                if (newStackSize > 0)
+                {
+                    buff.applyBuffWithStackCount(self, "gcw_fatigue", (int)newStackSize);
                 }
             }
         }

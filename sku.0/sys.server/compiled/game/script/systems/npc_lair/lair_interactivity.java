@@ -249,10 +249,18 @@ public class lair_interactivity extends script.base_script {
             sendSystemMessage(player, SID_FOUND_EGGS);
 
             // Check if the player has the required skills
-            if (buff.hasBuff(player, "bm_creature_knowledge")) {
-                findBeastEgg(self, player);
-            } else {
+            if (!buff.hasBuff(player, "bm_creature_knowledge")) {
                 sendSystemMessageTestingOnly(player, "You must use creature knowledge ability to find beast eggs.");
+                return;
+            }
+
+            // Skill check against creature knowledge (1-100)
+            int ckSkill = getSkillStatisticModifier(player, "creature_knowledge");
+            int ckRoll = rand(1, 100);
+
+            if (ckRoll > ckSkill) {
+                sendSystemMessage(player, new string_id("pet", "failed_find_egg"));
+                return;
             }
 
             int amt = rand(10, 50); // increased lair_egg_buff for harvesting for QoL

@@ -898,8 +898,74 @@ public class stealth extends script.base_script
         stopClientEffectObjByLabel(target, "trapConceal");
         doAnimationAction(player, "point_down");
     }
+    public static boolean isSpyTrap(int trapType)
+    {
+        switch (trapType)
+        {
+            case TRAP_CALTROP:
+            case TRAP_FLASHBANG:
+            case TRAP_KAMINODART:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public static boolean isCommandoTrap(int trapType)
+    {
+        switch (trapType)
+        {
+            case TRAP_HX2:
+                return true;
+            default:
+                return false;
+        }
+    }
     public static boolean canSetTrap(obj_id player, obj_id trap) throws InterruptedException
     {
+        if (!isIdValid(player) || !isIdValid(trap))
+        {
+            return false;
+        }
+
+        if (!hasScript(trap, "systems.skills.stealth.trap"))
+        {
+            return false;
+        }
+
+        if (!hasObjVar(trap, "trap.trapType"))
+        {
+            return false;
+        }
+
+        int trapType = getIntObjVar(trap, "trap.trapType");
+
+        int trapping = getSkillStatMod(player, "trapping");
+        int demolitions = getSkillStatMod(player, "thrown_accuracy");
+
+        // --------------------------------------------------
+        // SKILL DIFFERENTIATION
+        // --------------------------------------------------
+
+        // Spy-style traps
+        if (isSpyTrap(trapType))
+        {
+            if (trapping < 5)
+            {
+                sendSystemMessage(player, new string_id("spam", "no_trapping_skill"));
+                return false;
+            }
+        }
+        // Commando-style traps
+        else if (isCommandoTrap(trapType))
+        {
+            if (demolitions < 5)
+            {
+                sendSystemMessage(player, new string_id("spam", "no_demolitions_skill"));
+                return false;
+            }
+        }
+
         if (!isIdValid(trap) || !hasScript(trap, "systems.skills.stealth.trap"))
         {
             return false;
@@ -914,11 +980,11 @@ public class stealth extends script.base_script
             sendSystemMessage(player, new string_id("spam", "trap_not_possession"));
             return false;
         }
-        if (isPvPTrap(trap) && !factions.isDeclared(player))
-        {
-            sendSystemMessage(player, new string_id("spam", "trap_not_declared"));
-            return false;
-        }
+//        if (isPvPTrap(trap) && !factions.isDeclared(player))
+//        {
+//            sendSystemMessage(player, new string_id("spam", "trap_not_declared"));
+//            return false;
+//        }
         if (pet_lib.isMounted(player))
         {
             sendSystemMessage(player, new string_id("spam", "trap_not_while_mounted"));

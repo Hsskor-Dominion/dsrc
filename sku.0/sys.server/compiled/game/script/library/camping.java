@@ -61,6 +61,7 @@ public class camping extends script.base_script
     public static final String HANDLER_CAMP_RESTORE = "handleCampRestoreHeartbeat";
     public static final String HANDLER_CAMP_COMPLETE = "handleCampComplete";
     public static final String DICT_NEW_STATUS = "newStatus";
+    public static final string_id SID_CAMP_XP_GAINED = new string_id("camp", "abandoned_camp");
     public static final string_id SID_ABANDONED_CAMP = new string_id("camp", "abandoned_camp");
     public static final string_id SID_STARTING_CAMP = new string_id("camp", "starting_camp");
     public static final string_id SID_CAMP_COMPLETE = new string_id("camp", "camp_complete");
@@ -227,38 +228,151 @@ public class camping extends script.base_script
         }
         return true;
     }
+    public static int getCampModuleCount(obj_id camp) throws InterruptedException
+    {
+        if (!hasObjVar(camp, "modules.ids"))
+        {
+            return 0;
+        }
+
+        obj_id[] modules = getObjIdArrayObjVar(camp, "modules.ids");
+        if (modules == null || modules.length == 0)
+        {
+            return 0;
+        }
+
+        int count = 0;
+        for (obj_id module : modules)
+        {
+            if (isIdValid(module) && exists(module))
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
     public static boolean nukeCamp(obj_id master) throws InterruptedException
     {
         if (!isIdValid(master) || !exists(master))
         {
             return false;
         }
-        removeTriggerVolume("camp_" + master);
-        obj_id[] players = getPlayerCreaturesInRange(getLocation(master), getCampSize(master));
-        if ((players == null) || (players.length == 0))
+
+        obj_id owner = getObjIdObjVar(master, VAR_OWNER);
+
+        // ------------------------
+        // Calculate uptime (failsafe)
+        // ------------------------
+        int creationTime = hasObjVar(master, VAR_CREATION_TIME)
+                ? getIntObjVar(master, VAR_CREATION_TIME)
+                : 0;
+
+        int now = getCalendarTime();
+
+        int uptimeSeconds;
+        if (creationTime <= 0 || creationTime > now)
         {
+            uptimeSeconds = 60;
         }
-        else 
+        else
         {
-            for (obj_id player : players) {
+            uptimeSeconds = Math.max(now - creationTime, 60);
+        }
+
+        // Convert to minutes
+        int uptimeMinutes = uptimeSeconds / 60;
+
+        // ------------------------
+        // Cap effective time (anti-AFK abuse)
+        // ------------------------
+        int MAX_EFFECTIVE_MINUTES = 120; // 2 hours max XP credit
+        uptimeMinutes = Math.min(uptimeMinutes, MAX_EFFECTIVE_MINUTES);
+
+        // ------------------------
+        // Base XP from time (VERY conservative)
+        // ------------------------
+        int BASE_XP_PER_MINUTE = 2; // <<< this was the real problem
+        int baseXp = uptimeMinutes * BASE_XP_PER_MINUTE;
+
+        // ------------------------
+        // Module bonus
+        // ------------------------
+        int moduleCount = getCampModuleCount(master);
+
+        float MODULE_BONUS_PER = 0.10f; // +10% per module
+        float MAX_MODULE_BONUS = 0.75f; // max +75%
+
+        float moduleBonus = Math.min(moduleCount * MODULE_BONUS_PER, MAX_MODULE_BONUS);
+        float finalMultiplier = 1.0f + moduleBonus;
+
+        int xpGranted = Math.round(baseXp * finalMultiplier);
+
+        // ------------------------
+        // Final clamps
+        // ------------------------
+        int MIN_CAMP_XP = 25;
+        int MAX_CAMP_XP = 10000;
+
+        xpGranted = Math.max(xpGranted, MIN_CAMP_XP);
+        xpGranted = Math.min(xpGranted, MAX_CAMP_XP);
+
+        // ------------------------
+        // Grant XP
+        // ------------------------
+        if (isIdValid(owner))
+        {
+            camping.grantCampXp(owner, xpGranted);
+        }
+
+        // ------------------------
+        // Cleanup
+        // ------------------------
+        removeTriggerVolume("camp_" + master);
+
+        obj_id[] players = getPlayerCreaturesInRange(
+                getLocation(master),
+                getCampSize(master)
+        );
+
+        if (players != null)
+        {
+            for (obj_id player : players)
+            {
                 clearCurrentCamp(player);
             }
         }
-        int xpGranted = getIntObjVar(master, VAR_CAMP_XP);
-        obj_id owner = getObjIdObjVar(master, VAR_OWNER);
-        if ((owner != null) && (owner != obj_id.NULL_ID))
+
+        removeObjVar(master, VAR_CAMP_XP);
+
+        if (isIdValid(owner))
         {
             pclib.msgRemoveObjVar(owner, VAR_CAMP_BASE);
-            if ((owner.isLoaded()) && (isInWorld(owner)))
+            if (owner.isLoaded() && isInWorld(owner))
             {
                 sendSystemMessage(owner, SID_ERROR_CAMP_DISBAND);
             }
         }
-        if (!destroyObject(master))
+
+        return destroyObject(master);
+    }
+    public static void grantCampXp(obj_id player, int campXp)
+            throws InterruptedException
+    {
+        if (!isIdValid(player) || !isPlayer(player))
         {
-            return false;
+            return;
         }
-        return true;
+
+        xp.grantUnmodifiedExperience(
+                player,
+                xp.CAMP,
+                campXp,
+                true,
+                null,
+                null,
+                null
+        );
     }
     public static obj_id getCurrentCamp(obj_id target) throws InterruptedException
     {

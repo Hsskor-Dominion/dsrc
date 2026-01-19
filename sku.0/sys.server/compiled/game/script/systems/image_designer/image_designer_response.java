@@ -245,6 +245,14 @@ public class image_designer_response extends script.base_script
                     experience = (int)(experience / 2);
                 }
             }
+
+            // Salon XP bonus
+            obj_id structure = getTopMostContainer(self);
+            if (isIdValid(structure) && structure != self && utils.hasObjVar(structure, "salon"))
+            {
+                experience *= 10;
+            }
+
             xp.grantSocialStyleXp(self, xp.IMAGEDESIGNER, experience);
         }
         detachScript(self, SCRIPT_IMAGE_DESIGNER_RESPONSE);

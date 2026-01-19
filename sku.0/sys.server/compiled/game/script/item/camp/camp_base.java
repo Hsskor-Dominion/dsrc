@@ -84,6 +84,7 @@ public class camp_base extends script.base_script
             return;
         }
         sendSystemMessage(player, SID_SYS_DEPLOY);
+        camping.grantCampXp(player, 10);
         obj_id master = camping.createCamp(player, campPower);
         if (master == null)
         {

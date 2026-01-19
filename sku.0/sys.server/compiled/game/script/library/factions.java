@@ -763,13 +763,13 @@ public class factions extends script.base_script
         }
         if (value != 0.0f)
         {
-            if (hasSkill(target, "class_smuggler_phase1_novice") && (factionName.equals("underworld")))
+            if (hasSkill(target, "class_smuggler_phase1_novice") || hasSkill(target, "combat_smuggler_novice") && (factionName.equals("underworld")))
             {
                 smuggler.checkSmugglerTitleGrants(target, value);
                 smuggler.checkRewardQuestGrants(target, value);
                 messageTo(target, "applySmugglingBonuses", null, 1.0f, false);
             }
-            if (hasSkill(target, "class_bountyhunter_phase1_novice") && (factionName.equals("underworld")))
+            if (hasSkill(target, "class_bountyhunter_phase1_novice") || hasSkill(target, "combat_bountyhunter_novice") && (factionName.equals("underworld")))
             {
                 smuggler.checkBountyTitleGrants(target, value);
             }

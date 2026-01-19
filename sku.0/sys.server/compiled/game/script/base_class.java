@@ -2997,6 +2997,15 @@ public class base_class
         }
     }
 
+    /**
+     * Send a system message to an individual
+     */
+    public static void broadcast(obj_id to, String localizedMessageText)
+    {
+        //broadcast (getChatName (to), localizedMessageText);
+        sendSystemMessage(to, localizedMessageText, null);
+    }
+
     private static native long[] _getMessageListeners(long emitter, String messageHandlerName);
     public static obj_id[] getMessageListeners(String messageHandlerName)
     {

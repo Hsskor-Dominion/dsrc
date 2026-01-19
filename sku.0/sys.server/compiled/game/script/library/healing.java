@@ -284,6 +284,7 @@ public class healing extends script.base_script
                 float modifiedHate = (delta * agroReductionFact) / HEALING_AGGRO_REDUCER;
                 if (isPlayer(medic)) {
                     _addMedicalHate(medic, defenderDatum.id, (int) modifiedHate, hateMod);
+                    _healingActionFollowUp(medic, defenderDatum.id, delta, 1);//SWG Chimaera CU-style healing experience
                 }
                 pvpHelpPerformed(medic, defenderDatum.id);
                 applyDefenderHealBuffs(medic, defenderDatum.id, action_data);
@@ -2549,7 +2550,7 @@ public class healing extends script.base_script
                     att[attrib] += val;
                 }
             }
-            grantHealingExperience(att, medic, target, HEAL_TYPE_MEDICAL_REVIVE);
+            grantHealingExperience(att, medic, target, HEAL_TYPE_MEDICAL_REVIVE);//we
             pvpHelpPerformed(medic, target);
             messageTo(target, "handlePlayerResuscitated", null, 0, true);
             return true;

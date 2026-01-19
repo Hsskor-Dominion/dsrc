@@ -407,6 +407,7 @@ public class camp_advanced_deed extends script.base_script
             return;
         }
         sendSystemMessage(player, SID_SYS_DEPLOY);
+        camping.grantCampXp(player, 10);
         location loc = getLocation(player);
         obj_id master = create.object(template, loc);
         if (isIdValid(master))

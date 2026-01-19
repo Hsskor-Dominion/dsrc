@@ -7,6 +7,8 @@ import script.library.utils;
 import script.library.*;
 import script.*;
 
+import static script.library.force_rank.SCRIPT_FRS_PLAYER;
+
 public class yoda extends script.base_script
 {
     public yoda()
@@ -393,6 +395,9 @@ public class yoda extends script.base_script
             revokeSkill(player, "force_rank");
             revokeSkill(player, "force_rank_light");
             revokeSkill(player, "force_rank_light_novice");
+            detachScript(player, SCRIPT_FRS_PLAYER);
+            setJediState(player, JEDI_STATE_NONE);//this removes the mind bar bug
+
 
             utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
             npcEndConversationWithMessage(player, message);

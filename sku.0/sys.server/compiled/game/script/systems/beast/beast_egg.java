@@ -515,6 +515,7 @@ public class beast_egg extends script.base_script
         {
             String collectionName = creatureCollectionMap.getString(creatureName);
             modifyCollectionSlotValue(player, collectionName, 1);
+            xp.grant(player, "creaturehandler", 1000);//hatching eggs rewards player with experience
         }
     }
 }

@@ -381,6 +381,7 @@ public class bounty_hunter extends script.base_script
 
         // --- Payout ---
         money.systemPayout(money.ACCT_BOUNTY, hunter, bountyValue, "handleAwardedPlayerBounty", d);
+        xp.grant(hunter, xp.BOUNTYHUNTER, 100);//static exp for bounty missions, QoL experiment
 
         // --- Adjust faction ---
         float factionAdj = getBountyFactionPointAdjustment(hunter, target);

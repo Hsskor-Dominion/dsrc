@@ -442,6 +442,64 @@ public class npc_lair extends script.theme_park.poi.base
         respawnAllMobiles(poiBaseObject);
         PROFILER_STOP("npc_lair.spawnNpcLairMobiles.makeMobs");
     }
+    private String normalizeBeastType(String beastType)
+    {
+        beastType = beastType.toLowerCase();
+
+        if (beastType.contains("womprat"))
+            return "womp_rat";
+        if (beastType.contains("kamurith"))
+            return "voritor";
+        if (beastType.contains("dragonet"))
+            return "dune_lizard";
+        if (beastType.contains("razorback"))
+            return "zucca_boar";
+        if (beastType.contains("mantigrue"))
+            return "condor_dragon";
+        if (beastType.contains("arachne"))
+            return "hermit_spider";
+        if (beastType.contains("rockmite"))
+            return "rock_mite";
+
+        return beastType;
+    }
+    public void trySpawnBaby(obj_id poiBaseObject, obj_id parent, String beastType) throws InterruptedException
+    {
+        if (!isIdValid(parent) || !ai_lib.isMonster(parent))
+            return;
+
+        int babies = utils.getIntScriptVar(poiBaseObject, "npc_lair.numBabies");
+        if (babies >= 3)
+            return;
+
+        if (rand(1, 100) > 20)
+            return;
+
+        location loc = getLocation(parent);
+        loc.x += rand(-2.0f, 2.0f);
+        loc.z += rand(-2.0f, 2.0f);
+
+        obj_id baby = createObject(getTemplateName(parent), loc);
+        if (!isIdValid(baby))
+            return;
+
+        setScale(baby, rand(20, 50) / 100.0f);
+
+        setLevel(baby, 1);
+
+        utils.setScriptVar(baby, "npc_lair.isBaby", true);
+        attachScript(baby, "ai.pet_advance");
+        attachScript(baby, "ai.ai");
+        attachScript(baby, "ai.creature_combat");
+        attachScript(baby, "systems.combat.combat_actions");
+        attachScript(baby, "systems.combat.credit_for_kills");
+
+        String normalizedBeast = normalizeBeastType(beastType);
+        setObjVar(baby, "beast.beastType", normalizedBeast);
+
+        babies++;
+        utils.setScriptVar(poiBaseObject, "npc_lair.numBabies", babies);
+    }
     public int handleDelayedTargetSetup(obj_id self, dictionary params) throws InterruptedException
     {
         obj_id target = getObjIdObjVar(self, "npc_lair.target");
@@ -605,6 +663,7 @@ public class npc_lair extends script.theme_park.poi.base
                     mobile = spawnMobile(mobileName, target, false);
                 }
             }
+            trySpawnBaby(poiBaseObject, mobile, mobileName);
             if (isIdValid(mobile))
             {
                 if (!ai_lib.isMonster(mobile))
@@ -929,28 +988,6 @@ public class npc_lair extends script.theme_park.poi.base
     {
         destroyObject(self);
         return SCRIPT_CONTINUE;
-    }
-    public void makeBaby(obj_id mobile) throws InterruptedException
-    {
-        obj_id baseObj = poiGetBaseObject();
-        String name = ai_lib.getCreatureName(mobile);
-        if (name == null || name.equals(""))
-        {
-            return;
-        }
-        float tameChance = utils.dataTableGetFloat(CREATURE_TABLE, name, "canTame");
-        if (rand(0.0f, 1.0f) > tameChance)
-        {
-            return;
-        }
-        int numBabiesSpawned = utils.getIntScriptVar(baseObj, "npc_lair.numbabies");
-        if (numBabiesSpawned > 2 && (rand(1, 100) > 25))
-        {
-            return;
-        }
-        numBabiesSpawned++;
-        utils.setScriptVar(baseObj, "npc_lair.numbabies", numBabiesSpawned);
-        attachScript(mobile, "ai.pet_advance");
     }
     public int handleNpcAiManagement(obj_id self, dictionary params) throws InterruptedException
     {

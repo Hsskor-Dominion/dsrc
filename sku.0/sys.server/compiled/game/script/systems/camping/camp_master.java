@@ -148,7 +148,7 @@ public class camp_master extends script.base_script
             }
         }
         camping.setCurrentCamp(who, self);
-        prose_package pp = prose.getPackage(camping.PROSE_CAMP_ENTER, getName(self));
+        prose_package pp = prose.getPackage(camping.PROSE_CAMP_ENTER, getName(self));//this is returning you have entered camp master's camp, weird
         sendSystemMessageProse(who, pp);
         sendSystemMessage(who, SID_SYS_CAMP_HEAL);
         int count = getIntObjVar(self, "visitor_count");

@@ -5,6 +5,9 @@ import script.library.*;
 
 import java.util.Vector;
 
+import static script.library.skill.deductXpCostForSkillPurchase;
+import static script.library.skill.getSkillPointsForPlayer;
+
 public class skillteacher extends script.base_script
 {
     public skillteacher()
@@ -220,6 +223,7 @@ public class skillteacher extends script.base_script
 
         return remainingPoints;
     }
+
     public int OnNpcConversationResponse(obj_id self, String convoName, obj_id speaker, string_id sid_response) throws InterruptedException
     {
         String trainerType = getStringObjVar(self, "trainer");
@@ -401,13 +405,18 @@ public class skillteacher extends script.base_script
             switch (response) {
                 case "opt1_1":
                     msg = new string_id(convo, "msg2_1");
-                    skills = skill.getQualifiedTeachableSkills(speaker, self);
+                    skills = skill.getQualifiedTeachableSkills(speaker, self);//this is borked, only shows novice
                     utils.setScriptVar(speaker, self.toString(), STATUS_LEARN);
                     break;
                 case "opt1_2":
                     msg = new string_id(convoName, "msg2_2");
-                    skills = skill.getTeachableSkills(speaker, self);
+                    skills = skill.getTeachableSkills(speaker, self);//this works great! it pulls up all the skills the trainer has, and then I ask about each ones requirements. We need to learn from this to get getQualifiedTeachableSkills fixed
                     utils.setScriptVar(speaker, self.toString(), STATUS_INFO);
+                    // --- NEW: Show skill points used ---
+                    int pointsUsed = getSkillPointsForPlayer(speaker); // total of POINTS_REQUIRED
+                    int maxPoints = 250; // hard cap
+                    prose_package ppPoints = prose.getPackage(new string_id(convo, "skill_points_used"), pointsUsed, maxPoints);
+                    sendSystemMessageProse(speaker, ppPoints);
                     break;
                 case "yes":
                     String ovPath = "confirmTeach." + speaker;
@@ -439,7 +448,7 @@ public class skillteacher extends script.base_script
             }
             if ((checkArray) && ((skills == null) || (skills.length == 0)))
             {
-                msg = new string_id(convo, "error_empty_category");
+                msg = new string_id(convo, "error_empty_category");//this is the error I'm getting, they won't teach beyond novice
             }
             else if (!checkArray)
             {
@@ -482,8 +491,10 @@ public class skillteacher extends script.base_script
         if (completeSkillPurchase(player, skillName))
         {
             money.bankTo(self, money.ACCT_SKILL_TRAINING, cost);
+            grantSkill(player, skillName);
+            deductXpCostForSkillPurchase(player, skillName);
         }
-        else 
+        else
         {
             prose_package ppCostRefunded = prose.getPackage(SID_TRAINING_COST_REFUNDED);
             prose.setDI(ppCostRefunded, cost);
@@ -504,29 +515,29 @@ public class skillteacher extends script.base_script
         }
         boolean learned = true;
         prose_package pp;
-        if (skill.purchaseSkill(player, skillName))
-        {
+//        if (skill.purchaseSkill(player, skillName))
+//        {
             pp = prose.getPackage(PROSE_SKILL_LEARNED, new string_id(SKILL_N, skillName));
-            if (fs_quests.isVillageEligible(player))
-            {
-                if (!hasObjVar(player, fs_quests.VAR_VILLAGE_COMPLETE))
-                {
-                    if (skillName.contains("force_sensitive_"))
-                    {
-                        if (fs_quests.getBranchesLearned(player) >= 6)
-                        {
-                            setObjVar(player, fs_quests.VAR_VILLAGE_COMPLETE, 1);
-                            CustomerServiceLog("fs_quests", "%TU has completed the village by attaining six FS skill branches.", player, null);
-                        }
-                    }
-                }
-            }
-        }
-        else 
-        {
-            pp = prose.getPackage(PROSE_TRAIN_FAILED, new string_id(SKILL_N, skillName));
-            learned = false;
-        }
+//            if (fs_quests.isVillageEligible(player))//looks like legacy nonsese code?
+//            {
+//                if (!hasObjVar(player, fs_quests.VAR_VILLAGE_COMPLETE))
+//                {
+//                    if (skillName.contains("force_sensitive_"))
+//                    {
+//                        if (fs_quests.getBranchesLearned(player) >= 6)
+//                        {
+//                            setObjVar(player, fs_quests.VAR_VILLAGE_COMPLETE, 1);
+//                            CustomerServiceLog("fs_quests", "%TU has completed the village by attaining six FS skill branches.", player, null);
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        else
+//        {
+//            pp = prose.getPackage(PROSE_TRAIN_FAILED, new string_id(SKILL_N, skillName));
+//            learned = false;
+//        }
         sendSystemMessageProse(player, pp);
         return learned;
     }
@@ -536,37 +547,56 @@ public class skillteacher extends script.base_script
         {
             return null;
         }
+
         Vector ret = new Vector();
         ret.setSize(0);
+
+        // --- Required skills ---
         ret = utils.addElement(ret, "REQUIRED SKILLS");
         String[] skillReqs = getSkillPrerequisiteSkills(skillName);
         if (skillReqs == null)
         {
             ret = utils.addElement(ret, " none");
         }
-        else 
+        else
         {
-            for (String skillReq : skillReqs) {
+            for (String skillReq : skillReqs)
+            {
                 String sName = getString(new string_id("skl_n", skillReq));
                 ret = utils.addElement(ret, " " + sName);
             }
         }
+
+        // --- XP costs ---
         ret = utils.addElement(ret, "XP COSTS");
         dictionary xpReqs = getSkillPrerequisiteExperience(skillName);
+
         if ((xpReqs == null) || (xpReqs.isEmpty()))
         {
             ret = utils.addElement(ret, " none");
         }
-        else 
+        else
         {
             java.util.Enumeration xp = xpReqs.keys();
             while (xp.hasMoreElements())
             {
                 String xpType = (String)xp.nextElement();
+                int requiredXp = xpReqs.getInt(xpType);
+
+                // Localized XP name - replace this probably?
                 String sXp = getString(new string_id("exp_n", xpType));
-                ret = utils.addElement(ret, " " + sXp + " = " + xpReqs.getInt(xpType));
+
+                // Player's current XP (we need this working)
+                int playerXp = getExperiencePoints(player, xpType);
+
+                // Display as current / required
+                ret = utils.addElement(
+                        ret,
+                        " " + sXp + ": " + playerXp + " / " + requiredXp
+                );
             }
         }
+
         String[] _ret = new String[0];
         if (ret != null)
         {

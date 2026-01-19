@@ -1,10 +1,7 @@
 package script.fishing;
 
 import script.*;
-import script.library.minigame;
-import script.library.prose;
-import script.library.sui;
-import script.library.utils;
+import script.library.*;
 
 public class player extends script.base_script
 {
@@ -476,6 +473,7 @@ public class player extends script.base_script
         {
             prose_package ppCatch = prose.getPackage(minigame.PROSE_NOTIFY_CATCH, myCatch);
             sendSystemMessageProse(self, ppCatch);
+            camping.grantCampXp(self, 20);
         }
         minigame.stopFishing(self);
         return SCRIPT_CONTINUE;

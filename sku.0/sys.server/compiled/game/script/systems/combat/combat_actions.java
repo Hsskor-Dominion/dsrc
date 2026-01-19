@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import static script.library.camping.*;
+import static script.library.combat.getWeaponTypeString;
 
 public class combat_actions extends script.systems.combat.combat_base {
 
@@ -7093,7 +7094,7 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int sp_stealth_ranged_6(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!stealth.hasInvisibleBuff(self) && !buff.hasBuff(self, "sp_smoke_mirrors")) {
+        if (!stealth.hasInvisibleBuff(self) && !buff.hasBuff(self, "sp_smoke_mirrors") && !buff.hasBuff(self, "bh_take_cover"))  {
             return SCRIPT_OVERRIDE;
         }
         if (!combatStandardAction("sp_stealth_ranged_6", self, target, params, "", "")) {
@@ -7329,6 +7330,111 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         return SCRIPT_CONTINUE;
     }
+
+//    private static float getWeaponSpeedMod(obj_id player) throws InterruptedException //my attempt at introducing weapon speed mod
+//    {
+//        String weaponType = getWeaponTypeString(player);
+//        if (weaponType.equals(""))
+//        {
+//            return 0.0f;
+//        }
+//
+//        return getEnhancedSkillStatisticModifierUncapped(
+//                player,
+//                weaponType + "_speed"
+//        );
+//    }
+//
+//    public int meleeHit(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+//    {
+//        if (!combatStandardAction("meleeHit", self, target, params, "", ""))
+//        {
+//            return SCRIPT_OVERRIDE;
+//        }
+//
+//        float baseCooldownTime = getBaseCooldownTime("meleeHit");
+//        if (baseCooldownTime < 0)
+//        {
+//            return SCRIPT_OVERRIDE;
+//        }
+//
+//        float speedMod = 0.0f;
+//
+//        speedMod += getEnhancedSkillStatisticModifierUncapped(self, "melee_speed");
+//        speedMod += getWeaponSpeedMod(self);
+//
+//        float cooldownReduction = speedMod / 10.0f;
+//        float finalCooldown = baseCooldownTime - cooldownReduction;
+//
+//        if (finalCooldown < 0.2f)
+//        {
+//            finalCooldown = 0.2f;
+//        }
+//
+//        setCommandTimerValue(self, TIMER_COOLDOWN, finalCooldown);
+//        return SCRIPT_CONTINUE;
+//    }
+//
+//
+//    public int rangedShot(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+//    {
+//        if (!combatStandardAction("rangedShot", self, target, params, "", ""))
+//        {
+//            return SCRIPT_OVERRIDE;
+//        }
+//
+//        float baseCooldownTime = getBaseCooldownTime("rangedShot");
+//        if (baseCooldownTime < 0)
+//        {
+//            return SCRIPT_OVERRIDE;
+//        }
+//
+//        float speedMod = 0.0f;
+//
+//        speedMod += getEnhancedSkillStatisticModifierUncapped(self, "ranged_speed");
+//        speedMod += getWeaponSpeedMod(self);
+//
+//        float cooldownReduction = speedMod / 10.0f;
+//        float finalCooldown = baseCooldownTime - cooldownReduction;
+//
+//        if (finalCooldown < 0.2f)
+//        {
+//            finalCooldown = 0.2f;
+//        }
+//
+//        setCommandTimerValue(self, TIMER_COOLDOWN, finalCooldown);
+//        return SCRIPT_CONTINUE;
+//    }
+//
+//    public int saberHit(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+//    {
+//        if (!combatStandardAction("saberHit", self, target, params, "", ""))
+//        {
+//            return SCRIPT_OVERRIDE;
+//        }
+//
+//        float baseCooldownTime = getBaseCooldownTime("saberHit");
+//        if (baseCooldownTime < 0)
+//        {
+//            return SCRIPT_OVERRIDE;
+//        }
+//
+//        float speedMod = 0.0f;
+//
+//        speedMod += getEnhancedSkillStatisticModifierUncapped(self, "saber_speed");
+//        speedMod += getWeaponSpeedMod(self);
+//
+//        float cooldownReduction = speedMod / 10.0f;
+//        float finalCooldown = baseCooldownTime - cooldownReduction;
+//
+//        if (finalCooldown < 0.2f)
+//        {
+//            finalCooldown = 0.2f;
+//        }
+//
+//        setCommandTimerValue(self, TIMER_COOLDOWN, finalCooldown);
+//        return SCRIPT_CONTINUE;
+//    }
 
     public int rangedShot(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("rangedShot", self, target, params, "", "")) {
@@ -8504,10 +8610,27 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
-    public int centerOfBeing(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("centerOfBeing", self, target, params, "", "")) {
+    public int centerOfBeing(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("centerOfBeing", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
+        // Apply strongest version first
+        if (hasSkill(self, "combat_unarmed_master"))
+        {
+            buff.applyBuff(self, "center_of_being_2");
+        }
+        else if (hasSkill(self, "combat_unarmed_speed_01"))
+        {
+            buff.applyBuff(self, "center_of_being_1");
+        }
+        else
+        {
+            buff.applyBuff(self, "center_of_being");
+        }
+
         return SCRIPT_CONTINUE;
     }
 

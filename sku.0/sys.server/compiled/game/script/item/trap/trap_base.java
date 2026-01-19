@@ -1,7 +1,10 @@
 package script.item.trap;
 
 import script.*;
+import script.ai.ai_aggro;
 import script.library.*;
+
+import static script.library.utils.hasScriptVar;
 
 public class trap_base extends script.base_script
 {
@@ -66,51 +69,184 @@ public class trap_base extends script.base_script
             sendSystemMessage(player, SID_NO_TRAP_IN_SPACE);
             return SCRIPT_CONTINUE;
         }
-        if (!hasObjVar(self, "droid_trap"))
+
+        if (hasScriptVar(player, "trap.cooldown"))
         {
-            if (item == menu_info_types.ITEM_USE)
-            {
-                int skillMod = getSkillStatMod(player, "trapping");
-                if (skillMod <= 0)
-                {
-                    string_id trapNoSkill = new string_id("trap/trap", "trap_no_skill");
-                    sendSystemMessage(player, trapNoSkill);
-                    return SCRIPT_OVERRIDE;
-                }
-                String strParams = self.toString();
-                obj_id objTarget = getLookAtTarget(player);
-                if (!isIdValid(objTarget))
-                {
-                    return SCRIPT_CONTINUE;
-                }
-                if (!canSee(player, objTarget))
-                {
-                    sendSystemMessage(player, new string_id("combat_effects", "cansee_fail"));
-                    return SCRIPT_CONTINUE;
-                }
-                if (!ai_lib.isMonster(objTarget) || isIncapacitated(objTarget) || isDead(objTarget))
-                {
-                    sendSystemMessage(player, SID_SYS_CREATURES_ONLY);
-                    return SCRIPT_CONTINUE;
-                }
-                if (pet_lib.isPet(objTarget))
-                {
-                    sendSystemMessage(player, SID_SYS_NO_PETS);
-                    return SCRIPT_CONTINUE;
-                }
-                queueCommand(player, (88718951), objTarget, strParams, COMMAND_PRIORITY_NORMAL);
-            }
+            sendSystemMessage(player, new string_id("trap/trap", "trap_on_cooldown"));
+            return SCRIPT_CONTINUE;
         }
+
+        if (!hasObjVar(self, "droid_trap") && item == menu_info_types.ITEM_USE)
+        {
+            int skill = getSkillStatMod(player, "trapping");
+            if (skill <= 0)
+            {
+                sendSystemMessage(player, new string_id("trap/trap", "trap_no_skill"));
+                return SCRIPT_OVERRIDE;
+            }
+
+            obj_id target = getLookAtTarget(player);
+            if (!isIdValid(target))
+                return SCRIPT_CONTINUE;
+
+            if (!canSee(player, target))
+            {
+                sendSystemMessage(player, new string_id("combat_effects", "cansee_fail"));
+                return SCRIPT_CONTINUE;
+            }
+
+// ---------------------------
+// RANGE CHECK: 20 meters
+// ---------------------------
+            float dist = getDistance(player, target);
+            if (dist > 20.0f)
+            {
+                sendSystemMessage(player, new string_id("trap/trap", "target_too_far"));
+                return SCRIPT_CONTINUE;
+            }
+//            if (!ai_lib.isMonster(target) || isIncapacitated(target) || isDead(target))
+//            {
+//                sendSystemMessage(player, SID_SYS_CREATURES_ONLY);
+//                return SCRIPT_CONTINUE;
+//            }
+//            if (pet_lib.isPet(target))
+//            {
+//                sendSystemMessage(player, SID_SYS_NO_PETS);
+//                return SCRIPT_CONTINUE;
+//            }
+            if (!pvpCanAttack(player, target)) return SCRIPT_CONTINUE;
+
+            String template = getSharedObjectTemplateName(self);
+            String strParams = self.toString();
+
+            // --------------------------------
+            // Always consume the trap
+            // --------------------------------
+            trapUsed(self);
+            damage(target, DAMAGE_KINETIC, HIT_LOCATION_BODY, 5);
+            startCombat(target, player);
+            startCombat(player, target);
+            addHate(target, player, 50.0f);
+            addHate(player, target, 50.0f);
+
+            // Trap difficulty / complexity
+            int trapComplexity = 1;
+            if (hasObjVar(self, "trapDiff")) trapComplexity = getIntObjVar(self, "trapDiff");
+
+            // Roll for success
+            int roll = rand(1, 100);
+            boolean success = false;
+
+            // --------------------------------
+            // Trap effects based on template
+            // --------------------------------
+            if (template.equals("object/tangible/scout/trap/shared_trap_enraging_spur.iff"))
+            {
+                success = (roll + skill) >= 60;
+                if (success)
+                {
+                    doAnimationAction(player, "force_blast");
+                    buff.applyBuff(target, "bh_del_cc_1", 1);
+                }
+            }
+            else if (template.equals("object/tangible/scout/trap/shared_trap_ranged_def_1.iff"))
+            {
+                success = (roll + skill) >= 65;
+                if (success)
+                {
+                    doAnimationAction(player, "force_blast");
+                    buff.applyBuff(target, "bh_del_cc_1", 2);
+                }
+            }
+            else if (template.equals("object/tangible/scout/trap/shared_trap_noise_maker.iff"))
+            {
+                success = (roll + skill) >= 70;
+                if (success)
+                {
+                    doAnimationAction(player, "force_blast");
+                    buff.applyBuff(target, "bh_del_cc_1", 3);
+                }
+            }
+            else if (template.equals("object/tangible/scout/trap/shared_trap_state_def_1.iff"))
+            {
+                success = (roll + skill) >= 75;
+                if (success) buff.applyBuff(target, "bh_del_cc_1", 4);
+            }
+            else if (template.equals("object/tangible/scout/trap/shared_trap_tranq_dart.iff"))
+            {
+                success = (roll + skill) >= 80;
+                if (success) buff.applyBuff(target, "bh_del_cc_1", 5);
+            }
+            else if (template.equals("object/tangible/scout/trap/shared_trap_melee_ranged_def_1.iff"))
+            {
+                success = (roll + skill) >= 85;
+                if (success) buff.applyBuff(target, "bh_del_cc_1", 6);
+            }
+            else if (template.equals("object/tangible/scout/trap/shared_trap_webber.iff"))
+            {
+                success = (roll + skill) >= 90;
+                if (success) buff.applyBuff(target, "bh_del_cc_1", 7);
+            }
+            else if (template.equals("object/tangible/scout/trap/shared_trap_drowsy_dart.iff"))
+            {
+                success = (roll + skill) >= 95;
+                if (success) buff.applyBuff(target, "bh_del_cc_1", 8);
+            }
+            else if (template.equals("object/tangible/scout/trap/shared_trap_melee_def_1.iff"))
+            {
+                success = (roll + skill) >= 100;
+                if (success) buff.applyBuff(target, "bh_del_cc_1", 9);
+            }
+            else if (template.equals("object/tangible/scout/trap/shared_trap_flash_bomb.iff"))
+            {
+                success = (roll + skill) >= 105;
+                if (success) buff.applyBuff(target, "bh_del_cc_1", 10);
+            }
+            else if (template.equals("object/tangible/scout/trap/shared_trap_sonic_pulse.iff"))
+            {
+                success = (roll + skill) >= 110;
+                if (success) buff.applyBuff(target, "bh_del_cc_1", 11);
+            }
+            else
+            {
+                sendSystemMessage(player, SID_SYS_NOT_READY);
+                return SCRIPT_CONTINUE;
+            }
+
+            // --------------------------------
+            // Give XP only if successful
+            // --------------------------------
+            if (success)
+            {
+                int xpGain = (trapComplexity + skill);
+                xp.grant(player, "trapping", xpGain);
+                // Set cooldown: 5 seconds
+                utils.setScriptVar(player, "trap.cooldown", 1);
+                messageTo(player, "clearTrapCooldown", null, 1.0f, false);
+            }
+            else
+            {
+                sendSystemMessage(player, new string_id("trap/trap", "trap_failed"));
+            }
+
+            return SCRIPT_OVERRIDE;
+        }
+
+        // --------------------------------
+        // Add trap to droid
+        // --------------------------------
         if (item == menu_info_types.SERVER_MENU1)
         {
             dictionary params = new dictionary();
-            params.put("trap", getSelf());
+            params.put("trap", self);
             params.put("player", player);
             obj_id droid = callable.getCDCallable(utils.getTrapDroidId(player));
-            messageTo(droid, "doRadialTrapAdd", params, 1, false);
+            messageTo(droid, "doRadialTrapAdd", params, 1.0f, false);
         }
+
         return SCRIPT_CONTINUE;
     }
+
     public void trapUsed(obj_id self) throws InterruptedException
     {
         if (hasObjVar(self, "droid_trap"))
@@ -123,7 +259,7 @@ public class trap_base extends script.base_script
         {
             destroyObject(self);
         }
-        else 
+        else
         {
             setCount(self, intUses);
         }

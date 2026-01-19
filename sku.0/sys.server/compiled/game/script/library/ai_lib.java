@@ -549,6 +549,13 @@ public class ai_lib extends script.base_script
     }
     public static boolean isMonster(obj_id npc) throws InterruptedException
     {
+
+        // Allow babies as "monsters" for trapping purposes
+        if (hasObjVar(npc, "npc_lair.isBaby"))
+        {
+            return true;
+        }
+
         int myNiche = aiGetNiche(npc);
         return myNiche == NICHE_MONSTER || myNiche == NICHE_HERBIVORE || myNiche == NICHE_CARNIVORE || myNiche == NICHE_PREDATOR;
     }

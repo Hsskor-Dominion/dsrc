@@ -190,12 +190,15 @@ public class player_teaching extends script.base_script
         }
         if (skill.purchaseSkill(self, selected_skill))
         {
+            // Grant apprenticeship XP to teacher is design
+            xp.grant(self, "apprenticeship", 10);//temporary kinda sorta fix
+            xp.grant(teacher, "apprenticeship", 10);//broken, like it needs an outside function?
             string_id skill_id = utils.unpackString("@skl_n:" + selected_skill);
             LOG("LOG_CHANNEL", "skill_id ->" + skill_id);
             LOG("LOG_CHANNEL", self + " ->You learn " + selected_skill + " from " + teacher_name + ".");
             LOG("LOG_CHANNEL", teacher + " ->" + student_name + " learns " + selected_skill + " from you.");
-            prose_package pp = prose.getPackage(SID_STUDENT_SKILL_LEARNED, teacher, skill_id);
-            pp = prose.getPackage(SID_TEACHER_SKILL_LEARNED, self, skill_id);
+            prose_package pp = prose.getPackage(SID_TEACHER_SKILL_LEARNED, self, skill_id);//here and below is broken, trianer does not receive message or credit
+            pp = prose.getPackage(SID_STUDENT_SKILL_LEARNED, self, skill_id);
             sendSystemMessageProse(self, pp);
             int exp = 0;
             if (isJedi(teacher) && isJedi(self) && skill_cost.equals("0") && selected_skill.startsWith("jedi_"))
@@ -279,7 +282,7 @@ public class player_teaching extends script.base_script
             sendSystemMessageProse(self, pp);
             return SCRIPT_CONTINUE;
         }
-        String[] qual_skills = skill.getQualifiedTeachableSkills(target, self);
+        String[] qual_skills = skill.getQualifiedTeachableSkillsPlayer(target, self);
         if (qual_skills == null)
         {
             LOG("LOG_CHANNEL", self + " -> You have no skills that " + target_name + " can currently learn.");
@@ -319,8 +322,6 @@ public class player_teaching extends script.base_script
             valid_skills_id[i] = "@skl_n:" + ((String)valid_skills.get(i));
         }
         sui.listbox(self, self, "Select a skill to teach.", sui.OK_CANCEL, "Select Skill", valid_skills_id, "msgTeachSkillSelected");
-        grantExperiencePoints(self, "jedi", 100);
-        grantExperiencePoints(self, "apprenticeship", 100);
         return SCRIPT_CONTINUE;
     }
 }

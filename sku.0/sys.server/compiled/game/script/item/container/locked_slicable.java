@@ -1,10 +1,7 @@
 package script.item.container;
 
 import script.*;
-import script.library.factions;
-import script.library.slicing;
-import script.library.static_item;
-import script.library.utils;
+import script.library.*;
 
 public class locked_slicable extends script.base_script
 {
@@ -64,14 +61,16 @@ public class locked_slicable extends script.base_script
                 return SCRIPT_CONTINUE;
             }
 
-            if (factions.getFactionStanding(player, "underworld") < 100)
+            if (factions.getFactionStanding(player, "underworld") < -100)//this is sorta useless
             {
                 sendSystemMessage(player, new string_id("slicing/slicing", "not_enough_underworld"));
                 return SCRIPT_CONTINUE;
             }
 
-            // Add faction
+            // Add faction + xp
             factions.addFactionStanding(player, "underworld", 5);
+            xp.grant(player, "slicing", 100);
+//            sendSystemMessageProse(player, prose.getPackage(SID_BIO_EXP, "bio_engineer_dna_harvesting", xpAmount));
 
             // --- Retrieve stored credits and loot ---
             int storedCredits = getIntObjVar(self, "slicing.storedCredits");

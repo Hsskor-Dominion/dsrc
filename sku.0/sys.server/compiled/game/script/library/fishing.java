@@ -229,6 +229,7 @@ public class fishing extends script.base_script {
         } else {
             setObjVar(player, OBJVAR_ELUSIVE_FISH_PLAYER_CAUGHT_COUNT, getIntObjVar(player, OBJVAR_ELUSIVE_FISH_PLAYER_CAUGHT_COUNT)+1);
         }
+        camping.grantCampXp(player, 1000);// 1000 experience for catching an elusive fish
         // pack fish information and send to leaderboard, then log the catch
         String species = getFishSpecies(fish);
         String planet = getFishPlanet(fish);

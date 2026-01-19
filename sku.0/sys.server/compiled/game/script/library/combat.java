@@ -428,21 +428,19 @@ public class combat extends script.base_script
         String xpType = xp.getWeaponXpType(weaponData.weaponType);
         if (!isPlayer(attacker))
         {
-            if (pet_lib.isPet(attacker))
+            if (!isPlayer(attacker) && beast_lib.isBeast(attacker))
             {
                 obj_id master = getMaster(attacker);
-                if (ai_lib.isMonster(attacker) && isIdValid(master) && hasSkill(master, "outdoors_creaturehandler_novice"))
+
+                // Beast / pet damage → Creature Handler XP for master
+                if (isIdValid(master))
                 {
                     xp.updateCombatXpList(defender, master, xp.CREATUREHANDLER, damage);
-                    xp.updateCombatXpList(defender, attacker, xp.CREATUREHANDLER, damage);
-                    return;
                 }
-                else if (isIdValid(master) && !beast_lib.isBeast(attacker))
-                {
-                    xp.updateCombatXpList(defender, master, xp.PET_DAMAGE, damage);
-                    xp.updateCombatXpList(defender, attacker, xpType, damage);
-                    return;
-                }
+
+                // Beast still contributes its own damage normally
+                xp.updateCombatXpList(defender, attacker, xpType, damage);
+                return;
             }
         }
         xp.updateCombatXpList(defender, attacker, xpType, damage);
@@ -3049,6 +3047,24 @@ public class combat extends script.base_script
         {
             dodgeChance += beast_lib.getBeastDodgeChance(player);
         }
+        boolean isRangedDefender = isRangedWeapon(getCurrentWeapon(player));//trying to restore accuracy and defense system
+        if (isRangedDefender)
+        {
+            dodgeChance += (float)(getEnhancedSkillStatisticModifierUncapped(player, "ranged_defense") / 300.0f);
+        }
+        if (!isRangedDefender)
+        {
+            dodgeChance += (float)(getEnhancedSkillStatisticModifierUncapped(player, "melee_defense") / 300.0f);
+        }
+        // Weapon-type defense
+        String weaponType = getWeaponTypeString(player);
+        if (!weaponType.equals(""))
+        {
+            dodgeChance += getEnhancedSkillStatisticModifierUncapped(
+                    player,
+                    weaponType + "_defense"
+            ) / 300.0f;
+        }
         return dodgeChance;
     }
     public static float getAttackerDodgeReduction(obj_id attacker) throws InterruptedException
@@ -3057,7 +3073,36 @@ public class combat extends script.base_script
         dodgeReduction += (getEnhancedSkillStatisticModifierUncapped(attacker, "expertise_dodge_reduction"));
         dodgeReduction += (float)(getEnhancedSkillStatisticModifierUncapped(attacker, "exotic_dodge_reduction") / 7.0f);
         dodgeReduction += (float)(getEnhancedSkillStatisticModifierUncapped(attacker, "combat_dodge_reduction") / 7.0f);
+        boolean isRangedAttacker = isRangedWeapon(getCurrentWeapon(attacker));//trying to restore accuracy and defense system
+        if (isRangedAttacker)//trying to restore accuracy and defense system
+        {
+            dodgeReduction += (float)(getEnhancedSkillStatisticModifierUncapped(attacker, "ranged_accuracy") / 100.0f);
+        }
+        if (!isRangedAttacker)
+        {
+            dodgeReduction += (float)(getEnhancedSkillStatisticModifierUncapped(attacker, "melee_accuracy") / 100.0f);
+        }
+        // Weapon-type accuracy
+        String weaponType = getWeaponTypeString(attacker);
+        if (!weaponType.equals(""))
+        {
+            dodgeReduction += getEnhancedSkillStatisticModifierUncapped(
+                    attacker,
+                    weaponType + "_accuracy"
+            ) / 100.0f;
+        }
         return dodgeReduction;
+    }
+    public static String getWeaponTypeString(obj_id creature) throws InterruptedException
+    {
+        obj_id weapon = getCurrentWeapon(creature);
+        if (!isIdValid(weapon))
+        {
+            return "";
+        }
+
+        int weaponType = getWeaponType(weapon);
+        return getWeaponStringType(weaponType);
     }
     public static float getParryChance(attacker_data attackerData, defender_data defenderData, combat_data actionData) throws InterruptedException
     {

@@ -3,6 +3,8 @@ package script.ai;
 import script.*;
 import script.library.*;
 
+import static script.library.resource.STF_SURVEY;
+
 public class ai extends script.base_script
 {
     public ai()
@@ -30,6 +32,7 @@ public class ai extends script.base_script
     public static final string_id SID_GAVE_RECRUIT_ITEM = new string_id("collection", "gave_recruit_item");
     public static final string_id SID_NPC_MEATLUMP_SPEAK = new string_id("collection", "npc_meatlump_speak");
     public static final string_id SID_NO_RECRUIT_REB_IMP = new string_id("collection", "no_recruit_reb_imp");
+    public static final string_id SID_FARMER_EXP = new string_id(STF_SURVEY, "farmer_experience");
     public void initializeScript() throws InterruptedException
     {
         obj_id self = getSelf();
@@ -2038,6 +2041,9 @@ public class ai extends script.base_script
                 setLocation(obj_id, curloc);
                 putIn(obj_id, pInv, player);
             }
+            int xpAmount = amt; //  amt
+            xp.grant(player, "creaturehandler", xpAmount);
+            sendSystemMessageProse(player, prose.getPackage(SID_FARMER_EXP, "creaturehandler", xpAmount));
             sendSystemMessage(player, SID_MILK_SUCCESS);
             utils.setScriptVar(self, "milk.lasttime", getGameTime());
             utils.removeScriptVar(self, "milk.attempts");

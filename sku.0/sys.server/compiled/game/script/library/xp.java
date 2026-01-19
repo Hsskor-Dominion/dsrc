@@ -5,6 +5,8 @@ import script.*;
 import java.util.Iterator;
 import java.util.Vector;
 
+import static script.library.resource.STF_SURVEY;
+
 public class xp extends script.base_script
 {
     public xp()
@@ -26,6 +28,7 @@ public class xp extends script.base_script
     public static final String GRANT_XP_RETURN_DATA = "data";
     public static final float FACTIONAL_WINNING_XP_BONUS = 1.15f;
     public static final String SCOUT = "scout";
+    public static final String CAMP = "camp";
     public static final String TRAPPING = "trapping";
     public static final String BOUNTYHUNTER = "bountyhunter";
     public static final String SMUGGLER = "smuggler";
@@ -81,6 +84,7 @@ public class xp extends script.base_script
     public static final String DANCE = "dance";
     public static final String JUGGLING = "juggling";
     public static final String ENTERTAINER = "entertainer";
+    public static final String ENTERTAINER_HEAL = "entertainer_healing";
     public static final String QUEST_SOCIAL = "quest_social";
     public static final String QUEST_COMBAT = "quest_combat";
     public static final String QUEST_CRAFTING = "quest_crafting";
@@ -138,6 +142,7 @@ public class xp extends script.base_script
     public static final string_id SID_FLYTEXT_XP_GROUP = new string_id("base_player", "prose_flytext_xp_group");
     public static final int TRIAL_LEVEL_CAP = 25;
     public static final string_id SID_FREE_TRIAL_LEVEL_CAP = new string_id("base_player", "free_trial_level_cap");
+    public static final string_id SID_GAIN_XP = new string_id(STF_XP_N, "experience_type");
     public static int grant(obj_id target, String xp_type, int amt) throws InterruptedException
     {
         return grant(target, xp_type, amt, true, null, null, null);
@@ -401,7 +406,7 @@ public class xp extends script.base_script
     }
     public static void grantSquadLeaderXp(obj_id player, int amt) throws InterruptedException
     {
-        if (!isIdValid(player) || !player.isLoaded() || amt < 1 || !hasSkill(player, "class_officer_phase1_novice"))
+        if (!isIdValid(player) || !player.isLoaded() || amt < 1 )
         {
             return;
         }
@@ -537,7 +542,7 @@ public class xp extends script.base_script
             case WEAPON_TYPE_HEAVY:
             case WEAPON_TYPE_GROUND_TARGETTING:
             case WEAPON_TYPE_DIRECTIONAL:
-                xp_type = COMBAT_RANGEDSPECIALIZE_RIFLE;
+                xp_type = COMBAT_RANGEDSPECIALIZE_HEAVY;
                 break;
             case WEAPON_TYPE_1HAND_MELEE:
                 xp_type = COMBAT_MELEESPECIALIZE_ONEHAND;
@@ -555,16 +560,16 @@ public class xp extends script.base_script
                 xp_type = COMBAT_GRENADE;
                 break;
             case WEAPON_TYPE_WT_1HAND_LIGHTSABER:
-                xp_type = COMBAT_MELEESPECIALIZE_ONEHAND;
+                xp_type = COMBAT_JEDI_ONEHANDLIGHTSABER;
                 break;
             case WEAPON_TYPE_WT_2HAND_LIGHTSABER:
-                xp_type = COMBAT_MELEESPECIALIZE_TWOHAND;
+                xp_type = COMBAT_JEDI_TWOHANDLIGHTSABER;
                 break;
             case WEAPON_TYPE_WT_POLEARM_LIGHTSABER:
-                xp_type = COMBAT_MELEESPECIALIZE_POLEARM;
+                xp_type = COMBAT_JEDI_POLEARMLIGHTSABER;
                 break;
             case combat.WEAPON_TYPE_FORCE_POWER:
-                xp_type = COMBAT_MELEESPECIALIZE_UNARMED;
+                xp_type = COMBAT_JEDI_FORCE_POWER;
                 break;
             default:
                 xp_type = UNKNOWN;
@@ -1082,9 +1087,10 @@ public class xp extends script.base_script
                         {
                             continue;
                         }
-                        else 
+                        else
                         {
                             beast_lib.grantBeastExperience(killer);
+                            //also grant the master creaturehandler exp, here?
                             params = new dictionary();
                             params.put("targetId", target);
                             beastBCD = beast_lib.getBeastBCD(killer);
@@ -1100,7 +1106,7 @@ public class xp extends script.base_script
                         ret = utils.addElement(ret, killerVar);
                         if (!utils.isObjIdInArray(allKillers, master) && utils.isObjIdInArray(allKillers, killer))
                         {
-                            grantCombatStyleXp(master, COMBAT_GENERAL, xpTotal);
+                            grantCombatStyleXp(master, COMBAT_GENERAL, xpTotal);//this worked! separates xp by weapon type
                             displayXpFlyText(master, master, xpTotal);
                             displayXpMsg(master, null, xpTotal);
                             double percentDamage = (dam / damageTally) + PERCENT_ADJUSTER;
@@ -1135,22 +1141,27 @@ public class xp extends script.base_script
     }
     public static void grantCombatXpPerAttackType(obj_id player, obj_id target, int totalXp) throws InterruptedException
     {
-        if (!isIdValid(player) || (!isPlayer(player)) || !isIdValid(target) || totalXp < 1)
+        if (!isIdValid(player) || !isPlayer(player) || !isIdValid(target) || totalXp < 1)
         {
             return;
         }
+
         String basePath = VAR_ATTACKER_LIST + "." + player;
         String xpListBasePath = basePath + ".xp";
         String xpListPath = xpListBasePath + ".types";
+
         if (!utils.hasScriptVar(target, xpListPath))
         {
             return;
         }
+
         String[] xpTypes = utils.getStringBatchScriptVar(target, xpListPath);
         if (xpTypes == null || xpTypes.length == 0)
         {
             return;
         }
+
+        // Send kill info to new player handler if needed
         if (hasScript(player, "theme_park.new_player.new_player") || hasObjVar(player, "handlePlayerCombatKill"))
         {
             dictionary webster = new dictionary();
@@ -1158,107 +1169,183 @@ public class xp extends script.base_script
             webster.put("target", target);
             messageTo(player, "handlePlayerCombatKill", webster, 1, false);
         }
-        String damPath = basePath + ".damage";
-        int tally = utils.getIntScriptVar(target, damPath);
+
+        int tally = utils.getIntScriptVar(target, basePath + ".damage");
         tally -= utils.getIntScriptVar(target, xpListBasePath + "." + PERMISSIONS_ONLY);
         if (tally < 1)
         {
             return;
         }
-        int raw = 0;
-        int bonusCombatXp = 0;
-        int jediXp = 0;
-        int generalXp = 0;
+
         int totalXpGranted = 0;
-        for (String xpType : xpTypes) {
+        int bonusCombatXp = 0;
+        int raw = 0;
+        int generalXp = 0;
+
+        for (String xpType : xpTypes)
+        {
             int val = utils.getIntScriptVar(target, xpListBasePath + "." + xpType);
-            float xpPercent = ((float) (val) / (tally));
-            int intNewTotal = totalXp;
-            if (xpType.equals(RAW_COMBAT)) {
-                intNewTotal = (int) (intNewTotal * xpPercent);
-                bonusCombatXp += intNewTotal;
-            } else if (xpType.equals(PARTIAL_COMBAT)) {
-                intNewTotal = (int) (intNewTotal * xpPercent);
-                intNewTotal = (int) (intNewTotal * COMBAT_GENERAL_EXCHANGE_RATE);
-                bonusCombatXp += intNewTotal;
-            } else if (xpType.equals(COMBAT_GENERAL)) {
-                int amt = (int) (intNewTotal * xpPercent);
-                if (amt < 1) {
-                    amt = 1;
-                }
+            float xpPercent = ((float) val / tally);
+            int amt = (int) (totalXp * xpPercent);
+            if (amt < 1)
+            {
+                amt = 1;
+            }
+
+            if (xpType.equals(RAW_COMBAT))
+            {
+                bonusCombatXp += amt;
+            }
+            else if (xpType.equals(PARTIAL_COMBAT))
+            {
+                amt = (int)(amt * COMBAT_GENERAL_EXCHANGE_RATE);
+                bonusCombatXp += amt;
+            }
+            else if (xpType.equals(COMBAT_GENERAL))
+            {
                 generalXp += amt;
-            } else if (isCombatXpType(xpType)) {
-                int amt = (int) (intNewTotal * xpPercent);
-                if (amt < 1) {
-                    amt = 1;
+            }
+            else if (xpType.equals(CREATUREHANDLER))
+            {
+                int granted = grantCombatStyleXp(player, CREATUREHANDLER, amt);
+                if (granted > 0)
+                {
+                    displayXpMsg(player, CREATUREHANDLER, granted);
+                    totalXpGranted += granted;
                 }
-                if (xpType.equals(COMBAT_JEDI_ONEHANDLIGHTSABER) || xpType.equals(COMBAT_JEDI_TWOHANDLIGHTSABER) || xpType.equals(COMBAT_JEDI_POLEARMLIGHTSABER) || xpType.equals(COMBAT_JEDI_FORCE_POWER) || xpType.equals(JEDI_GENERAL)) {
-                    if (isJedi(player)) {
-                        jediXp += amt;
+            }
+            else if (isCombatXpType(xpType))
+            {
+                raw += amt;
+
+                if (!xpType.equals(COMBAT_THROWN))
+                {
+                    int granted = grantCombatStyleXp(player, xpType, amt);
+                    if (granted > 0)
+                    {
+                        displayXpMsg(player, xpType, granted);
+                        totalXpGranted += granted;
                     }
-                } else {
-                    raw += amt;
-                    if (!xpType.equals(COMBAT_THROWN)) {
-                        totalXpGranted += grantCombatStyleXp(player, xpType, amt);
-                    }
                 }
-            } else if (!xpType.equals(UNKNOWN) && !xpType.equals(PERMISSIONS_ONLY) && !xpType.equals(PET_DAMAGE)) {
-                int amt = (int) (intNewTotal * xpPercent);
-                if (amt < 1) {
-                    amt = 1;
-                }
+            }
+            else if (!xpType.equals(UNKNOWN) && !xpType.equals(PERMISSIONS_ONLY) && !xpType.equals(PET_DAMAGE))//we need to add If it is PET_DAMAGE then add CREATUREHANDLER xp to player
+            {
                 totalXpGranted += grantCombatStyleXp(player, xpType, amt);
             }
         }
-        if (isJedi(player))
+
+        // ---------------------------
+        // NEW: Grant SquadLeader XP
+        // ---------------------------
+        obj_id leader = group.getLeader(player);
+        if (leader == player)
         {
-            jediXp *= JEDI_GENERAL_EXCHANGE_RATE;
-            totalXpGranted += grantCombatStyleXp(player, JEDI_GENERAL, jediXp);
-            LOG("jedi", "Granting " + jediXp + " to " + player + " type is " + JEDI_GENERAL);
+            grant(player, SQUADLEADER, totalXpGranted);
         }
-        else 
+
+        // Jedi now treated like normal: no Jedi XP
+        generalXp += (int)(raw * COMBAT_GENERAL_EXCHANGE_RATE);
+        if (generalXp < 0)
         {
-            generalXp += (int)(raw * COMBAT_GENERAL_EXCHANGE_RATE);
-            if (generalXp < 0)
-            {
-                generalXp = 0;
-            }
-            if (bonusCombatXp > 0)
-            {
-                generalXp += bonusCombatXp;
-            }
-            if (generalXp > 0)
-            {
-                totalXpGranted += grantCombatStyleXp(player, COMBAT_GENERAL, generalXp);
-            }
+            generalXp = 0;
         }
-        if (!isPlayer(target) && factions.getFactionFlag(player) != factions.getFactionFlag(target) && (factions.getFactionFlag(target) == factions.FACTION_FLAG_REBEL || factions.getFactionFlag(target) == factions.FACTION_FLAG_IMPERIAL))
+        if (bonusCombatXp > 0)
+        {
+            generalXp += bonusCombatXp;
+        }
+        if (generalXp > 0)
+        {
+            totalXpGranted += grantCombatStyleXp(player, COMBAT_GENERAL, generalXp);
+        }
+
+        // GCW credit
+        if (!isPlayer(target) &&
+                factions.getFactionFlag(player) != factions.getFactionFlag(target) &&
+                (factions.getFactionFlag(target) == factions.FACTION_FLAG_REBEL ||
+                        factions.getFactionFlag(target) == factions.FACTION_FLAG_IMPERIAL))
         {
             gcw.gcwInvasionCreditForKill(player);
         }
+
         displayXpFlyText(player, player, totalXpGranted);
         displayXpMsg(player, null, totalXpGranted);
     }
     public static int grantSocialStyleXp(obj_id player, String xpType, int amount) throws InterruptedException
     {
+        if (amount <= 0 || xpType == null)
+        {
+            return 0;
+        }
+
         amount = Math.round(amount * ENTERTAINER_XP_MOD);
+
+        // Template
         String templateXp = skill_template.getTemplateSkillXpType(player, false);
-        if (templateXp != null)
+
+        int totalGranted = 0;
+
+        // 1) Grant specific social XP
+        if (isSocialXpType(xpType))
         {
-            if (isSocialXpType(templateXp))
+            totalGranted += grant(player, xpType, amount, false);
+        }
+
+        // 2) Grant consolidated/template social XP
+        if (!xpType.equals(templateXp))
+        {
+            totalGranted += grant(player, templateXp, amount, false);
+        }
+
+        return totalGranted;
+    }
+    public static String getXpDisplayName(String xpType)
+    {
+        // Preferred: string table lookup
+        return "@exp_n:" + xpType;
+    }
+    public static int grantCraftingStyleXp(obj_id player, String xpType, int amount) throws InterruptedException
+    {
+        if (amount <= 0 || xpType == null)
+        {
+            return 0;
+        }
+
+        amount = Math.round(amount * TRADER_XP_MOD);
+
+        int totalGranted = 0;
+
+        // 1) Grant the legacy / diverse crafting XP
+        if (isCraftingXpType(xpType))
+        {
+            int granted = grant(player, xpType, amount, false);
+            totalGranted += granted;
+
+            if (granted > 0)
             {
-                amount = grant(player, templateXp, amount, false);
-            }
-            else 
-            {
-                amount = 0;
+                // Player-facing message
+                prose_package pp = prose.getPackage(
+                        SID_GAIN_XP,
+                        getXpDisplayName(xpType),
+                        granted
+                );
+                sendSystemMessageProse(player, pp);
             }
         }
-        else 
+
+        // 2) ALWAYS grant NGE consolidated crafting XP (silent)
+        totalGranted += grant(player, CRAFTING_GENERAL, amount, false);
+
+        // 3) Merchant XP (parallel economy stream, silent)
+        if (!xpType.equals(QUEST_CRAFTING))
         {
-            amount = 0;
+            int merchantXP = (int)(amount * CRAFTING_MERCHANT_EXCHANGE_RATE);
+            if (merchantXP > 0)
+            {
+                totalGranted += grant(player, MERCHANT, merchantXP, false);
+            }
         }
-        return amount;
+
+        return totalGranted;
     }
     public static int grantCraftingQuestXp(obj_id player, int amount) throws InterruptedException
     {
@@ -1269,49 +1356,12 @@ public class xp extends script.base_script
             {
                 amount = grant(player, templateXp, amount, false);
             }
-            else 
+            else
             {
                 amount = 0;
             }
         }
-        else 
-        {
-            amount = 0;
-        }
-        return amount;
-    }
-    public static int grantCraftingStyleXp(obj_id player, String xpType, int amount) throws InterruptedException
-    {
-        amount = Math.round(amount * TRADER_XP_MOD);
-        int merchantXP = (int)(amount * CRAFTING_MERCHANT_EXCHANGE_RATE);
-        float xpRatio = skill_template.NON_TEMPLATE_XP_RATIO;
-        if (xpType.equals(QUEST_CRAFTING))
-        {
-            merchantXP = 0;
-            xpRatio = skill_template.QUEST_XP_RATIO;
-        }
-        String templateXp = skill_template.getTemplateSkillXpType(player, false);
-        if (templateXp != null)
-        {
-            if (isCraftingXpType(templateXp))
-            {
-                if (!xpType.equals(templateXp))
-                {
-                    amount = (int)(amount * xpRatio);
-                }
-                if (!templateXp.equals(MERCHANT))
-                {
-                    merchantXP = (int)(merchantXP * xpRatio);
-                }
-                amount += merchantXP;
-                amount = grant(player, templateXp, amount, false);
-            }
-            else 
-            {
-                amount = 0;
-            }
-        }
-        else 
+        else
         {
             amount = 0;
         }
@@ -1319,35 +1369,40 @@ public class xp extends script.base_script
     }
     public static int grantCombatStyleXp(obj_id player, String xpType, int amount) throws InterruptedException
     {
+        if (amount <= 0 || xpType == null)
+        {
+            return 0;
+        }
+
+        // QUEST XP ratios still apply
         float xpRatio = skill_template.NON_TEMPLATE_XP_RATIO;
         if (xpType.equals(QUEST_COMBAT))
         {
             xpRatio = skill_template.QUEST_XP_RATIO;
         }
-        String templateXp = skill_template.getTemplateSkillXpType(player, false);
-        if (templateXp != null)
+
+        int granted = 0;
+
+        // 1) Try granting the specific XP type first
+        if (isCombatXpType(xpType))
         {
-            if (isCombatXpType(templateXp))
+            granted = grant(player, xpType, amount, false);
+            if (granted > 0)
             {
-                if (!xpType.equals(templateXp))
-                {
-                    amount = (int)(amount * xpRatio);
-                }
-                amount = grant(player, templateXp, amount, false);
-            }
-            else 
-            {
-                amount = 0;
+                return granted;
             }
         }
-        else 
-        {
-            amount = 0;
-        }
-        return amount;
+
+        // 2) Absolute fallback: combat_general
+        granted = grant(player, COMBAT_GENERAL, (int)(amount * xpRatio), false);
+        return granted;
     }
     public static void displayXpMsg(obj_id player, String xpType, int amt) throws InterruptedException
     {
+        if (xpType == null || xpType.equals(JEDI_GENERAL))
+        {
+            xpType = COMBAT_GENERAL; // fallback display
+        }
         if (xpType == null)
         {
             xpType = skill_template.getTemplateSkillXpType(player, true);
@@ -1377,6 +1432,10 @@ public class xp extends script.base_script
                 {
                     sendQuestSystemMessage(player, pp);
                 }
+                else
+                {
+                    sendSystemMessageProse(player, pp);
+                }
             }
             if (currentXp + amt >= xpCap)
             {
@@ -1404,6 +1463,10 @@ public class xp extends script.base_script
             }
         }
         if (amount == 0)
+        {
+            return;
+        }
+        if (amount == 1)
         {
             return;
         }
@@ -1719,17 +1782,33 @@ public class xp extends script.base_script
     {
         return getXpProsePackage(xpType, xpAmt, 1.0f, 1.0f);
     }
-    public static prose_package getXpProsePackage(String xpType, int xpAmt, float grpMod, float inspMod) throws InterruptedException
+    public static prose_package getXpProsePackage(
+            String xpType,
+            int xpAmt,
+            float grpMod,
+            float inspMod
+    ) throws InterruptedException
     {
+        // Suppress messaging for trivial XP changes
+        if (Math.abs(xpAmt) <= 1)
+        {
+            return null;
+        }
+
         prose_package pp = new prose_package();
+
         string_id sid_xp = new string_id(STF_XP_N, xpType);
         prose.setTO(pp, sid_xp);
+
         float grpBonus = (grpMod * 100) - 100;
         float inspBonus = (inspMod * 100) - 100;
+
         String grpBonusString = Integer.valueOf(Math.round(grpBonus)).toString();
         String inspBonusString = Integer.valueOf(Math.round(inspBonus)).toString();
+
         prose.setDI(pp, Math.abs(xpAmt));
-        if (xpAmt >= 0)
+
+        if (xpAmt > 0)
         {
             if (inspBonus > 0)
             {
@@ -1739,43 +1818,30 @@ public class xp extends script.base_script
                     prose.setTT(pp, grpBonusString);
                     prose.setTU(pp, inspBonusString);
                 }
-                else 
+                else
                 {
                     prose.setStringId(pp, PROSE_GRANT_BUFF_XP);
                     prose.setTT(pp, inspBonusString);
                 }
             }
-            else 
+            else
             {
                 if (grpBonus > 0)
                 {
                     prose.setStringId(pp, PROSE_GRANT_GROUP_XP);
                     prose.setTT(pp, grpBonusString);
                 }
-                else 
+                else
                 {
-                    if (xpAmt == 1)
-                    {
-                        prose.setStringId(pp, PROSE_GRANT_XP1);
-                    }
-                    else 
-                    {
-                        prose.setStringId(pp, PROSE_GRANT_XP);
-                    }
+                    prose.setStringId(pp, PROSE_GRANT_XP);
                 }
             }
         }
-        else 
+        else
         {
-            if (xpAmt == 1)
-            {
-                prose.setStringId(pp, PROSE_REVOKE_XP1);
-            }
-            else 
-            {
-                prose.setStringId(pp, PROSE_REVOKE_XP);
-            }
+            prose.setStringId(pp, PROSE_REVOKE_XP);
         }
+
         return pp;
     }
     public static int grantXpByTemplate(obj_id player, int amount) throws InterruptedException

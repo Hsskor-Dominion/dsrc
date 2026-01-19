@@ -225,6 +225,7 @@ public class npc_controller extends script.base_script
         setObjVar(self, "eventTeamCleaupOverride", true);
         setObjVar(self, "storytellerCleanUpTime", -1);
         attachScript(self, "systems.city.city_furniture");
+        attachScript(self, "systems.city.city_actor");
     }
     public int handleRemoveStorytellerPersistedEffect(obj_id self, dictionary params) throws InterruptedException
     {

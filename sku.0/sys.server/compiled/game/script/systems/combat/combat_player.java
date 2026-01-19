@@ -184,7 +184,7 @@ public class combat_player extends script.systems.combat.combat_base
     }
     public int OnDeath(obj_id self, obj_id killer, obj_id corpseId) throws InterruptedException
     {
-        if (hasSkill(self, "expertise_of_last_words_1"))
+        if (hasSkill(self, "expertise_of_last_words_1") || (hasSkill(self, "outdoors_squadleader_support_03")))// SWG Chimaera CU/NGE Hybrid
         {
             buff.applyBuff(self, "exclude_self_exclusive_proxy_of_last_words");
         }

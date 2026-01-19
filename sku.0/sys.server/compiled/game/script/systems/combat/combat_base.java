@@ -7,6 +7,9 @@ import script.library.*;
 import java.util.Arrays;
 import java.util.Vector;
 
+import static script.library.combat.getWeaponStringType;
+import static script.library.combat.getWeaponTypeString;
+
 public class combat_base extends script.base_script
 {
     public combat_base()
@@ -63,6 +66,43 @@ public class combat_base extends script.base_script
     public boolean combatStandardAction(String actionName, obj_id self, obj_id target, obj_id objWeapon, String params, combat_data actionData, boolean isTangibleAttacking) throws InterruptedException
     {
         return combatStandardAction(actionName, self, target, objWeapon, params, actionData, isTangibleAttacking, false, 0);
+    }
+    private static float getCombatSpeedCooldownReduction(obj_id attacker, weapon_data weaponData)
+            throws InterruptedException
+    {
+        float speed = 0.0f;
+
+        boolean isRanged = combat.isRangedWeapon(weaponData.id);
+        boolean isMelee  = combat.isMeleeWeapon(weaponData.id);
+        boolean isSaber  = combat.isLightsaberWeapon(weaponData.id);
+
+        // --- Category speed ---
+        if (isRanged)
+        {
+            speed += getEnhancedSkillStatisticModifierUncapped(attacker, "ranged_speed");
+        }
+        else if (isSaber)
+        {
+            speed += getEnhancedSkillStatisticModifierUncapped(attacker, "saber_speed");
+        }
+        else if (isMelee)
+        {
+            speed += getEnhancedSkillStatisticModifierUncapped(attacker, "melee_speed");
+        }
+
+        // --- Weapon-type speed (rifle_speed, carbine_speed, polearm_speed, etc) ---
+        String weaponType = getWeaponTypeString(weaponData.id);
+        if (weaponType != null && !weaponType.equals(""))
+        {
+            speed += getEnhancedSkillStatisticModifierUncapped(
+                    attacker,
+                    weaponType + "_speed"
+            );
+        }
+
+        // --- Conversion ---
+        // 100 speed = 1 second
+        return speed / 100.0f;
     }
     public boolean combatStandardAction(String actionName, obj_id self, obj_id target, obj_id objWeapon, String params, combat_data actionData, boolean isTangibleAttacking, boolean testPetBar, int overloadDamage) throws InterruptedException
     {
@@ -460,6 +500,29 @@ public class combat_base extends script.base_script
             String cooldownGroup = cd.cooldownGroup;
             int groupCrc = getStringCrc(cooldownGroup);
             sendCooldownGroupTimingOnly(player, groupCrc, cd.cooldownTime);
+        }
+        // -----------------------------
+// Apply speed-based cooldown reduction (players only)
+// -----------------------------
+        if (isPlayer(self))
+        {
+            combat_data cd = combat_engine.getCombatData(actionName);
+            if (cd != null && cd.cooldownTime > 0)
+            {
+                float baseCooldown = cd.cooldownTime;
+
+                float reduction = getCombatSpeedCooldownReduction(self, weaponData);
+
+                float finalCooldown = baseCooldown - reduction;
+
+                // Safety clamp
+                if (finalCooldown < 0.2f)
+                {
+                    finalCooldown = 0.2f;
+                }
+
+                setCommandTimerValue(self, TIMER_COOLDOWN, finalCooldown);
+            }
         }
         return true;
     }
@@ -1558,7 +1621,7 @@ public class combat_base extends script.base_script
             {
                 combat.addHateProcess(attackerData.id, defenderData[i].id, hitData[i], actionData);
             }
-            playbackNames[i] = combat.getActionAnimation(actionData, combat.getWeaponStringType(weaponData.weaponType));
+            playbackNames[i] = combat.getActionAnimation(actionData, getWeaponStringType(weaponData.weaponType));
             if (hitType == combat.NON_DAMAGE_ATTACK && hasScript(defenderData[i].id, "player.player_logout"))
             {
                 defenders[i] = null;

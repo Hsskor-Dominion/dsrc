@@ -16,7 +16,7 @@ public class active_dance extends script.base_script
         if (healingXP > 0)
         {
             grantExperiencePoints(self, "entertainer_healing", (healingXP * -1));
-            grantExperiencePoints(self, xp.ENTERTAINER, healingXP);
+            grantExperiencePoints(self, xp.ENTERTAINER_HEAL, healingXP);
         }
         groundquests.questStartDance(self);
         performance.checkAndIncrementEntertainerMissions(self, "dancer");
@@ -162,6 +162,7 @@ public class active_dance extends script.base_script
                 entXpAmt = (int)(xpAmt * 0.5f);
             }
             xp.grantSocialStyleXp(self, xp.DANCE, xpAmt);
+            xp.displayXpMsg(self, xp.DANCE, xpAmt);
             ++sequence;
             setObjVar(self, performance.VAR_PERFORM_SEQUENCE, sequence);
             params.put("sequence", sequence);

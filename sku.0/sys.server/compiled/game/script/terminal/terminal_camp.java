@@ -4,6 +4,7 @@ import script.*;
 import script.library.camping;
 import script.library.utils;
 
+
 public class terminal_camp extends script.base_script
 {
     public terminal_camp()
@@ -58,25 +59,26 @@ public class terminal_camp extends script.base_script
         {
             return;
         }
+
         obj_id camp = getObjIdObjVar(self, "camp");
         if (!isIdValid(camp))
         {
             return;
         }
-        if (hasObjVar(camp, "camp.owner"))
+
+        if (!hasObjVar(camp, "camp.owner"))
         {
-            obj_id owner = utils.getObjIdObjVar(camp, "camp.owner");
-            if (player == owner)
-            {
-                destroyObject(camp);
-            }
-            else 
-            {
-                sendSystemMessage(player, new string_id("camp", "owner_dismantle"));
-                return;
-            }
+            return;
         }
-        return;
+
+        obj_id owner = utils.getObjIdObjVar(camp, "camp.owner");
+        if (player != owner)
+        {
+            sendSystemMessage(player, new string_id("camp", "owner_dismantle"));
+            return;
+        }
+
+        camping.nukeCamp(camp);
     }
     public int handleTimeSensitiveData(obj_id self, dictionary params) throws InterruptedException
     {

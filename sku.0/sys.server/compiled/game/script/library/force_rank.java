@@ -136,10 +136,10 @@ public class force_rank extends script.base_script
         grantSkill(player, rank_skill);
         prose_package pp = prose.getPackage(new string_id(STF_FILE, "council_joined"), getCouncilName(council), 0);
         sendSystemMessageProse(player, pp);
-//        if (!hasScript(player, SCRIPT_FRS_PLAYER))
-//        {
-//            attachScript(player, SCRIPT_FRS_PLAYER);
-//        }
+        if (!hasScript(player, SCRIPT_FRS_PLAYER))
+        {
+            attachScript(player, SCRIPT_FRS_PLAYER);
+        }
         getEnclaveObjId(player, council, "enclaveIdResponse");
         force_rank.grantRankItems(player);
         return true;

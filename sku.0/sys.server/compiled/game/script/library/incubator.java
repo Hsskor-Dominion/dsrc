@@ -5,6 +5,8 @@ import script.obj_id;
 import script.prose_package;
 import script.string_id;
 
+import static script.library.resource.STF_SURVEY;
+
 public class incubator extends script.base_script
 {
     public incubator()
@@ -299,6 +301,7 @@ public class incubator extends script.base_script
     public static final string_id SID_DNA_ALREADY_BEEN_SAMPLED = new string_id("incubator", "dna_already_sampled");
     public static final string_id SID_DNA_CREATURE_NOT_ON_LIST = new string_id("incubator", "dna_creature_not_on_list");
     public static final string_id SID_DNA_SAMPLED = new string_id("incubator", "dna_sampled");
+    public static final string_id SID_BIO_EXP = new string_id(STF_SURVEY, "bioengineer_experience");
     public static final string_id SID_DNA_FAILED_SAMPLE = new string_id("incubator", "dna_failed_get");
     public static final string_id SID_DNA_FAILED_SAMPLE_FULL_INVENTORY = new string_id("incubator", "dna_failed_full_inventory");
     public static final string_id SID_DNA_NO_ALLOW_COLLECT = new string_id("incubator", "dna_cannot_vehicle");
@@ -754,6 +757,9 @@ public class incubator extends script.base_script
             int template = dataTableGetInt(DATATABLE_INCUBATOR_TEMPLATES, row, "hash_initial_template");
             setObjVar(dnaContainer, DNA_TEMPLATE_OBJVAR, template);
             sendSystemMessage(player, SID_DNA_SAMPLED);
+            int xpAmount = harvestChance; //  amt
+            xp.grant(player, "bio_engineer_dna_harvesting", xpAmount);
+//            sendSystemMessageProse(player, prose.getPackage(SID_BIO_EXP, "bio_engineer_dna_harvesting", xpAmount));//instead of exp message, it should report % of DNA quality
             return dnaContainer;
         }
         else 

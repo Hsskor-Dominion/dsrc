@@ -6,4 +6,4 @@
 sharedTemplate = "object/tangible/scout/trap/shared_trap_ap_tr_remote.iff"
 volume = 1
 scripts = +["systems.skills.stealth.trigger_remote"]
-objvars = +["trap.triggerType" = 2, "trap.trigger.classRequired" = "1,5,6", "trap.trigger.levelRequired" = 85]
+objvars = +["trap.triggerType" = 2, "trap.trigger.levelRequired" = 85]

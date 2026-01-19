@@ -70,7 +70,7 @@ public class mission_player extends script.systems.missions.base.mission_player_
         }
         if (hasObjVar(objMissionTerminal, "intBounty"))
         {
-            if (!hasSkill(self, "class_bountyhunter_phase1_novice"))
+            if (!hasSkill(self, "class_bountyhunter_phase1_novice") || (!hasSkill(self, "combat_bountyhunter_novice")))
             {
                 string_id strSpam = new string_id("mission/mission_generic", "not_bounty_hunter_terminal");
                 sendSystemMessage(self, strSpam);
@@ -817,7 +817,7 @@ public class mission_player extends script.systems.missions.base.mission_player_
     public int informantComm(obj_id self, dictionary params) throws InterruptedException
     {
         obj_id player = self;
-        if (!hasSkill(player, "class_bountyhunter_phase1_novice"))
+        if ((!hasSkill(player, "class_bountyhunter_phase1_novice")) || (!hasSkill(player, "combat_bountyhunter_novice")))
         {
             return SCRIPT_CONTINUE;
         }

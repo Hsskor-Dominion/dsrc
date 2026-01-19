@@ -30,7 +30,7 @@ public class cradossk extends script.base_script
     }
     public boolean cradossk_hunter_condition(obj_id npc, obj_id player)
     {
-        return hasSkill(player,"class_bountyhunter_phase1_novice");
+        return hasSkill(player,"class_bountyhunter_phase1_novice") || hasSkill(player,"combat_bountyhunter_novice");
     }
     public boolean cradossk_scorekeeper_condition(obj_id npc, obj_id player)
     {

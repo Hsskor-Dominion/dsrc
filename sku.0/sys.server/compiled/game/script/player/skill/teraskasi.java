@@ -4,6 +4,8 @@ import script.library.*;
 import script.obj_id;
 import script.prose_package;
 
+import static script.library.healing.healDamage;
+
 public class teraskasi extends script.systems.combat.combat_base
 {
     public teraskasi()
@@ -16,34 +18,46 @@ public class teraskasi extends script.systems.combat.combat_base
         {
             return SCRIPT_CONTINUE;
         }
+
+        // Must be incapacitated
         if (getPosture(self) != POSTURE_INCAPACITATED)
         {
             return SCRIPT_CONTINUE;
         }
+
         int stamp = getIntObjVar(self, meditation.VAR_FORCE_OF_WILL_ACTIVE);
         if (stamp < 0)
         {
             return SCRIPT_CONTINUE;
         }
+
         int now = getGameTime();
         int delta = now - (stamp + 3600);
         if (delta < 0)
         {
-            String time_string = player_structure.assembleTimeRemaining(player_structure.convertSecondsTime(-delta));
-            prose_package ppUnavailable = prose.getPackage(meditation.SID_FORCEOFWILL_UNAVAILABLE, time_string);
+            String time_string = player_structure.assembleTimeRemaining(
+                    player_structure.convertSecondsTime(-delta)
+            );
+            prose_package ppUnavailable =
+                    prose.getPackage(meditation.SID_FORCEOFWILL_UNAVAILABLE, time_string);
+            sendSystemMessageProse(self, ppUnavailable);
             return SCRIPT_CONTINUE;
         }
-        int roll = rand(0, 100);
+
+        int roll = rand(0, 100);//this should check against "meditate" skill
         if (roll < 5 || modval < roll)
         {
+            // Failure burns the charge
             setObjVar(self, meditation.VAR_FORCE_OF_WILL_ACTIVE, -1);
             return SCRIPT_CONTINUE;
         }
-        else 
-        {
-            meditation.forceOfWill(self, modval - roll);
-            setObjVar(self, meditation.VAR_FORCE_OF_WILL_ACTIVE, now);
-        }
+
+        // SUCCESS: heal 1 point of health damage
+        healDamage(self, HEALTH, 1);
+
+        // Put ability on cooldown
+        setObjVar(self, meditation.VAR_FORCE_OF_WILL_ACTIVE, now);
+
         return SCRIPT_CONTINUE;
     }
     public int cmdForceOfWillFail(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException

@@ -1207,7 +1207,7 @@ public class space_quest extends script.base_script
                 String pcd2 = "object/intangible/ship/yt2400_pcd.iff";
                 String ship2 = "object/ship/player/player_yt2400.iff";
 
-                // IMPORTANT: create the second PCD under datapad, not under the first PCD
+
                 obj_id opcd2 = createObject(pcd2, datapad, "");
                 if (!isIdValid(opcd2))
                 {
@@ -1242,6 +1242,73 @@ public class space_quest extends script.base_script
             else
             {
                 sendSystemMessageTestingOnly(player, "Critical failure: Could not create a ship for the player's pcd!");
+            }
+        }
+    }
+    public static void grantNewbieShipNPE(obj_id player, String faction) throws InterruptedException
+    {
+        obj_id datapad = utils.getDatapad(player);
+        if (!isIdValid(datapad))
+        {
+            return;
+        }
+
+        String pcd = null;
+        String ship = null;
+
+        switch (faction) {
+            case "imperial":
+                pcd = "object/intangible/ship/tiefighter_pcd.iff";
+                ship = "object/ship/player/player_prototype_tiefighter.iff";
+                break;
+            case "rebel":
+                pcd = "object/intangible/ship/z95_pcd.iff";
+                ship = "object/ship/player/player_prototype_z95.iff";
+                break;
+            case "neutral":
+                pcd = "object/intangible/ship/hutt_light_s01_pcd.iff";
+                ship = "object/ship/player/player_prototype_hutt_light.iff";
+                break;
+        }
+
+        obj_id opcd = createObject(pcd, datapad, "");
+        if (!isIdValid(opcd))
+        {
+            sendSystemMessageTestingOnly(player, "Critical failure: Could not create a pcd for the player!");
+        }
+        else
+        {
+            obj_id oship = createObject(ship, opcd, "");
+            if (isIdValid(oship)) {
+                setOwner(oship, player);
+
+                if (faction.equals("imperial")) {
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_reactor, 1500);
+                    setShipReactorEnergyGenerationRate(oship, 8000);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_engine, 1500);
+                    setShipComponentEnergyMaintenanceRequirement(oship, ship_chassis_slot_type.SCST_engine, 2000);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_shield_0, 1500);
+                    setShipComponentEnergyMaintenanceRequirement(oship, ship_chassis_slot_type.SCST_shield_0, 2000);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_armor_0, 1500);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_armor_1, 1500);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_capacitor, 1500);
+                    setShipComponentEnergyMaintenanceRequirement(oship, ship_chassis_slot_type.SCST_capacitor, 2000);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_weapon_0, 1500);
+                    setShipComponentEnergyMaintenanceRequirement(oship, ship_chassis_slot_type.SCST_weapon_0, 2000);
+                } else if (faction.equals("rebel") || faction.equals("neutral")) {
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_reactor, 1500);
+                    setShipReactorEnergyGenerationRate(oship, 8000);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_engine, 1500);
+                    setShipComponentEnergyMaintenanceRequirement(oship, ship_chassis_slot_type.SCST_engine, 2000);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_shield_0, 1500);
+                    setShipComponentEnergyMaintenanceRequirement(oship, ship_chassis_slot_type.SCST_shield_0, 2000);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_armor_0, 1500);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_armor_1, 1500);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_capacitor, 1500);
+                    setShipComponentEnergyMaintenanceRequirement(oship, ship_chassis_slot_type.SCST_capacitor, 2000);
+                    setShipComponentMass(oship, ship_chassis_slot_type.SCST_weapon_0, 1500);
+                    setShipComponentEnergyMaintenanceRequirement(oship, ship_chassis_slot_type.SCST_weapon_0, 2000);
+                }
             }
         }
     }

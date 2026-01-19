@@ -6,4 +6,4 @@
 sharedTemplate = "object/tangible/scout/trap/shared_trap_ap_caltrop.iff"
 volume = 1
 scripts = +["systems.skills.stealth.trap"]
-objvars = +["trap.trapType" = 1, "concealable" = 1, "trap.classRequired" = "1,5,6", "trap.levelRequired" = 85]
+objvars = +["trap.trapType" = 1, "concealable" = 1, "trap.levelRequired" = 85]
