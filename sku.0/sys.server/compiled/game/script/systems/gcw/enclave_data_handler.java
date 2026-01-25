@@ -64,7 +64,7 @@ public class enclave_data_handler extends script.base_script
         }
         if (element_name_list == null || element_name_list.length < 1)
         {
-            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "no_cluster_data_returned"));
+            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "no_cluster_data_returned"));//I get this when I become a jedi?
             releaseClusterWideDataLock(manage_name, lock_key);
             return SCRIPT_OVERRIDE;
         }

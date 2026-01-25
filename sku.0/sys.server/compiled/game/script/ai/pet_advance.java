@@ -9,6 +9,50 @@ import static script.systems.npc_lair.lair_interactivity.BEAST_OPTIONS_FOR_LAIRS
 public class pet_advance extends base_script {
     private static final int MENU_ATTEMPT_TAME = menu_info_types.ITEM_USE + 50;
     private static final int MENU_ATTEMPT_FEED = menu_info_types.ITEM_USE + 51;
+    private static final int BABY_LIFETIME_SECONDS = 600; // 10 minutes
+    private static final String MSG_SELF_DESTRUCT = "pet_baby_self_destruct";
+
+    public int OnAttach(obj_id self) throws InterruptedException
+    {
+        if (!isIdValid(self))
+            return SCRIPT_CONTINUE;
+
+        // Only apply to baby lair creatures
+        if (!utils.hasScriptVar(self, "npc_lair.isBaby"))
+            return SCRIPT_CONTINUE;
+
+        // Prevent double-scheduling
+        if (!hasObjVar(self, "pet.selfDestructScheduled"))
+        {
+            setObjVar(self, "pet.selfDestructScheduled", true);
+            messageTo(self, MSG_SELF_DESTRUCT, null, BABY_LIFETIME_SECONDS, false);
+        }
+
+        return SCRIPT_CONTINUE;
+    }
+
+    public int pet_baby_self_destruct(obj_id self, dictionary params) throws InterruptedException
+    {
+        if (!isIdValid(self))
+            return SCRIPT_CONTINUE;
+
+        // If it somehow stopped being a baby, abort
+        if (!utils.hasScriptVar(self, "npc_lair.isBaby"))
+            return SCRIPT_CONTINUE;
+
+        // Optional: if engaged in combat, delay a bit
+        if (ai_lib.isInCombat(self))
+        {
+            messageTo(self, MSG_SELF_DESTRUCT, null, 60, false); // retry in 1 min
+            return SCRIPT_CONTINUE;
+        }
+
+        // Poof quietly
+        playClientEffectObj(self, "appearance/despawn_effect.prt", self, "");
+        destroyObject(self);
+
+        return SCRIPT_CONTINUE;
+    }
 
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException {
         if (!isIdValid(self) || !isIdValid(player))
@@ -84,6 +128,7 @@ public class pet_advance extends base_script {
 
         // Notify player
         sendSystemMessage(player, new string_id("pet/pet_menu", "fed_pet_success"));
+        messageTo(baby, MSG_SELF_DESTRUCT, null, BABY_LIFETIME_SECONDS, true);
     }
 
     // -------------------------------------------------------

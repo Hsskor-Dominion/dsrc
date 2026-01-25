@@ -27,7 +27,8 @@ public class skillteacher extends script.base_script
     public static final string_id[] OPT_DEFAULT = 
     {
         new string_id(CONVOFILE, "opt1_1"),
-        new string_id(CONVOFILE, "opt1_2")
+        new string_id(CONVOFILE, "opt1_2"),
+            new string_id(CONVOFILE, "opt1_3")
     };
     public static final string_id[] OPT_YES_BACK = 
     {
@@ -91,40 +92,72 @@ public class skillteacher extends script.base_script
             String tbl_trainer_skills = "datatables/npc_customization/skill_table.iff";
             String teacherType = getStringObjVar(self, "trainer");
             String[] skillList = dataTableGetStringColumnNoDefaults(tbl_trainer_skills, teacherType);
-            if (teacherType != null && (!teacherType.equals("") && teacherType.equals("trainer_creaturehandler")))
+
+            String planetName = getLocation(self).area;
+            if (planetName == null) return -1;
+            planetName = planetName.toLowerCase();
+
+            // list of planets for reference
+            int planetId = -1;
+            switch (planetName) {
+                case "corellia": planetId = 1; break;
+                case "naboo": planetId = 2; break;
+                case "tatooine": planetId = 3; break;
+                case "rori": planetId = 4; break;
+                case "lok": planetId = 5; break;
+                case "endor": planetId = 6; break;
+                case "talus": planetId = 7; break;
+                case "mustafar": planetId = 8; break;
+                case "dantooine": planetId = 9; break;
+                case "yavin4": planetId = 10; break;
+                case "dathomir": planetId = 11; break;
+                case "kashyyyk_main": planetId = 12; break;
+            }
+
+            // handle special trainer type
+            if (teacherType != null && teacherType.equals("trainer_creaturehandler"))
             {
                 if (!hasScript(self, "systems.pet_tradein.pet_tradein"))
                 {
                     attachScript(self, "systems.pet_tradein.pet_tradein");
                 }
             }
+
+            // if no skills found, detach
             if (skillList == null || skillList.length == 0)
             {
                 detachScript(self, "npc.skillteacher.skillteacher");
                 return SCRIPT_OVERRIDE;
             }
-            else 
+
+            // set conditions and name
+            if (teacherType != null)
             {
-                if (teacherType != null)
+                setCondition(self, CONDITION_CONVERSABLE); // default condition
+
+                if (teacherType.equals("trainer_shipwright"))
                 {
-                    if (teacherType.equals("trainer_shipwright"))
-                    {
-                        setCondition(self, CONDITION_SPACE_INTERESTING);
-                        setCondition(self, CONDITION_CONVERSABLE);
-                    }
-                    else 
-                    {
-                        setCondition(self, CONDITION_CONVERSABLE);
-                    }
+                    setCondition(self, CONDITION_SPACE_INTERESTING);
                 }
-                utils.setBatchScriptVar(self, skill.SCRIPTVAR_SKILLS, skillList);
+
+                // give "Old Man" or other name if trainer_fs and NOT on Dathomir (planetId 11)
+                if (teacherType.equals("trainer_fs") && planetId != 11)
+                {
+                    setName(self, "Desann");
+                }
             }
+
+            // save skills
+            utils.setBatchScriptVar(self, skill.SCRIPTVAR_SKILLS, skillList);
+
+            // optionally set Jedi skills
             skillList = dataTableGetStringColumnNoDefaults(tbl_trainer_skills, "trainer_jedi");
             if (skillList != null && skillList.length > 0)
             {
                 utils.setBatchScriptVar(self, skill.SCRIPTVAR_JEDI_SKILLS, skillList);
             }
         }
+
         createTriggerVolume(FACETO_VOLUME_NAME, 8.0f, true);
         return SCRIPT_CONTINUE;
     }
@@ -405,12 +438,42 @@ public class skillteacher extends script.base_script
             switch (response) {
                 case "opt1_1":
                     msg = new string_id(convo, "msg2_1");
-                    skills = skill.getQualifiedTeachableSkills(speaker, self);//this is borked, only shows novice
+                    skills = skill.getQualifiedTeachableSkills(speaker, self);
                     utils.setScriptVar(speaker, self.toString(), STATUS_LEARN);
                     break;
                 case "opt1_2":
                     msg = new string_id(convoName, "msg2_2");
                     skills = skill.getTeachableSkills(speaker, self);//this works great! it pulls up all the skills the trainer has, and then I ask about each ones requirements. We need to learn from this to get getQualifiedTeachableSkills fixed
+                    utils.setScriptVar(speaker, self.toString(), STATUS_INFO);
+                    break;
+                case "opt1_3":
+                {
+                    msg = new string_id(convoName, "msg3_4");
+
+                    String[] trainerSkills = skill.getTeachableSkills(speaker, self);
+                    String[] playerSkills = getSkillListingForPlayer(speaker);
+
+                    if (trainerSkills != null && playerSkills != null)
+                    {
+                        Vector owned = new Vector();
+
+                        for (int i = 0; i < trainerSkills.length; i++)
+                        {
+                            String s = trainerSkills[i];
+                            if (utils.getElementPositionInArray(playerSkills, s) > -1)
+                            {
+                                owned.addElement(s);
+                            }
+                        }
+
+                        // manual Vector → String[] conversion (SWG-safe)
+                        skills = new String[owned.size()];
+                        for (int i = 0; i < owned.size(); i++)
+                        {
+                            skills[i] = (String)owned.elementAt(i);
+                        }
+                    }
+
                     utils.setScriptVar(speaker, self.toString(), STATUS_INFO);
                     // --- NEW: Show skill points used ---
                     int pointsUsed = getSkillPointsForPlayer(speaker); // total of POINTS_REQUIRED
@@ -418,6 +481,7 @@ public class skillteacher extends script.base_script
                     prose_package ppPoints = prose.getPackage(new string_id(convo, "skill_points_used"), pointsUsed, maxPoints);
                     sendSystemMessageProse(speaker, ppPoints);
                     break;
+                }
                 case "yes":
                     String ovPath = "confirmTeach." + speaker;
                     if (hasObjVar(self, ovPath)) {
@@ -448,7 +512,7 @@ public class skillteacher extends script.base_script
             }
             if ((checkArray) && ((skills == null) || (skills.length == 0)))
             {
-                msg = new string_id(convo, "error_empty_category");//this is the error I'm getting, they won't teach beyond novice
+                msg = new string_id(convo, "error_empty_category");//this is the error I'm getting when I ask a trainer to tell me my skills
             }
             else if (!checkArray)
             {
@@ -515,29 +579,29 @@ public class skillteacher extends script.base_script
         }
         boolean learned = true;
         prose_package pp;
-//        if (skill.purchaseSkill(player, skillName))
-//        {
+        if (skill.purchaseSkill(player, skillName))
+        {
             pp = prose.getPackage(PROSE_SKILL_LEARNED, new string_id(SKILL_N, skillName));
-//            if (fs_quests.isVillageEligible(player))//looks like legacy nonsese code?
-//            {
-//                if (!hasObjVar(player, fs_quests.VAR_VILLAGE_COMPLETE))
-//                {
-//                    if (skillName.contains("force_sensitive_"))
-//                    {
-//                        if (fs_quests.getBranchesLearned(player) >= 6)
-//                        {
-//                            setObjVar(player, fs_quests.VAR_VILLAGE_COMPLETE, 1);
-//                            CustomerServiceLog("fs_quests", "%TU has completed the village by attaining six FS skill branches.", player, null);
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        else
-//        {
-//            pp = prose.getPackage(PROSE_TRAIN_FAILED, new string_id(SKILL_N, skillName));
-//            learned = false;
-//        }
+            if (fs_quests.isVillageEligible(player))//looks like legacy nonsese code?
+            {
+                if (!hasObjVar(player, fs_quests.VAR_VILLAGE_COMPLETE))
+                {
+                    if (skillName.contains("force_sensitive_"))
+                    {
+                        if (fs_quests.getBranchesLearned(player) >= 6)
+                        {
+                            setObjVar(player, fs_quests.VAR_VILLAGE_COMPLETE, 1);
+                            CustomerServiceLog("fs_quests", "%TU has completed the village by attaining six FS skill branches.", player, null);
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            pp = prose.getPackage(PROSE_TRAIN_FAILED, new string_id(SKILL_N, skillName));
+            learned = false;
+        }
         sendSystemMessageProse(player, pp);
         return learned;
     }

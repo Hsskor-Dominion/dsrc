@@ -524,7 +524,7 @@ public class force_rank extends script.base_script
         checkExperienceDebt(enclave);
         checkVotingResults(enclave);
         int council = force_rank.getCouncilAffiliation(enclave);
-        if (council == -1)
+        if (council == -1)//I bet we're hitting this, and it's just ending?
         {
             LOG("force_rank", "enclave_controller.performEnclaveMaintenance -- " + enclave + " does not have a valid council value.");
             return false;
@@ -961,7 +961,7 @@ public class force_rank extends script.base_script
         {
             return true;
         }
-        else 
+        else
         {
             return false;
         }

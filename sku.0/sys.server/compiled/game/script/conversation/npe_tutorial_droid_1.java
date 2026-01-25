@@ -202,7 +202,7 @@ public class npe_tutorial_droid_1 extends script.base_script
         if (response.equals("naboo_imp"))
         {
             final string_id message = new string_id(c_stringFile, "travel");
-            setObjVar(player, "stardust_kaadara", 1);
+            setObjVar(player, "stardust_naboo_imperial", 1);
             npe_tutorial_droid_1_action_warp(player, npc);
             utils.removeScriptVar(player, "conversation.npe_tutorial_droid_1_conversation.branchId");
             npcEndConversationWithMessage(player, message);

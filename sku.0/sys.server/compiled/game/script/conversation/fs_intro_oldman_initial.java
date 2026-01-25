@@ -1,9 +1,6 @@
 package script.conversation;
 
-import script.library.ai_lib;
-import script.library.chat;
-import script.library.fs_quests;
-import script.library.quests;
+import script.library.*;
 import script.*;
 
 public class fs_intro_oldman_initial extends script.base_script
@@ -12,77 +9,30 @@ public class fs_intro_oldman_initial extends script.base_script
     {
     }
     public static String c_stringFile = "conversation/fs_intro_oldman_initial";
+    public static final String SKILL_FORCE_SENSITIVE = "force_sensitive";
+    public static final String SKILL_JEDI_INITIATE   = "force_rank";
     public boolean fs_intro_oldman_initial_condition__defaultCondition(obj_id player, obj_id npc) throws InterruptedException
     {
         return true;
     }
     public boolean fs_intro_oldman_initial_condition_Intro(obj_id player, obj_id npc) throws InterruptedException
     {
-        obj_id owner = null;
-        if (hasObjVar(npc, "old_man_initial.holder"))
+        // Only talk if player has not begun Jedi path
+        if (hasSkill(player, SKILL_FORCE_SENSITIVE))
         {
-            owner = getObjIdObjVar(npc, "old_man_initial.holder");
+            return false;
         }
-        else 
-        {
-            owner = getObjIdObjVar(npc, "old_man_final.holder");
-        }
-        if (owner == player)
-        {
-            int questStage = getIntObjVar(player, "fs_kickoff_stage");
-            if (questStage == 2)
-            {
-                return true;
-            }
-        }
-        return false;
+
+        return true;
     }
     public boolean fs_intro_oldman_initial_condition_Exit(obj_id player, obj_id npc) throws InterruptedException
     {
-        obj_id owner = null;
-        if (hasObjVar(npc, "old_man_initial.holder"))
-        {
-            owner = getObjIdObjVar(npc, "old_man_initial.holder");
-        }
-        else 
-        {
-            owner = getObjIdObjVar(npc, "old_man_final.holder");
-        }
-        if (owner == player)
-        {
-            int questStage = getIntObjVar(player, "fs_kickoff_stage");
-            if (questStage == 9)
-            {
-                return true;
-            }
-        }
-        return false;
+        return hasSkill(player, SKILL_JEDI_INITIATE);
     }
     public boolean fs_intro_oldman_initial_condition_None(obj_id player, obj_id npc) throws InterruptedException
     {
-        int stage = 0;
-        if (hasObjVar(player, "fs_kickoff_stage"))
-        {
-            stage = getIntObjVar(player, "fs_kickoff_stage");
-        }
-        obj_id owner = null;
-        if (hasObjVar(npc, "old_man_initial.holder"))
-        {
-            owner = getObjIdObjVar(npc, "old_man_initial.holder");
-        }
-        else 
-        {
-            owner = getObjIdObjVar(npc, "old_man_final.holder");
-        }
-        if (owner != player)
-        {
-            return true;
-        }
-        if ((stage != 9) && (stage != 2))
-        {
-            return true;
-        }
-        return false;
+        // Fallback chatter if neither intro nor exit applies
+        return true;
     }
     public void fs_intro_oldman_initial_action_action0001(obj_id player, obj_id npc) throws InterruptedException
     {
@@ -106,6 +56,7 @@ public class fs_intro_oldman_initial extends script.base_script
         fs_quests.setStage(player, 3);
         int stage = getIntObjVar(player, "fs_kickoff_stage");
         fs_quests.setDelay(player, stage);
+        groundquests.grantQuest(player, "prof_force_sensitive_21_1");
         return;
     }
     public void fs_intro_oldman_initial_action_action0004(obj_id player, obj_id npc) throws InterruptedException
@@ -120,6 +71,7 @@ public class fs_intro_oldman_initial extends script.base_script
         quests.activate("fs_theater_final", player, null);
         fs_quests.setStage(player, 10);
         fs_quests.oldManDepart(player, npc, 0);
+        groundquests.grantQuest(player, "stardust_holocron_aurillia2");//need to replace this with Mellichae's prison break
         return;
     }
     public int OnInitialize(obj_id self) throws InterruptedException

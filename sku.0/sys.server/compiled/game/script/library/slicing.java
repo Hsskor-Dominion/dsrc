@@ -7,6 +7,8 @@ import script.string_id;
 
 import java.util.Vector;
 
+import static script.library.factions.isSmuggler;
+
 public class slicing extends script.base_script
 {
     public slicing()
@@ -95,7 +97,7 @@ public class slicing extends script.base_script
         int skillMod = getSkillStatisticModifier(player, "slice_" + query);
         if (skillMod == 0)
         {
-            if (hasSkill(player, "class_smuggler_phase1_novice"))
+            if (isSmuggler(player))
             {
                 successSlicing(player, item, 0);
                 return;

@@ -8,6 +8,10 @@ import script.string_id;
 
 import java.util.Vector;
 
+import static script.library.force_rank.FRS_XP;
+import static script.library.jedi_trials.SID_CLOSE_BUTTON;
+import static script.library.jedi_trials.oneButtonMsgBox;
+
 public class player_force_rank extends script.base_script
 {
     public player_force_rank()
@@ -23,6 +27,7 @@ public class player_force_rank extends script.base_script
     public static final String SCRIPT_VAR_CHAL_TERMINAL = "force_rank.challenge_vote_terminal";
     public static final String JEDI_GUARDIAN_TITLE_SKILL = "force_title_jedi_rank_04";
     public static final String JEDI_MASTER_TITLE_SKILL = "force_title_jedi_master";
+    public static final string_id COUNCILCHECK_TITLE = new string_id("jedi_trials", "counsil_status");
     public int OnIncapacitated(obj_id self, obj_id killer) throws InterruptedException
     {
         if (utils.hasScriptVar(self, arena.VAR_I_AM_DUELING))
@@ -408,6 +413,7 @@ public class player_force_rank extends script.base_script
                 utils.setScriptVar(self, arena.SCRIPT_VAR_SUI_CH_PID, pid);
                 utils.setScriptVar(self, arena.SCRIPT_VAR_CH_TERMINAL, terminal);
                 utils.setScriptVar(self, arena.SCRIPT_VAR_CH_SELECT_ACCEPT, challengerIds);
+                //grant quest, "stardust_force_rank_arena"
             }
             else 
             {
@@ -506,23 +512,23 @@ public class player_force_rank extends script.base_script
             return SCRIPT_CONTINUE;
         }
         int rank = force_rank.getForceRank(enclave, getFirstName(self));
-        if (rank > 0 && rank < 11)
+        if (rank < 11)
         {
             if (arena.isArenaOpenForChallenges(terminal))
             {
                 int avail_slots = force_rank.getAvailableRankSlots(enclave, rank + 1);
-                if (avail_slots >= 3)
-                {
-                    if (hasObjVar(self, "force_rank.qa.overrideArenaOpenSlots"))
-                    {
-                        sendSystemMessageTestingOnly(self, "QA open slot Vote-Force override.");
-                    }
-                    else 
-                    {
-                        sendSystemMessage(self, new string_id("pvp_rating", "ch_terminal_no_need_challenge"));
-                        return SCRIPT_CONTINUE;
-                    }
-                }
+//                if (avail_slots >= 3)
+//                {
+//                    if (hasObjVar(self, "force_rank.qa.overrideArenaOpenSlots"))
+//                    {
+//                        sendSystemMessageTestingOnly(self, "QA open slot Vote-Force override.");
+//                    }
+//                    else
+//                    {
+//                        sendSystemMessage(self, new string_id("pvp_rating", "ch_terminal_no_need_challenge"));
+//                        return SCRIPT_CONTINUE;
+//                    }
+//                }
                 if (arena.canPlayerIssueChallenge(self, terminal))
                 {
                     if (!arena.issueChallengeAgainstRank(terminal, self, rank + 1))
@@ -739,10 +745,10 @@ public class player_force_rank extends script.base_script
         }
         int player_rank = force_rank.getForceRank(self);
         int vote_weight = force_rank.getVoteWeight(player_rank, row_selected + 1);
-        if (vote_weight < 1)
+        if (vote_weight < 0)//I lowered this to make voting work
         {
-            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "cant_vote_for_rank"));
-            return SCRIPT_CONTINUE;
+            vote_weight = 1; // allow voting with minimal weight
+//            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "cant_vote_for_rank"));
         }
         Vector players_voted = new Vector();
         players_voted.setSize(0);
@@ -835,10 +841,10 @@ public class player_force_rank extends script.base_script
         }
         int player_rank = force_rank.getForceRank(self);
         int vote_weight = force_rank.getVoteWeight(player_rank, rank);
-        if (vote_weight < 1)
+        if (vote_weight < 0)
         {
-            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "cant_vote_for_rank"));
-            return SCRIPT_CONTINUE;
+            vote_weight = 1; // allow voting with minimal weight
+//            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "cant_vote_for_rank"));
         }
         Vector players_voted = new Vector();
         players_voted.setSize(0);
@@ -858,9 +864,19 @@ public class player_force_rank extends script.base_script
         players_voted.toArray(vote_list);
         utils.setBatchObjVar(terminal, force_rank.BATCH_VAR_VOTERS + rank, vote_list);
         int[] votes = force_rank.getRankPetitionerVotes(enclave, rank);
+        if (votes == null || votes.length <= row_selected)
+        {
+            votes = new int[petitioners.length];
+        }
+
         votes[row_selected] += vote_weight;
+
         String obj_var_name = force_rank.VAR_VOTING_BASE + rank + ".votes";
         setObjVar(enclave, obj_var_name, votes);
+
+        LOG("force_rank", "Vote recorded: " + getFirstName(self) +
+                " -> " + petitioners[row_selected] +
+                " (+" + vote_weight + ")");
         prose_package pp = prose.getPackage(new string_id(force_rank.STF_FILE, "vote_cast"), player_selected);
         sendSystemMessageProse(self, pp);
         return SCRIPT_CONTINUE;
@@ -908,7 +924,7 @@ public class player_force_rank extends script.base_script
         }
         if (status != 3)
         {
-            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "acceptance_not_open"));//this always happens? they are never open? Status and time issue?
+            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "acceptance_not_open"));
             return SCRIPT_CONTINUE;
         }
         if (force_rank.isVoteTimeExpired(enclave, row_selected + 1))
@@ -916,9 +932,9 @@ public class player_force_rank extends script.base_script
             sendSystemMessage(self, new string_id(force_rank.STF_FILE, "acceptance_time_expired"));
             return SCRIPT_CONTINUE;
         }
-        String obj_var_name = force_rank.VAR_VOTING_BASE + (row_selected + 1) + ".winner";
+        String obj_var_name = force_rank.VAR_VOTING_BASE + (row_selected + 1) + ".winner";//maybe we need to define winner differently?
         Vector winners = getResizeableStringArrayObjVar(enclave, obj_var_name);
-        int idx = winners.indexOf(getFirstName(self));
+        int idx = winners.indexOf(getFirstName(self));//nullpointer?
         if (winners == null || idx == -1)
         {
             sendSystemMessage(self, new string_id(force_rank.STF_FILE, "not_a_winner"));
@@ -1023,7 +1039,7 @@ public class player_force_rank extends script.base_script
         }
         if (status != 1)
         {
-            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "petition_not_open"));
+            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "petition_not_open"));//I keep getting this
             return SCRIPT_CONTINUE;
         }
         if (force_rank.isVoteTimeExpired(enclave, row_selected + 1))
@@ -1052,14 +1068,14 @@ public class player_force_rank extends script.base_script
             sendSystemMessage(self, new string_id(force_rank.STF_FILE, "petitioning_no_room"));
             return SCRIPT_CONTINUE;
         }
-        if (force_rank.isPlayerEligibleForPromotion(self, row_selected + 1))
+        if (row_selected + 1 == 1 || force_rank.isPlayerEligibleForPromotion(self, row_selected + 1))
         {
             petitioners.add(getFirstName(self));
             setObjVar(enclave, obj_var_name, petitioners);
             sendSystemMessage(self, new string_id(force_rank.STF_FILE, "petitioning_complete"));
             CustomerServiceLog("force_rank", "%TU petitioned for promotion to rank " + row_selected, self, null);
         }
-        else 
+        else
         {
             sendSystemMessage(self, new string_id(force_rank.STF_FILE, "petitioning_not_eligible"));
         }
@@ -1676,7 +1692,49 @@ public class player_force_rank extends script.base_script
     }
     public int cmdShowCouncilRank(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
-        //we need to add a pop-up box that shows you your current jedi experience and rank
+
+        // get council affiliation
+        int council = force_rank.getCouncilAffiliation(self);
+        if (council == -1)
+        {
+            sendSystemMessage(self, new string_id(force_rank.STF_FILE, "no_council_affiliation"));
+            return SCRIPT_CONTINUE;
+        }
+
+        String councilName;
+        switch (council)
+        {
+            case force_rank.LIGHT_COUNCIL:
+                councilName = "Light Council";
+                break;
+            case force_rank.DARK_COUNCIL:
+                councilName = "Dark Council";
+                break;
+            default:
+                councilName = "Unknown Council";
+                break;
+        }
+
+        // get Force rank
+        int rank = force_rank.getForceRank(self);
+        String rankName;
+        if (rank >= 1 && rank <= 11)
+        {
+            rankName = localize(new string_id(force_rank.STF_FILE, "rank" + rank));
+        }
+        else
+        {
+            rankName = "Unranked";
+        }
+        int xp = getExperiencePoints(self, FRS_XP);
+        // build the message text
+        String message = "Council: " + councilName + "\n"
+                + "Force Rank: " + rankName + " (" + rank + ")\n"
+                + "FRS Experience: " + xp;
+
+        // show SUI message box
+        oneButtonMsgBox(self, self, "noHandler", COUNCILCHECK_TITLE, message, SID_CLOSE_BUTTON);
+
         return SCRIPT_CONTINUE;
     }
 }

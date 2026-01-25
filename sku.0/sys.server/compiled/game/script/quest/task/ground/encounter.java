@@ -31,16 +31,22 @@ public class encounter extends script.quest.task.ground.base_task
     public int OnTaskActivated(obj_id self, int questCrc, int taskId) throws InterruptedException
     {
         groundquests.questOutputDebugInfo(self, questCrc, taskId, taskType, "OnTaskActivated", taskType + " task activated.");
+
         String baseObjVar = groundquests.setBaseObjVar(self, taskType, questGetQuestName(questCrc), taskId);
+
         String creatureType = groundquests.getTaskStringDataEntry(questCrc, taskId, dataTableColumnCreatureType);
         int minCount = groundquests.getTaskIntDataEntry(questCrc, taskId, dataTableColumnCount);
         int maxCount = minCount;
+
         float minRadius = groundquests.getTaskIntDataEntry(questCrc, taskId, dataTableColumnMinDistance);
         float maxRadius = groundquests.getTaskIntDataEntry(questCrc, taskId, dataTableColumnMaxDistance);
+
         String relativeOffsetXString = groundquests.getTaskStringDataEntry(questCrc, taskId, dataTableColumnRelativeOffsetX);
         String relativeOffsetZString = groundquests.getTaskStringDataEntry(questCrc, taskId, dataTableColumnRelativeOffsetZ);
-        float relativeOffsetX = 0;
-        float relativeOffsetZ = 0;
+
+        float relativeOffsetX = 0f;
+        float relativeOffsetZ = 0f;
+
         if (relativeOffsetXString != null)
         {
             relativeOffsetX = utils.stringToFloat(relativeOffsetXString);
@@ -49,53 +55,134 @@ public class encounter extends script.quest.task.ground.base_task
         {
             relativeOffsetZ = utils.stringToFloat(relativeOffsetZString);
         }
+
         Vector spawnList = new Vector();
-        spawnList.setSize(0);
         spawnList.clear();
-        int count = rand(minCount, maxCount);
-        for (int i = 0; i < count; ++i)
+
+        location playerLoc = getLocation(self);
+        boolean isIndoors = isIdValid(playerLoc.cell);
+
+        obj_id building = null;
+        String cellName = null;
+
+        if (isIndoors)
         {
-            location l = null;
-            location locTest = getLocation(self);
-            boolean inCell = false;
-            if (!isIdValid(locTest.cell))
-            {
-                l = groundquests.getRandom2DLocationAroundLocation(self, relativeOffsetX, relativeOffsetZ, minRadius, maxRadius);
-                inCell = true;
-            }
-            else 
-            {
-                String strCell = getCellName(locTest.cell);
-                obj_id objBuilding = getTopMostContainer(self);
-                l = getGoodLocation(objBuilding, strCell);
-            }
-            obj_id creature = create.createCreature(creatureType, l, true);
-            if(isValidId(creature)) {
-                if(!inCell)
-                {
-                    location creatureLoc = getLocation(creature);
-                    int respawnCount = 0;
-                    while(respawnCount < 5 && creatureLoc.y != getHeightAtLocation(creatureLoc.x, creatureLoc.z)) {
-                        // creature is standing on something it shouldn't be
-                        destroyObject(creature);
-                        l = groundquests.getRandom2DLocationAroundLocation(self, relativeOffsetX, relativeOffsetZ, minRadius, maxRadius);
-                        creature = create.createCreature(creatureType, l, true);
-                        creatureLoc = getLocation(creature);
-                        respawnCount++;
-                    }
-                }
-                setObjVar(creature, objvarOnCreatureOwner, self);
-                setObjVar(creature, objvarOnCreatureQuestCrc, questCrc);
-                setObjVar(creature, objvarOnCreatureTaskId, taskId);
-                attachScript(creature, scriptNameEncounterOnCreature);
-                if (!hasCondition(creature, CONDITION_CONVERSABLE)) {
-                    groundquests.questOutputDebugInfo(self, questCrc, taskId, taskType, "OnTaskActivated", "Spawned " + creature + " at [" + l.x + ", " + l.y + ", " + l.z + "] to attack " + self);
-                    startCombat(creature, self);
-                }
-                utils.addElement(spawnList, creature);
-            }
+            building = getTopMostContainer(self);
+            cellName = getCellName(playerLoc.cell);
         }
+
+        int count = rand(minCount, maxCount);
+
+        for (int i = 0; i < count; i++)
+        {
+            location spawnLoc = null;
+
+            // ------------------------------------------------
+            // INDOOR SPAWN
+            // ------------------------------------------------
+            if (isIndoors)
+            {
+                spawnLoc = getGoodLocation(building, cellName);
+
+                if (spawnLoc == null)
+                {
+                    groundquests.questOutputDebugInfo(
+                            self, questCrc, taskId, taskType,
+                            "OnTaskActivated",
+                            "Failed to find indoor spawn location; skipping spawn."
+                    );
+                    continue;
+                }
+            }
+            // ------------------------------------------------
+            // OUTDOOR SPAWN
+            // ------------------------------------------------
+            else
+            {
+                spawnLoc = groundquests.getRandom2DLocationAroundLocation(
+                        self,
+                        relativeOffsetX,
+                        relativeOffsetZ,
+                        minRadius,
+                        maxRadius
+                );
+
+                if (spawnLoc == null)
+                {
+                    continue;
+                }
+            }
+
+            obj_id creature = create.createCreature(creatureType, spawnLoc, true);
+
+            if (!isValidId(creature))
+            {
+                continue;
+            }
+
+            // ------------------------------------------------
+            // OUTDOOR HEIGHT VALIDATION ONLY
+            // ------------------------------------------------
+            if (!isIndoors)
+            {
+                location creatureLoc = getLocation(creature);
+                int respawnCount = 0;
+
+                while (respawnCount < 5 &&
+                        creatureLoc.y != getHeightAtLocation(creatureLoc.x, creatureLoc.z))
+                {
+                    destroyObject(creature);
+
+                    spawnLoc = groundquests.getRandom2DLocationAroundLocation(
+                            self,
+                            relativeOffsetX,
+                            relativeOffsetZ,
+                            minRadius,
+                            maxRadius
+                    );
+
+                    creature = create.createCreature(creatureType, spawnLoc, true);
+
+                    if (!isValidId(creature))
+                    {
+                        break;
+                    }
+
+                    creatureLoc = getLocation(creature);
+                    respawnCount++;
+                }
+            }
+
+            if (!isValidId(creature))
+            {
+                continue;
+            }
+
+            // ------------------------------------------------
+            // QUEST TRACKING + AI SETUP
+            // ------------------------------------------------
+            setObjVar(creature, objvarOnCreatureOwner, self);
+            setObjVar(creature, objvarOnCreatureQuestCrc, questCrc);
+            setObjVar(creature, objvarOnCreatureTaskId, taskId);
+
+            attachScript(creature, scriptNameEncounterOnCreature);
+
+            if (!hasCondition(creature, CONDITION_CONVERSABLE))
+            {
+                groundquests.questOutputDebugInfo(
+                        self, questCrc, taskId, taskType,
+                        "OnTaskActivated",
+                        "Spawned " + creature + " at [" +
+                                spawnLoc.x + ", " + spawnLoc.y + ", " + spawnLoc.z + "]"
+                );
+                startCombat(creature, self);
+            }
+
+            utils.addElement(spawnList, creature);
+        }
+
         setObjVar(self, baseObjVar + dot + objvarSpawnList, spawnList);
+
         return super.OnTaskActivated(self, questCrc, taskId);
     }
     public int messageEncounterTaskCreatureDied(obj_id self, dictionary params) throws InterruptedException

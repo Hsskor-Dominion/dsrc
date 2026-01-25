@@ -8,6 +8,8 @@ import script.menu_info_types;
 import script.obj_id;
 import script.string_id;
 
+import static script.library.factions.isSmuggler;
+
 public class computer extends script.terminal.base.base_terminal
 {
     public computer()
@@ -256,13 +258,13 @@ public class computer extends script.terminal.base.base_terminal
     public int checkForSlicing(obj_id player) throws InterruptedException
     {
         int slicability = 0;
-        if (!hasSkill(player, "class_smuggler_phase1_novice"))
+        if (!isSmuggler(player))
         {
             return slicability;
         }
         else 
         {
-            if (hasSkill(player, "class_smuggler_phase1_novice"))
+            if (hasSkill(player, "combat_smuggler_novice"))
             {
                 slicability = slicability + 1;
             }
@@ -278,11 +280,11 @@ public class computer extends script.terminal.base.base_terminal
             {
                 slicability = slicability + 1;
             }
-            if (hasSkill(player, "class_smuggler_phase3_novice"))
+            if (hasSkill(player, "class_smuggler_phase4_novice"))
             {
                 slicability = slicability + 1;
             }
-            if (hasSkill(player, "class_smuggler_phase4_novice"))
+            if (hasSkill(player, "combat_smuggler_master"))
             {
                 slicability = slicability + 2;
             }

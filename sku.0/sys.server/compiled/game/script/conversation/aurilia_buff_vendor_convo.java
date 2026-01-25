@@ -20,7 +20,6 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
         return hasSkill(player, "social_language_basic_comprehend");
     }
 
-
     public int aurilia_buff_vendor_convo_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("seek_trade")) {
@@ -31,7 +30,7 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
         else if (response.equals("seek_jedi")) {
             // Offer both political and space options
             handleBranch(player, "npc_you_seek_jedi",
-                    new String[] { "seek_jedi_meditation", "seek_jedi_political", "seek_jedi_space" },
+                    new String[] { "seek_jedi_meditation", "seek_jedi_defend_village", "seek_jedi_political", "seek_jedi_space", "seek_jedi_combat" },
                     3
             );
             return SCRIPT_CONTINUE;
@@ -69,14 +68,22 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
     }
     public int aurilia_buff_vendor_convo_handleBranch3(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
-        int required = 20000;
+        int required = 10000;
 
 
         // MEDITATE
         if (response.equals("seek_jedi_meditation"))
         {
-            int current = xp.getExperiencePoints(player, "jedi");
-            sendSystemMessageTestingOnly(player, "(jedi xp) = " + current);
+            int jedi1 = xp.getExperiencePoints(player, "fs_combat");
+            int jedi2 = xp.getExperiencePoints(player, "fs_reflex");
+            int jedi3 = xp.getExperiencePoints(player, "fs_crafting");
+            int jedi4 = xp.getExperiencePoints(player, "fs_senses");
+            int jedi5 = xp.getExperiencePoints(player, "jedi");
+            sendSystemMessageTestingOnly(player, "FS Combat Experience " + jedi1);
+            sendSystemMessageTestingOnly(player, "FS Reflex Experience " + jedi2);
+            sendSystemMessageTestingOnly(player, "FS Crafting Experience " + jedi3);
+            sendSystemMessageTestingOnly(player, "FS Senses Experience " + jedi4);
+            sendSystemMessageTestingOnly(player, "Jedi XP: " + jedi5);
 
             final string_id message = new string_id(c_stringFile, "meditation_training_offered");
             groundquests.grantQuest(player, "stardust_jedi_keeper");
@@ -87,39 +94,87 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
             return SCRIPT_CONTINUE;
         }
 
-        // POLITICAL → are you sure?
+        // DEFEND
+        if (response.equals("seek_jedi_defend_village"))
+        {
+            final string_id message = new string_id(c_stringFile, "help_defend_village");
+            groundquests.grantQuest(player, "stardust_holocron_aurillia");
+
+            utils.removeScriptVar(player, "conversation.aurilia_buff_vendor_convo_conversation.branchId");
+            npcEndConversationWithMessage(player, message);
+
+            return SCRIPT_CONTINUE;
+        }
+
         if (response.equals("seek_jedi_political"))
         {
-            int current = xp.getExperiencePoints(player, "political");
-            sendSystemMessageTestingOnly(player, "(political xp) = " + current);
+            int politicalXp = xp.getExperiencePoints(player, "political");
+            sendSystemMessageTestingOnly(player, "Political Experience " + politicalXp);
 
-            if (current < required)
+            if (politicalXp < required)
             {
-                npcEndConversationWithMessage(player, new string_id(c_stringFile, "npc_you_are_not_ready"));
-                utils.removeScriptVarTree(player, "conversation.aurilia_buff_vendor_convo_conversation");
+                npcEndConversationWithMessage(player,
+                        new string_id(c_stringFile, "npc_you_lack_experience"));
+                utils.removeScriptVarTree(player,
+                        "conversation.aurilia_buff_vendor_convo_conversation");
                 return SCRIPT_CONTINUE;
             }
 
             utils.setScriptVar(player, "jedi_xp_exchange_type", "political");
-            handleBranch(player, "npc_confirm_exchange", new String[] { "confirm_yes", "confirm_no" }, 4);
+            utils.setScriptVar(player, "jedi_xp_exchange_amount", politicalXp);
+
+            handleBranch(player,
+                    "npc_confirm_exchange",
+                    new String[] { "confirm_yes", "confirm_no" },
+                    4);
             return SCRIPT_CONTINUE;
         }
 
-        // SPACE → are you sure?
+        if (response.equals("seek_jedi_combat"))
+        {
+            int combatXp = xp.getExperiencePoints(player, "combat_general");
+            sendSystemMessageTestingOnly(player, "Combat Experience " + combatXp);
+
+            if (combatXp < required)
+            {
+                npcEndConversationWithMessage(player,
+                        new string_id(c_stringFile, "npc_you_lack_experience"));
+                utils.removeScriptVarTree(player,
+                        "conversation.aurilia_buff_vendor_convo_conversation");
+                return SCRIPT_CONTINUE;
+            }
+
+            utils.setScriptVar(player, "jedi_xp_exchange_type", "combat_general");
+            utils.setScriptVar(player, "jedi_xp_exchange_amount", combatXp);
+
+            handleBranch(player,
+                    "npc_confirm_exchange",
+                    new String[] { "confirm_yes", "confirm_no" },
+                    4);
+            return SCRIPT_CONTINUE;
+        }
+
         if (response.equals("seek_jedi_space"))
         {
-            int current = xp.getExperiencePoints(player, "space_xp");
-            sendSystemMessageTestingOnly(player, "(space xp) = " + current);
+            int spaceXp = xp.getExperiencePoints(player, "space_combat_general");
+            sendSystemMessageTestingOnly(player, "Space Combat Experience " + spaceXp);
 
-            if (current < required)
+            if (spaceXp < required)
             {
-                npcEndConversationWithMessage(player, new string_id(c_stringFile, "npc_you_are_not_ready"));
-                utils.removeScriptVarTree(player, "conversation.aurilia_buff_vendor_convo_conversation");
+                npcEndConversationWithMessage(player,
+                        new string_id(c_stringFile, "npc_you_lack_experience"));
+                utils.removeScriptVarTree(player,
+                        "conversation.aurilia_buff_vendor_convo_conversation");
                 return SCRIPT_CONTINUE;
             }
 
             utils.setScriptVar(player, "jedi_xp_exchange_type", "space");
-            handleBranch(player, "npc_confirm_exchange", new String[] { "confirm_yes", "confirm_no" }, 4);
+            utils.setScriptVar(player, "jedi_xp_exchange_amount", spaceXp);
+
+            handleBranch(player,
+                    "npc_confirm_exchange",
+                    new String[] { "confirm_yes", "confirm_no" },
+                    4);
             return SCRIPT_CONTINUE;
         }
 
@@ -129,7 +184,7 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
     public int aurilia_buff_vendor_convo_handleBranch4(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         String type = utils.getStringScriptVar(player, "jedi_xp_exchange_type");
-        int required = 20000;
+        int required = 10000;
 
         if (response.equals("confirm_no"))
         {
@@ -141,28 +196,51 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
 
         if (response.equals("confirm_yes"))
         {
-            if (type.equals("political"))
+            // Map of input type -> experience pool to deduct
+            java.util.Map<String, String> xpPools = new java.util.HashMap<String, String>();
+            xpPools.put("political", "political");
+            xpPools.put("combat_general", "combat_general");
+            xpPools.put("space_combat", "space_combat_xp");
+            // Add more here:
+            xpPools.put("piloting", "piloting_xp");
+            xpPools.put("stealth", "stealth_xp");
+            xpPools.put("crafting", "crafting_xp");
+            xpPools.put("social", "social_xp");
+            // etc… up to 20+
+
+            // Map of messages per type
+            java.util.Map<String, string_id> messages = new java.util.HashMap<String, string_id>();
+            messages.put("political", new string_id(c_stringFile, "npc_feel_the_force_experience_political"));
+            messages.put("combat_general", new string_id(c_stringFile, "npc_feel_the_force_experience_combat"));
+            messages.put("space_combat", new string_id(c_stringFile, "npc_feel_the_force_experience_space"));
+            // Add more messages for each type if desired
+
+            if (xpPools.containsKey(type))
             {
-                int current = getExperiencePoints(player, "political");
+                String pool = xpPools.get(type);
+                int current = getExperiencePoints(player, pool);
+
                 if (current >= required)
                 {
-                    grantExperiencePoints(player, "jedi", 1000);
-                    grantExperiencePoints(player, "political", -required);
+                    // Grant force experience
+                    grantExperiencePoints(player, "fs_combat", 1000);
+                    grantExperiencePoints(player, "fs_reflex", 1000);
+                    grantExperiencePoints(player, "fs_crafting", 1000);
+                    grantExperiencePoints(player, "fs_senses", 1000);
 
-                    final string_id message = new string_id(c_stringFile, "npc_feel_the_force_experience_political");
-                    npcEndConversationWithMessage(player, message);
+                    // Deduct from chosen pool
+                    grantExperiencePoints(player, pool, -required);
+                    sendSystemMessageTestingOnly(player, "You have unlearned what you have learned, and experience the force");
+
+                    string_id msg = messages.containsKey(type)
+                            ? messages.get(type)
+                            : new string_id(c_stringFile, "npc_feel_the_force_experience_generic");
+
+                    npcEndConversationWithMessage(player, msg);
                 }
-            }
-            else if (type.equals("space"))
-            {
-                int current = getExperiencePoints(player, "space_xp");
-                if (current >= required)
+                else
                 {
-                    grantExperiencePoints(player, "jedi", 1000);
-                    grantExperiencePoints(player, "space_xp", -required);
-
-                    final string_id message = new string_id(c_stringFile, "npc_feel_the_force_experience_space");
-                    npcEndConversationWithMessage(player, message);
+                    npcEndConversationWithMessage(player, new string_id(c_stringFile, "npc_you_lack_experience"));
                 }
             }
 
@@ -185,8 +263,57 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setCondition(self, CONDITION_INTERESTING);
-        setName(self, "Paemos (Village Elder)");
+        // give "Old Man" name if on endor
+        String planetName = getLocation(self).area;
+        if (planetName == null) return -1;
+        planetName = planetName.toLowerCase();
 
+        // list of planets for reference
+        int planetId = -1;
+        switch (planetName) {
+            case "corellia":
+                planetId = 1;
+                break;
+            case "naboo":
+                planetId = 2;
+                break;
+            case "tatooine":
+                planetId = 3;
+                break;
+            case "rori":
+                planetId = 4;
+                break;
+            case "lok":
+                planetId = 5;
+                break;
+            case "endor":
+                planetId = 6;
+                break;
+            case "talus":
+                planetId = 7;
+                break;
+            case "mustafar":
+                planetId = 8;
+                break;
+            case "dantooine":
+                planetId = 9;
+                break;
+            case "yavin4":
+                planetId = 10;
+                break;
+            case "dathomir":
+                planetId = 11;
+                break;
+            case "kashyyyk_main":
+                planetId = 12;
+                break;
+        }
+            if (planetId == 11) {
+                setName(self, "Paemos (Village Elder)");
+            }
+            if (planetId == 6) {
+                setName(self, "an old man");
+            }
         return SCRIPT_CONTINUE;
     }
 
@@ -235,6 +362,7 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
         chat.chat(npc, "*Speaks in riddles*");
         return SCRIPT_CONTINUE;
     }
+
 
     public int OnNpcConversationResponse(obj_id npc, String conversationId, obj_id player, string_id response) throws InterruptedException
     {

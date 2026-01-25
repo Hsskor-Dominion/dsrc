@@ -71,7 +71,7 @@ public class imperial_offensive_supply_terminal extends script.base_script
     }
     public boolean imperial_offensive_supply_terminal_condition_isSmuggler(obj_id player, obj_id npc) throws InterruptedException
     {
-        return hasSkill(player, "class_smuggler_phase1_novice");
+        return hasSkill(player, "class_smuggler_phase1_novice") || hasSkill(player,"combat_smuggler_novice");
     }
     public boolean imperial_offensive_supply_terminal_condition_isMaxScanLevel(obj_id player, obj_id npc) throws InterruptedException
     {

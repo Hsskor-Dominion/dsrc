@@ -11,6 +11,8 @@ import java.util.Vector;
 
 import static script.library.camping.*;
 import static script.library.combat.getWeaponTypeString;
+import static script.library.scout.isSnared;
+import static script.player.base.base_player.getDizzyResistance;
 
 public class combat_actions extends script.systems.combat.combat_base {
 
@@ -214,18 +216,6 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
-    public int stand(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (ai_lib.isAiDead(self)) {
-            return SCRIPT_CONTINUE;
-        }
-        if (!isIncapacitated(self) && !isDead(self)) {
-            setPosture(self, POSTURE_UPRIGHT);
-            buff.removeBuff(self, "rollShot");
-            buff.removeBuff(self, "diveShot");
-        }
-        return SCRIPT_CONTINUE;
-    }
-
     public int standFail(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (space_utils.isInStation(self)) {
             LOG("space", "Leaving station!");
@@ -235,23 +225,52 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
-    public int kneel(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+    public int stand(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+        if (ai_lib.isAiDead(self)) {
+            return SCRIPT_CONTINUE;
+        }
         if (!isIncapacitated(self) && !isDead(self)) {
-            setPosture(self, POSTURE_CROUCHED);
-            buff.applyBuff(self, "rollShot");
+            setPosture(self, POSTURE_UPRIGHT);
+            buff.removeBuff(self, "rollShot");//this should depend on whether or not player hasSkill, "combat_marksman_support_01"
             buff.removeBuff(self, "diveShot");
         }
         return SCRIPT_CONTINUE;
     }
 
-    public int kneelFail(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
+    public int kneel(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!isIncapacitated(self) && !isDead(self))
+        {
+            setPosture(self, POSTURE_CROUCHED);
+
+            // Ranged support skill grants Roll Shot bonus
+            if (hasSkill(self, "combat_ranged_support_01"))
+            {
+                buff.applyBuff(self, "rollShot");
+            }
+
+            buff.removeBuff(self, "diveShot");
+        }
         return SCRIPT_CONTINUE;
     }
 
-    public int prone(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!isIncapacitated(self) && !isDead(self)) {
+    public int kneelFail(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        return SCRIPT_CONTINUE;
+    }
+
+    public int prone(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!isIncapacitated(self) && !isDead(self))
+        {
             setPosture(self, POSTURE_PRONE);
-            buff.applyBuff(self, "diveShot");
+
+            // Advanced ranged skill grants Dive Shot bonus
+            if (hasSkill(self, "combat_ranged_support_01"))
+            {
+                buff.applyBuff(self, "diveShot");
+            }
+
             buff.removeBuff(self, "rollShot");
         }
         return SCRIPT_CONTINUE;
@@ -826,16 +845,28 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
-    public int co_dm_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("co_dm_1", self, target, params, "", "")) {
+    public int co_dm_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("co_dm_1", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
+        if (buff.hasBuff(target, "bh_shields"))
+        {
+            buff.decrementBuffStack(target, "bh_shields", 5);
+        }
+
         return SCRIPT_CONTINUE;
     }
 
     public int co_dm_2(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("co_dm_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+        }
+        if (buff.hasBuff(target, "bh_shields"))
+        {
+            buff.decrementBuffStack(target, "bh_shields", 5);
         }
         return SCRIPT_CONTINUE;
     }
@@ -844,12 +875,20 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("co_dm_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        if (buff.hasBuff(target, "bh_shields"))
+        {
+            buff.decrementBuffStack(target, "bh_shields", 5);
+        }
         return SCRIPT_CONTINUE;
     }
 
     public int co_dm_4(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("co_dm_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+        }
+        if (buff.hasBuff(target, "bh_shields"))
+        {
+            buff.decrementBuffStack(target, "bh_shields", 5);
         }
         return SCRIPT_CONTINUE;
     }
@@ -858,12 +897,20 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("co_dm_5", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        if (buff.hasBuff(target, "bh_shields"))
+        {
+            buff.decrementBuffStack(target, "bh_shields", 5);
+        }
         return SCRIPT_CONTINUE;
     }
 
     public int co_dm_6(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("co_dm_6", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+        }
+        if (buff.hasBuff(target, "bh_shields"))
+        {
+            buff.decrementBuffStack(target, "bh_shields", 6);
         }
         return SCRIPT_CONTINUE;
     }
@@ -872,12 +919,20 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("co_dm_7", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        if (buff.hasBuff(target, "bh_shields"))
+        {
+            buff.decrementBuffStack(target, "bh_shields", 7);
+        }
         return SCRIPT_CONTINUE;
     }
 
     public int co_dm_8(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("co_dm_8", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
+        }
+        if (buff.hasBuff(target, "bh_shields"))
+        {
+            buff.decrementBuffStack(target, "bh_shields", 8);
         }
         return SCRIPT_CONTINUE;
     }
@@ -3823,10 +3878,10 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("of_pistol_dm", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
-        int level = getLevel(self);
-        if (level >= 74) {
-            doInspiredAction(self);
-        }
+//        int level = getLevel(self);
+//        if (level >= 74) {
+//            doInspiredAction(self);
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3834,10 +3889,10 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("of_pistol_bleed", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
-        int level = getLevel(self);
-        if (level >= 74) {
-            doInspiredAction(self);
-        }
+//        int level = getLevel(self);
+//        if (level >= 74) {
+//            doInspiredAction(self);
+//        }
         return SCRIPT_CONTINUE;
     }
 
@@ -3935,109 +3990,229 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
-    public int of_dm_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("of_dm_1", self, target, params, "", "")) {
+    public int of_dm_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("of_dm_1", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
         float baseCooldownTime = getBaseCooldownTime("of_dm_1");
-        if (baseCooldownTime < 0) {
+        if (baseCooldownTime < 0)
+        {
             return SCRIPT_OVERRIDE;
         }
-        float cooldownTimeMod = getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
-        setCommandTimerValue(self, TIMER_COOLDOWN, baseCooldownTime - (cooldownTimeMod / 10));
+
+        float cooldownTimeMod =
+                getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
+
+        setCommandTimerValue(
+                self,
+                TIMER_COOLDOWN,
+                baseCooldownTime - (cooldownTimeMod / 10.0f)
+        );
+
+        applyAimBuff(self, target);
         return SCRIPT_CONTINUE;
     }
 
-    public int of_dm_2(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("of_dm_2", self, target, params, "", "")) {
+    public int of_dm_2(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("of_dm_2", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
         float baseCooldownTime = getBaseCooldownTime("of_dm_2");
-        if (baseCooldownTime < 0) {
+        if (baseCooldownTime < 0)
+        {
             return SCRIPT_OVERRIDE;
         }
-        float cooldownTimeMod = getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
-        setCommandTimerValue(self, TIMER_COOLDOWN, baseCooldownTime - (cooldownTimeMod / 10));
+
+        float cooldownTimeMod =
+                getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
+
+        setCommandTimerValue(
+                self,
+                TIMER_COOLDOWN,
+                baseCooldownTime - (cooldownTimeMod / 10.0f)
+        );
+
+        applyAimBuff(self, target);
         return SCRIPT_CONTINUE;
     }
 
-    public int of_dm_3(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("of_dm_3", self, target, params, "", "")) {
+    public int of_dm_3(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("of_dm_3", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
         float baseCooldownTime = getBaseCooldownTime("of_dm_3");
-        if (baseCooldownTime < 0) {
+        if (baseCooldownTime < 0)
+        {
             return SCRIPT_OVERRIDE;
         }
-        float cooldownTimeMod = getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
-        setCommandTimerValue(self, TIMER_COOLDOWN, baseCooldownTime - (cooldownTimeMod / 10));
+
+        float cooldownTimeMod =
+                getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
+
+        setCommandTimerValue(
+                self,
+                TIMER_COOLDOWN,
+                baseCooldownTime - (cooldownTimeMod / 10.0f)
+        );
+
+        applyAimBuff(self, target);
         return SCRIPT_CONTINUE;
     }
 
-    public int of_dm_4(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("of_dm_4", self, target, params, "", "")) {
+    public int of_dm_4(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("of_dm_4", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
         float baseCooldownTime = getBaseCooldownTime("of_dm_4");
-        if (baseCooldownTime < 0) {
+        if (baseCooldownTime < 0)
+        {
             return SCRIPT_OVERRIDE;
         }
-        float cooldownTimeMod = getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
-        setCommandTimerValue(self, TIMER_COOLDOWN, baseCooldownTime - (cooldownTimeMod / 10));
+
+        float cooldownTimeMod =
+                getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
+
+        setCommandTimerValue(
+                self,
+                TIMER_COOLDOWN,
+                baseCooldownTime - (cooldownTimeMod / 10.0f)
+        );
+
+        applyAimBuff(self, target);
         return SCRIPT_CONTINUE;
     }
 
-    public int of_dm_5(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("of_dm_5", self, target, params, "", "")) {
+    public int of_dm_5(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("of_dm_5", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
         float baseCooldownTime = getBaseCooldownTime("of_dm_5");
-        if (baseCooldownTime < 0) {
+        if (baseCooldownTime < 0)
+        {
             return SCRIPT_OVERRIDE;
         }
-        float cooldownTimeMod = getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
-        setCommandTimerValue(self, TIMER_COOLDOWN, baseCooldownTime - (cooldownTimeMod / 10));
+
+        float cooldownTimeMod =
+                getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
+
+        setCommandTimerValue(
+                self,
+                TIMER_COOLDOWN,
+                baseCooldownTime - (cooldownTimeMod / 10.0f)
+        );
+
+        applyAimBuff(self, target);
         return SCRIPT_CONTINUE;
     }
 
-    public int of_dm_6(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("of_dm_6", self, target, params, "", "")) {
+    public int of_dm_6(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("of_dm_6", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
         float baseCooldownTime = getBaseCooldownTime("of_dm_6");
-        if (baseCooldownTime < 0) {
+        if (baseCooldownTime < 0)
+        {
             return SCRIPT_OVERRIDE;
         }
-        float cooldownTimeMod = getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
-        setCommandTimerValue(self, TIMER_COOLDOWN, baseCooldownTime - (cooldownTimeMod / 10));
+
+        float cooldownTimeMod =
+                getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
+
+        setCommandTimerValue(
+                self,
+                TIMER_COOLDOWN,
+                baseCooldownTime - (cooldownTimeMod / 10.0f)
+        );
+
+        applyAimBuff(self, target);
         return SCRIPT_CONTINUE;
     }
 
-    public int of_dm_7(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("of_dm_7", self, target, params, "", "")) {
+    public int of_dm_7(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("of_dm_7", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
         float baseCooldownTime = getBaseCooldownTime("of_dm_7");
-        if (baseCooldownTime < 0) {
+        if (baseCooldownTime < 0)
+        {
             return SCRIPT_OVERRIDE;
         }
-        float cooldownTimeMod = getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
-        setCommandTimerValue(self, TIMER_COOLDOWN, baseCooldownTime - (cooldownTimeMod / 10));
+
+        float cooldownTimeMod =
+                getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
+
+        setCommandTimerValue(
+                self,
+                TIMER_COOLDOWN,
+                baseCooldownTime - (cooldownTimeMod / 10.0f)
+        );
+
+        applyAimBuff(self, target);
         return SCRIPT_CONTINUE;
     }
 
-    public int of_dm_8(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("of_dm_8", self, target, params, "", "")) {
+    public int of_dm_8(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("of_dm_8", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
         float baseCooldownTime = getBaseCooldownTime("of_dm_8");
-        if (baseCooldownTime < 0) {
+        if (baseCooldownTime < 0)
+        {
             return SCRIPT_OVERRIDE;
         }
-        float cooldownTimeMod = getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
-        setCommandTimerValue(self, TIMER_COOLDOWN, baseCooldownTime - (cooldownTimeMod / 10));
+
+        float cooldownTimeMod =
+                getEnhancedSkillStatisticModifierUncapped(self, "expertise_cooldown_line_of_sure");
+
+        setCommandTimerValue(
+                self,
+                TIMER_COOLDOWN,
+                baseCooldownTime - (cooldownTimeMod / 10.0f)
+        );
+
+        applyAimBuff(self, target);
         doInspiredAction(self);
         return SCRIPT_CONTINUE;
+    }
+
+    private void applyAimBuff(obj_id self, obj_id target) throws InterruptedException
+    {
+        if (hasSkill(self, "combat_rifleman_support_03"))
+        {
+            buff.applyBuff(target, self, "aim_2");
+        }
+        else if (hasSkill(self, "combat_rifleman_support_01"))
+        {
+            buff.applyBuff(target, self, "aim_1");
+        }
+        else if (hasSkill(self, "combat_marksman_rifle_04"))
+        {
+            buff.applyBuff(target, self, "aim");
+        }
     }
 
     public int of_sh_0(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
@@ -5936,11 +6111,77 @@ public class combat_actions extends script.systems.combat.combat_base {
         }
         return SCRIPT_CONTINUE;
     }
+    public static boolean isDizzy(obj_id victim) throws InterruptedException
+    {
+        for (int i = 1; i <= 7; i++)
+        {
+            if (buff.hasBuff(victim, "sm_dm_cc_melee_" + i))
+            {
+                return true;
+            }
+            if (buff.hasBuff(victim, "sm_dm_cc_" + i))
+            {
+                return true;
+            }
+            if (buff.hasBuff(victim, "en_sweeping_pirouette_root"))
+            {
+                return true;
+            }
+            if (buff.hasBuff(victim, "bh_dread_strike"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void playKnockdown(obj_id victim, obj_id attacker) throws InterruptedException
+    {
+        if (!isIdValid(victim) || !isIdValid(attacker))
+        {
+            return;
+        }
+        float dizzyResist = getDizzyResistance(victim);
+
+        float successChance = 10.0f + dizzyResist;
+
+        float roll = rand(0.0f, 100.0f);
+
+        if (successChance > roll)
+        {
+            return;
+        }
+        String strPlaybackScript;
+        obj_id objWeapon = getCurrentWeapon(attacker);
+        int intWeaponCategory = combat.getWeaponCategory(getWeaponType(objWeapon));
+        if (intWeaponCategory == combat.RANGED_WEAPON)
+        {
+            strPlaybackScript = "ranged_melee_light";
+        }
+        else
+        {
+            strPlaybackScript = "attack_high_center_light_0";
+        }
+        if (pet_lib.isMounted(victim))
+        {
+            pet_lib.doDismountNow(victim, false);
+        }
+        attacker_results cbtAttackerResults = new attacker_results();
+        defender_results[] cbtDefenderResults = new defender_results[1];
+        cbtDefenderResults[0] = new defender_results();
+        cbtAttackerResults.id = attacker;
+        cbtAttackerResults.endPosture = getPosture(attacker);
+        cbtAttackerResults.weapon = objWeapon;
+        cbtDefenderResults[0].endPosture = POSTURE_KNOCKED_DOWN;
+        cbtDefenderResults[0].result = COMBAT_RESULT_HIT;
+        cbtDefenderResults[0].id = victim;
+        doCombatResults(strPlaybackScript, cbtAttackerResults, cbtDefenderResults);
+    }
 
     public int sm_pistol_whip_1(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
         if (!combatStandardAction("sm_pistol_whip_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -5948,6 +6189,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("sm_pistol_whip_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -5955,6 +6197,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("sm_pistol_whip_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -5962,6 +6205,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("sm_pistol_whip_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -7684,6 +7928,22 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (topHateTarget != self) {
             combat.doBhTaunt(self, target);
         }
+        if (hasSkill(self, "combat_polearm_master"))
+        {
+            buff.applyBuff(target, "intimidate_1");
+        }
+        else if (hasSkill(self, "combat_polearm_ability_03"))
+        {
+            buff.applyBuff(target, "intimidate");
+        }
+        if (hasSkill(self, "combat_polearm_ability_04"))
+        {
+            buff.applyBuff(target, "warcry_1");
+        }
+        else if (hasSkill(self, "combat_polearm_ability_01"))
+        {
+            buff.applyBuff(target, "warcry");
+        }
         return SCRIPT_CONTINUE;
     }
 
@@ -7960,6 +8220,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_intimidate_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -7967,6 +8228,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_intimidate_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -7974,6 +8236,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_intimidate_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
+        buff.applyBuff(target, "stun");
         return SCRIPT_CONTINUE;
     }
 
@@ -7981,6 +8245,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_intimidate_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
+        buff.applyBuff(target, "stun");
         return SCRIPT_CONTINUE;
     }
 
@@ -7988,6 +8254,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_intimidate_5", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
+        buff.applyBuff(target, "stun");
         return SCRIPT_CONTINUE;
     }
 
@@ -7995,6 +8263,8 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("bh_intimidate_6", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
+        buff.applyBuff(target, "stun");
         return SCRIPT_CONTINUE;
     }
 
@@ -9192,6 +9462,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("en_spiral_kick_0", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -9199,6 +9470,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("en_spiral_kick_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -9206,6 +9478,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("en_spiral_kick_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -9213,6 +9486,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("en_spiral_kick_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -9220,6 +9494,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("en_spiral_kick_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        playKnockdown(target, self);
         return SCRIPT_CONTINUE;
     }
 
@@ -10621,6 +10896,22 @@ public class combat_actions extends script.systems.combat.combat_base {
             return SCRIPT_OVERRIDE;
         }
         combat.dsFsTaunt(self, target);
+        if (hasSkill(self, "combat_polearm_master"))
+        {
+            buff.applyBuff(target, "intimidate_1");
+        }
+        else if (hasSkill(self, "combat_polearm_ability_03"))
+        {
+            buff.applyBuff(target, "intimidate");
+        }
+        if (hasSkill(self, "combat_polearm_ability_04"))
+        {
+            buff.applyBuff(target, "warcry_1");
+        }
+        else if (hasSkill(self, "combat_polearm_ability_01"))
+        {
+            buff.applyBuff(target, "warcry");
+        }
         return SCRIPT_CONTINUE;
     }
 
@@ -12749,6 +13040,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("sp_shifty_setup", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        applyAimBuff(self, target);
         return SCRIPT_CONTINUE;
     }
 

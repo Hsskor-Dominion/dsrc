@@ -6,6 +6,9 @@ import script.library.*;
 
 import java.util.Vector;
 
+import static script.library.factions.isImperial;
+import static script.library.factions.isRebel;
+
 public class creature_combat extends script.systems.combat.combat_base
 {
     public creature_combat()
@@ -749,7 +752,11 @@ public class creature_combat extends script.systems.combat.combat_base
                 attacker = master;
             }
         }
-        if (isIdValid(attacker) && exists(attacker) && isPlayer(attacker) && hasObjVar(self, "requirePlayerSpecialForces") && (pvpGetType(attacker) != PVPTYPE_DECLARED))
+        if (isIdValid(attacker)
+                && exists(attacker)
+                && isPlayer(attacker)
+                && (isImperial(self) || isRebel(self))
+                && (pvpGetType(attacker) != PVPTYPE_DECLARED))//Return of TEF, SWG Chimaera
         {
             if (pvpNeutralIsMercenaryDeclared(attacker))
             {

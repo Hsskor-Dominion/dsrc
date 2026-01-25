@@ -65,6 +65,15 @@ public class terminal_frs_voting extends script.base_script
             LOG("force_rank", "terminal_frs_voting.OnObjectMenuRequest -- " + player + " has an invalid council value.");
             return SCRIPT_CONTINUE;
         }
+        int playerCouncil = force_rank.getCouncilAffiliation(player);
+        int enclaveCouncil = force_rank.getCouncilAffiliation(enclave);
+
+        if (playerCouncil != enclaveCouncil)
+        {
+            sendSystemMessage(player, new string_id(force_rank.STF_FILE, "wrong_council_terminal"));
+            LOG("force_rank", player + " attempted to access terminal for another council (" + enclaveCouncil + ")");
+            return SCRIPT_CONTINUE;
+        }
         int mnu = mi.addRootMenu(menu_info_types.SERVER_MENU1, new string_id(force_rank.STF_FILE, "vote_status"));
         mi.addSubMenu(mnu, menu_info_types.SERVER_MENU2, new string_id(force_rank.STF_FILE, "record_vote"));
         mi.addSubMenu(mnu, menu_info_types.SERVER_MENU3, new string_id(force_rank.STF_FILE, "accept_promotion"));
@@ -72,6 +81,15 @@ public class terminal_frs_voting extends script.base_script
         if (rank > 7 && council == force_rank.LIGHT_COUNCIL)
         {
             mi.addRootMenu(menu_info_types.SERVER_MENU5, new string_id(force_rank.STF_FILE, "demote_member"));
+        }
+        if (isGod(player))
+        {
+            int mnu2 = mi.addRootMenu(menu_info_types.SERVER_MENU20, new string_id(force_rank.STF_FILE, "frs_status_update"));
+            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU21, new string_id(force_rank.STF_FILE, "set_positioning"));
+            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU22, new string_id(force_rank.STF_FILE, "set_voting"));
+            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU23, new string_id(force_rank.STF_FILE, "set_acceptance"));
+            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU24, new string_id(force_rank.STF_FILE, "set_maintenance"));
+            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU25, new string_id(force_rank.STF_FILE, "set_inactive"));
         }
         mi.addRootMenu(menu_info_types.SERVER_MENU6, new string_id(force_rank.STF_FILE, "recover_jedi_items"));
         return SCRIPT_CONTINUE;
@@ -158,6 +176,54 @@ public class terminal_frs_voting extends script.base_script
             if (force_rank.grantRankItems(player, true))
             {
                 sendSystemMessage(player, new string_id(force_rank.STF_FILE, "items_recovered"));
+//                if (!hasObjVar(player, force_rank.VAR_RANK))
+//                {
+                    setObjVar(player, force_rank.VAR_RANK, 1); // Starting at rank 1
+                    force_rank.addToForceRankSystem(player, force_rank.LIGHT_COUNCIL);
+                    grantSkill(player, "force_rank");
+                    grantSkill(player, "force_rank_light");
+                    grantSkill(player, "force_rank_light_novice");
+//                }
+            }
+        }
+        if (isGod(player))
+        {
+            if (!isIdValid(enclave))
+            {
+                return SCRIPT_CONTINUE;
+            }
+
+            int newStatus = 0;
+
+            if (item == menu_info_types.SERVER_MENU21)
+            {
+                newStatus = 1; // Petitioning
+            }
+            else if (item == menu_info_types.SERVER_MENU22)
+            {
+                newStatus = 2; // Voting
+            }
+            else if (item == menu_info_types.SERVER_MENU23)
+            {
+                newStatus = 3; // Acceptance
+            }
+            else if (item == menu_info_types.SERVER_MENU24)
+            {
+                force_rank.performEnclaveMaintenance(enclave);
+            }
+            else if (item == menu_info_types.SERVER_MENU25)
+            {
+                newStatus = 4; // Inactive
+            }
+
+            if (newStatus > 0)
+            {
+                for (int rank = 1; rank <= 11; rank++)
+                {
+                    setObjVar(enclave, "force_rank.voting.rank" + rank + ".status", newStatus);
+                }
+
+                sendSystemMessage(player, new string_id(force_rank.STF_FILE, "frs_updated"));
             }
         }
         return SCRIPT_CONTINUE;

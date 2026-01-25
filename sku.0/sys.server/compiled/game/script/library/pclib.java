@@ -4,6 +4,8 @@ import script.*;
 
 import java.util.Vector;
 
+import static script.library.force_rank.FRS_XP;
+
 public class pclib extends script.base_script
 {
     public pclib()
@@ -158,6 +160,7 @@ public class pclib extends script.base_script
     public static final String DECAY_REMAINDER = "decay.remainder";
     public static final float MIN_CLONING_SICKNESS_COST = 100;
     public static final float MAX_CLONING_SICKNESS_COST = 5000;
+    public static final String FORCE_ARENA = "quest/stardust_force_arena";
     public static int getCloningSicknessCureCost(obj_id player) throws InterruptedException
     {
         float minCost = MIN_CLONING_SICKNESS_COST;
@@ -798,6 +801,18 @@ public class pclib extends script.base_script
             if (isPlayer(player))
             {
                 guildUpdateGuildWarKillTracking(killer, player);
+            }
+            if (hasSkill(player,"force_rank"));
+            {
+                xp.grant(killer, FRS_XP, 1000);
+            }
+            if (groundquests.isQuestActive(player, FORCE_ARENA));
+            {
+                xp.grant(killer, FRS_XP, 1000);
+            }
+            if (groundquests.isQuestActive(killer, FORCE_ARENA));
+            {
+                xp.grant(killer, FRS_XP, 1000);
             }
         }
         // ================================================================

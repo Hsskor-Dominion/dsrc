@@ -48,8 +48,9 @@ public class terminal_frs_challenge extends script.base_script
         if (hasObjVar(self, arena.VAR_CHALLENGERS))
         {
             mnuViewChallenges = mi.addRootMenu(menu_info_types.SERVER_MENU2, new string_id("pvp_rating", "ch_terminal_view_challenges"));
+            mnuAcceptChallenge = mi.addRootMenu(menu_info_types.SERVER_MENU4, new string_id("pvp_rating", "ch_terminal_accept_challenge"));
         }
-        if (rank > 0 && rank < 11)
+        if (rank < 11)
         {
             if (arena.isArenaOpenForChallenges(self) && force_rank.isPlayerEligibleForPromotion(player, rank + 1))
             {
@@ -59,13 +60,13 @@ public class terminal_frs_challenge extends script.base_script
                 }
             }
         }
-        if (rank > 1)
-        {
-            if ((arena.getChallengerIdsForRank(self, rank)).size() > 0 && !utils.hasScriptVar(player, arena.VAR_I_AM_DUELING))
-            {
-                mnuAcceptChallenge = mi.addRootMenu(menu_info_types.SERVER_MENU4, new string_id("pvp_rating", "ch_terminal_accept_challenge"));
-            }
-        }
+//        if (rank > 0)
+//        {
+//            if ((arena.getChallengerIdsForRank(self, rank)).size() > 0 && !utils.hasScriptVar(player, arena.VAR_I_AM_DUELING))
+//            {
+//                mnuAcceptChallenge = mi.addRootMenu(menu_info_types.SERVER_MENU4, new string_id("pvp_rating", "ch_terminal_accept_challenge"));
+//            }
+//        }
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
@@ -108,10 +109,10 @@ public class terminal_frs_challenge extends script.base_script
         {
             if (!hasObjVar(self, arena.VAR_CHALLENGERS))
             {
-                sendSystemMessage(player, new string_id("pvp_rating", "ch_no_challenges_to_view"));
+                sendSystemMessage(player, new string_id("pvp_rating", "ch_no_challenges_to_view"));//we're not seeing this, so it's getting past
                 return SCRIPT_CONTINUE;
             }
-            Vector challengedRanks = arena.getRanksWithActiveChallenges(self);
+            Vector challengedRanks = arena.getRanksWithActiveChallenges(self);//i don't think anything here or below works; it should teleport me to the player I select
             String[] stringChallenges = arena.getRanksWithActiveChallengesString(self);
             pid = sui.listbox(player, player, "@pvp_rating:ch_select_active_challenges", sui.OK_ONLY, "@pvp_rating:ch_terminal_view_challenges", stringChallenges, "msgFRSChallengeViewChallenges");
             utils.setScriptVar(player, arena.SCRIPT_VAR_SUI_CH_PID, pid);
@@ -120,7 +121,7 @@ public class terminal_frs_challenge extends script.base_script
         }
         else if (item == menu_info_types.SERVER_MENU3)
         {
-            if (rank < 1 || rank > force_rank.COUNCIL_RANK_NUMBER)
+            if (rank > force_rank.COUNCIL_RANK_NUMBER)
             {
                 prose_package rankBoundsPP = prose.getPackage(new string_id("pvp_rating", "ch_terminal_cant_challenge_rank_bounds"), rank);
                 sendSystemMessageProse(player, rankBoundsPP);
@@ -137,18 +138,18 @@ public class terminal_frs_challenge extends script.base_script
                 return SCRIPT_CONTINUE;
             }
             int avail_slots = force_rank.getAvailableRankSlots(enclave, rank + 1);
-            if (avail_slots >= 3)
-            {
-                if (hasObjVar(player, "force_rank.qa.overrideArenaOpenSlots"))
-                {
-                    sendSystemMessageTestingOnly(player, "QA open slot Vote-Force override.");
-                }
-                else 
-                {
-                    sendSystemMessage(player, new string_id("pvp_rating", "ch_terminal_no_need_challenge"));
-                    return SCRIPT_CONTINUE;
-                }
-            }
+//            if (avail_slots >= 3)
+//            {
+//                if (hasObjVar(player, "force_rank.qa.overrideArenaOpenSlots"))
+//                {
+//                    sendSystemMessageTestingOnly(player, "QA open slot Vote-Force override.");
+//                }
+//                else
+//                {
+//                    sendSystemMessage(player, new string_id("pvp_rating", "ch_terminal_no_need_challenge"));
+//                    return SCRIPT_CONTINUE;
+//                }
+//            }
             if (arena.canPlayerIssueChallenge(player, self))
             {
                 pid = sui.msgbox(player, player, "@pvp_rating:ch_terminal_verify_challenge", sui.OK_CANCEL, "msgFRSChallengeConfirmIssueChallenge");
@@ -158,22 +159,36 @@ public class terminal_frs_challenge extends script.base_script
         }
         else if (item == menu_info_types.SERVER_MENU4)
         {
-            if (rank > 1 && !utils.hasScriptVar(player, arena.VAR_I_AM_DUELING))
+            boolean canAcceptChallenge =
+                    rank > 0 &&
+                            !utils.hasScriptVar(player, arena.VAR_I_AM_DUELING) &&
+                            arena.getChallengerIdsForRank(self, rank).size() > 0;
+
+            if (canAcceptChallenge)
             {
-                if ((arena.getChallengerIdsForRank(self, rank)).size() > 0)
-                {
-                    pid = sui.msgbox(player, player, "@pvp_rating:ch_terminal_verify_accept_challenge", sui.OK_CANCEL, "msgFRSChallengeConfirmAcceptChallenge");
-                    utils.setScriptVar(player, arena.SCRIPT_VAR_SUI_CH_PID, pid);
-                    utils.setScriptVar(player, arena.SCRIPT_VAR_CH_TERMINAL, self);
-                }
-                else 
-                {
-                    sendSystemMessage(player, new string_id("pvp_rating", "ch_terminal_no_challenges_for_rank"));
-                }
+                pid = sui.msgbox(
+                        player,
+                        player,
+                        "@pvp_rating:ch_terminal_verify_accept_challenge",
+                        sui.OK_CANCEL,
+                        "msgFRSChallengeConfirmAcceptChallenge"
+                );
+                utils.setScriptVar(player, arena.SCRIPT_VAR_SUI_CH_PID, pid);
+                utils.setScriptVar(player, arena.SCRIPT_VAR_CH_TERMINAL, self);
+                return SCRIPT_CONTINUE;
             }
-            else 
+
+            // fallback: no challenges or not eligible
+            sendSystemMessage(player, new string_id("pvp_rating", "ch_terminal_no_challenges_for_rank"));
+
+            int council = force_rank.getCouncilAffiliation(player);
+            if (council == force_rank.DARK_COUNCIL)
             {
-                sendSystemMessage(player, new string_id("pvp_rating", "ch_terminal_no_challenges_for_rank"));
+                groundquests.grantQuest(player, "stardust_arena_dark");
+            }
+            else if (council == force_rank.LIGHT_COUNCIL)
+            {
+                groundquests.grantQuest(player, "stardust_arena_light");
             }
         }
         else if (item == menu_info_types.SERVER_MENU5)

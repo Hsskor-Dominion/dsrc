@@ -1487,6 +1487,13 @@ public class factions extends script.base_script
     {
         return pvpGetAlignedFaction(objPlayer) == (370444368);
     }
+    public static boolean isMercenary(obj_id objPlayer) throws InterruptedException
+    {
+        int mercFaction = pvpNeutralGetMercenaryFaction(objPlayer);
+
+        return mercFaction == (-615855020)  // Imperial merc
+                || mercFaction == (370444368);  // Rebel merc
+    }
     public static boolean isOnLeave(obj_id objPlayer) throws InterruptedException
     {
         return (pvpGetAlignedFaction(objPlayer) != 0) && pvpGetType(objPlayer) == PVPTYPE_NEUTRAL;
@@ -1658,11 +1665,11 @@ public class factions extends script.base_script
     }
     public static boolean isSmuggler(obj_id player) throws InterruptedException
     {
-        if (hasSkill(player, "class_smuggler_phase3_novice"))
+        if (hasSkill(player, "class_smuggler_phase1_novice"))
         {
             return true;
         }
-        else if (hasSkill(player, "class_smuggler_phase4_novice"))
+        else if (hasSkill(player, "combat_smuggler_novice"))
         {
             return true;
         }

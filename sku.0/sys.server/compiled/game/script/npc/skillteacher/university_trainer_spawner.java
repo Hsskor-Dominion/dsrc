@@ -25,10 +25,10 @@ public class university_trainer_spawner extends script.base_script
     }
     public void spawnMerchant(obj_id self) throws InterruptedException
     {
-        if (utils.checkConfigFlag("ScriptFlags", "noEliteTrainers"))
-        {
-            return;
-        }
+//        if (utils.checkConfigFlag("ScriptFlags", "noEliteTrainers"))
+//        {
+//            return;
+//        }
         obj_id room = getCellId(self, "meetinga");
         location merchantloc = new location(12.04f, 1.13f, 5.86f, "tatooine", room);
         obj_id merchant = create.object("trainer_merchant", merchantloc);
@@ -40,10 +40,10 @@ public class university_trainer_spawner extends script.base_script
     }
     public void spawnArchitect(obj_id self) throws InterruptedException
     {
-        if (utils.checkConfigFlag("ScriptFlags", "noEliteTrainers"))
-        {
-            return;
-        }
+//        if (utils.checkConfigFlag("ScriptFlags", "noEliteTrainers"))
+//        {
+//            return;
+//        }
         obj_id room = getCellId(self, "meetingc");
         location architectloc = new location(11.04f, 1.13f, -14.93f, "tatooine", room);
         obj_id architect = create.object("trainer_architect", architectloc);
@@ -55,10 +55,10 @@ public class university_trainer_spawner extends script.base_script
     }
     public void spawnWeaponsmith(obj_id self) throws InterruptedException
     {
-        if (utils.checkConfigFlag("ScriptFlags", "noEliteTrainers"))
-        {
-            return;
-        }
+//        if (utils.checkConfigFlag("ScriptFlags", "noEliteTrainers"))
+//        {
+//            return;
+//        }
         obj_id room = getCellId(self, "meetingd");
         location weaponsmithloc = new location(-3.18f, 1.13f, -8.19f, "tatooine", room);
         obj_id weaponsmith = create.object("trainer_weaponsmith", weaponsmithloc);
@@ -70,10 +70,10 @@ public class university_trainer_spawner extends script.base_script
     }
     public void spawnDroidEngineer(obj_id self) throws InterruptedException
     {
-        if (utils.checkConfigFlag("ScriptFlags", "noEliteTrainers"))
-        {
-            return;
-        }
+//        if (utils.checkConfigFlag("ScriptFlags", "noEliteTrainers"))
+//        {
+//            return;
+//        }
         obj_id room = getCellId(self, "meetinge");
         location engineerloc = new location(-11.08f, 1.13f, -14.76f, "tatooine", room);
         obj_id engineer = create.object("trainer_droidengineer", engineerloc);
@@ -85,10 +85,10 @@ public class university_trainer_spawner extends script.base_script
     }
     public void spawnArmorsmith(obj_id self) throws InterruptedException
     {
-        if (utils.checkConfigFlag("ScriptFlags", "noEliteTrainers"))
-        {
-            return;
-        }
+//        if (utils.checkConfigFlag("ScriptFlags", "noEliteTrainers"))
+//        {
+//            return;
+//        }
         obj_id room = getCellId(self, "meetingb");
         location armorsmithloc = new location(-15.22f, 1.13f, 0.10f, "tatooine", room);
         obj_id armorsmith = create.object("trainer_armorsmith", armorsmithloc);

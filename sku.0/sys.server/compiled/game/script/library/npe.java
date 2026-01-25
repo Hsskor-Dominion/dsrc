@@ -547,7 +547,7 @@ public class npe extends script.base_script
         }
         if (hasObjVar(player, "stardust_naboo_imperial"))
         {
-            warpPlayer(player, "naboo", 2440, 292, -3891, null, 0, 0, 0, "", false);
+            warpPlayer(player, "naboo", 2435, 292, -3899, null, 0, 0, 0, "", false);
         }
         if (hasObjVar(player, "stardust_kaadara"))
         {

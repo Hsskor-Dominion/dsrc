@@ -14,6 +14,7 @@ import static script.library.buff.removeBuff;
 import static script.library.meditation.MEDITATE_BUFF_FOCUS;
 import static script.library.meditation.MEDITATE_BUFF_STANCE;
 import static script.library.utils.hasScriptVar;
+import static script.systems.combat.combat_actions.isDizzy;
 
 public class base_player extends script.base_script
 {
@@ -1015,6 +1016,10 @@ public class base_player extends script.base_script
         else 
         {
             buff.applyBuffWithStackCount(self, "incapWeaken", 1);
+        }
+        if (hasSkill(self, "combat_smuggler_combat_01"))
+        {
+            buff.applyBuff(self, "feign_death");
         }
         int recapacitateTimer = 10;
         float recapacitateModified = getEnhancedSkillStatisticModifierUncapped(self, "resistance_incapacitation");
@@ -5006,8 +5011,31 @@ public class base_player extends script.base_script
         }
         return null;
     }
+    public static float getDizzyResistance(obj_id player) throws InterruptedException
+    {
+        float dizzyReduction = 0.0f;
+        dizzyReduction += (getEnhancedSkillStatisticModifierUncapped(player, "strength_modified") / 10.0f);
+        dizzyReduction += (getSkillStatisticModifier(player, "strength") / 10.0f);
+        dizzyReduction += getSkillStatisticModifier(player, "movement_resist_snare");
+        return dizzyReduction;
+    }
     public int OnChangedPosture(obj_id self, int before, int after) throws InterruptedException
     {
+        if (isDizzy(self))
+        {
+            float dizzyResist = getDizzyResistance(self);
+
+            float successChance = 10.0f + dizzyResist;
+
+            float roll = rand(0.0f, 100.0f);
+
+            if (roll > successChance)
+            {
+                // Failed balance check → stumble
+                setPosture(self, POSTURE_KNOCKED_DOWN);
+                return SCRIPT_CONTINUE;
+            }
+        }
         if (meditation.isMeditating(self))
         {
             meditation.endMeditation(self);
@@ -10281,13 +10309,11 @@ public class base_player extends script.base_script
     }
     public int OnEnterRegion(obj_id self, String planetName, String regionName) throws InterruptedException
     {
-        int currentMercenaryFaction = factions.pvpNeutralGetMercenaryFaction(self);
-        boolean isMercenary =
-                currentMercenaryFaction == -615855020 || // Rebel merc
-                        currentMercenaryFaction == 370444368;    // Imperial merc
         boolean isValidGcwParticipant =
-                (factions.isImperial(self) || factions.isRebel(self) || isMercenary)
-                        && factions.isCovert(self);
+                (factions.isImperial(self)
+                        || factions.isRebel(self)
+                        || factions.isMercenary(self));
+//                        && factions.isCovert(self);
         obj_id pvpRegionController = gcw.getPvpRegionControllerIdByName(self, regionName);
         if (isIdValid(pvpRegionController) && exists(pvpRegionController))
         {
@@ -12451,7 +12477,11 @@ public class base_player extends script.base_script
 
             // --- BONUS: Jedi XP tick and quest ---
             if (roll == 100) {
-                xp.grant(self, "jedi", 3);
+                xp.grant(self, "fs_combat", 5);
+                xp.grant(self, "fs_reflex", 5);
+                xp.grant(self, "fs_crafting", 5);
+                xp.grant(self, "fs_senses", 5);
+                xp.grant(self, "jedi", 5);
                 if (meditationBuff.equals("fs_meditate_2")) {
                     groundquests.grantQuest(self, "stardust_vision");
                 }

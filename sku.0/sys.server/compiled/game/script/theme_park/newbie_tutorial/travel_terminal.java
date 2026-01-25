@@ -47,20 +47,21 @@ public class travel_terminal extends script.theme_park.newbie_tutorial.tutorial_
     {
         if (item == menu_info_types.ITEM_USE)
         {
-            if (!hasScript(player, NEWBIE_SCRIPT_SKIPPED))
-            {
-                if (!hasObjVar(player, "newbie.talkedtojedi"))
-                {
-                    string_id TALK_TO_JEDI = new string_id(NEWBIE_STRING_FILE, "talk_to_jedi");
-                    sendSystemMessage(player, TALK_TO_JEDI);
-                    return SCRIPT_CONTINUE;
-                }
-                else 
-                {
-                    removeObjVar(player, "newbie.talkedtojedi");
-                }
-            }
-            leaveTutorial(self, player);
+//            if (!hasScript(player, NEWBIE_SCRIPT_SKIPPED))
+//            {
+//                if (!hasObjVar(player, "newbie.talkedtojedi"))
+//                {
+//                    string_id TALK_TO_JEDI = new string_id(NEWBIE_STRING_FILE, "talk_to_jedi");
+//                    sendSystemMessage(player, TALK_TO_JEDI);
+//                    return SCRIPT_CONTINUE;
+//                }
+//                else
+//                {
+//                    removeObjVar(player, "newbie.talkedtojedi");
+//                }
+//            }
+//            leaveTutorial(self, player);
+            newbieTutorialSendStartingLocationsToPlayer(player, null);
         }
         return SCRIPT_CONTINUE;
     }

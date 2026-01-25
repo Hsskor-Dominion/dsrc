@@ -4,6 +4,8 @@ import script.*;
 import script.library.slicing;
 import script.library.utils;
 
+import static script.library.factions.isSmuggler;
+
 public class office_keypad extends script.base_script
 {
     public office_keypad()
@@ -130,7 +132,7 @@ public class office_keypad extends script.base_script
     public boolean hasSlicingSkill(obj_id player) throws InterruptedException
     {
         boolean hadIt = false;
-        if (hasSkill(player, "class_smuggler_phase1_novice"))
+        if (isSmuggler(player))
         {
             hadIt = true;
         }

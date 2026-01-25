@@ -125,32 +125,50 @@ public class sith_holocron3 extends script.base_script
 //                updateJediScriptData(player, "jedi", 1);
 //                return SCRIPT_OVERRIDE;
             }
-            if (isMandoExplore(player, self))
-            {
-                sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish_mando"));
-                setSkillTemplate(player, "force_sensitive_1a");
+            // Grant Force Sensitivity
+            if (!hasSkill(player,"class_forcesensitive_phase1_novice")) {
                 grantSkill(player, "force_sensitive");
-                grantSkill(player, "class_forcesensitive_phase1");
-                grantSkill(player, "class_forcesensitive_phase1_novice");
-                grantSkill(player, "force_sensitive_heightened_senses_persuasion_04");
-                xp.grant(player, "jedi", 5000);
-                factions.addFactionStanding(player, "sith_shadow", 50.0f);
-                factions.goOvertWithDelay(player, 0.0f);
-                holocron_action_grantQuestRevan(player, self);
-                jedi_trials.initializePadawanTrials(player);
-                destroyObject(self);
-                int mission_bounty = 25000;
-                int current_bounty = 0;
-                mission_bounty += rand(1, 2000);
-                if (hasObjVar(player, "bounty.amount"))
-                {
-                    current_bounty = getIntObjVar(player, "bounty.amount");
-                }
-                current_bounty += mission_bounty;
-                setObjVar(player, "bounty.amount", current_bounty);
-                setObjVar(player, "jedi.bounty", mission_bounty);
-                setJediBountyValue(player, current_bounty);
-                updateJediScriptData(player, "jedi", 1);
+                grantSkill(player, "force_sensitive_combat_prowess_novice");
+                grantSkill(player, "force_sensitive_enhanced_reflexes_novice");
+                grantSkill(player, "force_sensitive_crafting_mastery_novice");
+                grantSkill(player, "force_sensitive_heightened_senses_novice");
+                sendSystemMessage(player, new string_id("jedi_spam", "holocron_vision_aurilia_village"));
+            }
+            if ((fs_quests.getBranchesLearned(player) >= 6) && (!hasSkill(player,"class_forcesensitive_phase1_novice")))
+        {
+            // Grant Jedi skills
+            jedi_trials.initializePadawanTrials(player);
+            setSkillTemplate(player, "force_sensitive_1a");
+            grantSkill(player, "class_forcesensitive_phase1");
+            grantSkill(player, "class_forcesensitive_phase1_novice");
+        }
+
+            if ((fs_quests.getBranchesLearned(player) >= 1) && (isMandoExplore(player, self)))
+            {
+                    sendSystemMessage(player, new string_id("jedi_spam", "holocron_force_replenish_mando"));
+                    setSkillTemplate(player, "force_sensitive_1a");
+                    grantSkill(player, "class_forcesensitive_phase1");
+                    grantSkill(player, "class_forcesensitive_phase1_novice");
+                    xp.grant(player, "jedi", 5000);
+                    factions.addFactionStanding(player, "sith_shadow", 50.0f);
+                    factions.goOvertWithDelay(player, 0.0f);
+                    holocron_action_grantQuestRevan(player, self);
+                    jedi_trials.initializePadawanTrials(player);
+                    destroyObject(self);
+                    int mission_bounty = 25000;
+                    int current_bounty = 0;
+                    mission_bounty += rand(1, 2000);
+                    if (hasObjVar(player, "bounty.amount"))
+                    {
+                        current_bounty = getIntObjVar(player, "bounty.amount");
+                    }
+                    current_bounty += mission_bounty;
+                    setObjVar(player, "bounty.amount", current_bounty);
+                    setObjVar(player, "jedi.bounty", mission_bounty);
+                    setJediBountyValue(player, current_bounty);
+                    updateJediScriptData(player, "jedi", 1);
+                    return SCRIPT_OVERRIDE;
+
             }
             else
             {

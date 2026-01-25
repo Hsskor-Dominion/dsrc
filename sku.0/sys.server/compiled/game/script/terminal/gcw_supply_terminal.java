@@ -88,6 +88,7 @@ public class gcw_supply_terminal extends script.base_script
         if (tier > maxTier)
         {
             groundquests.sendSignal(player, "sliceTerminal");
+            xp.grant(player, "slicing", 10);
             utils.setScriptVar(player, "gcw.maxTier", tier);
             if (tier == 4 || tier == 6 || tier == 8 || tier == 9 || tier == 10)
             {

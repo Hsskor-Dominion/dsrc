@@ -3,6 +3,8 @@ package script.faction_perk.hq;
 import script.*;
 import script.library.*;
 
+import static script.library.factions.isSmuggler;
+
 public class objective_terminal_security extends script.faction_perk.hq.objective_object
 {
     public objective_terminal_security()
@@ -83,7 +85,7 @@ public class objective_terminal_security extends script.faction_perk.hq.objectiv
         }
         if (item == menu_info_types.ITEM_USE)
         {
-            if (!hasSkill(player, "class_smuggler_phase1_novice"))
+            if (!isSmuggler(player))
             {
                 sendSystemMessage(player, ONLY_A_SMUGGLER);
                 return SCRIPT_CONTINUE;

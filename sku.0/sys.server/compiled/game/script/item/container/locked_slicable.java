@@ -3,6 +3,8 @@ package script.item.container;
 import script.*;
 import script.library.*;
 
+import static script.library.factions.isSmuggler;
+
 public class locked_slicable extends script.base_script
 {
     public locked_slicable() { }
@@ -33,7 +35,7 @@ public class locked_slicable extends script.base_script
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
         // Smuggler slice option
-        if (hasSkill(player, "class_smuggler_phase1_novice") && hasObjVar(self, "slicing.locked"))
+        if (isSmuggler(player) && hasObjVar(self, "slicing.locked"))
         {
             mi.addRootMenu(menu_info_types.SERVER_MENU1, SID_SLICE);
         }
@@ -52,7 +54,7 @@ public class locked_slicable extends script.base_script
         // --- Smuggler Slice (unlock + payout) ---
         if (item == menu_info_types.SERVER_MENU1)
         {
-            if (!hasSkill(player, "class_smuggler_phase1_novice"))
+            if (!isSmuggler(player))
                 return SCRIPT_CONTINUE;
 
             if (!hasObjVar(self, "slicing.slicable"))

@@ -2,10 +2,13 @@ package script.npc.faction_recruiter;
 
 import script.library.factions;
 import script.library.utils;
+import script.library.xp;
 import script.obj_id;
 import script.menu_info;
 import script.menu_info_types;
 import script.string_id;
+
+import static script.library.factions.isSmuggler;
 
 public class faction_item extends script.base_script
 {
@@ -46,15 +49,17 @@ public class faction_item extends script.base_script
         return SCRIPT_CONTINUE;
     }
 
+
     // ---------------------
-    // Slice Menu Option
-    // ---------------------
+// Slice Menu Option
+// ---------------------
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
         // Broadened conditions: any faction item or locked item can be sliced
-        boolean factionLinked = hasObjVar(self, "faction_recruiter.faction") || hasObjVar(self, "faction");
+        boolean factionLinked = hasObjVar(self, "faction_recruiter.faction")
+                || hasObjVar(self, "faction");
 
-        if (hasSkill(player, "class_smuggler_phase1_novice") && factionLinked && !hasObjVar(self, CONTRABAND_VAR))
+        if (isSmuggler(player) && factionLinked && !hasObjVar(self, CONTRABAND_VAR))
         {
             mi.addRootMenu(menu_info_types.SERVER_MENU6, SID_SLICE);
         }
@@ -78,6 +83,15 @@ public class faction_item extends script.base_script
     // ---------------------
     private void performSlice(obj_id self, obj_id player) throws InterruptedException
     {
+
+        // ---- Require slicing module (player inventory!) ----
+        obj_id module = utils.getStaticItemInInventory(player, "item_reward_modify_pistol_01_01"); //can we make this or object/tangible/slicing/slicing_laser_knife.iff? take from either stack?
+        if (!isIdValid(module) || getCount(module) <= 0)
+        {
+            sendSystemMessage(player, new string_id("spam", "pistol_module_missing"));
+            return;
+        }
+
         // Damage condition by 50%
         int curHp = getHitpoints(self);
         setHitpoints(self, Math.max(curHp / 2, 1));
@@ -95,8 +109,9 @@ public class faction_item extends script.base_script
         // Mark as contraband
         setObjVar(self, CONTRABAND_VAR, true);
 
-        // Small underworld penalty
+        // Small underworld penalty / slicing xp
         factions.addFactionStanding(player, "underworld", -1.0f);
+        xp.grant(player, "slicing", 100);
 
         // Notify
         sendSystemMessage(player, new string_id("smuggler/slicing", "contraband_slice_success"));

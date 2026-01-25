@@ -7,6 +7,8 @@ import script.string_id;
 
 import java.util.Vector;
 
+import static script.library.factions.isSmuggler;
+
 public class ai_lib extends script.base_script
 {
     public ai_lib()
@@ -1404,12 +1406,12 @@ public class ai_lib extends script.base_script
     }
     public static boolean checkForSmuggler(obj_id player) throws InterruptedException
     {
-        if (!hasSkill(player, "class_smuggler_phase1_novice"))
+        if (!isSmuggler(player))
         {
             return false;
         }
         int evadeScan = 0;
-        if (hasSkill(player, "class_smuggler_phase1_novice"))
+        if (hasSkill(player, "combat_smuggler_novice"))
         {
             evadeScan += 15;
         }
@@ -1429,7 +1431,7 @@ public class ai_lib extends script.base_script
         {
             evadeScan += 15;
         }
-        if (hasSkill(player, "class_smuggler_phase4_master"))
+        if (hasSkill(player, "combat_smuggler_master"))
         {
             evadeScan += 20;
         }

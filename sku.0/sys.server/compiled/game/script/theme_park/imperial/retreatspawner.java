@@ -35,6 +35,8 @@ public class retreatspawner extends script.base_script
         spawnDarth(self);
         spawnSith(self);
         spawnSith2(self);
+        spawnSith3(self);
+        spawnSith4(self);
         return;
     }
     public void spawnGuards(obj_id self) throws InterruptedException
@@ -238,9 +240,37 @@ public class retreatspawner extends script.base_script
     }
     public void spawnSith2(obj_id self) throws InterruptedException
     {
-        obj_id sithAcademy = obj_id.getObjId(1418892); // Using the direct ID
-        location sithLocation = new location(20f, 20f, 20f, "naboo", sithAcademy);
+        obj_id sithAcademy = getCellId(self, "inquisitionchamber"); //using cell name
+        location sithLocation = new location(0f, 0f, 0f, "naboo", sithAcademy);
+//        location sithLocation = new location(-47f, 0f, -20f, "naboo", sithMain);
+//        obj_id sithAcademy = obj_id.getObjId(1418892); // Using the direct ID
+//        location sithLocation = new location(20f, 20f, 20f, "naboo", sithAcademy);
         obj_id sith = create.staticObject("shin_hati", sithLocation);
+        int sith_yaw = 0;
+        setYaw(sith, sith_yaw);
+        setObjVar(self, "RetreatInhabitants.darth", sith);
+        setObjVar(sith, "Retreat", self);
+        return;
+    }
+    public void spawnSith3(obj_id self) throws InterruptedException
+    {
+        obj_id sithAcademy = getCellId(self, "inquisitionchamber"); //using cell name
+        location sithLocation = new location(5f, 0f, 5f, "naboo", sithAcademy);
+//        location sithLocation = new location(-47f, 0f, -20f, "naboo", sithMain);
+//        obj_id sithAcademy = obj_id.getObjId(1418892); // Using the direct ID
+//        location sithLocation = new location(20f, 20f, 20f, "naboo", sithAcademy);
+        obj_id sith = create.staticObject("stardust_baylen_skoll", sithLocation);
+        int sith_yaw = 0;
+        setYaw(sith, sith_yaw);
+        setObjVar(self, "RetreatInhabitants.darth", sith);
+        setObjVar(sith, "Retreat", self);
+        return;
+    }
+    public void spawnSith4(obj_id self) throws InterruptedException
+    {
+        obj_id sithRoom = getCellId(self, "crafting2");
+        location sithLocation = new location(-8.50f, -8.9f, -40.06f, "naboo", sithRoom);
+        obj_id sith = create.staticObject("trainer_fs", sithLocation);
         int sith_yaw = 0;
         setYaw(sith, sith_yaw);
         setObjVar(self, "RetreatInhabitants.darth", sith);

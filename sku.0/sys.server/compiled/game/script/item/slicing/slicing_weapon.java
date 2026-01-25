@@ -3,6 +3,8 @@ package script.item.slicing;
 import script.*;
 import script.library.*;
 
+import static script.library.factions.isSmuggler;
+
 public class slicing_weapon extends script.base_script
 {
     public slicing_weapon()
@@ -51,8 +53,7 @@ public class slicing_weapon extends script.base_script
         }
 
         // FAIL only if the player has NEITHER skill
-        if (!hasSkill(player, "class_smuggler_phase1_novice") &&
-                !hasSkill(player, "expertise_engineering_weaponsmith_socket_bonus_1"))
+        if (!isSmuggler(player))
         {
             return SCRIPT_CONTINUE;
         }
@@ -74,8 +75,7 @@ public class slicing_weapon extends script.base_script
         }
 
         // FAIL only if the player has NEITHER skill
-        if (!hasSkill(player, "class_smuggler_phase1_novice") &&
-                !hasSkill(player, "expertise_engineering_weaponsmith_socket_bonus_1"))
+        if (!isSmuggler(player))
         {
             return SCRIPT_CONTINUE;
         }

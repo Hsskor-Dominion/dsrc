@@ -42,7 +42,7 @@ public class township extends script.base_script
             LOG("force_sensitive", "township.isTownshipEligible -- player is invalid.");
             return false;
         }
-        return hasSkill(player,"class_forcesensitive_phase1_novice");
+        return hasSkill(player,"force_sensitive");
     }
     public static boolean giveTravelListFromAurilia(obj_id player, obj_id npc) throws InterruptedException
     {

@@ -396,6 +396,7 @@ public class yoda extends script.base_script
             revokeSkill(player, "force_rank_light");
             revokeSkill(player, "force_rank_light_novice");
             detachScript(player, SCRIPT_FRS_PLAYER);
+            setObjVar(player, force_rank.VAR_RANK, 0);
             setJediState(player, JEDI_STATE_NONE);//this removes the mind bar bug
 
 

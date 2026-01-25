@@ -9,6 +9,8 @@ import script.menu_info_types;
 import script.obj_id;
 import script.string_id;
 
+import static script.library.factions.isSmuggler;
+
 public class space_duty_crate extends script.base_script
 {
     public space_duty_crate()
@@ -93,7 +95,7 @@ public class space_duty_crate extends script.base_script
                 }
             }
         }
-        if (hasSkill(player, "class_smuggler_phase1_novice"))
+        if (isSmuggler(player))
         {
             int smugglerItems = rand(1, 5);
             for (int i = 0; i < smugglerItems; i++)

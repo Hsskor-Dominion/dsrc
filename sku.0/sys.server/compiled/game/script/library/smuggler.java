@@ -4,6 +4,8 @@ import script.*;
 
 import java.util.Vector;
 
+import static script.library.factions.isSmuggler;
+
 public class smuggler extends script.base_script
 {
     public smuggler()
@@ -1018,7 +1020,7 @@ public class smuggler extends script.base_script
     }
     public static void checkSmugglerMissionBountyFailure(obj_id player, obj_id killer) throws InterruptedException
     {
-        if (hasSkill(player, "class_smuggler_phase1_novice"))
+        if (isSmuggler(player))
         {
             if (groundquests.isQuestActive(player, "quest/smuggle_pvp_4") || groundquests.isQuestActive(player, "quest/smuggle_pvp_5"))
             {
@@ -1044,7 +1046,7 @@ public class smuggler extends script.base_script
                 revokeSkill(player, "bh_title_informant");
             }
         }
-        if (value >= 2000.0f)
+        if (value >= 1000.0f)
         {
             if (!hasSkill(player, "sm_title_pirate"))
             {
@@ -1059,7 +1061,7 @@ public class smuggler extends script.base_script
                 revokeSkill(player, "sm_title_pirate");
             }
         }
-        if (value >= 3000.0f)
+        if (value >= 2000.0f)
         {
             if (!hasSkill(player, "sm_title_master_smuggler"))
             {

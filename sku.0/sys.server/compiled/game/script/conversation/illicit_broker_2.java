@@ -3,6 +3,8 @@ package script.conversation;
 import script.*;
 import script.library.*;
 
+import static script.library.factions.isSmuggler;
+
 public class illicit_broker_2 extends script.base_script
 {
     public illicit_broker_2()
@@ -15,7 +17,7 @@ public class illicit_broker_2 extends script.base_script
     }
     public boolean illicit_broker_2_condition_isNonSmuggler(obj_id player, obj_id npc) throws InterruptedException
     {
-        if (!hasSkill(player, "class_smuggler_phase1_novice")) {
+        if (!isSmuggler(player)) {
             return true;
         }
         return false;

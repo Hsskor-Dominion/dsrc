@@ -127,6 +127,29 @@ public class respecseller extends script.base_script
             grantSkill(player, "expertise");
         }
     }
+    public void respecseller_action_removeCombatUpgradeSkills(obj_id player, obj_id npc) throws InterruptedException
+    {
+        String[] skillList = getSkillListingForPlayer(player);
+        int attempts = skillList.length;
+        if ((skillList.length != 0))
+        {
+            while (skillList.length > 0 && attempts > 0)
+            {
+                for (String skillName : skillList) {
+                    if (!skillName.startsWith("expertise_") && !skillName.startsWith("stardust") && !skillName.startsWith("faction") && !skillName.startsWith("force_sensitive") && !skillName.startsWith("class") && !skillName.startsWith("costume") && !skillName.startsWith("class_chronicles") && !skillName.startsWith("species_") && !skillName.startsWith("social_language_") && !skillName.startsWith("social_politician_") && !skillName.startsWith("pilot_") && !skillName.startsWith("swg_") && !skillName.startsWith("utility_") && !skillName.startsWith("common_") && !skillName.startsWith("pvp_") && !skillName.startsWith("internal_expertise_") && !skillName.equals("expertise")) {
+                        skill.revokeSkillSilent(player, skillName);
+                    }
+                }
+                skillList = getSkillListingForPlayer(player);
+                --attempts;
+            }
+        }
+        obj_id mission = bounty_hunter.getBountyMission(player);
+        if (isIdValid(mission))
+        {
+            messageTo(mission, "abortMission", null, 0, false);
+        }
+    }
     public void respecseller_action_buyReallocation(obj_id player, obj_id npc) throws InterruptedException
     {
         respec.handleNpcRealloc(player);
@@ -512,6 +535,23 @@ public class respecseller extends script.base_script
                 return SCRIPT_CONTINUE;
             }
         }
+        if (response.equals("s_34"))
+        {
+            if (respecseller_condition__defaultCondition(player, npc))
+            {
+                final string_id message = new string_id(c_stringFile, "npc_skill_reset_are_you_sure");
+                final int numberOfResponses = 1;
+
+                final string_id[] responses = new string_id[numberOfResponses];
+                int responseIndex = 0;
+
+                responses[responseIndex++] = new string_id(c_stringFile, "s_skill_reset");
+                utils.setScriptVar(player, "conversation.respecseller.branchId", 5);
+                npcSpeak(player, message);
+                npcSetConversationResponses(player, responses);
+                return SCRIPT_CONTINUE;
+            }
+        }
         return SCRIPT_DEFAULT;
     }
     public int respecseller_handleBranch3(obj_id player, obj_id npc, string_id response) throws InterruptedException
@@ -532,6 +572,21 @@ public class respecseller extends script.base_script
             if (respecseller_condition__defaultCondition(player, npc))
             {
                 string_id message = new string_id(c_stringFile, "s_46");
+                utils.removeScriptVar(player, "conversation.respecseller.branchId");
+                npcEndConversationWithMessage(player, message);
+                return SCRIPT_CONTINUE;
+            }
+        }
+        return SCRIPT_DEFAULT;
+    }
+    public int respecseller_handleBranch5(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    {
+        if (response.equals("s_skill_reset"))
+        {
+            if (respecseller_condition__defaultCondition(player, npc))
+            {
+                respecseller_action_removeCombatUpgradeSkills(player, npc);
+                string_id message = new string_id(c_stringFile, "s_skills_reset_to_zero");
                 utils.removeScriptVar(player, "conversation.respecseller.branchId");
                 npcEndConversationWithMessage(player, message);
                 return SCRIPT_CONTINUE;
@@ -879,7 +934,7 @@ public class respecseller extends script.base_script
         {
             return SCRIPT_OVERRIDE;
         }
-        if (respecseller_condition_hasExpertiseSkill(player, npc))
+        if (respecseller_condition__defaultCondition(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_31");
             int numberOfResponses = 0;
@@ -898,6 +953,14 @@ public class respecseller extends script.base_script
                 hasResponse = true;
                 hasResponse1 = true;
             }
+
+            boolean hasResponse2 = false;
+            if (respecseller_condition__defaultCondition(player, npc))
+            {
+                ++numberOfResponses;
+                hasResponse = true;
+                hasResponse2 = true;
+            }
             if (hasResponse)
             {
                 int responseIndex = 0;
@@ -910,10 +973,15 @@ public class respecseller extends script.base_script
                 {
                     responses[responseIndex++] = new string_id(c_stringFile, "s_33");
                 }
+                if (hasResponse2)
+                {
+                    responses[responseIndex++] = new string_id(c_stringFile, "s_34");
+                }
+
                 utils.setScriptVar(player, "conversation.respecseller.branchId", 1);
                 npcStartConversation(player, npc, "respecseller", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -943,7 +1011,7 @@ public class respecseller extends script.base_script
                 utils.setScriptVar(player, "conversation.respecseller.branchId", 19);
                 npcStartConversation(player, npc, "respecseller", message, responses);
             }
-            else 
+            else
             {
                 chat.chat(npc, player, message);
             }
@@ -965,6 +1033,10 @@ public class respecseller extends script.base_script
             return SCRIPT_CONTINUE;
         }
         if (branchId == 3 && respecseller_handleBranch3(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        if (branchId == 5 && respecseller_handleBranch5(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }

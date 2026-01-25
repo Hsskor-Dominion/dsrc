@@ -39,11 +39,11 @@ public class bothan_spy extends script.base_script
     }
     public boolean bothan_spy_smuggler_condition(obj_id npc, obj_id player)
     {
-        return hasSkill(player,"class_smuggler_phase1_novice");
+        return hasSkill(player,"class_smuggler_phase1_novice") || hasSkill(player,"combat_smuggler_novice");
     }
     public boolean bothan_spy_spy_condition(obj_id npc, obj_id player)
     {
-        return hasSkill(player,"class_spy_phase1_novice");
+        return hasSkill(player,"class_spy_phase1_novice") || hasSkill(player,"outdoors_ranger_novice");
     }
     public boolean bothan_spy_credits_condition(obj_id player, obj_id npc) throws InterruptedException
     {

@@ -3,6 +3,8 @@ package script.systems.missions.base;
 import script.*;
 import script.library.*;
 
+import static script.library.factions.isSmuggler;
+
 public class mission_terminal extends script.base_script
 {
     public mission_terminal()
@@ -57,7 +59,7 @@ public class mission_terminal extends script.base_script
         }
         else if (item == menu_info_types.SERVER_MENU2)
         {
-            if (!hasSkill(player, "class_smuggler_phase1_novice"))
+            if (!isSmuggler(player))
             {
                 return SCRIPT_CONTINUE;
             }
@@ -98,6 +100,7 @@ public class mission_terminal extends script.base_script
             sendSystemMessage(player, SID_SUCCESS_SLICE);
             utils.setScriptVar(player, "slicing.terminal", self);
             utils.setScriptVar(player, "slicing.terminal_bonus", 1.5f);
+            xp.grant(player, "slicing", 100);
         }
         else 
         {

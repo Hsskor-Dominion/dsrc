@@ -46,17 +46,17 @@ diseaseInnoculation	doctorDisease			1	command.diseaseInnoculation	1200	resistanc
 diseaseInnoculation_1	doctorDisease			2	command.diseaseInnoculation	2400	resistance_disease	80	absorption_disease	25		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 paralyze	cmParalyze	mez		1	command.paralyze	7	delay_attack	0	movement	0		0		0		0	STATE_NONE	mezRecourse			1	1		1	1	1	0	1	1	0	1	1	1
 paralyze_1	cmParalyze	mez		2	command.paralyze	15	delay_attack	0	movement	0		0		0		0	STATE_NONE	mezRecourse			1	1		1	1	1	0	1	1	0	1	1	1
-rollShot	rollShot			1	command.rollShot	120	expertise_glancing_blow_ranged	5	expertise_glancing_blow_melee	-5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-diveShot	diveShot			1	command.diveShot	120	expertise_glancing_blow_ranged	10	expertise_glancing_blow_melee	-10	camouflage	100		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-kipUpShot	kipUpShot			1	command.kipUpShot	120	private_defense_bonus	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+rollShot	rollShot			1	command.rollShot	300	expertise_glancing_blow_ranged	5	expertise_glancing_blow_melee	-5		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+diveShot	diveShot			1	command.diveShot	300	expertise_glancing_blow_ranged	10	expertise_glancing_blow_melee	-10	camouflage	100		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+kipUpShot	kipUpShot			1	command.kipUpShot	300	private_defense_bonus	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 swordFlurry	swordFlurry			1	command.swordFlurry	10	private_defense_bonus	80		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
 swordFlurry_1	swordFlurry			2	command.swordFlurry	10	private_defense_bonus	120		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
 recklessShot	recklessShot			1	command.recklessShot	10	private_defense_penalty	80		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
 recklessShot_1	recklessShot			2	command.recklessShot	10	private_defense_penalty	80		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
 recklessShot_2	recklessShot			3	command.recklessShot	10	private_defense_penalty	80		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
-aim	aim			1	command.aim	15	private_accuracy_bonus	80		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
-aim_1	aim			2	command.aim	15	private_accuracy_bonus	160		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
-aim_2	aim			3	command.aim	15	private_accuracy_bonus	240		0		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
+aim	aim			1	command.aim	15	private_accuracy_bonus	80	precision_modified	80		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
+aim_1	aim			2	command.aim	15	private_accuracy_bonus	160	precision_modified	160		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
+aim_2	aim			3	command.aim	15	private_accuracy_bonus	240	precision_modified	240		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
 warningShot	warningShot			1	command.warningShot	15	private_defense_penalty	80		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 parryRiposte	parryRiposte	dmgShield		1	command.parryRiposte	5	private_defense_bonus	80	private_melee_dmg_shield	15		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
 duelistStance	duelistStance	dmgShield		1	command.duelistStance	30	private_defense_bonus	75	private_damage_shield	8		0		0		0	STATE_NONE	none			0	0		1	1	1	0	1	1	0	1	1	1
@@ -67,7 +67,7 @@ bindingStrike_1	bindingStrike			2	command.bindingStrike	45	stamina	-250		0		0		0
 armorBreak	armorBreak			1	command.armorBreak	15	private_armor_break	42		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 armorBreak_1	armorBreak			3	command.armorBreak	20	private_armor_break	100		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 armorBreak_2	armorBreak			4	command.armorBreak	30	private_armor_break	150		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
-berserk	berserk			1	command.warcry	10	private_melee_dmg_bonus	20	combat_divide_damage_taken	-20	expertise_undiminished_critical_melee	20	constitutionPercent	20	staminaPercent	20	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
+berserk	berserk			1	command.berserk	10	private_melee_dmg_bonus	20	combat_divide_damage_taken	-20	expertise_undiminished_critical_melee	20	constitutionPercent	20	staminaPercent	20	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
 berserk_1	berserk			2	command.berserk	10	private_melee_dmg_bonus	50		0		0		0		0	STATE_BERSERK	none			1	0		1	1	1	0	1	1	0	1	1	1
 startleShot	startleShot			1	command.startleShot	5	private_posture_override	1		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
 startleShot_1	startleShot			2	command.startleShot	5	private_posture_override	1		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
@@ -83,16 +83,16 @@ kneecapShot	kneecapShot	snare		1	command.kneecapShot	20	movement	0		0		0		0		0	S
 kneecapShot_1	kneecapShot	snare		2	command.kneecapShot	20	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 restrainingShot	restrainingShot	snare		1	command.restrainingShot	20	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 restrainingShot_1	restrainingShot	snare		2	command.restrainingShot	20	movement	0		0		0		0		0	STATE_NONE	none			0	1		1	1	1	0	1	1	0	1	1	1
-stoppingShot	stoppingShot	root		1	command.stoppingShot	10	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-stoppingShot_1	stoppingShot	root		2	command.stoppingShot	15	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-stoppingShot_2	stoppingShot	root		3	command.stoppingShot	20	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+stoppingShot	stoppingShot	root		1	command.stoppingShot	5	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+stoppingShot_1	stoppingShot	root		2	command.stoppingShot	8	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+stoppingShot_2	stoppingShot	root		3	command.stoppingShot	10	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 concussionShot	concussionShot	mez		1	command.concussionShot	20	delay_attack	0	movement	0		0		0		0	STATE_NONE	mezRecourse			1	1		1	1	1	0	1	1	0	1	1	1
 concussionShot_1	concussionShot	mez		2	command.concussionShot	40	delay_attack	0	movement	0		0		0		0	STATE_NONE	mezRecourse			1	1		1	1	1	0	1	1	0	1	1	1
 suppressionFire	suppressionFire			1	command.suppressionFire	2	suppression	45		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 suppressionFire_1	suppressionFire			2	command.suppressionFire	2	suppression	65		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 suppressionFire_2	suppressionFire			3	command.suppressionFire	2	suppression	75		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-warcry	warcry			1	command.warcry	10	combat_slow	20		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-warcry_1	warcry			2	command.warcry	20	combat_slow	40		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+warcry	warcry			1	command.warcry	10	combat_slow	20	combat_multiply_damage_taken	5		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
+warcry_1	warcry			2	command.warcry	20	combat_slow	40	combat_multiply_damage_taken	10		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 disarmingShot	disarmingShot	daze		1	command.disarmingShot	3	delay_attack	0		0		0		0		0	STATE_NONE	dazeRecourse			1	1		1	1	1	0	1	1	0	1	1	1
 disarmingShot_1	disarmingShot	daze		2	command.disarmingShot	5	delay_attack	0		0		0		0		0	STATE_NONE	dazeRecourse			1	1		1	1	1	0	1	1	0	1	1	1
 panicShot	panicShot	daze		1	command.panicShot	15	delay_attack	0		0		0		0		0	STATE_NONE	dazeRecourse			1	1		1	1	1	0	1	1	0	1	1	1
@@ -103,11 +103,12 @@ dazeBlockDebuff	daze			10	state.anger	20		0		0		0		0		0	STATE_NONE	none			1	1		1
 tranqDart	trap			1	buffs.genericDebuff	20	movement	0		0		0		0		0	STATE_NONE	snareEffectOff			1	1		1	1	1	0	1	1	0	1	1	1
 burstRun	burstrun	escape		1	command.burstRun	60	movement	0		0		0		0		0	STATE_NONE	removeBurstRun			1	0		1	1	1	0	1	1	0	1	1	1
 cryobanSnare	cold			1	buffs.cryobanSnare	5	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-intimidate	intimidate			1	command.intimidate	-1		0		0		0		0		0	STATE_INTIMIDATED	none			1	1		0	1	1	0	1	1	0	1	1	1
+intimidate	intimidate			1	command.intimidate	8	combat_divide_damage_dealt	50		0		0		0		0	STATE_INTIMIDATED	none			1	1		0	1	1	0	1	1	0	1	1	1
+Intimidate_1	intimidate			1	command.intimidate	8	combat_divide_damage_dealt	75		0		0		0		0	STATE_INTIMIDATED	none			1	1		0	1	1	0	1	1	0	1	1	1
 feign_death	feign_death			1	command.feignDeath	-1		0		0		0		0		0	STATE_FEIGN_DEATH	none			1	0		0	1	1	0	1	1	0	1	1	1
-blind	blind			1	command.blindAttack	-1		0		0		0		0		0	STATE_BLINDED	none			1	1		0	1	1	0	1	1	0	1	1	1
-dizzy	dizzy			1	command.dizzyRecovery	-1		0		0		0		0		0	STATE_DIZZY	none			1	1		0	1	1	0	1	1	0	1	1	1
-stun	stun			1	command.stunRecovery	-1		0		0		0		0		0	STATE_STUNNED	none			1	1		0	1	1	0	1	1	0	1	1	1
+blind	blind			1	command.blindAttack	8	precision_modified	-100	strength_modified	-100		0		0		0	STATE_BLINDED	none			1	1		0	1	1	0	1	1	0	1	1	1
+dizzy	dizzy			1	command.dizzyRecovery	8	agility_modified	-40	precision_modified	-40		0		0		0	STATE_DIZZY	none			1	1		0	1	1	0	1	1	0	1	1	1
+stun	stun			1	command.stunRecovery	8	precision_modified	-40	strength_modified	-40		0		0		0	STATE_STUNNED	none			1	1		0	1	1	0	1	1	0	1	1	1
 bleeding	bleeding			1	state.bleeding	-1		0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 poisoned	poisoned			1	state.poisoned	-1		0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
 diseased	diseased			1	state.diseased	-1		0		0		0		0		0	STATE_NONE	none			1	1		0	1	1	0	1	1	0	1	1	1
@@ -703,20 +704,20 @@ sm_ae_dm_cc_melee_3	snare			22	command.sm_ae_dm_cc_melee	8	movement	0		0		0		0		
 sm_ae_dm_cc_melee_4	snare			34	command.sm_ae_dm_cc_melee	10	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 sm_ae_dm_cc_melee_5	snare			48	command.sm_ae_dm_cc_melee	12	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
 sm_ae_dm_cc_melee_6	snare			60	command.sm_ae_dm_cc_melee	14	movement	0		0		0		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_1	snare			4	command.sm_dm_cc	2	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_2	snare			12	command.sm_dm_cc	4	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_3	snare			20	command.sm_dm_cc	6	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_4	snare			30	command.sm_dm_cc	8	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_5	snare			38	command.sm_dm_cc	10	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_6	snare			52	command.sm_dm_cc	12	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_7	snare			62	command.sm_dm_cc	14	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_melee_1	snare			4	command.sm_dm_cc_melee	2	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_melee_2	snare			12	command.sm_dm_cc_melee	4	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_melee_3	snare			20	command.sm_dm_cc_melee	6	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_melee_4	snare			30	command.sm_dm_cc_melee	8	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_melee_5	snare			38	command.sm_dm_cc_melee	10	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_melee_6	snare			52	command.sm_dm_cc_melee	12	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
-sm_dm_cc_melee_7	snare			62	command.sm_dm_cc_melee	14	movement	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_1	snare			4	command.dizzyRecovery	2	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_2	snare			12	command.dizzyRecovery	4	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_3	snare			20	command.dizzyRecovery	6	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_4	snare			30	command.dizzyRecovery	8	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_5	snare			38	command.dizzyRecovery	10	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_6	snare			52	command.dizzyRecovery	12	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_7	snare			62	command.dizzyRecovery	14	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_melee_1	snare			4	command.dizzyRecovery	2	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_melee_2	snare			12	command.dizzyRecovery	4	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_melee_3	snare			20	command.dizzyRecovery	6	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_melee_4	snare			30	command.dizzyRecovery	8	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_melee_5	snare			38	command.dizzyRecovery	10	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_melee_6	snare			52	command.dizzyRecovery	12	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
+sm_dm_cc_melee_7	snare			62	command.dizzyRecovery	14	movement	0	agility_modified	-40	private_accuracy_bonus	-40		0		0	STATE_NONE	none	appearance/pt_smuggler_dizzy_loop.prt		1	1		1	1	1	0	1	1	0	1	1	1
 sm_sly_lie	sly_lie			10	command.sm_path_sly_lie	600	expertise_sly_lie	0		0		0		0		0	STATE_NONE	none	clienteffect/sm_sly_lie.cef		1	0		1	1	1	0	1	1	0	1	1	1
 sm_fast_talk	fast_talk			10	command.sm_path_fast_talk	600	expertise_fast_talk	0		0		0		0		0	STATE_NONE	none	appearance/pt_smuggler_fast_talk.prt		1	0		1	1	1	0	1	1	0	1	1	1
 sm_off_the_cuff	off_the_cuff			10	command.sm_general_off_the_cuff	10	expertise_next_hit_crit	0	expertise_crit_remove_buff	0		0		0		0	STATE_NONE	none	clienteffect/sm_off_the_cuff.cef		1	0		1	1	1	0	1	1	0	1	1	1
@@ -1197,8 +1198,8 @@ fs_dot_immunity_recourse	fsCure			100	command.shock	25		0		0		0		0		0	STATE_NONE
 me_rheumatic_calamity_1	medicArthritus			34	command.me_induce_insanity	10	action_burn	65		0		0		0		0	STATE_NONE	none	clienteffect/medic_rheumatic.cef		1	1		1	1	1	0	1	1	0	1	1	1
 sp_burst_shadows	sp_burst_shadows			1	command.sp_burst_of_shadows	15	movement	0	expertise_damage_all	10	freeshot_case_crit	1	freeshot_case_strikethrough	1		0	STATE_NONE	none	appearance/pt_spy_burst_shadows.prt		1	0		0	1	1	0	1	1	0	1	1	1
 sp_avoid_damage	sp_avoid_damage			4	command.sp_avoid_damage	15	expertise_dodge	50	expertise_evasion_chance	75		0		0		0	STATE_NONE	none	appearance/pt_spy_avoid_damage.prt		1	0		0	1	1	0	1	1	0	1	1	1
-sp_preparation	sp_preparation			4	command.sp_preparation	15	expertise_damage_all	30	freeshot_case_crit	1	freeshot_case_strikethrough	1		0		0	STATE_NONE	none	appearance/pt_spy_preparation.prt		1	0		0	1	1	0	1	1	0	1	1	1
-sp_shifty_setup	sp_shifty_setup			1	command.sp_shifty_setup	30	expertise_avoidance_overpower	75	expertise_critical_niche_all	-20	freeshot_case_strikethrough	1	on_attack_remove	1	expertise_damage_all	30	STATE_NONE	none	appearance/pt_spy_shifty_setup.prt,appearance/pt_spy_shifty_setup.prt	hold_l,hold_r	1	0		1	1	1	0	1	1	0	1	1	1
+sp_preparation	sp_preparation			4	command.sp_preparation	5	expertise_damage_all	25	freeshot_case_crit	1	freeshot_case_strikethrough	1		0		0	STATE_NONE	none	appearance/pt_spy_preparation.prt		1	0		0	1	1	0	1	1	0	1	1	1
+sp_shifty_setup	sp_shifty_setup			1	command.sp_shifty_setup	30	expertise_avoidance_overpower	75	expertise_critical_niche_all	5	freeshot_case_strikethrough	1	on_attack_remove	1	expertise_damage_all	5	STATE_NONE	none	appearance/pt_spy_shifty_setup.prt,appearance/pt_spy_shifty_setup.prt	hold_l,hold_r	1	0		1	1	1	0	1	1	0	1	1	1
 sp_decoy_debuff	criticalEffect			12	command.bm_flank	6	critical_hit_vulnerable	15		0		0		0		0	STATE_NONE	none	appearance/pt_spy_decoy.prt		1	1		1	1	1	0	1	1	0	1	1	1
 sp_ploy_snare	sp_ploy_snare	snare		3	command.sp_crippling_traps	20	movement	60		0		0		0		0	STATE_NONE	none	appearance/pt_officer_crippling_vortex.prt		1	1		1	1	1	0	1	1	0	1	1	1
 sp_run_its_course	sp_run_its_course			6	command.sp_run_its_course	10	dot_divisor_all	100	dot_resist_all	100		0		0		0	STATE_NONE	none	appearance/pt_spy_run_course.prt		1	0		1	1	1	0	1	1	0	1	1	1
@@ -1997,3 +1998,4 @@ gcw_rocket_turret	gcw_mini_turret			1		1	gcw_mini_turret	1		0		0		0		0	STATE_NON
 center_of_being	tka_meditate			1	command.centerOfBeing	1800	private_melee_dmg_shield	8	private_taunt_bonus	8	unarmed_damage	6	expertise_dodge	1		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1
 center_of_being_1	tka_meditate			1	command.centerOfBeing	1800	private_melee_dmg_shield	6	private_taunt_bonus	6	unarmed_damage	8	expertise_dodge	3		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1
 center_of_being_2	tka_meditate			1	command.centerOfBeing	1800	private_melee_dmg_shield	10	private_taunt_bonus	10	unarmed_damage	10	expertise_dodge	5		0	STATE_NONE	none	appearance/pt_force_channel_force.prt		1	0		1	1	1	0	1	1	0	1	1	1
+teras_kasi	combo_attack			34	command.me_evasion	15	stackable	5	private_melee_dmg_shield	1	expertise_block_chance	1		0		0	STATE_NONE	none			1	1		1	1	1	0	1	1	0	1	1	1

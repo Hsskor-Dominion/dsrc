@@ -243,6 +243,11 @@ public class player_travel extends script.base_script
             sendSystemMessage(self, new string_id("beast", "beast_cant_travel"));
             return SCRIPT_OVERRIDE;
         }
+        if (groundquests.isDoingSmugglerMission(self))
+        {
+            sendSystemMessage(self, new string_id(STF_FILE, "no_pickup_while_smuggling"));
+            return SCRIPT_OVERRIDE;
+        }
         return SCRIPT_CONTINUE;
     }
     public int OnTravelToGroupPickupPoint(obj_id self, String planetName, String travelPointName) throws InterruptedException

@@ -254,26 +254,46 @@ public class sith_holocron extends script.base_script {
                     groundquests.sendSignal(player, visionSignal);
                 }
 
-                // Grant Jedi skills
-                setSkillTemplate(player, "force_sensitive_1a");
-                grantSkill(player, "force_sensitive");
-                grantSkill(player, "class_forcesensitive_phase1");
-                grantSkill(player, "class_forcesensitive_phase1_novice");
-                grantSkill(player, "force_sensitive_heightened_senses_surveying_04");
-                xp.grant(player, "jedi", 5000);
-                jedi_trials.initializePadawanTrials(player);
-                HandleDestroyHolocron(self, player);
+                // Grant Force Sensitivity
+                if (!hasSkill(player, "class_forcesensitive_phase1_novice"))
+                {
+                    grantSkill(player, "force_sensitive");
+                    grantSkill(player, "force_sensitive_combat_prowess_novice");
+                    grantSkill(player, "force_sensitive_enhanced_reflexes_novice");
+                    grantSkill(player, "force_sensitive_crafting_mastery_novice");
+                    grantSkill(player, "force_sensitive_heightened_senses_novice");
 
-                int mission_bounty = 25000 + rand(1, 2000);
-                int current_bounty = hasObjVar(player, "bounty.amount") ? getIntObjVar(player, "bounty.amount") : 0;
-                current_bounty += mission_bounty;
+                    sendSystemMessage(player,
+                            new string_id("jedi_spam", "holocron_vision_aurilia_village"));
+                }
 
-                setObjVar(player, "bounty.amount", current_bounty);
-                setObjVar(player, "jedi.bounty", mission_bounty);
-                setJediBountyValue(player, current_bounty);
-                updateJediScriptData(player, "jedi", 1);
+                // Promote to Phase 1 Jedi
+                if (fs_quests.getBranchesLearned(player) >= 6
+                        && !hasSkill(player, "class_forcesensitive_phase1_novice"))
+                {
+                    jedi_trials.initializePadawanTrials(player);
 
-                return SCRIPT_OVERRIDE;
+                    setSkillTemplate(player, "force_sensitive_1a");
+                    grantSkill(player, "class_forcesensitive_phase1");
+                    grantSkill(player, "class_forcesensitive_phase1_novice");
+                }
+
+                if (fs_quests.getBranchesLearned(player) >= 1) {
+                    // Grant Jedi skills
+                    xp.grant(player, "jedi", 5000);
+
+                    int mission_bounty = 25000 + rand(1, 2000);
+                    int current_bounty = hasObjVar(player, "bounty.amount") ? getIntObjVar(player, "bounty.amount") : 0;
+                    current_bounty += mission_bounty;
+
+                    setObjVar(player, "bounty.amount", current_bounty);
+                    setObjVar(player, "jedi.bounty", mission_bounty);
+                    setJediBountyValue(player, current_bounty);
+                    updateJediScriptData(player, "jedi", 1);
+                    HandleDestroyHolocron(self, player);
+
+                    return SCRIPT_OVERRIDE;
+                }
             }
 
             // Intermediate exploration stage
@@ -609,11 +629,42 @@ public class sith_holocron extends script.base_script {
 
             return;
         }
-        else if (matchedVision.equals("victory"))
+        else if (matchedVision.equals("victory"))//Ashoka... or old man?
         {
-            groundquests.grantQuest(player, "stardust_holocron_aurillia", true);//Defend Aurillia
-            groundquests.grantQuest(partner, "stardust_holocron_aurillia", true);
+
+            // FX for both
             playClientEffectObj(player, "clienteffect/force_heal_03.cef", player, "");
+            if (isIdValid(partner))
+            {
+                playClientEffectObj(partner, "clienteffect/force_heal_03.cef", partner, "");
+            }
+
+            // Determine spawn location near player
+            location spawnLoc = getLocation(player);
+            spawnLoc.x += rand(-1.5f, 1.5f);
+            spawnLoc.z += rand(-1.5f, 1.5f);
+
+            // Spawn old man
+            obj_id ashoka = create.object("fs_intro_oldman", spawnLoc);
+
+            if (isIdValid(ashoka))
+            {
+                setObjVar(ashoka, "spawned_by_convergence", player);
+                chat.chat(ashoka, "There is always a bit of truth in legends...");
+
+                // Schedule Yoda removal after X seconds
+                messageTo(ashoka, "handleDestroyTempSpawn", null, 600.0f, false);
+
+                sendSystemMessageTestingOnly(player, "The holocrons shimmer and a Jedi Master appears before you.");
+                if (isIdValid(partner))
+                {
+                    sendSystemMessageTestingOnly(partner, "A vision of a Jedi Master manifests from the holocron convergence!");
+                }
+            }
+            else
+            {
+                sendSystemMessageTestingOnly(player, "You feel the Force shift, but Yoda does not appear.");
+            }
         }
         else if (matchedVision.equals("honor"))
         {

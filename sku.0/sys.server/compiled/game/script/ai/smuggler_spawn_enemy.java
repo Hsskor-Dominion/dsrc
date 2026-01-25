@@ -181,7 +181,7 @@ public class smuggler_spawn_enemy extends script.base_script
         }
         if (volumeName.equals(VOL_PATROL_WATCH))
         {
-            if (hasSkill(breacher, "class_smuggler_phase1_novice")) {
+
                 if (groundquests.isDoingSmugglerMission(breacher))
                 {
                     int taunt = rand(1, 10);
@@ -204,7 +204,6 @@ public class smuggler_spawn_enemy extends script.base_script
                     }
                     doSnare(breacher, self);
                     startCombat(self, breacher);
-                }
             }
         }
         return SCRIPT_CONTINUE;
