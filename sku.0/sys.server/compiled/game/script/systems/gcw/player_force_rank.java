@@ -1692,8 +1692,9 @@ public class player_force_rank extends script.base_script
     }
     public int cmdShowCouncilRank(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
-
-        // get council affiliation
+        // --------------------------------------------------
+        // Council affiliation
+        // --------------------------------------------------
         int council = force_rank.getCouncilAffiliation(self);
         if (council == -1)
         {
@@ -1715,25 +1716,56 @@ public class player_force_rank extends script.base_script
                 break;
         }
 
-        // get Force rank
+        // --------------------------------------------------
+        // Force Rank
+        // --------------------------------------------------
         int rank = force_rank.getForceRank(self);
-        String rankName;
+        String rankName = "Unranked";
         if (rank >= 1 && rank <= 11)
         {
             rankName = localize(new string_id(force_rank.STF_FILE, "rank" + rank));
         }
-        else
-        {
-            rankName = "Unranked";
-        }
-        int xp = getExperiencePoints(self, FRS_XP);
-        // build the message text
-        String message = "Council: " + councilName + "\n"
-                + "Force Rank: " + rankName + " (" + rank + ")\n"
-                + "FRS Experience: " + xp;
 
-        // show SUI message box
-        oneButtonMsgBox(self, self, "noHandler", COUNCILCHECK_TITLE, message, SID_CLOSE_BUTTON);
+        // --------------------------------------------------
+        // XP
+        // --------------------------------------------------
+        int frsXp = xp.getExperiencePoints(self, FRS_XP);
+
+        // --------------------------------------------------
+        // Build UI message
+        // --------------------------------------------------
+        String message =
+                "Council: " + councilName + "\n" +
+                        "Force Rank: " + rankName + " (" + rank + ")\n\n" +
+
+                        "Your FRS Experience:\n" +
+                        "  " + frsXp + "\n\n" +
+
+                        "Force Rank XP Requirements:\n" +
+                        "  Novice         - 10,000\n" +
+                        "  Rank I         - 10,000\n" +
+                        "  Rank II        - 20,000\n" +
+                        "  Rank III       - 30,000\n" +
+                        "  Rank IV        - 40,000\n" +
+                        "  Rank V         - 60,000\n" +
+                        "  Rank VI        - 80,000\n" +
+                        "  Rank VII       - 100,000\n" +
+                        "  Rank VIII      - 150,000\n" +
+                        "  Rank IX        - 200,000\n" +
+                        "  Rank X         - 300,000\n" +
+                        "  Grandmaster         - 500,000";
+
+        // --------------------------------------------------
+        // Display SUI
+        // --------------------------------------------------
+        oneButtonMsgBox(
+                self,
+                self,
+                "noHandler",
+                COUNCILCHECK_TITLE,
+                message,
+                SID_CLOSE_BUTTON
+        );
 
         return SCRIPT_CONTINUE;
     }

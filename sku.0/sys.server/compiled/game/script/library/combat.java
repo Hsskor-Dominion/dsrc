@@ -2361,7 +2361,7 @@ public class combat extends script.base_script
             }
         }
         String classTemplate = getSkillTemplate(objPlayer);
-        if (isLightsaberWeapon(objWeapon) && !utils.isProfession(objPlayer, utils.FORCE_SENSITIVE))
+        if (isLightsaberWeapon(objWeapon) && !hasSkill(objPlayer, "class_forcesensitive_phase1_novice"))//replaced jedi template check with skill check
         {
             hasCert = false;
         }

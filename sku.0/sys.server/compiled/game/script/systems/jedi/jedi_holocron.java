@@ -255,13 +255,9 @@ public class jedi_holocron extends script.base_script {
                 }
 
                 // Grant Force Sensitivity
-                if (!hasSkill(player, "class_forcesensitive_phase1_novice"))
+                if (!hasSkill(player, "force_sensitive"))
                 {
                     grantSkill(player, "force_sensitive");
-                    grantSkill(player, "force_sensitive_combat_prowess_novice");
-                    grantSkill(player, "force_sensitive_enhanced_reflexes_novice");
-                    grantSkill(player, "force_sensitive_crafting_mastery_novice");
-                    grantSkill(player, "force_sensitive_heightened_senses_novice");
 
                     sendSystemMessage(player,
                             new string_id("jedi_spam", "holocron_vision_aurilia_village"));
@@ -272,7 +268,6 @@ public class jedi_holocron extends script.base_script {
                         && !hasSkill(player, "class_forcesensitive_phase1_novice"))
                 {
                     jedi_trials.initializePadawanTrials(player);
-
                     setSkillTemplate(player, "force_sensitive_1a");
                     grantSkill(player, "class_forcesensitive_phase1");
                     grantSkill(player, "class_forcesensitive_phase1_novice");

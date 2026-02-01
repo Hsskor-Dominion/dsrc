@@ -287,10 +287,30 @@ public class combat_actions extends script.systems.combat.combat_base {
         return SCRIPT_CONTINUE;
     }
 
-    public int forceRun(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!combatStandardAction("forceRun", self, target, params, "", "")) {
+    // --------------------------------------------------
+// Void helper function to grant Force XP and display message
+// --------------------------------------------------
+    public void forcePowerXpGain(obj_id player, int xpAmount) throws InterruptedException
+    {
+        String xpType = "jedi_force";
+
+        // Grant XP
+        xp.grant(player, xpType, xpAmount);
+
+        // Display message to player
+        sendSystemMessageTestingOnly(player, "You gain " + xpAmount + " Force Power experience.");
+    }
+
+    public int forceRun(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    {
+        if (!combatStandardAction("forceRun", self, target, params, "", ""))
+        {
             return SCRIPT_OVERRIDE;
         }
+
+        // Call the force power helper
+        forcePowerXpGain(self, 100);
+
         return SCRIPT_CONTINUE;
     }
 
@@ -1493,6 +1513,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_force_spark", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         return SCRIPT_CONTINUE;
     }
 
@@ -1504,6 +1525,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_ae_dm_cc_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -1525,6 +1547,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_ae_dm_cc_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -1546,6 +1569,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_ae_dm_cc_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -1567,6 +1591,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_ae_dm_cc_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -1588,6 +1613,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_ae_dm_cc_5", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -1609,6 +1635,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_ae_dm_cc_6", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -1630,6 +1657,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_maelstrom_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
         }
@@ -1644,6 +1672,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_maelstrom_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
         }
@@ -1658,6 +1687,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_maelstrom_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
         }
@@ -1672,6 +1702,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_maelstrom_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
         }
@@ -1686,6 +1717,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_maelstrom_5", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
         }
@@ -2025,6 +2057,7 @@ public class combat_actions extends script.systems.combat.combat_base {
 
         // Perform the mind trick effect
         ai_lib.mindTrick(self, target);
+        forcePowerXpGain(self, 100);
 
         // --- STEALTH PROC: Jedi fades from sight ---
         if (hasCommand(self, "blueGlowie"))
@@ -2044,6 +2077,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_mind_trick_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         combat_data actionData = combat_engine.getCombatData("fs_mind_trick_2");
         float actionRadius = actionData.coneLength;
         actionRadius += getEnhancedSkillStatisticModifierUncapped(self, "expertise_area_size_single_fs_mind_trick_2");
@@ -2062,6 +2096,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         return SCRIPT_CONTINUE;
     }
 
@@ -2073,6 +2108,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         return SCRIPT_CONTINUE;
     }
 
@@ -2084,6 +2120,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         return SCRIPT_CONTINUE;
     }
 
@@ -2095,6 +2132,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         return SCRIPT_CONTINUE;
     }
 
@@ -2106,6 +2144,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_5", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         return SCRIPT_CONTINUE;
     }
 
@@ -2117,6 +2156,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_6", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         return SCRIPT_CONTINUE;
     }
 
@@ -2124,6 +2164,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_crit_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -2141,6 +2182,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_crit_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -2158,6 +2200,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_crit_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -2175,6 +2218,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_crit_4", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -2192,6 +2236,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_dm_cc_crit_5", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_powers", "fury_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -2209,6 +2254,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_sh_0", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_heal", "quick_heal_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -2220,6 +2266,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_sh_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_heal", "quick_heal_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -2231,6 +2278,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_sh_2", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_heal", "quick_heal_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -2242,6 +2290,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_sh_3", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (successfulFastAttack(self, "fs_heal", "quick_heal_fly")) {
             setCommandTimerValue(self, TIMER_COOLDOWN, 0.0f);
             return SCRIPT_CONTINUE;
@@ -2256,6 +2305,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!combatStandardAction("fs_hermetic_touch", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         int currentHealth = getHealth(self);
         int modifiedHealth = currentHealth - 2500;
         attrib_mod[] healthMods = getHealthModifiers(self);
@@ -4203,15 +4253,15 @@ public class combat_actions extends script.systems.combat.combat_base {
     {
         if (hasSkill(self, "combat_rifleman_support_03"))
         {
-            buff.applyBuff(target, self, "aim_2");
+            buff.applyBuff(self, target, "aim_2");
         }
         else if (hasSkill(self, "combat_rifleman_support_01"))
         {
-            buff.applyBuff(target, self, "aim_1");
+            buff.applyBuff(self, target, "aim_1");
         }
         else if (hasSkill(self, "combat_marksman_rifle_04"))
         {
-            buff.applyBuff(target, self, "aim");
+            buff.applyBuff(self, target, "aim");
         }
     }
 
@@ -13034,9 +13084,6 @@ public class combat_actions extends script.systems.combat.combat_base {
     }
 
     public int sp_shifty_setup(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException {
-        if (!stealth.hasInvisibleBuff(self) && !buff.hasBuff(self, "sp_smoke_mirrors")) {
-            return SCRIPT_OVERRIDE;
-        }
         if (!combatStandardAction("sp_shifty_setup", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }

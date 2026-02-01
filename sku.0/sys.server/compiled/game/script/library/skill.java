@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Vector;
 
+import static script.theme_park.jedi_trials.force_shrine.getNextForceSensitiveSkill;
+
 public class skill extends script.base_script
 {
     public skill()
@@ -417,10 +419,10 @@ public class skill extends script.base_script
     }
     public static String[] getTeachableSkills(obj_id target, obj_id teacher) throws InterruptedException {
         // ----------------------------------------
-        // NPC trainer logic
+        // NPC trainer logic - divergence
         // ----------------------------------------
         if (!isPlayer(teacher)) {
-            return skill.getTeacherSkills(teacher, target);//somehow, we need to differentiate this between players and npcs, and they only offer novice?
+            return skill.getTeacherSkills(teacher, target);
         }
 
         return new String[]
@@ -804,7 +806,128 @@ public class skill extends script.base_script
                         "outdoors_squadleader_support_01",
                         "outdoors_squadleader_support_02",
                         "outdoors_squadleader_support_03",
-                        "outdoors_squadleader_support_04"
+                        "outdoors_squadleader_support_04",
+                        "class_forcesensitive_phase1_02",
+                        "class_forcesensitive_phase1_03",
+                        "class_forcesensitive_phase1_04",
+                        "class_forcesensitive_phase1_05",
+                        "class_forcesensitive_phase1_master",
+                        "class_forcesensitive_phase2",
+                        "class_forcesensitive_phase2_novice",
+                        "class_forcesensitive_phase2_02",
+                        "class_forcesensitive_phase2_03",
+                        "class_forcesensitive_phase2_04",
+                        "class_forcesensitive_phase2_05",
+                        "class_forcesensitive_phase2_master",
+                        "class_forcesensitive_phase3",
+                        "class_forcesensitive_phase3_novice",
+                        "class_forcesensitive_phase3_02",
+                        "class_forcesensitive_phase3_03",
+                        "class_forcesensitive_phase3_04",
+                        "class_forcesensitive_phase3_05",
+                        "class_forcesensitive_phase3_master",
+                        "class_forcesensitive_phase4",
+                        "class_forcesensitive_phase4_novice",
+                        "class_forcesensitive_phase4_02",
+                        "class_forcesensitive_phase4_03",
+                        "class_forcesensitive_phase4_04",
+                        "class_forcesensitive_phase4_05",
+                        "class_forcesensitive_phase4_master",
+                        "force_discipline_powers",
+                        "force_discipline_powers_novice",
+                        "force_discipline_powers_master",
+
+                        "force_discipline_powers_lightning_01",
+                        "force_discipline_powers_lightning_02",
+                        "force_discipline_powers_lightning_03",
+                        "force_discipline_powers_lightning_04",
+
+                        "force_discipline_powers_mental_01",
+                        "force_discipline_powers_mental_02",
+                        "force_discipline_powers_mental_03",
+                        "force_discipline_powers_mental_04",
+
+                        "force_discipline_powers_debuff_01",
+                        "force_discipline_powers_debuff_02",
+                        "force_discipline_powers_debuff_03",
+                        "force_discipline_powers_debuff_04",
+
+                        "force_discipline_powers_push_01",
+                        "force_discipline_powers_push_02",
+                        "force_discipline_powers_push_03",
+                        "force_discipline_powers_push_04",
+
+                        "force_discipline_healing",
+                        "force_discipline_healing_novice",
+                        "force_discipline_healing_master",
+
+                        "force_discipline_healing_damage_01",
+                        "force_discipline_healing_damage_02",
+                        "force_discipline_healing_damage_03",
+                        "force_discipline_healing_damage_04",
+
+                        "force_discipline_healing_wound_01",
+                        "force_discipline_healing_wound_02",
+                        "force_discipline_healing_wound_03",
+                        "force_discipline_healing_wound_04",
+
+                        "force_discipline_healing_other_01",
+                        "force_discipline_healing_other_02",
+                        "force_discipline_healing_other_03",
+                        "force_discipline_healing_other_04",
+
+                        "force_discipline_healing_states_01",
+                        "force_discipline_healing_states_02",
+                        "force_discipline_healing_states_03",
+                        "force_discipline_healing_states_04",
+
+                        "force_discipline_enhancements",
+                        "force_discipline_enhancements_novice",
+                        "force_discipline_enhancements_master",
+
+                        "force_discipline_enhancements_movement_01",
+                        "force_discipline_enhancements_movement_02",
+                        "force_discipline_enhancements_movement_03",
+                        "force_discipline_enhancements_movement_04",
+
+                        "force_discipline_enhancements_protection_01",
+                        "force_discipline_enhancements_protection_02",
+                        "force_discipline_enhancements_protection_03",
+                        "force_discipline_enhancements_protection_04",
+
+                        "force_discipline_enhancements_resistance_01",
+                        "force_discipline_enhancements_resistance_02",
+                        "force_discipline_enhancements_resistance_03",
+                        "force_discipline_enhancements_resistance_04",
+
+                        "force_discipline_enhancements_synergy_01",
+                        "force_discipline_enhancements_synergy_02",
+                        "force_discipline_enhancements_synergy_03",
+                        "force_discipline_enhancements_synergy_04",
+
+                        "force_discipline_defender",
+                        "force_discipline_defender_novice",
+                        "force_discipline_defender_master",
+
+                        "force_discipline_defender_melee_defense_01",
+                        "force_discipline_defender_melee_defense_02",
+                        "force_discipline_defender_melee_defense_03",
+                        "force_discipline_defender_melee_defense_04",
+
+                        "force_discipline_defender_ranged_defense_01",
+                        "force_discipline_defender_ranged_defense_02",
+                        "force_discipline_defender_ranged_defense_03",
+                        "force_discipline_defender_ranged_defense_04",
+
+                        "force_discipline_defender_force_defense_01",
+                        "force_discipline_defender_force_defense_02",
+                        "force_discipline_defender_force_defense_03",
+                        "force_discipline_defender_force_defense_04",
+
+                        "force_discipline_defender_preternatural_defense_01",
+                        "force_discipline_defender_preternatural_defense_02",
+                        "force_discipline_defender_preternatural_defense_03",
+                        "force_discipline_defender_preternatural_defense_04"
                 };
     }
 //    public static String[] getQualifiedTeachableSkills(obj_id target, obj_id teacher) throws InterruptedException
@@ -988,114 +1111,91 @@ public class skill extends script.base_script
     }
     public static String[] getQualifiedTeachableSkillsPlayer(obj_id target, obj_id teacher) throws InterruptedException
     {
-        //this works for players, so I separated it out for now
+        // Standard teachable skills
         String[] teachableSkills = getTeachableSkills(target, teacher);
-        if (teachableSkills == null || teachableSkills.length == 0)
-        {
-            return null;
-        }
-
         Vector qualifiedSkills = new Vector();
         qualifiedSkills.setSize(0);
 
         int currentPoints = getSkillPointsForPlayer(target); // sum of POINTS_REQUIRED for all skills player has
 
-        for (String skill : teachableSkills)
+        if (teachableSkills != null && teachableSkills.length > 0)
         {
-            boolean qualifies = true;
-
-            // Check prerequisites
-            String[] prereqSkills = getSkillPrerequisiteSkills(skill);
-            if (prereqSkills != null && prereqSkills.length > 0)
+            for (String skill : teachableSkills)
             {
-                if (!utils.isSubset(getSkillListingForPlayer(target), prereqSkills))
-                {
-                    qualifies = false;
-                }
-            }
+                boolean qualifies = true;
 
-            //  Check experience requirements
-            dictionary xpReq = getSkillPrerequisiteExperience(skill);//
-            if (xpReq != null && !xpReq.isEmpty())
-            {
-                Enumeration keys = xpReq.keys();
-                while (keys.hasMoreElements())
+                // Check prerequisites
+                String[] prereqSkills = getSkillPrerequisiteSkills(skill);
+                if (prereqSkills != null && prereqSkills.length > 0)
                 {
-                    Object o = keys.nextElement();
-                    if (o instanceof String)
-                    {
-                        String xpType = (String) o;
-                        int xpCost = xpReq.getInt(xpType);
-                        int playerXP = getExperiencePoints(target, xpType);
-                        if (playerXP < xpCost)
-                        {
-                            qualifies = false;
-                        }
-                    }
-                }
-            }
-
-            // Check species requirements
-            dictionary species = getSkillPrerequisiteSpecies(skill);
-            if (species != null && !species.isEmpty())
-            {
-                Enumeration speciesKeys = species.keys();
-                while (speciesKeys.hasMoreElements())
-                {
-                    Object o = speciesKeys.nextElement();
-                    if (o instanceof String)
-                    {
-                        String key = (String) o;
-                        if (species.getBoolean(key))
-                        {
-                            qualifies = false;
-                        }
-                    }
-                }
-            }
-
-            // Check FS trainer branch unlocks
-            String trainerType = getStringObjVar(teacher, "trainer");
-            if ("trainer_fs".equals(trainerType))
-            {
-                if (qualifies)
-                {
-                    if (fs_quests.isVillageEligible(target))
-                    {
-                        String branch = fs_quests.getBranchFromSkill(skill);
-                        if (!fs_quests.hasUnlockedBranch(target, branch))
-                        {
-                            qualifies = false;
-                        }
-                    }
-                    else
+                    if (!utils.isSubset(getSkillListingForPlayer(target), prereqSkills))
                     {
                         qualifies = false;
                     }
                 }
-            }
 
-            // Check newbie override
-            if (hasObjVar(target, "newbie.hasSkill") && !hasObjVar(target, "newbie.trained"))
-            {
-                String newbieSkill = getStringObjVar(target, "newbie.hasSkill");
-                if (newbieSkill.equals(skill))
+                // Check experience requirements
+                dictionary xpReq = getSkillPrerequisiteExperience(skill);
+                if (xpReq != null && !xpReq.isEmpty())
                 {
-                    qualifies = true;
+                    Enumeration keys = xpReq.keys();
+                    while (keys.hasMoreElements())
+                    {
+                        Object o = keys.nextElement();
+                        if (o instanceof String)
+                        {
+                            String xpType = (String) o;
+                            int xpCost = xpReq.getInt(xpType);
+                            int playerXP = getExperiencePoints(target, xpType);
+                            if (playerXP < xpCost)
+                            {
+                                qualifies = false;
+                            }
+                        }
+                    }
+                }
+
+                // Check species requirements
+                dictionary species = getSkillPrerequisiteSpecies(skill);
+                if (species != null && !species.isEmpty())
+                {
+                    Enumeration speciesKeys = species.keys();
+                    while (speciesKeys.hasMoreElements())
+                    {
+                        Object o = speciesKeys.nextElement();
+                        if (o instanceof String)
+                        {
+                            String key = (String) o;
+                            if (species.getBoolean(key))
+                            {
+                                qualifies = false;
+                            }
+                        }
+                    }
+                }
+
+                // POINTS_REQUIRED cap (max 250 points)
+                int pointsRequired = dataTableGetInt(TBL_SKILL, skill, "POINTS_REQUIRED");
+                if ((currentPoints + pointsRequired) > 250)
+                {
+                    qualifies = false;
+                }
+
+                // If passes all checks and player doesn't already have it
+                if (qualifies && !hasSkill(target, skill))
+                {
+                    qualifiedSkills = utils.addElement(qualifiedSkills, skill);
                 }
             }
+        }
 
-            //  **Check POINTS_REQUIRED cap (max 250 points)**
-            int pointsRequired = dataTableGetInt(TBL_SKILL, skill, "POINTS_REQUIRED");
-            if ((currentPoints + pointsRequired) > 250)
-            {
-                qualifies = false;
-            }
-
-            if (qualifies && !hasSkill(target, skill))
-            {
-                qualifiedSkills = utils.addElement(qualifiedSkills, skill);
-            }
+        // ---------------------------------
+        // Jedi / Force Sensitive Exception
+        // ---------------------------------
+        String nextFS = getNextForceSensitiveSkill(target);
+        if (nextFS != null && !hasSkill(target, nextFS))
+        {
+            qualifiedSkills = utils.addElement(qualifiedSkills, nextFS);
         }
 
         if (qualifiedSkills != null && qualifiedSkills.size() > 0)
@@ -1144,13 +1244,13 @@ public class skill extends script.base_script
         {
             return null;
         }
-        if (!jedi.isJediTrainerForPlayer(target, teacher))
+        if (jedi.isJediTrainerForPlayer(target, teacher))
         {
-            return utils.getStringBatchScriptVar(teacher, SCRIPTVAR_SKILLS);
+            return utils.getStringBatchScriptVar(teacher, SCRIPTVAR_JEDI_SKILLS);//swapped
         }
         else 
         {
-            return utils.getStringBatchScriptVar(teacher, SCRIPTVAR_JEDI_SKILLS);
+            return utils.getStringBatchScriptVar(teacher, SCRIPTVAR_SKILLS);//swapped these
         }
     }
     public static String[] deltaPlayerTeacherSkills(obj_id target, obj_id teacher) throws InterruptedException
@@ -1649,54 +1749,92 @@ public class skill extends script.base_script
         {
             return;
         }
+
         int intLevel = getLevel(objPlayer);
-        if (intLevel < 0)
+        if (intLevel < 1)
         {
             intLevel = 1;
         }
-        else 
+        else if (intLevel > 90)
         {
-            if (intLevel > 90)
-            {
-                intLevel = 90;
-            }
+            intLevel = 90;
         }
+
         String strProfession = getProfessionName(getSkillTemplate(objPlayer));
-        if (strProfession != null && strProfession.length() > 0)
+
+        player_levels.level_data stats = null;
+
+        // ---- Jedi special case ----
+        boolean isJedi = (strProfession == null || strProfession.length() == 0);
+        if (isJedi)
         {
-            player_levels.level_data stats = player_levels.getPlayerLevelData(strProfession, intLevel);
+            // Set regen rates
+            setRegenRate(objPlayer, HEALTH, 400);
+            setRegenRate(objPlayer, ACTION, 300);
+        }
+        else
+        {
+            stats = player_levels.getPlayerLevelData(strProfession, intLevel);
             if (stats == null)
             {
-                LOG("skill.scriptlib", "recalcPlayerPools stats == null");
+                LOG("skill.scriptlib", "recalcPlayerPools stats == null for " + strProfession + " level " + intLevel);
                 return;
             }
-            int intBaseHealth = stats.health;
-            int intBaseAction = stats.action;
-            int intConstitution = getSkillStatisticModifier(objPlayer, "constitution");
-            int intStamina = getSkillStatisticModifier(objPlayer, "stamina");
-            intConstitution += getEnhancedSkillStatisticModifierUncapped(objPlayer, "constitution_modified");
-            intStamina += getEnhancedSkillStatisticModifierUncapped(objPlayer, "stamina_modified");
-            intBaseHealth = intBaseHealth + (HEALTH_POINTS_PER_CONSTITUTION * intConstitution);
-            intBaseHealth = intBaseHealth + (HEALTH_POINTS_PER_STAMINA * intStamina);
-            intBaseAction = intBaseAction + (ACTION_POINTS_PER_STAMINA * intStamina);
-            intBaseAction = intBaseAction + (ACTION_POINTS_PER_CONSTITUTION * intConstitution);
-            setMaxAttrib(objPlayer, ACTION, intBaseAction);
-            setMaxAttrib(objPlayer, HEALTH, intBaseHealth);
-            int[] myBuffs = buff.getAllBuffs(objPlayer);
-            String thisBuffEffect;
-            for (int myBuff : myBuffs) {
-                thisBuffEffect = buff.getEffectParam(myBuff, 1);
-                float thisBuffValue = buff.getEffectValue(myBuff, 1);
-                if (thisBuffEffect != null && thisBuffValue < 0 && thisBuffEffect.equals("healthPercent")) {
-                    boolHealEverything = false;
-                    break;
-                }
-            }
-            if (boolHealEverything)
+        }
+
+        int intBaseHealth;
+        int intBaseAction;
+
+        if (isJedi)
+        {
+            // Jedi / null profession fallback
+            // Start from current max pools so legacy systems remain intact
+            intBaseHealth = getMaxAttrib(objPlayer, HEALTH);
+            intBaseAction = getMaxAttrib(objPlayer, ACTION);
+        }
+        else
+        {
+            intBaseHealth = stats.health;
+            intBaseAction = stats.action;
+        }
+
+        int intConstitution = getSkillStatisticModifier(objPlayer, "constitution") + getEnhancedSkillStatisticModifierUncapped(objPlayer, "constitution_modified");
+        int intStamina = getSkillStatisticModifier(objPlayer, "stamina") + getEnhancedSkillStatisticModifierUncapped(objPlayer, "stamina_modified");
+        int intForce = getSkillStatisticModifier(objPlayer, "jedi_force_power_max") + getEnhancedSkillStatisticModifierUncapped(objPlayer, "jedi_force_power_max_modified");
+        int intForceRegen = getSkillStatisticModifier(objPlayer, "jedi_force_power_regen") + getEnhancedSkillStatisticModifierUncapped(objPlayer, "jedi_force_power_regen");
+
+        // Calculate pools
+        intBaseHealth += (HEALTH_POINTS_PER_CONSTITUTION * intConstitution);
+        intBaseHealth += (HEALTH_POINTS_PER_STAMINA * intStamina);
+
+        intBaseAction += (ACTION_POINTS_PER_STAMINA * intStamina);
+        intBaseAction += (ACTION_POINTS_PER_CONSTITUTION * intConstitution);
+        // Optional: you may also include force contribution to action points if intended:
+        intBaseAction += (ACTION_POINTS_PER_STAMINA * intForce);
+
+        setMaxAttrib(objPlayer, HEALTH, intBaseHealth);
+        setMaxAttrib(objPlayer, ACTION, intBaseAction);
+
+        setRegenRate(objPlayer, ACTION, 300 + intForceRegen);
+
+        // Check buffs to see if full heal is allowed
+        int[] myBuffs = buff.getAllBuffs(objPlayer);
+        for (int myBuff : myBuffs)
+        {
+            String thisBuffEffect = buff.getEffectParam(myBuff, 1);
+            float thisBuffValue = buff.getEffectValue(myBuff, 1);
+
+            if ("healthPercent".equals(thisBuffEffect) && thisBuffValue < 0)
             {
-                setAttrib(objPlayer, ACTION, getMaxAttrib(objPlayer, ACTION));
-                setAttrib(objPlayer, HEALTH, getMaxAttrib(objPlayer, HEALTH));
+                boolHealEverything = false;
+                break;
             }
+        }
+
+        if (boolHealEverything)
+        {
+            setAttrib(objPlayer, HEALTH, intBaseHealth);
+            setAttrib(objPlayer, ACTION, intBaseAction);
         }
     }
     public static void grantAllPoliticianSkills(obj_id player) throws InterruptedException

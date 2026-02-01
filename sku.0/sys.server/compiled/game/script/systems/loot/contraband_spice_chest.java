@@ -28,6 +28,7 @@ public class contraband_spice_chest extends script.base_script {
     public void stealSpice(obj_id self, obj_id player) throws InterruptedException
     {
         factions.addFactionStanding(player, "underworld", 5);
+        xp.grant(player,"crafting_spice", 1000);
         int which_one = rand(1, 31);
         String poster = "";
         switch (which_one)

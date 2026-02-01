@@ -4,6 +4,8 @@ import script.*;
 
 import java.util.Enumeration;
 
+import static script.theme_park.jedi_trials.force_shrine.FS_SKILLS;
+
 public class respec extends script.base_script
 {
     public respec()
@@ -167,6 +169,10 @@ public class respec extends script.base_script
         if (skillTemplateName.startsWith("trader"))
         {
             targetLevel = getTraderLevel(player);
+        }
+        if (skillTemplateName.startsWith("force"))
+        {
+            targetLevel = 5;
         }
         earnProfessionSkillsViaNpc(player, skillTemplateName, true, targetLevel);
         int numBought = 0;
@@ -682,21 +688,64 @@ public class respec extends script.base_script
     }
     public static void grantProfessionSkills(obj_id player, String skillTemplateName, String workingSkill, boolean withItems) throws InterruptedException
     {
+        // ----------------------------------------
+// FORCE SENSITIVE / JEDI EXCEPTION
+// ----------------------------------------
+        if (skillTemplateName.startsWith("force_sensitive"))
+        {
+            // 1) Revoke ALL Force Sensitive skills
+            for (String fsSkill : FS_SKILLS)
+            {
+                if (hasSkill(player, fsSkill))
+                {
+                    revokeSkill(player, fsSkill);
+                }
+            }
+
+            // 2) Lock template
+            setSkillTemplate(player, "force_sensitive_1a");
+
+            // 3) Grant ONLY entry skills
+            grantSkill(player, "class_forcesensitive_phase1");
+            grantSkill(player, "class_forcesensitive_phase1_novice");
+
+            // 4) Set correct working skill (shrine-gated)
+            setWorkingSkill(player, "class_forcesensitive_phase1_02");
+
+            return;
+        }
+
+        // ----------------------------------------
+        // NORMAL PROFESSION BEHAVIOR
+        // ----------------------------------------
         if (workingSkill != null && workingSkill.equals("master"))
         {
             workingSkill = null;
         }
-        String templateSkills = dataTableGetString(skill_template.TEMPLATE_TABLE, skillTemplateName, "template");
+
+        String templateSkills = dataTableGetString(
+                skill_template.TEMPLATE_TABLE,
+                skillTemplateName,
+                "template");
+
         String[] skillList = split(templateSkills, ',');
+
         setWorkingSkill(player, skillList[0]);
-        for (String aSkillList : skillList) {
-            if (workingSkill != null && aSkillList.equals(workingSkill)) {
+
+        for (String skill : skillList)
+        {
+            if (workingSkill != null && skill.equals(workingSkill))
+            {
                 break;
             }
-            grantSkill(player, aSkillList);
-            if (withItems) {
+
+            grantSkill(player, skill);
+
+            if (withItems)
+            {
                 skill_template.grantRoadmapItem(player);
             }
+
             setWorkingSkill(player, skill_template.getNextWorkingSkill(player));
         }
     }

@@ -530,7 +530,7 @@ public class xp extends script.base_script
         String xp_type;
         switch (weapon_type)
         {
-            case WEAPON_TYPE_RIFLE:
+            case WEAPON_TYPE_RIFLE://this is the issue.. it's not picking it up; rifle is 0 and therefore null
                 xp_type = COMBAT_RANGEDSPECIALIZE_RIFLE;
                 break;
             case WEAPON_TYPE_LIGHT_RIFLE:
@@ -1106,7 +1106,7 @@ public class xp extends script.base_script
                         ret = utils.addElement(ret, killerVar);
                         if (!utils.isObjIdInArray(allKillers, master) && utils.isObjIdInArray(allKillers, killer))
                         {
-                            grantCombatStyleXp(master, COMBAT_GENERAL, xpTotal);//this worked! separates xp by weapon type
+                            grantCombatStyleXp(master, COMBAT_GENERAL, xpTotal);//this does seem to work
                             displayXpFlyText(master, master, xpTotal);
                             displayXpMsg(master, null, xpTotal);
                             double percentDamage = (dam / damageTally) + PERCENT_ADJUSTER;
@@ -1218,7 +1218,7 @@ public class xp extends script.base_script
             {
                 raw += amt;
 
-                if (!xpType.equals(COMBAT_THROWN))
+                if (!xpType.equals(COMBAT_THROWN))//maybe we add if holding a rifle grant rifle here?
                 {
                     int granted = grantCombatStyleXp(player, xpType, amt);
                     if (granted > 0)
@@ -1228,7 +1228,7 @@ public class xp extends script.base_script
                     }
                 }
             }
-            else if (!xpType.equals(UNKNOWN) && !xpType.equals(PERMISSIONS_ONLY) && !xpType.equals(PET_DAMAGE))//we need to add If it is PET_DAMAGE then add CREATUREHANDLER xp to player
+            else if (!xpType.equals(UNKNOWN) && !xpType.equals(PERMISSIONS_ONLY) && !xpType.equals(PET_DAMAGE))
             {
                 totalXpGranted += grantCombatStyleXp(player, xpType, amt);
             }
@@ -1267,6 +1267,12 @@ public class xp extends script.base_script
             gcw.gcwInvasionCreditForKill(player);
         }
 
+        //Rifle Band-Aid
+        obj_id weapon = getCurrentWeapon(player);
+        if (isIdValid(weapon) && getWeaponType(weapon) == WEAPON_TYPE_RIFLE)
+        {
+            grant(player, COMBAT_RANGEDSPECIALIZE_RIFLE, totalXpGranted);
+        }
         displayXpFlyText(player, player, totalXpGranted);
         displayXpMsg(player, null, totalXpGranted);
     }
@@ -1369,6 +1375,7 @@ public class xp extends script.base_script
     }
     public static int grantCombatStyleXp(obj_id player, String xpType, int amount) throws InterruptedException
     {
+
         if (amount <= 0 || xpType == null)
         {
             return 0;
@@ -1384,7 +1391,7 @@ public class xp extends script.base_script
         int granted = 0;
 
         // 1) Try granting the specific XP type first
-        if (isCombatXpType(xpType))
+        if (isCombatXpType(xpType))//this is working, but I'm not getting rifle exp... I'm getting all other types
         {
             granted = grant(player, xpType, amount, false);
             if (granted > 0)
@@ -1393,13 +1400,13 @@ public class xp extends script.base_script
             }
         }
 
-        // 2) Absolute fallback: combat_general
+        // 2) Grant additionally: combat_general
         granted = grant(player, COMBAT_GENERAL, (int)(amount * xpRatio), false);
         return granted;
     }
     public static void displayXpMsg(obj_id player, String xpType, int amt) throws InterruptedException
     {
-        if (xpType == null || xpType.equals(JEDI_GENERAL))
+        if (xpType == null)
         {
             xpType = COMBAT_GENERAL; // fallback display
         }

@@ -515,10 +515,10 @@ public class combat_base extends script.base_script
 
                 float finalCooldown = baseCooldown - reduction;
 
-                // Safety clamp
-                if (finalCooldown < 0.2f)
+                // Weapon Speed Cap
+                if (finalCooldown < 0.15f)
                 {
-                    finalCooldown = 0.2f;
+                    finalCooldown = 0.15f;
                 }
 
                 setCommandTimerValue(self, TIMER_COOLDOWN, finalCooldown);

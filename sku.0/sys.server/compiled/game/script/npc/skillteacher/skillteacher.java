@@ -5,6 +5,7 @@ import script.library.*;
 
 import java.util.Vector;
 
+import static script.library.buff.*;
 import static script.library.skill.deductXpCostForSkillPurchase;
 import static script.library.skill.getSkillPointsForPlayer;
 
@@ -140,10 +141,14 @@ public class skillteacher extends script.base_script
                     setCondition(self, CONDITION_SPACE_INTERESTING);
                 }
 
-                // give "Old Man" or other name if trainer_fs and NOT on Dathomir (planetId 11)
+                // give "Desann" or other name if trainer_fs and NOT on Dathomir (planetId 11)
                 if (teacherType.equals("trainer_fs") && planetId != 11)
                 {
                     setName(self, "Desann");
+                }
+                if (teacherType.equals("trainer_fs") && planetId == 11)
+                {
+                    setName(self, "Noldan");
                 }
             }
 
@@ -224,38 +229,6 @@ public class skillteacher extends script.base_script
         removeObjVar(self, "confirmTeach." + speaker);
         return SCRIPT_CONTINUE;
     }
-    public static int getRemainingExpertisePoints(obj_id player)
-    {
-        int basePts = 45; // Starting points
-        String[] teachableExpertise = {
-                "expertise_bh_stamina_1",
-                "expertise_bh_stamina_2",
-                "expertise_bh_stamina_3",
-                "expertise_bh_stamina_4" // Continue with full list of skills. to-do list
-        };
-
-        int pointsSpent = 0;
-
-        // Loop through each skill to check if the player has it
-        for (String skill : teachableExpertise)
-        {
-            if (hasSkill(player, skill))
-            {
-                pointsSpent++; // Subtract 1 point for each skill the player has
-            }
-        }
-
-        // Remaining points is the base points minus the points spent
-        int remainingPoints = basePts - pointsSpent;
-
-        // Ensure the remaining points never go below 0
-        if (remainingPoints < 0)
-        {
-            remainingPoints = 0;
-        }
-
-        return remainingPoints;
-    }
 
     public int OnNpcConversationResponse(obj_id self, String convoName, obj_id speaker, string_id sid_response) throws InterruptedException
     {
@@ -327,17 +300,6 @@ public class skillteacher extends script.base_script
                             }
                             else 
                             {
-                                int ptsLeft = getRemainingExpertisePoints(speaker); // Call the function with the player object
-                                int ptsCost = 1;
-                                if (ptsLeft < ptsCost)
-                                {
-                                    int diff = ptsCost - ptsLeft;
-                                    string_id PROSE_NSF_SKILL_PTS = new string_id(convo, "nsf_skill_pts");
-                                    prose_package ppNsfSkillPts = prose.getPackage(PROSE_NSF_SKILL_PTS, sid_skillName, diff);
-                                    npcSpeak(speaker, ppNsfSkillPts);
-                                    npcSetConversationResponses(speaker, OPT_DEFAULT);
-                                    return SCRIPT_CONTINUE;
-                                }
                                 String ovPath = "confirmTeach." + speaker;
                                 setObjVar(self, ovPath + ".sid_skillname", sid_skillName);
                                 setObjVar(self, ovPath + ".cost", cost);
@@ -353,17 +315,6 @@ public class skillteacher extends script.base_script
                         }
                         else 
                         {
-                            int ptsLeft = getRemainingExpertisePoints(speaker); // Call the function with the player object
-                            int ptsCost = 1;
-                            if (ptsLeft < ptsCost)
-                            {
-                                int diff = ptsCost - ptsLeft;
-                                string_id PROSE_NSF_SKILL_PTS = new string_id(convo, "nsf_skill_pts");
-                                prose_package ppNsfSkillPts = prose.getPackage(PROSE_NSF_SKILL_PTS, sid_skillName, diff);
-                                npcSpeak(speaker, ppNsfSkillPts);
-                                npcSetConversationResponses(speaker, OPT_DEFAULT);
-                                return SCRIPT_CONTINUE;
-                            }
                             if (completeSkillPurchase(speaker, response))
                             {
                                 if (response.equals("jedi_light_side_journeyman_novice") || response.equals("jedi_dark_side_journeyman_novice"))
@@ -677,7 +628,7 @@ public class skillteacher extends script.base_script
         }
 
         // Check if the player is Jedi and has the correct trainer
-        if (isJedi(player) && jedi.isJediTrainerForPlayer(player, trainer))
+        if (isJedi(player) && jedi.isJediTrainerForPlayer(player, trainer) && ((isInFocus(player) || isInStance(player))))
         {
             return true;
         }
@@ -763,11 +714,11 @@ public class skillteacher extends script.base_script
         {
             return null;
         }
-        if (hasSkill(player, "jedi_light_side_journeyman_novice"))
+        if (hasBuff(player, "fs_buff_def_1_1"))//modernized for CU/NGE - SWG Chimaera
         {
             return JEDI_TRAINER_LIGHT;
         }
-        if (hasSkill(player, "jedi_dark_side_journeyman_novice"))
+        if (hasBuff(player, "fs_buff_ca_1")) //was jedi_dark_side_journeyman_novice
         {
             return JEDI_TRAINER_DARK;
         }

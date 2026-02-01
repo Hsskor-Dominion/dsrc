@@ -311,6 +311,11 @@ public class mission_base extends script.base_script
             LOG("DESIGNER_FATAL", "Bounty hunter id " + objPlayer + " has a bounty difficulty of less than 1");
             return 1;
         }
+        if (intBountyLevel > 3)
+        {
+            LOG("DESIGNER_FATAL", "Bounty hunter id " + objPlayer + " has a bounty difficulty of less than 1");
+            return 3;
+        }
         return intBountyLevel;
     }
     public obj_id cleanMissionObject(obj_id objMissionObject) throws InterruptedException

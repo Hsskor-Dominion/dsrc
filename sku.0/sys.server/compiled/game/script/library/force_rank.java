@@ -2659,14 +2659,68 @@ public class force_rank extends script.base_script
             return null;
         }
     }
-    public static boolean grantRankItems(obj_id player, boolean retroactive) throws InterruptedException
+    public static void grantRankItems(obj_id player, boolean retroactive)
+            throws InterruptedException
     {
-        //should replace this with something meaningful... not sure what though.
-        return false;
+        int rank = getForceRank(player);
+
+        if (rank <= 0)
+        {
+            sendSystemMessage(player, new string_id(STF_FILE, "not_ranked"));
+            return;
+        }
+
+        boolean isDark = hasSkill(player, "force_rank_dark");
+        String template = getRobeTemplateForRank(rank, isDark);
+
+        if (template == null)
+        {
+            sendSystemMessageTestingOnly(player,
+                    "No robe configured for FRS rank " + rank);
+            return;
+        }
+
+        obj_id pInv = utils.getInventoryContainer(player);
+        static_item.createNewItemFunction(template, pInv);
+
+        sendSystemMessage(player, new string_id(STF_FILE, "items_recovered"));
     }
-    public static boolean grantRankItems(obj_id player) throws InterruptedException
+    public static void grantRankItems(obj_id player)
+            throws InterruptedException
     {
-        return grantRankItems(player, false);
+        grantRankItems(player, false);
+    }
+    private static String getRobeTemplateForRank(int rank, boolean isDark)
+    {
+        if (!isDark)
+        {
+            switch (rank)
+            {
+                case 1:  return "item_jedi_robe_padawan_04_01";
+                case 2:  return "item_jedi_robe_light_03_03";
+                case 3:  return "item_jedi_robe_04_03";
+                case 4:  return "item_jedi_robe_04_01";
+                case 5:  return "item_jedi_robe_06_01";
+                case 6:  return "item_jedi_robe_06_05";
+                case 7:  return "item_jedi_robe_light_04_05";
+                case 8:  return "item_jedi_robe_light_04_04";
+                default: return "item_jedi_robe_light_04_04"; // ranks 9–11 fallback
+            }
+        }
+        else
+        {
+            switch (rank)
+            {
+                case 1:  return "item_jedi_robe_dark_03_03";
+                case 2:  return "item_jedi_robe_04_04";
+                case 3:  return "item_jedi_robe_04_02";
+                case 4:  return "item_jedi_robe_06_02";
+                case 5:  return "item_jedi_robe_06_06";
+                case 6:  return "item_jedi_robe_dark_04_04";
+                case 7:  return "item_jedi_robe_dark_04_05";
+                default: return "item_jedi_robe_dark_04_05";
+            }
+        }
     }
     public static boolean performFRSAttack(obj_id player, obj_id defender, hit_result results, weapon_data weapondat) throws InterruptedException
     {

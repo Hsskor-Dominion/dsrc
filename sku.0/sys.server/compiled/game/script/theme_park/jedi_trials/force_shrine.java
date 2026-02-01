@@ -3,6 +3,8 @@ package script.theme_park.jedi_trials;
 import script.*;
 import script.library.*;
 
+import static script.library.skill.deductXpCostForSkillPurchase;
+
 public class force_shrine extends script.base_script
 {
     public force_shrine()
@@ -24,19 +26,18 @@ public class force_shrine extends script.base_script
     {
         if (canMeditateHere(self, player))
         {
-            int menuOption = mi.addRootMenu(menu_info_types.SERVER_ITEM_OPTIONS, MEDITATE_MENU);
-            if (utils.isProfession(player, utils.FORCE_SENSITIVE) && !utils.playerHasItemByTemplateInInventoryOrEquipped(player, PADAWAN_ROBE))
-            {
-                if(!hasObjVar(player, "item.fs_padawan_robe_redeemed")) {
-                    mi.addRootMenu(menu_info_types.SERVER_MENU5, ISSUE_ROBE_MENU);
+            if (getState(player, STATE_MEDITATE) == 1) {
+                int menuOption = mi.addRootMenu(menu_info_types.SERVER_ITEM_OPTIONS, MEDITATE_MENU);
+                if (utils.isProfession(player, utils.FORCE_SENSITIVE) && !utils.playerHasItemByTemplateInInventoryOrEquipped(player, PADAWAN_ROBE)) {
+                    if (!hasObjVar(player, "item.fs_padawan_robe_redeemed")) {
+                        mi.addRootMenu(menu_info_types.SERVER_MENU5, ISSUE_ROBE_MENU);
+                    }
                 }
-            }
-            if (utils.isProfession(player, utils.FORCE_SENSITIVE) && canGetUltraCloak(player))
-            {
-                if (!jedi.hasAnyUltraCloak(player) && getState(player, STATE_MEDITATE) == 1 && !hasObjVar(player, "item.fs_ultra_robe_redeemed"))
-                {
-                    mi.addRootMenu(menu_info_types.SERVER_MENU6, ISSUE_ULTRA_ROBE_LIGHT_MENU);
-                    mi.addRootMenu(menu_info_types.SERVER_MENU7, ISSUE_ULTRA_ROBE_DARK_MENU);
+                if (utils.isProfession(player, utils.FORCE_SENSITIVE) && canGetUltraCloak(player)) {
+                    if (!jedi.hasAnyUltraCloak(player) && getState(player, STATE_MEDITATE) == 1 && !hasObjVar(player, "item.fs_ultra_robe_redeemed")) {
+                        mi.addRootMenu(menu_info_types.SERVER_MENU6, ISSUE_ULTRA_ROBE_LIGHT_MENU);
+                        mi.addRootMenu(menu_info_types.SERVER_MENU7, ISSUE_ULTRA_ROBE_DARK_MENU);
+                    }
                 }
             }
         }
@@ -49,21 +50,12 @@ public class force_shrine extends script.base_script
         if (canMeditateHere(self, player))
         {
             if (item == menu_info_types.SERVER_ITEM_OPTIONS) {
-                if (posture != POSTURE_CROUCHED) {
-                    sendSystemMessage(player, SHOW_RESPECT);
-                    return SCRIPT_CONTINUE;
-                }
                 jedi_trials.giveGenericForceShrineMessage(player);
                 grant_padawan_trials_quest(player);
                 shrine_signalReward(player);
             }
             if (item == menu_info_types.SERVER_MENU5)
             {
-                if (posture != POSTURE_CROUCHED)
-                {
-                    sendSystemMessage(player, SHOW_RESPECT);
-                    return SCRIPT_CONTINUE;
-                }
                 issuePadawanRobe(player);
             }
             if (item == menu_info_types.SERVER_MENU6)
@@ -214,9 +206,133 @@ public class force_shrine extends script.base_script
         }
         return false;
     }
+    public static String[] FS_SKILLS = {
+            "class_forcesensitive_phase1_novice",
+            "class_forcesensitive_phase1_02",
+            "class_forcesensitive_phase1_03",
+            "class_forcesensitive_phase1_04",
+            "class_forcesensitive_phase1_05",
+            "class_forcesensitive_phase1_master",
+
+            "class_forcesensitive_phase2",
+            "class_forcesensitive_phase2_novice",
+            "class_forcesensitive_phase2_02",
+            "class_forcesensitive_phase2_03",
+            "class_forcesensitive_phase2_04",
+            "class_forcesensitive_phase2_05",
+            "class_forcesensitive_phase2_master",
+
+            "class_forcesensitive_phase3",
+            "class_forcesensitive_phase3_novice",
+            "class_forcesensitive_phase3_02",
+            "class_forcesensitive_phase3_03",
+            "class_forcesensitive_phase3_04",
+            "class_forcesensitive_phase3_05",
+            "class_forcesensitive_phase3_master",
+
+            "class_forcesensitive_phase4",
+            "class_forcesensitive_phase4_novice",
+            "class_forcesensitive_phase4_02",
+            "class_forcesensitive_phase4_03",
+            "class_forcesensitive_phase4_04",
+            "class_forcesensitive_phase4_05",
+            "class_forcesensitive_phase4_master"
+    };
+    public static boolean isQualifiedForSkill(obj_id player, String skillName) throws InterruptedException
+    {
+        if (!isIdValid(player) || skillName == null)
+        {
+            return false;
+        }
+
+        if (skill.hasSkill(player, skillName))
+        {
+            return false;
+        }
+
+        dictionary xpReqs = getSkillPrerequisiteExperience(skillName);
+
+        // No XP required (novice / gates)
+        if (xpReqs == null || xpReqs.isEmpty())
+        {
+            return true;
+        }
+
+        java.util.Enumeration e = xpReqs.keys();
+        while (e.hasMoreElements())
+        {
+            String xpType = (String)e.nextElement();
+            int xpCost = xpReqs.getInt(xpType);
+
+            if (getExperiencePoints(player, xpType) < xpCost)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    public static String getNextForceSensitiveSkill(obj_id player) throws InterruptedException
+    {
+        int highestIndex = -1;
+
+        for (int i = 0; i < FS_SKILLS.length; i++)
+        {
+            if (skill.hasSkill(player, FS_SKILLS[i]))
+            {
+                highestIndex = i;
+            }
+        }
+
+        // Player has nothing yet
+        if (highestIndex == -1)
+        {
+            return FS_SKILLS[0];
+        }
+
+        // Already maxed
+        if (highestIndex + 1 >= FS_SKILLS.length)
+        {
+            return null;
+        }
+
+        return FS_SKILLS[highestIndex + 1];
+    }
     public void shrine_signalReward(obj_id player) throws InterruptedException
     {
         groundquests.sendSignal(player, "stardust_padawan_pointer");
+
+        String nextSkill = getNextForceSensitiveSkill(player);
+
+        if (nextSkill == null)
+        {
+            sendSystemMessage(player, new string_id("jedi_trials", "force_sensitive_mastery"));
+            return;
+        }
+
+        if (!isQualifiedForSkill(player, nextSkill))
+        {
+            dictionary xpReqs = getSkillPrerequisiteExperience(nextSkill);
+
+            if (xpReqs != null && !xpReqs.isEmpty())
+            {
+                java.util.Enumeration e = xpReqs.keys();
+                String xpType = (String)e.nextElement();
+                int xpRequired = xpReqs.getInt(xpType);
+                int xpCurrent = getExperiencePoints(player, xpType);
+
+                // Debug / testing feedback
+                sendSystemMessageTestingOnly(player,
+                        "XP (" + xpType + "): " + xpCurrent + " / " + xpRequired);
+            }
+            return;
+        }
+
+        // Grant directly — shrine is authoritative
+        grantSkill(player, nextSkill);
+        deductXpCostForSkillPurchase(player, nextSkill);
+
+        sendSystemMessage(player, new string_id("jedi_trials", "jedi_connection_deepens"));
     }
     public void shrine_signalReward2(obj_id player) throws InterruptedException
     {

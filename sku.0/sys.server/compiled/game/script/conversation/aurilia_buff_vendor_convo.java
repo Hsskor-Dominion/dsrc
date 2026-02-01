@@ -3,7 +3,6 @@ package script.conversation;
 import script.*;
 import script.library.*;
 
-
 public class aurilia_buff_vendor_convo extends script.conversation.base.conversation_base
 {
     public String conversation = "conversation.aurilia_buff_vendor_convo";
@@ -19,18 +18,135 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
     {
         return hasSkill(player, "social_language_basic_comprehend");
     }
+    public static String[] JEDI_SKILLS = {
 
-    public int aurilia_buff_vendor_convo_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
+            "force_discipline_powers",
+            "force_discipline_powers_novice",
+            "force_discipline_powers_master",
+
+            "force_discipline_powers_lightning_01",
+            "force_discipline_powers_lightning_02",
+            "force_discipline_powers_lightning_03",
+            "force_discipline_powers_lightning_04",
+
+            "force_discipline_powers_mental_01",
+            "force_discipline_powers_mental_02",
+            "force_discipline_powers_mental_03",
+            "force_discipline_powers_mental_04",
+
+            "force_discipline_powers_debuff_01",
+            "force_discipline_powers_debuff_02",
+            "force_discipline_powers_debuff_03",
+            "force_discipline_powers_debuff_04",
+
+            "force_discipline_powers_push_01",
+            "force_discipline_powers_push_02",
+            "force_discipline_powers_push_03",
+            "force_discipline_powers_push_04",
+
+            "force_discipline_healing",
+            "force_discipline_healing_novice",
+            "force_discipline_healing_master",
+
+            "force_discipline_healing_damage_01",
+            "force_discipline_healing_damage_02",
+            "force_discipline_healing_damage_03",
+            "force_discipline_healing_damage_04",
+
+            "force_discipline_healing_wound_01",
+            "force_discipline_healing_wound_02",
+            "force_discipline_healing_wound_03",
+            "force_discipline_healing_wound_04",
+
+            "force_discipline_healing_other_01",
+            "force_discipline_healing_other_02",
+            "force_discipline_healing_other_03",
+            "force_discipline_healing_other_04",
+
+            "force_discipline_healing_states_01",
+            "force_discipline_healing_states_02",
+            "force_discipline_healing_states_03",
+            "force_discipline_healing_states_04",
+
+            "force_discipline_enhancements",
+            "force_discipline_enhancements_novice",
+            "force_discipline_enhancements_master",
+
+            "force_discipline_enhancements_movement_01",
+            "force_discipline_enhancements_movement_02",
+            "force_discipline_enhancements_movement_03",
+            "force_discipline_enhancements_movement_04",
+
+            "force_discipline_enhancements_protection_01",
+            "force_discipline_enhancements_protection_02",
+            "force_discipline_enhancements_protection_03",
+            "force_discipline_enhancements_protection_04",
+
+            "force_discipline_enhancements_resistance_01",
+            "force_discipline_enhancements_resistance_02",
+            "force_discipline_enhancements_resistance_03",
+            "force_discipline_enhancements_resistance_04",
+
+            "force_discipline_enhancements_synergy_01",
+            "force_discipline_enhancements_synergy_02",
+            "force_discipline_enhancements_synergy_03",
+            "force_discipline_enhancements_synergy_04",
+
+            "force_discipline_defender",
+            "force_discipline_defender_novice",
+            "force_discipline_defender_master",
+
+            "force_discipline_defender_melee_defense_01",
+            "force_discipline_defender_melee_defense_02",
+            "force_discipline_defender_melee_defense_03",
+            "force_discipline_defender_melee_defense_04",
+
+            "force_discipline_defender_ranged_defense_01",
+            "force_discipline_defender_ranged_defense_02",
+            "force_discipline_defender_ranged_defense_03",
+            "force_discipline_defender_ranged_defense_04",
+
+            "force_discipline_defender_force_defense_01",
+            "force_discipline_defender_force_defense_02",
+            "force_discipline_defender_force_defense_03",
+            "force_discipline_defender_force_defense_04",
+
+            "force_discipline_defender_preternatural_defense_01",
+            "force_discipline_defender_preternatural_defense_02",
+            "force_discipline_defender_preternatural_defense_03",
+            "force_discipline_defender_preternatural_defense_04"
+    };
+
+// =====================================================
+// AURILIA FORCE XP CONVERTER
+// =====================================================
+
+    public int aurilia_buff_vendor_convo_handleBranch1(obj_id player, obj_id npc, string_id response)
+            throws InterruptedException
     {
-        if (response.equals("seek_trade")) {
-            handleBranch(player, "npc_consider_trade", new String[] { "force_trade" }, 2);
+        String responseStr = response.toString();
+        if (responseStr.contains(":"))
+            responseStr = responseStr.substring(responseStr.indexOf(":") + 1);
+
+        if (responseStr.equals("seek_trade"))
+        {
+            handleBranch(player,
+                    "npc_consider_trade",
+                    new String[]{"force_trade"},
+                    2);
             return SCRIPT_CONTINUE;
         }
 
-        else if (response.equals("seek_jedi")) {
-            // Offer both political and space options
-            handleBranch(player, "npc_you_seek_jedi",
-                    new String[] { "seek_jedi_meditation", "seek_jedi_defend_village", "seek_jedi_political", "seek_jedi_space", "seek_jedi_combat" },
+        if (responseStr.equals("seek_jedi"))
+        {
+            handleBranch(
+                    player,
+                    "npc_you_seek_jedi",
+                    new String[]{
+                            "seek_jedi_meditation",
+                            "seek_jedi_defend",
+                            "seek_jedi_fs_xp_exchange"
+                    },
                     3
             );
             return SCRIPT_CONTINUE;
@@ -39,141 +155,137 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
         return SCRIPT_DEFAULT;
     }
 
-    private void handleBranch(obj_id player, String messageKey, String[] responseKeys, int branchId) throws InterruptedException {
-        final string_id message = new string_id(c_stringFile, messageKey);
 
+    private void handleBranch(obj_id player, String messageKey, String[] responseKeys, int branchId)
+            throws InterruptedException
+    {
+        string_id message = new string_id(c_stringFile, messageKey);
         string_id[] responses = new string_id[responseKeys.length];
-        for (int i = 0; i < responseKeys.length; i++) {
-            responses[i] = new string_id(c_stringFile, responseKeys[i]);
-        }
 
-        utils.setScriptVar(player, "conversation.aurilia_buff_vendor_convo_conversation.branchId", branchId);
+        for (int i = 0; i < responseKeys.length; i++)
+            responses[i] = new string_id(c_stringFile, responseKeys[i]);
+
+        utils.setScriptVar(player,
+                "conversation.aurilia_buff_vendor_convo_conversation.branchId",
+                branchId);
 
         npcSpeak(player, message);
         npcSetConversationResponses(player, responses);
     }
-    public int aurilia_buff_vendor_convo_handleBranch2(obj_id player, obj_id npc, string_id response) throws InterruptedException
+
+// =====================================================
+
+    public int aurilia_buff_vendor_convo_handleBranch2(obj_id player, obj_id npc, string_id response)
+            throws InterruptedException
     {
-        if (response.equals("force_trade"))
-        {
-                final string_id message = new string_id(c_stringFile, "npc_offer_trade");
-                aurilia_buff_vendor_convo_action_showTokenVendorUI(player, npc);
+        String responseStr = response.toString();
+        if (responseStr.contains(":"))
+            responseStr = responseStr.substring(responseStr.indexOf(":") + 1);
 
-                utils.removeScriptVar(player, "conversation.aurilia_buff_vendor_convo_conversation.branchId");
-                npcEndConversationWithMessage(player, message);
+        if (!responseStr.equals("force_trade"))
+            return SCRIPT_DEFAULT;
 
-                return SCRIPT_CONTINUE;
-        }
-        return SCRIPT_DEFAULT;
+        aurilia_buff_vendor_convo_action_showTokenVendorUI(player, npc);
+
+        utils.removeScriptVarTree(player,
+                "conversation.aurilia_buff_vendor_convo_conversation");
+
+        npcEndConversationWithMessage(player,
+                new string_id(c_stringFile, "npc_offer_trade"));
+
+        return SCRIPT_CONTINUE;
     }
-    public int aurilia_buff_vendor_convo_handleBranch3(obj_id player, obj_id npc, string_id response) throws InterruptedException
+
+    public int aurilia_buff_vendor_convo_handleBranch3(obj_id player, obj_id npc, string_id response)
+            throws InterruptedException
     {
-        int required = 10000;
+        String responseStr = response.toString();
+        if (responseStr.contains(":"))
+            responseStr = responseStr.substring(responseStr.indexOf(":") + 1);
 
-
-        // MEDITATE
-        if (response.equals("seek_jedi_meditation"))
+        // ---- MEDITATION ----
+        if (responseStr.equals("seek_jedi_meditation"))
         {
-            int jedi1 = xp.getExperiencePoints(player, "fs_combat");
-            int jedi2 = xp.getExperiencePoints(player, "fs_reflex");
-            int jedi3 = xp.getExperiencePoints(player, "fs_crafting");
-            int jedi4 = xp.getExperiencePoints(player, "fs_senses");
-            int jedi5 = xp.getExperiencePoints(player, "jedi");
-            sendSystemMessageTestingOnly(player, "FS Combat Experience " + jedi1);
-            sendSystemMessageTestingOnly(player, "FS Reflex Experience " + jedi2);
-            sendSystemMessageTestingOnly(player, "FS Crafting Experience " + jedi3);
-            sendSystemMessageTestingOnly(player, "FS Senses Experience " + jedi4);
-            sendSystemMessageTestingOnly(player, "Jedi XP: " + jedi5);
-
-            final string_id message = new string_id(c_stringFile, "meditation_training_offered");
             groundquests.grantQuest(player, "stardust_jedi_keeper");
 
-            utils.removeScriptVar(player, "conversation.aurilia_buff_vendor_convo_conversation.branchId");
-            npcEndConversationWithMessage(player, message);
+            utils.removeScriptVarTree(player,
+                    "conversation.aurilia_buff_vendor_convo_conversation");
 
+            npcEndConversationWithMessage(player,
+                    new string_id(c_stringFile, "meditation_training_offered"));
             return SCRIPT_CONTINUE;
         }
 
-        // DEFEND
-        if (response.equals("seek_jedi_defend_village"))
+        // ---- DEFEND ----
+        if (responseStr.equals("seek_jedi_defend"))
         {
-            final string_id message = new string_id(c_stringFile, "help_defend_village");
             groundquests.grantQuest(player, "stardust_holocron_aurillia");
 
-            utils.removeScriptVar(player, "conversation.aurilia_buff_vendor_convo_conversation.branchId");
-            npcEndConversationWithMessage(player, message);
+            utils.removeScriptVarTree(player,
+                    "conversation.aurilia_buff_vendor_convo_conversation");
 
+            npcEndConversationWithMessage(player,
+                    new string_id(c_stringFile, "help_defend_village"));
             return SCRIPT_CONTINUE;
         }
 
-        if (response.equals("seek_jedi_political"))
+        // ---- FORCE XP EXCHANGE ----
+        if (responseStr.equals("seek_jedi_fs_xp_exchange"))//i get error fell through; should this direct to another branch?
         {
-            int politicalXp = xp.getExperiencePoints(player, "political");
-            sendSystemMessageTestingOnly(player, "Political Experience " + politicalXp);
-
-            if (politicalXp < required)
-            {
-                npcEndConversationWithMessage(player,
-                        new string_id(c_stringFile, "npc_you_lack_experience"));
-                utils.removeScriptVarTree(player,
-                        "conversation.aurilia_buff_vendor_convo_conversation");
-                return SCRIPT_CONTINUE;
-            }
-
-            utils.setScriptVar(player, "jedi_xp_exchange_type", "political");
-            utils.setScriptVar(player, "jedi_xp_exchange_amount", politicalXp);
-
             handleBranch(player,
-                    "npc_confirm_exchange",
-                    new String[] { "confirm_yes", "confirm_no" },
-                    4);
-            return SCRIPT_CONTINUE;
-        }
+                    "npc_you_seek_jedi_fs_xp_exchange",
+                    new String[]{
+                            "seek_jedi_political",
+                            "seek_jedi_combat",
+                            "seek_jedi_space",
 
-        if (response.equals("seek_jedi_combat"))
-        {
-            int combatXp = xp.getExperiencePoints(player, "combat_general");
-            sendSystemMessageTestingOnly(player, "Combat Experience " + combatXp);
+                            "seek_jedi_combat_meleespecialize_unarmed",
+                            "seek_jedi_combat_meleespecialize_onehand",
+                            "seek_jedi_combat_meleespecialize_twohand",
+                            "seek_jedi_combat_meleespecialize_polearm",
 
-            if (combatXp < required)
-            {
-                npcEndConversationWithMessage(player,
-                        new string_id(c_stringFile, "npc_you_lack_experience"));
-                utils.removeScriptVarTree(player,
-                        "conversation.aurilia_buff_vendor_convo_conversation");
-                return SCRIPT_CONTINUE;
-            }
+                            "seek_jedi_combat_rangedspecialize_pistol",
+                            "seek_jedi_combat_rangedspecialize_carbine",
+                            "seek_jedi_combat_rangedspecialize_rifle",
+                            "seek_jedi_combat_rangedspecialize_heavy",
 
-            utils.setScriptVar(player, "jedi_xp_exchange_type", "combat_general");
-            utils.setScriptVar(player, "jedi_xp_exchange_amount", combatXp);
+                            "seek_jedi_medical",
+                            "seek_jedi_crafting_medical_general",
+                            "seek_jedi_bio_engineer",
 
-            handleBranch(player,
-                    "npc_confirm_exchange",
-                    new String[] { "confirm_yes", "confirm_no" },
-                    4);
-            return SCRIPT_CONTINUE;
-        }
+                            "seek_jedi_scout",
+                            "seek_jedi_trapping",
+                            "seek_jedi_camp",
+                            "seek_jedi_resource_harvesting_organic",
+                            "seek_jedi_creaturehandler",
+                            "seek_jedi_squadleader",
+                            "seek_jedi_bountyhunter",
 
-        if (response.equals("seek_jedi_space"))
-        {
-            int spaceXp = xp.getExperiencePoints(player, "space_combat_general");
-            sendSystemMessageTestingOnly(player, "Space Combat Experience " + spaceXp);
+                            "seek_jedi_music",
+                            "seek_jedi_dance",
+                            "seek_jedi_entertainer",
+                            "seek_jedi_entertainer_healing",
+                            "seek_jedi_imagedesigner",
 
-            if (spaceXp < required)
-            {
-                npcEndConversationWithMessage(player,
-                        new string_id(c_stringFile, "npc_you_lack_experience"));
-                utils.removeScriptVarTree(player,
-                        "conversation.aurilia_buff_vendor_convo_conversation");
-                return SCRIPT_CONTINUE;
-            }
+                            "seek_jedi_resource_harvesting_inorganic",
+                            "seek_jedi_crafting_general",
+                            "seek_jedi_crafting_clothing_armor",
+                            "seek_jedi_crafting_clothing_general",
+                            "seek_jedi_crafting_weapons_general",
+                            "seek_jedi_crafting_weapons_melee",
+                            "seek_jedi_crafting_weapons_ranged",
+                            "seek_jedi_crafting_structure_general",
+                            "seek_jedi_crafting_droid_general",
+                            "seek_jedi_structure",
+                            "seek_jedi_shipwright",
+                            "seek_jedi_clothing",
+                            "seek_jedi_crafting_food_general",
+                            "seek_jedi_merchant",
 
-            utils.setScriptVar(player, "jedi_xp_exchange_type", "space");
-            utils.setScriptVar(player, "jedi_xp_exchange_amount", spaceXp);
-
-            handleBranch(player,
-                    "npc_confirm_exchange",
-                    new String[] { "confirm_yes", "confirm_no" },
+                            "seek_jedi_smuggler",
+                            "seek_jedi_slicing",
+                            "seek_jedi_spice"
+                    },
                     4);
             return SCRIPT_CONTINUE;
         }
@@ -181,74 +293,73 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
         return SCRIPT_DEFAULT;
     }
 
-    public int aurilia_buff_vendor_convo_handleBranch4(obj_id player, obj_id npc, string_id response) throws InterruptedException
+// =====================================================
+
+    public int aurilia_buff_vendor_convo_handleBranch4(obj_id player, obj_id npc, string_id response)
+            throws InterruptedException
     {
-        String type = utils.getStringScriptVar(player, "jedi_xp_exchange_type");
-        int required = 10000;
+        String responseStr = response.toString();
+        if (responseStr.contains(":"))
+            responseStr = responseStr.substring(responseStr.indexOf(":") + 1);
 
-        if (response.equals("confirm_no"))
+        // ---- XP CONVERSION ----
+        if (responseStr.startsWith("seek_jedi_"))
         {
-            final string_id message = new string_id(c_stringFile, "npc_exchange_cancel");
-            utils.removeScriptVarTree(player, "conversation.aurilia_buff_vendor_convo_conversation");
-            npcEndConversationWithMessage(player, message);
-            return SCRIPT_CONTINUE;
-        }
+            final int REQUIRED_XP = 100000;
 
-        if (response.equals("confirm_yes"))
-        {
-            // Map of input type -> experience pool to deduct
-            java.util.Map<String, String> xpPools = new java.util.HashMap<String, String>();
-            xpPools.put("political", "political");
-            xpPools.put("combat_general", "combat_general");
-            xpPools.put("space_combat", "space_combat_xp");
-            // Add more here:
-            xpPools.put("piloting", "piloting_xp");
-            xpPools.put("stealth", "stealth_xp");
-            xpPools.put("crafting", "crafting_xp");
-            xpPools.put("social", "social_xp");
-            // etc… up to 20+
+            String xpType = responseStr.replace("seek_jedi_", "");
 
-            // Map of messages per type
-            java.util.Map<String, string_id> messages = new java.util.HashMap<String, string_id>();
-            messages.put("political", new string_id(c_stringFile, "npc_feel_the_force_experience_political"));
-            messages.put("combat_general", new string_id(c_stringFile, "npc_feel_the_force_experience_combat"));
-            messages.put("space_combat", new string_id(c_stringFile, "npc_feel_the_force_experience_space"));
-            // Add more messages for each type if desired
+            // normalize aliases
+            if (xpType.equals("combat")) xpType = "combat_general";
+            if (xpType.equals("combat_meleespecialize_unarmed")) xpType = "combat_general";
+            if (xpType.equals("combat_meleespecialize_onehand")) xpType = "combat_general";
+            if (xpType.equals("combat_meleespecialize_twohand")) xpType = "combat_general";
+            if (xpType.equals("combat_meleespecialize_polearm")) xpType = "combat_general";
+            if (xpType.equals("combat_rangedspecialize_pistol")) xpType = "combat_general";
+            if (xpType.equals("combat_rangedspecialize_carbine")) xpType = "combat_general";
+            if (xpType.equals("combat_rangedspecialize_rifle")) xpType = "combat_general";
+            if (xpType.equals("combat_rangedspecialize_heavy")) xpType = "combat_general";
+            if (xpType.equals("space")) xpType = "space_combat_general";
+            if (xpType.equals("weapons")) xpType = "crafting_weapons_general";
+            if (xpType.equals("droid")) xpType = "crafting_droid_general";
+            if (xpType.equals("structure")) xpType = "crafting_structure_general";
+            if (xpType.equals("imagedesign")) xpType = "imagedesigner";
 
-            if (xpPools.containsKey(type))
+            int currentXp = xp.getExperiencePoints(player, xpType);
+
+            if (currentXp < REQUIRED_XP)
             {
-                String pool = xpPools.get(type);
-                int current = getExperiencePoints(player, pool);
+                int missingXp = REQUIRED_XP - currentXp;
+                sendSystemMessageTestingOnly(player,
+                        "You lack " + missingXp + " " + xpType + " XP to convert.");
 
-                if (current >= required)
-                {
-                    // Grant force experience
-                    grantExperiencePoints(player, "fs_combat", 1000);
-                    grantExperiencePoints(player, "fs_reflex", 1000);
-                    grantExperiencePoints(player, "fs_crafting", 1000);
-                    grantExperiencePoints(player, "fs_senses", 1000);
+                utils.removeScriptVarTree(player,
+                        "conversation.aurilia_buff_vendor_convo_conversation");
 
-                    // Deduct from chosen pool
-                    grantExperiencePoints(player, pool, -required);
-                    sendSystemMessageTestingOnly(player, "You have unlearned what you have learned, and experience the force");
-
-                    string_id msg = messages.containsKey(type)
-                            ? messages.get(type)
-                            : new string_id(c_stringFile, "npc_feel_the_force_experience_generic");
-
-                    npcEndConversationWithMessage(player, msg);
-                }
-                else
-                {
-                    npcEndConversationWithMessage(player, new string_id(c_stringFile, "npc_you_lack_experience"));
-                }
+                npcEndConversationWithMessage(player,
+                        new string_id(c_stringFile, "npc_you_lack_experience"));
+                return SCRIPT_CONTINUE;
             }
 
-            utils.removeScriptVarTree(player, "conversation.aurilia_buff_vendor_convo_conversation");
+            utils.setScriptVar(player, "jedi_xp_exchange_type", xpType);
+
+            handleBranch(player,
+                    "npc_confirm_exchange",
+                    new String[]{"confirm_yes", "confirm_no"},
+                    4);
+
             return SCRIPT_CONTINUE;
         }
 
-        return SCRIPT_DEFAULT;
+        // ---- DEFAULT FALLBACK ----
+        sendSystemMessageTestingOnly(player,
+                "DEBUG: Branch4 fell through on response: " + responseStr);
+        utils.removeScriptVarTree(player,
+                "conversation.aurilia_buff_vendor_convo_conversation");
+        npcEndConversationWithMessage(player,
+                new string_id(c_stringFile, "npc_exchange_cancel"));
+
+        return SCRIPT_CONTINUE;
     }
 
     public int OnInitialize(obj_id self) throws InterruptedException
@@ -311,9 +422,15 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
             if (planetId == 11) {
                 setName(self, "Paemos (Village Elder)");
             }
+        if (planetId == 9) {
+            setName(self, "Vrook Lamar (a mysterious figure)");
+        }
             if (planetId == 6) {
                 setName(self, "an old man");
             }
+        if (planetId == 10) {
+            setName(self, "Lor San Tekka");
+        }
         return SCRIPT_CONTINUE;
     }
 

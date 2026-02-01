@@ -10,6 +10,9 @@ import script.string_id;
 
 import java.util.Vector;
 
+import static script.library.force_rank.STF_FILE;
+import static script.library.force_rank.getForceRank;
+
 public class terminal_frs_voting extends script.base_script
 {
     public terminal_frs_voting()
@@ -53,10 +56,10 @@ public class terminal_frs_voting extends script.base_script
             LOG("force_rank", "terminal_frs_voting.OnObjectMenuRequest -- " + enclave + " is not an enclave building.");
             return SCRIPT_CONTINUE;
         }
-        int rank = force_rank.getForceRank(player);
+        int rank = getForceRank(player);
         if (rank == -1)
         {
-            sendSystemMessage(player, new string_id(force_rank.STF_FILE, "insufficient_rank_vote"));
+            sendSystemMessage(player, new string_id(STF_FILE, "insufficient_rank_vote"));
             return SCRIPT_CONTINUE;
         }
         int council = force_rank.getCouncilAffiliation(player);
@@ -70,28 +73,28 @@ public class terminal_frs_voting extends script.base_script
 
         if (playerCouncil != enclaveCouncil)
         {
-            sendSystemMessage(player, new string_id(force_rank.STF_FILE, "wrong_council_terminal"));
+            sendSystemMessage(player, new string_id(STF_FILE, "wrong_council_terminal"));
             LOG("force_rank", player + " attempted to access terminal for another council (" + enclaveCouncil + ")");
             return SCRIPT_CONTINUE;
         }
-        int mnu = mi.addRootMenu(menu_info_types.SERVER_MENU1, new string_id(force_rank.STF_FILE, "vote_status"));
-        mi.addSubMenu(mnu, menu_info_types.SERVER_MENU2, new string_id(force_rank.STF_FILE, "record_vote"));
-        mi.addSubMenu(mnu, menu_info_types.SERVER_MENU3, new string_id(force_rank.STF_FILE, "accept_promotion"));
-        mi.addSubMenu(mnu, menu_info_types.SERVER_MENU4, new string_id(force_rank.STF_FILE, "petition"));
+        int mnu = mi.addRootMenu(menu_info_types.SERVER_MENU1, new string_id(STF_FILE, "vote_status"));
+        mi.addSubMenu(mnu, menu_info_types.SERVER_MENU2, new string_id(STF_FILE, "record_vote"));
+        mi.addSubMenu(mnu, menu_info_types.SERVER_MENU3, new string_id(STF_FILE, "accept_promotion"));
+        mi.addSubMenu(mnu, menu_info_types.SERVER_MENU4, new string_id(STF_FILE, "petition"));
         if (rank > 7 && council == force_rank.LIGHT_COUNCIL)
         {
-            mi.addRootMenu(menu_info_types.SERVER_MENU5, new string_id(force_rank.STF_FILE, "demote_member"));
+            mi.addRootMenu(menu_info_types.SERVER_MENU5, new string_id(STF_FILE, "demote_member"));
         }
         if (isGod(player))
         {
-            int mnu2 = mi.addRootMenu(menu_info_types.SERVER_MENU20, new string_id(force_rank.STF_FILE, "frs_status_update"));
-            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU21, new string_id(force_rank.STF_FILE, "set_positioning"));
-            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU22, new string_id(force_rank.STF_FILE, "set_voting"));
-            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU23, new string_id(force_rank.STF_FILE, "set_acceptance"));
-            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU24, new string_id(force_rank.STF_FILE, "set_maintenance"));
-            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU25, new string_id(force_rank.STF_FILE, "set_inactive"));
+            int mnu2 = mi.addRootMenu(menu_info_types.SERVER_MENU20, new string_id(STF_FILE, "frs_status_update"));
+            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU21, new string_id(STF_FILE, "set_positioning"));
+            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU22, new string_id(STF_FILE, "set_voting"));
+            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU23, new string_id(STF_FILE, "set_acceptance"));
+            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU24, new string_id(STF_FILE, "set_maintenance"));
+            mi.addSubMenu(mnu2, menu_info_types.SERVER_MENU25, new string_id(STF_FILE, "set_inactive"));
         }
-        mi.addRootMenu(menu_info_types.SERVER_MENU6, new string_id(force_rank.STF_FILE, "recover_jedi_items"));
+        mi.addRootMenu(menu_info_types.SERVER_MENU6, new string_id(STF_FILE, "recover_jedi_items"));
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
@@ -128,7 +131,7 @@ public class terminal_frs_voting extends script.base_script
         }
         if (item == menu_info_types.SERVER_MENU2)
         {
-            int player_rank = force_rank.getForceRank(player);
+            int player_rank = getForceRank(player);
             for (int i = 0; i < dsrc.length; i++)
             {
                 if (force_rank.getVoteStatus(enclave, i + 1) == 2)
@@ -173,18 +176,7 @@ public class terminal_frs_voting extends script.base_script
         }
         if (item == menu_info_types.SERVER_MENU6)
         {
-            if (force_rank.grantRankItems(player, true))
-            {
-                sendSystemMessage(player, new string_id(force_rank.STF_FILE, "items_recovered"));
-//                if (!hasObjVar(player, force_rank.VAR_RANK))
-//                {
-                    setObjVar(player, force_rank.VAR_RANK, 1); // Starting at rank 1
-                    force_rank.addToForceRankSystem(player, force_rank.LIGHT_COUNCIL);
-                    grantSkill(player, "force_rank");
-                    grantSkill(player, "force_rank_light");
-                    grantSkill(player, "force_rank_light_novice");
-//                }
-            }
+            force_rank.grantRankItems(player, true);
         }
         if (isGod(player))
         {
@@ -223,7 +215,7 @@ public class terminal_frs_voting extends script.base_script
                     setObjVar(enclave, "force_rank.voting.rank" + rank + ".status", newStatus);
                 }
 
-                sendSystemMessage(player, new string_id(force_rank.STF_FILE, "frs_updated"));
+                sendSystemMessage(player, new string_id(STF_FILE, "frs_updated"));
             }
         }
         return SCRIPT_CONTINUE;

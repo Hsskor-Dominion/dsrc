@@ -34,6 +34,7 @@ public class exar_kun_temple_spawner extends script.base_script
         spawnSpirit5(self);
         spawnSpirit6(self);
         spawnSpirit7(self);
+        spawnTekka(self);
     }
     public void spawnLuke(obj_id self) throws InterruptedException
     {
@@ -128,10 +129,22 @@ public class exar_kun_temple_spawner extends script.base_script
     {
         obj_id room = getCellId(self, "r11");
         location here = new location(0.7f, -6.0f, -29.9f, "yavin4", room);
-        obj_id spirit = createSpawnerObject("rtp_luke_force_ghost", here, ai_lib.BEHAVIOR_LOITER, 210, 309);
+        obj_id spirit = createSpawnerObject("trainer_fs", here, ai_lib.BEHAVIOR_LOITER, 210, 309);
         setYaw(spirit, 172);
         setObjVar(self, "HideoutInhabitants.spirit6", spirit);
         setObjVar(spirit, "Hideout", self);
+        return;
+    }
+    public void spawnTekka(obj_id self) throws InterruptedException
+    {
+        location tekkaLocation = new location(5077.5f, 0.0f, 5503.0f, "yavin4", obj_id.NULL_ID);
+        obj_id tekka = create.staticObject("stardust_lor_san_tekka", tekkaLocation);
+        int pilot_yaw = -136;
+        setYaw(tekka, pilot_yaw);
+        setInvulnerable(tekka, true);
+        setCreatureStatic(tekka, true);
+        setObjVar(self, "HideoutInhabitants.spirit6", tekka);
+        setObjVar(tekka, "Hideout", self);
         return;
     }
     public obj_id createSpawnerObject(String whatToSpawn, location where, int intDefaultBehavior, float maxSpawnTime, float minSpawnTime) throws InterruptedException

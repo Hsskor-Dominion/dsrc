@@ -25,6 +25,7 @@ public class player_saga_quest extends script.base_script
             if (!hasObjVar(self, "chroniclesTermsOfServiceShown"))
             {
                 messageTo(self, "handleChroniclesTermsOfService", null, 2, false);
+                setLevel(self, 5);
             }
             messageTo(self, "handleChroniclesReserveReminder", null, 3, false);
         }

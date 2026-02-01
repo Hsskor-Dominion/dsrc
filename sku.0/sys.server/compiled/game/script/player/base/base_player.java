@@ -9,8 +9,12 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
+import static script.library.badge.BADGE_BOOK;
 import static script.library.buff.hasBuff;
 import static script.library.buff.removeBuff;
+import static script.library.force_rank.FRS_XP;
+import static script.library.jedi_trials.SID_CLOSE_BUTTON;
+import static script.library.jedi_trials.oneButtonMsgBox;
 import static script.library.meditation.MEDITATE_BUFF_FOCUS;
 import static script.library.meditation.MEDITATE_BUFF_STANCE;
 import static script.library.utils.hasScriptVar;
@@ -211,6 +215,7 @@ public class base_player extends script.base_script
     public static final string_id TOO_FAR_FROM_LAIR = new string_id("lair_n", "too_far_from_lair");
     public static final string_id LAIR_NOT_TARGETED = new string_id("lair_n", "lair_not_targeted");
     public static final string_id SHAPECHANGE = new string_id("spam", "shapechange_combat");
+    public static final string_id FORCESTATUS_TITLE = new string_id("jedi_trials", "checkforce");
     public static final String[] WAYPOINT_GROUND_PLANETS_EXTERNAL = 
     {
         "tatooine",
@@ -3972,8 +3977,79 @@ public class base_player extends script.base_script
         sendSystemMessageTestingOnly(self, "/TIP command failed in command table...");
         return SCRIPT_CONTINUE;
     }
-    public int cmdCheckForceStatus(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
+    public int cmd_uiskills(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
+        sendConsoleCommand("/ui action skills", self); //I tried adding this command, but nothing can proc it
+        sendSystemMessageTestingOnly(self, "testing pre-cu /cu skill box ui caller");
+        return SCRIPT_CONTINUE;
+    }
+    public int cmdCheckForceStatus(obj_id self, obj_id target, String params, float defaultTime)
+            throws InterruptedException
+    {
+//        sendConsoleCommand("/ui action skills", self);//this is how I'm testing/trying to call skills box
+        // --------------------------------------------------
+        // XP pools
+        // --------------------------------------------------
+        int jediXp     = xp.getExperiencePoints(self, "jedi");
+        int fsCombat   = xp.getExperiencePoints(self, "fs_combat");
+        int fsReflex   = xp.getExperiencePoints(self, "fs_reflex");
+        int fsCrafting = xp.getExperiencePoints(self, "fs_crafting");
+        int fsSenses   = xp.getExperiencePoints(self, "fs_senses");
+        int onehXp   = xp.getExperiencePoints(self, "combat_meleespecialize_onehandlightsaber");
+        int twohXp   = xp.getExperiencePoints(self, "combat_meleespecialize_twohandlightsaber");
+        int threehXp   = xp.getExperiencePoints(self, "combat_meleespecialize_polearmlightsaber");
+        int forceXp   = xp.getExperiencePoints(self, "jedi_force");
+
+        // --------------------------------------------------
+        // Progress tracking
+        // --------------------------------------------------
+        String[] badges = getCompletedCollectionSlotsInBook(self, BADGE_BOOK);
+        int badgeCount = (badges != null) ? badges.length : 0;   // X / 50
+        int branchCount = fs_quests.getBranchesLearned(self);    // X / 6  -->this should correspond with level statements
+//        Overall levels of force sensitivity (use /check):
+//        1 You feel no connection with the Force.
+//        2 You barely notice something different about yourself.
+//        3 You feel a faint sense of the Force.
+//        4 You have a strong sense of the Force within you.
+//        5 You feel the Force surge within you.
+//        6 You feel an inner glow. The Force is with you.
+
+        // --------------------------------------------------
+        // Build UI message
+        // --------------------------------------------------
+        String message =
+                "You search your feelings...\n\n" +
+                        //add level here, correspond to FS branches learned
+
+                        "Force Attunement:\n" +
+                        "  Force Exploration: " + badgeCount + " / 50\n" +
+                        "  Force Branches: " + branchCount + " / 6" +
+
+                        "Force Sensitive XP:\n" +
+                        "  Combat: " + fsCombat + "\n" +
+                        "  Reflex: " + fsReflex + "\n" +
+                        "  Crafting: " + fsCrafting + "\n" +
+                        "  Senses: " + fsSenses + "\n\n" +
+
+                        "Jedi Experience: " + jediXp + "\n\n" +
+
+                        "Force Power Experience: " + forceXp + "\n\n" +
+                        "One-Handed Lightsaber Experience: " + onehXp + "\n\n" +
+                        "Two-Handed Lightsaber Experience: " + twohXp + "\n\n" +
+                        "Polearm Lightsaber Experience: " + threehXp + "\n\n";
+
+        // --------------------------------------------------
+        // Display SUI
+        // --------------------------------------------------
+        oneButtonMsgBox(
+                self,
+                self,
+                "noHandler",
+                FORCESTATUS_TITLE,
+                message,
+                SID_CLOSE_BUTTON
+        );
+
         return SCRIPT_CONTINUE;
     }
     public int handleWireConfirm(obj_id self, dictionary params) throws InterruptedException
