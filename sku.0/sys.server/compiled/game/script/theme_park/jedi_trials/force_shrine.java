@@ -3,6 +3,7 @@ package script.theme_park.jedi_trials;
 import script.*;
 import script.library.*;
 
+import static script.library.buff.*;
 import static script.library.skill.deductXpCostForSkillPurchase;
 
 public class force_shrine extends script.base_script
@@ -46,37 +47,128 @@ public class force_shrine extends script.base_script
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
     {
         sendDirtyObjectMenuNotification(self);
-        int posture = getPosture(player);
-        if (canMeditateHere(self, player))
+
+        if (!canMeditateHere(self, player))
+            return SCRIPT_CONTINUE;
+
+        if (item == menu_info_types.SERVER_ITEM_OPTIONS)
         {
-            if (item == menu_info_types.SERVER_ITEM_OPTIONS) {
-                jedi_trials.giveGenericForceShrineMessage(player);
-                grant_padawan_trials_quest(player);
+            jedi_trials.giveGenericForceShrineMessage(player);
+
+            String q1_ls = "stardust_padawan_trials";
+            String q1_ds = "stardust_padawan_trials_dark";
+            String q2 = "prof_force_sensitive_21_1";
+            String q3 = "stardust_jedi_kill";
+
+            // If any phase is active, stop.
+            if (groundquests.isQuestActive(player, q1_ls) ||
+                    groundquests.isQuestActive(player, q1_ds) ||
+                    groundquests.isQuestActive(player, q2) ||
+                    groundquests.isQuestActive(player, q3))
+            {
+                //sendSystemMessage(player, new string_id("jedi_spam", "already_on_trials")); //too much spam
                 shrine_signalReward(player);
+                return SCRIPT_CONTINUE;
             }
-            if (item == menu_info_types.SERVER_MENU5)
+
+            // ------------------------------------------------------------
+            // Phase 1 (split by stance/focus)
+            // ------------------------------------------------------------
+            if (!groundquests.hasCompletedQuest(player, q1_ls) &&
+                    !groundquests.hasCompletedQuest(player, q1_ds))
             {
-                issuePadawanRobe(player);
-            }
-            if (item == menu_info_types.SERVER_MENU6)
-            {
-                if (getState(player, STATE_MEDITATE) != 1)
+                boolean ls = isInStance(player);
+                boolean ds = isInFocus(player);
+
+                // Must be in one or the other
+                if (!ls && !ds)
                 {
-                    sendSystemMessage(player, SHOW_RESPECT);
+                    sendSystemMessage(player, new string_id("jedi_spam", "must_choose_focus_or_stance"));
                     return SCRIPT_CONTINUE;
                 }
-                issueUltraCloak(player, 0);
-            }
-            if (item == menu_info_types.SERVER_MENU7)
-            {
-                if (getState(player, STATE_MEDITATE) != 1)
+
+                // If both are on (shouldn't happen, but just in case)
+                if (ls && ds)
                 {
-                    sendSystemMessage(player, SHOW_RESPECT);
+                    sendSystemMessage(player, new string_id("jedi_spam", "too_much_conflict_choose_one"));
                     return SCRIPT_CONTINUE;
                 }
-                issueUltraCloak(player, 1);
+
+                if (ls)
+                    groundquests.grantQuest(player, q1_ls);
+                else
+                    groundquests.grantQuest(player, q1_ds);
+
+                sendSystemMessage(player, new string_id("jedi_spam", "trials_phase1_granted"));
+                shrine_signalReward(player);
+                return SCRIPT_CONTINUE;
             }
+
+            // ------------------------------------------------------------
+            // Phase 2 (normal)
+            // ------------------------------------------------------------
+            if (!groundquests.hasCompletedQuest(player, q2))
+            {
+                groundquests.grantQuest(player, q2);
+                sendSystemMessage(player, new string_id("jedi_spam", "trials_phase2_granted"));
+                shrine_signalReward(player);
+                return SCRIPT_CONTINUE;
+            }
+
+            // ------------------------------------------------------------
+            // Phase 3 (normal)
+            // ------------------------------------------------------------
+            if (!groundquests.hasCompletedQuest(player, q3))
+            {
+                groundquests.grantQuest(player, q3);
+                sendSystemMessage(player, new string_id("jedi_spam", "trials_phase3_granted"));
+                shrine_signalReward(player);
+                return SCRIPT_CONTINUE;
+            }
+
+            // ------------------------------------------------------------
+            // All complete
+            // ------------------------------------------------------------
+            sendSystemMessage(player, new string_id("jedi_spam", "trials_all_complete_seek_enclave"));
+
+            // Optional: clear any leftovers
+            groundquests.clearQuest(player, q1_ls);
+            groundquests.clearQuest(player, q1_ds);
+            groundquests.clearQuest(player, q2);
+            groundquests.clearQuest(player, q3);
+
+            shrine_signalReward(player);
+            return SCRIPT_CONTINUE;
         }
+
+        if (item == menu_info_types.SERVER_MENU5)
+        {
+            issuePadawanRobe(player);
+            return SCRIPT_CONTINUE;
+        }
+
+        if (item == menu_info_types.SERVER_MENU6)
+        {
+            if (getState(player, STATE_MEDITATE) != 1)
+            {
+                sendSystemMessage(player, SHOW_RESPECT);
+                return SCRIPT_CONTINUE;
+            }
+            issueUltraCloak(player, 0);
+            return SCRIPT_CONTINUE;
+        }
+
+        if (item == menu_info_types.SERVER_MENU7)
+        {
+            if (getState(player, STATE_MEDITATE) != 1)
+            {
+                sendSystemMessage(player, SHOW_RESPECT);
+                return SCRIPT_CONTINUE;
+            }
+            issueUltraCloak(player, 1);
+            return SCRIPT_CONTINUE;
+        }
+
         return SCRIPT_CONTINUE;
     }
     public int handleEnterTrialsChoice(obj_id self, dictionary params) throws InterruptedException
@@ -300,7 +392,7 @@ public class force_shrine extends script.base_script
     }
     public void shrine_signalReward(obj_id player) throws InterruptedException
     {
-        groundquests.sendSignal(player, "stardust_padawan_pointer");
+        groundquests.completeQuest(player, "stardust_padawan_pointer");
 
         String nextSkill = getNextForceSensitiveSkill(player);
 
@@ -333,15 +425,6 @@ public class force_shrine extends script.base_script
         deductXpCostForSkillPurchase(player, nextSkill);
 
         sendSystemMessage(player, new string_id("jedi_trials", "jedi_connection_deepens"));
-    }
-    public void shrine_signalReward2(obj_id player) throws InterruptedException
-    {
-        groundquests.sendSignal(player, "stardust_knight_pointer");
-    }
-    public void grant_padawan_trials_quest(obj_id player) throws InterruptedException
-    {
-        String pTemplate = getSkillTemplate(player);
-        groundquests.grantQuest(player, "stardust_padawan_trials");
     }
     public void grant_knight_trials_quest(obj_id player) throws InterruptedException
     {
@@ -417,7 +500,7 @@ public class force_shrine extends script.base_script
                 sendSystemMessage(player, FULL_INVENTORY);
                 return;
             }
-            if (buff.hasBuff(player, "utlra_jedi_cloak_block"))
+            if (hasBuff(player, "utlra_jedi_cloak_block"))
             {
                 sendSystemMessage(player, CLOAK_TOO_SOON);
                 return;

@@ -534,6 +534,22 @@ public class combat extends script.base_script
         boolean isStun = movement.isStunEffect(actionName);
         prose_package pp = new prose_package();
         String movementType = "";
+
+        float resistChance = getStateResistance(defender, movementType);
+        float roll = rand(0.0f, 1.0f);
+
+        if (roll < resistChance)
+        {
+            showCombatText(
+                    defender,
+                    attacker,
+                    new string_id("combat_effects", "resisted"),
+                    1.5f,
+                    colors.WHITE);
+
+            return false;
+        }
+
         if (isRoot)
         {
             movementType = "root";
@@ -721,10 +737,11 @@ public class combat extends script.base_script
     {
         return isPlayer(self)
                 && (hasSkill(self, "class_commando_phase2_novice")
-                || hasSkill(self, "expertise_co_short_fuse_1"))
+                || hasSkill(self, "expertise_co_short_fuse_1")
+                || hasSkill(self, "combat_commando_novice"))
                 && isHeavyWeapon(weaponData)
                 && (commandType == LEFT_CLICK_DEFAULT);
-    }//SWG Chimaera attempt to separate commando skill check into 2 options
+    }//SWG Chimaera attempt to separate commando skill check into 3 options
     public static int[] getActionCost(obj_id self, weapon_data weaponData, dictionary actionData) throws InterruptedException
     {
         int[] cost = new int[3];
@@ -3043,6 +3060,7 @@ public class combat extends script.base_script
         dodgeChance += (getEnhancedSkillStatisticModifierUncapped(player, "luck") / 300.0f);
         dodgeChance += (getDiminishedReturnValue(getEnhancedSkillStatisticModifierUncapped(player, "combat_dodge"), DR_DEFENDER_DODGE) / 10.0f);
         dodgeChance += getEnhancedSkillStatisticModifierUncapped(player, "expertise_dodge");
+        dodgeChance += (getEnhancedSkillStatisticModifierUncapped(player, "force_defense") / 100.0f);
         if (beast_lib.isBeastMaster(player) || beast_lib.isBeast(player))
         {
             dodgeChance += beast_lib.getBeastDodgeChance(player);
@@ -3050,11 +3068,11 @@ public class combat extends script.base_script
         boolean isRangedDefender = isRangedWeapon(getCurrentWeapon(player));//trying to restore accuracy and defense system
         if (isRangedDefender)
         {
-            dodgeChance += (float)(getEnhancedSkillStatisticModifierUncapped(player, "ranged_defense") / 300.0f);
+            dodgeChance += (float)(getEnhancedSkillStatisticModifierUncapped(player, "ranged_defense") / 100.0f);
         }
         if (!isRangedDefender)
         {
-            dodgeChance += (float)(getEnhancedSkillStatisticModifierUncapped(player, "melee_defense") / 300.0f);
+            dodgeChance += (float)(getEnhancedSkillStatisticModifierUncapped(player, "melee_defense") / 100.0f);
         }
         // Weapon-type defense
         String weaponType = getWeaponTypeString(player);
@@ -3073,6 +3091,8 @@ public class combat extends script.base_script
         dodgeReduction += (getEnhancedSkillStatisticModifierUncapped(attacker, "expertise_dodge_reduction"));
         dodgeReduction += (float)(getEnhancedSkillStatisticModifierUncapped(attacker, "exotic_dodge_reduction") / 7.0f);
         dodgeReduction += (float)(getEnhancedSkillStatisticModifierUncapped(attacker, "combat_dodge_reduction") / 7.0f);
+        dodgeReduction += (float)(getEnhancedSkillStatisticModifierUncapped(attacker, "general_accuracy") / 100.0f);
+        dodgeReduction += (float)(getEnhancedSkillStatisticModifierUncapped(attacker, "force_accuracy") / 100.0f);
         boolean isRangedAttacker = isRangedWeapon(getCurrentWeapon(attacker));//trying to restore accuracy and defense system
         if (isRangedAttacker)//trying to restore accuracy and defense system
         {
@@ -3092,6 +3112,44 @@ public class combat extends script.base_script
             ) / 100.0f;
         }
         return dodgeReduction;
+    }
+    public static float getStateResistance(obj_id defender, String movementType)
+            throws InterruptedException
+    {
+        float resist = 0.0f;
+
+        // Base generic resistance
+        resist += getEnhancedSkillStatisticModifierUncapped(
+                defender, "stun_resistance") / 10.0f;
+
+        // Jedi / Force defense
+        resist += getEnhancedSkillStatisticModifierUncapped(
+                defender, "jedi_state_defense") / 10.0f;
+
+        // Type-specific resistance
+        if (movementType.equals("stun"))
+        {
+            resist += getEnhancedSkillStatisticModifierUncapped(
+                    defender, "stun_resistance_specific") / 10.0f;
+        }
+        else if (movementType.equals("snare"))
+        {
+            resist += getEnhancedSkillStatisticModifierUncapped(
+                    defender, "snare_resistance") / 10.0f;
+        }
+        else if (movementType.equals("root"))
+        {
+            resist += getEnhancedSkillStatisticModifierUncapped(
+                    defender, "root_resistance") / 10.0f;
+        }
+
+        // Clamp so we never hit immunity accidentally
+        if (resist < 0)
+            resist = 0;
+        if (resist > 0.90f)
+            resist = 0.90f; // hard cap
+
+        return resist;
     }
     public static String getWeaponTypeString(obj_id creature) throws InterruptedException
     {

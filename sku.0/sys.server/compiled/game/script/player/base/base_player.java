@@ -3977,16 +3977,9 @@ public class base_player extends script.base_script
         sendSystemMessageTestingOnly(self, "/TIP command failed in command table...");
         return SCRIPT_CONTINUE;
     }
-    public int cmd_uiskills(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
-    {
-        sendConsoleCommand("/ui action skills", self); //I tried adding this command, but nothing can proc it
-        sendSystemMessageTestingOnly(self, "testing pre-cu /cu skill box ui caller");
-        return SCRIPT_CONTINUE;
-    }
     public int cmdCheckForceStatus(obj_id self, obj_id target, String params, float defaultTime)
             throws InterruptedException
     {
-//        sendConsoleCommand("/ui action skills", self);//this is how I'm testing/trying to call skills box
         // --------------------------------------------------
         // XP pools
         // --------------------------------------------------
@@ -3995,35 +3988,46 @@ public class base_player extends script.base_script
         int fsReflex   = xp.getExperiencePoints(self, "fs_reflex");
         int fsCrafting = xp.getExperiencePoints(self, "fs_crafting");
         int fsSenses   = xp.getExperiencePoints(self, "fs_senses");
-        int onehXp   = xp.getExperiencePoints(self, "combat_meleespecialize_onehandlightsaber");
-        int twohXp   = xp.getExperiencePoints(self, "combat_meleespecialize_twohandlightsaber");
+        int onehXp     = xp.getExperiencePoints(self, "combat_meleespecialize_onehandlightsaber");
+        int twohXp     = xp.getExperiencePoints(self, "combat_meleespecialize_twohandlightsaber");
         int threehXp   = xp.getExperiencePoints(self, "combat_meleespecialize_polearmlightsaber");
-        int forceXp   = xp.getExperiencePoints(self, "jedi_force");
+        int forceXp    = xp.getExperiencePoints(self, "jedi_force");
+        int intForce = getSkillStatisticModifier(self, "jedi_force_power_max") + getEnhancedSkillStatisticModifierUncapped(self, "jedi_force_power_max_modified");
+        int intForceRegen = getSkillStatisticModifier(self, "jedi_force_power_regen") + getEnhancedSkillStatisticModifierUncapped(self, "jedi_force_power_regen");
+
 
         // --------------------------------------------------
         // Progress tracking
         // --------------------------------------------------
         String[] badges = getCompletedCollectionSlotsInBook(self, BADGE_BOOK);
-        int badgeCount = (badges != null) ? badges.length : 0;   // X / 50
-        int branchCount = fs_quests.getBranchesLearned(self);    // X / 6  -->this should correspond with level statements
-//        Overall levels of force sensitivity (use /check):
-//        1 You feel no connection with the Force.
-//        2 You barely notice something different about yourself.
-//        3 You feel a faint sense of the Force.
-//        4 You have a strong sense of the Force within you.
-//        5 You feel the Force surge within you.
-//        6 You feel an inner glow. The Force is with you.
+        int badgeCount  = (badges != null) ? badges.length : 0;   // X / 50
+        int branchCount = fs_quests.getBranchesLearned(self);     // X / 6
+
+        // --------------------------------------------------
+        // Force sensitivity level text (0–6)
+        // --------------------------------------------------
+        String[] forceLevelText = {
+                "You feel no connection with the Force.",                 // 0
+                "You barely notice something different about yourself.",  // 1
+                "You feel a faint sense of the Force.",                   // 2
+                "You have a strong sense of the Force within you.",       // 3
+                "You feel the Force surge within you.",                  // 4
+                "You feel an inner glow.",                                // 5
+                "The Force is with you."                                  // 6
+        };
+
+        int forceLevel = Math.max(0, Math.min(branchCount, 6));
 
         // --------------------------------------------------
         // Build UI message
         // --------------------------------------------------
         String message =
-                "You search your feelings...\n\n" +
-                        //add level here, correspond to FS branches learned
+                "You search your feelings...\n" +
+                        forceLevelText[forceLevel] + "\n\n" +
 
                         "Force Attunement:\n" +
                         "  Force Exploration: " + badgeCount + " / 50\n" +
-                        "  Force Branches: " + branchCount + " / 6" +
+                        "  Force Branches: " + branchCount + " / 6\n\n" +
 
                         "Force Sensitive XP:\n" +
                         "  Combat: " + fsCombat + "\n" +
@@ -4031,12 +4035,14 @@ public class base_player extends script.base_script
                         "  Crafting: " + fsCrafting + "\n" +
                         "  Senses: " + fsSenses + "\n\n" +
 
-                        "Jedi Experience: " + jediXp + "\n\n" +
+                        "Jedi Experience: " + jediXp + "\n" +
+                        "Force Power Experience: " + forceXp + "\n" +
+                        "One-Handed Lightsaber Experience: " + onehXp + "\n" +
+                        "Two-Handed Lightsaber Experience: " + twohXp + "\n" +
+                        "Polearm Lightsaber Experience: " + threehXp + "\n\n" +
 
-                        "Force Power Experience: " + forceXp + "\n\n" +
-                        "One-Handed Lightsaber Experience: " + onehXp + "\n\n" +
-                        "Two-Handed Lightsaber Experience: " + twohXp + "\n\n" +
-                        "Polearm Lightsaber Experience: " + threehXp + "\n\n";
+                        "Force Power: " + intForce + "\n" +
+                        "Force Power Regen: " + intForceRegen + "\n\n";
 
         // --------------------------------------------------
         // Display SUI

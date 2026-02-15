@@ -2,7 +2,6 @@ package script.systems.jedi;
 
 import script.*;
 import script.library.*;
-
 import java.util.Vector;
 
 public class saber_base extends script.base_script
@@ -82,6 +81,7 @@ public class saber_base extends script.base_script
                 else
                 {
                     mi.addRootMenu(menu_info_types.SERVER_PET_OPEN, new string_id("jedi_spam", "open_saber"));
+                    mi.addRootMenu(menu_info_types.SERVER_MENU5, new string_id("jedi_spam", "bestow_saber"));
                 }
             }
         }
@@ -99,6 +99,20 @@ public class saber_base extends script.base_script
             {
                 openSaber(player);
                 damageItem(self, 1);//new addition of condition damage upon open
+            }
+            if (item == menu_info_types.SERVER_MENU5)
+            {
+                // Bestow saber to your current target (must be a player)
+                obj_id target = getIntendedTarget(player);
+
+                if (!isIdValid(target) || !isPlayer(target))
+                {
+                    sendSystemMessage(player, new string_id("jedi_spam", "bestow_invalid_target"));
+                    return SCRIPT_CONTINUE;
+                }
+
+                bestowSaber(player, target, self);
+                return SCRIPT_CONTINUE;
             }
         }
         return SCRIPT_CONTINUE;
@@ -270,6 +284,240 @@ public class saber_base extends script.base_script
             pclib.damageAndDecayItem(crystal, amount);
         }
         return SCRIPT_CONTINUE;
+    }
+
+    public void bestowSaber(obj_id giver, obj_id target, obj_id saber) throws InterruptedException
+    {
+        if (!isIdValid(giver) || !isIdValid(target) || !isIdValid(saber))
+            return;
+
+        // Requirement
+        if (!hasSkill(giver, "class_forcesensitive_phase4_master"))
+        {
+            sendSystemMessage(giver, new string_id("jedi_spam", "not_jedi_master"));
+            return;
+        }
+
+        // Requirement: target must be kneeling
+        if (getPosture(target) != POSTURE_CROUCHED)
+        {
+            sendSystemMessage(giver, new string_id("jedi_spam", "target_must_be_kneeling"));
+            return;
+        }
+
+        // ------------------------------------------------------------
+        // GROUP REQUIREMENT
+        // ------------------------------------------------------------
+
+        obj_id giverGroup = getGroupObject(giver);
+        obj_id targetGroup = getGroupObject(target);
+
+        if (!isIdValid(giverGroup) || !isIdValid(targetGroup) || giverGroup != targetGroup)
+        {
+            sendSystemMessage(giver, new string_id("jedi_spam", "must_be_grouped"));
+            return;
+        }
+
+        // Optional: require nearby
+        if (getDistance(giver, target) > 15.0f)
+        {
+            sendSystemMessage(giver, new string_id("jedi_spam", "target_too_far"));
+            return;
+        }
+
+        // Must actually own it
+        if (!isSaberOwnedByPlayer(giver, saber))
+        {
+            sendSystemMessage(giver, new string_id("jedi_spam", "saber_not_found"));
+            return;
+        }
+
+        // ------------------------------------------------------------
+        // UPDATE BIO-LINK + TRADE STATUS
+        // ------------------------------------------------------------
+
+        // Bind to new owner
+        setBioLink(saber, target);
+
+        // Enforce no-trade
+        setObjVar(saber, "noTrade", 1);
+
+        // Remove nomove script if present
+        if (hasScript(saber, "item.special.nomove"))
+        {
+            detachScript(saber, "item.special.nomove");
+        }
+
+        // ------------------------------------------------------------
+        // LINEAGE
+        // ------------------------------------------------------------
+        addSaberLineage(saber, giver, target);
+
+        // ------------------------------------------------------------
+        // MESSAGES
+        // ------------------------------------------------------------
+        sendSystemMessage(giver, new string_id("jedi_spam", "bestow_lightsaber_success"));
+        sendSystemMessage(target, new string_id("jedi_spam", "bestow_lightsaber_success"));
+    }
+    private void addSaberLineage(obj_id saber, obj_id giver, obj_id target) throws InterruptedException
+    {
+        if (!isIdValid(saber))
+            return;
+
+        String giverName = getName(giver);
+        String targetName = getName(target);
+
+        if (giverName == null || giverName.length() == 0)
+            giverName = "Unknown";
+
+        if (targetName == null || targetName.length() == 0)
+            targetName = "Unknown";
+
+        String[] owners;
+
+        if (hasObjVar(saber, "saber.lineage"))
+            owners = getStringArrayObjVar(saber, "saber.lineage");
+        else
+            owners = new String[0];
+
+        // ------------------------------------------------------------
+        // NO DUPLICATES RULE:
+        // If a name exists anywhere in the list already, do not add it.
+        // ------------------------------------------------------------
+
+        if (!lineageContains(owners, giverName))
+            owners = appendString(owners, giverName);
+
+        if (!lineageContains(owners, targetName))
+            owners = appendString(owners, targetName);
+
+        // Cap at 5 owners
+        if (owners.length > 5)
+        {
+            String[] trimmed = new String[5];
+            int start = owners.length - 5;
+            for (int i = 0; i < 5; i++)
+                trimmed[i] = owners[start + i];
+            owners = trimmed;
+        }
+
+        setObjVar(saber, "saber.lineage", owners);
+    }
+
+    private String[] appendString(String[] arr, String value) throws InterruptedException
+    {
+        if (value == null || value.length() == 0)
+            return arr;
+
+        if (arr == null)
+            arr = new String[0];
+
+        String[] out = new String[arr.length + 1];
+        for (int i = 0; i < arr.length; i++)
+            out[i] = arr[i];
+
+        out[arr.length] = value;
+        return out;
+    }
+
+    private boolean lineageContains(String[] owners, String name) throws InterruptedException
+    {
+        if (owners == null || owners.length == 0)
+            return false;
+
+        if (name == null || name.length() == 0)
+            return false;
+
+        for (int i = 0; i < owners.length; i++)
+        {
+            if (owners[i] != null && owners[i].equals(name))
+                return true;
+        }
+
+        return false;
+    }
+
+    private boolean isSaberOwnedByPlayer(obj_id player, obj_id saber) throws InterruptedException
+    {
+        if (!isIdValid(player) || !isIdValid(saber))
+            return false;
+
+        // Equipped?
+        obj_id equipR = getObjectInSlot(player, "hold_r");
+        obj_id equipL = getObjectInSlot(player, "hold_l");
+
+        if (isIdValid(equipR) && equipR == saber)
+            return true;
+        if (isIdValid(equipL) && equipL == saber)
+            return true;
+
+        // In inventory?
+        obj_id inv = utils.getInventoryContainer(player);
+        if (!isIdValid(inv))
+            return false;
+
+        obj_id parent = getContainedBy(saber);
+        if (isIdValid(parent) && parent == inv)
+            return true;
+
+        return false;
+    }
+// ================================================================
+// ATTRIBUTE DISPLAY (Lineage shown in examine window)
+// ================================================================
+
+    public int OnGetAttributes(obj_id self, obj_id player, String[] names, String[] attribs) throws InterruptedException
+    {
+        if (names == null || attribs == null)
+            return SCRIPT_CONTINUE;
+
+        int idx = getFirstFreeAttribIndex(names);
+
+        if (idx < 0)
+            return SCRIPT_CONTINUE;
+
+        if (idx >= names.length || idx >= attribs.length)
+            return SCRIPT_CONTINUE;
+
+        if (hasObjVar(self, "saber.lineage"))
+        {
+            String[] owners = getStringArrayObjVar(self, "saber.lineage");
+            if (owners != null && owners.length > 0)
+            {
+                names[idx] = "saber_owners";
+                attribs[idx] = buildLineageString(owners);
+            }
+        }
+
+        return SCRIPT_CONTINUE;
+    }
+
+    private int getFirstFreeAttribIndex(String[] names) throws InterruptedException
+    {
+        if (names == null)
+            return -1;
+
+        for (int i = 0; i < names.length; i++)
+        {
+            if (names[i] == null || names[i].length() == 0)
+                return i;
+        }
+        return -1;
+    }
+
+    private String buildLineageString(String[] owners) throws InterruptedException
+    {
+        if (owners == null || owners.length == 0)
+            return "";
+
+        String out = "";
+        for (int i = 0; i < owners.length; i++)
+        {
+            out += (i + 1) + ". " + owners[i];
+            if (i < owners.length - 1)
+                out += "\n";
+        }
+        return out;
     }
     public void dismantleSaber(obj_id player) throws InterruptedException
     {

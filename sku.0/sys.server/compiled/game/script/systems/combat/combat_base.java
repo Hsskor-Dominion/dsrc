@@ -5,6 +5,8 @@ import script.combat_engine.*;
 import script.library.*;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import static script.library.combat.getWeaponStringType;
@@ -1268,6 +1270,41 @@ public class combat_base extends script.base_script
     {
         return runHitEngine(attackerData, weaponData, defenderData, attackerResults, defenderResults, actionData, isTangibleAttacking, true, 0);
     }
+    private static final Set<String> FORCE_DAMAGE_ABILITIES = new HashSet<>(
+            Arrays.asList(
+                    // Core Jedi / Sith force powers
+                    "fs_force_spark",
+                    "fs_ae_dm_cc_1",
+                    "fs_ae_dm_cc_2",
+                    "fs_ae_dm_cc_3",
+                    "fs_ae_dm_cc_4",
+                    "fs_ae_dm_cc_5",
+                    "fs_ae_dm_cc_6",
+                    "fs_maelstrom_1",
+                    "fs_maelstrom_2",
+                    "fs_maelstrom_3",
+                    "fs_maelstrom_4",
+                    "fs_maelstrom_5",
+                    "fs_dm_cc_1",
+                    "fs_dm_cc_2",
+                    "fs_dm_cc_3",
+                    "fs_dm_cc_4",
+                    "fs_dm_cc_5",
+                    "fs_dm_cc_6"
+                    // add more as needed
+            )
+    );
+    private static boolean isForceDamageSpecial(combat_data actionData)
+    {
+        if (actionData == null || actionData.actionName == null)
+            return false;
+
+        // must be a special
+        if (actionData.commandType != combat.RIGHT_CLICK_SPECIAL)
+            return false;
+
+        return FORCE_DAMAGE_ABILITIES.contains(actionData.actionName);
+    }
     public hit_result[] runHitEngine(attacker_data attackerData, weapon_data weaponData, defender_data[] defenderData, attacker_results attackerResults, defender_results[] defenderResults, combat_data actionData, boolean isTangibleAttacking, boolean isAutoAiming, int overloadDamage) throws InterruptedException
     {
         hit_result[] hitData = new hit_result[defenderData.length];
@@ -1280,6 +1317,8 @@ public class combat_base extends script.base_script
         attackerResults.endPosture = (!isTangibleAttacking && (combat.isMeleeWeapon(weaponData.id) || combat.isLightsaberWeapon(weaponData.id))) ? POSTURE_UPRIGHT : getPosture(attackerData.id);
         combat.applyAttackerCombatBuffs(attackerData.id, actionData);
         int hitType = actionData.hitType;
+        int forceDamageBonus =
+                getEnhancedSkillStatisticModifierUncapped(attackerData.id, "force_damage");
         if (hitType == combat.NON_ATTACK)
         {
             combat.combatLog(attackerData.id, defenderData[0].id, "runHitEngine", "Non-Combat action - Skipping hitEngine");
@@ -1499,6 +1538,12 @@ public class combat_base extends script.base_script
                 dictionary rawDict = getRawDamage(attackerData.id, weaponData, actionData, hitData[i], minDamage, maxDamage, defenderData.length);
                 minDamage = rawDict.getFloat("minDamage");
                 maxDamage = rawDict.getFloat("maxDamage");
+                if (forceDamageBonus > 0 && isForceDamageSpecial(actionData))
+                {
+                    float forceMod = 1.0f + (forceDamageBonus / 100.0f);
+                    minDamage *= forceMod;
+                    maxDamage *= forceMod;
+                }
                 if (hitData[i].glancing)
                 {
                     minDamage *= 0.35f;

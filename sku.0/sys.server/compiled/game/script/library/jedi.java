@@ -270,35 +270,29 @@ public class jedi extends script.base_script
     }
     public static boolean isJediTrainerForPlayer(obj_id objPlayer, obj_id objNPC) throws InterruptedException
     {
-//        if (!isJedi(objPlayer))
-//        {
-//            return false;
-//        }
-//        location locTrainerLocation = getLocationObjVar(objPlayer, "jedi.locTrainerLocation");
-//        if (locTrainerLocation == null)
-//        {
-//            return false;
-//        }
-//        location locNPCLocation = getWorldLocation(objNPC);
-//        locNPCLocation.y = 0;
-//        locTrainerLocation.y = 0;
-//        float fltDistance = getDistance(locTrainerLocation, locNPCLocation);
-//        if (fltDistance != -1 && fltDistance < 3)
-//        {
-//            return true;
-//        }
-        if (hasBuff(objPlayer, "fs_buff_def_1_1"))//modernized for CU/NGE - SWG Chimaera
+        if (!isIdValid(objPlayer))
+            return false;
+
+        // Must be meditating
+        if (getState(objPlayer, STATE_MEDITATE) != 1)
+            return false;
+
+        // Must be in a focus/stance (buff-based)
+        // Add/remove names as needed
+        String[] focusOrStanceBuffs = new String[]
+                {
+                        "fs_buff_def_1_1",
+                        "fs_buff_ca_1"
+                        // add more here later if you expand
+                };
+
+        for (int i = 0; i < focusOrStanceBuffs.length; i++)
         {
-            return true;
+            if (hasBuff(objPlayer, focusOrStanceBuffs[i]))
+                return true;
         }
-        if (hasBuff(objPlayer, "fs_buff_ca_1"))
-        {
-            return true;
-        }
-        else
-        {
-            return false;//this should be replaced with a check against focus or stance
-        }
+
+        return false;
     }
     public static boolean isLightsaber(obj_id objWeapon) throws InterruptedException
     {

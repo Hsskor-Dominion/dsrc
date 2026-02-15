@@ -833,9 +833,9 @@ public class jedi_holocron extends script.base_script {
             case "power":
                 return "vision_sidious";
             case "harmony":
-                return "vision_yoda";
+                return "vision_ani";
             case "victory":
-                return "vision_yoda";
+                return "vision_revan";
             default:
                 // Debug message for an unrecognized vision configuration
                 LOG("Holocron Vision", "Unrecognized vision configuration: " + configuredVision);

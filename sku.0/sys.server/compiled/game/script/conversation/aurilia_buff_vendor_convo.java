@@ -423,7 +423,7 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
                 setName(self, "Paemos (Village Elder)");
             }
         if (planetId == 9) {
-            setName(self, "Vrook Lamar (a mysterious figure)");
+            setName(self, "Dorak (a mysterious figure)");
         }
             if (planetId == 6) {
                 setName(self, "an old man");

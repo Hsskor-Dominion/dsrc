@@ -1362,6 +1362,9 @@ public class armor extends script.base_script
     }
     public static void recalculateArmorForPlayer(obj_id objPlayer) throws InterruptedException
     {
+        float fltJediArmor =
+                getSkillStatisticModifier(objPlayer, "jedi_armor") * 100.0f;
+
         if (!isPlayer(objPlayer) && isGameObjectTypeOf(getGameObjectType(objPlayer), GOT_creature))
         {
             recalculateArmorForMob(objPlayer);
@@ -1532,6 +1535,9 @@ public class armor extends script.base_script
     }
     public static void recalculatePseudoArmorForPlayer(obj_id objPlayer, obj_id item, boolean applyArmor) throws InterruptedException
     {
+        float fltJediArmor =
+                getSkillStatisticModifier(objPlayer, "jedi_armor") * 100.0f;
+
         int intProtection = getIntObjVar(item, "armor.general_protection_clothing");
         int generalProtectionValue = 0;
         final float[] fltSpecialProts = new float[armor.DATATABLE_SPECIAL_PROTECTIONS.length];
@@ -1558,7 +1564,7 @@ public class armor extends script.base_script
                     }
                     fltSpecialProts[intI] += getSkillStatisticModifier(objPlayer, "expertise_innate_protection_" + DATATABLE_SPECIAL_PROTECTIONS[intI]);
                     fltSpecialProts[intI] += getSkillStatisticModifier(objPlayer, "expertise_armorset_protection_" + "_" + DATATABLE_SPECIAL_PROTECTIONS[intI]);
-                    intMod = (int) (fltSpecialProts[intI] + armorValue + 0.5f);
+                    intMod = (int) (fltSpecialProts[intI] + armorValue + fltJediArmor + 0.5f);
                     applySkillStatisticModifier(objPlayer, DATATABLE_SPECIAL_PROTECTIONS[intI], -1 * getSkillStatisticModifier(objPlayer, DATATABLE_SPECIAL_PROTECTIONS[intI]));
                     applySkillStatisticModifier(objPlayer, DATATABLE_SPECIAL_PROTECTIONS[intI], intMod);
                     dctProtections.put(armor.DATATABLE_SPECIAL_PROTECTIONS[intI], fltSpecialProts[intI]);

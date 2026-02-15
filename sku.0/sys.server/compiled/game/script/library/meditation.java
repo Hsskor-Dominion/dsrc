@@ -70,7 +70,6 @@ public class meditation extends script.base_script
         setState(player, STATE_MEDITATE, true);
         setRegenRate(player, HEALTH, 400);//this is a band-aid for jedi regen issues;
         setRegenRate(player, ACTION, 300);//
-        skill.setPlayerStatsForLevel(player, 90);//Power Boost jedi bandaid
         chat.setTempAnimationMood(player, "meditating");
         messageTo(player, HANDLER_MEDITATION_TICK, trial.getSessionDict(player, meditation.HANDLER_MEDITATION_TICK), TIME_TICK, false);
         sendSystemMessage(player, SID_MED_BEGIN);

@@ -2681,7 +2681,19 @@ public class force_rank extends script.base_script
         }
 
         obj_id pInv = utils.getInventoryContainer(player);
-        static_item.createNewItemFunction(template, pInv);
+
+        obj_id robe = static_item.createNewItemFunction(template, pInv);
+        if (!isIdValid(robe))
+        {
+            sendSystemMessageTestingOnly(player, "Failed to create robe: " + template);
+            return;
+        }
+
+        // Make robe no-trade
+        setObjVar(robe, "noTrade", 1);
+
+        // Optional: no-move script
+        attachScript(robe, "item.special.nomove");
 
         sendSystemMessage(player, new string_id(STF_FILE, "items_recovered"));
     }
@@ -3347,7 +3359,7 @@ public class force_rank extends script.base_script
             String[] commonsAreaCells = dataTableGetStringColumn(force_rank.JEDI_ROOM_PERMISSIONS_TABLE, alignment + force_rank.DATA_COLUMN_COMMUNITY_CELLS);
             if (utils.getElementPositionInArray(commonsAreaCells, cellName) > -1)
             {
-                pet_lib.packAllCurrentPets(item, new string_id("pvp_rating", "enclave_deny_pet_entry"));
+                //pet_lib.packAllCurrentPets(item, new string_id("pvp_rating", "enclave_deny_pet_entry"));
                 return true;
             }
             else 
@@ -3356,7 +3368,7 @@ public class force_rank extends script.base_script
                 int rank = force_rank.getForceRank(item);
                 if (utils.getElementPositionInArray(allowedRanks, rank) >= 0)
                 {
-                    pet_lib.packAllCurrentPets(item, new string_id("pvp_rating", "enclave_deny_pet_entry"));
+                    //pet_lib.packAllCurrentPets(item, new string_id("pvp_rating", "enclave_deny_pet_entry"));
                     return true;
                 }
             }
