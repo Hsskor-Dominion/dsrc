@@ -190,23 +190,47 @@ public class player_teaching extends script.base_script
         }
         if (skill.purchaseSkill(self, selected_skill))
         {
-            // Grant apprenticeship XP to teacher is design
-            xp.grant(self, "apprenticeship", 10);//temporary kinda sorta fix
-            xp.grant(teacher, "apprenticeship", 10);//broken, like it needs an outside function?
+            // XP
+            xp.grant(self, "apprenticeship", 10);
+            xp.grant(teacher, "apprenticeship", 10);
+
             string_id skill_id = utils.unpackString("@skl_n:" + selected_skill);
-            LOG("LOG_CHANNEL", "skill_id ->" + skill_id);
-            LOG("LOG_CHANNEL", self + " ->You learn " + selected_skill + " from " + teacher_name + ".");
-            LOG("LOG_CHANNEL", teacher + " ->" + student_name + " learns " + selected_skill + " from you.");
-            prose_package pp = prose.getPackage(SID_TEACHER_SKILL_LEARNED, self, skill_id);//here and below is broken, trianer does not receive message or credit
-            pp = prose.getPackage(SID_STUDENT_SKILL_LEARNED, self, skill_id);
-            sendSystemMessageProse(self, pp);
+
+            // DEBUG
+            LOG("LOG_CHANNEL", self + " learns " + selected_skill + " from " + teacher_name);
+            LOG("LOG_CHANNEL", teacher + " taught " + student_name + " " + selected_skill);
+
+            // ---- STUDENT MESSAGE ----
+            prose_package studentMsg = prose.getPackage(
+                    SID_STUDENT_SKILL_LEARNED,
+                    teacher,      // actor (who taught you)
+                    skill_id
+            );
+
+            sendSystemMessageProse(self, studentMsg);
+
+            // ---- TEACHER MESSAGE ----
+            if (isIdValid(teacher))
+            {
+                prose_package teacherMsg = prose.getPackage(
+                        SID_TEACHER_SKILL_LEARNED,
+                        self,        // actor (student who learned)
+                        skill_id
+                );
+
+                sendSystemMessageProse(teacher, teacherMsg);
+            }
+
+            // ---- BONUS XP (JEDI CASE) ----
             int exp = 0;
             if (isJedi(teacher) && isJedi(self) && skill_cost.equals("0") && selected_skill.startsWith("jedi_"))
             {
                 exp = 40;
             }
+
             if (exp > 0)
             {
+                xp.grant(teacher, "apprenticeship", exp);
             }
         }
         else

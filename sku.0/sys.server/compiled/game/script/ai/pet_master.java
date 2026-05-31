@@ -122,7 +122,11 @@ public class pet_master extends script.base_script
             sendSystemMessage(self, new string_id(STF_FILE, "no_bomb_module"));
             return SCRIPT_CONTINUE;
         }
-        if (!hasSkill(self, "class_smuggler_phase1_novice") && !hasSkill(self, "class_bountyhunter_phase1_novice") && !hasSkill(self, "expertise_engineering_droid_schematic_1_1"))//need to expand this for CU
+        if (!(hasSkill(self, "class_smuggler_phase1_novice")
+                || hasSkill(self, "class_bountyhunter_phase1_novice")
+                || hasSkill(self, "expertise_engineering_droid_schematic_1_1")
+                || hasSkill(self, "combat_smuggler_novice")
+                || hasSkill(self, "combat_bountyhunter_novice")))
         {
             sendSystemMessage(self, new string_id(STF_FILE, "insufficient_skill_detonate"));
             return SCRIPT_CONTINUE;

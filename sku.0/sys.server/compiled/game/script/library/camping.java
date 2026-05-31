@@ -262,7 +262,7 @@ public class camping extends script.base_script
         obj_id owner = getObjIdObjVar(master, VAR_OWNER);
 
         // ------------------------
-        // Calculate uptime (failsafe)
+        // Calculate uptime
         // ------------------------
         int creationTime = hasObjVar(master, VAR_CREATION_TIME)
                 ? getIntObjVar(master, VAR_CREATION_TIME)
@@ -271,6 +271,7 @@ public class camping extends script.base_script
         int now = getCalendarTime();
 
         int uptimeSeconds;
+
         if (creationTime <= 0 || creationTime > now)
         {
             uptimeSeconds = 60;
@@ -280,42 +281,73 @@ public class camping extends script.base_script
             uptimeSeconds = Math.max(now - creationTime, 60);
         }
 
-        // Convert to minutes
         int uptimeMinutes = uptimeSeconds / 60;
 
         // ------------------------
-        // Cap effective time (anti-AFK abuse)
+        // Base XP
         // ------------------------
-        int MAX_EFFECTIVE_MINUTES = 120; // 2 hours max XP credit
-        uptimeMinutes = Math.min(uptimeMinutes, MAX_EFFECTIVE_MINUTES);
+        // 10 XP per minute feels much more reasonable
+        int BASE_XP_PER_MINUTE = 10;
 
-        // ------------------------
-        // Base XP from time (VERY conservative)
-        // ------------------------
-        int BASE_XP_PER_MINUTE = 2; // <<< this was the real problem
         int baseXp = uptimeMinutes * BASE_XP_PER_MINUTE;
 
         // ------------------------
-        // Module bonus
+        // Visitor Bonus
+        // ------------------------
+        int visitorCount = 0;
+
+        if (hasObjVar(master, "visitor_count"))
+        {
+            visitorCount = getIntObjVar(master, "visitor_count");
+        }
+
+        // +5% per visitor, capped at +100%
+        float VISITOR_BONUS_PER = 0.05f;
+        float MAX_VISITOR_BONUS = 1.0f;
+
+        float visitorBonus = Math.min(visitorCount * VISITOR_BONUS_PER, MAX_VISITOR_BONUS);
+
+        // ------------------------
+        // Module Bonus
         // ------------------------
         int moduleCount = getCampModuleCount(master);
 
-        float MODULE_BONUS_PER = 0.10f; // +10% per module
-        float MAX_MODULE_BONUS = 0.75f; // max +75%
+        // +10% per module
+        float MODULE_BONUS_PER = 0.10f;
+        float MAX_MODULE_BONUS = 0.75f;
 
         float moduleBonus = Math.min(moduleCount * MODULE_BONUS_PER, MAX_MODULE_BONUS);
-        float finalMultiplier = 1.0f + moduleBonus;
+
+        // ------------------------
+        // Final XP Calculation
+        // ------------------------
+        float finalMultiplier =
+                1.0f +
+                        visitorBonus +
+                        moduleBonus;
+
 
         int xpGranted = Math.round(baseXp * finalMultiplier);
 
-        // ------------------------
-        // Final clamps
-        // ------------------------
-        int MIN_CAMP_XP = 25;
-        int MAX_CAMP_XP = 10000;
+//        // ------------------------
+//        // Final clamps
+//        // ------------------------
+//        int MIN_CAMP_XP = 25;
+//        int MAX_CAMP_XP = 10000;
+//
+//        xpGranted = Math.max(xpGranted, MIN_CAMP_XP);
+//        xpGranted = Math.min(xpGranted, MAX_CAMP_XP);
 
-        xpGranted = Math.max(xpGranted, MIN_CAMP_XP);
-        xpGranted = Math.min(xpGranted, MAX_CAMP_XP);
+        LOG("camping",
+                "Camp XP: owner=" + owner +
+                        " uptimeMin=" + uptimeMinutes +
+                        " baseXp=" + baseXp +
+                        " visitors=" + visitorCount +
+                        " visitorBonus=" + visitorBonus +
+                        " modules=" + moduleCount +
+                        " moduleBonus=" + moduleBonus +
+                        " finalMultiplier=" + finalMultiplier +
+                        " xpGranted=" + xpGranted);
 
         // ------------------------
         // Grant XP
@@ -323,6 +355,9 @@ public class camping extends script.base_script
         if (isIdValid(owner))
         {
             camping.grantCampXp(owner, xpGranted);
+
+            sendSystemMessage(owner,
+                    new string_id("camp", "xp_gain"));
         }
 
         // ------------------------
@@ -348,6 +383,7 @@ public class camping extends script.base_script
         if (isIdValid(owner))
         {
             pclib.msgRemoveObjVar(owner, VAR_CAMP_BASE);
+
             if (owner.isLoaded() && isInWorld(owner))
             {
                 sendSystemMessage(owner, SID_ERROR_CAMP_DISBAND);

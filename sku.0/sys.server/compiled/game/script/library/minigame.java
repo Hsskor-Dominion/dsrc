@@ -1532,6 +1532,7 @@ public class minigame extends script.base_script
         if (cec == CEC_SUCCESS || cec == CEC_ADD_SELF)
         {
             sendSystemMessage(target, new string_id(STF_FISH, "good_filet"));
+            camping.grantCampXp(target, 20);
         }
         else 
         {

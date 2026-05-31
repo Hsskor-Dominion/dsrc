@@ -2043,6 +2043,7 @@ public class ai extends script.base_script
             }
             int xpAmount = amt; //  amt
             xp.grant(player, "creaturehandler", xpAmount);
+            camping.grantCampXp(player, xpAmount);
             sendSystemMessageProse(player, prose.getPackage(SID_FARMER_EXP, "creaturehandler", xpAmount));
             sendSystemMessage(player, SID_MILK_SUCCESS);
             utils.setScriptVar(self, "milk.lasttime", getGameTime());

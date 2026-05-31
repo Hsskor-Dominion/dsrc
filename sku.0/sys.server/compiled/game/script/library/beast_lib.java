@@ -3575,28 +3575,42 @@ public class beast_lib extends script.base_script
     {
         String[] barData = (String[])PET_BAR_DEFAULT_ARRAY.clone();
         String[] knownSkills = getTrainedSkills(pet);
-        int additionalAbilitySlot = 0;
-        additionalAbilitySlot = getSkillStatisticModifier(player, "expertise_bm_add_pet_bar");
+
+        int bonusSlots = getSkillStatisticModifier(player, "expertise_bm_add_pet_bar");
+
+        // Base command
         if (hasCommand(player, BM_COMMAND_ATTACK))
         {
             barData[0] = BM_COMMAND_ATTACK;
         }
+
+        // Base ability slot (index 3)
         if (hasCommand(player, BM_COMMAND_ATTACK) || getBeastMasterSpecialType(knownSkills[0]) == ABILITY_TYPE_NONCOMBAT)
         {
             barData[3] = knownSkills[0];
         }
-        if (additionalAbilitySlot == 0)
+
+        // Max 3 additional slots (total 4 abilities)
+        int maxExtraSlots = Math.min(bonusSlots, 3);
+
+        for (int i = 0; i < maxExtraSlots; i++)
         {
-            return barData;
-        }
-        for (int i = 0; i < additionalAbilitySlot; i++)
-        {
-            if (additionalAbilitySlot > 3)
+            int skillIndex = i + 1;     // knownSkills[1], [2], [3]
+            int barIndex   = i + 4;     // barData[4], [5], [6]
+
+            if (skillIndex >= knownSkills.length)
             {
                 break;
             }
-            barData[i + 4] = knownSkills[i + 1];
+
+            String skill = knownSkills[skillIndex];
+
+            if (skill != null && !skill.equals("") && !skill.equals("empty") && !skill.equals("disabled"))
+            {
+                barData[barIndex] = skill;
+            }
         }
+
         return barData;
     }
     public static boolean isChargeAttack(String actionName) throws InterruptedException

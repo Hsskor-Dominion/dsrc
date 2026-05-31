@@ -65,14 +65,147 @@ public class camp_master extends script.base_script
     }
     public int OnDestroy(obj_id self) throws InterruptedException
     {
+        // ------------------------
+        // Cleanup campfire
+        // ------------------------
         obj_id item = getObjIdObjVar(self, VAR_CAMP_CAMPFIRE);
-        if ((item == null) || (item == obj_id.NULL_ID))
-        {
-        }
-        else 
+
+        if ((item != null) && (item != obj_id.NULL_ID))
         {
             destroyObject(item);
         }
+
+        // ------------------------
+        // Validate owner
+        // ------------------------
+        obj_id owner = getObjIdObjVar(self, camping.VAR_OWNER);
+
+        if (!isIdValid(owner) || !exists(owner))
+        {
+            return SCRIPT_CONTINUE;
+        }
+
+        // ------------------------
+        // Legacy accumulated XP
+        // ------------------------
+        int legacyXp = getIntObjVar(self, camping.VAR_CAMP_XP);
+
+        // ------------------------
+        // Time-based XP
+        // ------------------------
+        int creationTime = hasObjVar(self, camping.VAR_CREATION_TIME)
+                ? getIntObjVar(self, camping.VAR_CREATION_TIME)
+                : 0;
+
+        int now = getCalendarTime();
+
+        int uptimeSeconds;
+
+        if (creationTime <= 0 || creationTime > now)
+        {
+            uptimeSeconds = 60;
+        }
+        else
+        {
+            uptimeSeconds = Math.max(now - creationTime, 60);
+        }
+
+        int uptimeMinutes = uptimeSeconds / 60;
+
+        // ------------------------
+        // Base XP
+        // ------------------------
+        int BASE_XP_PER_MINUTE = 10;
+
+        int timeXp = uptimeMinutes * BASE_XP_PER_MINUTE;
+
+        // ------------------------
+        // Occupancy bonus
+        // ------------------------
+        int occCount = getIntObjVar(self, "occ_count");
+
+        if (occCount < 1)
+        {
+            occCount = 1;
+        }
+
+        float OCC_BONUS_PER = 0.05f;
+        float MAX_OCC_BONUS = 1.0f;
+
+        float occBonus = Math.min(
+                occCount * OCC_BONUS_PER,
+                MAX_OCC_BONUS
+        );
+
+        // ------------------------
+        // Visitor bonus
+        // ------------------------
+        int visitorCount = getIntObjVar(self, "visitor_count");
+
+        float VISITOR_BONUS_PER = 0.02f;
+        float MAX_VISITOR_BONUS = 0.50f;
+
+        float visitorBonus = Math.min(
+                visitorCount * VISITOR_BONUS_PER,
+                MAX_VISITOR_BONUS
+        );
+
+        // ------------------------
+        // Camp module bonus
+        // ------------------------
+        int moduleCount = camping.getCampModuleCount(self);
+
+        float MODULE_BONUS_PER = 0.10f;
+        float MAX_MODULE_BONUS = 0.90f;
+
+        float moduleBonus = Math.min(
+                moduleCount * MODULE_BONUS_PER,
+                MAX_MODULE_BONUS
+        );
+
+        // ------------------------
+        // Final dynamic XP
+        // ------------------------
+        float finalMultiplier =
+                1.0f +
+                        occBonus +
+                        visitorBonus +
+                        moduleBonus;
+
+        int dynamicXp = Math.round(timeXp * finalMultiplier);
+
+        // ------------------------
+        // Combine legacy + dynamic
+        // ------------------------
+        int xpGranted = legacyXp + dynamicXp;
+
+//        // ------------------------
+//        // Final clamps
+//        // ------------------------
+//        int MIN_CAMP_XP = 25;
+//        int MAX_CAMP_XP = 25000;
+//
+//        xpGranted = Math.max(xpGranted, MIN_CAMP_XP);
+//        xpGranted = Math.min(xpGranted, MAX_CAMP_XP);
+
+        // ------------------------
+        // Grant XP
+        // ------------------------
+        camping.grantCampXp(owner, xpGranted);
+
+        // ------------------------
+        // Debug logging
+        // ------------------------
+        LOG("camping",
+                "Camp destroyed: owner=" + owner +
+                        " legacyXp=" + legacyXp +
+                        " dynamicXp=" + dynamicXp +
+                        " totalXp=" + xpGranted +
+                        " uptimeMin=" + uptimeMinutes +
+                        " occ=" + occCount +
+                        " visitors=" + visitorCount +
+                        " modules=" + moduleCount);
+
         return SCRIPT_CONTINUE;
     }
     public int theaterFinished(obj_id self, dictionary params) throws InterruptedException

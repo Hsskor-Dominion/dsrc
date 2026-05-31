@@ -3549,7 +3549,7 @@ public class healing extends script.base_script
         float complexity = 0.0f;
         if (item != null || item != obj_id.NULL_ID)
         {
-            complexity = getComplexity(item);
+            float complexity = getComplexity(item);
         }
         float medicalDroidModifier = 0.0f;
         float multiplier = 0.0f;

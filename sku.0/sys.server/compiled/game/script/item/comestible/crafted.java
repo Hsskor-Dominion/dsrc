@@ -3,6 +3,7 @@ package script.item.comestible;
 import script.attrib_mod;
 import script.library.consumable;
 import script.library.utils;
+import script.location;
 import script.obj_id;
 import script.string_id;
 
@@ -162,21 +163,41 @@ public class crafted extends script.item.comestible.comestible
             String duration_type = getStringObjVar(self, "duration.type");
             int duration_eff = getIntObjVar(self, "duration.eff");
             int duration = getIntObjVar(self, "duration.dur");
+
+            location loc = getLocation(player);
+            if (isIdValid(loc.cell))
+            {
+                obj_id building = getTopMostContainer(loc.cell);
+                if (isIdValid(building))
+                {
+                    String template = getTemplateName(building);
+
+                    if (template.equals("object/building/player/city/diner_no_planet_restriction.iff"))
+                    {
+                        duration += 900; // +15 min if in diner
+                    }
+                }
+            }
+
             int minutes = duration / 60;
             int seconds = duration - (minutes * 60);
+
             int n = utils.getValidAttributeIndex(names);
             if (n == -1)
             {
                 return SCRIPT_CONTINUE;
             }
+
             names[n] = "duration_effect";
             attribs[n] = localize(new string_id("obj_attr_n", duration_type + "_d"));
+
             if (duration_eff > 0)
             {
                 n++;
                 names[n] = duration_type + "_eff";
                 attribs[n] = Integer.toString(duration_eff);
             }
+
             if (duration > 0)
             {
                 n++;

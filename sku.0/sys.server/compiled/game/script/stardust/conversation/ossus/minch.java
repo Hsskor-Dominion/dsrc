@@ -1,68 +1,64 @@
 package script.stardust.conversation.ossus;
 
-import script.library.factions;
-import script.library.ai_lib;
-import script.library.chat;
-import script.library.utils;
-import script.library.*;
 import script.*;
+import script.library.*;
 
 import static script.library.force_rank.SCRIPT_FRS_PLAYER;
 
-public class yoda extends script.base_script
+public class minch extends base_script
 {
-    public yoda()
+    public minch()
     {
     }
     public static final String c_stringFile = "conversation/yoda";
-    public static final String OBJ_VAR_BASE = "yoda.";
+    public static final String OBJ_VAR_BASE = "minch.";
     public static final String JEDI_APPRENTICE = OBJ_VAR_BASE + "youngling";
-    public boolean yoda_defaultCondition()
+    public boolean minch_defaultCondition()
     {
         return true;
     }
-    public boolean yoda_language_condition(obj_id npc, obj_id player) throws InterruptedException
+    public boolean minch_language_condition(obj_id npc, obj_id player) throws InterruptedException
     {
         return hasSkill(player, "social_language_basic_comprehend");
     }
-    public boolean yoda_chronicler_condition(obj_id npc, obj_id player) throws InterruptedException
+    public boolean minch_chronicler_condition(obj_id npc, obj_id player) throws InterruptedException
     {
         return hasSkill(player, "class_chronicles_master");
     }
-    public boolean yoda_jediFriend_condition(obj_id player, obj_id npc) throws InterruptedException
+    public boolean minch_jediFriend_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         float jediFaction = factions.getFactionStanding(player, "fs_villager");
         return jediFaction >= 1000;
     }
-    public boolean yoda_phase1_condition(obj_id npc, obj_id player)
+    public boolean minch_phase1_condition(obj_id npc, obj_id player)
     {
         return hasSkill(player,"class_forcesensitive_phase1_novice");
     }
-    public boolean yoda_phase2_condition(obj_id npc, obj_id player)
+    public boolean minch_phase2_condition(obj_id npc, obj_id player)
     {
         return hasSkill(player,"class_forcesensitive_phase2_novice");
     }
-    public boolean yoda_phase3_condition(obj_id npc, obj_id player)
+    public boolean minch_phase3_condition(obj_id npc, obj_id player)
     {
         return hasSkill(player,"class_forcesensitive_phase3_novice");
     }
-    public boolean yoda_phase4_condition(obj_id npc, obj_id player)
+    public boolean minch_phase4_condition(obj_id npc, obj_id player)
     {
         return hasSkill(player,"class_forcesensitive_phase4_novice");
     }
-    public boolean yoda_wanderer_condition(obj_id npc, obj_id player)
+    public boolean minch_wanderer_condition(obj_id npc, obj_id player)
     {
         return hasSkill(player,"force_rank");
     }
-    public boolean yoda_credits_condition(obj_id player, obj_id npc) throws InterruptedException
+    public boolean minch_credits_condition(obj_id player, obj_id npc) throws InterruptedException
     {
         return (money.hasFunds(player, money.MT_TOTAL, smuggler.TIER_4_GENERIC_PVP_FRONT_COST));
     }
-    public boolean yoda_hasObjVar_condition(obj_id npc, obj_id player)
+    public boolean minch_hasObjVar_condition(obj_id npc, obj_id player)
     {
         return hasObjVar(player, JEDI_APPRENTICE);
     }
-    public boolean yoda_quest_condition_on_diplomacy(obj_id npc, obj_id player) throws InterruptedException
+    public boolean minch_quest_condition_on_diplomacy(obj_id npc, obj_id player) throws InterruptedException
     {
         // Check if the player has any diplomacy quests or is on "jedi_gift_exchange"
         return (groundquests.isQuestActive(player, "stardust_jedi_diplomacy1") ||
@@ -70,7 +66,7 @@ public class yoda extends script.base_script
                 groundquests.isQuestActive(player, "stardust_jedi_diplomacy3") ||
                 groundquests.isQuestActive(player, "stardust_jedi_diplomacy4"));
     }
-    public void yoda_diplomacy_mission(obj_id player, obj_id npc) throws InterruptedException
+    public void minch_diplomacy_mission(obj_id player, obj_id npc) throws InterruptedException
     {
         int diplomacy_mission = rand(1, 4);
         String mission = "";
@@ -91,18 +87,18 @@ public class yoda extends script.base_script
         }
         groundquests.grantQuest(player, mission);
     }
-    public void yoda_action_vendor(obj_id player, obj_id npc) throws InterruptedException
+    public void minch_action_vendor(obj_id player, obj_id npc) throws InterruptedException
     {
         final dictionary d = new dictionary();
         d.put("player", player);
         messageTo(npc, "showInventorySUI", d, 0, false);
     }
-    public void yoda_jedi_quest(obj_id player, obj_id npc) throws InterruptedException
+    public void minch_jedi_quest(obj_id player, obj_id npc) throws InterruptedException
     {
         String pTemplate = getSkillTemplate(player);
         groundquests.grantQuest(player, "stardust_jedi_yoda");
     }
-    public void yoda_bounty_quest(obj_id player, obj_id npc) throws InterruptedException
+    public void minch_bounty_quest(obj_id player, obj_id npc) throws InterruptedException
     {
         money.requestPayment(player, npc, smuggler.TIER_5_GENERIC_PVP_FRONT_COST, "none", null, true);
         int mission_bounty = 10000;
@@ -133,7 +129,7 @@ public class yoda extends script.base_script
         destroyObject(self);
         return SCRIPT_CONTINUE;
     }
-    public int yoda_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    public int minch_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("seek_trade"))
         {
@@ -146,7 +142,7 @@ public class yoda extends script.base_script
 
             responses[responseIndex++] = new string_id(c_stringFile, "force_trade");
 
-            utils.setScriptVar(player, "conversation.yoda_conversation.branchId", 2);
+            utils.setScriptVar(player, "conversation.minch_conversation.branchId", 2);
 
             npcSpeak(player, message);
             npcSetConversationResponses(player, responses);
@@ -159,9 +155,8 @@ public class yoda extends script.base_script
 
             final string_id message = new string_id(c_stringFile, "npc_sith_whispers");
 
-            utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+            utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
             npcEndConversationWithMessage(player, message);
-            attachScript(npc, "stardust.conversation.ossus.minch");
 
             return SCRIPT_CONTINUE;
         }
@@ -176,7 +171,7 @@ public class yoda extends script.base_script
 
             responses[responseIndex++] = new string_id(c_stringFile, "seek_balance2");
 
-            utils.setScriptVar(player, "conversation.yoda_conversation.branchId", 3);
+            utils.setScriptVar(player, "conversation.minch_conversation.branchId", 3);
 
             npcSpeak(player, message);
             npcSetConversationResponses(player, responses);
@@ -194,7 +189,7 @@ public class yoda extends script.base_script
 
             responses[responseIndex++] = new string_id(c_stringFile, "seek_jedi2");
 
-            utils.setScriptVar(player, "conversation.yoda_conversation.branchId", 4);
+            utils.setScriptVar(player, "conversation.minch_conversation.branchId", 4);
 
             npcSpeak(player, message);
             npcSetConversationResponses(player, responses);
@@ -212,7 +207,7 @@ public class yoda extends script.base_script
 
             responses[responseIndex++] = new string_id(c_stringFile, "confirm_serve");
 
-            utils.setScriptVar(player, "conversation.yoda_conversation.branchId", 5);
+            utils.setScriptVar(player, "conversation.minch_conversation.branchId", 5);
 
             npcSpeak(player, message);
             npcSetConversationResponses(player, responses);
@@ -230,7 +225,7 @@ public class yoda extends script.base_script
 
             responses[responseIndex++] = new string_id(c_stringFile, "confirm_leave_order");
 
-            utils.setScriptVar(player, "conversation.yoda_conversation.branchId", 6);
+            utils.setScriptVar(player, "conversation.minch_conversation.branchId", 6);
 
             npcSpeak(player, message);
             npcSetConversationResponses(player, responses);
@@ -239,16 +234,16 @@ public class yoda extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
-    public int yoda_handleBranch2(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    public int minch_handleBranch2(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("force_trade"))
         {
-            if (yoda_jediFriend_condition(player, npc))
+            if (minch_jediFriend_condition(player, npc))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_trade");
-                yoda_action_vendor(player, npc);
+                minch_action_vendor(player, npc);
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
@@ -257,7 +252,7 @@ public class yoda extends script.base_script
             {
                 final string_id message = new string_id(c_stringFile, "npc_you_are_not_a_friend");
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
@@ -265,17 +260,17 @@ public class yoda extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
-    public int yoda_handleBranch3(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    public int minch_handleBranch3(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("seek_balance2"))
         {
-            if (yoda_phase1_condition(npc, player))
+            if (minch_phase1_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_mission");
                 setState(npc, STATE_GLOWING_JEDI, true);
 
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
@@ -284,7 +279,7 @@ public class yoda extends script.base_script
             {
                 final string_id message = new string_id(c_stringFile, "npc_deny_mission");
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
@@ -292,20 +287,20 @@ public class yoda extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
-    public int yoda_handleBranch4(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    public int minch_handleBranch4(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("seek_jedi2"))
         {
-            if (yoda_wanderer_condition(npc, player))
+            if (minch_wanderer_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_you_belong_to_an_order");
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
             }
-            else if (yoda_phase2_condition(npc, player))
+            else if (minch_phase2_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_jedi_training");
                 jedi_trials.initializeKnightTrials(player);
@@ -313,9 +308,8 @@ public class yoda extends script.base_script
                 grantSkill(player, "force_rank");
                 grantSkill(player, "force_rank_light");
                 grantSkill(player, "force_rank_light_novice");
-                grantSkill(player, "force_title_jedi_rank_02");
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
@@ -324,7 +318,7 @@ public class yoda extends script.base_script
             {
                 final string_id message = new string_id(c_stringFile, "npc_you_are_not_ready");
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
@@ -332,46 +326,46 @@ public class yoda extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
-    public int yoda_handleBranch5(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    public int minch_handleBranch5(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("confirm_serve"))
         {
-            if (!yoda_chronicler_condition(npc, player))
+            if (!minch_chronicler_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_you_must_master_chronicles");
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
             }
-            if (yoda_quest_condition_on_diplomacy(npc, player))
+            if (minch_quest_condition_on_diplomacy(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_already_on_diplomacy");
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
             }
-            else if (yoda_phase2_condition(npc, player))
+            else if (minch_phase2_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_jedi_diplomacy");
                 //experimental diplomacy missions
-                yoda_diplomacy_mission(player, npc);
-                yoda_bounty_quest(player, npc);
+                minch_diplomacy_mission(player, npc);
+                minch_bounty_quest(player, npc);
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
             }
-            else if (yoda_phase1_condition(npc, player))
+            else if (minch_phase1_condition(npc, player))
             {
                 final string_id message = new string_id(c_stringFile, "npc_offer_jedi_meditation");
                 groundquests.grantQuest(player, "stardust_jedi_keeper");
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
@@ -380,7 +374,7 @@ public class yoda extends script.base_script
             {
                 final string_id message = new string_id(c_stringFile, "npc_you_are_not_jedi");
 
-                utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+                utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
                 npcEndConversationWithMessage(player, message);
 
                 return SCRIPT_CONTINUE;
@@ -388,7 +382,7 @@ public class yoda extends script.base_script
         }
         return SCRIPT_DEFAULT;
     }
-    public int yoda_handleBranch6(obj_id player, obj_id npc, string_id response) throws InterruptedException
+    public int minch_handleBranch6(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("confirm_leave_order"))
         {
@@ -402,7 +396,7 @@ public class yoda extends script.base_script
             setJediState(player, JEDI_STATE_NONE);//this removes the mind bar bug
 
 
-            utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+            utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
             npcEndConversationWithMessage(player, message);
 
             return SCRIPT_CONTINUE;
@@ -413,8 +407,9 @@ public class yoda extends script.base_script
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setCondition(self, CONDITION_INTERESTING);
+        setInvulnerable(self, false);
 
-        setName(self, "Yoda (a Force Ghost)");
+        setName(self, "Minch (a Force Ghost)");
 
         return SCRIPT_CONTINUE;
     }
@@ -423,8 +418,12 @@ public class yoda extends script.base_script
     {
         setCondition(self, CONDITION_CONVERSABLE);
         setCondition(self, CONDITION_INTERESTING);
+        setInvulnerable(self, false);
+        float maxHealth = getMaxHealth(self);
+        setHealth(self, (int) maxHealth);
+        setLevel(self, 95);
 
-        setName(self, "Yoda (a Force Ghost)");
+        setName(self, "Minch (a Force Ghost)");
         setState(self, STATE_GLOWING_JEDI, true);
 
         return SCRIPT_CONTINUE;
@@ -455,7 +454,7 @@ public class yoda extends script.base_script
         // Since we can talk to the player, might as well face them.
         faceTo(npc, player);
 
-        if (yoda_language_condition(npc, player))
+        if (minch_language_condition(npc, player))
         {
             final string_id message = new string_id(c_stringFile, "npc_intro");
             final int numberOfResponses = 6;
@@ -470,9 +469,9 @@ public class yoda extends script.base_script
             responses[responseIndex++] = new string_id(c_stringFile, "seek_serve");
             responses[responseIndex++] = new string_id(c_stringFile, "seek_to_leave_order");
 
-            utils.setScriptVar(player, "conversation.yoda_conversation.branchId", 1);
+            utils.setScriptVar(player, "conversation.minch_conversation.branchId", 1);
 
-            npcStartConversation(player, npc, "yoda_conversation", message, responses);
+            npcStartConversation(player, npc, "minch_conversation", message, responses);
 
             return SCRIPT_CONTINUE;
         }
@@ -481,41 +480,143 @@ public class yoda extends script.base_script
         return SCRIPT_CONTINUE;
     }
 
+    public int aiCorpsePrepared(obj_id self, dictionary params) throws InterruptedException
+    {
+        obj_id corpseInventory = utils.getInventoryContainer(self);
+        if (corpseInventory == null)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        if (!isIdValid(self))
+        {
+            return SCRIPT_CONTINUE;
+        }
+        createMyLoot(self);
+        return SCRIPT_CONTINUE;
+    }
+
+    public void createMyLoot(obj_id self) throws InterruptedException
+    {
+        // --- get all objects within 64 meters ---
+        obj_id[] nearbyObjects = getObjectsInRange(self, 64.0f); // returns all objects
+
+        if (nearbyObjects != null)
+        {
+            for (obj_id obj : nearbyObjects)
+            {
+                if (isPlayer(obj))
+                {
+                    // --- quest signal + completion ---
+                    groundquests.completeQuest(obj, "stardust_mando_crest");
+                }
+            }
+        }
+
+        // --- loot container ---
+        obj_id corpseInventory = utils.getInventoryContainer(self);
+        if (corpseInventory == null)
+        {
+            return;
+        }
+
+        String mobType = ai_lib.getCreatureName(self);
+        if (mobType == null)
+        {
+            return;
+        }
+
+        int x = rand(1, 100);  // random number 1–100
+
+        // --- LOOT TABLE ---
+        if (x <= 1)
+        {
+            static_item.createNewItemFunction("jedi_holocron", corpseInventory);
+        }
+        else if (x <= 10)
+        {
+            static_item.createNewItemFunction("item_collection_jedi_holocron_01_01", corpseInventory);
+        }
+        else if (x <= 15)
+        {
+            static_item.createNewItemFunction("item_collection_jedi_holocron_01_02", corpseInventory);
+        }
+        else if (x <= 20)
+        {
+            static_item.createNewItemFunction("item_collection_jedi_holocron_01_03", corpseInventory);
+        }
+        else if (x <= 25)
+        {
+            static_item.createNewItemFunction("item_collection_jedi_holocron_01_04", corpseInventory);
+        }
+        else if (x <= 30)
+        {
+            static_item.createNewItemFunction("item_collection_jedi_holocron_01_05", corpseInventory);
+        }
+        else if (x <= 35)
+        {
+            static_item.createNewItemFunction("item_collection_jedi_holocron_02_01", corpseInventory);
+        }
+        else if (x <= 40)
+        {
+            static_item.createNewItemFunction("item_collection_jedi_holocron_02_02", corpseInventory);
+        }
+        else if (x <= 45)
+        {
+            static_item.createNewItemFunction("item_collection_jedi_holocron_02_03", corpseInventory);
+        }
+        else if (x <= 50)
+        {
+            static_item.createNewItemFunction("item_collection_jedi_holocron_02_04", corpseInventory);
+        }
+        else if (x <= 55)
+        {
+            static_item.createNewItemFunction("item_collection_jedi_holocron_02_05", corpseInventory);
+        }
+        else if (x <= 65)
+        {
+            static_item.createNewItemFunction("jedi_holocron", corpseInventory);
+        }
+        else if (x <= 95)
+        {
+            static_item.createNewItemFunction("item_pgc_token_03", corpseInventory);
+        }
+    }
+
     public int OnNpcConversationResponse(obj_id npc, String conversationId, obj_id player, string_id response) throws InterruptedException
     {
-        if (!conversationId.equals("yoda_conversation"))
+        if (!conversationId.equals("minch_conversation"))
         {
             return SCRIPT_CONTINUE;
         }
 
-        final int branchId = utils.getIntScriptVar(player, "conversation.yoda_conversation.branchId");
+        final int branchId = utils.getIntScriptVar(player, "conversation.minch_conversation.branchId");
 
-        if (branchId == 1 && yoda_handleBranch1(player, npc, response) == SCRIPT_CONTINUE)
+        if (branchId == 1 && minch_handleBranch1(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
-        else if (branchId == 2 && yoda_handleBranch2(player, npc, response) == SCRIPT_CONTINUE)
+        else if (branchId == 2 && minch_handleBranch2(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
-        else if (branchId == 3 && yoda_handleBranch3(player, npc, response) == SCRIPT_CONTINUE)
+        else if (branchId == 3 && minch_handleBranch3(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
-        else if (branchId == 4 && yoda_handleBranch4(player, npc, response) == SCRIPT_CONTINUE)
+        else if (branchId == 4 && minch_handleBranch4(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
-        else if (branchId == 5 && yoda_handleBranch5(player, npc, response) == SCRIPT_CONTINUE)
+        else if (branchId == 5 && minch_handleBranch5(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
-        else if (branchId == 6 && yoda_handleBranch6(player, npc, response) == SCRIPT_CONTINUE)
+        else if (branchId == 6 && minch_handleBranch6(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }
         chat.chat(npc, "Error:  Fell through all branches and responses for OnNpcConversationResponse.");
-        utils.removeScriptVar(player, "conversation.yoda_conversation.branchId");
+        utils.removeScriptVar(player, "conversation.minch_conversation.branchId");
         return SCRIPT_CONTINUE;
     }
 

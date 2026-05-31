@@ -340,13 +340,10 @@ public class saber_base extends script.base_script
         setBioLink(saber, target);
 
         // Enforce no-trade
-        setObjVar(saber, "noTrade", 1);
+//        setObjVar(saber, "noTrade", 1);
 
-        // Remove nomove script if present
-        if (hasScript(saber, "item.special.nomove"))
-        {
-            detachScript(saber, "item.special.nomove");
-        }
+        // Remove nomove script
+        detachScript(saber, "item.special.nomove");
 
         // ------------------------------------------------------------
         // LINEAGE

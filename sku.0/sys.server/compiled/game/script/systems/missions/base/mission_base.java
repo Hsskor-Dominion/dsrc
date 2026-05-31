@@ -124,9 +124,11 @@ public class mission_base extends script.base_script
         {
             missions.increaseBountyJediKillTracking(objPlayer, missions.WINS);
             obj_id objTarget = getObjIdObjVar(objMissionData, "objTarget");
+            xp.grant(objPlayer, xp.BOUNTYHUNTER, 1000);//static exp for bounty missions, QoL experiment
             if (isIdValid(objTarget) && exists(objTarget) && isPlayer(objTarget) && isJedi(objTarget))
             {
                 xp.grant(objTarget, xp.JEDI_GENERAL, (intReward * -2));
+                xp.grant(objPlayer, xp.BOUNTYHUNTER, 1000);
             }
             if (isPlayer(objTarget) && isJedi(objTarget))
             {

@@ -2355,7 +2355,8 @@ public class combat extends script.base_script
             return true;
         }
         int speciesRequired = dataTableGetInt(combat.WEAPON_LEVEL_TABLE, template, "species_restriction");
-        if (speciesRequired >= 0)
+
+        if (speciesRequired >= 0 && !hasObjVar(objWeapon, "slicing.new_hacked"))
         {
             int playerSpecies = getSpecies(objPlayer);
             if (playerSpecies != speciesRequired)

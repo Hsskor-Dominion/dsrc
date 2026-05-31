@@ -289,6 +289,7 @@ public class darth_talon extends script.base_script
                 grantSkill(player, "force_rank");
                 grantSkill(player, "force_rank_dark");
                 grantSkill(player, "force_rank_dark_novice");
+                grantSkill(player, "force_title_jedi_rank_02");
 
                 utils.removeScriptVar(player, "conversation.darth_talon_conversation.branchId");
                 npcEndConversationWithMessage(player, message);

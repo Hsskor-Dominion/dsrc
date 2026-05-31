@@ -32,10 +32,10 @@ public class space_duty_crate extends script.base_script
         if (item == menu_info_types.ITEM_USE)
         {
             int difficulty = getIntObjVar(self, "difficulty");
-            if (difficulty <= 0 || difficulty > 5)
-            {
-                return SCRIPT_CONTINUE;
-            }
+//            if (difficulty <= 0 || difficulty > 5)
+//            {
+//                return SCRIPT_CONTINUE;
+//            }
             obj_id inv = utils.getInventoryContainer(player);
             int freeSpace = getVolumeFree(inv);
             if (freeSpace < 15)

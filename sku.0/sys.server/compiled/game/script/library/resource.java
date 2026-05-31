@@ -629,11 +629,11 @@ public class resource extends script.base_script
                                 messageTo(user, "forceSensitiveQuestInfo", merriam, 1, false);
                             }
                             sendSystemMessageProse(user, prose.getPackage(SID_SAMPLE_LOCATED, type, amt));
-                            // calculate XP based on amt
-//                            int xpAmount = 40 + amt; // 40 base + amt
-//                            xp.grant(user, "resource_harvesting_inorganic", xpAmount);
+                            //calculate XP based on amt
+                            int xpAmount = 40 + amt; // 40 base + amt
+                            xp.grant(user, "resource_harvesting_inorganic", xpAmount);
 
-                            // notify player of XP gain
+                            //notify player of XP gain
 //                            sendSystemMessageProse(user, prose.getPackage(SID_SAMPLE_EXP, type, xpAmount));
                             if (isResourceDerivedFrom(typeId, "radioactive"))
                         {

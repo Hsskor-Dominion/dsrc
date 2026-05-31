@@ -156,7 +156,7 @@ dessert_pastebread	ice_cream			1	buffs.foodDessert	1200	agility_modified	20	stam
 dessert_won_won	ice_cream			1	buffs.foodDessert	1200	agility_modified	10	constitution_modified	10		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dessert_chandad	ice_cream			1	buffs.foodDessert	1200	surveying	10		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dessert_pyollian_cake	ice_cream			1	buffs.foodDessert	1200	script_var	7		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
-dessert_dweezel	ice_cream			1	buffs.foodDessert	1200	stamina_modified	40		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
+dessert_dweezel	ice_cream			1	buffs.foodDessert	1200	stamina_modified	40	trapping	22		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dessert_felbar	ice_cream			1	buffs.foodDessert	1200	luck_modified	45		0		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dessert_citros_snow_cake	ice_cream			1	buffs.foodDessert	1200	luck_modified	50	stamina_modified	30		0		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
 dessert_pikatta_pie	ice_cream			1	buffs.foodDessert	1200	constitution_modified	60	precision_modified	20	expertise_dodge	1		0		0	STATE_NONE	none			1	0		1	1	1	0	1	1	0	1	1	1
@@ -1198,7 +1198,7 @@ fs_dot_immunity_recourse	fsCure			100	command.shock	25		0		0		0		0		0	STATE_NONE
 me_rheumatic_calamity_1	medicArthritus			34	command.me_induce_insanity	10	action_burn	65		0		0		0		0	STATE_NONE	none	clienteffect/medic_rheumatic.cef		1	1		1	1	1	0	1	1	0	1	1	1
 sp_burst_shadows	sp_burst_shadows			1	command.sp_burst_of_shadows	15	movement	0	expertise_damage_all	10	freeshot_case_crit	1	freeshot_case_strikethrough	1		0	STATE_NONE	none	appearance/pt_spy_burst_shadows.prt		1	0		0	1	1	0	1	1	0	1	1	1
 sp_avoid_damage	sp_avoid_damage			4	command.sp_avoid_damage	15	expertise_dodge	50	expertise_evasion_chance	75		0		0		0	STATE_NONE	none	appearance/pt_spy_avoid_damage.prt		1	0		0	1	1	0	1	1	0	1	1	1
-sp_preparation	sp_preparation			4	command.sp_preparation	5	expertise_damage_all	25	freeshot_case_crit	1	freeshot_case_strikethrough	1		0		0	STATE_NONE	none	appearance/pt_spy_preparation.prt		1	0		0	1	1	0	1	1	0	1	1	1
+sp_preparation	sp_preparation			4	command.sp_preparation	5	expertise_damage_all	25						0		0	STATE_NONE	none	appearance/pt_spy_preparation.prt		1	0		0	1	1	0	1	1	0	1	1	1
 sp_shifty_setup	sp_shifty_setup			1	command.sp_shifty_setup	30	expertise_avoidance_overpower	75	expertise_critical_niche_all	5	freeshot_case_strikethrough	1	on_attack_remove	1	expertise_damage_all	5	STATE_NONE	none	appearance/pt_spy_shifty_setup.prt,appearance/pt_spy_shifty_setup.prt	hold_l,hold_r	1	0		1	1	1	0	1	1	0	1	1	1
 sp_decoy_debuff	criticalEffect			12	command.bm_flank	6	critical_hit_vulnerable	15		0		0		0		0	STATE_NONE	none	appearance/pt_spy_decoy.prt		1	1		1	1	1	0	1	1	0	1	1	1
 sp_ploy_snare	sp_ploy_snare	snare		3	command.sp_crippling_traps	20	movement	60		0		0		0		0	STATE_NONE	none	appearance/pt_officer_crippling_vortex.prt		1	1		1	1	1	0	1	1	0	1	1	1

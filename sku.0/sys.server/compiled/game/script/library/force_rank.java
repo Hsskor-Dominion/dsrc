@@ -3328,6 +3328,16 @@ public class force_rank extends script.base_script
             sendSystemMessageTestingOnly(item, "god access granted to this area");
             return true;
         }
+        if (groundquests.isQuestActive(item, "stardust_jedi_diplomacy3"))
+        {
+            sendSystemMessageTestingOnly(item, "diplomat access granted to this area");
+            return true;
+        }
+        if (hasSkill(item, "social_master_politician"))
+        {
+            sendSystemMessageTestingOnly(item, "diplomat access granted to this area");
+            return true;
+        }
         if (!isMob(item))
         {
             return true;

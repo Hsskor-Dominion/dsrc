@@ -70,7 +70,8 @@ public class mission_player extends script.systems.missions.base.mission_player_
         }
         if (hasObjVar(objMissionTerminal, "intBounty"))
         {
-            if (!hasSkill(self, "class_bountyhunter_phase1_novice") || (!hasSkill(self, "combat_bountyhunter_novice")))
+            if (!(hasSkill(self, "class_bountyhunter_phase1_novice")
+                    || hasSkill(self, "combat_bountyhunter_novice")))
             {
                 string_id strSpam = new string_id("mission/mission_generic", "not_bounty_hunter_terminal");
                 sendSystemMessage(self, strSpam);

@@ -14,7 +14,7 @@ public class faction_item extends script.base_script
 {
     public faction_item() {}
 
-    public static final string_id SID_SLICE = new string_id("smuggler/slicing", "slice_faction_item");
+    public static final string_id SID_SLICE = new string_id("stardust_crafting", "slice_faction_item");
     public static final String CONTRABAND_VAR = "contraband";
 
     // ---------------------
@@ -71,7 +71,7 @@ public class faction_item extends script.base_script
     // ---------------------
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
     {
-        if (item == menu_info_types.SERVER_MENU6 && hasSkill(player, "class_smuggler_phase1_novice") && !hasObjVar(self, CONTRABAND_VAR))
+        if (item == menu_info_types.SERVER_MENU6 && isSmuggler(player) && !hasObjVar(self, CONTRABAND_VAR))
         {
             performSlice(self, player);
         }

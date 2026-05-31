@@ -216,6 +216,8 @@ public class base_player extends script.base_script
     public static final string_id LAIR_NOT_TARGETED = new string_id("lair_n", "lair_not_targeted");
     public static final string_id SHAPECHANGE = new string_id("spam", "shapechange_combat");
     public static final string_id FORCESTATUS_TITLE = new string_id("jedi_trials", "checkforce");
+    public static final string_id SID_NOT_TRAINED = new string_id("skl_use", "lack_tracking_skill");
+    public static final string_id SID_TRACK = new string_id("skl_use", "track_target");
     public static final String[] WAYPOINT_GROUND_PLANETS_EXTERNAL = 
     {
         "tatooine",
@@ -4818,6 +4820,222 @@ public class base_player extends script.base_script
     }
     public int maskscent(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
     {
+        // Apply scent mask buff
+        buff.applyBuff(self, "mask_scent");
+        doAnimationAction(self, "forage");
+
+        // Must have tracking skill
+        if (!hasSkill(self, "outdoors_ranger_tracking_01"))
+        {
+            sendSystemMessage(self, SID_NOT_TRAINED);
+            return SCRIPT_CONTINUE;
+        }
+        boolean advancedTracking = hasSkill(self, "outdoors_ranger_tracking_04");
+
+        // -------------------------------------------------
+        // Skill scaling
+        // -------------------------------------------------
+        float trackingRange = 128.0f;
+
+        if (hasSkill(self, "outdoors_ranger_tracking_04"))
+        {
+            trackingRange = 512.0f;
+        }
+        else if (hasSkill(self, "outdoors_ranger_tracking_03"))
+        {
+            trackingRange = 384.0f;
+        }
+        else if (hasSkill(self, "outdoors_ranger_tracking_02"))
+        {
+            trackingRange = 256.0f;
+        }
+
+        // -------------------------------------------------
+        // Scan nearby objects
+        // -------------------------------------------------
+        obj_id[] nearby = getObjectsInRange(self, trackingRange);
+
+        if (nearby == null || nearby.length == 0)
+        {
+            sendSystemMessageTestingOnly(self, "You detect no tracks nearby.");
+            return SCRIPT_CONTINUE;
+        }
+
+        location myLoc = getLocation(self);
+
+        StringBuffer trackingList = new StringBuffer();
+
+        obj_id firstTrack = obj_id.NULL_ID;
+
+        int tracksFound = 0;
+
+        for (obj_id obj : nearby)
+        {
+            if (!isIdValid(obj))
+            {
+                continue;
+            }
+
+            if (!exists(obj))
+            {
+                continue;
+            }
+
+            // Skip self
+            if (obj == self)
+            {
+                continue;
+            }
+
+            // -------------------------------------------------
+// Creature filtering
+// -------------------------------------------------
+
+            boolean validTrack = false;
+
+// NPC creatures are always trackable
+            if (isNpcCreature(obj))
+            {
+                validTrack = true;
+            }
+
+// Advanced tracking can detect attackable players
+            else if (advancedTracking && isPlayer(obj))
+            {
+                if (pvpCanAttack(self, obj))
+                {
+                    validTrack = true;
+                }
+            }
+
+            if (!validTrack)
+            {
+                continue;
+            }
+
+            // Skip dead
+            if (isDead(obj))
+            {
+                continue;
+            }
+
+            location targetLoc = getLocation(obj);
+
+            if (targetLoc == null)
+            {
+                continue;
+            }
+
+            String mobName = getName(obj);
+
+            float distance = utils.getDistance(myLoc, targetLoc);
+
+            String trackType = isPlayer(obj) ? "[PLAYER] " : "";
+
+            trackingList.append(
+                    trackType +
+                            mobName +
+                            " - " +
+                            ((int)distance) +
+                            "m\n"
+            );
+
+            // Only advanced tracking creates waypoints
+// and only for attackable players
+            if (advancedTracking &&
+                    isPlayer(obj) &&
+                    pvpCanAttack(self, obj))
+            {
+                if (firstTrack == obj_id.NULL_ID)
+                {
+                    firstTrack = obj;
+                }
+            }
+
+            tracksFound++;
+        }
+
+        // -------------------------------------------------
+        // No valid tracks
+        // -------------------------------------------------
+        if (tracksFound <= 0)
+        {
+            sendSystemMessageTestingOnly(
+                    self,
+                    "You fail to locate any clear tracks."
+            );
+
+            return SCRIPT_CONTINUE;
+        }
+
+        // -------------------------------------------------
+        // Create or update waypoint for first track
+        // -------------------------------------------------
+        if (isIdValid(firstTrack))
+        {
+            location targetLoc = getLocation(firstTrack);
+
+            String mobName = getName(firstTrack);
+
+            float distance = utils.getDistance(myLoc, targetLoc);
+
+            obj_id waypoint = obj_id.NULL_ID;
+
+            // -------------------------------------------------
+            // Reuse existing waypoint if possible
+            // -------------------------------------------------
+            if (hasObjVar(self, "tracking_waypoint"))
+            {
+                waypoint = getObjIdObjVar(self, "tracking_waypoint");
+
+                if (!isIdValid(waypoint) || !exists(waypoint))
+                {
+                    waypoint = obj_id.NULL_ID;
+                    removeObjVar(self, "tracking_waypoint");
+                }
+            }
+
+            // -------------------------------------------------
+            // Create new waypoint if needed
+            // -------------------------------------------------
+            if (!isIdValid(waypoint))
+            {
+                waypoint = createWaypointInDatapad(self, targetLoc);
+
+                if (isIdValid(waypoint))
+                {
+                    setObjVar(self, "tracking_waypoint", waypoint);
+                }
+            }
+
+            // -------------------------------------------------
+            // Update waypoint
+            // -------------------------------------------------
+            if (isIdValid(waypoint))
+            {
+                setWaypointVisible(waypoint, true);
+                setWaypointActive(waypoint, true);
+
+                setWaypointLocation(waypoint, targetLoc);
+
+                setName(
+                        waypoint,
+                        "Track: " + mobName + " (" + ((int)distance) + "m)"
+                );
+            }
+        }
+
+        // -------------------------------------------------
+        // Show SUI popup
+        // -------------------------------------------------
+        sui.msgbox(
+                self,
+                self,
+                "Nearby Tracks Detected:\n\n" + trackingList.toString(),
+                sui.OK_ONLY,
+                "Creature Tracking"
+        );
+
         return SCRIPT_CONTINUE;
     }
     public int failMaskscent(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException

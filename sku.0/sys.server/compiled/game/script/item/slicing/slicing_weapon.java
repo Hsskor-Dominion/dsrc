@@ -3,6 +3,7 @@ package script.item.slicing;
 import script.*;
 import script.library.*;
 
+import static script.base_class.ship_component_type.names;
 import static script.library.factions.isSmuggler;
 
 public class slicing_weapon extends script.base_script
@@ -222,6 +223,7 @@ public class slicing_weapon extends script.base_script
         xp.grant(player, "slicing", 100);
 
         setObjVar(self, "slicing.new_hacked", 1);
+        //need to add remove race/species restriction here
         sendDirtyAttributesNotification(self);
 
         return SCRIPT_CONTINUE;
@@ -237,6 +239,12 @@ public class slicing_weapon extends script.base_script
         } else {
             setHitpoints(item, newHp);
         }
+
+        // Remove race restriction
+//        if (hasObjVar(item, "race_restriction"))
+//        {
+//            removeObjVar(item, "race_restriction");
+//        }
     }
 
     public boolean applyFireRateChange(obj_id self, obj_id player, int slice_amount) throws InterruptedException

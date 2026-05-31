@@ -32,7 +32,7 @@ public class mission_terminal extends script.base_script
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
     {
         int mnu = -1;
-        if (hasSkill(player, "class_smuggler_phase1_novice"))
+        if (hasSkill(player, "class_smuggler_phase1_novice") || hasSkill(player, "combat_smuggler_novice"))
         {
             mi.addRootMenu(menu_info_types.SERVER_MENU2, SID_SLICE);
         }

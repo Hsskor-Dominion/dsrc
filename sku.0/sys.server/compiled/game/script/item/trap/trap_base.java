@@ -142,7 +142,7 @@ public class trap_base extends script.base_script
             // --------------------------------
             if (template.equals("object/tangible/scout/trap/shared_trap_enraging_spur.iff"))
             {
-                success = (roll + skill) >= 60;
+                success = (roll + skill) >= 30;
                 if (success)
                 {
                     doAnimationAction(player, "force_blast");
@@ -151,61 +151,71 @@ public class trap_base extends script.base_script
             }
             else if (template.equals("object/tangible/scout/trap/shared_trap_ranged_def_1.iff"))
             {
-                success = (roll + skill) >= 65;
+                success = (roll + skill) >= 35;
                 if (success)
                 {
                     doAnimationAction(player, "force_blast");
                     buff.applyBuff(target, "bh_del_cc_1", 2);
+                    buff.applyBuff(target, "bm_flank_1_debuff", 2);
                 }
             }
             else if (template.equals("object/tangible/scout/trap/shared_trap_noise_maker.iff"))
             {
-                success = (roll + skill) >= 70;
+                success = (roll + skill) >= 40;
                 if (success)
                 {
                     doAnimationAction(player, "force_blast");
                     buff.applyBuff(target, "bh_del_cc_1", 3);
+                    buff.applyBuff(target, "bm_flank_1_debuff", 3);
                 }
             }
             else if (template.equals("object/tangible/scout/trap/shared_trap_state_def_1.iff"))
             {
-                success = (roll + skill) >= 75;
+                success = (roll + skill) >= 45;
                 if (success) buff.applyBuff(target, "bh_del_cc_1", 4);
+                buff.applyBuff(target, "bm_flank_1_debuff", 4);
             }
             else if (template.equals("object/tangible/scout/trap/shared_trap_tranq_dart.iff"))
             {
-                success = (roll + skill) >= 80;
+                success = (roll + skill) >= 50;
                 if (success) buff.applyBuff(target, "bh_del_cc_1", 5);
+                buff.applyBuff(target, "bm_flank_1_debuff", 5);
             }
             else if (template.equals("object/tangible/scout/trap/shared_trap_melee_ranged_def_1.iff"))
             {
-                success = (roll + skill) >= 85;
+                success = (roll + skill) >= 55;
                 if (success) buff.applyBuff(target, "bh_del_cc_1", 6);
+                buff.applyBuff(target, "bm_flank_1_debuff", 6);
             }
             else if (template.equals("object/tangible/scout/trap/shared_trap_webber.iff"))
             {
-                success = (roll + skill) >= 90;
+                success = (roll + skill) >= 60;
                 if (success) buff.applyBuff(target, "bh_del_cc_1", 7);
+                buff.applyBuff(target, "bm_flank_1_debuff", 7);
             }
             else if (template.equals("object/tangible/scout/trap/shared_trap_drowsy_dart.iff"))
             {
-                success = (roll + skill) >= 95;
+                success = (roll + skill) >= 65;
                 if (success) buff.applyBuff(target, "bh_del_cc_1", 8);
+                buff.applyBuff(target, "bm_flank_1_debuff", 8);
             }
             else if (template.equals("object/tangible/scout/trap/shared_trap_melee_def_1.iff"))
             {
-                success = (roll + skill) >= 100;
+                success = (roll + skill) >= 70;
                 if (success) buff.applyBuff(target, "bh_del_cc_1", 9);
+                buff.applyBuff(target, "bm_flank_1_debuff", 9);
             }
             else if (template.equals("object/tangible/scout/trap/shared_trap_flash_bomb.iff"))
             {
-                success = (roll + skill) >= 105;
+                success = (roll + skill) >= 75;
                 if (success) buff.applyBuff(target, "bh_del_cc_1", 10);
+                buff.applyBuff(target, "bm_flank_1_debuff", 10);
             }
             else if (template.equals("object/tangible/scout/trap/shared_trap_sonic_pulse.iff"))
             {
-                success = (roll + skill) >= 110;
+                success = (roll + skill) >= 80;
                 if (success) buff.applyBuff(target, "bh_del_cc_1", 11);
+                buff.applyBuff(target, "bm_flank_1_debuff", 11);
             }
             else
             {
@@ -220,7 +230,7 @@ public class trap_base extends script.base_script
             {
                 int xpGain = (trapComplexity + skill);
                 xp.grant(player, "trapping", xpGain);
-                // Set cooldown: 5 seconds
+                // Set cooldown: 1 seconds
                 utils.setScriptVar(player, "trap.cooldown", 1);
                 messageTo(player, "clearTrapCooldown", null, 1.0f, false);
             }

@@ -200,8 +200,11 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
             throws InterruptedException
     {
         String responseStr = response.toString();
+
         if (responseStr.contains(":"))
             responseStr = responseStr.substring(responseStr.indexOf(":") + 1);
+
+        responseStr = responseStr.trim();
 
         // ---- MEDITATION ----
         if (responseStr.equals("seek_jedi_meditation"))
@@ -230,7 +233,7 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
         }
 
         // ---- FORCE XP EXCHANGE ----
-        if (responseStr.equals("seek_jedi_fs_xp_exchange"))//i get error fell through; should this direct to another branch?
+        if (responseStr.equals("seek_jedi_fs_xp_exchange"))
         {
             handleBranch(player,
                     "npc_you_seek_jedi_fs_xp_exchange",
@@ -287,6 +290,7 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
                             "seek_jedi_spice"
                     },
                     4);
+
             return SCRIPT_CONTINUE;
         }
 
@@ -298,66 +302,162 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
     public int aurilia_buff_vendor_convo_handleBranch4(obj_id player, obj_id npc, string_id response)
             throws InterruptedException
     {
-        String responseStr = response.toString();
+        String raw = response.toString();
+        String responseStr = raw;
+
         if (responseStr.contains(":"))
             responseStr = responseStr.substring(responseStr.indexOf(":") + 1);
 
+        responseStr = responseStr.trim();
+
+
+        // ---- VALIDATE INPUT ----
+        if (responseStr == null || !responseStr.startsWith("seek_jedi_"))
+        {
+            sendSystemMessageTestingOnly(player,
+                    "DEBUG: Invalid response in Branch4 -> " + responseStr);
+
+            utils.removeScriptVarTree(player,
+                    "conversation.aurilia_buff_vendor_convo_conversation");
+
+            npcEndConversationWithMessage(player,
+                    new string_id(c_stringFile, "npc_exchange_cancel"));
+
+            return SCRIPT_CONTINUE;
+        }
+
         // ---- XP CONVERSION ----
-        if (responseStr.startsWith("seek_jedi_"))
+        final int REQUIRED_XP = 100000;
+
+        String xpType = responseStr.replace("seek_jedi_", "").trim();
+
+        // ---- NORMALIZATION ----
+        switch (xpType)
+        {
+            case "combat":
+                xpType = "combat_general";
+                break;
+
+            case "space":
+                xpType = "space_combat_general";
+                break;
+
+            case "weapons":
+                xpType = "crafting_weapons_general";
+                break;
+
+            case "droid":
+                xpType = "crafting_droid_general";
+                break;
+
+            case "structure":
+                xpType = "crafting_structure_general";
+                break;
+
+            case "imagedesign":
+                xpType = "imagedesigner";
+                break;
+        }
+
+        int currentXp = xp.getExperiencePoints(player, xpType);
+
+        if (currentXp < REQUIRED_XP)
+        {
+            int missingXp = REQUIRED_XP - currentXp;
+
+            sendSystemMessageTestingOnly(player,
+                    "You lack " + missingXp + " " + xpType + " XP to convert.");
+
+            utils.removeScriptVarTree(player,
+                    "conversation.aurilia_buff_vendor_convo_conversation");
+
+            npcEndConversationWithMessage(player,
+                    new string_id(c_stringFile, "npc_you_lack_experience"));
+
+            return SCRIPT_CONTINUE;
+        }
+
+        // ---- STORE + CONFIRM ----
+        utils.setScriptVar(player, "jedi_xp_exchange_type", xpType);
+
+        handleBranch(player,
+                "npc_confirm_exchange",
+                new String[]{"confirm_yes", "confirm_no"},
+                5);
+
+        return SCRIPT_CONTINUE;
+    }
+
+    public int aurilia_buff_vendor_convo_handleBranch5(obj_id player, obj_id npc, string_id response)
+            throws InterruptedException
+    {
+        String responseStr = response.toString();
+
+        if (responseStr.contains(":"))
+            responseStr = responseStr.substring(responseStr.indexOf(":") + 1);
+
+        responseStr = responseStr.trim();
+
+        // DEBUG
+        sendSystemMessageTestingOnly(player, "DEBUG B5: " + responseStr);
+
+        if (responseStr.equals("confirm_yes"))
         {
             final int REQUIRED_XP = 100000;
 
-            String xpType = responseStr.replace("seek_jedi_", "");
+            String xpType = utils.getStringScriptVar(player, "jedi_xp_exchange_type");
 
-            // normalize aliases
-            if (xpType.equals("combat")) xpType = "combat_general";
-            if (xpType.equals("combat_meleespecialize_unarmed")) xpType = "combat_general";
-            if (xpType.equals("combat_meleespecialize_onehand")) xpType = "combat_general";
-            if (xpType.equals("combat_meleespecialize_twohand")) xpType = "combat_general";
-            if (xpType.equals("combat_meleespecialize_polearm")) xpType = "combat_general";
-            if (xpType.equals("combat_rangedspecialize_pistol")) xpType = "combat_general";
-            if (xpType.equals("combat_rangedspecialize_carbine")) xpType = "combat_general";
-            if (xpType.equals("combat_rangedspecialize_rifle")) xpType = "combat_general";
-            if (xpType.equals("combat_rangedspecialize_heavy")) xpType = "combat_general";
-            if (xpType.equals("space")) xpType = "space_combat_general";
-            if (xpType.equals("weapons")) xpType = "crafting_weapons_general";
-            if (xpType.equals("droid")) xpType = "crafting_droid_general";
-            if (xpType.equals("structure")) xpType = "crafting_structure_general";
-            if (xpType.equals("imagedesign")) xpType = "imagedesigner";
+            if (xpType == null || xpType.length() == 0)
+            {
+                sendSystemMessageTestingOnly(player, "ERROR: Missing XP type.");
+                return SCRIPT_CONTINUE;
+            }
 
             int currentXp = xp.getExperiencePoints(player, xpType);
 
             if (currentXp < REQUIRED_XP)
             {
-                int missingXp = REQUIRED_XP - currentXp;
                 sendSystemMessageTestingOnly(player,
-                        "You lack " + missingXp + " " + xpType + " XP to convert.");
-
-                utils.removeScriptVarTree(player,
-                        "conversation.aurilia_buff_vendor_convo_conversation");
+                        "You no longer have enough XP.");
 
                 npcEndConversationWithMessage(player,
                         new string_id(c_stringFile, "npc_you_lack_experience"));
+
                 return SCRIPT_CONTINUE;
             }
 
-            utils.setScriptVar(player, "jedi_xp_exchange_type", xpType);
+            // ---- PERFORM EXCHANGE ----
+            xp.grantExperiencePoints(player, xpType, -REQUIRED_XP);
+            xp.grantExperiencePoints(player, "force_sensitive_xp", REQUIRED_XP);
 
-            handleBranch(player,
-                    "npc_confirm_exchange",
-                    new String[]{"confirm_yes", "confirm_no"},
-                    4);
+            sendSystemMessageTestingOnly(player,
+                    "Converted " + REQUIRED_XP + " " + xpType + " XP into Force XP.");
+
+            utils.removeScriptVar(player, "jedi_xp_exchange_type");
+            utils.removeScriptVarTree(player,
+                    "conversation.aurilia_buff_vendor_convo_conversation");
+
+            npcEndConversationWithMessage(player,
+                    new string_id(c_stringFile, "npc_exchange_success"));
 
             return SCRIPT_CONTINUE;
         }
 
-        // ---- DEFAULT FALLBACK ----
+        if (responseStr.equals("confirm_no"))
+        {
+            utils.removeScriptVar(player, "jedi_xp_exchange_type");
+            utils.removeScriptVarTree(player,
+                    "conversation.aurilia_buff_vendor_convo_conversation");
+
+            npcEndConversationWithMessage(player,
+                    new string_id(c_stringFile, "npc_exchange_cancel"));
+
+            return SCRIPT_CONTINUE;
+        }
+
+        // fallback
         sendSystemMessageTestingOnly(player,
-                "DEBUG: Branch4 fell through on response: " + responseStr);
-        utils.removeScriptVarTree(player,
-                "conversation.aurilia_buff_vendor_convo_conversation");
-        npcEndConversationWithMessage(player,
-                new string_id(c_stringFile, "npc_exchange_cancel"));
+                "DEBUG: Branch5 fell through on response: " + responseStr);
 
         return SCRIPT_CONTINUE;
     }
@@ -502,6 +602,10 @@ public class aurilia_buff_vendor_convo extends script.conversation.base.conversa
             return SCRIPT_CONTINUE;
         }
         else if (branchId == 4 && aurilia_buff_vendor_convo_handleBranch4(player, npc, response) == SCRIPT_CONTINUE)
+        {
+            return SCRIPT_CONTINUE;
+        }
+        else if (branchId == 5 && aurilia_buff_vendor_convo_handleBranch5(player, npc, response) == SCRIPT_CONTINUE)
         {
             return SCRIPT_CONTINUE;
         }

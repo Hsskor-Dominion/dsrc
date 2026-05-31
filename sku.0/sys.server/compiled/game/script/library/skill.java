@@ -1789,7 +1789,7 @@ public class skill extends script.base_script
         {
             // Jedi / null profession fallback
             // Start from current max pools so legacy systems remain intact
-            intBaseHealth = 15000;//bug fix for Jedi stats.. static stat, absed off level 90
+            intBaseHealth = 15000;//bug fix for Jedi stats... static stat, based off level 90
             intBaseAction = 15000;
         }
         else

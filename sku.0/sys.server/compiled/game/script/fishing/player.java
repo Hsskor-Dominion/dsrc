@@ -473,7 +473,7 @@ public class player extends script.base_script
         {
             prose_package ppCatch = prose.getPackage(minigame.PROSE_NOTIFY_CATCH, myCatch);
             sendSystemMessageProse(self, ppCatch);
-            camping.grantCampXp(self, 20);
+            camping.grantCampXp(self, 50);
         }
         minigame.stopFishing(self);
         return SCRIPT_CONTINUE;

@@ -60,6 +60,7 @@ public class droid_bomb extends script.base_script
         if (item == menu_info_types.SERVER_MENU5)
         {
             if (hasSkill(player, "class_smuggler_phase1_novice") || hasSkill(player, "class_bountyhunter_phase1_novice") || hasSkill(player, "combat_smuggler_novice") || hasSkill(player, "combat_bountyhunter_novice"))
+
             {
                 queueCommand(player, (603112878), self, "", COMMAND_PRIORITY_DEFAULT);
             }

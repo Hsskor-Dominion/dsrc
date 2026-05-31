@@ -32,12 +32,12 @@ public class bounty_probe_droid extends script.systems.missions.base.mission_dyn
         {
             return SCRIPT_CONTINUE;
         }
-        if (hasSkill(player, "class_bountyhunter_phase1_novice") || hasSkill(player, "combat_bountyhunter_novice"))
-        {
-            string_id strResponse = new string_id("mission/mission_generic", "bounty_no_ability");
-            sendSystemMessage(player, strResponse);
-            return SCRIPT_CONTINUE;
-        }
+//        if (hasSkill(player, "class_bountyhunter_phase1_novice") || hasSkill(player, "combat_bountyhunter_novice"))
+//        {
+//            string_id strResponse = new string_id("mission/mission_generic", "bounty_no_ability");
+//            sendSystemMessage(player, strResponse);
+//            return SCRIPT_CONTINUE;
+//        }
         int intDroidType = getIntObjVar(self, "intDroidType");
         if (intDroidType == DROID_PROBOT)
         {
