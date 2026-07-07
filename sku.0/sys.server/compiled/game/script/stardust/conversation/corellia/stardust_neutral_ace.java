@@ -30,12 +30,68 @@ public class stardust_neutral_ace extends script.base_script
     {
         return ((badge.hasBadge(player, "pilot_rebel_navy_corellia") && badge.hasBadge(player, "pilot_rebel_navy_naboo") && badge.hasBadge(player, "pilot_rebel_navy_tatooine")));
     }
+    public void stardust_neutral_ace_action_moveToSD(obj_id player, obj_id npc) throws InterruptedException
+    {
+        if (!hasSkill(player, "stardust_admiral_imperial") &&
+                !hasSkill(player, "stardust_admiral_republic"))
+        {
+            sendSystemMessage(player,
+                    "You are not authorized to access the Star Destroyer operation.",
+                    null);
+            return;
+        }
+
+        String accessFlag = "heroic_star_destroyer";
+
+        if (group.isGrouped(player))
+        {
+            obj_id groupObj = getGroupObject(player);
+
+            if (isIdValid(groupObj))
+            {
+                obj_id[] members = getGroupMemberIds(groupObj);
+
+                location leaderLoc = getLocation(player);
+
+                for (obj_id member : members)
+                {
+                    if (!isIdValid(member))
+                    {
+                        continue;
+                    }
+
+                    if (leaderLoc.distance(getLocation(member)) > 128.0f)
+                    {
+                        continue;
+                    }
+
+                    // Grant instance access
+                    instance.flagPlayerForInstance(member, accessFlag);
+
+                    // Move player
+                    instance.requestInstanceMovement(
+                            member,
+                            "heroic_star_destroyer");
+                }
+
+                return;
+            }
+        }
+
+        instance.flagPlayerForInstance(player, accessFlag);
+
+        instance.requestInstanceMovement(
+                player,
+                "heroic_star_destroyer");
+    }
     public int stardust_neutral_ace_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("s_star_destroyer"))
         {
             if (stardust_neutral_ace_condition__defaultCondition(player, npc))
             {
+                stardust_neutral_ace_action_moveToSD(player, npc);
+
                 string_id message = new string_id(c_stringFile, "s_lets_go");
                 utils.removeScriptVar(player, "conversation.stardust_neutral_ace.branchId");
                 npcEndConversationWithMessage(player, message);

@@ -180,6 +180,15 @@ public class locked_slicable extends script.base_script
             // --- Random loot pool ---
             String[] lootOptions = {
                     "object/intangible/data_item/warren_encryption_key.iff",
+                    "object/tangible/loot/dungeon/corellian_corvette/imperial_assassin_intel.iff",
+                    "object/tangible/loot/dungeon/corellian_corvette/imperial_destroy_intel.iff",
+                    "object/tangible/loot/dungeon/corellian_corvette/imperial_rescue_intel.iff",
+                    "object/tangible/loot/dungeon/corellian_corvette/neutral_assassin_intel.iff",
+                    "object/tangible/loot/dungeon/corellian_corvette/neutral_destroy_intel.iff",
+                    "object/tangible/loot/dungeon/corellian_corvette/neutral_rescue_intel.iff",
+                    "object/tangible/loot/dungeon/corellian_corvette/rebel_assassin_intel.iff",
+                    "object/tangible/loot/dungeon/corellian_corvette/rebel_destroy_intel.iff",
+                    "object/tangible/loot/dungeon/corellian_corvette/rebel_rescue_intel.iff",
                     "object/tangible/dungeon/death_watch_bunker/passkey_hall.iff",
                     "object/tangible/dungeon/death_watch_bunker/passkey_mine.iff",
                     "object/tangible/dungeon/death_watch_bunker/passkey_storage.iff",

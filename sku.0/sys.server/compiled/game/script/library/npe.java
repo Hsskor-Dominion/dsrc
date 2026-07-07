@@ -517,6 +517,11 @@ public class npe extends script.base_script
         attachScript(player, "npe.handoff_to_tatooine");
         setCompletedTutorial(player, true);
         setObjVar(player, "comingFromTutorial", 1);
+        int combatLevel = getLevel(player);
+        if (combatLevel < 7)
+        {
+            respec.autoLevelPlayer(player, 7, false);//this is a safeguard mostly for traders, to ensure they have draft schematics to craft
+        }
 
         // Create a string_id for the broadcast message
         String playerName = getPlayerName(player);

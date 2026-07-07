@@ -187,83 +187,177 @@ public class roulette extends script.gambling.base.wheel
     }
     public int handleParseResults(obj_id self, dictionary params) throws InterruptedException
     {
+        int totalBets = 0;
+        int totalPayouts = 0;
+
         if (params == null || params.isEmpty())
         {
             return SCRIPT_CONTINUE;
         }
+
         obj_id[] players = getObjIdArrayObjVar(self, gambling.VAR_GAME_PLAYERS_IDS);
         if (players == null || players.length == 0)
         {
             return SCRIPT_CONTINUE;
         }
+
         int result = params.getInt("result");
         String sResult = getResultString(result);
         String resultColor = getResultColor(result);
-        CustomerServiceLog("gambling", getGameTime() + ": (" + self + ") " + utils.getStringName(self) + " processing results...");
-        CustomerServiceLog("gambling", getGameTime() + ": (" + self + ") " + utils.getStringName(self) + " results: raw=" + result + " sResult=" + sResult + " color=" + resultColor);
-        int gameTime = getGameTime();
+
+        CustomerServiceLog("gambling",
+                getGameTime() + ": (" + self + ") "
+                        + utils.getStringName(self)
+                        + " processing results...");
+
         String ovpath;
         dictionary d;
-        for (obj_id player : players) {
+
+        for (obj_id player : players)
+        {
             int total = 0;
-            CustomerServiceLog("gambling", gameTime + ": player = " + player + " : " + getName(player));
+
             int playerIdx = gambling.getGamePlayerIndex(self, player);
-            if (playerIdx > -1) {
-                ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx + ".bet." + sResult;
-                if (hasObjVar(self, ovpath)) {
-                    int spotBet = getIntObjVar(self, ovpath);
-                    int spotPayout = (spotBet * 36) + spotBet;
-                    total += spotPayout;
-                    CustomerServiceLog("gambling", gameTime + ": (" + player + ") has spot bet -> payout = " + spotPayout);
-                }
-                if (result > 0) {
-                    ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx + ".bet." + resultColor;
-                    if (hasObjVar(self, ovpath)) {
-                        int colorBet = getIntObjVar(self, ovpath);
-                        int colorPayout = 2 * colorBet;
-                        total += colorPayout;
-                        CustomerServiceLog("gambling", gameTime + ": (" + player + ") has color bet -> payout = " + colorPayout);
-                    }
-                }
-                if (result > 0) {
-                    if (result % 2 == 0) {
-                        ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx + ".bet.even";
-                    } else {
-                        ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx + ".bet.odd";
-                    }
-                    if (hasObjVar(self, ovpath)) {
-                        int evenOddBet = getIntObjVar(self, ovpath);
-                        int evenOddPayout = 2 * evenOddBet;
-                        total += evenOddPayout;
-                        CustomerServiceLog("gambling", gameTime + ": (" + player + ") has even/odd bet -> payout = " + evenOddPayout);
-                    }
-                }
-                if (result > 0) {
-                    if (result > 18) {
-                        ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx + ".bet.high";
-                    } else {
-                        ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx + ".bet.low";
-                    }
-                    if (hasObjVar(self, ovpath)) {
-                        int hiLoBet = getIntObjVar(self, ovpath);
-                        int hiLoPayout = 2 * hiLoBet;
-                        total += hiLoPayout;
-                        CustomerServiceLog("gambling", gameTime + ": (" + player + ") has hi/low bet -> payout = " + hiLoPayout);
-                    }
+
+            if (playerIdx < 0)
+            {
+                continue;
+            }
+
+            //
+            // Calculate ALL bets placed by this player
+            //
+            String[] betTypes =
+                    {
+                            "red",
+                            "black",
+                            "even",
+                            "odd",
+                            "high",
+                            "low",
+                            "0",
+                            "00"
+                    };
+
+            for (String betType : betTypes)
+            {
+                ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx + ".bet." + betType;
+
+                if (hasObjVar(self, ovpath))
+                {
+                    totalBets += getIntObjVar(self, ovpath);
                 }
             }
-            CustomerServiceLog("gambling", getGameTime() + ": (" + player + ") total payout = " + total);
-            if (total > 0) {
+
+            // Number bets 1-36
+            for (int i = 1; i <= 36; i++)
+            {
+                ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx + ".bet." + i;
+
+                if (hasObjVar(self, ovpath))
+                {
+                    totalBets += getIntObjVar(self, ovpath);
+                }
+            }
+
+            //
+            // Winning straight-up number
+            //
+            ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx + ".bet." + sResult;
+
+            if (hasObjVar(self, ovpath))
+            {
+                int spotBet = getIntObjVar(self, ovpath);
+                int spotPayout = (spotBet * 36) + spotBet;
+
+                total += spotPayout;
+            }
+
+            //
+            // Color
+            //
+            if (result > 0)
+            {
+                ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx + ".bet." + resultColor;
+
+                if (hasObjVar(self, ovpath))
+                {
+                    int colorBet = getIntObjVar(self, ovpath);
+                    total += colorBet * 2;
+                }
+            }
+
+            //
+            // Even/Odd
+            //
+            if (result > 0)
+            {
+                ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx +
+                        (result % 2 == 0 ? ".bet.even" : ".bet.odd");
+
+                if (hasObjVar(self, ovpath))
+                {
+                    int bet = getIntObjVar(self, ovpath);
+                    total += bet * 2;
+                }
+            }
+
+            //
+            // High/Low
+            //
+            if (result > 0)
+            {
+                ovpath = gambling.VAR_GAME_PLAYERS + "." + playerIdx +
+                        (result > 18 ? ".bet.high" : ".bet.low");
+
+                if (hasObjVar(self, ovpath))
+                {
+                    int bet = getIntObjVar(self, ovpath);
+                    total += bet * 2;
+                }
+            }
+
+            totalPayouts += total;
+
+            CustomerServiceLog("gambling",
+                    getGameTime() + ": (" + player + ") total payout = " + total);
+
+            if (total > 0)
+            {
                 d = new dictionary();
                 d.put("player", player);
                 d.put("payout", total);
-                transferBankCreditsFromNamedAccount(money.ACCT_ROULETTE, player, total, "handleGamblingPayout", "noHandler", d);
-            } else {
-                sendSystemMessageTestingOnly(player, "Sorry, you did not win this round. Please try again.");
+
+                transferBankCreditsFromNamedAccount(
+                        money.ACCT_ROULETTE,
+                        player,
+                        total,
+                        "handleGamblingPayout",
+                        "noHandler",
+                        d);
+            }
+            else
+            {
+                sendSystemMessageTestingOnly(
+                        player,
+                        "Sorry, you did not win this round. Please try again.");
             }
         }
+
+        int houseProfit = (totalBets - totalPayouts)/2;//taxed at 50%
+
+        CustomerServiceLog(
+                "gambling",
+                getGameTime() + ": total bets=" + totalBets
+                        + " total payouts=" + totalPayouts
+                        + " house profit=" + houseProfit);
+
+        rewardStructureOwner(self, houseProfit);
+
         cleanupWheelGame(self);
+
         messageTo(self, "handleDelayedRestart", null, 10.0f, false);
+
         return SCRIPT_CONTINUE;
     }
     private boolean isValidBet(obj_id self, String arg) throws InterruptedException
@@ -339,5 +433,35 @@ public class roulette extends script.gambling.base.wheel
             }
         }
         removeObjVar(self, gambling.VAR_GAME_BASE);
+    }
+    private void rewardStructureOwner(obj_id self, int houseProfit) throws InterruptedException
+    {
+        if (houseProfit <= 0)
+        {
+            return;
+        }
+
+        obj_id structure = player_structure.getStructure(self);
+
+        if (!isIdValid(structure))
+        {
+            return;
+        }
+
+        CustomerServiceLog(
+                "gambling",
+                getGameTime() + ": (" + self + ") house profit = "
+                        + houseProfit + " deposited into structure "
+                        + structure
+        );
+
+        // Deposit into the structure's maintenance pool
+        transferBankCreditsFromNamedAccount(
+                money.ACCT_ROULETTE,
+                structure,
+                houseProfit,
+                "noHandler",
+                "noHandler",
+                new dictionary());
     }
 }

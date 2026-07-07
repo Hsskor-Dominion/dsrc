@@ -3,6 +3,7 @@ package script.stardust.conversation.tatooine;
 import script.*;
 import script.library.ai_lib;
 import script.library.chat;
+import script.library.groundquests;
 import script.library.utils;
 
 public class vendor_jawa extends script.base_script
@@ -68,6 +69,7 @@ public class vendor_jawa extends script.base_script
         {
             vendor_jawa_action_showTokenVendorUI(player, npc);
             string_id message = new string_id(c_stringFile, "s_4");
+            groundquests.sendSignal(player, "outlawCrimson");//this prevents spamming, and advances the quest
             chat.chat(npc, player, message);
             return SCRIPT_CONTINUE;
         }

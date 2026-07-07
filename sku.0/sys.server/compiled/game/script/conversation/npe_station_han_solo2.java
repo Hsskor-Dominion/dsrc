@@ -2893,6 +2893,11 @@ public int npe_station_han_solo2_handleBranch12(obj_id player, obj_id npc, strin
         {
             doAnimationAction(npc, "thumbs_up");
             npe_station_han_solo2_action_giveFirstReward(player, npc);
+            int combatLevel = getLevel(player);
+            if (combatLevel < 7)
+            {
+                xp.grantCraftingQuestXp(player, 1000);
+            }
             string_id message = new string_id(c_stringFile, "s_196");
             int numberOfResponses = 0;
             boolean hasResponse = false;

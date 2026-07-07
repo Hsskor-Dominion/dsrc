@@ -30,6 +30,7 @@ public class pet extends script.base_script
     public static final string_id SID_HELPER_DEFAULT_REMINDER = new string_id(MENU_FILE, "helper_default_reminder");
     public static final string_id SID_MUST_DISMOUNT = new string_id("pet/pet_menu", "must_dismount");
     public static final string_id PCOLOR = new string_id("sui", "set_primary_color");
+    public static final String STF = "chimaera";
     public int OnAttach(obj_id self) throws InterruptedException
     {
         if (pet_lib.getPetType(self) == pet_lib.PET_TYPE_FAMILIAR)
@@ -1210,6 +1211,76 @@ public class pet extends script.base_script
         npcStartConversation(speaker, self, CONVO, greeting, response);
         return SCRIPT_CONTINUE;
     }
+    private String getHKStarmapResponse()
+    {
+        String planetName = getCurrentSceneName().toLowerCase();
+
+        int forcedMap = -1;
+
+        if (planetName.contains("dantooine")) forcedMap = 1;
+        else if (planetName.contains("tatooine")) forcedMap = 2;
+        else if (planetName.contains("kashyyyk")) forcedMap = 3;
+        else if (planetName.contains("endor") || planetName.contains("lehon") || planetName.contains("unknown")) forcedMap = 4;
+
+        int roll = rand(1, 100);
+
+        if (forcedMap != -1 && roll <= 90)
+        {
+            return "hk47_starmap" + forcedMap;
+        }
+
+        switch (rand(1, 4))
+        {
+            case 1: return "hk47_starmap1";//dant
+            case 2: return "hk47_starmap2";//tat
+            case 3: return "hk47_starmap3";//kashyyyk
+            case 4: return "hk47_starmap4";//an allusion to endor, or lehon, or unknown regions
+        }
+
+        return "default_hk47_response";
+    }
+    private String getHKFriendshipResponse(int friendship, obj_id controlDevice, obj_id player)
+    {
+        int maxResponse = 8;
+
+        if (friendship >= 10) maxResponse = 11;
+        if (friendship >= 15) maxResponse = 15;
+
+        int hkResponse = rand(1, maxResponse);
+
+        String explore;
+
+        switch (hkResponse)
+        {
+            case 1: explore = "kill_meatbags"; break;
+            case 2: explore = "kill_meatbags1"; break;
+            case 3: explore = "kill_meatbags2"; break;
+            case 4: explore = "kill_meatbags3"; break;
+            case 5: explore = "kill_meatbags_yay"; break;
+            case 6: explore = "master_is_getting_strong"; break;
+            case 7: explore = "need_to_blast_meatbags_fond_of_revan"; break;
+            case 8: explore = "hk47_wishes_for_an_army_on_mustafar"; break;
+
+            case 9: explore = "hk47_friendly1"; break;
+            case 10: explore = "hk47_friendly2"; break;
+            case 11: explore = "hk47_friendly3"; break;
+
+            case 12: explore = "hk47_best_friend"; break;
+            case 13: explore = "hk47_meatbag_exception"; break;
+            case 14: explore = "hk47_loyalty_protocols"; break;
+            case 15: explore = "hk47_darksaber"; break;
+
+            default: explore = "default_hk47_response"; break;
+        }
+
+        friendship += 1;
+
+        setObjVar(controlDevice, "stardust.hk47.friendship", friendship);
+
+        sendSystemMessage(player, new string_id(STF, "friendship_level_" + friendship));
+
+        return explore;
+    }
     public void pet_action_get_to_know(obj_id player, obj_id pet) throws InterruptedException {
         String template = getTemplateName(pet);
         String pvpFaction = factions.getFaction(pet);
@@ -1219,8 +1290,8 @@ public class pet extends script.base_script
             response = new string_id(STRING_FILE, "this_is_the_way");
             int questId = questGetQuestId("quest/stardust_mando_crest");
             groundquests.grantQuest(questId, player, pet, true);
-        } else if (template.contains("hk47")) {
-            // Generate a random response for HK-47
+        } else if (template.contains("hk77")) {
+            // Generate a random response for HK-77
             int randomResponse = rand(1, 4);
             String explore;
 
@@ -1242,9 +1313,25 @@ public class pet extends script.base_script
             }
 
             response = new string_id(STRING_FILE, explore);
-        } else if (template.contains("hk77")) {
-            response = new string_id(STRING_FILE, "hk77_response");
-        } else if (template.contains("royal")) {
+        }
+        else if (template.contains("hk47"))
+        {
+            obj_id controlDevice = callable.getCallableCD(pet);
+            int friendship = getIntObjVar(controlDevice, "stardust.hk47.friendship");
+
+            String explore;
+
+            if (!groundquests.hasCompletedQuest(player, "stardust_jedi_starmap"))
+            {
+                explore = getHKStarmapResponse();
+            }
+            else
+            {
+                explore = getHKFriendshipResponse(friendship, controlDevice, player);
+            }
+            response = new string_id(STRING_FILE, explore);
+        }
+        else if (template.contains("royal")) {
             response = new string_id(STRING_FILE, "royal_guard_response");
             setInvulnerable(pet, false);
         } else if (template.contains("death_watch")) {

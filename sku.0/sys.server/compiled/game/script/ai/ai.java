@@ -3,6 +3,7 @@ package script.ai;
 import script.*;
 import script.library.*;
 
+import static script.library.buff.hasBuff;
 import static script.library.resource.STF_SURVEY;
 
 public class ai extends script.base_script
@@ -524,7 +525,7 @@ public class ai extends script.base_script
             }
             else 
             {
-                if (!scout.isScentMasked(breacher, self))
+                if (!scout.isScentMasked(breacher, self))//I want to add if the player successfully passes an aggro check while ScientMasked then they receive +40xp
                 {
                     if (isIncapacitated(breacher))
                     {
@@ -533,6 +534,13 @@ public class ai extends script.base_script
                     }
                     ai_aggro.requestAggroCheck(breacher);
                 }
+            }
+            if (hasBuff(breacher, "co_mirror_armor"))
+            {
+                grantExperiencePoints(breacher, "scout", 5);
+                sendSystemMessage(breacher,
+                        "You gain 5 Scout experience for avoiding detection.",
+                        null);
             }
         }
         return SCRIPT_CONTINUE;
@@ -1879,7 +1887,7 @@ public class ai extends script.base_script
             }
         }
         float milkStunModified = 0.0f;
-        if (buff.hasBuff(player, "creature_milking_buff") || buff.hasBuff(player, "drink_starshine_surprise"))
+        if (hasBuff(player, "creature_milking_buff") || hasBuff(player, "drink_starshine_surprise"))
         {
             milkStunModified += getEnhancedSkillStatisticModifierUncapped(player, "milk_stun_modified");
             CustomerServiceLog("milking_and_lair_search", "handleMilking: Player: " + getName(player) + " OID: " + player + " has a buff that gives a stun chance of: " + milkStunModified + ".");
@@ -1939,13 +1947,13 @@ public class ai extends script.base_script
         boolean shortenAttempts = false;
         float milkQuantityModified = 0.0f;
         float milkExceptionalModified = 0.0f;
-        if (buff.hasBuff(player, "creature_milking_buff") || buff.hasBuff(player, "drink_starshine_surprise"))
+        if (hasBuff(player, "creature_milking_buff") || hasBuff(player, "drink_starshine_surprise"))
         {
-            if (buff.hasBuff(player, "creature_milking_buff"))
+            if (hasBuff(player, "creature_milking_buff"))
             {
                 CustomerServiceLog("buff", "creature_milking_buff Buff used by player: " + player + " Name: " + getName(player) + " has creature_milking_buff ");
             }
-            else if (buff.hasBuff(player, "drink_starshine_surprise"))
+            else if (hasBuff(player, "drink_starshine_surprise"))
             {
                 CustomerServiceLog("buff", "creature_milking_buff Buff used by player: " + player + " Name: " + getName(player) + " has drink_starshine_surprise buff ");
             }

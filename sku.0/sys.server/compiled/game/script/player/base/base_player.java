@@ -2144,9 +2144,9 @@ public class base_player extends script.base_script
                 npe.movePlayerFromSharedStationToFinishLocation(self);
                 removeObjVar(self, "npe.skippingTutorial");
                 int combatLevel = getLevel(self);
-                if (combatLevel < 5)
+                if (combatLevel < 7)
                 {
-                    respec.autoLevelPlayer(self, 5, false);
+                    respec.autoLevelPlayer(self, 7, false);
                 }
             }
         }

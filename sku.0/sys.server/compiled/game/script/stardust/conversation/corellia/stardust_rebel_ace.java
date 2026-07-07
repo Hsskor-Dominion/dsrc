@@ -30,12 +30,62 @@ public class stardust_rebel_ace extends script.base_script
     {
         return ((badge.hasBadge(player, "pilot_rebel_navy_corellia") && badge.hasBadge(player, "pilot_rebel_navy_naboo") && badge.hasBadge(player, "pilot_rebel_navy_tatooine")));
     }
+    public void stardust_rebel_ace_action_moveToCorvette(obj_id player, obj_id npc) throws InterruptedException
+    {
+        if (!hasSkill(player, "stardust_admiral_imperial") &&
+                !hasSkill(player, "stardust_admiral_republic"))
+        {
+            sendSystemMessage(player,
+                    "You are not authorized to access the Corellian Corvette operation.",
+                    null);
+            return;
+        }
+        // Create temporary Corvette ticket
+        obj_id ticket = space_dungeon.createTicket(
+                player,
+                "corellia",
+                "corvette_rebel_pilot",
+                "corvette_imperial");
+
+        if (!isIdValid(ticket))
+        {
+            sendSystemMessage(player,
+                    "Unable to generate Corvette authorization.",
+                    null);
+            return;
+        }
+
+        setObjVar(ticket,
+                "space_dungeon.ticket.quest_type",
+                "imperial_destroy");
+
+        setObjVar(ticket,
+                "corl_corvette.ticket_owner",
+                player);
+
+        setObjVar(ticket, "noTrade", true);
+
+        attachScript(ticket, "item.special.nomove");
+        attachScript(ticket,
+                "theme_park.dungeon.corvette.corvette_quest_cleanup");
+
+         //Immediately consume the ticket
+        space_dungeon.activateDungeonTicket(
+                player,
+                ticket,
+                npc);
+
+        LOG("stardust",
+                "Admiral Corvette launch requested for " + player);
+
+    }
     public int stardust_rebel_ace_handleBranch1(obj_id player, obj_id npc, string_id response) throws InterruptedException
     {
         if (response.equals("s_star_destroyer"))
         {
             if (stardust_rebel_ace_condition__defaultCondition(player, npc))
             {
+                stardust_rebel_ace_action_moveToCorvette(player, npc);
                 string_id message = new string_id(c_stringFile, "s_lets_go");
                 utils.removeScriptVar(player, "conversation.stardust_rebel_ace.branchId");
                 npcEndConversationWithMessage(player, message);
@@ -89,8 +139,20 @@ public class stardust_rebel_ace extends script.base_script
     }
     public int OnAttach(obj_id self) throws InterruptedException
     {
+        attachScript(self, "item.travel_ticket.travel_space_dungeon");
         setCondition(self, CONDITION_CONVERSABLE);
         setName(self, "Commander Venisa Doza (Jade Squadron Ace of Aces)");
+        setObjVar(self,
+                "space_dungeon.ticket.dungeon",
+                "corvette_imperial");
+
+        setObjVar(self,
+                "space_dungeon.ticket.point",
+                "corvette_rebel_pilot");
+
+        setObjVar(self,
+                "space_dungeon.ticket.planet",
+                "corellia");
         return SCRIPT_CONTINUE;
     }
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info menuInfo) throws InterruptedException

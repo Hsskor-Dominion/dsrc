@@ -87,6 +87,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 1153495	0	object/building/tatooine/lucky_despot.iff	0	1703.7700195313	7	973.7680664063	0.7712469101	0	0.6365360618	0	planet_map.map_loc	planetMap.name|4|The Fallen Star|healing.canhealshock|0|1|safeLogout|0|1|portalProperty.crc|0|679368329|terminal1|6|41032756|terminal2|6|41032759|terminal3|6|41032762|terminal4|6|41032765|terminal5|6|41032768|terminal6|6|41032771|terminal7|6|41032774|terminal8|6|41032777|alreadySpawned|0|1|$|
 1153496	1153495	object/cell/cell.iff	1	0	0	0	1	0	0	0		$|
 1153497	1153495	object/cell/cell.iff	2	0	0	0	1	0	0	0		$|
+-7	1153497	object/tangible/npc/stardust_spawn/crimson_dawn.iff	2	-8.4	0	7	1	0	0	0		$|
 1153498	1153495	object/cell/cell.iff	3	0	0	0	1	0	0	0		$|
 1153499	1153495	object/cell/cell.iff	4	0	0	0	1	0	0	0		$|
 1153500	1153495	object/cell/cell.iff	5	0	0	0	1	0	0	0		$|
@@ -742,7 +743,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 1189020	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1617	11	1202	0.7071080804	0	-0.7071049213	0		$|
 1189021	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1612	11	1206.75	0.7071080804	0	-0.7071049213	0		$|
 1189022	0	object/static/structure/tatooine/wall_pristine_tatooine_small_style_01.iff	0	1615	11	1206.5	0.7071080804	0	-0.7071049213	0		$|
-1189023	0	object/static/structure/tatooine/wall_pristine_tatooine_small_style_01.iff	0	1617.25	11	1204	-0.00000184	0	1	0		$|
+1189023	0	object/static/structure/tatooine/wall_pristine_tatooine_small_style_01.iff	0	1617.25	11	1204	-1.84E-06	0	1	0		$|
 1189024	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff	0	1606.8800048828	9	1212.3500976563	0.923879683	0	-0.3826831579	0		$|
 1189026	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff	0	1584.25	9	1235	0.923879683	0	-0.3826831579	0		$|
 1189030	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_01.iff	0	1562.75	9	1252.25	0.7071071267	0	-0.7071068287	0		$|
@@ -767,7 +768,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 1189218	0	object/static/terrain/tatooine/rock_arch_large_tatooine_style_1.iff	0	13.2960996628	0	1996.6499023438	0.8551274538	0	0.5184177756	0		$|
 1189219	0	object/static/tatooine/rock_spire_smooth_tatooine.iff	0	42.4231987	0	1950.169921875	1	0	0	0		$|
 1189222	0	object/static/tatooine/rock_spire_skinny_tatooine.iff	0	85.1233978271	0	1893.8198242188	1	0	0	0		$|
-1201366	0	object/static/structure/tatooine/pillar_pristine_large_style_01.iff	0	1442.5799560547	7	1059.5	0.999987483	-0.0001999539	-0.000000346	0.0049961577		$|
+1201366	0	object/static/structure/tatooine/pillar_pristine_large_style_01.iff	0	1442.5799560547	7	1059.5	0.999987483	-0.0001999539	-3.46E-07	0.0049961577		$|
 1201377	0	object/static/structure/tatooine/pillar_pristine_large_style_01.iff	0	1459.1500244141	7.0798001289	1059.6298828125	0.9999374747	-0.0001499799	-0.0100003956	0.0049977377		$|
 1201421	0	object/static/structure/tatooine/pillar_pristine_large_style_01.iff	0	1442.1500244141	7	1127.58984375	0.9999499917	0	-0.0100004999	0		$|
 1206342	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1473.4200439453	7	1185.33984375	0.7109138966	0	0.7032791376	0		$|
@@ -1627,19 +1628,19 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 2725391	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff	0	1280.7800292969	4.8364500999	1161.5200195313	1	0	0	0		$|
 2725392	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1280.0100097656	7	1153.669921875	0.7071080804	0	-0.7071049213	0		$|
 2725393	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff	0	1322.0400390625	4.8364500999	1161.4799804688	-0.000800948	0	1	0		$|
-2725394	0	object/static/structure/tatooine/wall_archway_tatooine_large_style_01.iff	0	1322.0899658203	7	1174.0200195313	0.000037	0	1	0		$|
+2725394	0	object/static/structure/tatooine/wall_archway_tatooine_large_style_01.iff	0	1322.0899658203	7	1174.0200195313	3.7E-05	0	1	0		$|
 2725395	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1322.8399658203	7	1169.0300292969	0.7071069479	0	0.7071070075	0		$|
 2725396	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1322.8399658203	7	1178.0300292969	0.7071069479	0	0.7071070075	0		$|
 2725397	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff	0	1322.1400146484	4.8364500999	1186.6201171875	-0.000800948	0	1	0		$|
 2725398	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1322.9000244141	7	1194.4699707031	0.7071069479	0	0.7071070075	0		$|
-2725399	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1321.8000488281	7	1152.6000976563	0.000000032	0	1	0		$|
+2725399	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1321.8000488281	7	1152.6000976563	3.2E-08	0	1	0		$|
 2725400	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff	0	1313.9499511719	4.8364500999	1153.3701171875	0.707663238	0	-0.706550777	0		$|
 2725401	0	object/static/structure/tatooine/wall_archway_tatooine_large_style_01.iff	0	1301.3499755859	7	1153.419921875	-0.7070809603	0	0.7071329951	0		$|
-2725402	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1296.3499755859	7	1152.669921875	0.000000032	0	1	0		$|
-2725403	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1305.3499755859	7	1152.669921875	0.000000032	0	1	0		$|
+2725402	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1296.3499755859	7	1152.669921875	3.2E-08	0	1	0		$|
+2725403	0	object/static/structure/tatooine/pillar_pristine_small_style_01.iff	0	1305.3499755859	7	1152.669921875	3.2E-08	0	1	0		$|
 2725404	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff	0	1288.8100585938	4.8364500999	1153.4599609375	0.707663238	0	-0.706550777	0		$|
 2725405	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_01.iff	0	1366.8699951172	4.1084198952	1012.3400878906	0.7071370482	0	-0.7070759535	0		$|
-2725406	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_01.iff	0	1362.2399902344	4.1084198952	1007.5900878906	-0.0000344	0	1	0		$|
+2725406	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_01.iff	0	1362.2399902344	4.1084198952	1007.5900878906	-3.44E-05	0	1	0		$|
 2725408	0	object/static/structure/tatooine/orchard_tatooine_style_01.iff	0	1366.6199951172	7	1007.6999511719	1	0	0	0		$|
 2725409	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_01.iff	0	1490.0899658203	4.8116798401	1387.0400390625	0.7100780606	0	0.704120934	0		$|
 2725420	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_01.iff	0	1472.25	4.8116798401	1386.6801757813	0.7170891762	0	0.696980834	0		$|
@@ -1670,9 +1671,9 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 3765372	0	object/static/structure/tatooine/orchard_tatooine_style_01.iff	0	1360.3499755859	7	1381.5500488281	1	0	0	0		$|
 3765375	0	object/tangible/crafting/station/public_weapon_station.iff	0	1347.9699707031	7	1413.0100097656	-0.7071069479	0	0.7071070075	0	systems.crafting.base_station	crafting.private|0|0|crafting.station|0|1|crafting.type|0|526369|$|
 3765376	0	object/tangible/crafting/station/public_structure_station.iff	0	1358.0500488281	7	1413.9499511719	0.7071069479	0	0.7071070075	0	systems.crafting.base_station	crafting.private|0|0|crafting.station|0|1|crafting.type|0|1536|$|
-3765377	0	object/static/structure/tatooine/orchard_tatooine_style_01.iff	0	1352.9699707031	7	1414.0100097656	-0.000000032	0	1	0		$|
-3765379	0	object/tangible/crafting/station/public_clothing_station.iff	0	1492	7	1343	0.000000032	0	1	0	systems.crafting.base_station	crafting.private|0|0|crafting.station|0|1|crafting.type|0|10|$|
-3765380	0	object/tangible/crafting/station/public_food_station.iff	0	1483	7	1338	0.000000032	0	1	0	systems.crafting.base_station	crafting.private|0|0|crafting.station|0|1|crafting.type|0|8644|$|
+3765377	0	object/static/structure/tatooine/orchard_tatooine_style_01.iff	0	1352.9699707031	7	1414.0100097656	-3.2E-08	0	1	0		$|
+3765379	0	object/tangible/crafting/station/public_clothing_station.iff	0	1492	7	1343	3.2E-08	0	1	0	systems.crafting.base_station	crafting.private|0|0|crafting.station|0|1|crafting.type|0|10|$|
+3765380	0	object/tangible/crafting/station/public_food_station.iff	0	1483	7	1338	3.2E-08	0	1	0	systems.crafting.base_station	crafting.private|0|0|crafting.station|0|1|crafting.type|0|8644|$|
 3765382	0	object/static/structure/tatooine/orchard_tatooine_style_01.iff	0	1487	7	1343	1	0	0	0		$|
 3765384	0	object/tangible/crafting/station/public_clothing_station.iff	0	1474	7	1343	1	0	0	0	systems.crafting.base_station	crafting.private|0|0|crafting.station|0|1|crafting.type|0|10|$|
 3765386	0	object/tangible/crafting/station/public_food_station.iff	0	1483	7	1348	1	0	0	0	systems.crafting.base_station	crafting.private|0|0|crafting.station|0|1|crafting.type|0|8644|$|
@@ -1711,8 +1712,8 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 3945419	0	object/static/structure/tatooine/pillar_pristine_large_style_01.iff	0	1739.2800292969	7	1179.8901367188	0.7071080804	0	0.7071049213	0		$|
 3945420	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff	0	1746.8299560547	7	1180.1201171875	0.7071080804	0	0.7071049213	0		$|
 3945421	0	object/static/structure/tatooine/pillar_pristine_large_style_01.iff	0	1755.5999755859	7	1179.8701171875	0.7071080804	0	0.7071049213	0		$|
-3945422	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff	0	1754.7900390625	7	1172.0600585938	0.000000327	0	1	0		$|
-3945423	0	object/static/structure/tatooine/pillar_pristine_large_style_01.iff	0	1754.5400390625	7	1163.3000488281	0.000000327	0	1	0		$|
+3945422	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff	0	1754.7900390625	7	1172.0600585938	3.27E-07	0	1	0		$|
+3945423	0	object/static/structure/tatooine/pillar_pristine_large_style_01.iff	0	1754.5400390625	7	1163.3000488281	3.27E-07	0	1	0		$|
 3945425	0	object/static/structure/tatooine/pillar_pristine_large_style_01.iff	0	1754.4699707031	7	1146.8000488281	0	0	1	0		$|
 3945426	0	object/static/structure/tatooine/wall_pristine_tatooine_large_style_01.iff	0	1757.0200195313	4.7215199471	1143.7600097656	0.9663898349	0	-0.2570810616	0		$|
 4005516	0	object/building/tatooine/starport_tatooine.iff	0	1238.18	7	1013.85	0.953847	0	0.300293	0	theme_park.dungeon.generic_spawner:structure.municipal.starport	travel.air_time|0|60|travel.cost|0|150|travel.ground_time|0|300|travel.point_name|4|Mos Entha Starport|travel.shuttle_available|0|1|travel.version|0|3|$|
@@ -1803,8 +1804,8 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 4335456	0	object/static/structure/general/streetlamp_small_style_01.iff	0	1420.4799804688	7	1308.4399414063	1	0	0	0		$|
 4335457	0	object/static/structure/general/streetlamp_small_style_01.iff	0	1449.0500488281	7	1308.41015625	1	0	0	0		$|
 4335458	0	object/static/structure/general/streetlamp_small_style_01.iff	0	1404.6899414063	7.5243501663	1245.4599609375	1	0	0	0		$|
-4335460	0	object/static/structure/general/streetlamp_small_style_02.iff	0	1389.7199707031	14.4597997665	1177	-0.000000032	1	0	0		$|
-4335461	0	object/static/structure/general/streetlamp_small_style_02.iff	0	1389.9699707031	14.4253997803	1135.1298828125	-0.000000032	1	0	0		$|
+4335460	0	object/static/structure/general/streetlamp_small_style_02.iff	0	1389.7199707031	14.4597997665	1177	-3.2E-08	1	0	0		$|
+4335461	0	object/static/structure/general/streetlamp_small_style_02.iff	0	1389.9699707031	14.4253997803	1135.1298828125	-3.2E-08	1	0	0		$|
 4685580	0	object/tangible/terminal/terminal_bazaar.iff	0	1284.7399902344	7	1111	0.7314169407	0	0.6819309592	0	terminal.bazaar:planet_map.map_loc:planet_map.map_loc_attach	$|
 4685581	0	object/tangible/terminal/terminal_bazaar.iff	0	1435.0500488281	7.6769800186	1217.91015625	0.0249974001	0	0.999687016	0	terminal.bazaar:planet_map.map_loc:planet_map.map_loc_attach	$|
 4685582	0	object/tangible/terminal/terminal_bazaar.iff	0	1432.3000488281	7.6347999573	1274.6298828125	0.9996875525	0	-0.0249969866	0	terminal.bazaar:planet_map.map_loc:planet_map.map_loc_attach	$|
@@ -1817,8 +1818,8 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 6016133	0	object/static/creature/tatooine_cu_pa.iff	0	1603.6800537109	7	1309.5100097656	0.9568021297	0	0.2907399833	0		$|
 6076181	0	object/tangible/terminal/terminal_mission_artisan.iff	0	1761.75	7	1085.0300292969	0.9444104433	0	-0.3287688792	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intArtisan|0|1|$|
 6076254	0	object/static/structure/tatooine/jawa/tent_jawa_01_small.iff	0	1680.2399902344	7.7069897652	1098.83984375	0.0196573995	0.0036786899	0.982739985	-0.1839099973		$|
-6076255	0	object/tangible/terminal/terminal_mission_entertainer.iff	0	1679.3299560547	7	1098.9799804688	0.000000032	0	1	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intEntertainer|0|1|$|
-6076257	0	object/tangible/terminal/terminal_mission_scout.iff	0	1681.2800292969	7	1098.9799804688	0.000000032	0	1	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intScout|0|1|$|
+6076255	0	object/tangible/terminal/terminal_mission_entertainer.iff	0	1679.3299560547	7	1098.9799804688	3.2E-08	0	1	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intEntertainer|0|1|$|
+6076257	0	object/tangible/terminal/terminal_mission_scout.iff	0	1681.2800292969	7	1098.9799804688	3.2E-08	0	1	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intScout|0|1|$|
 6076259	0	object/tangible/terminal/terminal_mission_entertainer.iff	0	1710.3199462891	7	1047.2099609375	-0.0107960999	0	0.9999420047	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intEntertainer|0|1|$|
 6076261	0	object/tangible/terminal/terminal_mission.iff	0	1739.1400146484	7	997.0710449219	0.7316883206	0	0.6816396713	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	$|
 6076263	0	object/tangible/terminal/terminal_mission_scout.iff	0	1739.0200195313	7	999.2900390625	0.7350875139	0	0.677972436	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intScout|0|1|$|
@@ -1828,7 +1829,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 6076271	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1720.7399902344	7	1130.0200195313	1	0	0	0		occupied.limit|0|1|$|
 6076272	0	object/static/structure/tatooine/orchard_tatooine_style_02.iff	0	1720.5799560547	7	1127.330078125	1	0	0	0		$|
 6076273	0	object/static/structure/tatooine/orchard_tatooine_style_02.iff	0	1739.4399414063	7	1127.2399902344	1	0	0	0		$|
-6076274	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1720.6999511719	7	1124.5500488281	0.000000032	0	1	0		occupied.limit|0|1|$|
+6076274	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1720.6999511719	7	1124.5500488281	3.2E-08	0	1	0		occupied.limit|0|1|$|
 6076275	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1725.1300048828	7	1127.3598632813	0.7071080804	0	0.7071049213	0		occupied.limit|0|1|$|
 6076276	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1715.8399658203	7	1127.3000488281	0.7071080804	0	-0.7071049213	0		occupied.limit|0|1|$|
 6076277	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1734.6400146484	7	1127.1098632813	0.7071110606	0	-0.7071019411	0		occupied.limit|0|1|$|
@@ -1836,7 +1837,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 6076279	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1743.9300537109	7	1127.169921875	0.7071069479	0	0.7071070075	0		occupied.limit|0|1|$|
 6076280	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1739.5400390625	7	1129.830078125	1	0	0	0		occupied.limit|0|1|$|
 6076281	0	object/tangible/terminal/terminal_mission_artisan.iff	0	1496.3000488281	7	1068.6201171875	0.7071080804	0	0.7071049213	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intArtisan|0|1|$|
-6076292	0	object/tangible/terminal/terminal_mission_entertainer.iff	0	1476.6500244141	7.5375900269	1217.6899414063	0.000000032	0	1	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intEntertainer|0|1|$|
+6076292	0	object/tangible/terminal/terminal_mission_entertainer.iff	0	1476.6500244141	7.5375900269	1217.6899414063	3.2E-08	0	1	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intEntertainer|0|1|$|
 6076294	0	object/tangible/terminal/terminal_mission_artisan.iff	0	1470.0500488281	7	1093.3000488281	-0.7002850175	0	0.7138640285	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intArtisan|0|1|$|
 6076300	0	object/tangible/terminal/terminal_mission_artisan.iff	0	1470.0300292969	7	1097.0698242188	-0.7002850175	0	0.7138640285	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intArtisan|0|1|$|
 6076302	0	object/tangible/terminal/terminal_mission_artisan.iff	0	1377.9899902344	7	931.7309570313	1	0	0	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intArtisan|0|1|$|
@@ -1862,7 +1863,7 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 6076332	0	object/static/structure/tatooine/orchard_tatooine_style_02.iff	0	1400.0799560547	7	1409.8100585938	1	0	0	0		$|
 6076333	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1369.3199462891	7	1433.669921875	0.7071069479	0	0.7071070075	0		occupied.limit|0|1|$|
 6076334	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1363.8499755859	7	1433.7199707031	-0.7071069479	0	0.7071070075	0		occupied.limit|0|1|$|
-6076335	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1366.5699462891	7	1428.8198242188	-0.00000184	0	1	0		occupied.limit|0|1|$|
+6076335	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1366.5699462891	7	1428.8198242188	-1.84E-06	0	1	0		occupied.limit|0|1|$|
 6076336	0	object/tangible/furniture/all/frn_bench_generic.iff	0	1366.5100097656	7	1438.1098632813	1	0	0	0		occupied.limit|0|1|$|
 6076337	0	object/static/structure/tatooine/orchard_tatooine_style_02.iff	0	1366.5400390625	7	1433.5600585938	-0.7071069479	0	0.7071070075	0		$|
 6076338	0	object/tangible/terminal/terminal_mission_artisan.iff	0	1508.7099609375	7	1347.3000488281	1	0	0	0	systems.missions.base.mission_terminal:planet_map.map_loc:planet_map.map_loc_attach	intArtisan|0|1|$|
@@ -2017,10 +2018,10 @@ i	i	h	i	f	f	f	f	f	f	f	s	s
 9515540	0	object/static/item/item_container_organic_hide.iff	0	1271.6099853516	7	1108.1098632813	0.9902160168	0	0.1395429969	0		$|
 9515541	0	object/static/item/item_container_inorganic_minerals.iff	0	1277.2700195313	7	1108.0600585938	0.7071080804	0	-0.7071049213	0		$|
 9515542	0	object/static/item/item_container_organic_structure.iff	0	1275.6300048828	7	1108.0300292969	0.9989876747	0	0.0449848101	0		$|
-9515543	0	object/tangible/furniture/tatooine/frn_tato_chair_cafe_style_02.iff	0	1273.6999511719	7	1107.1098632813	-0.000000032	0	1	0		occupied.limit|0|1|$|
+9515543	0	object/tangible/furniture/tatooine/frn_tato_chair_cafe_style_02.iff	0	1273.6999511719	7	1107.1098632813	-3.2E-08	0	1	0		occupied.limit|0|1|$|
 9645545	0	object/static/vehicle/e3/landspeeder.iff	0	1474.9699707031	7	1415.41015625	1	0	0	0		$|
 9645547	0	object/static/creature/droids_r2.iff	0	1476.6600341797	7	1414.6999511719	0.9725143313	0	-0.2328429073	0		$|
-9745390	0	object/building/tatooine/guild_university_tatooine_style_02.iff	0	1434.7099609375	7	1342.5600585938	0.000000032	0	1	0		portalProperty.crc|0|710750555|$|
+9745390	0	object/building/tatooine/guild_university_tatooine_style_02.iff	0	1434.7099609375	7	1342.5600585938	3.2E-08	0	1	0		portalProperty.crc|0|710750555|$|
 9745391	9745390	object/cell/cell.iff	1	0	0	0	1	0	0	0		$|
 9745392	9745390	object/cell/cell.iff	2	0	0	0	1	0	0	0		$|
 9745393	9745390	object/cell/cell.iff	3	0	0	0	1	0	0	0		$|

@@ -294,11 +294,13 @@ public class combat_actions extends script.systems.combat.combat_base {
     {
         String xpType = "jedi_force";
 
+        int intMaxPower = (getSkillStatisticModifier(player, "jedi_force_power_max"));//amount modified by this?
+
         // Grant XP
-        xp.grant(player, xpType, xpAmount);
+        xp.grant(player, xpType, intMaxPower);
 
         // Display message to player
-        sendSystemMessageTestingOnly(player, "You gain " + xpAmount + " Force Power experience.");
+        sendSystemMessageTestingOnly(player, "You gain " + intMaxPower + " Force Power experience.");
     }
 
     public int forceRun(obj_id self, obj_id target, String params, float defaultTime) throws InterruptedException
@@ -308,7 +310,6 @@ public class combat_actions extends script.systems.combat.combat_base {
             return SCRIPT_OVERRIDE;
         }
 
-        // Call the force power helper
         forcePowerXpGain(self, 100);
 
         return SCRIPT_CONTINUE;
@@ -6702,6 +6703,7 @@ public class combat_actions extends script.systems.combat.combat_base {
         if (!stealth.canPerformForceCloak(self) || !combatStandardAction("fs_buff_invis_1", self, target, params, "", "")) {
             return SCRIPT_OVERRIDE;
         }
+        forcePowerXpGain(self, 100);
         if (getState(self, STATE_GLOWING_JEDI) == 1) {
             // Glowie Jedi persists stealth longer
             setState(self, STATE_GLOWING_JEDI, true);

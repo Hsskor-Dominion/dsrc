@@ -587,6 +587,7 @@ public class crafting_base extends script.base_script
             if (xpType != null)
             {
                 xp.grantCraftingStyleXp(player, xpType, xpAmount);
+                xp.grantCraftingQuestXp(player, xpAmount);
             }
             setObjVar(newObject, "crafting.creator.id", id);
             setObjVar(newObject, "crafting.creator.name", name);

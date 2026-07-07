@@ -1663,6 +1663,11 @@ public class npe_profession_trader extends script.base_script
         {
             npe_profession_trader_action_facePlayer(player, npc);
             string_id message = new string_id(c_stringFile, "s_133");
+            int combatLevel = getLevel(player);
+            if (combatLevel < 7)
+            {
+                xp.grantCraftingQuestXp(player, 1000);
+            }
             int numberOfResponses = 0;
             boolean hasResponse = false;
             boolean hasResponse0 = false;

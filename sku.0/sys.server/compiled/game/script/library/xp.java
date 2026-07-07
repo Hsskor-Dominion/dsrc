@@ -1339,7 +1339,7 @@ public class xp extends script.base_script
         }
 
         // 2) ALWAYS grant NGE consolidated crafting XP (silent)
-        totalGranted += grant(player, CRAFTING_GENERAL, amount, false);
+        totalGranted += grant(player, "crafting", amount, false);
 
         // 3) Merchant XP (parallel economy stream, silent)
         if (!xpType.equals(QUEST_CRAFTING))

@@ -1,0 +1,16 @@
+item	cash	token14	class	script	note
+s[none]	i[0]	i[0]	i[0]	s	c
+item_pgc_token_01	500000				
+command_post		5			
+police_station		20			
+police_station2		20			
+object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_belt.iff	100				
+object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_bicep_l.iff	100				
+object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_bicep_r.iff	100				
+object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_boots.iff	100				
+object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_bracer_l.iff	100				
+object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_bracer_r.iff	100				
+object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_chest_plate.iff	100				
+object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_gloves.iff	100				
+object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_helmet.iff	100				
+object/tangible/wearables/armor/stormtrooper/armor_stormtrooper_leggings.iff	100				

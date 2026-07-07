@@ -303,8 +303,17 @@ public class jedi_holocron extends script.base_script {
         }
 
         // Holocron configuration menu
-        if (item == menu_info_types.SERVER_MENU1) {
-            showMenuOptions(player);
+        if (item == menu_info_types.SERVER_MENU1)
+        {
+            if (!hasSkill(player, "class_chronicles_master"))
+            {
+                sendSystemMessage(player, new string_id("jedi_spam", "lack_master_chronicler"));
+            }
+            else
+            {
+                showMenuOptions(player);
+            }
+            return SCRIPT_OVERRIDE;
         }
 
         else if (item == menu_info_types.SERVER_MENU2) {
@@ -661,8 +670,8 @@ public class jedi_holocron extends script.base_script {
         }
         else if (matchedVision.equals("honor"))//Revan
         {
-            groundquests.grantQuest(player, "stardust_jedi_kill", true);//Revan? Mando
-            groundquests.grantQuest(partner, "stardust_jedi_kill", true);
+            groundquests.grantQuest(player, "stardust_jedi_starmap", true);//Revan? Mando
+            groundquests.grantQuest(partner, "stardust_jedi_starmap", true);
             playClientEffectObj(player, "clienteffect/force_heal_03.cef", player, "");
         }
         else
@@ -910,6 +919,7 @@ public class jedi_holocron extends script.base_script {
             setMaxHitpoints(item, 1); // Set max hitpoints to 1 temporarily
             setHitpoints(item, newHp);
             setMaxHitpoints(item, newHp + 1); // Set max hitpoints to new value
+            detachScript(item, "item.special.nomove");
         }
     }
 }

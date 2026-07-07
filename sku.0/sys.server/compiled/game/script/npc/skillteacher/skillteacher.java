@@ -3,11 +3,15 @@ package script.npc.skillteacher;
 import script.*;
 import script.library.*;
 
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.Vector;
 
+import static script.library.badge.BADGE_BOOK;
 import static script.library.buff.*;
-import static script.library.skill.deductXpCostForSkillPurchase;
-import static script.library.skill.getSkillPointsForPlayer;
+import static script.library.jedi_trials.SID_CLOSE_BUTTON;
+import static script.library.jedi_trials.oneButtonMsgBox;
+import static script.library.skill.*;
 
 public class skillteacher extends script.base_script
 {
@@ -25,7 +29,7 @@ public class skillteacher extends script.base_script
     public static final String SKILL_T = "skl_t";
     public static final String SCRIPT_NPC_CONVERSE = "npc.converse.npc_converse_menu";
     public static final String FACETO_VOLUME_NAME = "faceToTriggerVolume";
-    public static final string_id[] OPT_DEFAULT = 
+    public static final string_id[] OPT_DEFAULT =
     {
         new string_id(CONVOFILE, "opt1_1"),
         new string_id(CONVOFILE, "opt1_2"),
@@ -400,6 +404,7 @@ public class skillteacher extends script.base_script
                 case "opt1_3":
                 {
                     msg = new string_id(convoName, "msg3_4");
+                    showPlayerSkills(speaker);
 
                     String[] trainerSkills = skill.getTeachableSkills(speaker, self);
                     String[] playerSkills = getSkillListingForPlayer(speaker);
@@ -417,7 +422,7 @@ public class skillteacher extends script.base_script
                             }
                         }
 
-                        // manual Vector → String[] conversion (SWG-safe)
+                        // manual Vector → String[] conversion
                         skills = new String[owned.size()];
                         for (int i = 0; i < owned.size(); i++)
                         {
@@ -481,6 +486,98 @@ public class skillteacher extends script.base_script
             return SCRIPT_CONTINUE;
         }
     }
+    public void showPlayerSkills(obj_id player)
+            throws InterruptedException
+    {
+        String[] playerSkills = getSkillListingForPlayer(player);
+
+        if (playerSkills == null)
+        {
+            return;
+        }
+
+        String message = "";
+
+        for (int p = 0; p < PROFESSION_ROOTS.length; p++)
+        {
+            String professionName = PROFESSION_ROOTS[p][0];
+            String professionRoot = PROFESSION_ROOTS[p][1];
+
+            boolean foundAny = false;
+            String section = professionName + "\n";
+
+            for (int i = 0; i < playerSkills.length; i++)
+            {
+                String skill = playerSkills[i];
+
+                if (skill.startsWith(professionRoot))
+                {
+                    foundAny = true;
+
+                    section += "   " + skill + "\n";
+                }
+            }
+
+            if (foundAny)
+            {
+                message += section + "\n";
+            }
+        }
+
+        sui.msgbox(
+                player,
+                player,
+                message,
+                sui.OK_ONLY,
+                "Known Skills");
+    }
+    private static final String[][] PROFESSION_ROOTS =
+    {
+                    {"Artisan", "crafting_artisan"},
+                    {"Brawler", "combat_brawler"},
+                    {"Marksman", "combat_marksman"},
+                    {"Medic", "science_medic"},
+                    {"Entertainer", "social_entertainer"},
+                    {"Scout", "outdoors_scout"},
+
+                    {"Merchant", "crafting_merchant"},
+                    {"Armorsmith", "crafting_armorsmith"},
+                    {"Architect", "crafting_architect"},
+                    {"Weaponsmith", "crafting_weaponsmith"},
+                    {"Chef", "crafting_chef"},
+                    {"Tailor", "crafting_tailor"},
+                    {"Droid Engineer", "crafting_droidengineer"},
+                    {"Shipwright", "crafting_shipwright"},
+
+                    {"Teras Kasi", "combat_unarmed"},
+                    {"Fencer", "combat_1hsword"},
+                    {"Swordsman", "combat_2hsword"},
+                    {"Pikeman", "combat_polearm"},
+                    {"Smuggler", "combat_smuggler"},
+                    {"Commando", "combat_commando"},
+                    {"Pistoleer", "combat_pistol"},
+                    {"Carbineer", "combat_carbine"},
+                    {"Rifleman", "combat_rifle"},
+                    {"Bounty Hunter", "combat_bountyhunter"},
+
+                    {"Doctor", "science_doctor"},
+                    {"Combat Medic", "science_combatmedic"},
+
+                    {"Dancer", "social_dancer"},
+                    {"Image Designer", "social_imagedesigner"},
+                    {"Musician", "social_musician"},
+
+                    {"Ranger", "outdoors_ranger"},
+                    {"Creature Handler", "outdoors_creaturehandler"},
+                    {"Bio Engineer", "outdoors_bioengineer"},
+                    {"Squad Leader", "outdoors_squadleader"},
+
+                    {"Lightsaber", "force_discipline_light_saber"},
+                    {"Force Powers", "force_discipline_powers"},
+                    {"Force Healing", "force_discipline_healing"},
+                    {"Force Enhancements", "force_discipline_enhancements"},
+                    {"Force Defender", "force_discipline_defender"}
+    };
     public int attemptedPayment(obj_id self, dictionary params) throws InterruptedException
     {
         if ((params == null) || (params.isEmpty()))

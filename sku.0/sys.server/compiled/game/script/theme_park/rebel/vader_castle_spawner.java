@@ -18,11 +18,11 @@ public class vader_castle_spawner extends script.base_script
     }
     public void spawnEveryone(obj_id self) throws InterruptedException
     {
-        spawnCelebs(self);
+        spawnCastle(self);
         messageTo(self, "doGating", null, 20, true);
         return;
     }
-    public void spawnCelebs(obj_id self) throws InterruptedException
+    public void spawnCastle(obj_id self) throws InterruptedException
     {
         spawnSpirit1(self);
         spawnSpirit2(self);
@@ -31,6 +31,17 @@ public class vader_castle_spawner extends script.base_script
         spawnSpirit5(self);
         spawnSpirit6(self);
         spawnSpirit7(self);
+        spawnPhilosopher(self);
+    }
+    public void spawnPhilosopher(obj_id self) throws InterruptedException
+    {
+        obj_id room = getCellId(self, "r14");
+        location here = new location(-6.5f, -8.4f, -4.6f, "mustafar", room);
+        obj_id spirit = createSpawnerObject("stardust_philosopher", here, ai_lib.BEHAVIOR_SENTINEL, 210, 309);
+        setYaw(spirit, -1);
+        setObjVar(self, "HideoutInhabitants.philosopher", spirit);
+        setObjVar(spirit, "Hideout", self);
+        return;
     }
     public void spawnSpirit1(obj_id self) throws InterruptedException
     {
@@ -46,7 +57,7 @@ public class vader_castle_spawner extends script.base_script
     {
         obj_id room = getCellId(self, "r5");
         location here = new location(9.9f, 0.0f, -11.6f, "mustafar", room);
-        obj_id spirit = createSpawnerObject("dark_jedi_knight", here, ai_lib.BEHAVIOR_SENTINEL, 210, 309);
+        obj_id spirit = createSpawnerObject("dark_jedi_knight", here, ai_lib.BEHAVIOR_LOITER, 210, 309);
         setYaw(spirit, -83);
         setObjVar(self, "HideoutInhabitants.spirit2", spirit);
         setObjVar(spirit, "Hideout", self);
@@ -56,7 +67,7 @@ public class vader_castle_spawner extends script.base_script
     {
         obj_id room = getCellId(self, "r5");
         location here = new location(-10.9f, 0.0f, -11.6f, "mustafar", room);
-        obj_id spirit = createSpawnerObject("dark_jedi_knight", here, ai_lib.BEHAVIOR_SENTINEL, 210, 309);
+        obj_id spirit = createSpawnerObject("dark_jedi_knight", here, ai_lib.BEHAVIOR_LOITER, 210, 309);
         setYaw(spirit, -92);
         setObjVar(self, "HideoutInhabitants.spirit3", spirit);
         setObjVar(spirit, "Hideout", self);
@@ -66,7 +77,7 @@ public class vader_castle_spawner extends script.base_script
     {
         obj_id room = getCellId(self, "r7");
         location here = new location(-19.5f, 0.0f, -12.5f, "mustafar", room);
-        obj_id spirit = createSpawnerObject("dark_jedi_knight", here, ai_lib.BEHAVIOR_SENTINEL, 210, 309);
+        obj_id spirit = createSpawnerObject("dark_jedi_knight", here, ai_lib.BEHAVIOR_LOITER, 210, 309);
         setYaw(spirit, 4);
         setObjVar(self, "HideoutInhabitants.spirit4", spirit);
         setObjVar(spirit, "Hideout", self);
@@ -86,7 +97,7 @@ public class vader_castle_spawner extends script.base_script
     {
         obj_id room = getCellId(self, "r9");
         location here = new location(0.9f, 0.0f, -23.9f, "mustafar", room);
-        obj_id spirit = createSpawnerObject("dark_jedi_knight", here, ai_lib.BEHAVIOR_SENTINEL, 210, 309);
+        obj_id spirit = createSpawnerObject("dark_jedi_knight", here, ai_lib.BEHAVIOR_LOITER, 210, 309);
         setYaw(spirit, -90);
         setObjVar(self, "HideoutInhabitants.spirit6", spirit);
         setObjVar(spirit, "Hideout", self);
@@ -98,7 +109,7 @@ public class vader_castle_spawner extends script.base_script
         location here = new location(0.7f, -6.0f, -29.9f, "mustafar", room);
         obj_id spirit = createSpawnerObject("dark_jedi_knight", here, ai_lib.BEHAVIOR_LOITER, 210, 309);
         setYaw(spirit, 172);
-        setObjVar(self, "HideoutInhabitants.spirit6", spirit);
+        setObjVar(self, "HideoutInhabitants.spirit7", spirit);
         setObjVar(spirit, "Hideout", self);
         return;
     }
@@ -127,7 +138,7 @@ public class vader_castle_spawner extends script.base_script
         }
         if (text.equals("spawn_celebs"))
         {
-            spawnCelebs(self);
+            spawnCastle(self);
         }
         if (text.equals("kill_celebs"))
         {

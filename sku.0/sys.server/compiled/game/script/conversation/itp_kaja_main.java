@@ -226,12 +226,12 @@ public class itp_kaja_main extends script.base_script
             chat.chat(npc, player, message);
             return SCRIPT_CONTINUE;
         }
-        if (itp_kaja_main_condition_playerLevelCheck(player, npc))
-        {
-            string_id message = new string_id(c_stringFile, "s_19");
-            chat.chat(npc, player, message);
-            return SCRIPT_CONTINUE;
-        }
+//        if (itp_kaja_main_condition_playerLevelCheck(player, npc))
+//        {
+//            string_id message = new string_id(c_stringFile, "s_19");
+//            chat.chat(npc, player, message);
+//            return SCRIPT_CONTINUE;
+//        }
         if (itp_kaja_main_condition__defaultCondition(player, npc))
         {
             string_id message = new string_id(c_stringFile, "s_34");

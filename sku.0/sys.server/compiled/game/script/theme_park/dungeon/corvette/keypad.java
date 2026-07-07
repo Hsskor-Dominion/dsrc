@@ -1,6 +1,7 @@
 package script.theme_park.dungeon.corvette;
 
 import script.*;
+import script.library.create;
 
 public class keypad extends script.base_script
 {
@@ -8,19 +9,106 @@ public class keypad extends script.base_script
     {
     }
     public static final String MSGS = "dungeon/corvette";
+    public static final int MENU_TAKE_COMMANDCORVETTE = 200;
     public int OnObjectMenuRequest(obj_id self, obj_id player, menu_info mi) throws InterruptedException
+{
+    // -------------------------
+    // ITEM USE (default action)
+    // -------------------------
+    menu_info_data useItem = mi.getMenuItemByType(menu_info_types.ITEM_USE);
+    if (useItem != null)
     {
-        menu_info_data mid = mi.getMenuItemByType(menu_info_types.ITEM_USE);
-        if (mid == null)
-        {
-            return SCRIPT_CONTINUE;
-        }
-        mid.setServerNotify(true);
-        return SCRIPT_CONTINUE;
+        useItem.setServerNotify(true);
     }
+
+    // -------------------------
+    // CUSTOM COMMAND OPTION
+    // -------------------------
+    mi.addRootMenu(
+            MENU_TAKE_COMMANDCORVETTE,
+            new string_id("instance", "take_command"));
+
+    menu_info_data cmdItem = mi.getMenuItemByType(MENU_TAKE_COMMANDCORVETTE);
+    if (cmdItem != null)
+    {
+        cmdItem.setServerNotify(true);
+    }
+
+    return SCRIPT_CONTINUE;
+}
     public int OnObjectMenuSelect(obj_id self, obj_id player, int item) throws InterruptedException
     {
         obj_id top = getTopMostContainer(self);
+        if (item == MENU_TAKE_COMMANDCORVETTE)
+        {
+            if (!hasSkill(player, "stardust_admiral_imperial") &&
+                    !hasSkill(player, "stardust_admiral_republic"))
+            {
+                sendSystemMessage(player,
+                        "Admiral command authority required.",
+                        null);
+                return SCRIPT_CONTINUE;
+            }
+
+            obj_id currentCell = getContainedBy(self);
+            obj_id starDestroyer = getContainedBy(currentCell);
+
+//             Record commander
+            setObjVar(starDestroyer, "commanderId", player);
+            setObjVar(starDestroyer, "commanderName", getName(player));
+
+            // Ship already has a commander
+            if (hasObjVar(starDestroyer, "commanderName"))
+            {
+                String commanderName = getStringObjVar(starDestroyer, "commanderName");
+
+                sendSystemMessage(player,
+                        "This ship is under the command of " + commanderName + ".",
+                        null);
+            }
+
+            obj_id commandDeckCellObj = getCellId(starDestroyer, "bridge66");
+            messageTo(commandDeckCellObj, "unlock", null, 1, false);
+
+            if (isIdValid(commandDeckCellObj))
+            {
+                location bridgeLoc = getLocation(player);
+
+                bridgeLoc.cell = commandDeckCellObj;
+                bridgeLoc.x = -3.29f;
+                bridgeLoc.y = 0.6f;
+                bridgeLoc.z = 146.63f;
+
+                setLocation(player, bridgeLoc);
+
+                // Spawn Chiss Navigator on command deck
+                location navLoc = getLocation(player);
+
+                navLoc.cell = commandDeckCellObj;
+                navLoc.x = -4.26f;
+                navLoc.y = 0.4f;
+                navLoc.z = 147.0f;
+
+                obj_id navigator = create.object(
+                        "object/mobile/ep3/ep3_etyyy_chiss_poacher_smuggler_01.iff",
+                        navLoc);
+
+                if (isIdValid(navigator))
+                {
+                    attachScript(navigator,
+                            "stardust.conversation.endor.chiss_navigator");
+                }
+            }
+
+            sendSystemMessage(player,
+                    "Admiral command authority accepted. All security bulkheads and lift controls have been unlocked.",
+                    null);
+
+            sendDirtyObjectMenuNotification(self);
+
+            return SCRIPT_CONTINUE;
+        }
+
         if (item == menu_info_types.ITEM_USE)
         {
             if (hasObjVar(self, "vette.door_quest"))
@@ -33,7 +121,7 @@ public class keypad extends script.base_script
                     string_id open = new string_id(MSGS, "open");
                     sendSystemMessage(player, open);
                 }
-                else 
+                else
                 {
                     String whichRoom = getStringObjVar(self, "room");
                     if (whichRoom.equals("elevator57"))
@@ -48,7 +136,7 @@ public class keypad extends script.base_script
                     }
                 }
             }
-            else 
+            else
             {
                 keypad(player);
             }
